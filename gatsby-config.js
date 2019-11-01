@@ -31,7 +31,7 @@ module.exports = {
     {
       resolve: 'gatsby-plugin-google-analytics',
       options: {
-        trackingId: 'UA-138744138-1',
+        trackingId: 'UA-96106131-7',
         anonymize: true,
         respectDNT: true
       }
@@ -125,12 +125,12 @@ module.exports = {
     {
       resolve: 'gatsby-plugin-manifest',
       options: {
-        name: 'Write more, build more',
+        name: 'spokestack.io',
         start_url: '/',
         background_color: '#ffffff',
-        theme_color: '#2a7ae2',
+        theme_color: '#2f5bea',
         display: 'minimal-ui',
-        icon: 'content/assets/favicon.png'
+        icon: 'content/assets/logo.png'
       }
     },
     'gatsby-plugin-offline',

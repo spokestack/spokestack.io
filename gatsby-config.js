@@ -36,6 +36,8 @@ module.exports = {
         respectDNT: true
       }
     },
+    'gatsby-plugin-svg-sprite',
+    'gatsby-plugin-optimize-svgs',
     'gatsby-transformer-sharp',
     'gatsby-plugin-sharp',
     {

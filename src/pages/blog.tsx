@@ -10,11 +10,10 @@ type Props = PageRendererProps & {
 }
 
 export default function Blog({ data }: Props) {
-  const siteTitle = data.site.siteMetadata.title
   const posts = data.allMarkdownRemark.edges
 
   return (
-    <Layout title={siteTitle}>
+    <Layout>
       <SEO title="Blog" keywords={['spokestack', 'voice']} />
       {posts.map(({ node }) => {
         const title = node.frontmatter.title || node.fields.slug
@@ -41,11 +40,6 @@ export default function Blog({ data }: Props) {
 
 export const pageQuery = graphql`
   query {
-    site {
-      siteMetadata {
-        title
-      }
-    }
     allMarkdownRemark(
       sort: { fields: [frontmatter___date], order: DESC }
       filter: { frontmatter: { draft: { ne: true } } }

@@ -1,10 +1,10 @@
-import { css, Global } from '@emotion/core'
+import { Global, css } from '@emotion/core'
+import { MIN_TABLET_MEDIA_QUERY, MOBILE_MEDIA_QUERY } from 'typography-breakpoint-constants'
+import { adjustFontSizeTo, rhythm } from '../utils/typography'
+
 import { Link } from 'gatsby'
 import React from 'react'
-import { rhythm } from '../utils/typography'
-import SocialLink from './SocialLink'
-import githubIcon from '../icons/github.svg'
-import twitterIcon from '../icons/twitter.svg'
+import SocialLinks from './SocialLinks'
 
 export default function Nav() {
   return (
@@ -24,26 +24,15 @@ export default function Nav() {
         `}
       />
       <header css={styles.header}>
-        <a href="/">
+        <a href="/" css={styles.logoLink}>
           <img src="/logo.svg" css={styles.logo} />
         </a>
-        <div css={styles.socialLinks}>
-          <SocialLink
-            href="https://github.com/spokestack"
-            title="Spokestack GitHub"
-            icon={twitterIcon.id}
-          />
-          <SocialLink
-            href="https://github.com/spokestack"
-            title="Spokestack GitHub"
-            icon={githubIcon.id}
-          />
-        </div>
+        <SocialLinks />
       </header>
       <nav css={styles.nav}>
         <ul css={styles.links}>
-          <li css={styles.listItem} style={{ width: '24%' }}>
-            <a css={styles.navLink} href="/#services" className="nav-link nav-link-active">
+          <li css={styles.listItem} style={{ minWidth: '85px' }}>
+            <a css={styles.navLink} href="/#products" className="nav-link">
               Products &amp; Services
             </a>
           </li>
@@ -53,9 +42,14 @@ export default function Nav() {
             </a>
           </li>
           <li css={styles.listItem}>
-            <a css={styles.navLink} href="/#about" className="nav-link">
+            <Link
+              className="nav-link"
+              css={styles.navLink}
+              activeClassName="nav-link-active"
+              to="/about"
+              title="About Spokestack">
               About
-            </a>
+            </Link>
           </li>
           <li css={styles.listItem}>
             <Link
@@ -85,16 +79,16 @@ export default function Nav() {
 
 const styles = {
   container: css`
-    position: absolute;
-    top: 0;
-    left: 0;
-    right: 0;
     height: 100px;
     background-color: var(--primary-color);
     padding: 0 ${rhythm(0.8)};
     display: flex;
     flex-direction: column;
-    justify-content: flex-end;
+    justify-content: center;
+
+    ${MIN_TABLET_MEDIA_QUERY} {
+      height: 60px;
+    }
   `,
   header: css`
     display: flex;
@@ -102,20 +96,30 @@ const styles = {
     justify-content: space-between;
     align-items: center;
   `,
-  socialLinks: css`
-    width: 85px;
-    display: flex;
-    flex-direction: row;
-    justify-content: space-between;
-    align-items: center;
+  logoLink: css`
+    margin: ${rhythm(0.2)} 0 0 ${rhythm(0.2)};
+    ${MOBILE_MEDIA_QUERY} {
+      width: 25px;
+      overflow: hidden;
+    }
   `,
   logo: css`
-    margin: ${rhythm(0.2)} 0 0 ${rhythm(0.2)};
-    width: 40px;
-    height: 40px;
+    max-width: none;
+    margin: 0;
+    width: 185px;
+    height: 60px;
   `,
   nav: css`
     padding: 0 ${rhythm(0.4)};
+    transition: all 0.2s var(--transition-easing);
+
+    ${MIN_TABLET_MEDIA_QUERY} {
+      position: absolute;
+      top: 0;
+      left: 235px;
+      right: 115px;
+      height: 60px;
+    }
   `,
   links: css`
     display: flex;
@@ -126,16 +130,25 @@ const styles = {
     height: 40px;
     list-style: none;
     margin: 0;
+
+    ${MIN_TABLET_MEDIA_QUERY} {
+      justify-content: flex-start;
+      height: 60px;
+    }
   `,
   listItem: css`
     margin: 0;
     width: 19%;
     height: 100%;
+
+    ${MIN_TABLET_MEDIA_QUERY} {
+      width: auto;
+    }
   `,
   navLink: css`
     --nav-link-color: var(--text-color-dark-bg);
     color: var(--nav-link-color);
-    font-size: ${14 / 18}em;
+    font-size: ${adjustFontSizeTo('14px').fontSize};
     line-height: 1.1;
     position: relative;
     display: flex;
@@ -173,6 +186,11 @@ const styles = {
     }
     &:active {
       text-shadow: 0 0 1px rgba(39, 110, 202, 0.6);
+    }
+
+    ${MIN_TABLET_MEDIA_QUERY} {
+      font-size: ${adjustFontSizeTo('16px').fontSize};
+      margin-right: 15px;
     }
   `
 }

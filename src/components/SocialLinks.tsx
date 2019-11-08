@@ -1,95 +1,56 @@
-import styled from '@emotion/styled'
-import React from 'react'
+import React, { HTMLAttributes } from 'react'
+import { graphql, useStaticQuery } from 'gatsby'
 
-const SocialList = styled.ul`
-  display: grid;
-  grid-template-rows: 1fr;
-  grid-template-columns: 1fr 1fr 1fr 1fr;
-  list-style: none;
-  margin: 0;
-`
+import SocialLink from './SocialLink'
+import { css } from '@emotion/core'
+import githubIcon from '../icons/github.svg'
+import twitterIcon from '../icons/twitter.svg'
 
-const SocialLi = styled.li`
-  margin: 0 10px 0 0;
-`
-
-const SocialLink = styled.a`
-  width: 40px;
-  height: 40px;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  border: 1px solid var(--main-border-color);
-  border-radius: 3px;
-  background-image: none;
-
-  &:hover {
-    background-color: rgba(0, 0, 0, 0.1);
-    background-image: none;
-  }
-  &:active {
-    box-shadow: inset 0 0 5px rgba(0, 0, 0, 0.7);
-  }
-
-  @media (prefers-color-scheme: dark) {
-    background-color: rgba(255, 255, 255, 0.1);
-
-    &:hover {
-      background-color: rgba(255, 255, 255, 0.2);
+const socialQuery = graphql`
+  query socialQuery {
+    site {
+      siteMetadata {
+        social {
+          twitter
+          github
+        }
+      }
     }
   }
 `
 
-const SVGIcon = styled.svg`
-  width: 16px;
-  height: 16px;
-  display: inline-block;
-  fill: #828282;
-  line-height: 0;
-
-  @media (prefers-color-scheme: dark) {
-    fill: white;
-  }
-`
-
 interface Props {
-  social: {
-    github: string
-    twitter: string
-    rss: string
-  }
+  iconSize?: number
+  style?: HTMLAttributes<HTMLDivElement>['style']
 }
 
-export default function SocialLinks({ social }: Props) {
+export default function SocialLinks({ iconSize, style }: Props) {
+  const { site } = useStaticQuery(socialQuery)
+  const { social } = site.siteMetadata
   return (
-    <SocialList>
-      <SocialLi>
-        <SocialLink href={`https://github.com/${social.github}`} title="GitHub">
-          <SVGIcon
-            dangerouslySetInnerHTML={{
-              __html: '<use xlink:href="/minima-social-icons.svg#github"></use>'
-            }}
-          />
-        </SocialLink>
-      </SocialLi>
-      <SocialLi>
-        <SocialLink href={`https://twitter.com/${social.twitter}`} title="Twitter">
-          <SVGIcon
-            dangerouslySetInnerHTML={{
-              __html: '<use xlink:href="/minima-social-icons.svg#twitter"></use>'
-            }}
-          />
-        </SocialLink>
-      </SocialLi>
-      <SocialLi>
-        <SocialLink href="/rss.xml" title="RSS">
-          <SVGIcon
-            dangerouslySetInnerHTML={{
-              __html: '<use xlink:href="/minima-social-icons.svg#rss"></use>'
-            }}
-          />
-        </SocialLink>
-      </SocialLi>
-    </SocialList>
+    <div css={styles.socialLinks} style={style}>
+      <SocialLink
+        href={social.twitter}
+        title="Spokestack Twitter"
+        icon={twitterIcon.id}
+        iconSize={iconSize}
+      />
+      <SocialLink
+        href={social.github}
+        title="Spokestack GitHub"
+        icon={githubIcon.id}
+        iconSize={iconSize}
+      />
+    </div>
   )
+}
+
+const styles = {
+  socialLinks: css`
+    width: 85px;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+  `
 }

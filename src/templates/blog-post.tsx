@@ -1,6 +1,5 @@
 import { graphql, Link, PageRendererProps } from 'gatsby'
 import React from 'react'
-import Bio from '../components/Bio'
 import Layout from '../components/Layout'
 import SEO from '../components/SEO'
 import { MarkdownRemark, Query } from '../utils/graphql'
@@ -36,7 +35,6 @@ export default function BlogPostTemplate({ data, pageContext }: Props) {
         {post.frontmatter.date}
       </p>
       <div dangerouslySetInnerHTML={{ __html: post.html }} />
-      <Bio />
       <hr
         style={{
           marginBottom: rhythm(1)

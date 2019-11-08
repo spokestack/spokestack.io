@@ -1,75 +1,112 @@
-import styled from '@emotion/styled'
+import { LARGER_DISPLAY_WIDTH, MIN_DEFAULT_MEDIA_QUERY } from 'typography-breakpoint-constants'
+import { adjustFontSizeTo, rhythm } from '../utils/typography'
 import { graphql, useStaticQuery } from 'gatsby'
+
 import React from 'react'
-import { rhythm } from '../utils/typography'
 import SocialLinks from './SocialLinks'
+import { css } from '@emotion/core'
 
 const footerQuery = graphql`
   query footerQuery {
     site {
       siteMetadata {
         author
-        social {
-          twitter
-          github
-        }
       }
     }
   }
 `
 
-const Container = styled.footer`
-  position: fixed;
-  bottom: 0;
-  left: 0;
-  right: 0;
-  height: ${rhythm(2)};
-  padding-left: ${rhythm(1)};
-  padding-right: ${rhythm(1)};
-  display: flex;
-  flex-direction: row;
-  justify-content: space-between;
-  align-items: center;
-  border-top: 1px solid var(--main-border-color);
-  background-color: var(--main-background);
-  color: var(--main-color);
-
-  @media (max-width: 450px) {
-    flex-direction: column;
-    padding-top: ${rhythm(1)};
-    padding-bottom: ${rhythm(1)};
-    height: ${rhythm(5)};
-  }
-  @media (prefers-color-scheme: dark and (max-width: 450px)) {
-    height: ${rhythm(6)};
-  }
-`
-
-const Copyright = styled.div`
-  text-align: right;
-`
-
-const DarkModeNotice = styled.div`
-  display: none;
-  font-size: 14px;
-  line-height: 1.2;
-  margin: 10px 0 5px;
-
-  @media (prefers-color-scheme: dark) {
-    display: block;
-  }
-`
-
 export default function Footer() {
   const { site } = useStaticQuery(footerQuery)
-  const { author, social } = site.siteMetadata
+  const { author } = site.siteMetadata
   return (
-    <Container>
-      <SocialLinks social={social} />
-      <DarkModeNotice>Detected OS dark mode</DarkModeNotice>
-      <Copyright>
-        &copy; {new Date().getFullYear()} {author}
-      </Copyright>
-    </Container>
+    <footer css={styles.footer}>
+      <div css={styles.wrapper}>
+        <a href="/">
+          <img src="/logo.svg" css={styles.logo} />
+        </a>
+        <div css={styles.links}>
+          <a href="/#products" className="header-link">
+            <h2>Features</h2>
+          </a>
+          <a href="/#branded-voice">Custom Branded Voice</a>
+          <a href="/#asr-manager">Open source ASR Manager</a>
+          <a href="/#wakeword-creation">Wakeword Creation</a>
+          <a href="/#nlu">Natural Language Understanding</a>
+        </div>
+        {/* <div css={styles.links}>
+          <a href="/#demos" className="header-link">
+            <h2>Demos</h2>
+          </a>
+          <a href="/#surve-demo">Survey</a>
+          <a href="/#rss-demo">RSS Feed</a>
+          <a href="/#media-controls">Media Controls</a>
+          <a href="/#Weather">Weather</a>
+        </div> */}
+        <div css={styles.links}>
+          {/* <a href="/about" className="header-link">
+            <h2>About</h2>
+          </a>
+          <a href="/docs" className="header-link">
+            <h2>Docs</h2>
+          </a>
+          <a href="/blog" className="header-link">
+            <h2>Blog</h2>
+          </a> */}
+          <SocialLinks iconSize={25} style={{ marginLeft: '-10px', width: '95px' }} />
+          <p>
+            &copy; {new Date().getFullYear()} {author}
+          </p>
+        </div>
+      </div>
+    </footer>
   )
+}
+
+const styles = {
+  footer: css`
+    background-color: var(--footer-background);
+    color: var(--text-color-dark-bg);
+    padding: ${rhythm(1)} ${rhythm(1.5)} ${rhythm(2)};
+  `,
+  wrapper: css`
+    max-width: ${LARGER_DISPLAY_WIDTH};
+    margin: 0 auto;
+    display: flex;
+    flex-direction: column;
+
+    ${MIN_DEFAULT_MEDIA_QUERY} {
+      flex-direction: row;
+      justify-content: space-between;
+      padding-right: ${rhythm(2)};
+    }
+  `,
+  logo: css`
+    margin: 0;
+    width: 240px;
+    margin-right: ${rhythm(1)};
+  `,
+  links: css`
+    display: flex;
+    flex-direction: column;
+    margin-top: 20px;
+
+    a:not(.header-link) {
+      color: white;
+      font-size: ${adjustFontSizeTo('22px').fontSize};
+      margin-bottom: 15px;
+
+      &:hover {
+        color: hsl(0, 0%, 80%);
+      }
+      &:active {
+        color: hsl(0, 0%, 50%);
+      }
+    }
+
+    h2 {
+      color: var(--secondary-color);
+      margin-bottom: 20px;
+    }
+  `
 }

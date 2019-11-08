@@ -13,8 +13,9 @@ const options: TypographyOptions = {
   ],
   headerFontFamily: ['Roboto', 'Georgia', 'sans-serif'],
   bodyFontFamily: ['Roboto', 'Georgia', 'sans-serif'],
-  bodyColor: '#323E48',
-  headerWeight: '400',
+  bodyColor: 'var(--text-color)',
+  headerColor: 'var(--header-color)',
+  headerWeight: 700,
   bodyWeight: 400,
   boldWeight: 700,
   overrideStyles: ({ scale, rhythm }) => ({
@@ -45,12 +46,23 @@ const options: TypographyOptions = {
     'a:active': {
       color: '#08485e'
     },
+    h4: {
+      fontSize: '1.1rem',
+      lineHeight: 1.45,
+      fontWeight: 400
+    },
+    h5: {
+      fontWeight: 400
+    },
+    h6: {
+      fontWeight: 400
+    },
     blockquote: {
       ...scale(1 / 5),
-      color: 'hsl(0, 0, 40%)',
+      color: 'hsl(0, 0%, 40%)',
       paddingLeft: rhythm(13 / 16),
       marginLeft: rhythm(-1),
-      borderLeft: `${rhythm(3 / 16)} solid ${'hsl(0, 0, 13%)'}`
+      borderLeft: `${rhythm(3 / 16)} solid ${'hsl(0, 0%, 13%)'}`
     },
     [MOBILE_MEDIA_QUERY]: {
       blockquote: {

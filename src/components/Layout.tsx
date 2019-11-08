@@ -1,8 +1,8 @@
 import React, { ReactNode } from 'react'
-import Wrapper from './Wrapper'
-// import Footer from './Footer'
-import Nav from './Nav'
+
+import Footer from './Footer'
 import { Global } from '@emotion/core'
+import Nav from './Nav'
 import globalStyles from '../utils/globalStyles'
 
 interface Props {
@@ -14,10 +14,8 @@ export default function Layout({ children }: Props) {
     <>
       <Global styles={globalStyles} />
       <Nav />
-      <Wrapper>
-        <main>{children}</main>
-      </Wrapper>
-      {/* <Footer /> */}
+      <main>{children}</main>
+      <Footer />
     </>
   )
 }

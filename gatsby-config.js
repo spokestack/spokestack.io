@@ -7,8 +7,8 @@ module.exports = {
       'Mobile voice development platform that enables customized voice navigation for mobile and browser applications',
     siteUrl: 'https://spokestack.io/',
     social: {
-      twitter: 'spokestack',
-      github: 'spokestack'
+      twitter: 'https://twitter.com/spokestack',
+      github: 'https://github.com/spokestack'
     }
   },
   plugins: [

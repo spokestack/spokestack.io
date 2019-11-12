@@ -83,7 +83,8 @@
     "semantic-release": "^15.13.18"
   },
   "resolutions": {
-    "lodash": ">=4.17.15"
+    "lodash": ">=4.17.15",
+    "vfile-message": ">=2.0.2"
   },
   "bugs": {
     "url": "https://github.com/spokestack/spokestack-website/issues"

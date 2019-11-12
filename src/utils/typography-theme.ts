@@ -27,15 +27,7 @@ const options: TypographyOptions = {
     },
     a: {
       color: '#3D71EF',
-      textDecoration: 'none',
-      backgroundImage: `linear-gradient(
-        to top,
-        rgba(0, 0, 0, 0),
-        rgba(0, 0, 0, 0) 1px,
-        var(--link-color) 1px,
-        var(--link-color) 2px,
-        rgba(0, 0, 0, 0) 2px
-      )`
+      textDecoration: 'none'
     },
     'a:visited': {
       color: '#108ab2'

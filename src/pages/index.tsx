@@ -1,4 +1,8 @@
-import { MIN_DEFAULT_MEDIA_QUERY, MIN_TABLET_MEDIA_QUERY } from 'typography-breakpoint-constants'
+import {
+  DEFAULT_MEDIA_QUERY,
+  MIN_DEFAULT_MEDIA_QUERY,
+  MIN_TABLET_MEDIA_QUERY
+} from 'typography-breakpoint-constants'
 import { PageRendererProps, graphql } from 'gatsby'
 import { adjustFontSizeTo, rhythm } from '../utils/typography'
 
@@ -6,6 +10,7 @@ import Button from '../components/Button'
 import Card from '../components/Card'
 import { Global } from '@emotion/core'
 import Layout from '../components/Layout'
+import NavSelectedBackground from '../components/NavSelectedBackground'
 import { Query } from '../utils/graphql'
 import React from 'react'
 import SEO from '../components/SEO'
@@ -17,7 +22,14 @@ interface Props extends PageRendererProps {
   data: Query
 }
 
-export default function Index({ data }: Props) {
+const links = [
+  { href: '/#branded-voice', title: 'Custom Branded Voice' },
+  { href: '/#asr-manager', title: 'Open source ASR Manager' },
+  { href: '/#wakeword-creation', title: 'Wakeword Creation' },
+  { href: '/#nlu', title: 'Natural Language Understanding (NLU)' }
+]
+
+export default function Index({ data, location }: Props) {
   const siteTitle = data.site.siteMetadata.title
 
   return (
@@ -54,97 +66,116 @@ export default function Index({ data }: Props) {
           experiences for mobile apps.
         </p>
       </section>
-      <section id="products">
-        <h1>Products &amp; Services</h1>
-        <div id="branded-voice" css={styles.feature}>
-          <h3>Custom Branded Voice</h3>
-          <div css={styles.description}>
-            <p>
-              Choose from one of our voices or create your own uniquely branded synthetic voice to
-              use in your app using Spokestack&rsquo;s Text-to-Speech (TTS) service.
-            </p>
-          </div>
-          <Card title="Benefits">
-            <ul css={styles.list}>
-              <li>
-                <p>Hand off model training and prosody</p>
-              </li>
-              <li>
-                <p>Fast, built to deliver responses</p>
-              </li>
-              <li>
-                <p>Know exactly what your customers are saying without an intermediary</p>
-              </li>
-            </ul>
-          </Card>
-          {/* <Card title="Sample a Custom Voice">
+      <div css={styles.features}>
+        <div css={styles.featuresNavWrap}>
+          <nav css={styles.featuresNav}>
+            {links.map((link, i) => (
+              <a
+                key={`features-nav-link-${i}`}
+                css={styles.featuresNavLink}
+                id={`${link.href.replace(/[/#]/g, '')}-link`}
+                href={link.href}
+                title={link.title}>
+                {link.title}
+              </a>
+            ))}
+            <NavSelectedBackground
+              selectedId={location.hash ? `${location.hash}-link` : '#branded-voice-link'}
+            />
+          </nav>
+        </div>
+        <section id="products" css={styles.products}>
+          <h1>Products &amp; Services</h1>
+          <div id="branded-voice" css={styles.feature}>
+            <h3>Custom Branded Voice</h3>
+            <div css={styles.description}>
+              <p>
+                Choose from one of our voices or create your own uniquely branded synthetic voice to
+                use in your app using Spokestack&rsquo;s Text-to-Speech (TTS) service.
+              </p>
+            </div>
+            <Card title="Benefits">
+              <ul css={styles.list}>
+                <li>
+                  <p>Hand off model training and prosody</p>
+                </li>
+                <li>
+                  <p>Fast, built to deliver responses</p>
+                </li>
+                <li>
+                  <p>Know exactly what your customers are saying without an intermediary</p>
+                </li>
+              </ul>
+            </Card>
+            {/* <Card title="Sample a Custom Voice">
             <p>Hand off model training and prosody</p>
             <p>Fast, built to deliver responses</p>
             <p>Know exactly what your customers are saying without an intermediary</p>
           </Card> */}
-        </div>
-        <div id="asr-manager" css={styles.feature}>
-          <h3>Open source Automatic Speech Recognition (ASR) Manager</h3>
-          <div css={styles.description}>
-            <p>
-              Easily add and manage ASR and Voice Activated Detection (VAD) to your apps with a{' '}
-              <a href="https://github.com/spokestack">Spokestack library</a> that fits your
-              architecture.
-            </p>
           </div>
-          <Card title="Benefits">
-            <ul css={styles.list}>
-              <li>
-                <p>One-stop shop for adding ASR and VAD to your mobile apps</p>
-              </li>
-              <li>
-                <p>
-                  Easily add custom Text-to-Speech (TTS) and a wakeword to your app with Spokestack
-                  or from other providers such as Google Assistant, Siri, Alexa, etc.
-                </p>
-              </li>
-            </ul>
-          </Card>
-        </div>
-        <div id="wakeword-creation" css={styles.feature}>
-          <h3>Wakeword Creation</h3>
-          <div css={styles.description}>
-            <p>
-              When your app is open, we will create a wakeword for your brand so users can call you
-              by name.
-            </p>
+          <div id="asr-manager" css={styles.feature}>
+            <h3>Open source Automatic Speech Recognition (ASR) Manager</h3>
+            <div css={styles.description}>
+              <p>
+                Easily add and manage ASR and Voice Activated Detection (VAD) to your apps with a{' '}
+                <a href="https://github.com/spokestack">Spokestack library</a> that fits your
+                architecture.
+              </p>
+            </div>
+            <Card title="Benefits">
+              <ul css={styles.list}>
+                <li>
+                  <p>One-stop shop for adding ASR and VAD to your mobile apps</p>
+                </li>
+                <li>
+                  <p>
+                    Easily add custom Text-to-Speech (TTS) and a wakeword to your app with
+                    Spokestack or from other providers such as Google Assistant, Siri, Alexa, etc.
+                  </p>
+                </li>
+              </ul>
+            </Card>
           </div>
-          <Card title="Benefits">
-            <ul css={styles.list}>
-              <li>
-                <p>
-                  We make it easy for you to add a branded wakeword without training a Machine
-                  Learning (ML) model on your own
-                </p>
-              </li>
-            </ul>
-          </Card>
-        </div>
-        <div id="nlu" css={styles.feature}>
-          <h3>Natural Language Understanding (NLU)</h3>
-          <div css={styles.description}>
-            <p>
-              Want to unify your conversations across mobile, smart speaker and desktop? We have an
-              NLU for that.
-            </p>
+          <div id="wakeword-creation" css={styles.feature}>
+            <h3>Wakeword Creation</h3>
+            <div css={styles.description}>
+              <p>
+                When your app is open, we will create a wakeword for your brand so users can call
+                you by name.
+              </p>
+            </div>
+            <Card title="Benefits">
+              <ul css={styles.list}>
+                <li>
+                  <p>
+                    We make it easy for you to add a branded wakeword without training a Machine
+                    Learning (ML) model on your own
+                  </p>
+                </li>
+              </ul>
+            </Card>
           </div>
-          <Card title="Benefits">
-            <ul css={styles.list}>
-              <li>
-                <p>
-                  A cross-platform NLU that was built for multimodal management and consistencies
-                  across the user experience
-                </p>
-              </li>
-            </ul>
-          </Card>
-        </div>
-      </section>
+          <div id="nlu" css={styles.feature}>
+            <h3>Natural Language Understanding (NLU)</h3>
+            <div css={styles.description}>
+              <p>
+                Want to unify your conversations across mobile, smart speaker and desktop? We have
+                an NLU for that.
+              </p>
+            </div>
+            <Card title="Benefits">
+              <ul css={styles.list}>
+                <li>
+                  <p>
+                    A cross-platform NLU that was built for multimodal management and consistencies
+                    across the user experience
+                  </p>
+                </li>
+              </ul>
+            </Card>
+          </div>
+        </section>
+      </div>
     </Layout>
   )
 }
@@ -193,11 +224,38 @@ const styles = {
       }
     }
   `,
+  features: css`
+    ${MIN_DEFAULT_MEDIA_QUERY} {
+      display: grid;
+      grid-template-columns: 365px 1fr;
+    }
+  `,
+  featuresNavWrap: css`
+    background-color: white;
+    padding: 25px 0 0 50px;
+    ${DEFAULT_MEDIA_QUERY} {
+      display: none;
+    }
+  `,
+  featuresNav: css`
+    position: sticky;
+    top: 25px;
+    display: flex;
+    flex-direction: column;
+  `,
+  featuresNavLink: css`
+    padding: 15px 45px;
+  `,
+  products: css`
+    ${MIN_DEFAULT_MEDIA_QUERY} {
+      padding-left: ${rhythm(4)};
+    }
+  `,
   feature: css`
-    margin-top: ${rhythm(1)};
+    padding-top: ${rhythm(1)};
 
     ${MIN_DEFAULT_MEDIA_QUERY} {
-      margin-bottom: ${rhythm(5)};
+      margin-bottom: ${rhythm(4)};
     }
   `,
   list: css`

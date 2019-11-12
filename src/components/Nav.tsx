@@ -36,11 +36,11 @@ export default function Nav() {
               Products &amp; Services
             </a>
           </li>
-          <li css={styles.listItem}>
+          {/* <li css={styles.listItem}>
             <a css={styles.navLink} href="/#demos" className="nav-link">
               Demos
             </a>
-          </li>
+          </li> */}
           <li css={styles.listItem}>
             <Link
               className="nav-link"

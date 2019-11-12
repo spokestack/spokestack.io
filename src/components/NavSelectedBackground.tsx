@@ -9,7 +9,7 @@ interface Props {
 export default function NavSelectedBackground({ selectedId }: Props) {
   const [selected, setSelected] = useState<HTMLElement>(null)
   useEffect(() => {
-    setSelected(document.querySelector<HTMLElement>(selectedId))
+    setSelected(document.getElementById(selectedId))
   }, [selectedId])
   return selected ? (
     <div

@@ -30,7 +30,7 @@ export default function Footer() {
             <h2>Features</h2>
           </a>
           <a href="/#branded-voice">Custom Branded Voice</a>
-          <a href="/#asr-manager">Open source ASR Manager</a>
+          <a href="/#asr">Open source ASR Manager</a>
           <a href="/#wakeword-creation">Wakeword Creation</a>
           <a href="/#nlu">Natural Language Understanding</a>
         </div>

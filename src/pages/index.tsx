@@ -4,6 +4,7 @@ import {
   MIN_TABLET_MEDIA_QUERY
 } from 'typography-breakpoint-constants'
 import { PageRendererProps, graphql } from 'gatsby'
+import React, { useEffect, useRef, useState } from 'react'
 import { adjustFontSizeTo, rhythm } from '../utils/typography'
 
 import Button from '../components/Button'
@@ -12,7 +13,6 @@ import { Global } from '@emotion/core'
 import Layout from '../components/Layout'
 import NavSelectedBackground from '../components/NavSelectedBackground'
 import { Query } from '../utils/graphql'
-import React from 'react'
 import SEO from '../components/SEO'
 import SVGIcon from '../components/SVGIcon'
 import { css } from '@emotion/core'
@@ -24,13 +24,52 @@ interface Props extends PageRendererProps {
 
 const links = [
   { href: '/#branded-voice', title: 'Custom Branded Voice' },
-  { href: '/#asr-manager', title: 'Open source ASR Manager' },
+  { href: '/#asr', title: 'Open source ASR Manager' },
   { href: '/#wakeword-creation', title: 'Wakeword Creation' },
   { href: '/#nlu', title: 'Natural Language Understanding (NLU)' }
 ]
 
+const rhash = /[/#]/g
+
+function hashToId(hash: string) {
+  return hash.replace(rhash, '')
+}
+
 export default function Index({ data, location }: Props) {
   const siteTitle = data.site.siteMetadata.title
+  const branded = useRef<HTMLDivElement>(null)
+  const asr = useRef<HTMLDivElement>(null)
+  const wakeword = useRef<HTMLDivElement>(null)
+  const nlu = useRef<HTMLDivElement>(null)
+  const [selectedId, setSelectedId] = useState<string>(null)
+  useEffect(() => {
+    const observer = new IntersectionObserver(
+      function(entries) {
+        console.log(
+          entries.reduce((acc, entry) => {
+            if (entry.isIntersecting) {
+              acc.push(entry)
+            }
+            return acc
+          }, [])
+        )
+        for (const entry of entries) {
+          if (entry.isIntersecting) {
+            return setSelectedId(`${entry.target.id}-link`)
+          }
+        }
+      },
+      {
+        root: null,
+        threshold: 1
+      }
+    )
+    observer.observe(branded.current)
+    observer.observe(asr.current)
+    observer.observe(wakeword.current)
+    observer.observe(nlu.current)
+    setSelectedId(`${hashToId(location.hash) || 'branded-voice'}-link`)
+  }, [])
 
   return (
     <Layout>
@@ -69,24 +108,26 @@ export default function Index({ data, location }: Props) {
       <div css={styles.features}>
         <div css={styles.featuresNavWrap}>
           <nav css={styles.featuresNav}>
-            {links.map((link, i) => (
-              <a
-                key={`features-nav-link-${i}`}
-                css={styles.featuresNavLink}
-                id={`${link.href.replace(/[/#]/g, '')}-link`}
-                href={link.href}
-                title={link.title}>
-                {link.title}
-              </a>
-            ))}
-            <NavSelectedBackground
-              selectedId={location.hash ? `${location.hash}-link` : '#branded-voice-link'}
-            />
+            {links.map((link, i) => {
+              const id = `${hashToId(link.href)}-link`
+              return (
+                <a
+                  key={`features-nav-link-${i}`}
+                  css={styles.featuresNavLink}
+                  id={id}
+                  href={link.href}
+                  title={link.title}
+                  onClick={() => setSelectedId(id)}>
+                  {link.title}
+                </a>
+              )
+            })}
+            <NavSelectedBackground selectedId={selectedId} />
           </nav>
         </div>
         <section id="products" css={styles.products}>
           <h1>Products &amp; Services</h1>
-          <div id="branded-voice" css={styles.feature}>
+          <div id="branded-voice" css={styles.feature} ref={branded}>
             <h3>Custom Branded Voice</h3>
             <div css={styles.description}>
               <p>
@@ -113,7 +154,7 @@ export default function Index({ data, location }: Props) {
             <p>Know exactly what your customers are saying without an intermediary</p>
           </Card> */}
           </div>
-          <div id="asr-manager" css={styles.feature}>
+          <div id="asr" css={styles.feature} ref={asr}>
             <h3>Open source Automatic Speech Recognition (ASR) Manager</h3>
             <div css={styles.description}>
               <p>
@@ -136,7 +177,7 @@ export default function Index({ data, location }: Props) {
               </ul>
             </Card>
           </div>
-          <div id="wakeword-creation" css={styles.feature}>
+          <div id="wakeword-creation" css={styles.feature} ref={wakeword}>
             <h3>Wakeword Creation</h3>
             <div css={styles.description}>
               <p>
@@ -155,7 +196,7 @@ export default function Index({ data, location }: Props) {
               </ul>
             </Card>
           </div>
-          <div id="nlu" css={styles.feature}>
+          <div id="nlu" css={styles.feature} ref={nlu}>
             <h3>Natural Language Understanding (NLU)</h3>
             <div css={styles.description}>
               <p>
@@ -240,6 +281,7 @@ const styles = {
   featuresNav: css`
     position: sticky;
     top: 25px;
+    margin-bottom: 25px;
     display: flex;
     flex-direction: column;
   `,

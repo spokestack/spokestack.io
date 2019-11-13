@@ -1,0 +1,101 @@
+version: 2
+
+references:
+  restore_yarn_cache: &restore_yarn_cache
+    restore_cache:
+      keys:
+        # when lock file changes, use increasingly general patterns to restore cache
+        - yarn-packages-v1-{{ .Branch }}-{{ checksum "yarn.lock" }}
+        - yarn-packages-v1-{{ .Branch }}-
+        - yarn-packages-v1-
+
+  save_yarn_cache: &save_yarn_cache
+    save_cache:
+      paths:
+        - node_modules/
+      key: yarn-packages-v1-{{ .Branch }}-{{ checksum "yarn.lock" }}
+
+jobs:
+  build:
+    docker:
+      - image: circleci/node:12
+    working_directory: ~/spokestack
+    steps:
+      - checkout
+      - *restore_yarn_cache
+      - run: yarn --frozen-lockfile
+      - *save_yarn_cache
+
+      - run:
+          name: Lint
+          command: yarn lint
+
+      # build the site
+      - run:
+          name: Run build
+          command: yarn build
+
+      - persist_to_workspace:
+          root: ~/spokestack
+          paths:
+            - public
+
+  deploy_integration:
+    docker:
+      - image: circleci/node:12
+    working_directory: ~/spokestack
+    steps:
+      - checkout
+
+      # attach build already done
+      - attach_workspace:
+        at: ~/spokestack
+
+      # upload to S3
+      - run:
+          name: Install Tools
+          command: sudo apt-get -y -qq install awscli
+      - run:
+          name: Build and push static site
+          command: aws s3 sync --delete public s3://beta.spokestack.io/
+
+  deploy_production:
+    docker:
+      - image: circleci/node:latest
+    working_directory: ~/www
+    steps:
+      - checkout
+
+      # attach build already done
+      - attach_workspace:
+        at: ~/spokestack
+
+      # upload to S3
+      - run:
+          name: Install Tools
+          command: sudo apt-get -y -qq install awscli
+      - run:
+          name: Build and push static site
+          command: aws s3 sync --delete public s3://spokestack.io/
+
+workflows:
+  version: 2
+
+  test_and_deploy:
+    jobs:
+      - build
+      - deploy_integration:
+          filters:
+            branches:
+              only: develop
+          requires:
+            - build
+      - deploy_production:
+          filters:
+            branches:
+              only: production
+            tags:
+              only:
+                - /\d+\.\d+\.\d+/
+          requires:
+            - build

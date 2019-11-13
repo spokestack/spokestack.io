@@ -9,6 +9,7 @@
     "clean": "gatsby clean",
     "commit": "git-cz",
     "deploy": "gatsby build && gh-pages -d public -b master",
+    "eslint": "eslint .",
     "format": "prettier --write src/**/*.{js,jsx}",
     "lint": "concurrently --raw \"yarn type-check\" \"yarn eslint\" \"yarn prettier\"",
     "lint:fix": "concurrently --raw \"yarn type-check\" \"lint-staged\"",
@@ -18,7 +19,7 @@
     "schema": "graphql-codegen --config codegen.yml",
     "serve": "gatsby serve",
     "start": "yarn clean && gatsby develop",
-    "eslint": "eslint .",
+    "test": "yarn lint",
     "type-check": "tsc -p tsconfig.json --noEmit"
   },
   "dependencies": {

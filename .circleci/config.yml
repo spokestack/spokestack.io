@@ -27,8 +27,8 @@ jobs:
       - *save_yarn_cache
 
       - run:
-          name: Lint
-          command: yarn lint
+          name: Run tests
+          command: yarn test
 
       # build the site
       - run:
@@ -61,8 +61,8 @@ jobs:
 
   deploy_production:
     docker:
-      - image: circleci/node:latest
-    working_directory: ~/www
+      - image: circleci/node:12
+    working_directory: ~/spokestack
     steps:
       - checkout
 

@@ -30,7 +30,7 @@ const options: TypographyOptions = {
       textDecoration: 'none'
     },
     'a:visited': {
-      color: '#108ab2'
+      color: '#0d3ba5'
     },
     'a:hover': {
       color: '#1091bc'

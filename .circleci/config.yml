@@ -49,7 +49,7 @@ jobs:
 
       # attach build already done
       - attach_workspace:
-        at: ~/spokestack
+          at: ~/spokestack
 
       # upload to S3
       - run:
@@ -68,7 +68,7 @@ jobs:
 
       # attach build already done
       - attach_workspace:
-        at: ~/spokestack
+          at: ~/spokestack
 
       # upload to S3
       - run:

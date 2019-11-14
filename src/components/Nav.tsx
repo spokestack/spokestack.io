@@ -8,7 +8,7 @@ import SocialLinks from './SocialLinks'
 
 export default function Nav() {
   return (
-    <div css={styles.container}>
+    <div css={styles.navContainer}>
       <Global
         styles={css`
           .nav-link-active {
@@ -56,6 +56,7 @@ export default function Nav() {
               className="nav-link"
               css={styles.navLink}
               activeClassName="nav-link-active"
+              partiallyActive
               to="/docs"
               title="Spokestack Documentation">
               Docs
@@ -66,6 +67,7 @@ export default function Nav() {
               className="nav-link"
               css={styles.navLink}
               activeClassName="nav-link-active"
+              partiallyActive
               to="/blog"
               title="Spokestack Blog">
               Blog
@@ -78,7 +80,7 @@ export default function Nav() {
 }
 
 const styles = {
-  container: css`
+  navContainer: css`
     height: 100px;
     background-color: var(--primary-color);
     padding: 0 ${rhythm(0.8)};
@@ -95,15 +97,17 @@ const styles = {
     flex-direction: row;
     justify-content: space-between;
     align-items: center;
+    height: 60px;
   `,
   logoLink: css`
-    margin: ${rhythm(0.2)} 0 0 ${rhythm(0.2)};
+    line-height: 0;
     ${MOBILE_MEDIA_QUERY} {
-      width: 25px;
+      width: 38px;
       overflow: hidden;
     }
   `,
   logo: css`
+    line-height: 0;
     max-width: none;
     margin: 0;
     width: 185px;

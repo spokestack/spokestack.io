@@ -40,6 +40,7 @@ module.exports = {
     'gatsby-plugin-optimize-svgs',
     'gatsby-transformer-sharp',
     'gatsby-plugin-sharp',
+    'gatsby-image',
     {
       resolve: 'gatsby-transformer-remark',
       options: {

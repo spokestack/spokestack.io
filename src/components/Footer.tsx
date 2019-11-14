@@ -27,7 +27,7 @@ export default function Footer() {
         </a>
         <div css={styles.links}>
           <a href="/#products" className="header-link">
-            <h2>Features</h2>
+            <h3>Features</h3>
           </a>
           <a href="/#branded-voice">Custom Branded Voice</a>
           <a href="/#asr">Open source ASR Manager</a>
@@ -36,7 +36,7 @@ export default function Footer() {
         </div>
         {/* <div css={styles.links}>
           <a href="/#demos" className="header-link">
-            <h2>Demos</h2>
+            <h3>Demos</h3>
           </a>
           <a href="/#surve-demo">Survey</a>
           <a href="/#rss-demo">RSS Feed</a>
@@ -45,13 +45,13 @@ export default function Footer() {
         </div> */}
         <div css={styles.links}>
           {/* <a href="/about" className="header-link">
-            <h2>About</h2>
+            <h3>About</h3>
           </a>
           <a href="/docs" className="header-link">
-            <h2>Docs</h2>
+            <h3>Docs</h3>
           </a>
           <a href="/blog" className="header-link">
-            <h2>Blog</h2>
+            <h3>Blog</h3>
           </a> */}
           <SocialLinks iconSize={25} style={{ marginLeft: '-10px', width: '95px' }} />
           <p>
@@ -104,7 +104,7 @@ const styles = {
       }
     }
 
-    h2 {
+    h3 {
       color: var(--secondary-color);
       margin-bottom: 20px;
     }

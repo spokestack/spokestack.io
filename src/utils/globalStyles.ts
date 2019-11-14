@@ -34,9 +34,13 @@ export default css`
       font-size: ${adjustFontSizeTo('45px').fontSize};
       line-height: ${adjustFontSizeTo('45px').lineHeight};
     }
-    h3 {
+    h2 {
       font-size: ${adjustFontSizeTo('30px').fontSize};
       line-height: ${adjustFontSizeTo('30px').lineHeight};
+    }
+    h3 {
+      font-size: ${adjustFontSizeTo('25px').fontSize};
+      line-height: 1.4;
     }
   }
 `

@@ -1,7 +1,7 @@
+import { Global, css } from '@emotion/core'
 import React, { ReactNode } from 'react'
 
 import Footer from './Footer'
-import { Global } from '@emotion/core'
 import Nav from './Nav'
 import globalStyles from '../utils/globalStyles'
 
@@ -11,11 +11,22 @@ interface Props {
 
 export default function Layout({ children }: Props) {
   return (
-    <>
+    <div css={styles.container}>
       <Global styles={globalStyles} />
       <Nav />
-      <main>{children}</main>
+      <main css={styles.content}>{children}</main>
       <Footer />
-    </>
+    </div>
   )
+}
+
+const styles = {
+  container: css`
+    min-height: 100vh;
+    display: grid;
+    grid-template-rows: auto 1fr auto;
+  `,
+  content: css`
+    display: grid;
+  `
 }

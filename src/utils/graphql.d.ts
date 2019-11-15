@@ -677,11 +677,13 @@ export enum FileFieldsEnum {
   ChildMarkdownRemarkFrontmatterTitle = 'childMarkdownRemark___frontmatter___title',
   ChildMarkdownRemarkFrontmatterDate = 'childMarkdownRemark___frontmatter___date',
   ChildMarkdownRemarkFrontmatterDescription = 'childMarkdownRemark___frontmatter___description',
+  ChildMarkdownRemarkFrontmatterAuthor = 'childMarkdownRemark___frontmatter___author',
   ChildMarkdownRemarkFrontmatterDraft = 'childMarkdownRemark___frontmatter___draft',
   ChildMarkdownRemarkExcerpt = 'childMarkdownRemark___excerpt',
   ChildMarkdownRemarkRawMarkdownBody = 'childMarkdownRemark___rawMarkdownBody',
   ChildMarkdownRemarkFileAbsolutePath = 'childMarkdownRemark___fileAbsolutePath',
   ChildMarkdownRemarkFieldsSlug = 'childMarkdownRemark___fields___slug',
+  ChildMarkdownRemarkFieldsGithubLink = 'childMarkdownRemark___fields___githubLink',
   ChildMarkdownRemarkHtml = 'childMarkdownRemark___html',
   ChildMarkdownRemarkHtmlAst = 'childMarkdownRemark___htmlAst',
   ChildMarkdownRemarkExcerptAst = 'childMarkdownRemark___excerptAst',
@@ -1430,6 +1432,7 @@ export type MarkdownRemarkEdge = {
 export type MarkdownRemarkFields = {
   __typename?: 'MarkdownRemarkFields'
   slug?: Maybe<Scalars['String']>
+  githubLink?: Maybe<Scalars['String']>
 }
 
 export enum MarkdownRemarkFieldsEnum {
@@ -1437,11 +1440,13 @@ export enum MarkdownRemarkFieldsEnum {
   FrontmatterTitle = 'frontmatter___title',
   FrontmatterDate = 'frontmatter___date',
   FrontmatterDescription = 'frontmatter___description',
+  FrontmatterAuthor = 'frontmatter___author',
   FrontmatterDraft = 'frontmatter___draft',
   Excerpt = 'excerpt',
   RawMarkdownBody = 'rawMarkdownBody',
   FileAbsolutePath = 'fileAbsolutePath',
   FieldsSlug = 'fields___slug',
+  FieldsGithubLink = 'fields___githubLink',
   Html = 'html',
   HtmlAst = 'htmlAst',
   ExcerptAst = 'excerptAst',
@@ -1542,6 +1547,7 @@ export enum MarkdownRemarkFieldsEnum {
 
 export type MarkdownRemarkFieldsFilterInput = {
   slug?: Maybe<StringQueryOperatorInput>
+  githubLink?: Maybe<StringQueryOperatorInput>
 }
 
 export type MarkdownRemarkFilterInput = {
@@ -1568,6 +1574,7 @@ export type MarkdownRemarkFrontmatter = {
   title?: Maybe<Scalars['String']>
   date?: Maybe<Scalars['Date']>
   description?: Maybe<Scalars['String']>
+  author?: Maybe<Scalars['String']>
   draft?: Maybe<Scalars['Boolean']>
 }
 
@@ -1582,6 +1589,7 @@ export type MarkdownRemarkFrontmatterFilterInput = {
   title?: Maybe<StringQueryOperatorInput>
   date?: Maybe<DateQueryOperatorInput>
   description?: Maybe<StringQueryOperatorInput>
+  author?: Maybe<StringQueryOperatorInput>
   draft?: Maybe<BooleanQueryOperatorInput>
 }
 
@@ -2031,6 +2039,9 @@ export enum SiteFieldsEnum {
   SiteMetadataSiteUrl = 'siteMetadata___siteUrl',
   SiteMetadataSocialTwitter = 'siteMetadata___social___twitter',
   SiteMetadataSocialGithub = 'siteMetadata___social___github',
+  SiteMetadataAuthorsNoelAvatar = 'siteMetadata___authors___noel___avatar',
+  SiteMetadataAuthorsNoelName = 'siteMetadata___authors___noel___name',
+  SiteMetadataAuthorsNoelTitle = 'siteMetadata___authors___noel___title',
   Port = 'port',
   Host = 'host',
   Polyfill = 'polyfill',
@@ -2207,7 +2218,6 @@ export enum SitePageFieldsEnum {
   ComponentChunkName = 'componentChunkName',
   IsCreatedByStatefulCreatePages = 'isCreatedByStatefulCreatePages',
   ContextSlug = 'context___slug',
-  PluginCreatorId = 'pluginCreator___id',
   PluginCreatorParentId = 'pluginCreator___parent___id',
   PluginCreatorParentParentId = 'pluginCreator___parent___parent___id',
   PluginCreatorParentParentChildren = 'pluginCreator___parent___parent___children',
@@ -2296,6 +2306,7 @@ export enum SitePageFieldsEnum {
   PluginCreatorPackageJsonPeerDependenciesName = 'pluginCreator___packageJson___peerDependencies___name',
   PluginCreatorPackageJsonPeerDependenciesVersion = 'pluginCreator___packageJson___peerDependencies___version',
   PluginCreatorPackageJsonKeywords = 'pluginCreator___packageJson___keywords',
+  PluginCreatorId = 'pluginCreatorId',
   ComponentPath = 'componentPath'
 }
 
@@ -2727,6 +2738,29 @@ export type SiteSiteMetadata = {
   description?: Maybe<Scalars['String']>
   siteUrl?: Maybe<Scalars['String']>
   social?: Maybe<SiteSiteMetadataSocial>
+  authors?: Maybe<SiteSiteMetadataAuthors>
+}
+
+export type SiteSiteMetadataAuthors = {
+  __typename?: 'SiteSiteMetadataAuthors'
+  noel?: Maybe<SiteSiteMetadataAuthorsNoel>
+}
+
+export type SiteSiteMetadataAuthorsFilterInput = {
+  noel?: Maybe<SiteSiteMetadataAuthorsNoelFilterInput>
+}
+
+export type SiteSiteMetadataAuthorsNoel = {
+  __typename?: 'SiteSiteMetadataAuthorsNoel'
+  avatar?: Maybe<Scalars['String']>
+  name?: Maybe<Scalars['String']>
+  title?: Maybe<Scalars['String']>
+}
+
+export type SiteSiteMetadataAuthorsNoelFilterInput = {
+  avatar?: Maybe<StringQueryOperatorInput>
+  name?: Maybe<StringQueryOperatorInput>
+  title?: Maybe<StringQueryOperatorInput>
 }
 
 export type SiteSiteMetadataFilterInput = {
@@ -2735,6 +2769,7 @@ export type SiteSiteMetadataFilterInput = {
   description?: Maybe<StringQueryOperatorInput>
   siteUrl?: Maybe<StringQueryOperatorInput>
   social?: Maybe<SiteSiteMetadataSocialFilterInput>
+  authors?: Maybe<SiteSiteMetadataAuthorsFilterInput>
 }
 
 export type SiteSiteMetadataSocial = {

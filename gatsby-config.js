@@ -9,6 +9,14 @@ module.exports = {
     social: {
       twitter: 'https://twitter.com/spokestack',
       github: 'https://github.com/spokestack'
+    },
+    // Should match the queries in components/Author.tsx
+    authors: {
+      noel: {
+        avatar: 'noel',
+        name: 'Noel Weichbrodt',
+        title: 'Solutions Engineer'
+      }
     }
   },
   plugins: [
@@ -17,6 +25,13 @@ module.exports = {
       options: {
         path: `${__dirname}/content/blog`,
         name: 'blog'
+      }
+    },
+    {
+      resolve: 'gatsby-source-filesystem',
+      options: {
+        path: `${__dirname}/content/docs`,
+        name: 'docs'
       }
     },
     {

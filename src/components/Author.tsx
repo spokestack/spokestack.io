@@ -8,23 +8,69 @@ import { css } from '@emotion/core'
 import { rhythm } from '../utils/typography'
 
 type QueryType = Query & {
-  avatar: { childImageSharp: { fixed: FixedObject } }
+  noel: { childImageSharp: { fixed: FixedObject } }
+  timmy: { childImageSharp: { fixed: FixedObject } }
 }
 
-export default function Bio() {
-  const { site, avatar } = useStaticQuery<QueryType>(bioQuery)
-  const { author } = site.siteMetadata
+interface Props {
+  // Add a key here and avatar below
+  // to add a new author
+  avatar: 'noel' | 'timmy'
+  name: string
+  title: string
+}
+
+export const authorsFragment = graphql`
+  fragment Authors on Site {
+    siteMetadata {
+      authors {
+        noel {
+          avatar
+          name
+          title
+        }
+      }
+    }
+  }
+`
+
+const avatarsQuery = graphql`
+  query AuthorQuery {
+    noel: file(absolutePath: { regex: "/headshots/noel.jpg/" }) {
+      childImageSharp {
+        fixed(width: 95, height: 95) {
+          ...GatsbyImageSharpFixed
+        }
+      }
+    }
+    timmy: file(absolutePath: { regex: "/headshots/timmy.jpg/" }) {
+      childImageSharp {
+        fixed(width: 95, height: 95) {
+          ...GatsbyImageSharpFixed
+        }
+      }
+    }
+  }
+`
+
+export default function Author({ avatar, name, title }: Props) {
+  const data = useStaticQuery<QueryType>(avatarsQuery)
+  if (!name && !data[avatar]) {
+    return null
+  }
   return (
     <div css={styles.container}>
       <p>Author</p>
-      <Image
-        fixed={avatar.childImageSharp.fixed}
-        alt={author}
-        css={styles.imageWrap}
-        imgStyle={styles.image}
-      />
-      <h3>Noel Weichbrodt</h3>
-      <p css={styles.title}>Solutions Engineer</p>
+      {data[avatar] && (
+        <Image
+          fixed={data[avatar].childImageSharp.fixed}
+          alt={name}
+          css={styles.imageWrap}
+          imgStyle={styles.image}
+        />
+      )}
+      <h3>{name}</h3>
+      <p css={styles.title}>{title}</p>
     </div>
   )
 }
@@ -56,20 +102,3 @@ const styles = {
     opacity: 0.5;
   `
 }
-
-const bioQuery = graphql`
-  query BioQuery {
-    avatar: file(absolutePath: { regex: "/headshots/noel.jpg/" }) {
-      childImageSharp {
-        fixed(width: 95, height: 95) {
-          ...GatsbyImageSharpFixed
-        }
-      }
-    }
-    site {
-      siteMetadata {
-        author
-      }
-    }
-  }
-`

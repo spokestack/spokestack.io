@@ -21,6 +21,7 @@ const styles = {
     display: flex;
     flex-direction: column;
     margin-bottom: ${rhythm(0.8)};
+    background-color: white;
   `,
   cardHeader: css`
     background-color: var(--secondary-color);

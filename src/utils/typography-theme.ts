@@ -26,17 +26,19 @@ const options: TypographyOptions = {
       letterSpacing: '.03em'
     },
     a: {
-      color: '#3D71EF',
-      textDecoration: 'none'
+      color: 'var(--link-color)',
+      fontWeight: 700,
+      textDecoration: 'underline',
+      transition: 'color 0.1s var(--transition-easing)'
     },
     'a:visited': {
-      color: '#0d3ba5'
+      color: 'var(--link-color-visited)'
     },
     'a:hover': {
-      color: '#1091bc'
+      color: 'var(--link-color-hover)'
     },
     'a:active': {
-      color: '#08485e'
+      color: 'var(--link-color-active)'
     },
     h4: {
       fontSize: '1.1rem',

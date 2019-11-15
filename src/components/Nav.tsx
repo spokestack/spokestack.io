@@ -153,6 +153,7 @@ const styles = {
     --nav-link-color: var(--text-color-dark-bg);
     color: var(--nav-link-color);
     font-size: ${adjustFontSizeTo('14px').fontSize};
+    font-weight: 400;
     line-height: 1.1;
     position: relative;
     display: flex;
@@ -161,8 +162,9 @@ const styles = {
     width: 100%;
     height: 100%;
     text-align: center;
+    text-decoration: none;
     background-image: none;
-    transition: all 0.2s cubic-bezier(0.28, 0.32, 0.29, 0.79);
+    transition: all 0.2s var(--transition-easing);
     padding: 5px ${rhythm(0.2)} 8px;
     user-select: none;
 

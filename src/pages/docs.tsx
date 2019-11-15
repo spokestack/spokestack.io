@@ -32,7 +32,7 @@ export default function Docs({ data }: Props) {
         description="Documentation for the Spokestack API"
         keywords={['spokestack', 'documentation', 'voice', 'artificial intelligence']}
       />
-      <StickyNavLayout links={links}>
+      <StickyNavLayout selectFirst links={links}>
         <h1>
           <a href={post.fields.slug}>{post.frontmatter.title}</a>
         </h1>

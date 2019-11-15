@@ -77,7 +77,7 @@ export default function Index({ data, location }: Props) {
           experiences for mobile apps.
         </p>
       </section>
-      <StickyNavLayout matchHash links={links} location={location}>
+      <StickyNavLayout id="products" matchHash links={links} location={location}>
         <h1>Products &amp; Services</h1>
         <div id="branded-voice" css={styles.feature} ref={links[0].ref}>
           <h3>Custom Branded Voice</h3>

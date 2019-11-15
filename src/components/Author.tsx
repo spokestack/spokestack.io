@@ -1,7 +1,7 @@
 import Image, { FixedObject } from 'gatsby-image'
 import { graphql, useStaticQuery } from 'gatsby'
 
-import { MIN_DEFAULT_MEDIA_QUERY } from 'typography-breakpoint-constants'
+import { MIN_LARGE_DISPLAY_MEDIA_QUERY } from 'typography-breakpoint-constants'
 import { Query } from '../utils/graphql'
 import React from 'react'
 import { css } from '@emotion/core'
@@ -60,23 +60,34 @@ export default function Author({ avatar, name, title }: Props) {
   }
   return (
     <div css={styles.container}>
-      <p>Author</p>
-      {data[avatar] && (
-        <Image
-          fixed={data[avatar].childImageSharp.fixed}
-          alt={name}
-          css={styles.imageWrap}
-          imgStyle={styles.image}
-        />
-      )}
-      <h3>{name}</h3>
-      <p css={styles.title}>{title}</p>
+      <div css={styles.content}>
+        <p>Author</p>
+        {data[avatar] && (
+          <Image
+            fixed={data[avatar].childImageSharp.fixed}
+            alt={name}
+            css={styles.imageWrap}
+            imgStyle={styles.image}
+          />
+        )}
+        <h3>{name}</h3>
+        <p css={styles.title}>{title}</p>
+      </div>
     </div>
   )
 }
 
 const styles = {
   container: css`
+    grid-area: author;
+    display: flex;
+    justify-content: center;
+    ${MIN_LARGE_DISPLAY_MEDIA_QUERY} {
+      justify-content: flex-start;
+    }
+  `,
+  content: css`
+    min-width: 285px;
     display: flex;
     flex-direction: column;
     justify-content: flex-start;
@@ -84,10 +95,9 @@ const styles = {
     text-align: center;
     margin: ${rhythm(1)} 0;
 
-    ${MIN_DEFAULT_MEDIA_QUERY} {
-      margin-top: ${rhythm(8)};
-      padding-left: 20px;
+    ${MIN_LARGE_DISPLAY_MEDIA_QUERY} {
       padding-right: 100px;
+      margin-top: ${rhythm(8)};
     }
   `,
   imageWrap: css`

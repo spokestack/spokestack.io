@@ -1,13 +1,17 @@
 import { adjustFontSizeTo, rhythm } from './typography'
 
+import Color from 'color'
 import { MIN_DEFAULT_MEDIA_QUERY } from 'typography-breakpoint-constants'
 import { css } from '@emotion/core'
+
+const primaryColor = Color('#2f5bea')
+const secondaryColor = Color('#61fae9')
 
 export default css`
   html {
     --main-background: #f6f9fc;
-    --primary-color: #2f5bea;
-    --secondary-color: #61fae9;
+    --primary-color: ${primaryColor.hex()};
+    --secondary-color: ${secondaryColor.hex()};
     --text-color: #323e48;
     --header-color: #2c363f;
     --footer-background: var(--header-color);
@@ -16,6 +20,11 @@ export default css`
     --button-background: var(--secondary-color);
     --button-background-hover: #06c6b0;
     --transition-easing: cubic-bezier(0.77, 0.41, 0.2, 0.84);
+
+    --link-color: var(--primary-color);
+    --link-color-visited: ${primaryColor.lighten(0.1).hex()};
+    --link-color-hover: ${primaryColor.darken(0.2).hex()};
+    --link-color-active: ${primaryColor.darken(0.4).hex()};
 
     --code-background: #eee;
 
@@ -28,6 +37,13 @@ export default css`
   }
   .gatsby-resp-image-link {
     background-image: none;
+  }
+  h1 a,
+  h2 a,
+  h3 a,
+  h4 a,
+  h5 a {
+    text-decoration: none;
   }
   ${MIN_DEFAULT_MEDIA_QUERY} {
     h1 {

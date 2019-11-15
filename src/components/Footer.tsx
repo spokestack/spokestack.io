@@ -26,9 +26,11 @@ export default function Footer() {
           <img src="/logo.svg" css={styles.logo} />
         </a>
         <div css={styles.links}>
-          <a href="/#products" className="header-link">
-            <h3>Features</h3>
-          </a>
+          <h3>
+            <a href="/#products" className="header-link">
+              Features
+            </a>
+          </h3>
           <a href="/#branded-voice">Custom Branded Voice</a>
           <a href="/#asr">Open source ASR Manager</a>
           <a href="/#wakeword-creation">Wakeword Creation</a>
@@ -95,6 +97,7 @@ const styles = {
       color: white;
       font-size: ${adjustFontSizeTo('22px').fontSize};
       margin-bottom: 15px;
+      text-decoration: none;
 
       &:hover {
         color: hsl(0, 0%, 80%);
@@ -105,8 +108,18 @@ const styles = {
     }
 
     h3 {
-      color: var(--secondary-color);
       margin-bottom: 20px;
+
+      a {
+        color: var(--secondary-color);
+
+        &:hover {
+          color: var(--link-color-hover);
+        }
+        &:active {
+          color: var(--link-color-active);
+        }
+      }
     }
   `
 }

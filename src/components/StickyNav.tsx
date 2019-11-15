@@ -16,9 +16,15 @@ export interface StickyNavProps {
   links: StickyLink[]
   location?: WindowLocation
   matchHash?: boolean
+  selectFirst?: boolean
 }
 
-export default function StickyNav({ links = [], location, matchHash }: StickyNavProps) {
+export default function StickyNav({
+  links = [],
+  location,
+  matchHash,
+  selectFirst
+}: StickyNavProps) {
   if (!links.length || (matchHash && !location)) {
     return null
   }
@@ -27,14 +33,6 @@ export default function StickyNav({ links = [], location, matchHash }: StickyNav
     useEffect(() => {
       const observer = new IntersectionObserver(
         function(entries) {
-          console.log(
-            entries.reduce((acc, entry) => {
-              if (entry.isIntersecting) {
-                acc.push(entry)
-              }
-              return acc
-            }, [])
-          )
           for (const entry of entries) {
             if (entry.isIntersecting) {
               return setSelectedId(`${entry.target.id}-link`)
@@ -58,6 +56,7 @@ export default function StickyNav({ links = [], location, matchHash }: StickyNav
       <Global
         styles={css`
           .sticky-nav-link-active {
+            color: var(--link-color) !important;
             border-radius: 50px 0 0 50px;
             background-color: var(--main-background);
           }
@@ -69,15 +68,22 @@ export default function StickyNav({ links = [], location, matchHash }: StickyNav
           <a
             key={`sticky-nav-link-${i}`}
             css={styles.stickyNavLink}
+            style={{
+              color:
+                id === selectedId
+                  ? 'var(--sticky-nav-link-color-active)'
+                  : 'var(--sticky-nav-link-color)'
+            }}
             id={id}
             href={link.href}
             title={link.title}
             onClick={() => setSelectedId(id)}>
             {link.title}
           </a>
-        ) : i === 0 ? (
+        ) : selectFirst && i === 0 ? (
           <a
             key={`sticky-nav-link-${i}`}
+            id={id}
             css={styles.stickyNavLink}
             className="sticky-nav-link-active"
             href={link.href}
@@ -102,6 +108,8 @@ export default function StickyNav({ links = [], location, matchHash }: StickyNav
 
 const styles = {
   stickyNav: css`
+    --sticky-nav-link-color: #8da6e3;
+    --sticky-nav-link-color-active: var(--link-color);
     position: sticky;
     top: 25px;
     margin-bottom: 25px;
@@ -110,5 +118,7 @@ const styles = {
   `,
   stickyNavLink: css`
     padding: 15px 45px;
+    text-decoration: none;
+    user-select: none;
   `
 }

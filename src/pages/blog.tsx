@@ -37,7 +37,7 @@ export default function Blog({ data }: Props) {
   return (
     <Layout>
       <SEO title="Blog" keywords={['spokestack', 'voice', 'artificial intelligence']} />
-      <StickyNavLayout links={links} rightContent={<Author {...author} />}>
+      <StickyNavLayout selectFirst links={links} rightContent={<Author {...author} />}>
         <h1>
           <a href={post.fields.slug}>{post.frontmatter.title}</a>
         </h1>

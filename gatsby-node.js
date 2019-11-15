@@ -7,7 +7,6 @@ const rspokestackWebsite = /.*?spokestack-website\//
 
 function createPages(createPage, posts, template) {
   posts.forEach((post, index) => {
-    console.log(post)
     const previous = index === posts.length - 1 ? null : posts[index + 1].node
     const next = index === 0 ? null : posts[index - 1].node
 
@@ -87,7 +86,6 @@ exports.onCreateNode = ({ node, actions, getNode }) => {
   const { createNodeField } = actions
 
   if (node.internal.type === 'MarkdownRemark') {
-    console.log(node)
     const value = createFilePath({ node, getNode })
     const isDocsPage = rdocs.test(node.fileAbsolutePath)
     createNodeField({

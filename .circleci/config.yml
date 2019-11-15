@@ -19,7 +19,7 @@ jobs:
   build:
     docker:
       - image: circleci/node:12
-    working_directory: ~/spokestack
+    working_directory: ~/spokestack-website
     steps:
       - checkout
       - *restore_yarn_cache
@@ -36,20 +36,20 @@ jobs:
           command: yarn build
 
       - persist_to_workspace:
-          root: ~/spokestack
+          root: ~/spokestack-website
           paths:
             - public
 
   deploy_integration:
     docker:
       - image: circleci/node:12
-    working_directory: ~/spokestack
+    working_directory: ~/spokestack-website
     steps:
       - checkout
 
       # attach build already done
       - attach_workspace:
-          at: ~/spokestack
+          at: ~/spokestack-website
 
       # upload to S3
       - run:
@@ -62,13 +62,13 @@ jobs:
   deploy_production:
     docker:
       - image: circleci/node:12
-    working_directory: ~/spokestack
+    working_directory: ~/spokestack-website
     steps:
       - checkout
 
       # attach build already done
       - attach_workspace:
-          at: ~/spokestack
+          at: ~/spokestack-website
 
       # upload to S3
       - run:

@@ -12,11 +12,11 @@ One caveat before we start, though: _This is not a collection of best practices_
 ## Installation
 
 The rest of the guide will assume you already have the Spokestack framework installed in your project. See [the README](https://github.com/spokestack/spokestack-ios/blob/master/README.md) for more information, but if you're using [CocoaPods](https://cocoapods.org/), it's as easy as adding
-```
+```bash
 pod 'Spokestack-iOS'
 ```
 to your `Podfile` and running
-```
+```bash
 pod install
 ```
 
@@ -33,11 +33,11 @@ In order for your app to accept voice input via Spokestack, it needs three thing
 For the first one, head over to `Info.plist` in your project and add a couple keys. Here are the raw values you'll need (the keys, at least; feel free to substitute your own values):
 
 
-```
-	<key>NSMicrophoneUsageDescription</key>
-	<string>The microphone is used to receive user commands via voice.</string>
-	<key>NSSpeechRecognitionUsageDescription</key>
-	<string>Speech recognition is used to translate user voice input into text for further processing.</string>
+```xml
+<key>NSMicrophoneUsageDescription</key>
+<string>The microphone is used to receive user commands via voice.</string>
+<key>NSSpeechRecognitionUsageDescription</key>
+<string>Speech recognition is used to translate user voice input into text for further processing.</string>
 ```
 
 

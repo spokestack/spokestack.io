@@ -195,6 +195,7 @@ const styles = {
     max-width: 600px;
   `,
   h4: css`
+    font-weight: 400;
     ${MIN_DEFAULT_MEDIA_QUERY} {
       font-size: ${adjustFontSizeTo('25px').fontSize};
       line-height: ${adjustFontSizeTo('25px').lineHeight};

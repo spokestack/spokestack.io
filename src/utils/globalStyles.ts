@@ -48,6 +48,10 @@ export default css`
   pre[class*='language-'] {
     margin: 0 0 ${rhythm(1)};
   }
+  h3 code {
+    font-size: ${adjustFontSizeTo('25px').fontSize};
+    line-height: 1.4;
+  }
   ${MIN_DEFAULT_MEDIA_QUERY} {
     h1 {
       font-size: ${adjustFontSizeTo('45px').fontSize};

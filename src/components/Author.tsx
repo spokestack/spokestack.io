@@ -1,7 +1,7 @@
 import Image, { FixedObject } from 'gatsby-image'
 import { graphql, useStaticQuery } from 'gatsby'
 
-import { MIN_LARGE_DISPLAY_MEDIA_QUERY } from 'typography-breakpoint-constants'
+import { MIN_LARGER_DISPLAY_MEDIA_QUERY } from 'typography-breakpoint-constants'
 import { Query } from '../utils/graphql'
 import React from 'react'
 import { css } from '@emotion/core'
@@ -82,7 +82,7 @@ const styles = {
     grid-area: author;
     display: flex;
     justify-content: center;
-    ${MIN_LARGE_DISPLAY_MEDIA_QUERY} {
+    ${MIN_LARGER_DISPLAY_MEDIA_QUERY} {
       justify-content: flex-start;
     }
   `,
@@ -95,7 +95,7 @@ const styles = {
     text-align: center;
     margin: ${rhythm(1)} 0;
 
-    ${MIN_LARGE_DISPLAY_MEDIA_QUERY} {
+    ${MIN_LARGER_DISPLAY_MEDIA_QUERY} {
       padding-right: 100px;
       margin-top: ${rhythm(8)};
     }

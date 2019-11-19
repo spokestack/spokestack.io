@@ -5,7 +5,7 @@ description: Getting started with the Spokestack API
 draft: false
 ---
 
-~So you want to add voice to your app. Great; you've come to the right place.~ This guide will get you up and running (or at least walking) with Spokestack, and you'll be hearing and talking to your users in no time.
+~So you want to add voice to your app. Great; you've come to the right place.~ This guide will get you up and running ~(or at least walking)~ with Spokestack, and you'll be hearing and talking to your users in no time.
 
 One caveat before we start, though: _This is not a collection of best practices_. We're going to be trading thoughtful organization for convenience here, so when we say something like "put this in your view controller", just know that you might not want to leave it there long-term. OK, now that that's out of the way, let's jump right in.
 

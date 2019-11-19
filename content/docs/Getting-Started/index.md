@@ -5,7 +5,7 @@ description: Getting started with the Spokestack API
 draft: false
 ---
 
-This guide will get you up and running with Spokestack, and you'll be hearing and talking to your users in no time.
+This guide will get you up and running with Spokestack, and you'll be hearing your users in no time.
 
 One caveat before we start, though: _This is not a collection of best practices_. We're going to be trading thoughtful organization for convenience here, so when we say something like "put this in your view controller", just know that you might not want to leave it there long-term. OK, now that that's out of the way, let's jump right in.
 
@@ -46,13 +46,15 @@ If you're not using "Raw Keys & Values" mode in Xcode, the keys are `Privacy - M
 
 ### Delegate methods
 
-With the usage descriptions in place, take a moment to think where in your project you'd like to receive and process speech input. In a single-view app, the easiest place for this is going to be -- you guessed it -- your main view controller (don't say we didn't warn you about this). `import Spokestack` at the top of the file, and either set it up to adopt the `PipelineDelegate` and `SpeechEventListener` protocols, or add extensions for them. Xcode will do the hard work of filling in stubs for the methods you'll need.
+With the usage descriptions in place, it's time to decide where you'd like to receive and process speech input. In a single-view app, the easiest place for this is going to be your main view controller. `import Spokestack` at the top of the file, and either set it up to adopt the `PipelineDelegate` and `SpeechEventListener` protocols, or add extensions for them.
 
-If you want to disable any buttons or show a special "listening" indicator while recording, put those things in the `PipelineDelegate`'s `didStart` and `didStop` methods; otherwise, the main thing you'll want to implement is `didRecognize`. This method will provide you with a `SpeechContext`, which comes complete with extra, well, context for advanced usage, but what we're interested in for now is the `transcript` property.
+If you want to disable any buttons or show a special "listening" indicator while recording, put those things in the `PipelineDelegate`'s `didStart` and `didStop` methods; otherwise, the main thing you'll want to implement is `SpeechEventListener`'s' `didRecognize`.
 
-`transcript` is the raw text of what the user just said. Translating that raw text into an action in your app is the job of an NLU, or natural language understanding, component. Spokestack currently leaves the choice of NLU up to the app: There's a variety of NLU services out there ([DialogFlow](https://dialogflow.com/), [LUIS](https://www.luis.ai/home), or [wit.ai](https://wit.ai/), to name a few), or, if your app is simple enough, you can make your own with string matching or regular expressions. Note that we said "currently" -- we know this is an important piece of the puzzle, and we're working on a full-featured NLU for Spokestack based on years of research and lessons learned from working with the other services; [sign up for our newsletter](LINK) to be the first to know when it's ready.
+Inside `didRecognize`, `result.transcript` will give you the raw text of what the user just said. Translating that raw text into an action in your app is the job of an NLU, or natural language understanding, component. Spokestack currently leaves the choice of NLU up to the app: There's a variety of NLU services out there ([DialogFlow](https://dialogflow.com/), [LUIS](https://www.luis.ai/home), or [wit.ai](https://wit.ai/), to name a few), or, if your app is simple enough, you can make your own with string matching or regular expressions.
 
-For the sake of our demo, though, if you're creating a voice-controlled timer, `didRecognize` might look something like this:
+We know that NLU is an important piece of the puzzle, and we're working on a full-featured NLU component for Spokestack based on years of research and lessons learned from working with the other services; [sign up for our newsletter](LINK) to be the first to know when it's ready.
+
+For the sake of our demo, though, let's say you're creating a voice-controlled timer. `didRecognize` might look something like this:
 
 ```swift
 extension MyViewController: SpeechEventListener {
@@ -82,10 +84,16 @@ extension MyViewController: SpeechEventListener {
 
 ### `SpeechPipeline`
 
-OK, so we've set up somewhere for speech to _go_; now how do we _get_ it? This part's easy: Just create an instance of `SpeechPipeline` and start it. Again, your main view controller is as good a home as any for this, especially since you might want to hook it up to a button.
+OK, so we've set up somewhere for speech to _go_; now how do we _get_ it? This part's easy:
 
 ```swift
 private let pipeline = SpeechPipeline(self, pipelineDelegate: self)
+```
+
+then, after things are loaded:
+
+```swift
+pipeline.start()
 ```
 
 The `self` in this example means that the class containing this pipeline also adopts `PipelineDelegate` and `SpeechEventListener`, like we arranged in the previous step. Note also that we're using a convenience initializer for `SpeechPipeline` that makes a variety of configuration decisions on our behalf. There's more to talk about here, but they're topics for another guide.
@@ -101,16 +109,6 @@ Note that, as we mentioned earlier, the very first time you start a speech pipel
 #### I want the user to tap a button before talking
 
 If a wakeword-driven experience isn't for you, or if you want to give users a tap-to-talk option, just call `pipeline.start()` followed by `pipeline.activate()` in the action of whatever button you want to activate the microphone. This skips the wakeword step of the pipeline and starts the automatic speech recognition (ASR) component directly. ASR will stop automatically after the user is silent for a few seconds (how _many_ seconds is one of the configuration parameters we hinted at earlier) or after a preconfigured timeout is reached, but if you need to stop listening immediately for any reason, just call `pipeline.stop()`.
-
-## Talking back to your users
-
-If you want full hands-free and eyes-free interaction, you'll want to deliver responses via voice as well. This requires a text-to-speech (TTS) component, and Spokestack has one of these too!
-
-It's completely separate from the `SpeechPipeline`, so you can even use it to talk to a user even if they haven't talked to you first (whether or not that's a good idea is outside the scope of this guide...). Just call:
-
-```swift
-// TODO: TTS client api call here
-```
 
 ## Conclusion
 

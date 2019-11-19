@@ -2,8 +2,7 @@ import {
   DEFAULT_MEDIA_QUERY,
   DEFAULT_WIDTH,
   MIN_DEFAULT_MEDIA_QUERY,
-  MIN_LARGER_DISPLAY_MEDIA_QUERY,
-  MIN_LARGE_DISPLAY_MEDIA_QUERY
+  MIN_LARGER_DISPLAY_MEDIA_QUERY
 } from 'typography-breakpoint-constants'
 import StickyNav, { StickyNavProps } from './StickyNav'
 
@@ -40,15 +39,15 @@ const styles = {
 
     ${MIN_DEFAULT_MEDIA_QUERY} {
       display: grid;
-      grid-template-columns: minmax(250px, 365px) minmax(800px, ${DEFAULT_WIDTH});
+      grid-template-columns: minmax(250px, 365px) minmax(700px, ${DEFAULT_WIDTH});
       grid-template-areas:
         'sidenav content'
         'sidenav author';
     }
   `,
   containerWithRight: css`
-    ${MIN_LARGE_DISPLAY_MEDIA_QUERY} {
-      grid-template-columns: 365px minmax(800px, ${DEFAULT_WIDTH}) 1fr;
+    ${MIN_LARGER_DISPLAY_MEDIA_QUERY} {
+      grid-template-columns: 365px minmax(700px, ${DEFAULT_WIDTH}) 1fr;
       grid-template-areas: 'sidenav content author';
     }
   `,

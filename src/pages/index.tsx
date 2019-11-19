@@ -1,9 +1,12 @@
-import { MIN_DEFAULT_MEDIA_QUERY, MIN_TABLET_MEDIA_QUERY } from 'typography-breakpoint-constants'
+import {
+  LARGE_DISPLAY_WIDTH,
+  MIN_DEFAULT_MEDIA_QUERY,
+  MIN_TABLET_MEDIA_QUERY
+} from 'typography-breakpoint-constants'
 import { PageRendererProps, graphql } from 'gatsby'
 import React, { useRef } from 'react'
 import { adjustFontSizeTo, rhythm } from '../utils/typography'
 
-import Button from '../components/Button'
 import Card from '../components/Card'
 import { Global } from '@emotion/core'
 import Layout from '../components/Layout'
@@ -11,6 +14,7 @@ import { Query } from '../utils/graphql'
 import SEO from '../components/SEO'
 import SVGIcon from '../components/SVGIcon'
 import StickyNavLayout from '../components/StickyNavLayout'
+import UsageMap from '../components/UsageMap'
 import { css } from '@emotion/core'
 import iconArrow from '../icons/arrow-forward.svg'
 
@@ -62,21 +66,27 @@ export default function Index({ data, location }: Props) {
       <header css={styles.header}>
         <h1 css={styles.headerText}>Give your mobile app a voice</h1>
         <h4 css={[styles.headerText, styles.h4]}>
-          When your customers say &ldquo;Hey Siri, open {'{my-app}'}&rdquo;, how will you respond?
-          Let voice deliver your core value proposition to customers quicker.
+          Use our open source development platform to make your app fully voice-enabled.
         </h4>
-        <Button large>
+        <a href="/docs" className="btn btn-large">
           Get started
           <SVGIcon icon={iconArrow.id} style={{ fill: 'var(--header-color)' }} />
-        </Button>
+        </a>
       </header>
-      <section css={styles.definition}>
-        <h1>What is Spokestack?</h1>
-        <p>
-          Spokestack is a voice development platform that helps developers build custom voice
-          experiences for mobile apps.
-        </p>
-      </section>
+      <div css={styles.usageWrap}>
+        <div css={styles.usage}>
+          <div css={styles.usageText}>
+            <h3>Today&apos;s consumers want to speak to their products and services.</h3>
+            <p>
+              Over 58% of Americans use their phone as a voice assistant<sup>*</sup>. That’s more
+              than smart speaker, smart watch and desktop voice assistant users combined. As
+              Airpods&trade; and other voice assistant-powered headphones gain popularity, users
+              will expect apps to have a voice.
+            </p>
+          </div>
+          <UsageMap />
+        </div>
+      </div>
       <StickyNavLayout id="products" matchHash links={links} location={location}>
         <h1>Products &amp; Services</h1>
         <div id="branded-voice" css={styles.feature} ref={links[0].ref}>
@@ -100,11 +110,6 @@ export default function Index({ data, location }: Props) {
               </li>
             </ul>
           </Card>
-          {/* <Card title="Sample a Custom Voice">
-          <p>Hand off model training and prosody</p>
-          <p>Fast, built to deliver responses</p>
-          <p>Know exactly what your customers are saying without an intermediary</p>
-        </Card> */}
         </div>
         <div id="asr" css={styles.feature} ref={links[1].ref}>
           <h3>Open source Automatic Speech Recognition (ASR) Manager</h3>
@@ -201,17 +206,34 @@ const styles = {
       line-height: ${adjustFontSizeTo('25px').lineHeight};
     }
   `,
-  definition: css`
+  usageWrap: css`
+    background-color: white;
+    margin-top: -1px;
+  `,
+  usage: css`
     background-color: white;
     display: flex;
     flex-direction: column;
     align-items: center;
 
+    ${MIN_DEFAULT_MEDIA_QUERY} {
+      display: grid;
+      grid-template-columns: 1fr 640px;
+      max-width: ${LARGE_DISPLAY_WIDTH};
+      margin: 0 auto;
+      padding-right: 20px;
+    }
+  `,
+  usageText: css`
+    padding: ${rhythm(0.5)} 20px;
+
+    h3,
     p {
       max-width: 600px;
     }
 
     ${MIN_TABLET_MEDIA_QUERY} {
+      h3,
       p {
         text-align: center;
       }

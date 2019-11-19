@@ -20,6 +20,7 @@ export default css`
     --button-background: var(--secondary-color);
     --button-background-hover: #06c6b0;
     --transition-easing: cubic-bezier(0.77, 0.41, 0.2, 0.84);
+    --bubble-easing: cubic-bezier(0.3, 0.55, 0.54, 0.86);
 
     --link-color: var(--primary-color);
     --link-color-visited: ${primaryColor.lighten(0.1).hex()};
@@ -55,6 +56,41 @@ export default css`
   h3 code {
     font-size: ${adjustFontSizeTo('25px').fontSize};
     line-height: 1.4;
+  }
+  .btn {
+    height: 38px;
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    background-color: var(--button-background);
+    border: 1px solid var(--button-background);
+    border-radius: 24px;
+    padding: 0 ${rhythm(1)};
+    white-space: nowrap;
+    transition: background-color 0.2s var(--transition-easing),
+      border-color 0.2s var(--transition-easing);
+    cursor: pointer;
+    text-decoration: none;
+    color: var(--text-color);
+    font-weight: 400;
+
+    &:visited {
+      color: var(--text-color);
+    }
+    &:hover {
+      background-color: var(--button-background-hover);
+      border-color: var(--button-background-hover);
+      color: var(--text-color);
+    }
+    &:active {
+      box-shadow: inset 0 0 5px rgba(0, 0, 0, 0.5);
+    }
+  }
+  .btn.btn-large {
+    height: 49px;
+    padding: 0 ${rhythm(1.8)};
   }
   ${MIN_DEFAULT_MEDIA_QUERY} {
     h1 {

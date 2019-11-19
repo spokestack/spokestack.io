@@ -25,8 +25,10 @@ const styles = {
     min-height: 100vh;
     display: grid;
     grid-template-rows: auto 1fr auto;
+    grid-template-columns: 100%;
   `,
   content: css`
     display: grid;
+    grid-template-columns: 100%;
   `
 }

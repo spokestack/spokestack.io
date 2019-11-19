@@ -26,7 +26,7 @@ export default css`
     --link-color-hover: ${primaryColor.darken(0.2).hex()};
     --link-color-active: ${primaryColor.darken(0.4).hex()};
 
-    --code-background: #eee;
+    --code-background: #cce4ff;
 
     height: 100%;
     min-width: 300px;
@@ -47,6 +47,10 @@ export default css`
   }
   pre[class*='language-'] {
     margin: 0 0 ${rhythm(1)};
+  }
+  code {
+    background-color: var(--code-background);
+    padding: ${rhythm(0.1)} ${rhythm(0.2)};
   }
   h3 code {
     font-size: ${adjustFontSizeTo('25px').fontSize};

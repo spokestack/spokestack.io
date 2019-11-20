@@ -68,8 +68,7 @@ export default function Index({ data, location }: Props) {
               Over 58% of Americans use their phone as a voice assistant<sup>*</sup>. That’s more
               users than those of smart speaker, smart watch and desktop voice assistants combined.
               As Airpods&trade; and other voice assistant-powered headphones gain popularity, users
-              will expect apps to have a voice, either to help them navigate or provide a hands-free
-              experience.
+              will expect apps to have a voice and provide a hands-free experience.
             </p>
           </div>
           <UsageMap />
@@ -86,9 +85,10 @@ export default function Index({ data, location }: Props) {
           <div css={styles.description}>
             <p>
               Easily add ASR and VAD to your app with one of our{' '}
-              <a href="https://github.com/spokestack">Spokestack libraries</a>. Spokestack ASR and
-              VAD allows you to turn user utterances into text, which is the first step to
-              responding to a user.
+              <a href="https://github.com/spokestack">open source libraries</a>. Spokestack ASR and
+              VAD allow you to turn user utterances into text, which is the first step to responding
+              to a user. From there, use Spokestack Wakeword, TTS, and NLU to complete the voice
+              experience.
             </p>
             <p>
               <a href="/docs" className="link-with-icon">
@@ -104,8 +104,10 @@ export default function Index({ data, location }: Props) {
           <div css={styles.description}>
             <p>
               Spokestack lets you use your brand name or keyword of choice to put your app into
-              listen mode. Like &ldquo;Siri&rdquo;, &ldquo;OK Google&rdquo;, or &ldquo;Alexa&rdquo;,
-              your app will respond to your wakeword while it is open.
+              listen mode, also with the help of one of the{' '}
+              <a href="https://github.com/spokestack">Spokestack libraries</a>. Like
+              &ldquo;Siri&rdquo;, &ldquo;OK Google&rdquo;, or &ldquo;Alexa&rdquo;, your app will
+              respond to your wakeword while it is open.
             </p>
             <p>
               <a href="mailto:hello@spokestack.io" className="link-with-icon">
@@ -121,12 +123,12 @@ export default function Index({ data, location }: Props) {
           <div css={styles.description}>
             <p>
               Spokestack enables your app to use a custom voice that responds to your users with our
-              Text-to-Speech (TTS) service. We even offer a default voice for free!
+              Text-to-Speech (TTS) service. We offer a default voice for free!
             </p>
             <p>
               Our TTS engine can create a custom voice for your brand with as little as five minutes
-              of recordings. We can also work with your own voice talent in professional recording
-              studios to produce a high quality branded voice for your app.
+              of recordings. We can also work with your own voice talent in a professional recording
+              studio to produce a high quality branded voice for your app.
             </p>
             <p>
               <a href="mailto:hello@spokestack.io" className="link-with-icon">
@@ -144,10 +146,10 @@ export default function Index({ data, location }: Props) {
           </p>
           <div css={styles.description}>
             <p>
-              Using the Spokestack NLU will empower you to communicate the unique requests, context
-              and pronunciations of words that matter to you and users. Combined with Spokestack
-              TTS, Spokestack NLU helps create a voice-enabled user experienced optimized for your
-              brand.
+              Using the Spokestack NLU engine will empower you to communicate the unique requests,
+              context and pronunciations of words that matter to you and users. Combined with
+              Spokestack TTS, Spokestack NLU helps create a voice-enabled user experience optimized
+              for your brand.
             </p>
             <p>
               <a href="mailto:hello@spokestack.io" className="link-with-icon">
@@ -298,7 +300,7 @@ const styles = {
   `,
   summary: css`
     background-color: white;
-    padding: ${rhythm(3)} 0;
+    padding: ${rhythm(3)} 20px;
   `,
   summaryHeader: css`
     text-align: center;
@@ -313,7 +315,7 @@ const styles = {
       margin: 0 auto;
       grid-template-columns: 1fr 1fr;
       grid-auto-columns: minmax(300px, auto);
-      padding-right: 20px;
+      padding-right: 0;
     }
   `,
   largeCard: css`

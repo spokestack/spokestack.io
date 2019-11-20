@@ -53,7 +53,7 @@ export default function Index({ data, location }: Props) {
         <h1 css={styles.headerText}>Give your mobile app a voice</h1>
         <h4 css={[styles.headerText, styles.h4]}>
           Spokestack is a powerful platform of open source libraries and robust services to make
-          your app voice-enabled.
+          your app fully voice-enabled.
         </h4>
         <a href="/docs" className="btn btn-large">
           Get started
@@ -235,6 +235,7 @@ const styles = {
   headerText: css`
     color: var(--text-color-dark-bg);
     max-width: 600px;
+    margin-bottom: ${rhythm(1)};
   `,
   productsHeader: css`
     margin-bottom: 0;

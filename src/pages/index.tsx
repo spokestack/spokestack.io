@@ -103,8 +103,8 @@ export default function Index({ data, location }: Props) {
           <p css={styles.title}>Choose the keyword that will be the wakeword for your app.</p>
           <div css={styles.description}>
             <p>
-              Spokestack lets you use your brand name or keyword of choice to put your app into
-              listen mode, also with the help of one of the{' '}
+              Use your brand name or any keyword of your choice to put your app into listen mode,
+              also with the help of one of the{' '}
               <a href="https://github.com/spokestack">Spokestack libraries</a>. Like
               &ldquo;Siri&rdquo;, &ldquo;OK Google&rdquo;, or &ldquo;Alexa&rdquo;, your app will
               respond to your wakeword while it is open.
@@ -122,8 +122,8 @@ export default function Index({ data, location }: Props) {
           <p css={styles.title}>Create a custom voice for your brand.</p>
           <div css={styles.description}>
             <p>
-              Spokestack enables your app to use a custom voice that responds to your users with our
-              Text-to-Speech (TTS) service. We offer a default voice for free!
+              Get a custom voice or use the default voice for free. Respond to your users with our
+              proprietary Text-to-Speech (TTS) service.
             </p>
             <p>
               Our TTS engine can create a custom voice for your brand with as little as five minutes
@@ -146,10 +146,9 @@ export default function Index({ data, location }: Props) {
           </p>
           <div css={styles.description}>
             <p>
-              Using the Spokestack NLU engine will empower you to communicate the unique requests,
-              context and pronunciations of words that matter to you and users. Combined with
-              Spokestack TTS, Spokestack NLU helps create a voice-enabled user experience optimized
-              for your brand.
+              Use the Spokestack NLU engine to communicate the unique requests, context and
+              pronunciations of words that matter to you and users. Combined with Spokestack TTS,
+              Spokestack NLU helps create a voice-enabled user experience optimized for your brand.
             </p>
             <p>
               <a href="mailto:hello@spokestack.io" className="link-with-icon">

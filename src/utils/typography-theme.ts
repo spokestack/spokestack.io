@@ -40,6 +40,9 @@ const options: TypographyOptions = {
     'a:active': {
       color: 'var(--link-color-active)'
     },
+    h1: {
+      marginBottom: rhythm(2)
+    },
     h4: {
       fontSize: '1.1rem',
       lineHeight: 1.45

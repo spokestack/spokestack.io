@@ -1,15 +1,29 @@
+import { Global, SerializedStyles, css } from '@emotion/core'
+
 import React from 'react'
-import { css } from '@emotion/core'
-import { rhythm } from '../utils/typography'
 
 interface Props {
   title: string
   children: React.ReactNode
+  extraCss?: SerializedStyles
 }
 
-export default function Card({ title, children }: Props) {
+export default function Card({ title, children, extraCss }: Props) {
   return (
-    <div css={styles.card} className="card">
+    <div css={[styles.card, extraCss]} className="card">
+      <Global
+        styles={css`
+          .card ul {
+            margin-bottom: 0;
+          }
+          .card li:last-child {
+            margin-bottom: 0;
+          }
+          .card li p {
+            margin: 0;
+          }
+        `}
+      />
       <h3 css={styles.cardHeader}>{title}</h3>
       <div css={styles.content}>{children}</div>
     </div>
@@ -20,13 +34,14 @@ const styles = {
   card: css`
     display: flex;
     flex-direction: column;
-    margin-bottom: ${rhythm(0.8)};
     background-color: white;
+    border: 1px solid var(--secondary-color);
+    border-radius: 7px;
+    overflow: hidden;
   `,
   cardHeader: css`
     background-color: var(--secondary-color);
     color: var(--primary-color);
-    border-radius: 7px 7px 0 0;
     padding: 10px 30px;
     display: flex;
     flex-direction: row;
@@ -36,7 +51,5 @@ const styles = {
   `,
   content: css`
     padding: 20px;
-    border: 1px solid var(--secondary-color);
-    border-radius: 0 0 7px 7px;
   `
 }

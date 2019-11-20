@@ -21,7 +21,7 @@ export default function UsageMap() {
       },
       {
         root: null,
-        threshold: 0.7
+        threshold: 0.6
       }
     )
     observer.observe(containerRef.current)
@@ -53,7 +53,7 @@ export default function UsageMap() {
       </header>
       <p css={styles.credit}>
         <sup>*</sup>
-        <a href="https://voicebot.ai/">voicebot.ai</a> credit 2018
+        Source: <a href="https://voicebot.ai/">voicebot.ai</a> 2018
       </p>
     </div>
   )
@@ -87,13 +87,13 @@ const styles = {
     }
     .animate {
       .usage-bubble.smart-speakers {
-        animation: slideDownLeft 1s var(--bubble-easing) forwards;
+        animation: slideDownLeft 3s var(--bubble-easing) forwards;
       }
       .usage-bubble.cars {
-        animation: slideRight 1s var(--bubble-easing) forwards;
+        animation: slideRight 3s var(--bubble-easing) forwards;
       }
       .usage-bubble.phones {
-        animation: slideUpLeft 1s var(--bubble-easing) forwards;
+        animation: slideUpLeft 3s var(--bubble-easing) forwards;
       }
     }
   `,

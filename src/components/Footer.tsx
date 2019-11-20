@@ -3,7 +3,6 @@ import { adjustFontSizeTo, rhythm } from '../utils/typography'
 import { graphql, useStaticQuery } from 'gatsby'
 
 import React from 'react'
-import SocialLinks from './SocialLinks'
 import { css } from '@emotion/core'
 
 const footerQuery = graphql`
@@ -22,43 +21,32 @@ export default function Footer() {
   return (
     <footer css={styles.footer}>
       <div css={styles.wrapper}>
-        <a href="/">
-          <img src="/logo.svg" css={styles.logo} />
-        </a>
+        <div>
+          <a href="/">
+            <img src="/logo.svg" css={styles.logo} />
+          </a>
+        </div>
+        <div css={styles.links}>
+          <h3>
+            <a href="mailto:hello@spokestack.io" className="header-link">
+              Contact Us
+            </a>
+          </h3>
+          <p>
+            &copy; {new Date().getFullYear()} {author}
+          </p>
+          {/* <SocialLinks iconSize={25} style={{ marginLeft: '-10px', width: '95px' }} /> */}
+        </div>
         <div css={styles.links}>
           <h3>
             <a href="/#products" className="header-link">
               Features
             </a>
           </h3>
-          <a href="/#branded-voice">Custom Branded Voice</a>
-          <a href="/#asr">Open source ASR Manager</a>
-          <a href="/#wakeword-creation">Wakeword Creation</a>
-          <a href="/#nlu">Natural Language Understanding</a>
-        </div>
-        {/* <div css={styles.links}>
-          <a href="/#demos" className="header-link">
-            <h3>Demos</h3>
-          </a>
-          <a href="/#surve-demo">Survey</a>
-          <a href="/#rss-demo">RSS Feed</a>
-          <a href="/#media-controls">Media Controls</a>
-          <a href="/#Weather">Weather</a>
-        </div> */}
-        <div css={styles.links}>
-          {/* <a href="/about" className="header-link">
-            <h3>About</h3>
-          </a>
-          <a href="/docs" className="header-link">
-            <h3>Docs</h3>
-          </a>
-          <a href="/blog" className="header-link">
-            <h3>Blog</h3>
-          </a> */}
-          <SocialLinks iconSize={25} style={{ marginLeft: '-10px', width: '95px' }} />
-          <p>
-            &copy; {new Date().getFullYear()} {author}
-          </p>
+          <a href="/#asr">ASR and VAD Management</a>
+          <a href="/#tts">Text-to-Speech Integration</a>
+          <a href="/#wakeword">Wakeword Creation</a>
+          <a href="/#nlu">Spokestack NLU</a>
         </div>
       </div>
     </footer>
@@ -113,11 +101,14 @@ const styles = {
       a {
         color: var(--secondary-color);
 
+        &:visited {
+          color: var(--link-color-visited-secondary);
+        }
         &:hover {
-          color: var(--link-color-hover);
+          color: var(--link-color-hover-secondary);
         }
         &:active {
-          color: var(--link-color-active);
+          color: var(--link-color-active-secondary);
         }
       }
     }

@@ -27,6 +27,10 @@ export default css`
     --link-color-hover: ${primaryColor.darken(0.2).hex()};
     --link-color-active: ${primaryColor.darken(0.4).hex()};
 
+    --link-color-visited-secondary: ${secondaryColor.lighten(0.1).hex()};
+    --link-color-hover-secondary: ${secondaryColor.darken(0.4).hex()};
+    --link-color-active-secondary: ${secondaryColor.darken(0.6).hex()};
+
     --code-background: #cce4ff;
 
     height: 100%;
@@ -76,6 +80,10 @@ export default css`
     color: var(--text-color);
     font-weight: 400;
 
+    svg {
+      margin-left: ${rhythm(0.2)};
+    }
+
     &:visited {
       color: var(--text-color);
     }
@@ -91,6 +99,14 @@ export default css`
   .btn.btn-large {
     height: 49px;
     padding: 0 ${rhythm(1.8)};
+  }
+  .link-with-icon {
+    text-decoration: none;
+
+    svg {
+      margin-left: ${rhythm(0.2)};
+      margin-bottom: -2px;
+    }
   }
   ${MIN_DEFAULT_MEDIA_QUERY} {
     h1 {

@@ -222,7 +222,7 @@ const styles = {
     text-align: center;
     padding: ${rhythm(1.3)} 20px 160px;
     background: var(--primary-color) url(/background.svg) no-repeat;
-    background-position: center bottom -1px;
+    background-position: center bottom;
 
     @media (min-width: 1440px) {
       background-size: cover;
@@ -247,7 +247,6 @@ const styles = {
   `,
   usageWrap: css`
     background-color: white;
-    margin-top: -1px;
   `,
   usage: css`
     background-color: white;

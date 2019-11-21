@@ -235,7 +235,6 @@ const styles = {
   headerText: css`
     color: var(--text-color-dark-bg);
     max-width: 600px;
-    margin-bottom: ${rhythm(1)};
   `,
   productsHeader: css`
     margin-bottom: 0;
@@ -309,10 +308,12 @@ const styles = {
     display: grid;
     grid-gap: 20px;
     grid-template-columns: 100%;
+    margin-top: ${rhythm(2)};
 
     ${MIN_DEFAULT_MEDIA_QUERY} {
       max-width: ${LARGE_DISPLAY_WIDTH};
-      margin: 0 auto;
+      margin-left: auto;
+      margin-right: auto;
       grid-template-columns: 1fr 1fr;
       grid-auto-columns: minmax(300px, auto);
       padding-right: 0;

@@ -56,7 +56,7 @@ export default function StickyNav({
       <Global
         styles={css`
           .sticky-nav-link-active {
-            color: var(--link-color) !important;
+            color: var(--sticky-nav-link-color-active) !important;
             border-radius: 50px 0 0 50px;
             background-color: var(--main-background);
           }
@@ -120,5 +120,10 @@ const styles = {
     padding: 15px 45px;
     text-decoration: none;
     user-select: none;
+    color: var(--sticky-nav-link-color);
+
+    &:visited {
+      color: var(--sticky-nav-link-color);
+    }
   `
 }

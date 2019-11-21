@@ -10,12 +10,57 @@ module.exports = {
       twitter: 'https://twitter.com/spokestack',
       github: 'https://github.com/spokestack'
     },
-    // Should match the queries in components/Author.tsx
-    authors: {
+    // Should match the queries in src/components/TeamMembers.tsx
+    team: {
+      shelby: {
+        name: 'Shelby Bonnie',
+        title: 'CEO',
+        experience: 'CNET, Co-founder & former CEO, IAB'
+      },
+      tyler: {
+        name: 'Tyler Malone',
+        title: 'Front-End Engineer',
+        experience: 'Rabble, InvisionHeart'
+      },
+      neil: {
+        name: 'Neil Menne',
+        title: 'Analytics Engineer',
+        experience: 'OpenTable'
+      },
+      will: {
+        name: 'Will Rice',
+        title: 'Data Science Engineer',
+        experience: 'Masters in Data Science'
+      },
+      elizabeth: {
+        name: 'Elizabeth Ropp',
+        title: 'UX & Product Design',
+        experience: 'SmartFurniture'
+      },
+      brent: {
+        name: 'Brent Spell',
+        title: 'CTO',
+        experience: 'OpenTable, HEALTHCAREfirst'
+      },
+      mike: {
+        name: 'Mike Tatum',
+        title: 'Product/Business',
+        experience: 'CNET, Whiskey Media'
+      },
       noel: {
-        avatar: 'noel',
         name: 'Noel Weichbrodt',
-        title: 'Solutions Engineer'
+        title: 'Solutions Engineer',
+        experience: 'OpenTable'
+      },
+      timmy: {
+        name: 'Timmy Willison',
+        title: 'Front-End Lead',
+        experience: 'jQuery Lead, OpenJS CPC, OpenTable'
+      },
+      josh: {
+        name: 'Josh Ziegler',
+        title: 'Conversation Engineer',
+        experience: 'OpenTable, Masters in Linguistics'
       }
     }
   },

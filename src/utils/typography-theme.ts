@@ -41,7 +41,7 @@ const options: TypographyOptions = {
       color: 'var(--link-color-active)'
     },
     h1: {
-      marginBottom: rhythm(2)
+      marginBottom: rhythm(1)
     },
     h4: {
       fontSize: '1.1rem',

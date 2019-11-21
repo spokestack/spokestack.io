@@ -854,6 +854,9 @@ export type ImageSharpFixedArgs = {
   duotone?: Maybe<DuotoneGradient>
   traceSVG?: Maybe<Potrace>
   quality?: Maybe<Scalars['Int']>
+  jpegQuality?: Maybe<Scalars['Int']>
+  pngQuality?: Maybe<Scalars['Int']>
+  webpQuality?: Maybe<Scalars['Int']>
   toFormat?: Maybe<ImageFormat>
   toFormatBase64?: Maybe<ImageFormat>
   cropFocus?: Maybe<ImageCropFocus>
@@ -873,6 +876,9 @@ export type ImageSharpResolutionsArgs = {
   duotone?: Maybe<DuotoneGradient>
   traceSVG?: Maybe<Potrace>
   quality?: Maybe<Scalars['Int']>
+  jpegQuality?: Maybe<Scalars['Int']>
+  pngQuality?: Maybe<Scalars['Int']>
+  webpQuality?: Maybe<Scalars['Int']>
   toFormat?: Maybe<ImageFormat>
   toFormatBase64?: Maybe<ImageFormat>
   cropFocus?: Maybe<ImageCropFocus>
@@ -892,6 +898,9 @@ export type ImageSharpFluidArgs = {
   duotone?: Maybe<DuotoneGradient>
   traceSVG?: Maybe<Potrace>
   quality?: Maybe<Scalars['Int']>
+  jpegQuality?: Maybe<Scalars['Int']>
+  pngQuality?: Maybe<Scalars['Int']>
+  webpQuality?: Maybe<Scalars['Int']>
   toFormat?: Maybe<ImageFormat>
   toFormatBase64?: Maybe<ImageFormat>
   cropFocus?: Maybe<ImageCropFocus>
@@ -913,6 +922,9 @@ export type ImageSharpSizesArgs = {
   duotone?: Maybe<DuotoneGradient>
   traceSVG?: Maybe<Potrace>
   quality?: Maybe<Scalars['Int']>
+  jpegQuality?: Maybe<Scalars['Int']>
+  pngQuality?: Maybe<Scalars['Int']>
+  webpQuality?: Maybe<Scalars['Int']>
   toFormat?: Maybe<ImageFormat>
   toFormatBase64?: Maybe<ImageFormat>
   cropFocus?: Maybe<ImageCropFocus>
@@ -928,6 +940,9 @@ export type ImageSharpResizeArgs = {
   width?: Maybe<Scalars['Int']>
   height?: Maybe<Scalars['Int']>
   quality?: Maybe<Scalars['Int']>
+  jpegQuality?: Maybe<Scalars['Int']>
+  pngQuality?: Maybe<Scalars['Int']>
+  webpQuality?: Maybe<Scalars['Int']>
   jpegProgressive?: Maybe<Scalars['Boolean']>
   pngCompressionLevel?: Maybe<Scalars['Int']>
   pngCompressionSpeed?: Maybe<Scalars['Int']>
@@ -1673,12 +1688,12 @@ export enum PotraceTurnPolicy {
 
 export type Query = {
   __typename?: 'Query'
-  file?: Maybe<File>
-  allFile: FileConnection
   imageSharp?: Maybe<ImageSharp>
   allImageSharp: ImageSharpConnection
   markdownRemark?: Maybe<MarkdownRemark>
   allMarkdownRemark: MarkdownRemarkConnection
+  file?: Maybe<File>
+  allFile: FileConnection
   sitePage?: Maybe<SitePage>
   allSitePage: SitePageConnection
   sitePlugin?: Maybe<SitePlugin>
@@ -1687,6 +1702,52 @@ export type Query = {
   allSite: SiteConnection
   directory?: Maybe<Directory>
   allDirectory: DirectoryConnection
+}
+
+export type QueryImageSharpArgs = {
+  fixed?: Maybe<ImageSharpFixedFilterInput>
+  resolutions?: Maybe<ImageSharpResolutionsFilterInput>
+  fluid?: Maybe<ImageSharpFluidFilterInput>
+  sizes?: Maybe<ImageSharpSizesFilterInput>
+  original?: Maybe<ImageSharpOriginalFilterInput>
+  resize?: Maybe<ImageSharpResizeFilterInput>
+  id?: Maybe<StringQueryOperatorInput>
+  parent?: Maybe<NodeFilterInput>
+  children?: Maybe<NodeFilterListInput>
+  internal?: Maybe<InternalFilterInput>
+}
+
+export type QueryAllImageSharpArgs = {
+  filter?: Maybe<ImageSharpFilterInput>
+  sort?: Maybe<ImageSharpSortInput>
+  skip?: Maybe<Scalars['Int']>
+  limit?: Maybe<Scalars['Int']>
+}
+
+export type QueryMarkdownRemarkArgs = {
+  id?: Maybe<StringQueryOperatorInput>
+  frontmatter?: Maybe<MarkdownRemarkFrontmatterFilterInput>
+  excerpt?: Maybe<StringQueryOperatorInput>
+  rawMarkdownBody?: Maybe<StringQueryOperatorInput>
+  fileAbsolutePath?: Maybe<StringQueryOperatorInput>
+  fields?: Maybe<MarkdownRemarkFieldsFilterInput>
+  html?: Maybe<StringQueryOperatorInput>
+  htmlAst?: Maybe<JsonQueryOperatorInput>
+  excerptAst?: Maybe<JsonQueryOperatorInput>
+  headings?: Maybe<MarkdownHeadingFilterListInput>
+  timeToRead?: Maybe<IntQueryOperatorInput>
+  tableOfContents?: Maybe<StringQueryOperatorInput>
+  wordCount?: Maybe<MarkdownWordCountFilterInput>
+  parent?: Maybe<NodeFilterInput>
+  children?: Maybe<NodeFilterListInput>
+  internal?: Maybe<InternalFilterInput>
+}
+
+export type QueryAllMarkdownRemarkArgs = {
+  filter?: Maybe<MarkdownRemarkFilterInput>
+  sort?: Maybe<MarkdownRemarkSortInput>
+  skip?: Maybe<Scalars['Int']>
+  limit?: Maybe<Scalars['Int']>
 }
 
 export type QueryFileArgs = {
@@ -1735,52 +1796,6 @@ export type QueryFileArgs = {
 export type QueryAllFileArgs = {
   filter?: Maybe<FileFilterInput>
   sort?: Maybe<FileSortInput>
-  skip?: Maybe<Scalars['Int']>
-  limit?: Maybe<Scalars['Int']>
-}
-
-export type QueryImageSharpArgs = {
-  fixed?: Maybe<ImageSharpFixedFilterInput>
-  resolutions?: Maybe<ImageSharpResolutionsFilterInput>
-  fluid?: Maybe<ImageSharpFluidFilterInput>
-  sizes?: Maybe<ImageSharpSizesFilterInput>
-  original?: Maybe<ImageSharpOriginalFilterInput>
-  resize?: Maybe<ImageSharpResizeFilterInput>
-  id?: Maybe<StringQueryOperatorInput>
-  parent?: Maybe<NodeFilterInput>
-  children?: Maybe<NodeFilterListInput>
-  internal?: Maybe<InternalFilterInput>
-}
-
-export type QueryAllImageSharpArgs = {
-  filter?: Maybe<ImageSharpFilterInput>
-  sort?: Maybe<ImageSharpSortInput>
-  skip?: Maybe<Scalars['Int']>
-  limit?: Maybe<Scalars['Int']>
-}
-
-export type QueryMarkdownRemarkArgs = {
-  id?: Maybe<StringQueryOperatorInput>
-  frontmatter?: Maybe<MarkdownRemarkFrontmatterFilterInput>
-  excerpt?: Maybe<StringQueryOperatorInput>
-  rawMarkdownBody?: Maybe<StringQueryOperatorInput>
-  fileAbsolutePath?: Maybe<StringQueryOperatorInput>
-  fields?: Maybe<MarkdownRemarkFieldsFilterInput>
-  html?: Maybe<StringQueryOperatorInput>
-  htmlAst?: Maybe<JsonQueryOperatorInput>
-  excerptAst?: Maybe<JsonQueryOperatorInput>
-  headings?: Maybe<MarkdownHeadingFilterListInput>
-  timeToRead?: Maybe<IntQueryOperatorInput>
-  tableOfContents?: Maybe<StringQueryOperatorInput>
-  wordCount?: Maybe<MarkdownWordCountFilterInput>
-  parent?: Maybe<NodeFilterInput>
-  children?: Maybe<NodeFilterListInput>
-  internal?: Maybe<InternalFilterInput>
-}
-
-export type QueryAllMarkdownRemarkArgs = {
-  filter?: Maybe<MarkdownRemarkFilterInput>
-  sort?: Maybe<MarkdownRemarkSortInput>
   skip?: Maybe<Scalars['Int']>
   limit?: Maybe<Scalars['Int']>
 }
@@ -2039,9 +2054,36 @@ export enum SiteFieldsEnum {
   SiteMetadataSiteUrl = 'siteMetadata___siteUrl',
   SiteMetadataSocialTwitter = 'siteMetadata___social___twitter',
   SiteMetadataSocialGithub = 'siteMetadata___social___github',
-  SiteMetadataAuthorsNoelAvatar = 'siteMetadata___authors___noel___avatar',
-  SiteMetadataAuthorsNoelName = 'siteMetadata___authors___noel___name',
-  SiteMetadataAuthorsNoelTitle = 'siteMetadata___authors___noel___title',
+  SiteMetadataTeamShelbyName = 'siteMetadata___team___shelby___name',
+  SiteMetadataTeamShelbyTitle = 'siteMetadata___team___shelby___title',
+  SiteMetadataTeamShelbyExperience = 'siteMetadata___team___shelby___experience',
+  SiteMetadataTeamTylerName = 'siteMetadata___team___tyler___name',
+  SiteMetadataTeamTylerTitle = 'siteMetadata___team___tyler___title',
+  SiteMetadataTeamTylerExperience = 'siteMetadata___team___tyler___experience',
+  SiteMetadataTeamNeilName = 'siteMetadata___team___neil___name',
+  SiteMetadataTeamNeilTitle = 'siteMetadata___team___neil___title',
+  SiteMetadataTeamNeilExperience = 'siteMetadata___team___neil___experience',
+  SiteMetadataTeamWillName = 'siteMetadata___team___will___name',
+  SiteMetadataTeamWillTitle = 'siteMetadata___team___will___title',
+  SiteMetadataTeamWillExperience = 'siteMetadata___team___will___experience',
+  SiteMetadataTeamElizabethName = 'siteMetadata___team___elizabeth___name',
+  SiteMetadataTeamElizabethTitle = 'siteMetadata___team___elizabeth___title',
+  SiteMetadataTeamElizabethExperience = 'siteMetadata___team___elizabeth___experience',
+  SiteMetadataTeamBrentName = 'siteMetadata___team___brent___name',
+  SiteMetadataTeamBrentTitle = 'siteMetadata___team___brent___title',
+  SiteMetadataTeamBrentExperience = 'siteMetadata___team___brent___experience',
+  SiteMetadataTeamMikeName = 'siteMetadata___team___mike___name',
+  SiteMetadataTeamMikeTitle = 'siteMetadata___team___mike___title',
+  SiteMetadataTeamMikeExperience = 'siteMetadata___team___mike___experience',
+  SiteMetadataTeamNoelName = 'siteMetadata___team___noel___name',
+  SiteMetadataTeamNoelTitle = 'siteMetadata___team___noel___title',
+  SiteMetadataTeamNoelExperience = 'siteMetadata___team___noel___experience',
+  SiteMetadataTeamTimmyName = 'siteMetadata___team___timmy___name',
+  SiteMetadataTeamTimmyTitle = 'siteMetadata___team___timmy___title',
+  SiteMetadataTeamTimmyExperience = 'siteMetadata___team___timmy___experience',
+  SiteMetadataTeamJoshName = 'siteMetadata___team___josh___name',
+  SiteMetadataTeamJoshTitle = 'siteMetadata___team___josh___title',
+  SiteMetadataTeamJoshExperience = 'siteMetadata___team___josh___experience',
   Port = 'port',
   Host = 'host',
   Polyfill = 'polyfill',
@@ -2265,7 +2307,6 @@ export enum SitePageFieldsEnum {
   PluginCreatorPluginOptionsPluginsVersion = 'pluginCreator___pluginOptions___plugins___version',
   PluginCreatorPluginOptionsPluginsBrowserApIs = 'pluginCreator___pluginOptions___plugins___browserAPIs',
   PluginCreatorPluginOptionsPluginsSsrApIs = 'pluginCreator___pluginOptions___plugins___ssrAPIs',
-  PluginCreatorPluginOptionsPluginsPluginFilepath = 'pluginCreator___pluginOptions___plugins___pluginFilepath',
   PluginCreatorPluginOptionsPath = 'pluginCreator___pluginOptions___path',
   PluginCreatorPluginOptionsName = 'pluginCreator___pluginOptions___name',
   PluginCreatorPluginOptionsTrackingId = 'pluginCreator___pluginOptions___trackingId',
@@ -2485,7 +2526,6 @@ export enum SitePluginFieldsEnum {
   PluginOptionsPluginsPluginOptionsNoInlineHighlight = 'pluginOptions___plugins___pluginOptions___noInlineHighlight',
   PluginOptionsPluginsBrowserApIs = 'pluginOptions___plugins___browserAPIs',
   PluginOptionsPluginsSsrApIs = 'pluginOptions___plugins___ssrAPIs',
-  PluginOptionsPluginsPluginFilepath = 'pluginOptions___plugins___pluginFilepath',
   PluginOptionsPath = 'pluginOptions___path',
   PluginOptionsName = 'pluginOptions___name',
   PluginOptionsTrackingId = 'pluginOptions___trackingId',
@@ -2695,7 +2735,6 @@ export type SitePluginPluginOptionsPlugins = {
   pluginOptions?: Maybe<SitePluginPluginOptionsPluginsPluginOptions>
   browserAPIs?: Maybe<Array<Maybe<Scalars['String']>>>
   ssrAPIs?: Maybe<Array<Maybe<Scalars['String']>>>
-  pluginFilepath?: Maybe<Scalars['String']>
 }
 
 export type SitePluginPluginOptionsPluginsFilterInput = {
@@ -2706,7 +2745,6 @@ export type SitePluginPluginOptionsPluginsFilterInput = {
   pluginOptions?: Maybe<SitePluginPluginOptionsPluginsPluginOptionsFilterInput>
   browserAPIs?: Maybe<StringQueryOperatorInput>
   ssrAPIs?: Maybe<StringQueryOperatorInput>
-  pluginFilepath?: Maybe<StringQueryOperatorInput>
 }
 
 export type SitePluginPluginOptionsPluginsFilterListInput = {
@@ -2738,29 +2776,7 @@ export type SiteSiteMetadata = {
   description?: Maybe<Scalars['String']>
   siteUrl?: Maybe<Scalars['String']>
   social?: Maybe<SiteSiteMetadataSocial>
-  authors?: Maybe<SiteSiteMetadataAuthors>
-}
-
-export type SiteSiteMetadataAuthors = {
-  __typename?: 'SiteSiteMetadataAuthors'
-  noel?: Maybe<SiteSiteMetadataAuthorsNoel>
-}
-
-export type SiteSiteMetadataAuthorsFilterInput = {
-  noel?: Maybe<SiteSiteMetadataAuthorsNoelFilterInput>
-}
-
-export type SiteSiteMetadataAuthorsNoel = {
-  __typename?: 'SiteSiteMetadataAuthorsNoel'
-  avatar?: Maybe<Scalars['String']>
-  name?: Maybe<Scalars['String']>
-  title?: Maybe<Scalars['String']>
-}
-
-export type SiteSiteMetadataAuthorsNoelFilterInput = {
-  avatar?: Maybe<StringQueryOperatorInput>
-  name?: Maybe<StringQueryOperatorInput>
-  title?: Maybe<StringQueryOperatorInput>
+  team?: Maybe<SiteSiteMetadataTeam>
 }
 
 export type SiteSiteMetadataFilterInput = {
@@ -2769,7 +2785,7 @@ export type SiteSiteMetadataFilterInput = {
   description?: Maybe<StringQueryOperatorInput>
   siteUrl?: Maybe<StringQueryOperatorInput>
   social?: Maybe<SiteSiteMetadataSocialFilterInput>
-  authors?: Maybe<SiteSiteMetadataAuthorsFilterInput>
+  team?: Maybe<SiteSiteMetadataTeamFilterInput>
 }
 
 export type SiteSiteMetadataSocial = {
@@ -2781,6 +2797,163 @@ export type SiteSiteMetadataSocial = {
 export type SiteSiteMetadataSocialFilterInput = {
   twitter?: Maybe<StringQueryOperatorInput>
   github?: Maybe<StringQueryOperatorInput>
+}
+
+export type SiteSiteMetadataTeam = {
+  __typename?: 'SiteSiteMetadataTeam'
+  shelby?: Maybe<SiteSiteMetadataTeamShelby>
+  tyler?: Maybe<SiteSiteMetadataTeamTyler>
+  neil?: Maybe<SiteSiteMetadataTeamNeil>
+  will?: Maybe<SiteSiteMetadataTeamWill>
+  elizabeth?: Maybe<SiteSiteMetadataTeamElizabeth>
+  brent?: Maybe<SiteSiteMetadataTeamBrent>
+  mike?: Maybe<SiteSiteMetadataTeamMike>
+  noel?: Maybe<SiteSiteMetadataTeamNoel>
+  timmy?: Maybe<SiteSiteMetadataTeamTimmy>
+  josh?: Maybe<SiteSiteMetadataTeamJosh>
+}
+
+export type SiteSiteMetadataTeamBrent = {
+  __typename?: 'SiteSiteMetadataTeamBrent'
+  name?: Maybe<Scalars['String']>
+  title?: Maybe<Scalars['String']>
+  experience?: Maybe<Scalars['String']>
+}
+
+export type SiteSiteMetadataTeamBrentFilterInput = {
+  name?: Maybe<StringQueryOperatorInput>
+  title?: Maybe<StringQueryOperatorInput>
+  experience?: Maybe<StringQueryOperatorInput>
+}
+
+export type SiteSiteMetadataTeamElizabeth = {
+  __typename?: 'SiteSiteMetadataTeamElizabeth'
+  name?: Maybe<Scalars['String']>
+  title?: Maybe<Scalars['String']>
+  experience?: Maybe<Scalars['String']>
+}
+
+export type SiteSiteMetadataTeamElizabethFilterInput = {
+  name?: Maybe<StringQueryOperatorInput>
+  title?: Maybe<StringQueryOperatorInput>
+  experience?: Maybe<StringQueryOperatorInput>
+}
+
+export type SiteSiteMetadataTeamFilterInput = {
+  shelby?: Maybe<SiteSiteMetadataTeamShelbyFilterInput>
+  tyler?: Maybe<SiteSiteMetadataTeamTylerFilterInput>
+  neil?: Maybe<SiteSiteMetadataTeamNeilFilterInput>
+  will?: Maybe<SiteSiteMetadataTeamWillFilterInput>
+  elizabeth?: Maybe<SiteSiteMetadataTeamElizabethFilterInput>
+  brent?: Maybe<SiteSiteMetadataTeamBrentFilterInput>
+  mike?: Maybe<SiteSiteMetadataTeamMikeFilterInput>
+  noel?: Maybe<SiteSiteMetadataTeamNoelFilterInput>
+  timmy?: Maybe<SiteSiteMetadataTeamTimmyFilterInput>
+  josh?: Maybe<SiteSiteMetadataTeamJoshFilterInput>
+}
+
+export type SiteSiteMetadataTeamJosh = {
+  __typename?: 'SiteSiteMetadataTeamJosh'
+  name?: Maybe<Scalars['String']>
+  title?: Maybe<Scalars['String']>
+  experience?: Maybe<Scalars['String']>
+}
+
+export type SiteSiteMetadataTeamJoshFilterInput = {
+  name?: Maybe<StringQueryOperatorInput>
+  title?: Maybe<StringQueryOperatorInput>
+  experience?: Maybe<StringQueryOperatorInput>
+}
+
+export type SiteSiteMetadataTeamMike = {
+  __typename?: 'SiteSiteMetadataTeamMike'
+  name?: Maybe<Scalars['String']>
+  title?: Maybe<Scalars['String']>
+  experience?: Maybe<Scalars['String']>
+}
+
+export type SiteSiteMetadataTeamMikeFilterInput = {
+  name?: Maybe<StringQueryOperatorInput>
+  title?: Maybe<StringQueryOperatorInput>
+  experience?: Maybe<StringQueryOperatorInput>
+}
+
+export type SiteSiteMetadataTeamNeil = {
+  __typename?: 'SiteSiteMetadataTeamNeil'
+  name?: Maybe<Scalars['String']>
+  title?: Maybe<Scalars['String']>
+  experience?: Maybe<Scalars['String']>
+}
+
+export type SiteSiteMetadataTeamNeilFilterInput = {
+  name?: Maybe<StringQueryOperatorInput>
+  title?: Maybe<StringQueryOperatorInput>
+  experience?: Maybe<StringQueryOperatorInput>
+}
+
+export type SiteSiteMetadataTeamNoel = {
+  __typename?: 'SiteSiteMetadataTeamNoel'
+  name?: Maybe<Scalars['String']>
+  title?: Maybe<Scalars['String']>
+  experience?: Maybe<Scalars['String']>
+}
+
+export type SiteSiteMetadataTeamNoelFilterInput = {
+  name?: Maybe<StringQueryOperatorInput>
+  title?: Maybe<StringQueryOperatorInput>
+  experience?: Maybe<StringQueryOperatorInput>
+}
+
+export type SiteSiteMetadataTeamShelby = {
+  __typename?: 'SiteSiteMetadataTeamShelby'
+  name?: Maybe<Scalars['String']>
+  title?: Maybe<Scalars['String']>
+  experience?: Maybe<Scalars['String']>
+}
+
+export type SiteSiteMetadataTeamShelbyFilterInput = {
+  name?: Maybe<StringQueryOperatorInput>
+  title?: Maybe<StringQueryOperatorInput>
+  experience?: Maybe<StringQueryOperatorInput>
+}
+
+export type SiteSiteMetadataTeamTimmy = {
+  __typename?: 'SiteSiteMetadataTeamTimmy'
+  name?: Maybe<Scalars['String']>
+  title?: Maybe<Scalars['String']>
+  experience?: Maybe<Scalars['String']>
+}
+
+export type SiteSiteMetadataTeamTimmyFilterInput = {
+  name?: Maybe<StringQueryOperatorInput>
+  title?: Maybe<StringQueryOperatorInput>
+  experience?: Maybe<StringQueryOperatorInput>
+}
+
+export type SiteSiteMetadataTeamTyler = {
+  __typename?: 'SiteSiteMetadataTeamTyler'
+  name?: Maybe<Scalars['String']>
+  title?: Maybe<Scalars['String']>
+  experience?: Maybe<Scalars['String']>
+}
+
+export type SiteSiteMetadataTeamTylerFilterInput = {
+  name?: Maybe<StringQueryOperatorInput>
+  title?: Maybe<StringQueryOperatorInput>
+  experience?: Maybe<StringQueryOperatorInput>
+}
+
+export type SiteSiteMetadataTeamWill = {
+  __typename?: 'SiteSiteMetadataTeamWill'
+  name?: Maybe<Scalars['String']>
+  title?: Maybe<Scalars['String']>
+  experience?: Maybe<Scalars['String']>
+}
+
+export type SiteSiteMetadataTeamWillFilterInput = {
+  name?: Maybe<StringQueryOperatorInput>
+  title?: Maybe<StringQueryOperatorInput>
+  experience?: Maybe<StringQueryOperatorInput>
 }
 
 export type SiteSortInput = {

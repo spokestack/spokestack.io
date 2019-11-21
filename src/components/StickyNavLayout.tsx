@@ -11,12 +11,13 @@ import { css } from '@emotion/core'
 import { rhythm } from '../utils/typography'
 
 interface Props extends StickyNavProps {
-  id?: string
   children: React.ReactNode
+  id?: string
+  header?: string
   rightContent?: React.ReactNode
 }
 
-export default function StickyNavLayout({ children, id, rightContent, ...props }: Props) {
+export default function StickyNavLayout({ children, id, header, rightContent, ...props }: Props) {
   const style = [styles.container]
   if (rightContent) {
     style.push(styles.containerWithRight)
@@ -24,6 +25,7 @@ export default function StickyNavLayout({ children, id, rightContent, ...props }
   return (
     <div id={id} css={style}>
       <div css={styles.stickyNavWrap}>
+        {header && <h3 css={styles.stickyNavHeader}>{header}</h3>}
         <StickyNav {...props} />
       </div>
       <section css={styles.content}>{children}</section>
@@ -58,6 +60,9 @@ const styles = {
     ${DEFAULT_MEDIA_QUERY} {
       display: none;
     }
+  `,
+  stickyNavHeader: css`
+    padding-left: 45px;
   `,
   content: css`
     ${MIN_DEFAULT_MEDIA_QUERY} {

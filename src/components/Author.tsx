@@ -1,70 +1,32 @@
-import Image, { FixedObject } from 'gatsby-image'
+import { TeamImages, TeamMemberName } from '../types'
 import { graphql, useStaticQuery } from 'gatsby'
 
+import Image from 'gatsby-image'
 import { MIN_LARGER_DISPLAY_MEDIA_QUERY } from 'typography-breakpoint-constants'
 import { Query } from '../utils/graphql'
 import React from 'react'
 import { css } from '@emotion/core'
 import { rhythm } from '../utils/typography'
 
-type QueryType = Query & {
-  noel: { childImageSharp: { fixed: FixedObject } }
-  timmy: { childImageSharp: { fixed: FixedObject } }
-}
+type QueryType = Query & TeamImages
 
 interface Props {
-  // Add a key here and avatar below
-  // to add a new author
-  avatar: 'noel' | 'timmy'
-  name: string
-  title: string
+  author: TeamMemberName
 }
 
-export const authorsFragment = graphql`
-  fragment Authors on Site {
-    siteMetadata {
-      authors {
-        noel {
-          avatar
-          name
-          title
-        }
-      }
-    }
-  }
-`
-
-const avatarsQuery = graphql`
-  query AuthorQuery {
-    noel: file(absolutePath: { regex: "/headshots/noel.jpg/" }) {
-      childImageSharp {
-        fixed(width: 95, height: 95) {
-          ...GatsbyImageSharpFixed
-        }
-      }
-    }
-    timmy: file(absolutePath: { regex: "/headshots/timmy.jpg/" }) {
-      childImageSharp {
-        fixed(width: 95, height: 95) {
-          ...GatsbyImageSharpFixed
-        }
-      }
-    }
-  }
-`
-
-export default function Author({ avatar, name, title }: Props) {
-  const data = useStaticQuery<QueryType>(avatarsQuery)
-  if (!name && !data[avatar]) {
+export default function Author({ author }: Props) {
+  const data = useStaticQuery<QueryType>(authorQuery)
+  if (!author || !data.site) {
     return null
   }
+  const { name, title } = data.site.siteMetadata.team[author]
   return (
     <div css={styles.container}>
       <div css={styles.content}>
         <p>Author</p>
-        {data[avatar] && (
+        {data[author] && (
           <Image
-            fixed={data[avatar].childImageSharp.fixed}
+            fixed={data[author].childImageSharp.fixed}
             alt={name}
             css={styles.imageWrap}
             imgStyle={styles.image}
@@ -112,3 +74,81 @@ const styles = {
     opacity: 0.5;
   `
 }
+
+const authorQuery = graphql`
+  query authorQuery {
+    site {
+      ...TeamMembers
+    }
+    brent: file(absolutePath: { regex: "/headshots/brent.png/" }) {
+      childImageSharp {
+        fixed(width: 95, height: 95) {
+          ...GatsbyImageSharpFixed
+        }
+      }
+    }
+    elizabeth: file(absolutePath: { regex: "/headshots/elizabeth.png/" }) {
+      childImageSharp {
+        fixed(width: 95, height: 95) {
+          ...GatsbyImageSharpFixed
+        }
+      }
+    }
+    josh: file(absolutePath: { regex: "/headshots/josh.png/" }) {
+      childImageSharp {
+        fixed(width: 95, height: 95) {
+          ...GatsbyImageSharpFixed
+        }
+      }
+    }
+    mike: file(absolutePath: { regex: "/headshots/mike.png/" }) {
+      childImageSharp {
+        fixed(width: 95, height: 95) {
+          ...GatsbyImageSharpFixed
+        }
+      }
+    }
+    neil: file(absolutePath: { regex: "/headshots/neil.png/" }) {
+      childImageSharp {
+        fixed(width: 95, height: 95) {
+          ...GatsbyImageSharpFixed
+        }
+      }
+    }
+    noel: file(absolutePath: { regex: "/headshots/noel.png/" }) {
+      childImageSharp {
+        fixed(width: 95, height: 95) {
+          ...GatsbyImageSharpFixed
+        }
+      }
+    }
+    shelby: file(absolutePath: { regex: "/headshots/shelby.png/" }) {
+      childImageSharp {
+        fixed(width: 95, height: 95) {
+          ...GatsbyImageSharpFixed
+        }
+      }
+    }
+    timmy: file(absolutePath: { regex: "/headshots/timmy.jpg/" }) {
+      childImageSharp {
+        fixed(width: 95, height: 95) {
+          ...GatsbyImageSharpFixed
+        }
+      }
+    }
+    tyler: file(absolutePath: { regex: "/headshots/tyler.png/" }) {
+      childImageSharp {
+        fixed(width: 95, height: 95) {
+          ...GatsbyImageSharpFixed
+        }
+      }
+    }
+    will: file(absolutePath: { regex: "/headshots/will.png/" }) {
+      childImageSharp {
+        fixed(width: 95, height: 95) {
+          ...GatsbyImageSharpFixed
+        }
+      }
+    }
+  }
+`

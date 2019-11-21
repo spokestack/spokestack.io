@@ -41,16 +41,17 @@ export default function Nav() {
               Demos
             </a>
           </li> */}
-          {/* <li css={styles.listItem}>
+          <li css={styles.listItem}>
             <Link
               className="nav-link"
               css={styles.navLink}
               activeClassName="nav-link-active"
+              partiallyActive
               to="/about"
               title="About Spokestack">
               About
             </Link>
-          </li> */}
+          </li>
           <li css={styles.listItem}>
             <Link
               className="nav-link"

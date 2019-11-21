@@ -55,7 +55,7 @@ export default function BlogPostTemplate({ data }: Props) {
 export const pageQuery = graphql`
   query BlogPostBySlug($slug: String!) {
     site {
-      ...Authors
+      ...TeamMembers
     }
     allMarkdownRemark(
       sort: { fields: [frontmatter___date], order: DESC }

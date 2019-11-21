@@ -7,17 +7,10 @@ import React from 'react'
 import SEO from '../components/SEO'
 import { StickyLink } from '../components/StickyNav'
 import StickyNavLayout from '../components/StickyNavLayout'
+import { TeamMemberName } from '../types'
 
 type Props = PageRendererProps & {
   data: Query & {
-    site: {
-      siteMetadata: {
-        authors: {
-          // eslint-disable-next-line @typescript-eslint/no-explicit-any
-          [key: string]: any
-        }
-      }
-    }
     firstPost: Query['allMarkdownRemark']
   }
 }
@@ -32,12 +25,14 @@ export default function Blog({ data }: Props) {
     })
   })
   const post = data.firstPost.edges[0].node
-  const author = data.site.siteMetadata.authors[post.frontmatter.author]
 
   return (
     <Layout>
       <SEO title="Blog" keywords={['spokestack', 'voice', 'artificial intelligence']} />
-      <StickyNavLayout selectFirst links={links} rightContent={<Author {...author} />}>
+      <StickyNavLayout
+        selectFirst
+        links={links}
+        rightContent={<Author author={post.frontmatter.author as TeamMemberName} />}>
         <h1>
           <a href={post.fields.slug}>{post.frontmatter.title}</a>
         </h1>
@@ -50,9 +45,6 @@ export default function Blog({ data }: Props) {
 
 export const pageQuery = graphql`
   query {
-    site {
-      ...Authors
-    }
     allMarkdownRemark(
       sort: { fields: [frontmatter___date], order: DESC }
       filter: { fileAbsolutePath: { regex: "/blog/" }, frontmatter: { draft: { ne: true } } }

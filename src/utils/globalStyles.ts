@@ -108,6 +108,16 @@ export default css`
       margin-bottom: -2px;
     }
   }
+  .card ul {
+    margin-left: 34px;
+    margin-bottom: 0;
+  }
+  .card li:last-child {
+    margin-bottom: 0;
+  }
+  .card li p {
+    margin: 0;
+  }
   ${MIN_DEFAULT_MEDIA_QUERY} {
     h1 {
       font-size: ${adjustFontSizeTo('45px').fontSize};

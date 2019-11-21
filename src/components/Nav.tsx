@@ -1,5 +1,9 @@
 import { Global, css } from '@emotion/core'
-import { MIN_TABLET_MEDIA_QUERY, MOBILE_MEDIA_QUERY } from 'typography-breakpoint-constants'
+import {
+  MIN_TABLET_MEDIA_QUERY,
+  MOBILE_MEDIA_QUERY,
+  MIN_DEFAULT_MEDIA_QUERY
+} from 'typography-breakpoint-constants'
 import { adjustFontSizeTo, rhythm } from '../utils/typography'
 
 import { Link } from 'gatsby'
@@ -27,7 +31,7 @@ export default function Nav() {
         <a href="/" css={styles.logoLink}>
           <img src="/logo.svg" css={styles.logo} />
         </a>
-        <SocialLinks />
+        <SocialLinks iconSize={25} />
       </header>
       <nav css={styles.nav}>
         <ul css={styles.links}>
@@ -122,8 +126,11 @@ const styles = {
       position: absolute;
       top: 0;
       left: 235px;
-      right: 115px;
+      right: 145px;
       height: 60px;
+    }
+    ${MIN_DEFAULT_MEDIA_QUERY} {
+      right: 325px;
     }
   `,
   links: css`

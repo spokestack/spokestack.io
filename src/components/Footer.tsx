@@ -1,5 +1,5 @@
 import { LARGER_DISPLAY_WIDTH, MIN_DEFAULT_MEDIA_QUERY } from 'typography-breakpoint-constants'
-import { adjustFontSizeTo, rhythm } from '../utils/typography'
+import { rhythm } from '../utils/typography'
 import { graphql, useStaticQuery } from 'gatsby'
 
 import React from 'react'
@@ -83,9 +83,9 @@ const styles = {
 
     a:not(.header-link) {
       color: white;
-      font-size: ${adjustFontSizeTo('22px').fontSize};
       margin-bottom: 15px;
       text-decoration: none;
+      font-weight: 400;
 
       &:hover {
         color: hsl(0, 0%, 80%);

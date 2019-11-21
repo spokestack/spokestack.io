@@ -50,7 +50,7 @@ export default function Index({ data, location }: Props) {
     <Layout>
       <SEO title={siteTitle} keywords={['spokestack', 'mobile', 'voice']} />
       <header css={styles.header}>
-        <h1 css={styles.headerText}>Give your mobile app a voice</h1>
+        <h1 css={styles.headerText}>Give your mobile app a voice&trade;</h1>
         <h4 css={[styles.headerText, styles.h4]}>
           Spokestack is a powerful platform of open source libraries and robust services to make
           your app fully voice-enabled.
@@ -93,13 +93,13 @@ export default function Index({ data, location }: Props) {
             <p>
               <a href="/docs" className="link-with-icon">
                 Get started
-                <SVGIcon icon={iconArrow.id} style={{ fill: 'var(--header-color)' }} />
+                <SVGIcon icon={iconArrow.id} style={{ fill: 'var(--primary-color)' }} />
               </a>
             </p>
           </div>
         </div>
         <div id="wakeword" css={styles.feature} ref={links[1].ref}>
-          <h3>Spokestack Wakeword</h3>
+          <h2>Spokestack Wakeword</h2>
           <p css={styles.title}>Choose the keyword that will be the wakeword for your app.</p>
           <div css={styles.description}>
             <p>
@@ -112,13 +112,13 @@ export default function Index({ data, location }: Props) {
             <p>
               <a href="mailto:hello@spokestack.io" className="link-with-icon">
                 Email us for details on getting a custom wakeword
-                <SVGIcon icon={iconArrow.id} style={{ fill: 'var(--header-color)' }} />
+                <SVGIcon icon={iconArrow.id} style={{ fill: 'var(--primary-color)' }} />
               </a>
             </p>
           </div>
         </div>
         <div id="tts" css={styles.feature} ref={links[2].ref}>
-          <h3>Spokestack TTS</h3>
+          <h2>Spokestack TTS</h2>
           <p css={styles.title}>Create a custom voice for your brand.</p>
           <div css={styles.description}>
             <p>
@@ -133,13 +133,13 @@ export default function Index({ data, location }: Props) {
             <p>
               <a href="mailto:hello@spokestack.io" className="link-with-icon">
                 Email us for details on getting a custom branded voice
-                <SVGIcon icon={iconArrow.id} style={{ fill: 'var(--header-color)' }} />
+                <SVGIcon icon={iconArrow.id} style={{ fill: 'var(--primary-color)' }} />
               </a>
             </p>
           </div>
         </div>
         <div id="nlu" css={styles.feature} ref={links[3].ref}>
-          <h3>Spokestack NLU</h3>
+          <h2>Spokestack NLU</h2>
           <p css={styles.title}>
             Keep your data and customer conversations in your app where it belongs with our Natural
             Language Understanding (NLU) engine.
@@ -153,7 +153,7 @@ export default function Index({ data, location }: Props) {
             <p>
               <a href="mailto:hello@spokestack.io" className="link-with-icon">
                 Email us for details on getting a custom NLU for your app
-                <SVGIcon icon={iconArrow.id} style={{ fill: 'var(--header-color)' }} />
+                <SVGIcon icon={iconArrow.id} style={{ fill: 'var(--primary-color)' }} />
               </a>
             </p>
           </div>
@@ -286,8 +286,11 @@ const styles = {
     }
   `,
   title: css`
-    font-size: ${adjustFontSizeTo('25px').fontSize};
-    line-height: ${adjustFontSizeTo('25px').lineHeight};
+    font-size: ${adjustFontSizeTo('22px').fontSize};
+    ${MIN_DEFAULT_MEDIA_QUERY} {
+      font-size: ${adjustFontSizeTo('25px').fontSize};
+      line-height: ${adjustFontSizeTo('25px').lineHeight};
+    }
   `,
   list: css`
     list-style-image: url(/arrow-forward.svg);

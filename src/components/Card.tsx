@@ -1,4 +1,4 @@
-import { Global, SerializedStyles, css } from '@emotion/core'
+import { SerializedStyles, css } from '@emotion/core'
 
 import React from 'react'
 
@@ -11,19 +11,6 @@ interface Props {
 export default function Card({ title, children, extraCss }: Props) {
   return (
     <div css={[styles.card, extraCss]} className="card">
-      <Global
-        styles={css`
-          .card ul {
-            margin-bottom: 0;
-          }
-          .card li:last-child {
-            margin-bottom: 0;
-          }
-          .card li p {
-            margin: 0;
-          }
-        `}
-      />
       <h3 css={styles.cardHeader}>{title}</h3>
       <div css={styles.content}>{children}</div>
     </div>

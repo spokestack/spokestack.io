@@ -216,7 +216,7 @@ export default function Index({ data, location }: Props) {
 
 const styles = {
   header: css`
-    color: var(--text-color-dark-bg);
+    position: relative;
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -224,6 +224,7 @@ const styles = {
     padding: ${rhythm(1.3)} 20px 160px;
     background: var(--primary-color) url(/background.svg) no-repeat;
     background-position: center bottom;
+    color: var(--text-color-dark-bg);
 
     @media (min-width: 1440px) {
       background-size: cover;

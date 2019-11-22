@@ -7,6 +7,7 @@ import React from 'react'
 import SEO from '../components/SEO'
 import { StickyLink } from '../components/StickyNav'
 import StickyNavLayout from '../components/StickyNavLayout'
+import { TeamMemberName } from '../types'
 
 type Props = PageRendererProps & {
   data: Query & {
@@ -37,13 +38,14 @@ export default function BlogPostTemplate({ data }: Props) {
     })
   })
   const post = data.markdownRemark
-  const author = data.site.siteMetadata.authors[post.frontmatter.author]
   // const { previous, next } = pageContext
 
   return (
     <Layout>
       <SEO title="Blog" keywords={['spokestack', 'voice', 'artificial intelligence']} />
-      <StickyNavLayout links={links} rightContent={<Author {...author} />}>
+      <StickyNavLayout
+        links={links}
+        rightContent={<Author author={post.frontmatter.author as TeamMemberName} />}>
         <h1>{post.frontmatter.title}</h1>
         <p>{post.frontmatter.date}</p>
         <div dangerouslySetInnerHTML={{ __html: post.html }} />

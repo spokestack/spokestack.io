@@ -12,7 +12,6 @@ type QueryType = Query & TeamImages
 
 export default function Team() {
   const data = useStaticQuery<QueryType>(teamQuery)
-  console.log(data)
   const team = data.site.siteMetadata.team
   return (
     <div css={styles.teamMembers}>

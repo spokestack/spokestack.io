@@ -1,6 +1,8 @@
-import React from 'react'
+import React, { useEffect } from 'react'
 
 export default function About() {
-  window.location.href = '/about/team'
+  useEffect(() => {
+    window.location.href = '/about/team'
+  }, [])
   return <div />
 }

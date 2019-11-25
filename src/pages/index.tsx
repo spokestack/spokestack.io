@@ -238,7 +238,7 @@ const styles = {
     text-align: center;
     padding: ${rhythm(1.3)} 20px 160px;
     background: var(--primary-color) url(/background.svg) no-repeat;
-    background-position: center bottom;
+    background-position: center bottom -1px;
     color: var(--text-color-dark-bg);
 
     @media (min-width: 1440px) {

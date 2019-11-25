@@ -1,11 +1,10 @@
 ---
 title: Cookbook
-date: '2019-11-19T19:06:43.000Z'
 description: Code snippets and tips
 draft: false
 ---
 
-This is a collection of code snippets and brief descriptions designed to help you be as productive as possible as quickly as possible. Check out the [Concepts](/docs/Concepts) section for more detailed discussions about the techniques mentioned here.
+This is a collection of code snippets and brief descriptions designed to help you be as productive as possible as quickly as possible. Check out the [Concepts](/docs/concepts/speech-pipeline) section for more detailed discussions about the techniques mentioned here.
 
 ### Set up a default `SpeechPipeline`
 

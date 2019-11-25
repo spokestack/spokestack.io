@@ -47,7 +47,10 @@ export default function SocialLinks({ iconSize, style }: Props) {
       />
       <a className="btn" href="mailto:hello@spokestack.io" css={styles.talkButton}>
         Talk to us
-        <SVGIcon icon={iconArrow.id} style={{ fill: 'var(--secondary-color)' }} />
+        <SVGIcon
+          icon={iconArrow.id}
+          style={{ fill: 'var(--secondary-color)', width: '17px', height: '17px' }}
+        />
       </a>
     </div>
   )

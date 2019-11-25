@@ -1,4 +1,5 @@
 import { FixedObject } from 'gatsby-image'
+import { MutableRefObject } from 'react'
 
 export type TeamMemberName =
   | 'brent'
@@ -23,4 +24,12 @@ export interface TeamImages {
   timmy: { childImageSharp: { fixed: FixedObject } }
   tyler: { childImageSharp: { fixed: FixedObject } }
   will: { childImageSharp: { fixed: FixedObject } }
+}
+
+export interface StickyLink {
+  href: string
+  title: string
+  section?: string
+  forceSelect?: boolean
+  ref?: MutableRefObject<Element>
 }

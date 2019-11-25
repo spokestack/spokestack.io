@@ -1,6 +1,5 @@
 ---
 title: Getting Started
-date: '2019-11-15T15:20:34.735Z'
 description: Getting started with the Spokestack API
 draft: false
 ---

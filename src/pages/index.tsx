@@ -57,7 +57,10 @@ export default function Index({ data, location }: Props) {
         </h4>
         <a href="/docs" className="btn btn-large">
           Get started
-          <SVGIcon icon={iconArrow.id} style={{ fill: 'var(--header-color)' }} />
+          <SVGIcon
+            icon={iconArrow.id}
+            style={{ fill: 'var(--header-color)', width: '17px', height: '17px' }}
+          />
         </a>
       </header>
       <div css={styles.usageWrap}>
@@ -93,7 +96,10 @@ export default function Index({ data, location }: Props) {
             <p>
               <a href="/docs" className="link-with-icon">
                 Get started
-                <SVGIcon icon={iconArrow.id} style={{ fill: 'var(--primary-color)' }} />
+                <SVGIcon
+                  icon={iconArrow.id}
+                  style={{ fill: 'var(--primary-color)', width: '17px', height: '17px' }}
+                />
               </a>
             </p>
           </div>
@@ -112,7 +118,10 @@ export default function Index({ data, location }: Props) {
             <p>
               <a href="mailto:hello@spokestack.io" className="link-with-icon">
                 Email us for details on getting a custom wakeword
-                <SVGIcon icon={iconArrow.id} style={{ fill: 'var(--primary-color)' }} />
+                <SVGIcon
+                  icon={iconArrow.id}
+                  style={{ fill: 'var(--primary-color)', width: '17px', height: '17px' }}
+                />
               </a>
             </p>
           </div>
@@ -133,7 +142,10 @@ export default function Index({ data, location }: Props) {
             <p>
               <a href="mailto:hello@spokestack.io" className="link-with-icon">
                 Email us for details on getting a custom branded voice
-                <SVGIcon icon={iconArrow.id} style={{ fill: 'var(--primary-color)' }} />
+                <SVGIcon
+                  icon={iconArrow.id}
+                  style={{ fill: 'var(--primary-color)', width: '17px', height: '17px' }}
+                />
               </a>
             </p>
           </div>
@@ -153,7 +165,10 @@ export default function Index({ data, location }: Props) {
             <p>
               <a href="mailto:hello@spokestack.io" className="link-with-icon">
                 Email us for details on getting a custom NLU for your app
-                <SVGIcon icon={iconArrow.id} style={{ fill: 'var(--primary-color)' }} />
+                <SVGIcon
+                  icon={iconArrow.id}
+                  style={{ fill: 'var(--primary-color)', width: '17px', height: '17px' }}
+                />
               </a>
             </p>
           </div>

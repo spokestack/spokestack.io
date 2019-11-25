@@ -1,14 +1,14 @@
 import React, { SVGAttributes } from 'react'
-
-import { css } from '@emotion/core'
+import { SerializedStyles, css } from '@emotion/core'
 
 interface Props extends SVGAttributes<SVGElement> {
   icon: string
+  extraCss?: SerializedStyles
 }
 
-export default function SVGIcon({ icon, ...props }: Props) {
+export default function SVGIcon({ icon, extraCss, ...props }: Props) {
   return (
-    <svg css={styles.icon} {...props}>
+    <svg css={[styles.icon, extraCss]} {...props}>
       <use xlinkHref={`#${icon}`} />
     </svg>
   )
@@ -16,8 +16,6 @@ export default function SVGIcon({ icon, ...props }: Props) {
 
 const styles = {
   icon: css`
-    width: 17px;
-    height: 17px;
     display: inline-block;
     fill: white;
     line-height: 0;

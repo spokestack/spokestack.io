@@ -123,3 +123,11 @@ $ yarn commit
 The TypeScript types are generated from the schema using [GraphQL Code Generator](https://github.com/dotansimha/graphql-code-generator#readme).
 
 To update, run `yarn schema`.
+
+## Adding a new documentation page
+
+Follow the examples in the `content/docs` folder.
+
+Sub-folders are automatically grouped and the section takes on the name of the folder. Casing is not be automatically adjusted, so the casing of the folder should be identical to the intended name of the section.
+
+The order of links in the docs navigation is dictated by `content/docs/nav.json`. No folder names are necessary. Enter the title of the post wherever it should appear in the list.

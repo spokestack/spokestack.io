@@ -25,8 +25,6 @@ function createPages(createPage, posts, template) {
 exports.createPages = ({ graphql, actions }) => {
   const { createPage } = actions
 
-  const blogPost = path.resolve('./src/templates/blog-post.tsx')
-  const docsPage = path.resolve('./src/templates/docs-page.tsx')
   return graphql(
     `
       {
@@ -74,9 +72,9 @@ exports.createPages = ({ graphql, actions }) => {
     }
 
     // Create blog posts pages
-    createPages(createPage, result.data.blog.edges, blogPost)
+    createPages(createPage, result.data.blog.edges, path.resolve('./src/templates/blog-post.tsx'))
     // Create docs pages
-    createPages(createPage, result.data.docs.edges, docsPage)
+    createPages(createPage, result.data.docs.edges, path.resolve('./src/templates/docs-page.tsx'))
 
     return null
   })
@@ -86,12 +84,18 @@ exports.onCreateNode = ({ node, actions, getNode }) => {
   const { createNodeField } = actions
 
   if (node.internal.type === 'MarkdownRemark') {
-    const value = createFilePath({ node, getNode })
+    const value = createFilePath({ node, getNode, trailingSlash: false })
     const isDocsPage = rdocs.test(node.fileAbsolutePath)
+    const folder = path.basename(path.dirname(node.fileAbsolutePath))
     createNodeField({
       name: 'slug',
       node,
       value: `/${isDocsPage ? 'docs' : 'blog'}${value}`
+    })
+    createNodeField({
+      name: 'folder',
+      node,
+      value: folder !== 'docs' && folder !== 'blog' ? folder : null
     })
     if (isDocsPage) {
       const path = node.fileAbsolutePath.replace(rspokestackWebsite, '')

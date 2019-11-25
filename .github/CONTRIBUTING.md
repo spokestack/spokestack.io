@@ -6,7 +6,7 @@
 - Run tests with `yarn test`
 - Prettier enforces the style guide and will format on commit.
 
-**Supported browsers**: (basically IE 11, modern desktop and mobile browsers) https://browserl.ist/?q=%3E0.35%25%2C+not+op_mini+all
+**[Supported browsers](https://browserl.ist/?q=%3E0.35%25%2C+not+op_mini+all)**: (basically IE 11, modern desktop and mobile browsers) 
 
 Contributions are always welcome. Before contributing please [search the issue tracker](https://github.com/timmywil/panzoom/issues); your issue
 may have already been discussed or fixed in `master`. To contribute,
@@ -128,6 +128,6 @@ To update, run `yarn schema`.
 
 Follow the examples in the `content/docs` folder.
 
-Sub-folders are automatically grouped and the section takes on the name of the folder. Casing is not be automatically adjusted, so the casing of the folder should be identical to the intended name of the section.
+Sub-folders are automatically grouped and the section takes on the name of the folder. Casing is not automatically adjusted, so the casing of the folder should be identical to the intended name of the section.
 
-The order of links in the docs navigation is dictated by `content/docs/nav.json`. No folder names are necessary. Enter the title of the post wherever it should appear in the list.
+The order of links in the docs navigation is dictated by `content/docs/nav.json`. Folder names do not need to be entered. Enter the title of the post wherever it should appear in the list.

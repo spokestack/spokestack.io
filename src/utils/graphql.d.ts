@@ -683,6 +683,7 @@ export enum FileFieldsEnum {
   ChildMarkdownRemarkRawMarkdownBody = 'childMarkdownRemark___rawMarkdownBody',
   ChildMarkdownRemarkFileAbsolutePath = 'childMarkdownRemark___fileAbsolutePath',
   ChildMarkdownRemarkFieldsSlug = 'childMarkdownRemark___fields___slug',
+  ChildMarkdownRemarkFieldsFolder = 'childMarkdownRemark___fields___folder',
   ChildMarkdownRemarkFieldsGithubLink = 'childMarkdownRemark___fields___githubLink',
   ChildMarkdownRemarkHtml = 'childMarkdownRemark___html',
   ChildMarkdownRemarkHtmlAst = 'childMarkdownRemark___htmlAst',
@@ -1447,6 +1448,7 @@ export type MarkdownRemarkEdge = {
 export type MarkdownRemarkFields = {
   __typename?: 'MarkdownRemarkFields'
   slug?: Maybe<Scalars['String']>
+  folder?: Maybe<Scalars['String']>
   githubLink?: Maybe<Scalars['String']>
 }
 
@@ -1461,6 +1463,7 @@ export enum MarkdownRemarkFieldsEnum {
   RawMarkdownBody = 'rawMarkdownBody',
   FileAbsolutePath = 'fileAbsolutePath',
   FieldsSlug = 'fields___slug',
+  FieldsFolder = 'fields___folder',
   FieldsGithubLink = 'fields___githubLink',
   Html = 'html',
   HtmlAst = 'htmlAst',
@@ -1562,6 +1565,7 @@ export enum MarkdownRemarkFieldsEnum {
 
 export type MarkdownRemarkFieldsFilterInput = {
   slug?: Maybe<StringQueryOperatorInput>
+  folder?: Maybe<StringQueryOperatorInput>
   githubLink?: Maybe<StringQueryOperatorInput>
 }
 
@@ -2154,10 +2158,72 @@ export type SitePageConnectionGroupArgs = {
 export type SitePageContext = {
   __typename?: 'SitePageContext'
   slug?: Maybe<Scalars['String']>
+  previous?: Maybe<SitePageContextPrevious>
+  next?: Maybe<SitePageContextNext>
 }
 
 export type SitePageContextFilterInput = {
   slug?: Maybe<StringQueryOperatorInput>
+  previous?: Maybe<SitePageContextPreviousFilterInput>
+  next?: Maybe<SitePageContextNextFilterInput>
+}
+
+export type SitePageContextNext = {
+  __typename?: 'SitePageContextNext'
+  fields?: Maybe<SitePageContextNextFields>
+  frontmatter?: Maybe<SitePageContextNextFrontmatter>
+}
+
+export type SitePageContextNextFields = {
+  __typename?: 'SitePageContextNextFields'
+  slug?: Maybe<Scalars['String']>
+}
+
+export type SitePageContextNextFieldsFilterInput = {
+  slug?: Maybe<StringQueryOperatorInput>
+}
+
+export type SitePageContextNextFilterInput = {
+  fields?: Maybe<SitePageContextNextFieldsFilterInput>
+  frontmatter?: Maybe<SitePageContextNextFrontmatterFilterInput>
+}
+
+export type SitePageContextNextFrontmatter = {
+  __typename?: 'SitePageContextNextFrontmatter'
+  title?: Maybe<Scalars['String']>
+}
+
+export type SitePageContextNextFrontmatterFilterInput = {
+  title?: Maybe<StringQueryOperatorInput>
+}
+
+export type SitePageContextPrevious = {
+  __typename?: 'SitePageContextPrevious'
+  fields?: Maybe<SitePageContextPreviousFields>
+  frontmatter?: Maybe<SitePageContextPreviousFrontmatter>
+}
+
+export type SitePageContextPreviousFields = {
+  __typename?: 'SitePageContextPreviousFields'
+  slug?: Maybe<Scalars['String']>
+}
+
+export type SitePageContextPreviousFieldsFilterInput = {
+  slug?: Maybe<StringQueryOperatorInput>
+}
+
+export type SitePageContextPreviousFilterInput = {
+  fields?: Maybe<SitePageContextPreviousFieldsFilterInput>
+  frontmatter?: Maybe<SitePageContextPreviousFrontmatterFilterInput>
+}
+
+export type SitePageContextPreviousFrontmatter = {
+  __typename?: 'SitePageContextPreviousFrontmatter'
+  title?: Maybe<Scalars['String']>
+}
+
+export type SitePageContextPreviousFrontmatterFilterInput = {
+  title?: Maybe<StringQueryOperatorInput>
 }
 
 export type SitePageEdge = {
@@ -2260,6 +2326,10 @@ export enum SitePageFieldsEnum {
   ComponentChunkName = 'componentChunkName',
   IsCreatedByStatefulCreatePages = 'isCreatedByStatefulCreatePages',
   ContextSlug = 'context___slug',
+  ContextPreviousFieldsSlug = 'context___previous___fields___slug',
+  ContextPreviousFrontmatterTitle = 'context___previous___frontmatter___title',
+  ContextNextFieldsSlug = 'context___next___fields___slug',
+  ContextNextFrontmatterTitle = 'context___next___frontmatter___title',
   PluginCreatorParentId = 'pluginCreator___parent___id',
   PluginCreatorParentParentId = 'pluginCreator___parent___parent___id',
   PluginCreatorParentParentChildren = 'pluginCreator___parent___parent___children',

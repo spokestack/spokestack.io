@@ -158,8 +158,8 @@ module.exports = {
             query: `
             {
               allMarkdownRemark(
-                sort: {order: DESC, fields: [frontmatter___date]},
-                filter: {frontmatter: {draft: {ne: true}}},
+                sort: { fields: [frontmatter___date], order: DESC }
+                filter: { fileAbsolutePath: { regex: "/blog/" }, frontmatter: { draft: { ne: true } } }
                 limit: 1000
               ) {
                 edges {

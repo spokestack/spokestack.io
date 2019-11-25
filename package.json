@@ -67,6 +67,7 @@
     "@semantic-release/exec": "^3.3.5",
     "@semantic-release/git": "^7.0.16",
     "@types/color": "^3.0.0",
+    "@types/lodash": "^4.14.149",
     "@types/react-helmet": "^5.0.8",
     "@types/typography": "^0.16.2",
     "@typescript-eslint/eslint-plugin": "^2.6.0",
@@ -81,7 +82,7 @@
     "graphql": "^14.4.2",
     "husky": "^3.0.1",
     "lint-staged": "^9.2.1",
-    "lodash.template": "^4.5.0",
+    "lodash": "^4.17.15",
     "mkdirp": "^0.5.1",
     "prettier": "^1.18.2",
     "semantic-release": "^15.13.18"

@@ -1,6 +1,5 @@
 ---
 title: Wakeword Models
-date: '2019-11-20T20:52:00.000Z'
 description: A detailed discussion of wakeword model design
 draft: false
 ---

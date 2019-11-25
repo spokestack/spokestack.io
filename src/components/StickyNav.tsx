@@ -1,16 +1,12 @@
 import { Global, css } from '@emotion/core'
-import React, { MutableRefObject, useEffect, useState } from 'react'
+import React, { useEffect, useState } from 'react'
 
-import { Link } from 'gatsby'
 import NavSelectedBackground from './NavSelectedBackground'
+import { StickyLink } from '../types'
+import StickyNavSection from './StickyNavSection'
 import { WindowLocation } from '@reach/router'
+import groupBy from 'lodash/groupby'
 import hashToId from '../utils/hashToId'
-
-export interface StickyLink {
-  href: string
-  title: string
-  ref?: MutableRefObject<Element>
-}
 
 export interface StickyNavProps {
   links: StickyLink[]
@@ -50,6 +46,8 @@ export default function StickyNav({
       setSelectedId(`${hashToId(location.hash || links[0].href)}-link`)
     }, [])
   }
+  const groupedLinks = groupBy(links, 'section')
+  const sections = Object.keys(groupedLinks)
 
   return (
     <nav css={styles.stickyNav}>
@@ -62,45 +60,17 @@ export default function StickyNav({
           }
         `}
       />
-      {links.map((link, i) => {
-        const id = `${hashToId(link.href)}-link`
-        return matchHash ? (
-          <a
-            key={`sticky-nav-link-${i}`}
-            css={styles.stickyNavLink}
-            style={{
-              color:
-                id === selectedId
-                  ? 'var(--sticky-nav-link-color-active)'
-                  : 'var(--sticky-nav-link-color)'
-            }}
-            id={id}
-            href={link.href}
-            title={link.title}
-            onClick={() => setSelectedId(id)}>
-            {link.title}
-          </a>
-        ) : selectFirst && i === 0 ? (
-          <a
-            key={`sticky-nav-link-${i}`}
-            id={id}
-            css={styles.stickyNavLink}
-            className="sticky-nav-link-active"
-            href={link.href}
-            title={link.title}>
-            {link.title}
-          </a>
-        ) : (
-          <Link
-            key={`sticky-nav-link-${i}`}
-            css={styles.stickyNavLink}
-            activeClassName="sticky-nav-link-active"
-            to={link.href}
-            title={link.title}>
-            {link.title}
-          </Link>
-        )
-      })}
+      {sections.map((section) => (
+        <StickyNavSection
+          key={`sticky-nav-section-${section}`}
+          headerText={section !== 'null' ? section : null}
+          links={groupedLinks[section]}
+          selectFirst={selectFirst}
+          matchHash={matchHash}
+          onSelect={(id) => setSelectedId(id)}
+          selectedId={selectedId}
+        />
+      ))}
       <NavSelectedBackground selectedId={selectedId} />
     </nav>
   )
@@ -109,10 +79,13 @@ export default function StickyNav({
 const styles = {
   stickyNav: css`
     --sticky-nav-link-color: #8da6e3;
+    --sticky-nav-link-color-hover: var(--link-color-hover);
     --sticky-nav-link-color-active: var(--link-color);
     position: sticky;
     top: 25px;
     margin-bottom: 25px;
+  `,
+  section: css`
     display: flex;
     flex-direction: column;
   `,
@@ -124,6 +97,9 @@ const styles = {
 
     &:visited {
       color: var(--sticky-nav-link-color);
+    }
+    &:hover {
+      color: var(--sticky-nav-link-color-hover);
     }
   `
 }

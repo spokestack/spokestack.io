@@ -6,7 +6,7 @@
 const path = require('path')
 const mkdirp = require('mkdirp')
 const fs = require('fs')
-const template = require('lodash.template')
+const template = require('lodash/template')
 const args = process.argv.slice(2)
 const rspaces = /[\s-]+/g
 
@@ -22,13 +22,13 @@ draft: true
 
 function post(title, description) {
   return new Promise((resolve, reject) => {
-    const dir = path.join(__dirname, `/../content/blog/${title.replace(rspaces, '-')}`)
+    const dir = path.join(__dirname, '/../content/blog/')
     mkdirp(dir, (mkdirErr) => {
       if (mkdirErr) {
         return reject(mkdirErr)
       }
       fs.writeFile(
-        path.join(dir, 'index.md'),
+        path.join(dir, `${title.toLowerCase().replace(rspaces, '-')}.md`),
         postTemplate({
           title,
           date: new Date().toISOString(),
@@ -56,4 +56,7 @@ function post(title, description) {
 
 if (args.length) {
   post(...args)
+} else {
+  console.log('Usage: yarn post "Blog Post Title" "This is a blog post description."')
+  throw new Error('Missing arguments')
 }

@@ -1,6 +1,5 @@
 ---
 title: "Spokestack's Speech Pipeline"
-date: '2019-11-19T21:16:43.000Z'
 description: A detailed discussion of `SpeechPipeline`
 draft: false
 ---

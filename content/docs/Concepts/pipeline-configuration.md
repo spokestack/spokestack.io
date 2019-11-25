@@ -1,6 +1,5 @@
 ---
 title: Speech Pipeline Configuration
-date: '2019-11-20T19:30:00.000Z'
 description: A discussion of the parameters available in `SpeechConfiguration`
 draft: false
 ---

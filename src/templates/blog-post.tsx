@@ -1,25 +1,11 @@
 import { MarkdownRemark, Query } from '../utils/graphql'
 import { PageRendererProps, graphql } from 'gatsby'
 
-import Author from '../components/Author'
-import Layout from '../components/Layout'
+import BlogPost from '../components/BlogPost'
 import React from 'react'
-import SEO from '../components/SEO'
-import { StickyLink } from '../components/StickyNav'
-import StickyNavLayout from '../components/StickyNavLayout'
-import { TeamMemberName } from '../types'
 
 type Props = PageRendererProps & {
-  data: Query & {
-    site: {
-      siteMetadata: {
-        authors: {
-          // eslint-disable-next-line @typescript-eslint/no-explicit-any
-          [key: string]: any
-        }
-      }
-    }
-  }
+  data: Query
   // Created by createPage in gatsby-node.js
   pageContext: {
     slug: string
@@ -28,62 +14,20 @@ type Props = PageRendererProps & {
   }
 }
 
-export default function BlogPostTemplate({ data }: Props) {
-  const posts = data.allMarkdownRemark.edges
-  const links: StickyLink[] = []
-  posts.forEach(({ node }) => {
-    links.push({
-      href: node.fields.slug,
-      title: node.frontmatter.title
-    })
-  })
-  const post = data.markdownRemark
-  // const { previous, next } = pageContext
-
-  return (
-    <Layout>
-      <SEO title="Blog" keywords={['spokestack', 'voice', 'artificial intelligence']} />
-      <StickyNavLayout
-        links={links}
-        rightContent={<Author author={post.frontmatter.author as TeamMemberName} />}>
-        <h1>{post.frontmatter.title}</h1>
-        <p>{post.frontmatter.date}</p>
-        <div dangerouslySetInnerHTML={{ __html: post.html }} />
-      </StickyNavLayout>
-    </Layout>
-  )
+export default function Docs({ data }: Props) {
+  return <BlogPost post={data.markdownRemark} />
 }
 
 export const pageQuery = graphql`
-  query BlogPostBySlug($slug: String!) {
-    site {
-      ...TeamMembers
-    }
-    allMarkdownRemark(
-      sort: { fields: [frontmatter___date], order: DESC }
-      filter: { fileAbsolutePath: { regex: "/blog/" }, frontmatter: { draft: { ne: true } } }
-      limit: 10
-    ) {
-      edges {
-        node {
-          excerpt(pruneLength: 160)
-          fields {
-            slug
-          }
-          frontmatter {
-            date(formatString: "MMMM DD, YYYY")
-            description
-            title
-          }
-        }
-      }
-    }
+  query blogPostBySlug($slug: String!) {
     markdownRemark(fields: { slug: { eq: $slug } }) {
       id
       excerpt(pruneLength: 160)
       html
+      fields {
+        githubLink
+      }
       frontmatter {
-        author
         title
         date(formatString: "MMMM DD, YYYY")
         description

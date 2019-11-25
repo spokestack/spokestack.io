@@ -1,8 +1,8 @@
 import { Global, css } from '@emotion/core'
 import {
+  MIN_DEFAULT_MEDIA_QUERY,
   MIN_TABLET_MEDIA_QUERY,
-  MOBILE_MEDIA_QUERY,
-  MIN_DEFAULT_MEDIA_QUERY
+  MOBILE_MEDIA_QUERY
 } from 'typography-breakpoint-constants'
 import { adjustFontSizeTo, rhythm } from '../utils/typography'
 
@@ -86,6 +86,7 @@ export default function Nav() {
 
 const styles = {
   navContainer: css`
+    position: relative;
     height: 100px;
     background-color: var(--primary-color);
     padding: 0 ${rhythm(0.8)};

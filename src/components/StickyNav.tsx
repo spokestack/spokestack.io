@@ -22,19 +22,23 @@ function isSection(section: string) {
   return section !== 'undefined' && section !== 'null'
 }
 
+function linkIsSelected(link: StickyLink) {
+  return link.forceSelect || window.location.pathname.indexOf(link.href) > -1
+}
+
 export default function StickyNav({ links = [], location, matchHash }: StickyNavProps) {
   if (!links.length || (matchHash && !location)) {
     return null
   }
-  const [mobileHeader, setMobileHeader] = useState<string>(null)
+  const [selectedLink, setSelectedLink] = useState<StickyLink>({ title: null, href: null })
   const [selectedId, setSelectedId] = useState<string>(null)
   useEffect(() => {
     if (matchHash) {
       return
     }
     links.forEach((link) => {
-      if (link.forceSelect || window.location.pathname.indexOf(link.href) > -1) {
-        setMobileHeader(link.title)
+      if (linkIsSelected(link)) {
+        setSelectedLink(link)
       }
     })
   }, [])
@@ -83,7 +87,7 @@ export default function StickyNav({ links = [], location, matchHash }: StickyNav
       {!matchHash && (
         <div css={styles.mobileNav}>
           <label htmlFor="sticky-nav" css={styles.mobileLabel}>
-            <p>{mobileHeader}</p>
+            <p>{selectedLink.title}</p>
             <SVGIcon
               icon={iconArrowDown.id}
               style={{ fill: 'var(--header-color)', width: '25px', height: '25px' }}
@@ -92,7 +96,7 @@ export default function StickyNav({ links = [], location, matchHash }: StickyNav
           <select
             id="sticky-nav"
             css={styles.mobileSelect}
-            defaultValue={typeof window !== 'undefined' ? window.location.pathname : null}
+            value={selectedLink.href}
             onChange={(event) => {
               window.location.href = event.target.value
             }}>

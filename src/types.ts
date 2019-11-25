@@ -30,5 +30,6 @@ export interface StickyLink {
   href: string
   title: string
   section?: string
+  forceSelect?: boolean
   ref?: MutableRefObject<Element>
 }

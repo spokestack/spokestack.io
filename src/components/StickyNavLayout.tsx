@@ -53,16 +53,23 @@ const styles = {
       grid-template-areas: 'sidenav content author';
     }
   `,
-  stickyNavWrap: css`
-    grid-area: sidenav;
-    background-color: white;
-    padding: 25px 0 0 50px;
-    ${DEFAULT_MEDIA_QUERY} {
+  mobileNav: css`
+    ${MIN_DEFAULT_MEDIA_QUERY} {
       display: none;
+    }
+  `,
+  stickyNavWrap: css`
+    ${MIN_DEFAULT_MEDIA_QUERY} {
+      grid-area: sidenav;
+      background-color: white;
+      padding: 25px 0 0 50px;
     }
   `,
   stickyNavHeader: css`
     padding-left: 45px;
+    ${DEFAULT_MEDIA_QUERY} {
+      display: none;
+    }
   `,
   content: css`
     ${MIN_DEFAULT_MEDIA_QUERY} {

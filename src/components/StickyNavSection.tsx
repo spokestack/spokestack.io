@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from 'react'
 
+import { DEFAULT_MEDIA_QUERY } from 'typography-breakpoint-constants'
 import { Link } from 'gatsby'
 import SVGIcon from './SVGIcon'
 import { StickyLink } from '../types'
@@ -11,7 +12,6 @@ import { rhythm } from '../utils/typography'
 interface Props {
   headerText: string
   links: StickyLink[]
-  selectFirst?: boolean
 
   // Hash matching only
   matchHash?: boolean
@@ -22,28 +22,25 @@ interface Props {
 export default function StickyNavSection({
   headerText,
   links,
-  selectFirst,
   matchHash,
   onSelect,
   selectedId
 }: Props) {
   const storageKey = `sticky-nav-section-${headerText}`
-  const [open, setOpen] = useState(false)
+  const [open, setOpen] = useState(
+    typeof window !== 'undefined' ? localStorage.getItem(storageKey) !== 'false' : true
+  )
   useEffect(() => {
-    const fromStorage = localStorage.getItem(storageKey)
-    if (fromStorage != null) {
-      setOpen(fromStorage !== 'false')
+    if (headerText) {
+      localStorage.setItem(storageKey, JSON.stringify(open))
     }
-  }, [])
-  useEffect(() => {
-    localStorage.setItem(storageKey, JSON.stringify(open))
   }, [open])
 
   return (
     <div css={styles.stickyNavSection}>
       {headerText && (
         <h3 css={styles.stickyNavHeader} onClick={() => setOpen(!open)}>
-          <a href="#">
+          <a>
             {headerText}
             <SVGIcon
               className={open ? 'open' : ''}
@@ -72,7 +69,7 @@ export default function StickyNavSection({
               onClick={() => onSelect(id)}>
               {link.title}
             </a>
-          ) : selectFirst && i === 0 ? (
+          ) : link.forceSelect ? (
             <a
               key={`sticky-nav-link-${i}`}
               id={id}
@@ -103,6 +100,10 @@ const styles = {
     display: flex;
     flex-direction: column;
     margin-bottom: ${rhythm(1)};
+
+    ${DEFAULT_MEDIA_QUERY} {
+      display: none;
+    }
   `,
   stickyNavHeader: css`
     margin: 0 0 10px;
@@ -115,6 +116,7 @@ const styles = {
       align-items: center;
       margin: 0;
       color: var(--header-color);
+      cursor: pointer;
     }
   `,
   headerIcon: css`

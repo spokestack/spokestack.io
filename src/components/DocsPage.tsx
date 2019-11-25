@@ -26,11 +26,15 @@ export default function DocsPage({ post, selectFirst }: Props) {
   const posts = data.allMarkdownRemark.edges
   posts.forEach(({ node }) => {
     links.push({
-      section: node.fields.folder,
       href: node.fields.slug,
+      section: node.fields.folder,
       title: node.frontmatter.title
     })
   })
+  const orderedLinks = orderLinks(links)
+  if (selectFirst) {
+    orderedLinks[0].forceSelect = true
+  }
   return (
     <Layout>
       <SEO
@@ -38,7 +42,7 @@ export default function DocsPage({ post, selectFirst }: Props) {
         description="Documentation for the Spokestack API"
         keywords={['spokestack', 'documentation', 'voice', 'artificial intelligence']}
       />
-      <StickyNavLayout selectFirst={selectFirst} links={orderLinks(links)}>
+      <StickyNavLayout links={orderedLinks}>
         {selectFirst ? (
           <h1>
             <a href={post.fields.slug}>{post.frontmatter.title}</a>

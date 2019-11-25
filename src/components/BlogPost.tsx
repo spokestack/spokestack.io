@@ -20,14 +20,17 @@ export default function Blog({ post, selectFirst }: Props) {
   posts.forEach(({ node }) => {
     links.push({
       href: node.fields.slug,
+      section: node.fields.folder,
       title: node.frontmatter.title
     })
   })
+  if (selectFirst) {
+    links[0].forceSelect = true
+  }
   return (
     <Layout>
       <SEO title="Blog" keywords={['spokestack', 'blog', 'voice', 'artificial intelligence']} />
       <StickyNavLayout
-        selectFirst={selectFirst}
         links={links}
         rightContent={<Author author={post.frontmatter.author as TeamMemberName} />}>
         {selectFirst ? (
@@ -54,6 +57,7 @@ export const blogPageQuery = graphql`
       edges {
         node {
           fields {
+            folder
             slug
           }
           frontmatter {

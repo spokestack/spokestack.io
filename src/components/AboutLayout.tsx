@@ -9,7 +9,7 @@ const links = [
   //   title: 'Story'
   // },
   {
-    href: '/about/team',
+    href: '/about/team/',
     title: 'Team'
   }
 ]

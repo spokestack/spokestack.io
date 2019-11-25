@@ -5,35 +5,26 @@ import { Query } from '../utils/graphql'
 import React from 'react'
 
 type Props = PageRendererProps & {
-  data: Query & {
-    firstPost: Query['allMarkdownRemark']
-  }
+  data: Query
 }
 
 export default function Docs({ data }: Props) {
-  return <DocsPage selectFirst post={data.firstPost.edges[0].node} />
+  return <DocsPage selectFirst post={data.markdownRemark} />
 }
 
 export const pageQuery = graphql`
   query {
-    firstPost: allMarkdownRemark(
-      sort: { fields: [frontmatter___date], order: DESC }
-      filter: { fileAbsolutePath: { regex: "/docs/" }, frontmatter: { draft: { ne: true } } }
-      limit: 1
-    ) {
-      edges {
-        node {
-          html
-          fields {
-            slug
-            githubLink
-          }
-          frontmatter {
-            date(formatString: "MMMM DD, YYYY")
-            description
-            title
-          }
-        }
+    markdownRemark(fields: { slug: { eq: "/docs/getting-started" } }) {
+      id
+      html
+      fields {
+        githubLink
+        slug
+      }
+      frontmatter {
+        title
+        date(formatString: "MMMM DD, YYYY")
+        description
       }
     }
   }

@@ -8,7 +8,7 @@ import { StickyLink } from '../types'
 import StickyNavSection from './StickyNavSection'
 import { WindowLocation } from '@reach/router'
 import { adjustFontSizeTo } from '../utils/typography'
-import groupBy from 'lodash/groupby'
+import groupBy from 'lodash/groupBy'
 import hashToId from '../utils/hashToId'
 import iconArrowDown from '../icons/arrow-down.svg'
 

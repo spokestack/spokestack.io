@@ -7,7 +7,7 @@ import SEO from '../components/SEO'
 import { StickyLink } from '../types'
 import StickyNavLayout from '../components/StickyNavLayout'
 import order from '../../content/docs/nav.json'
-import sortBy from 'lodash/sortby'
+import sortBy from 'lodash/sortBy'
 
 interface Props {
   post: MarkdownRemark

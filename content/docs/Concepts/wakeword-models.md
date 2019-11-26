@@ -1,5 +1,6 @@
 ---
 title: Wakeword Models
+navId: Wakeword Models
 description: A detailed discussion of wakeword model design
 draft: false
 ---

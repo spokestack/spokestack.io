@@ -1,5 +1,6 @@
 ---
 title: Speech Pipeline Configuration
+navId: Speech Pipeline Configuration
 description: A discussion of the parameters available in `SpeechConfiguration`
 draft: false
 ---

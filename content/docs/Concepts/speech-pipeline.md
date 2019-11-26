@@ -1,5 +1,6 @@
 ---
 title: "Spokestack's Speech Pipeline"
+navId: "Spokestack's Speech Pipeline"
 description: A detailed discussion of `SpeechPipeline`
 draft: false
 ---

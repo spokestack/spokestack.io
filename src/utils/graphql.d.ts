@@ -62,7 +62,7 @@ export type Directory = Node & {
   gid?: Maybe<Scalars['Int']>
   rdev?: Maybe<Scalars['Int']>
   blksize?: Maybe<Scalars['Int']>
-  ino?: Maybe<Scalars['Int']>
+  ino?: Maybe<Scalars['Float']>
   blocks?: Maybe<Scalars['Int']>
   atimeMs?: Maybe<Scalars['Float']>
   mtimeMs?: Maybe<Scalars['Float']>
@@ -307,7 +307,7 @@ export type DirectoryFilterInput = {
   gid?: Maybe<IntQueryOperatorInput>
   rdev?: Maybe<IntQueryOperatorInput>
   blksize?: Maybe<IntQueryOperatorInput>
-  ino?: Maybe<IntQueryOperatorInput>
+  ino?: Maybe<FloatQueryOperatorInput>
   blocks?: Maybe<IntQueryOperatorInput>
   atimeMs?: Maybe<FloatQueryOperatorInput>
   mtimeMs?: Maybe<FloatQueryOperatorInput>
@@ -367,7 +367,7 @@ export type File = Node & {
   gid?: Maybe<Scalars['Int']>
   rdev?: Maybe<Scalars['Int']>
   blksize?: Maybe<Scalars['Int']>
-  ino?: Maybe<Scalars['Int']>
+  ino?: Maybe<Scalars['Float']>
   blocks?: Maybe<Scalars['Int']>
   atimeMs?: Maybe<Scalars['Float']>
   mtimeMs?: Maybe<Scalars['Float']>
@@ -679,6 +679,7 @@ export enum FileFieldsEnum {
   ChildMarkdownRemarkFrontmatterDescription = 'childMarkdownRemark___frontmatter___description',
   ChildMarkdownRemarkFrontmatterAuthor = 'childMarkdownRemark___frontmatter___author',
   ChildMarkdownRemarkFrontmatterDraft = 'childMarkdownRemark___frontmatter___draft',
+  ChildMarkdownRemarkFrontmatterNavId = 'childMarkdownRemark___frontmatter___navId',
   ChildMarkdownRemarkExcerpt = 'childMarkdownRemark___excerpt',
   ChildMarkdownRemarkRawMarkdownBody = 'childMarkdownRemark___rawMarkdownBody',
   ChildMarkdownRemarkFileAbsolutePath = 'childMarkdownRemark___fileAbsolutePath',
@@ -761,7 +762,7 @@ export type FileFilterInput = {
   gid?: Maybe<IntQueryOperatorInput>
   rdev?: Maybe<IntQueryOperatorInput>
   blksize?: Maybe<IntQueryOperatorInput>
-  ino?: Maybe<IntQueryOperatorInput>
+  ino?: Maybe<FloatQueryOperatorInput>
   blocks?: Maybe<IntQueryOperatorInput>
   atimeMs?: Maybe<FloatQueryOperatorInput>
   mtimeMs?: Maybe<FloatQueryOperatorInput>
@@ -1459,6 +1460,7 @@ export enum MarkdownRemarkFieldsEnum {
   FrontmatterDescription = 'frontmatter___description',
   FrontmatterAuthor = 'frontmatter___author',
   FrontmatterDraft = 'frontmatter___draft',
+  FrontmatterNavId = 'frontmatter___navId',
   Excerpt = 'excerpt',
   RawMarkdownBody = 'rawMarkdownBody',
   FileAbsolutePath = 'fileAbsolutePath',
@@ -1595,6 +1597,7 @@ export type MarkdownRemarkFrontmatter = {
   description?: Maybe<Scalars['String']>
   author?: Maybe<Scalars['String']>
   draft?: Maybe<Scalars['Boolean']>
+  navId?: Maybe<Scalars['String']>
 }
 
 export type MarkdownRemarkFrontmatterDateArgs = {
@@ -1610,6 +1613,7 @@ export type MarkdownRemarkFrontmatterFilterInput = {
   description?: Maybe<StringQueryOperatorInput>
   author?: Maybe<StringQueryOperatorInput>
   draft?: Maybe<BooleanQueryOperatorInput>
+  navId?: Maybe<StringQueryOperatorInput>
 }
 
 export type MarkdownRemarkGroupConnection = {
@@ -1780,7 +1784,7 @@ export type QueryFileArgs = {
   gid?: Maybe<IntQueryOperatorInput>
   rdev?: Maybe<IntQueryOperatorInput>
   blksize?: Maybe<IntQueryOperatorInput>
-  ino?: Maybe<IntQueryOperatorInput>
+  ino?: Maybe<FloatQueryOperatorInput>
   blocks?: Maybe<IntQueryOperatorInput>
   atimeMs?: Maybe<FloatQueryOperatorInput>
   mtimeMs?: Maybe<FloatQueryOperatorInput>
@@ -1898,7 +1902,7 @@ export type QueryDirectoryArgs = {
   gid?: Maybe<IntQueryOperatorInput>
   rdev?: Maybe<IntQueryOperatorInput>
   blksize?: Maybe<IntQueryOperatorInput>
-  ino?: Maybe<IntQueryOperatorInput>
+  ino?: Maybe<FloatQueryOperatorInput>
   blocks?: Maybe<IntQueryOperatorInput>
   atimeMs?: Maybe<FloatQueryOperatorInput>
   mtimeMs?: Maybe<FloatQueryOperatorInput>

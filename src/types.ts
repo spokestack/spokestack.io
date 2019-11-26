@@ -29,6 +29,7 @@ export interface TeamImages {
 export interface StickyLink {
   href: string
   title: string
+  navId?: string
   section?: string
   forceSelect?: boolean
   ref?: MutableRefObject<Element>

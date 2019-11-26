@@ -16,7 +16,7 @@
     "post": "node tasks/post.js",
     "prettier": "prettier --check \"**/*.tsx\" \"**/*.ts\" \"**/*.js\" \"**/*.md\"",
     "release": "semantic-release",
-    "schema": "graphql-codegen --config codegen.yml",
+    "schema": "graphql-codegen --config codegen.yml && prettier --write \"**/graphql.d.ts\"",
     "serve": "gatsby serve",
     "start": "yarn clean && gatsby develop",
     "test": "yarn lint",

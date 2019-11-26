@@ -16,7 +16,7 @@ interface Props {
 
 function orderLinks(links: StickyLink[]) {
   return sortBy(links, (link) => {
-    return order.indexOf(link.title)
+    return order.indexOf(link.navId)
   })
 }
 
@@ -28,7 +28,8 @@ export default function DocsPage({ post, selectFirst }: Props) {
     links.push({
       href: node.fields.slug,
       section: node.fields.folder,
-      title: node.frontmatter.title
+      title: node.frontmatter.title,
+      navId: node.frontmatter.navId
     })
   })
   const orderedLinks = orderLinks(links)
@@ -77,6 +78,7 @@ export const docsPageQuery = graphql`
           frontmatter {
             date(formatString: "MMMM DD, YYYY")
             description
+            navId
             title
           }
         }

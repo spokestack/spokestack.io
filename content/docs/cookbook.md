@@ -1,5 +1,6 @@
 ---
 title: Cookbook
+navId: Cookbook
 description: Code snippets and tips
 draft: false
 ---

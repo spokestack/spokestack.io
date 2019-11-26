@@ -1,5 +1,6 @@
 ---
 title: Getting Started
+navId: Getting Started
 description: Getting started with the Spokestack API
 draft: false
 ---

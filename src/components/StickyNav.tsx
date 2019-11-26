@@ -3,14 +3,13 @@ import React, { useEffect, useState } from 'react'
 
 import { MIN_DEFAULT_MEDIA_QUERY } from 'typography-breakpoint-constants'
 import NavSelectedBackground from './NavSelectedBackground'
-import SVGIcon from './SVGIcon'
 import { StickyLink } from '../types'
 import StickyNavSection from './StickyNavSection'
 import { WindowLocation } from '@reach/router'
-import { adjustFontSizeTo } from '../utils/typography'
 import groupBy from 'lodash/groupBy'
 import hashToId from '../utils/hashToId'
-import iconArrowDown from '../icons/arrow-down.svg'
+import Select from './Select'
+import { adjustFontSizeTo } from '../utils/typography'
 
 export interface StickyNavProps {
   links: StickyLink[]
@@ -85,32 +84,26 @@ export default function StickyNav({ links = [], location, matchHash }: StickyNav
         `}
       />
       {!matchHash && (
-        <div css={styles.mobileNav}>
-          <label htmlFor="sticky-nav" css={styles.mobileLabel}>
-            <p>{selectedLink.title}</p>
-            <SVGIcon
-              icon={iconArrowDown.id}
-              style={{ fill: 'var(--header-color)', width: '25px', height: '25px' }}
-            />
-          </label>
-          <select
-            id="sticky-nav"
-            css={styles.mobileSelect}
-            value={selectedLink.href}
-            onChange={(event) => {
-              window.location.href = event.target.value
-            }}>
-            {sections.map((section) =>
-              isSection(section) ? (
-                <optgroup label={section} key={`optgroup-${section}`}>
-                  {optionsFromLinks(groupedLinks[section])}
-                </optgroup>
-              ) : (
-                optionsFromLinks(groupedLinks[section])
-              )
-            )}
-          </select>
-        </div>
+        <Select
+          id="sticky-nav"
+          extraCss={styles.mobileNav}
+          labelCss={styles.mobileNavLabel}
+          iconWrapCss={styles.mobileNavIconWrap}
+          iconCss={styles.mobileNavIcon}
+          selected={{ title: selectedLink.title, value: selectedLink.href }}
+          onChange={(value) => {
+            window.location.href = value
+          }}>
+          {sections.map((section) =>
+            isSection(section) ? (
+              <optgroup label={section} key={`optgroup-${section}`}>
+                {optionsFromLinks(groupedLinks[section])}
+              </optgroup>
+            ) : (
+              optionsFromLinks(groupedLinks[section])
+            )
+          )}
+        </Select>
       )}
       {sections.map((section) => (
         <StickyNavSection
@@ -140,45 +133,26 @@ const styles = {
     }
   `,
   mobileNav: css`
-    position: relative;
-    display: flex;
-    align-items: center;
-
+    height: 64px;
     ${MIN_DEFAULT_MEDIA_QUERY} {
       display: none;
     }
   `,
-  mobileLabel: css`
-    width: 100%;
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    padding: 15px 20px;
-    background-color: white;
-    z-index: 99;
+  mobileNavLabel: css`
+    border: none;
+    border-radius: 0;
 
     p {
-      width: 100%;
-      overflow: hidden;
-      color: var(--header-color);
       font-size: ${adjustFontSizeTo('20px').fontSize};
       font-weight: 700;
-      margin: 0;
-      white-space: nowrap;
-      text-overflow: ellipsis;
     }
   `,
-  mobileSelect: css`
-    position: absolute;
-    top: 0;
-    left: 0;
-    bottom: 0;
-    width: 100%;
-    appearance: none;
-    background: transparent;
+  mobileNavIconWrap: css`
     border: none;
-    color: transparent;
-    z-index: 100;
+    background: transparent;
+  `,
+  mobileNavIcon: css`
+    fill: var(--header-color);
   `,
   section: css`
     display: flex;

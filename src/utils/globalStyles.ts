@@ -4,15 +4,17 @@ import Color from 'color'
 import { MIN_DEFAULT_MEDIA_QUERY } from 'typography-breakpoint-constants'
 import { css } from '@emotion/core'
 
-const primaryColor = Color('#2f5bea')
-const secondaryColor = Color('#61fae9')
+export const primaryColor = Color('#2f5bea')
+export const secondaryColor = Color('#61fae9')
+export const textColor = Color('#323e48')
 
 export default css`
   html {
     --main-background: #f6f9fc;
     --primary-color: ${primaryColor.hex()};
     --secondary-color: ${secondaryColor.hex()};
-    --text-color: #323e48;
+    --text-color: ${textColor.hex()};
+    --text-color-light: ${textColor.fade(0.5).string()};
     --header-color: #2c363f;
     --footer-background: var(--header-color);
     --text-color-dark-bg: #f6f9fc;
@@ -36,6 +38,9 @@ export default css`
     height: 100%;
     min-width: 300px;
     background-color: var(--main-background);
+  }
+  :focus {
+    outline: var(--primary-color) auto 1px;
   }
   section {
     padding: ${rhythm(1.3)} 20px;

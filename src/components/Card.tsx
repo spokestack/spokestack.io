@@ -25,6 +25,7 @@ const styles = {
     border: 1px solid var(--secondary-color);
     border-radius: 7px;
     overflow: hidden;
+    max-width: 700px;
   `,
   cardHeader: css`
     background-color: var(--secondary-color);

@@ -16,6 +16,7 @@ import StickyNavLayout from '../components/StickyNavLayout'
 import UsageMap from '../components/UsageMap'
 import { css } from '@emotion/core'
 import iconArrow from '../icons/arrow-forward.svg'
+import SampleVoices from '../components/SampleVoices'
 
 interface Props extends PageRendererProps {
   data: Query
@@ -148,6 +149,11 @@ export default function Index({ data, location }: Props) {
                 />
               </a>
             </p>
+            <p>
+              Try some of our voice samples below. Each voice is generated using different recording
+              times and methods.
+            </p>
+            <SampleVoices />
           </div>
         </div>
         <div id="nlu" css={styles.feature} ref={links[3].ref}>
@@ -238,7 +244,7 @@ const styles = {
     text-align: center;
     padding: ${rhythm(1.3)} 20px 160px;
     background: var(--primary-color) url(/background.svg) no-repeat;
-    background-position: center bottom -1px;
+    background-position: center bottom;
     color: var(--text-color-dark-bg);
 
     @media (min-width: 1440px) {
@@ -264,6 +270,8 @@ const styles = {
   `,
   usageWrap: css`
     background-color: white;
+    margin-top: -1px;
+    z-index: 1;
   `,
   usage: css`
     background-color: white;

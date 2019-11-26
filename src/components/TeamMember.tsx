@@ -44,6 +44,6 @@ const styles = {
     }
   `,
   lightText: css`
-    opacity: 0.5;
+    color: var(--text-color-light);
   `
 }

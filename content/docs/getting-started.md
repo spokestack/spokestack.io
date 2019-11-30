@@ -15,7 +15,7 @@ Your app needs to target iOS 11 or higher in order to use speech recognition.
 
 ## Installation
 
-The rest of the guide requires you already have the Spokestack framework installed in your project. See [the README](https://github.com/spokestack/spokestack-ios/blob/master/README.md) for more information on installation, or if you're using [CocoaPods](https://cocoapods.org/), it's as easy as adding
+The rest of the guide requires you already have Spokestack installed in your project. See [the README](https://github.com/spokestack/spokestack-ios/blob/master/README.md) for more information on installation, or if you're using [CocoaPods](https://cocoapods.org/), it's as easy as adding
 
 ```bash
 pod 'Spokestack-iOS'

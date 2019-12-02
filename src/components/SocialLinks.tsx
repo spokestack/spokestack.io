@@ -1,14 +1,14 @@
+import { DEFAULT_MEDIA_QUERY, MIN_DEFAULT_MEDIA_QUERY } from 'typography-breakpoint-constants'
 import React, { HTMLAttributes } from 'react'
 import { graphql, useStaticQuery } from 'gatsby'
 
+import SVGIcon from './SVGIcon'
 import SocialLink from './SocialLink'
 import { css } from '@emotion/core'
 import githubIcon from '../icons/github.svg'
-import twitterIcon from '../icons/twitter.svg'
 import iconArrow from '../icons/arrow-forward.svg'
-import SVGIcon from './SVGIcon'
 import { rhythm } from '../utils/typography'
-import { MIN_DEFAULT_MEDIA_QUERY } from 'typography-breakpoint-constants'
+import twitterIcon from '../icons/twitter.svg'
 
 const socialQuery = graphql`
   query socialQuery {
@@ -69,7 +69,6 @@ const styles = {
     }
   `,
   talkButton: css`
-    display: none;
     background-color: transparent;
     color: var(--secondary-color);
     transition: background-color 0.2s var(--transition-easing), color 0.2s var(--transition-easing);
@@ -88,8 +87,8 @@ const styles = {
       }
     }
 
-    ${MIN_DEFAULT_MEDIA_QUERY} {
-      display: inherit;
+    ${DEFAULT_MEDIA_QUERY} {
+      display: none !important;
     }
   `
 }

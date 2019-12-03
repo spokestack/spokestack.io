@@ -4,10 +4,10 @@ import SEO from './SEO'
 import StickyNavLayout from './StickyNavLayout'
 
 const links = [
-  // {
-  //   href: '/about/story',
-  //   title: 'Story'
-  // },
+  {
+    href: '/about/story/',
+    title: 'Story'
+  },
   {
     href: '/about/team/',
     title: 'Team'

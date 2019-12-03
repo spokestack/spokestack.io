@@ -1,33 +1,52 @@
 import React, { TextareaHTMLAttributes } from 'react'
-import { css, SerializedStyles } from '@emotion/core'
+import { SerializedStyles, css } from '@emotion/core'
 
-interface Props extends TextareaHTMLAttributes<HTMLTextAreaElement> {
+interface Props extends Omit<TextareaHTMLAttributes<HTMLTextAreaElement>, 'onChange'> {
   id: string
   label: string
   extraCss?: SerializedStyles
+  labelCss?: SerializedStyles
+  onChange?: (value: string) => void
 }
 
-export default function Textarea({ id, extraCss, label, ...props }: Props) {
+export default React.forwardRef<HTMLTextAreaElement, Props>(function Textarea(
+  { id, extraCss, labelCss, label, onChange, ...props }: Props,
+  ref
+) {
   return (
     <div css={[styles.container, extraCss]}>
-      <textarea id={id} css={styles.textarea} {...props} />
-      <label htmlFor={id} css={styles.label}>
+      <div css={styles.textareaWrap}>
+        <textarea
+          ref={ref}
+          id={id}
+          css={styles.textarea}
+          onChange={(event) => onChange(event.target.value)}
+          {...props}
+        />
+      </div>
+      <label htmlFor={id} css={[styles.label, labelCss]}>
         {label}
       </label>
     </div>
   )
-}
+})
 
 const styles = {
   container: css`
     display: flex;
     flex-direction: column;
   `,
+  textareaWrap: css`
+    width: 100%;
+    line-height: 0;
+  `,
   textarea: css`
+    width: 100%;
+    min-height: 120px;
+    line-height: 1.4;
     border: 1px solid var(--main-border-color);
     padding: 15px 20px;
     border-radius: 7px 7px 0 0;
-    min-height: 120px;
     resize: vertical;
   `,
   label: css`

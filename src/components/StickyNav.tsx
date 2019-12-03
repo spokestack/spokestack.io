@@ -3,13 +3,13 @@ import React, { useEffect, useState } from 'react'
 
 import { MIN_DEFAULT_MEDIA_QUERY } from 'typography-breakpoint-constants'
 import NavSelectedBackground from './NavSelectedBackground'
+import Select from './Select'
 import { StickyLink } from '../types'
 import StickyNavSection from './StickyNavSection'
 import { WindowLocation } from '@reach/router'
+import { adjustFontSizeTo } from '../utils/typography'
 import groupBy from 'lodash/groupBy'
 import hashToId from '../utils/hashToId'
-import Select from './Select'
-import { adjustFontSizeTo } from '../utils/typography'
 
 export interface StickyNavProps {
   links: StickyLink[]
@@ -91,8 +91,8 @@ export default function StickyNav({ links = [], location, matchHash }: StickyNav
           iconWrapCss={styles.mobileNavIconWrap}
           iconCss={styles.mobileNavIcon}
           selected={{ title: selectedLink.title, value: selectedLink.href }}
-          onChange={(value) => {
-            window.location.href = value
+          onChange={(option) => {
+            window.location.href = option.value
           }}>
           {sections.map((section) =>
             isSection(section) ? (

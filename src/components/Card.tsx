@@ -38,6 +38,7 @@ const styles = {
     margin: 0;
   `,
   content: css`
+    position: relative;
     padding: 20px;
   `
 }

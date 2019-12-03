@@ -1,49 +1,104 @@
-import React, { useState } from 'react'
-import Card from './Card'
-import Button from './Button'
-import SVGIcon from './SVGIcon'
-import iconPlay from '../icons/play-circle.svg'
-import { css } from '@emotion/core'
-import Select from './Select'
-import find from 'lodash/find'
-import { adjustFontSizeTo } from '../utils/typography'
-import { MIN_DEFAULT_MEDIA_QUERY } from 'typography-breakpoint-constants'
-import Textarea from './Textarea'
+import React, { useEffect, useRef, useState } from 'react'
+import Select, { Option } from './Select'
 
-const voices = [{ title: 'Spokestack Free', value: 'free' }]
+import Button from './Button'
+import Card from './Card'
+import LoadingIcon from './LoadingIcon'
+import { MIN_DEFAULT_MEDIA_QUERY } from 'typography-breakpoint-constants'
+import SVGIcon from './SVGIcon'
+import Textarea from './Textarea'
+import { adjustFontSizeTo } from '../utils/typography'
+import { css } from '@emotion/core'
+import debounce from 'lodash/debounce'
+import find from 'lodash/find'
+import iconPlay from '../icons/play-circle.svg'
+import { secondaryColor } from '../utils/globalStyles'
+import synthesize from '../utils/synthesize'
+import voices from '../utils/voices'
+
+const options = voices.map((voice) => ({ value: voice.model, title: voice.label }))
 
 export default function SampleVoices() {
-  const [selected, setSelected] = useState<{ value: string; title: string }>(voices[0])
+  const textareaRef = useRef<HTMLTextAreaElement>(null)
+  const audioRef = useRef<HTMLAudioElement>(null)
+  const [submitting, setSubmitting] = useState(false)
+  const [errorText, setErrorText] = useState<string>(null)
+  const [audioSrc, setAudioSrc] = useState<string>(null)
+  const [selected, setSelected] = useState<Option>(options[0])
+  const selectedVoice = find(voices, { model: selected.value })
+  function play() {
+    if (!submitting && audioRef.current) {
+      audioRef.current.play()
+    }
+  }
+  async function getAudio() {
+    const text = textareaRef.current.value
+    setSubmitting(true)
+    setErrorText(null)
+    setAudioSrc(null)
+    const [synthError, response] = await synthesize(selected.value, text)
+    if (!synthError && response && response.url) {
+      setAudioSrc(response.url)
+    } else {
+      setSubmitting(false)
+      setErrorText(
+        synthError.message || 'There was a problem synthesizing the text. Please try again.'
+      )
+    }
+  }
+  useEffect(() => {
+    getAudio()
+  }, [selected])
+  useEffect(() => {
+    if (audioSrc && audioRef.current) {
+      audioRef.current.addEventListener('canplaythrough', () => {
+        setSubmitting(false)
+      })
+      audioRef.current.load()
+    }
+  }, [audioSrc])
   return (
     <Card title="Sample a Custom Voice">
+      {audioSrc && <audio ref={audioRef} preload="auto" src={audioSrc} />}
       <p css={styles.lightText}>
-        Enter what you want Spokestack to say below. Use {`{{ }}`} to brakcet your{' '}
+        Enter what you want Spokestack to say below. Use {`{{ }}`} to bracket your{' '}
         <a href="https://en.wikipedia.org/wiki/International_Phonetic_Alphabet">IPA</a>.
       </p>
       <div css={styles.content}>
         <Select
           id="sample-voices"
+          disabled={submitting}
           selected={selected}
           extraCss={styles.select}
-          options={voices}
-          onChange={(value) => {
-            const voice = find(voices, { value })
-            if (voice) {
-              setSelected(voice)
+          options={options}
+          onChange={(option) => {
+            if (option) {
+              setSelected(option)
             }
           }}
         />
-        <Button large extraCss={styles.button}>
+        <Button large disabled={submitting} extraCss={styles.button} onClick={play}>
           <SVGIcon icon={iconPlay.id} extraCss={styles.playIcon} />
           Hear it
         </Button>
-        <Textarea
-          id="sample-voice-textarea"
-          label="A studio recording of a profession voice actor using 6 hours of audio"
-          extraCss={styles.textarea}
-          defaultValue={'Hello, welcome to {{spoʊkstæk}}. What do you want to say?'}
-        />
+        <div css={styles.textarea}>
+          <Textarea
+            ref={textareaRef}
+            id="sample-voice-textarea"
+            disabled={submitting}
+            label={errorText || selectedVoice.description}
+            labelCss={errorText ? styles.labelError : null}
+            defaultValue={'Hello, welcome to {{spoʊkstæk}}. What would you like to say?'}
+            onChange={debounce(getAudio, 1000)}
+          />
+        </div>
       </div>
+      {submitting && (
+        <div css={styles.loading}>
+          <LoadingIcon />
+          <p>Synthesizing...</p>
+        </div>
+      )}
     </Card>
   )
 }
@@ -86,6 +141,27 @@ const styles = {
     margin-left: 0 !important;
   `,
   textarea: css`
+    position: relative;
     grid-area: textarea;
+  `,
+  labelError: css`
+    color: var(--text-color-error);
+  `,
+  loading: css`
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: ${secondaryColor.fade(0.2).toString()};
+    /* color: white; */
+    z-index: 101;
+
+    p {
+      margin: 0 0 0 10px;
+    }
   `
 }

@@ -83,7 +83,11 @@ workflows:
 
   test_and_deploy:
     jobs:
-      - build
+      - build:
+          filters:
+            tags:
+              only:
+                - /\d+\.\d+\.\d+/
       - deploy_integration:
           filters:
             branches:

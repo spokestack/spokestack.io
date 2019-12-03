@@ -1,7 +1,7 @@
 ---
 title: Getting Started
-navId: Getting Started
-description: Getting started with the Spokestack API
+navId: Getting Started (iOS)
+description: Getting started with the Spokestack iOS API
 draft: false
 ---
 
@@ -15,7 +15,7 @@ Your app needs to target iOS 11 or higher in order to use speech recognition.
 
 ## Installation
 
-The rest of the guide requires you already have Spokestack installed in your project. See [the README](https://github.com/spokestack/spokestack-ios/blob/master/README.md) for more information on installation, or if you're using [CocoaPods](https://cocoapods.org/), it's as easy as adding
+The rest of the guide will assume you already have the Spokestack framework installed in your project. See [the README](https://github.com/spokestack/spokestack-ios/blob/master/README.md) for more information, but if you're using [CocoaPods](https://cocoapods.org/), it's as easy as adding
 
 ```bash
 pod 'Spokestack-iOS'
@@ -51,7 +51,7 @@ For the first one, head over to `Info.plist` in your project and add a couple ke
 
 If you're not using "Raw Keys & Values" mode in Xcode, the keys are `Privacy - Microphone Usage Description` and `Privacy - Speech Recognition Usage Description`, respectively. Having these description strings means that your app will prompt the user for the appropriate permissions the first time you activate the speech pipeline. Setting up that pipeline is our next step.
 
-###2. `AVAudioSession`
+### 2. `AVAudioSession`
 
 Apple manages the various demands on a phone's audio system via [audio sessions](https://developer.apple.com/library/archive/documentation/Audio/Conceptual/AudioSessionProgrammingGuide/Introduction/Introduction.html). See their documentation for more details, but here's the minimum configuration you'll need in order to record user speech. A good place for it is likely your `AppDelegate`'s `application(_:didFinishLaunchingWithOptions)` method.
 
@@ -134,7 +134,7 @@ class MyViewController: UIViewController, SpeechEventListener {
             // stop the timer and change the UI accordingly
             return
         }
-        if userText.range(of: "(?i)(?:reset|start over)",
+        if userText.range(of: "(?i)reset|start over",
                           options: .regularExpression) != nil {
             // reset the timer and change the UI accordingly
             return

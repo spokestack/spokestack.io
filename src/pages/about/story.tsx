@@ -13,11 +13,11 @@ export default function Story() {
       </p>
       <p>
         While we were making our smart speaker skills, we released our{' '}
-        <a href="/#asr">automatic speech recognition (ASR) manager</a>. We started to see other
-        developers experimenting with voice control in their mobile apps, so in the Fall of 2019 we
-        decided to focus on enabling voice on mobile apps. Our mission is to give every mobile app a
-        voice and make smart phones even smarter. If successful, we will all spend less time looking
-        at our phones and getting other things done.
+        <a href="https://github.com/spokestack">automatic speech recognition (ASR) manager</a>. We
+        started to see other developers experimenting with Spokestack and voice control in their
+        mobile apps, so in the Fall of 2019 we decided to focus on enabling voice on mobile apps.
+        Our mission is to give every mobile app a voice and make smart phones even smarter. If
+        successful, we will all spend less time looking at our phones and getting other things done.
       </p>
       <p>
         Prior to Spokestack, our team has worked for world-class consumer technology companies. We

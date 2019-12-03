@@ -14,7 +14,7 @@ export default function Docs({ data }: Props) {
 
 export const pageQuery = graphql`
   query {
-    markdownRemark(fields: { slug: { eq: "/docs/getting-started" } }) {
+    markdownRemark(fields: { slug: { eq: "/docs/welcome" } }) {
       id
       html
       fields {

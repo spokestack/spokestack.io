@@ -1,7 +1,7 @@
 ---
 title: Cookbook
-navId: Cookbook
-description: Code snippets and tips
+navId: Cookbook (iOS)
+description: Code snippets and tips for iOS
 draft: false
 ---
 

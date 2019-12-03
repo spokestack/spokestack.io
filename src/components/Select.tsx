@@ -1,8 +1,10 @@
 import React, { SelectHTMLAttributes, useState } from 'react'
 import { SerializedStyles, css } from '@emotion/core'
-import SVGIcon from './SVGIcon'
-import iconArrowDown from '../icons/arrow-down.svg'
+
 import { MIN_DEFAULT_MEDIA_QUERY } from 'typography-breakpoint-constants'
+import SVGIcon from './SVGIcon'
+import find from 'lodash/find'
+import iconArrowDown from '../icons/arrow-down.svg'
 import { primaryColor } from '../utils/globalStyles'
 
 export interface Option {
@@ -20,7 +22,7 @@ interface Props extends Omit<SelectHTMLAttributes<HTMLSelectElement>, 'onChange'
   iconCss?: SerializedStyles
   iconWrapCss?: SerializedStyles
   selected: Option
-  onChange: (value: string) => void
+  onChange: (selected: Option) => void
 }
 
 export default function Select({
@@ -32,30 +34,29 @@ export default function Select({
   iconWrapCss,
   selectCss,
   id,
+  disabled,
   selected,
   onChange,
   ...props
 }: Props) {
   const [open, setOpen] = useState(false)
   return (
-    <div css={[styles.container, extraCss]}>
+    <div
+      css={[styles.container, extraCss]}
+      className={`${open ? 'select-open' : ''}${disabled ? ' disabled' : ''}`}>
       <label
         htmlFor={id}
-        css={css`
-          ${styles.label}
-          ${open ? styles.labelOpen : null}
-          ${labelCss}
-        `}
+        css={[styles.label, labelCss]}
         onClick={() => {
-          setOpen(!open)
+          setOpen(!disabled && !open)
         }}>
         <p>{selected.title}</p>
         <div css={[styles.iconWrap, iconWrapCss]}>
           <SVGIcon
+            className="icon"
             icon={iconArrowDown.id}
             extraCss={css`
               ${styles.icon}
-              ${open ? styles.iconOpen : null}
               ${iconCss}
             `}
           />
@@ -64,9 +65,10 @@ export default function Select({
       <select
         css={[styles.select, selectCss]}
         id={id}
+        disabled={disabled}
         value={selected.value}
         onChange={(event) => {
-          onChange(event.target.value)
+          onChange(find(options, { value: event.target.value }))
         }}
         {...props}>
         {options
@@ -78,17 +80,13 @@ export default function Select({
           : children}
       </select>
       {options && (
-        <div
-          css={css`
-            ${styles.dropdown}
-            ${open ? styles.dropdownOpen : null}
-          `}>
+        <div css={styles.dropdown} className="dropdown">
           {options.map((option) => (
             <div
               key={option.value}
               css={styles.dropdownOption}
               onClick={() => {
-                onChange(option.value)
+                onChange(option)
                 setOpen(false)
               }}>
               {option.title}
@@ -106,6 +104,27 @@ const styles = {
     position: relative;
     display: flex;
     align-items: center;
+    z-index: 100;
+
+    &.select-open {
+      label {
+        outline: var(--primary-color) auto 1px;
+      }
+      .icon {
+        transform: rotateZ(180deg);
+      }
+      .dropdown {
+        transform: translateY(0) scaleY(1);
+        opacity: 1;
+      }
+    }
+    &.disabled {
+      opacity: 0.5;
+
+      label {
+        cursor: default;
+      }
+    }
   `,
   label: css`
     position: absolute;
@@ -132,9 +151,6 @@ const styles = {
       padding-left: 20px;
     }
   `,
-  labelOpen: css`
-    outline: var(--primary-color) auto 1px;
-  `,
   iconWrap: css`
     display: flex;
     justify-content: center;
@@ -150,9 +166,7 @@ const styles = {
     fill: var(--primary-color);
     width: 25px;
     height: 25px;
-  `,
-  iconOpen: css`
-    transform: rotateZ(180deg);
+    transition: transform 0.1s var(--transition-easing);
   `,
   select: css`
     position: absolute;
@@ -178,18 +192,16 @@ const styles = {
     }
   `,
   dropdown: css`
-    position: relative;
-    top: calc(100% - 2px);
+    position: absolute;
+    top: 100%;
     width: 100%;
+    max-height: 185px;
+    overflow-y: auto;
     background-color: white;
     border: 1px solid var(--main-border-color);
     transition: transform 0.2s var(--transition-easing), opacity 0.2s var(--transition-easing);
-    transform: translateY(-100%);
+    transform: translateY(-50%) scaleY(0);
     opacity: 0;
-  `,
-  dropdownOpen: css`
-    transform: translateY(0);
-    opacity: 1;
   `,
   dropdownOption: css`
     padding: 10px 20px;

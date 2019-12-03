@@ -15,6 +15,7 @@ export default css`
     --secondary-color: ${secondaryColor.hex()};
     --text-color: ${textColor.hex()};
     --text-color-light: ${textColor.fade(0.5).string()};
+    --text-color-error: #ea2e31;
     --header-color: #2c363f;
     --footer-background: var(--header-color);
     --text-color-dark-bg: #f6f9fc;
@@ -84,6 +85,10 @@ export default css`
     text-decoration: none;
     color: var(--text-color);
     font-weight: 400;
+
+    &[disabled] {
+      opacity: 0.5;
+    }
 
     svg {
       margin-left: ${rhythm(0.2)};

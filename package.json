@@ -72,6 +72,8 @@
     "@types/typography": "^0.16.2",
     "@typescript-eslint/eslint-plugin": "^2.6.0",
     "@typescript-eslint/parser": "^2.6.0",
+    "babel-plugin-transform-inline-environment-variables": "^0.4.3",
+    "babel-preset-gatsby": "^0.2.23",
     "commitizen": "^4.0.3",
     "concurrently": "^5.0.0",
     "eslint": "^6.6.0",

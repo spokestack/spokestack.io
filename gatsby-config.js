@@ -12,55 +12,37 @@ module.exports = {
     },
     // Should match the queries in src/components/TeamMembers.tsx
     team: {
-      shelby: {
-        name: 'Shelby Bonnie',
-        title: 'CEO',
-        experience: 'CNET, Co-founder & former CEO, IAB'
-      },
-      tyler: {
-        name: 'Tyler Malone',
-        title: 'Front-End Engineer',
-        experience: 'Rabble, InvisionHeart'
-      },
       neil: {
         name: 'Neil Menne',
-        title: 'Analytics Engineer',
-        experience: 'OpenTable'
+        title: 'Principal Back-End Engineer'
       },
       will: {
         name: 'Will Rice',
-        title: 'Data Science Engineer',
-        experience: 'Masters in Data Science'
+        title: 'Data Science Engineer'
       },
       elizabeth: {
         name: 'Elizabeth Ropp',
-        title: 'UX & Product Design',
-        experience: 'SmartFurniture'
+        title: 'UX & Product Design'
       },
       brent: {
         name: 'Brent Spell',
-        title: 'CTO',
-        experience: 'OpenTable, HEALTHCAREfirst'
+        title: 'CTO'
       },
       mike: {
         name: 'Mike Tatum',
-        title: 'Product/Business',
-        experience: 'CNET, Whiskey Media'
+        title: 'CEO'
       },
       noel: {
         name: 'Noel Weichbrodt',
-        title: 'Solutions Engineer',
-        experience: 'OpenTable'
+        title: 'Principal Engineer'
       },
       timmy: {
         name: 'Timmy Willison',
-        title: 'Front-End Lead',
-        experience: 'jQuery Lead, OpenJS CPC, OpenTable'
+        title: 'Front-End Engineer'
       },
       josh: {
         name: 'Josh Ziegler',
-        title: 'Conversation Engineer',
-        experience: 'OpenTable, Masters in Linguistics'
+        title: 'Conversation Engineer'
       }
     }
   },

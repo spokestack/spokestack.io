@@ -24,7 +24,6 @@ export default function Team() {
             avatar={<Img alt={teamMember.name} fixed={image} style={styles.memberImage} />}
             name={teamMember.name}
             title={teamMember.title}
-            experience={teamMember.experience}
           />
         )
       })}
@@ -99,21 +98,7 @@ const teamQuery = graphql`
         }
       }
     }
-    shelby: file(absolutePath: { regex: "/headshots/shelby.png/" }) {
-      childImageSharp {
-        fixed(width: 186, height: 186) {
-          ...GatsbyImageSharpFixed
-        }
-      }
-    }
     timmy: file(absolutePath: { regex: "/headshots/timmy.jpg/" }) {
-      childImageSharp {
-        fixed(width: 186, height: 186) {
-          ...GatsbyImageSharpFixed
-        }
-      }
-    }
-    tyler: file(absolutePath: { regex: "/headshots/tyler.png/" }) {
       childImageSharp {
         fixed(width: 186, height: 186) {
           ...GatsbyImageSharpFixed
@@ -134,55 +119,37 @@ export const teamFragment = graphql`
   fragment TeamMembers on Site {
     siteMetadata {
       team {
-        shelby {
-          name
-          title
-          experience
-        }
-        tyler {
-          name
-          title
-          experience
-        }
         neil {
           name
           title
-          experience
         }
         will {
           name
           title
-          experience
         }
         elizabeth {
           name
           title
-          experience
         }
         brent {
           name
           title
-          experience
         }
         mike {
           name
           title
-          experience
         }
         noel {
           name
           title
-          experience
         }
         timmy {
           name
           title
-          experience
         }
         josh {
           name
           title
-          experience
         }
       }
     }

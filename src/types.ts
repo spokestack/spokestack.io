@@ -8,9 +8,7 @@ export type TeamMemberName =
   | 'mike'
   | 'neil'
   | 'noel'
-  | 'shelby'
   | 'timmy'
-  | 'tyler'
   | 'will'
 
 export interface TeamImages {

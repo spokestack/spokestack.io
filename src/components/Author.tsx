@@ -122,21 +122,7 @@ const authorQuery = graphql`
         }
       }
     }
-    shelby: file(absolutePath: { regex: "/headshots/shelby.png/" }) {
-      childImageSharp {
-        fixed(width: 95, height: 95) {
-          ...GatsbyImageSharpFixed
-        }
-      }
-    }
     timmy: file(absolutePath: { regex: "/headshots/timmy.jpg/" }) {
-      childImageSharp {
-        fixed(width: 95, height: 95) {
-          ...GatsbyImageSharpFixed
-        }
-      }
-    }
-    tyler: file(absolutePath: { regex: "/headshots/tyler.png/" }) {
       childImageSharp {
         fixed(width: 95, height: 95) {
           ...GatsbyImageSharpFixed

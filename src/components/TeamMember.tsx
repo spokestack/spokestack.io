@@ -7,16 +7,14 @@ interface Props {
   avatar: React.ReactNode
   name: string
   title: string
-  experience: string
 }
 
-export default function TeamMember({ avatar, name, title, experience }: Props) {
+export default function TeamMember({ avatar, name, title }: Props) {
   return (
     <div css={styles.teamMember}>
       {avatar}
       <h3>{name}</h3>
       <p>{title}</p>
-      <p css={styles.lightText}>{experience}</p>
     </div>
   )
 }
@@ -42,8 +40,5 @@ const styles = {
     ${MIN_TABLET_MEDIA_QUERY} {
       margin-bottom: ${rhythm(3)};
     }
-  `,
-  lightText: css`
-    color: var(--text-color-light);
   `
 }

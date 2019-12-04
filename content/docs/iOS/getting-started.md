@@ -109,7 +109,7 @@ func deactivate() {
 }
 ```
 
-All we're doing here is reflecting system events back to the main pipeline. See [the `SpeechPipeline` guide](/docs/Concepts/speech-pipeline) in the Concepts section for more discussion.
+All we're doing here is reflecting system events back to the main pipeline. See [the `SpeechPipeline` guide](speech-pipeline) for more discussion.
 
 Inside `didRecognize`, `result.transcript` will give you the raw text of what the user just said. Translating that raw text into an action in your app is the job of an NLU, or natural language understanding, component. Spokestack currently leaves the choice of NLU up to the app: There's a variety of NLU services out there ([DialogFlow](https://dialogflow.com/), [LUIS](https://www.luis.ai/home), or [wit.ai](https://wit.ai/), to name a few), or, if your app is simple enough, you can make your own with string matching or regular expressions.
 

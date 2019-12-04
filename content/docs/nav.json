@@ -1,9 +1,8 @@
 [
   "Welcome",
-  "API Reference",
   "Getting Started (iOS)",
   "Cookbook (iOS)",
-  "Spokestack's Speech Pipeline",
+  "Spokestack iOS Speech Pipeline",
   "Speech Pipeline Configuration",
   "Wakeword Models"
 ]

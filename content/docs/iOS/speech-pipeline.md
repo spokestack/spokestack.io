@@ -1,11 +1,11 @@
 ---
-title: "Spokestack's Speech Pipeline"
-navId: "Spokestack's Speech Pipeline"
+title: '`SpeechPipeline` in iOS'
+navId: 'Spokestack iOS Speech Pipeline'
 description: A detailed discussion of `SpeechPipeline`
 draft: false
 ---
 
-If you've read any of our other documentation, you know that `SpeechPipeline` is the main way you interact with Spokestack. This guide is here to explain in a little more detail how Spokestack uses this collection of components to recognize wakewords and user speech.
+If you've read any of our other documentation, you know that the speech pipeline is the main way you interact with Spokestack. This guide is here to explain in a little more detail how the iOS version of Spokestack uses this collection of components to recognize wakewords and user speech.
 
 ## What _is_ it?
 
@@ -13,7 +13,7 @@ As the name implies, `SpeechPipeline` is a collection of distinct modular compon
 
 Here's a simple picture of how the components and callbacks work together:
 
-![](images/speech_pipeline.png)
+![](images/speech_pipeline.png 'iOS speech pipeline')
 
 Now let's look at the `SpeechPipeline` initializer and talk about each component one at a time. For historical reasons, the initializer lists components in a different order than the one laid out in the previous diagram.
 
@@ -35,7 +35,7 @@ Note that `speechService` can be any class that adopts the `SpeechProcessor` pro
 
 ### 2. `speechConfiguration`
 
-The speech configuration is comprehensive enough to have its own guide, but in summary, this is where most of the fine-tuning for both wakeword and ASR happens. See the [configuration guide](pipeline-configuration) or [API reference](/docs/api-reference) for more details on each of these, but here are a few examples of the parameters you can change (by instantiating the class and setting the relevant property):
+The speech configuration is comprehensive enough to have its own guide, but in summary, this is where most of the fine-tuning for both wakeword and ASR happens. See the [configuration guide](pipeline-configuration) or [API reference](https://spokestack.github.io/spokestack-ios/) for more details on each of these, but here are a few examples of the parameters you can change (by instantiating the class and setting the relevant property):
 
 - `wakewords`/`wakePhrases`: If you're using ASR-based wakeword detection, these properties let you change your app's wakeword(s).
 - `wakeActiveMax`: The maximum amount of time (in milliseconds) that ASR will remain active to capture a single user utterance.

@@ -5,7 +5,7 @@ description: Code snippets and tips for iOS
 draft: false
 ---
 
-This is a collection of code snippets and brief descriptions designed to help you be as productive as possible as quickly as possible. Check out the [Concepts](/docs/concepts/speech-pipeline) section for more detailed discussions about the techniques mentioned here.
+This is a collection of code snippets and brief descriptions designed to help you be as productive as possible as quickly as possible. Check out the Concepts section on the left for more detailed discussions about the techniques mentioned here.
 
 ### Set up a default `SpeechPipeline`
 

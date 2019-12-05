@@ -71,7 +71,8 @@ export default function SampleVoices() {
           selected={selected}
           extraCss={styles.select}
           options={options}
-          onChange={(option) => {
+          onChange={(value) => {
+            const option = find(options, { value })
             if (option) {
               setSelected(option)
             }

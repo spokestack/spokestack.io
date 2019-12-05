@@ -29,7 +29,11 @@ export default function Blog({ post, selectFirst }: Props) {
   }
   return (
     <Layout>
-      <SEO title="Blog" keywords={['spokestack', 'blog', 'voice', 'artificial intelligence']} />
+      <SEO
+        title="Blog"
+        description={post.frontmatter.description || 'The Spokestack Blog'}
+        keywords={['spokestack', 'blog', 'voice', 'artificial intelligence']}
+      />
       <StickyNavLayout
         links={links}
         rightContent={<Author author={post.frontmatter.author as TeamMemberName} />}>

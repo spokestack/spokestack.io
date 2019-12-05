@@ -25,6 +25,14 @@ function linkIsSelected(link: StickyLink) {
   return link.forceSelect || window.location.pathname.indexOf(link.href) > -1
 }
 
+function optionsFromLinks(links: StickyLink[]) {
+  return links.map((link) => (
+    <option key={`option-${link.title}`} value={link.href}>
+      {link.title}
+    </option>
+  ))
+}
+
 export default function StickyNav({ links = [], location, matchHash }: StickyNavProps) {
   if (!links.length || (matchHash && !location)) {
     return null
@@ -64,13 +72,6 @@ export default function StickyNav({ links = [], location, matchHash }: StickyNav
   }
   const groupedLinks = groupBy(links, 'section')
   const sections = Object.keys(groupedLinks)
-  function optionsFromLinks(links: StickyLink[]) {
-    return links.map((link) => (
-      <option key={`option-${link.title}`} value={link.href}>
-        {link.title}
-      </option>
-    ))
-  }
 
   return (
     <nav css={styles.stickyNav}>
@@ -91,8 +92,8 @@ export default function StickyNav({ links = [], location, matchHash }: StickyNav
           iconWrapCss={styles.mobileNavIconWrap}
           iconCss={styles.mobileNavIcon}
           selected={{ title: selectedLink.title, value: selectedLink.href }}
-          onChange={(option) => {
-            window.location.href = option.value
+          onChange={(value) => {
+            window.location.href = value
           }}>
           {sections.map((section) =>
             isSection(section) ? (

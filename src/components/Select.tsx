@@ -3,7 +3,6 @@ import { SerializedStyles, css } from '@emotion/core'
 
 import { MIN_DEFAULT_MEDIA_QUERY } from 'typography-breakpoint-constants'
 import SVGIcon from './SVGIcon'
-import find from 'lodash/find'
 import iconArrowDown from '../icons/arrow-down.svg'
 import { primaryColor } from '../utils/globalStyles'
 
@@ -22,7 +21,7 @@ interface Props extends Omit<SelectHTMLAttributes<HTMLSelectElement>, 'onChange'
   iconCss?: SerializedStyles
   iconWrapCss?: SerializedStyles
   selected: Option
-  onChange: (selected: Option) => void
+  onChange: (value: string) => void
 }
 
 export default function Select({
@@ -68,7 +67,7 @@ export default function Select({
         disabled={disabled}
         value={selected.value}
         onChange={(event) => {
-          onChange(find(options, { value: event.target.value }))
+          onChange(event.target.value)
         }}
         {...props}>
         {options
@@ -86,7 +85,7 @@ export default function Select({
               key={option.value}
               css={styles.dropdownOption}
               onClick={() => {
-                onChange(option)
+                onChange(option.value)
                 setOpen(false)
               }}>
               {option.title}
@@ -178,7 +177,7 @@ const styles = {
     background: transparent;
     border: none;
     color: transparent;
-    border-radius: 25px;
+    border-radius: 0;
     z-index: 100;
 
     optgroup,

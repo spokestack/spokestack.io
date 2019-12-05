@@ -40,7 +40,7 @@ export default function DocsPage({ post, selectFirst }: Props) {
     <Layout>
       <SEO
         title="Docs"
-        description="Documentation for the Spokestack API"
+        description={post.frontmatter.description || 'Documentation for the Spokestack API'}
         keywords={['spokestack', 'documentation', 'voice', 'artificial intelligence']}
       />
       <StickyNavLayout links={orderedLinks}>

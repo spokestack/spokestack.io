@@ -1,5 +1,5 @@
 ---
-title: '`SpeechPipeline` in iOS'
+title: 'Speech Pipeline in iOS'
 navId: 'Spokestack iOS Speech Pipeline'
 description: A detailed discussion of `SpeechPipeline`
 draft: false

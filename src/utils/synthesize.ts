@@ -5,10 +5,10 @@ import sanitizeIPA from './sanitizeIPA'
 export default async function synthesize(voice: string, text: string) {
   const [loginError, token] = await login()
   if (loginError || !token) {
-    return [new Error('Failed to generate auth token')]
+    return [loginError || new Error('Failed to generate auth token. Please check your network.')]
   }
   if (!(text = sanitizeIPA(text))) {
-    return [new Error('The text is not valid IPA. Please double check the brackets.')]
+    return [new Error('The text is not valid. Please double check the brackets.')]
   }
   const [synthError, res] = await postToCore('/speech/v1/showcase/synthesize', {
     headers: {

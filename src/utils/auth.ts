@@ -7,7 +7,7 @@ async function createAnonymousUser() {
   const [error, response] = await postToCore('/user/v1/login', { body: { ttl: 10800 } })
   if (error || !response) {
     console.error(error)
-    return [new Error('Login request failed. Please check your network connection.')]
+    return [new Error('Authorization request failed. Please check your network connection.')]
   }
   const status = response.status
   if (response.ok) {
@@ -16,9 +16,11 @@ async function createAnonymousUser() {
       setUserToken(token)
       return [null, token]
     }
-    return [new Error(`Login response returned status: ${status} with no X-Authorization header`)]
+    return [
+      new Error(`Authorization response returned status: ${status} with no X-Authorization header`)
+    ]
   }
-  return [new Error(`Login response returned status: ${status}`)]
+  return [new Error(`Authorization response returned status: ${status}`)]
 }
 
 export async function login() {

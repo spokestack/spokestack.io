@@ -10,7 +10,7 @@ async function createAnonymousUser() {
     return [new Error('Login request failed. Please check your network connection.')]
   }
   const status = response.status
-  if (status >= 200 && status < 300) {
+  if (response.ok) {
     const token = response.headers.get('X-Authorization')
     if (token) {
       setUserToken(token)
@@ -31,7 +31,9 @@ export async function login() {
         Authorization: token
       }
     })
-    return [error, token]
+    if (!error) {
+      return [null, token]
+    }
   }
   return createAnonymousUser()
 }

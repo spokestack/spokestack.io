@@ -90,6 +90,9 @@ export default css`
       margin-left: ${rhythm(0.2)};
     }
 
+    &:visited {
+      color: var(--text-color);
+    }
     &:hover:not([disabled]) {
       background-color: var(--button-background-hover);
       border-color: var(--button-background-hover);

@@ -1,16 +1,20 @@
 import React, { TextareaHTMLAttributes } from 'react'
 import { SerializedStyles, css } from '@emotion/core'
 
+import LoadingIcon from './LoadingIcon'
+
 interface Props extends Omit<TextareaHTMLAttributes<HTMLTextAreaElement>, 'onChange'> {
   id: string
   label: string
   extraCss?: SerializedStyles
   labelCss?: SerializedStyles
   onChange?: (value: string) => void
+  /* Show a loading animation on the textarea */
+  loading?: boolean
 }
 
 export default React.forwardRef<HTMLTextAreaElement, Props>(function Textarea(
-  { id, extraCss, labelCss, label, onChange, ...props }: Props,
+  { id, extraCss, labelCss, label, loading, onChange, ...props }: Props,
   ref
 ) {
   return (
@@ -23,6 +27,7 @@ export default React.forwardRef<HTMLTextAreaElement, Props>(function Textarea(
           onChange={(event) => onChange(event.target.value)}
           {...props}
         />
+        {loading && <LoadingIcon extraCss={styles.loading} />}
       </div>
       <label htmlFor={id} css={[styles.label, labelCss]}>
         {label}
@@ -37,6 +42,7 @@ const styles = {
     flex-direction: column;
   `,
   textareaWrap: css`
+    position: relative;
     width: 100%;
     line-height: 0;
   `,
@@ -58,5 +64,10 @@ const styles = {
     border-radius: 0 0 7px 7px;
     padding: 20px;
     text-align: center;
+  `,
+  loading: css`
+    position: absolute;
+    bottom: 20px;
+    right: 20px;
   `
 }

@@ -86,24 +86,21 @@ export default css`
     color: var(--text-color);
     font-weight: 400;
 
-    &[disabled] {
-      opacity: 0.5;
-    }
-
     svg {
       margin-left: ${rhythm(0.2)};
     }
 
-    &:visited {
-      color: var(--text-color);
-    }
-    &:hover {
+    &:hover:not([disabled]) {
       background-color: var(--button-background-hover);
       border-color: var(--button-background-hover);
       color: var(--text-color);
     }
-    &:active {
+    &:active:not([disabled]) {
       box-shadow: inset 0 0 5px rgba(0, 0, 0, 0.5);
+    }
+    &[disabled] {
+      opacity: 0.5;
+      cursor: default;
     }
   }
   .btn.btn-large {

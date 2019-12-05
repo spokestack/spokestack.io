@@ -3,7 +3,6 @@ import Select, { Option } from './Select'
 
 import Button from './Button'
 import Card from './Card'
-import LoadingIcon from './LoadingIcon'
 import { MIN_DEFAULT_MEDIA_QUERY } from 'typography-breakpoint-constants'
 import SVGIcon from './SVGIcon'
 import Textarea from './Textarea'
@@ -28,6 +27,7 @@ export default function SampleVoices() {
   const selectedVoice = find(voices, { model: selected.value })
   function play() {
     if (!submitting && audioRef.current) {
+      audioRef.current.currentTime = 0
       audioRef.current.play()
     }
   }
@@ -79,26 +79,19 @@ export default function SampleVoices() {
         />
         <Button large disabled={submitting} extraCss={styles.button} onClick={play}>
           <SVGIcon icon={iconPlay.id} extraCss={styles.playIcon} />
-          Hear it
+          {submitting ? 'Synthesizing...' : 'Hear it'}
         </Button>
-        <div css={styles.textarea}>
-          <Textarea
-            ref={textareaRef}
-            id="sample-voice-textarea"
-            disabled={submitting}
-            label={errorText || selectedVoice.description}
-            labelCss={errorText ? styles.labelError : null}
-            defaultValue={'Hello, welcome to {{spoʊkstæk}}. What would you like to say?'}
-            onChange={debounce(getAudio, 1000)}
-          />
-        </div>
+        <Textarea
+          ref={textareaRef}
+          id="sample-voice-textarea"
+          extraCss={styles.textarea}
+          label={errorText || selectedVoice.description}
+          labelCss={errorText ? styles.labelError : null}
+          loading={submitting}
+          defaultValue={'Hello, welcome to {{spoʊkstæk}}. What would you like to say?'}
+          onChange={debounce(getAudio, 1000)}
+        />
       </div>
-      {submitting && (
-        <div css={styles.loading}>
-          <LoadingIcon />
-          <p>Synthesizing...</p>
-        </div>
-      )}
     </Card>
   )
 }
@@ -141,7 +134,6 @@ const styles = {
     margin-left: 0 !important;
   `,
   textarea: css`
-    position: relative;
     grid-area: textarea;
   `,
   labelError: css`

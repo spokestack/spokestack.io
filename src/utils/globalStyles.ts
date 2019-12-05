@@ -85,6 +85,7 @@ export default css`
     text-decoration: none;
     color: var(--text-color);
     font-weight: 400;
+    user-select: none;
 
     svg {
       margin-left: ${rhythm(0.2)};

@@ -100,6 +100,11 @@ These parameters may be adjusted at runtime without rebuilding/retraining the ML
 - `frame-width`
   The number of milliseconds in each frame of audio sent to the wakeword detector. Defaults to 20.
 
+- `trace-level`
+  Determines the level of logging output received by your app. See the `SpeechContext.TraceLevel` enum on Android or the `Trace` enum on iOS for valid values.
+
+  **iOS name**: `tracing`
+
 ## iOS-specific Parameters
 
 These parameters only exist in the iOS `SpeechConfiguration` class.
@@ -115,6 +120,3 @@ These parameters only exist in the iOS `SpeechConfiguration` class.
 
 - `authorization`
   Used to authorize requests for Spokestack TTS. Defaults to an API key that allows access only to the free `demo-male` voice.
-
-- `tracing`
-  Determines the level of logging output received by your app. See the `Trace` enum for valid values.

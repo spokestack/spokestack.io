@@ -100,6 +100,16 @@ These parameters may be adjusted at runtime without rebuilding/retraining the ML
 - `frame-width`
   The number of milliseconds in each frame of audio sent to the wakeword detector. Defaults to 20.
 
+- `agc-target-level-dbfs`
+  Used in the `AutomaticGainControl` pipeline component, this parameter attempts to correct the RMS amplitude of input audio to the specified dbfs level to avoid clipping. This setting should be tuned in conjunction with the specific wakeword you're using and any devices you're targeting. See [Wikipedia](https://en.wikipedia.org/wiki/DBFS) for a description of DBFS.
+
+  _Not available on iOS_
+
+- `agc-compression-gain-db`
+  Used in the `AutomaticGainControl` pipeline component, this parameter adds the specified decibel gain after performing dynamic range compression. This setting should be tuned in conjunction with the specific wakeword you're using and any devices you're targeting.
+
+  _Not available on iOS_
+
 - `trace-level`
   Determines the level of logging output received by your app. See the `SpeechContext.TraceLevel` enum on Android or the `Trace` enum on iOS for valid values.
 

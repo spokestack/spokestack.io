@@ -9,10 +9,6 @@ This guide will get you up and running with Spokestack for Android, and you'll b
 
 One caveat before we start, though: _This is not a collection of best practices_. We're going to be trading thoughtful organization for convenience here, so when we say something like "put this in your main activity", just know that you might not want to leave it there long-term. OK, now that that's out of the way, let's jump right in.
 
-## Prerequisites
-
-Your app needs to target Android 8.0 (API level 26) or higher in order to use speech recognition.
-
 ## Installation
 
 First, you'll need to declare the Spokestack dependencies in your project. Because Spokestack includes native libraries, this is slightly more involved than a normal dependency. You'll need to add the following to your app's top-level `build.gradle`:

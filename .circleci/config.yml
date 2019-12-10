@@ -23,7 +23,7 @@ jobs:
     steps:
       - checkout
       - *restore_yarn_cache
-      - run: yarn --frozen-lockfile
+      - run: yarn --pure-lockfile
       - *save_yarn_cache
 
       - run:

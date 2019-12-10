@@ -32,7 +32,7 @@ export default function Author({ author }: Props) {
             imgStyle={styles.image}
           />
         )}
-        <h3>{name}</h3>
+        <h3 css={styles.name}>{name}</h3>
         <p css={styles.title}>{title}</p>
       </div>
     </div>
@@ -70,6 +70,9 @@ const styles = {
   image: {
     borderRadius: '50%'
   },
+  name: css`
+    margin-bottom: 0;
+  `,
   title: css`
     opacity: 0.5;
   `

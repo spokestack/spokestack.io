@@ -134,7 +134,7 @@ We've listed all possible speech events here; see [the documentation](https://ww
 
 If the event is `RECOGNIZE`, `context.transcript` will give you the raw text of what the user just said. Translating that raw text into an action in your app is the job of an NLU, or natural language understanding, component. Spokestack currently leaves the choice of NLU up to the app: There's a variety of NLU services out there ([DialogFlow](https://dialogflow.com/), [LUIS](https://www.luis.ai/home), or [wit.ai](https://wit.ai/), to name a few), or, if your app is simple enough, you can make your own with string matching or regular expressions.
 
-We know that NLU is an important piece of the puzzle, and we're working on a full-featured NLU component for Spokestack based on years of research and lessons learned from working with the other services; [sign up for our newsletter](LINK) to be the first to know when it's ready.
+We know that NLU is an important piece of the puzzle, and we're working on a full-featured NLU component for Spokestack based on years of research and lessons learned from working with the other services; we'll update this space when it's ready.
 
 For the sake of our demo, though, let's say you're creating a voice-controlled timer. `handleSpeech` might look something like this:
 
@@ -202,7 +202,7 @@ class MyActivity : AppCompatActivity(), OnSpeechEventListener, TTSCallback {
 }
 ```
 
-The API key in this example sets you up to use the demo voice available for free with Spokestack; for more configuration options and details about controlling pronunciation, see [the TTS guide](tts).
+The API key in this example sets you up to use the demo voice available for free with Spokestack; for more configuration options and details about controlling pronunciation, see [the TTS guide](/docs/Concepts/tts).
 
 ## Conclusion
 

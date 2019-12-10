@@ -23,10 +23,12 @@ Note that long inputs should be split into separate `s` ("sentence") elements fo
 Currently, Spokestack is focused on pronunciation of English words and loan words/foreign words common in spoken English and thus restricts its character set from the full range of [IPA](https://en.wikipedia.org/wiki/International_Phonetic_Alphabet) characters. Characters valid for an IPA `ph` attribute are:
 
 ```bash
- [' ', ',', 'a', 'b', 'd', 'e', 'f', 'g', 'h', 'i', 'j', 'k', 'l', 'm',
-  'n', 'o', 'p', 'r', 's', 't', 'u', 'v', 'w', 'z', 'æ', 'ð', 'ŋ', 'ɑ',
-  'ɔ', 'ə', 'ɛ', 'ɝ', 'ɪ', 'ʃ', 'ʊ', 'ʌ', 'ʒ', 'ˈ', 'ˌ', 'ː', 'θ', 'ɡ',
-  'x', 'y', 'ɹ', 'ʰ', 'ɜ', 'ɒ', 'ɚ', 'ɱ', 'ʔ', 'ɨ', 'ɾ', 'ɐ', 'ʁ', 'ɵ', 'χ']
+ [' ', ',', 'a', 'b', 'd', 'e', 'f', 'g', 'h', 'i', 'j',
+ 'k', 'l', 'm', 'n', 'o', 'p', 'r', 's', 't', 'u', 'v',
+ 'w', 'z', 'æ', 'ð', 'ŋ', 'ɑ', 'ɔ', 'ə', 'ɛ', 'ɝ', 'ɪ',
+ 'ʃ', 'ʊ', 'ʌ', 'ʒ', 'ˈ', 'ˌ', 'ː', 'θ', 'ɡ', 'x', 'y',
+ 'ɹ', 'ʰ', 'ɜ', 'ɒ', 'ɚ', 'ɱ', 'ʔ', 'ɨ', 'ɾ', 'ɐ', 'ʁ',
+ 'ɵ', 'χ']
 ```
 
 and the emphasis symbols `ˈ`, `,`, `ˌ`, and `ː`.
@@ -35,11 +37,14 @@ Using invalid characters will not cause an error, but it might result in unexpec
 
 ### Some brief examples
 
-- when you just can't give up that web prefix:
+- When you just can't give up that web prefix:
+
   `<speak>See all our products at <say-as interpret-as="characters">www</say-as> dot my company dot com</speak>`
 
-- insert a pregnant pause:
+- Insert a pregnant pause:
+
   `<speak>Today's stock price <break time="500ms"/> fell three percent.</speak>`
 
-- customize pronunciation to make a point:
+- Customize pronunciation to make a point:
+
   `<speak>I don't care what you say; it's pronounced <phoneme alphabet="ipa" ph="gɪf">gif</phoneme>, not <phoneme alphabet="ipa" ph="dʒɪf">gif</phoneme>!</speak>`

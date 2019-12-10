@@ -131,3 +131,30 @@ Follow the examples in the `content/docs` folder.
 Sub-folders are automatically grouped and the section takes on the name of the folder. Casing is not automatically adjusted, so the casing of the folder should be identical to the intended name of the section.
 
 The order of links in the docs navigation is dictated by `content/docs/nav.json`. Each docs page should have a readable, unique `navId` to be used for ordering in the navigation, in case there are multiple posts with the same title. Enter the `navId` of the post wherever it should appear in the list.
+
+The following frontmatter is required:
+
+```md
+title: Visible title
+navId: Invisible title used for navigation (must be unique)
+description: A description for the docs page for SEO
+draft: false # If true, will only show in development
+```
+
+## Add a new blog post
+
+Ensure you have created your own fork on GitHub. If you're unfamiliar with how pull requests work, have a look at the [GitHub docs](https://help.github.com/en/github/collaborating-with-issues-and-pull-requests/proposing-changes-to-your-work-with-pull-requests).
+
+Follow the examples in the `content/blog` folder.
+
+Blog posts are ordered by the date frontmatter field.
+
+The following frontmatter is required:
+
+```md
+title: Blog post title
+date: '2019-11-01' # Can be any valid date string for creating a JS Date
+description: A description for the blog post for SEO
+author: noel # This should match a key in the "team" object. See /gatsby-config.js.
+draft: false # If true, will only show in development
+```

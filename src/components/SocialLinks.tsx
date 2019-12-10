@@ -69,8 +69,8 @@ const styles = {
     }
   `,
   talkButton: css`
-    background-color: transparent;
-    color: var(--secondary-color);
+    background-color: transparent !important;
+    color: var(--secondary-color) !important;
     transition: background-color 0.2s var(--transition-easing), color 0.2s var(--transition-easing);
     margin-left: ${rhythm(1.2)};
 
@@ -79,8 +79,8 @@ const styles = {
     }
 
     &:hover {
-      color: var(--primary-color);
-      background-color: var(--secondary-color);
+      color: var(--primary-color) !important;
+      background-color: var(--secondary-color) !important;
 
       svg {
         fill: var(--primary-color) !important;

@@ -1,7 +1,7 @@
 ---
 title: Speech Pipeline Configuration
 navId: Speech Pipeline Configuration
-description: A discussion of the parameters available to configure the speech pipeline
+description: Documentation for configuring the speech pipeline
 draft: false
 ---
 

@@ -1,7 +1,7 @@
 ---
 title: SpeechPipeline in iOS
 navId: Spokestack iOS Speech Pipeline
-description: A detailed discussion of `SpeechPipeline`
+description: Documentation for the SpeechPipeline class in iOS
 draft: false
 ---
 

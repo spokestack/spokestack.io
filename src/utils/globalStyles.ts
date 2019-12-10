@@ -63,6 +63,9 @@ export default css`
     background-color: var(--code-background);
     padding: ${rhythm(0.1)} ${rhythm(0.2)};
   }
+  pre code {
+    padding: 0;
+  }
   h3 code {
     font-size: ${adjustFontSizeTo('25px').fontSize};
     line-height: 1.4;

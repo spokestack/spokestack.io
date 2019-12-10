@@ -39,6 +39,7 @@ export default function Privacy() {
           driving record or other information about your ability to perform the position. We may
           also collect the last four digits of your social security number and your nationality.
         </p>
+
         <h3>How we collect information</h3>
         <p>
           We collect information directly from you. We collect information if you sign up for a
@@ -53,6 +54,7 @@ export default function Privacy() {
           We get information about you from third parties. For example, our business partners or
           social media platforms may give us information about you.
         </p>
+
         <h3>How we use information</h3>
         <p>
           We use information to respond to your requests, questions, applications and entries. We
@@ -115,7 +117,8 @@ export default function Privacy() {
           if part of our business is sold we may give our customer list as part of that transaction.
         </p>
         <p>We may share information for other reasons we may describe to you.</p>
-        <p>YOUR CHOICES ABOUT SHARING AND MARKETING PRACTICES.</p>
+
+        <h3>Your choices about sharing and marketing practices</h3>
         <p>
           You can opt out of receiving our marketing emails. To stop receiving promotional emails
           from us, follow the instructions in any promotional message you get from us. Even if you
@@ -131,7 +134,8 @@ export default function Privacy() {
           Indicate in your letter that you are a California resident making a &ldquo;shine the
           light&rdquo; inquiry.
         </p>
-        <p>OUR SITES ARE NOT FOR KIDS.</p>
+
+        <h3>Our sites are not for kids</h3>
         <p>
           Our sites and apps are meant for adults and teens. We do not knowingly collect personally
           identifiable information from children under 13. If you are a parent or legal guardian and
@@ -149,7 +153,7 @@ export default function Privacy() {
           required by law.
         </p>
 
-        <p>We store information in the United States</p>
+        <h3>We store information in the United States</h3>
         <p>
           If you live outside of the U.S., you understand and agree that we may transfer your
           information to the United States. This site is subject to U.S. laws, which may not afford
@@ -178,17 +182,19 @@ export default function Privacy() {
           also use these tools. These tools may include browser cookies or web beacons. We use these
           tools:
         </p>
-        <p>To recognize new or past customers.</p>
-        <p>To store your password if you are registered on our site.</p>
-        <p>To improve our website.</p>
-        <p>
-          To serve you with advertising content in which we think you will be interested. To do so,
-          we may observe your behaviors on this website and other websites. We may also collect
-          information about your browsing history.
-        </p>
-        <p>To better understand the interests of our customers and our website visitors.</p>
+        <ul>
+          <li>To recognize new or past customers.</li>
+          <li>To store your password if you are registered on our site.</li>
+          <li>To improve our website.</li>
+          <li>
+            To serve you with advertising content in which we think you will be interested. To do
+            so, we may observe your behaviors on this website and other websites. We may also
+            collect information about your browsing history.
+          </li>
+          <li>To better understand the interests of our customers and our website visitors</li>
+        </ul>
 
-        <p>You can control tracking tools</p>
+        <h3>You can control tracking tools</h3>
         <p>
           Your browser may give you the ability to control cookies. How you do so depends on the
           type of cookie. Certain browsers can be set to reject browser cookies. If you block
@@ -205,7 +211,7 @@ export default function Privacy() {
           signals.
         </p>
 
-        <p>Our ads may be served based on tracking</p>
+        <h3>Our ads may be served based on tracking</h3>
         <p>
           We may work with online advertising companies to show you relevant and useful ads. This
           includes ads served on other companies&rsquo; sites. These ads may be served based on
@@ -215,13 +221,13 @@ export default function Privacy() {
           or on third party sites.
         </p>
 
-        <p>You can opt-out of online behavioral advertising</p>
+        <h3>You can opt-out of online behavioral advertising</h3>
         <p>
           To opt out of having your online behavior collected for advertising purposes, visit
           http://www.aboutads.info/choices. Choices you make are both browser and device-specific.
         </p>
 
-        <p>Contact us if you have more questions</p>
+        <h3>Contact us if you have more questions</h3>
         <p>
           If you have any questions about this Policy, please contact Pylon ai Consumer Relations:
         </p>

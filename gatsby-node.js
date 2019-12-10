@@ -47,7 +47,6 @@ exports.createPages = ({ graphql, actions }) => {
           }
         }
         docs: allMarkdownRemark(
-          sort: { fields: [frontmatter___date], order: DESC },
           filter: { fileAbsolutePath: { regex: "/docs/" }${
             isProd ? ',frontmatter: { draft: { ne: true } }' : ''
           } },

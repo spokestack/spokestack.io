@@ -1,6 +1,6 @@
 ---
 title: Web Browser and React Support for ASR and TTS
-date: '2019-11-01T15:20:34.735Z'
+date: '2019-11-01'
 description: Web Browser and React Support for ASR and TTS
 author: noel
 draft: false

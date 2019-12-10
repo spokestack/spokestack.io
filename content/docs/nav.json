@@ -2,11 +2,11 @@
   "Welcome",
   "Getting Started (iOS)",
   "Cookbook (iOS)",
-  "Spokestack iOS Speech Pipeline",
+  "Speech Pipeline (iOS)",
   "Getting Started (Android)",
   "Cookbook (Android)",
+  "Speech Pipeline (Android)",
   "TTS",
-  "Android Speech Pipeline",
   "Speech Pipeline Configuration",
   "Wakeword Models"
 ]

@@ -15,6 +15,7 @@ title: <%- title %>
 date: '<%- date %>'<% if(typeof description !== 'undefined') { %>
 description: <%- description %>
 <% } %>
+author: timmy
 draft: true
 ---
 

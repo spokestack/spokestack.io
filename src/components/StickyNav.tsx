@@ -37,7 +37,7 @@ export default function StickyNav({ links = [], location, matchHash }: StickyNav
   if (!links.length || (matchHash && !location)) {
     return null
   }
-  const [selectedLink, setSelectedLink] = useState<StickyLink>({ title: null, href: null })
+  const [selectedLink, setSelectedLink] = useState<StickyLink>(null)
   const [selectedId, setSelectedId] = useState<string>(null)
   useEffect(() => {
     if (matchHash) {
@@ -91,7 +91,9 @@ export default function StickyNav({ links = [], location, matchHash }: StickyNav
           labelCss={styles.mobileNavLabel}
           iconWrapCss={styles.mobileNavIconWrap}
           iconCss={styles.mobileNavIcon}
-          selected={{ title: selectedLink.title, value: selectedLink.href }}
+          selected={
+            selectedLink ? { title: selectedLink.title, value: selectedLink.href } : undefined
+          }
           onChange={(value) => {
             window.location.href = value
           }}>

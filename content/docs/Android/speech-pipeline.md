@@ -1,6 +1,6 @@
 ---
 title: SpeechPipeline in Android
-navId: Android Speech Pipeline
+navId: Speech Pipeline (Android)
 description: Documentation for the SpeechPipeline class in Android
 draft: false
 ---

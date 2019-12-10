@@ -10,7 +10,7 @@ type Props = PageRendererProps & {
   }
 }
 
-export default function Docs({ data }: Props) {
+export default function Blog({ data }: Props) {
   return <BlogPost selectFirst post={data.firstPost.edges[0].node} />
 }
 

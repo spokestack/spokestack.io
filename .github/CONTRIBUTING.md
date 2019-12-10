@@ -126,7 +126,7 @@ To update, run `yarn schema`.
 
 ## Adding a new documentation page
 
-Follow the examples in the `content/docs` folder.
+Follow the examples in the `content/docs` folder. The name of the file is used as the URL for the page.
 
 Sub-folders are automatically grouped and the section takes on the name of the folder. Casing is not automatically adjusted, so the casing of the folder should be identical to the intended name of the section.
 
@@ -147,7 +147,7 @@ Ensure you have created your own fork on GitHub. If you're unfamiliar with how p
 
 Follow the examples in the `content/blog` folder.
 
-Blog posts are ordered by the date frontmatter field.
+Blog posts are ordered by the date frontmatter field. The name of the file is used as the URL for the page.
 
 The following frontmatter is required:
 

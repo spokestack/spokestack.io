@@ -1,0 +1,18 @@
+---
+title: Why We're Building Spokestack
+date: '2019-12-10T20:17:39.257Z'
+description: Spokestack is a powerful platform of open source libraries and robust services to make
+author: mike
+draft: false
+---
+
+Over [58% of Americans](https://voicebot.ai/) already use their smart phone as a voice assistant - more than smart speaker, smart watch and desktop voice assistant users combined. That's because we have them with us at all times.
+
+**Smart phones are smart because apps like yours make them so. In order for apps to become smarter, they need a voice.**
+
+Here's an example: try saying "Hey Siri, open {your app name} or "OK, Google, open {your app name}" depending on your phone.
+
+Did your app say anything? Did it ask what you needed? If not, Spokestack can help.
+At Spokestack, it's our mission to give every company a [unique voice](https://labs.spokestack.io), one that reinforces their brand's relationship with customers. We believe every company should have direct conversations with their customers rather than broker with intermediaries. Customers should know who they're talking to when they ask for your brand. Voice enables a new way to interact with customers that will grow your business by making your app more useful.
+
+Finally, we believe in open source software, best practices around privacy, and making sure you have full control over conversations with your customers. We're at the forefront of the next great leap in user experiences. We're excited to partner with you to build that future together.

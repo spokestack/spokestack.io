@@ -7,8 +7,8 @@ import iconArrowDown from '../icons/arrow-down.svg'
 import { primaryColor } from '../utils/globalStyles'
 
 export interface Option {
-  value: string
   title: string
+  value?: string
 }
 
 interface Props extends Omit<SelectHTMLAttributes<HTMLSelectElement>, 'onChange'> {
@@ -34,7 +34,7 @@ export default function Select({
   selectCss,
   id,
   disabled,
-  selected,
+  selected = { title: 'None' },
   onChange,
   ...props
 }: Props) {

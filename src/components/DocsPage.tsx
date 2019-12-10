@@ -16,7 +16,13 @@ interface Props {
 
 function orderLinks(links: StickyLink[]) {
   return sortBy(links, (link) => {
-    return order.indexOf(link.navId)
+    const index = order.indexOf(link.navId)
+    if (index === -1) {
+      throw new Error(
+        `Docs page with title ${link.title} has navId ${link.navId}, which does not exist in nav.json.`
+      )
+    }
+    return index
   })
 }
 

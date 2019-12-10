@@ -53,7 +53,10 @@ export default function UsageMap() {
       </header>
       <p css={styles.credit}>
         <sup>*</sup>
-        Source: <a href="https://voicebot.ai/">voicebot.ai</a> 2018
+        Source:{' '}
+        <a href="https://voicebot.ai/2019/01/15/twice-the-number-of-u-s-adults-have-tried-in-car-voice-assistants-as-smart-speakers/">
+          voicebot.ai
+        </a>
       </p>
     </div>
   )

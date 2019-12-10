@@ -6,7 +6,7 @@ author: mike
 draft: false
 ---
 
-Over [58% of Americans](https://voicebot.ai/) already use their smart phone as a voice assistant - more than smart speaker, smart watch and desktop voice assistant users combined. That's because we have them with us at all times.
+Over [58% of Americans](https://voicebot.ai/2019/01/15/twice-the-number-of-u-s-adults-have-tried-in-car-voice-assistants-as-smart-speakers/) already use their smart phone as a voice assistant - more than smart speaker, smart watch and desktop voice assistant users combined. That's because we have them with us at all times.
 
 **Smart phones are smart because apps like yours make them so. In order for apps to become smarter, they need a voice.**
 

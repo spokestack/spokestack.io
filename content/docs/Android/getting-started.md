@@ -1,7 +1,7 @@
 ---
 title: Getting Started
 navId: Getting Started (Android)
-description: Getting started with the Spokestack API
+description: Getting started with the Spokestack Android API
 draft: false
 ---
 

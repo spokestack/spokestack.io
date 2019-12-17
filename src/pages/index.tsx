@@ -52,7 +52,7 @@ export default function Index({ data, location }: Props) {
       <SEO title={siteTitle} keywords={['spokestack', 'mobile', 'voice']} />
       <header css={styles.header}>
         <h1 css={styles.headerText}>Give your mobile app a voice&trade;</h1>
-        <h4 css={[styles.headerText, styles.h4]}>
+        <h4 css={[styles.headerText, styles.h4]} className="spokestack-speakable">
           Spokestack is a powerful platform of open source libraries and robust services to make
           your app fully voice-enabled.
         </h4>

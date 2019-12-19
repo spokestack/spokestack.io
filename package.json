@@ -27,6 +27,7 @@
     "color": "^3.1.2",
     "gatsby": "^2.13.41",
     "gatsby-image": "^2.2.32",
+    "gatsby-plugin-create-client-paths": "^2.1.20",
     "gatsby-plugin-emotion": "^4.1.2",
     "gatsby-plugin-feed": "^2.3.5",
     "gatsby-plugin-google-analytics": "^2.1.4",
@@ -56,7 +57,8 @@
     "typeface-rosario": "^0.0.72",
     "typescript": "^3.5.3",
     "typography": "^0.16.19",
-    "typography-breakpoint-constants": "^0.16.19"
+    "typography-breakpoint-constants": "^0.16.19",
+    "uuid": "^3.3.3"
   },
   "devDependencies": {
     "@commitlint/cli": "^8.1.0",
@@ -69,6 +71,7 @@
     "@types/lodash": "^4.14.149",
     "@types/react-helmet": "^5.0.8",
     "@types/typography": "^0.16.2",
+    "@types/uuid": "^3.4.6",
     "@typescript-eslint/eslint-plugin": "^2.6.0",
     "@typescript-eslint/parser": "^2.6.0",
     "babel-plugin-transform-inline-environment-variables": "^0.4.3",
@@ -79,7 +82,6 @@
     "eslint-config-prettier": "^6.5.0",
     "eslint-plugin-prettier": "^3.1.1",
     "eslint-plugin-react": "^7.16.0",
-    "gh-pages": "^2.0.1",
     "graphql": "^14.4.2",
     "husky": "^3.0.1",
     "lint-staged": "^9.2.1",

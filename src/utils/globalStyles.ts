@@ -71,6 +71,7 @@ export default css`
     line-height: 1.4;
   }
   .btn {
+    position: relative;
     height: 38px;
     display: flex;
     flex-direction: row;
@@ -103,16 +104,27 @@ export default css`
       color: var(--text-color);
     }
     &:active:not([disabled]) {
-      box-shadow: inset 0 0 5px rgba(0, 0, 0, 0.5);
+      box-shadow: inset 0 0 5px rgba(0, 0, 0, 0.8);
     }
     &[disabled] {
       opacity: 0.5;
       cursor: default;
     }
-  }
-  .btn.btn-large {
-    height: 49px;
-    padding: 0 ${rhythm(1.8)};
+    &.btn-primary {
+      border-color: var(--primary-color);
+      background-color: var(--primary-color);
+      color: white;
+
+      &:hover:not([disabled]) {
+        background-color: var(--link-color-hover);
+        border-color: var(--link-color-hover);
+        color: white;
+      }
+    }
+    &.btn-large {
+      height: 49px;
+      padding: 0 ${rhythm(1.8)};
+    }
   }
   .link-with-icon {
     text-decoration: none;

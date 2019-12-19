@@ -1,7 +1,7 @@
-import { DEFAULT_MEDIA_QUERY, MIN_DEFAULT_MEDIA_QUERY } from 'typography-breakpoint-constants'
+import { Link, graphql, useStaticQuery } from 'gatsby'
 import React, { HTMLAttributes } from 'react'
-import { graphql, useStaticQuery } from 'gatsby'
 
+import { DEFAULT_MEDIA_QUERY } from 'typography-breakpoint-constants'
 import SVGIcon from './SVGIcon'
 import SocialLink from './SocialLink'
 import { css } from '@emotion/core'
@@ -9,6 +9,7 @@ import githubIcon from '../icons/github.svg'
 import iconArrow from '../icons/arrow-forward.svg'
 import { rhythm } from '../utils/typography'
 import twitterIcon from '../icons/twitter.svg'
+import { isLoggedIn, logout } from '../utils/auth'
 
 const socialQuery = graphql`
   query socialQuery {
@@ -38,37 +39,52 @@ export default function SocialLinks({ iconSize, style }: Props) {
         title="Spokestack Twitter"
         icon={twitterIcon.id}
         iconSize={iconSize}
+        extraCss={styles.socialLink}
       />
       <SocialLink
         href={social.github}
         title="Spokestack GitHub"
         icon={githubIcon.id}
         iconSize={iconSize}
+        extraCss={styles.socialLink}
       />
-      <a className="btn" href="mailto:hello@spokestack.io" css={styles.talkButton}>
-        Talk to us
-        <SVGIcon
-          icon={iconArrow.id}
-          style={{ fill: 'var(--secondary-color)', width: '17px', height: '17px' }}
-        />
-      </a>
+      {isLoggedIn() ? (
+        <a className="btn" css={styles.loginButton} onClick={() => logout()}>
+          Sign Out
+          <SVGIcon
+            icon={iconArrow.id}
+            style={{ fill: 'var(--secondary-color)', width: '17px', height: '17px' }}
+          />
+        </a>
+      ) : (
+        <Link
+          className="btn"
+          activeStyle={{ display: 'none' }}
+          to="/login"
+          css={styles.loginButton}>
+          Sign In
+          <SVGIcon
+            icon={iconArrow.id}
+            style={{ fill: 'var(--secondary-color)', width: '17px', height: '17px' }}
+          />
+        </Link>
+      )}
     </div>
   )
 }
 
 const styles = {
   socialLinks: css`
-    width: 100px;
     display: flex;
     flex-direction: row;
-    justify-content: space-between;
     align-items: center;
-
-    ${MIN_DEFAULT_MEDIA_QUERY} {
-      width: 310px;
+  `,
+  socialLink: css`
+    ${DEFAULT_MEDIA_QUERY} {
+      display: none;
     }
   `,
-  talkButton: css`
+  loginButton: css`
     background-color: transparent !important;
     color: var(--secondary-color) !important;
     transition: background-color 0.2s var(--transition-easing), color 0.2s var(--transition-easing);
@@ -88,7 +104,8 @@ const styles = {
     }
 
     ${DEFAULT_MEDIA_QUERY} {
-      display: none !important;
+      border: none;
+      padding-right: 0;
     }
   `
 }

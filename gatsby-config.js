@@ -168,6 +168,12 @@ module.exports = {
       }
     },
     {
+      resolve: 'gatsby-plugin-create-client-paths',
+      options: {
+        prefixes: ['/account/*']
+      }
+    },
+    {
       resolve: 'gatsby-plugin-manifest',
       options: {
         name: 'spokestack.io',

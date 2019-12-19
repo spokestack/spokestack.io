@@ -1,18 +1,20 @@
+import { SerializedStyles, css } from '@emotion/core'
+
 import React from 'react'
 import SVGIcon from './SVGIcon'
-import { css } from '@emotion/core'
 
 interface Props {
   href: string
   title: string
   icon: string
   iconSize?: number
+  extraCss?: SerializedStyles
 }
 
-export default function SocialLink({ href, title, icon, iconSize = 17 }: Props) {
+export default function SocialLink({ href, title, icon, iconSize = 17, extraCss }: Props) {
   return (
     <a
-      css={styles.socialLink}
+      css={[styles.socialLink, extraCss]}
       style={{ width: `${iconSize + 20}px`, height: `${iconSize + 20}px` }}
       href={href}
       title={title}>

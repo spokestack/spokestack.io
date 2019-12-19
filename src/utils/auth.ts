@@ -1,6 +1,19 @@
-import { getUserToken, setUserToken } from './userToken'
-
 import postToCore from './postToCore'
+import { v4 } from 'uuid'
+import { navigate } from 'gatsby'
+
+const userTokenKey = 'spokestack-user-token-v1'
+const authTokenKey = 'spokestack-auth-token-v1'
+const providerKey = 'spokestack-auth-provider-v1'
+const stateKey = 'spokestack-auth-state-v1'
+
+function getUserToken() {
+  return localStorage.getItem(userTokenKey)
+}
+
+function setUserToken(token: string) {
+  return localStorage.setItem(userTokenKey, token)
+}
 
 async function createAnonymousUser() {
   // Create a user token that lives 3 hours
@@ -38,4 +51,44 @@ export async function login() {
     }
   }
   return createAnonymousUser()
+}
+
+export function getAuthToken() {
+  return localStorage.getItem(authTokenKey)
+}
+
+export function isLoggedIn() {
+  return !!getAuthToken()
+}
+
+export function setAuthToken(token: string) {
+  return localStorage.setItem(authTokenKey, token)
+}
+
+/**
+ * Only generate once
+ */
+export function getStateKey() {
+  let state = localStorage.getItem(stateKey)
+  if (!state) {
+    state = v4()
+    localStorage.setItem(stateKey, state)
+  }
+  return state
+}
+
+export function getProvider() {
+  return localStorage.getItem(providerKey)
+}
+
+export function setProvider(provider: string) {
+  return localStorage.setItem(providerKey, provider)
+}
+
+export function logout() {
+  localStorage.removeItem(userTokenKey)
+  localStorage.removeItem(authTokenKey)
+  localStorage.removeItem(providerKey)
+  localStorage.removeItem(stateKey)
+  navigate('/login')
 }

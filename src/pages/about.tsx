@@ -1,8 +1,6 @@
-import React, { useEffect } from 'react'
+import { navigate } from 'gatsby'
 
-export default function About() {
-  useEffect(() => {
-    window.location.href = '/about/story/'
-  }, [])
-  return <div />
+export default function About(): null {
+  navigate('/about/story')
+  return null
 }

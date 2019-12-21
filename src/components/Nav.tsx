@@ -2,13 +2,15 @@ import { Global, css } from '@emotion/core'
 import {
   MIN_DEFAULT_MEDIA_QUERY,
   MIN_TABLET_MEDIA_QUERY,
-  MOBILE_MEDIA_QUERY
+  MOBILE_MEDIA_QUERY,
+  DEFAULT_MEDIA_QUERY
 } from 'typography-breakpoint-constants'
 import { adjustFontSizeTo, rhythm } from '../utils/typography'
 
 import { Link } from 'gatsby'
 import React from 'react'
 import SocialLinks from './SocialLinks'
+import LoginButton from './LoginButton'
 
 export default function Nav() {
   return (
@@ -31,7 +33,10 @@ export default function Nav() {
         <a href="/" css={styles.logoLink}>
           <img src="/logo.svg" css={styles.logo} />
         </a>
-        <SocialLinks iconSize={25} />
+        <div css={styles.rightLinks}>
+          <SocialLinks iconSize={25} extraCss={styles.desktopLink} />
+          <LoginButton />
+        </div>
       </header>
       <nav css={styles.nav}>
         <ul css={styles.links}>
@@ -40,11 +45,6 @@ export default function Nav() {
               Products &amp; Services
             </a>
           </li>
-          {/* <li css={styles.listItem}>
-            <a css={styles.navLink} href="/#demos" className="nav-link">
-              Demos
-            </a>
-          </li> */}
           <li css={styles.listItem}>
             <Link
               className="nav-link"
@@ -76,6 +76,17 @@ export default function Nav() {
               to="/blog"
               title="Spokestack Blog">
               Blog
+            </Link>
+          </li>
+          <li css={styles.listItem}>
+            <Link
+              className="nav-link"
+              css={styles.navLink}
+              activeClassName="nav-link-active"
+              partiallyActive
+              to="/account"
+              title="Spokestack Account">
+              Account
             </Link>
           </li>
         </ul>
@@ -119,6 +130,16 @@ const styles = {
     width: 185px;
     height: 60px;
   `,
+  rightLinks: css`
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+  `,
+  desktopLink: css`
+    ${DEFAULT_MEDIA_QUERY} {
+      display: none;
+    }
+  `,
   nav: css`
     padding: 0 ${rhythm(0.4)};
     transition: all 0.2s var(--transition-easing);
@@ -131,7 +152,7 @@ const styles = {
       height: 60px;
     }
     ${MIN_DEFAULT_MEDIA_QUERY} {
-      right: 325px;
+      right: 350px;
     }
   `,
   links: css`

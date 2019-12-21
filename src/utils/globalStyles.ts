@@ -126,6 +126,32 @@ export default css`
       padding: 0 ${rhythm(1.8)};
     }
   }
+  .input-wrap {
+    width: 100%;
+    display: grid;
+    grid-template-columns: 200px 1fr;
+    margin-bottom: 20px;
+
+    &:last-child {
+      margin-bottom: 0;
+    }
+
+    label {
+      text-transform: uppercase;
+      text-align: right;
+      margin-right: 20px;
+      display: flex;
+      flex-direction: row;
+      justify-content: flex-end;
+      align-items: center;
+    }
+  }
+  .input {
+    border: 1px solid var(--main-border-color);
+    border-radius: 7px;
+    background-color: white;
+    padding: 10px 20px;
+  }
   .link-with-icon {
     text-decoration: none;
 

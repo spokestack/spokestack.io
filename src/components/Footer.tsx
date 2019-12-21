@@ -35,7 +35,6 @@ export default function Footer() {
           <p>
             &copy; {new Date().getFullYear()} {author}
           </p>
-          {/* <SocialLinks iconSize={25} style={{ marginLeft: '-10px', width: '95px' }} /> */}
         </div>
         <div css={styles.links}>
           <h3>

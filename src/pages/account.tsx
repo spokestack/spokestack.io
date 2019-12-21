@@ -10,7 +10,7 @@ const raccount = /^\/account\/?$/
 
 export default function Account({ location }: RouteComponentProps) {
   return (
-    <AccountLayout selectFirst={raccount.test(location.pathname)}>
+    <AccountLayout selectFirst={raccount.test(location.pathname)} location={location}>
       <Router>
         <PrivateRoute default path="/account/settings" component={Settings} />
         <PrivateRoute path="/account/billing" component={Billing} />

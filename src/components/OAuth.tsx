@@ -16,7 +16,7 @@ export default function OAuth({ checkAuth }: Props) {
     if (error) {
       setError(error)
     } else {
-      navigate('/account')
+      navigate('/account/settings/')
     }
   }
   useEffect(() => {

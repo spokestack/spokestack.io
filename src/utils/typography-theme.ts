@@ -48,7 +48,7 @@ const options: TypographyOptions = {
       lineHeight: 1.45
     },
     h5: {
-      fontWeight: 400
+      margin: 0
     },
     h6: {
       fontWeight: 400

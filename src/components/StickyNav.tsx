@@ -65,7 +65,10 @@ export default function StickyNav({ links = [], location, matchHash }: StickyNav
         }
       )
       links.forEach((link) => {
-        observer.observe(link.ref.current)
+        const elem = (link.ref && link.ref.current) || document.querySelector(link.refSelector)
+        if (elem) {
+          observer.observe(elem)
+        }
       })
       setSelectedId(`${hashToId(location.hash || links[0].href)}-link`)
     }, [])

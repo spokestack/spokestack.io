@@ -2,10 +2,6 @@ import { getStateKey, setAuthToken, setProvider } from './auth'
 
 const clientId = process.env.SS_GOOGLE_CLIENT_ID
 
-if (!clientId) {
-  throw new Error('SS_GOOGLE_CLIENT_ID needs to be set in environment variables.')
-}
-
 export function createLink() {
   let url = 'https://accounts.google.com/o/oauth2/v2/auth'
   url += `?client_id=${clientId}`

@@ -3,14 +3,6 @@ import { getStateKey, setAuthToken, setProvider } from './auth'
 const clientId = process.env.SS_GITHUB_CLIENT_ID
 const apiUrl = process.env.SS_API_URL
 
-if (!clientId) {
-  throw new Error('SS_GITHUB_CLIENT_ID needs to be set in environment variables.')
-}
-
-if (!apiUrl) {
-  throw new Error('SS_API_URL should be set in environment variables.')
-}
-
 export function createLink() {
   let url = 'https://github.com/login/oauth/authorize'
   url += `?client_id=${clientId}`

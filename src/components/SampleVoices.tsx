@@ -1,4 +1,4 @@
-import React, { useEffect, useRef, useState } from 'react'
+import React, { PureComponent } from 'react'
 import Select, { Option } from './Select'
 
 import Button from './Button'
@@ -17,84 +17,111 @@ import voices from '../utils/voices'
 
 const options = voices.map((voice) => ({ value: voice.model, title: voice.label }))
 
-export default function SampleVoices() {
-  const textareaRef = useRef<HTMLTextAreaElement>(null)
-  const audioRef = useRef<HTMLAudioElement>(null)
-  const [submitting, setSubmitting] = useState(false)
-  const [errorText, setErrorText] = useState<string>(null)
-  const [audioSrc, setAudioSrc] = useState<string>(null)
-  const [selected, setSelected] = useState<Option>(options[0])
-  const selectedVoice = find(voices, { model: selected.value })
-  function play() {
-    if (!submitting && audioRef.current) {
-      audioRef.current.currentTime = 0
-      audioRef.current.play()
-    }
+interface State {
+  disabled: boolean
+  errorText: string
+  selected: Option
+  submitting: boolean
+  text: string
+}
+
+export default class SampleVoices extends PureComponent {
+  private audio = new Audio()
+  state: State = {
+    disabled: false,
+    errorText: null,
+    selected: options[0],
+    submitting: false,
+    text: 'Hello, welcome to {{spoʊkstæk}}. What would you like to say?'
   }
-  async function getAudio() {
-    const text = textareaRef.current.value
-    setSubmitting(true)
-    setErrorText(null)
-    setAudioSrc(null)
+
+  componentDidMount() {
+    this.audio.addEventListener('canplaythrough', () => {
+      this.setState({ disabled: false, submitting: false })
+    })
+    this.getAudio()
+  }
+
+  getAudio = async () => {
+    const { selected, text } = this.state
+    if (!text) {
+      return
+    }
+    this.setState({
+      submitting: true,
+      errorText: null
+    })
     const [synthError, response] = await synthesize(selected.value, text)
     if (!synthError && response && response.url) {
-      setAudioSrc(response.url)
+      this.audio.src = response.url
+      this.audio.load()
     } else {
-      setSubmitting(false)
-      setErrorText(
-        synthError.message || 'There was a problem synthesizing the text. Please try again.'
-      )
+      this.setState({
+        disabled: false,
+        submitting: false,
+        errorText:
+          synthError.message || 'There was a problem synthesizing the text. Please try again.'
+      })
     }
   }
-  useEffect(() => {
-    getAudio()
-  }, [selected])
-  useEffect(() => {
-    if (audioSrc && audioRef.current) {
-      audioRef.current.addEventListener('canplaythrough', () => {
-        setSubmitting(false)
-      })
-      audioRef.current.load()
+
+  getAudioDebounced = debounce(this.getAudio, 1000)
+
+  play = () => {
+    const { disabled, submitting } = this.state
+    if (!disabled && !submitting) {
+      this.audio.currentTime = 0
+      this.audio.play()
     }
-  }, [audioSrc])
-  return (
-    <Card title="Sample a Custom Voice">
-      {audioSrc && <audio ref={audioRef} preload="auto" src={audioSrc} />}
-      <p css={styles.lightText}>
-        Enter what you want Spokestack to say below. Use {`{{ }}`} to bracket your{' '}
-        <a href="https://en.wikipedia.org/wiki/International_Phonetic_Alphabet">IPA</a>.
-      </p>
-      <div css={styles.content}>
-        <Select
-          id="sample-voices"
-          disabled={submitting}
-          selected={selected}
-          extraCss={styles.select}
-          options={options}
-          onChange={(value) => {
-            const option = find(options, { value })
-            if (option) {
-              setSelected(option)
-            }
-          }}
-        />
-        <Button large disabled={submitting} extraCss={styles.button} onClick={play}>
-          <SVGIcon icon={iconPlay.id} extraCss={styles.playIcon} />
-          {submitting ? 'Synthesizing...' : 'Hear it'}
-        </Button>
-        <Textarea
-          ref={textareaRef}
-          id="sample-voice-textarea"
-          extraCss={styles.textarea}
-          label={errorText || selectedVoice.description}
-          labelCss={errorText ? styles.labelError : null}
-          loading={submitting}
-          defaultValue={'Hello, welcome to {{spoʊkstæk}}. What would you like to say?'}
-          onChange={debounce(getAudio, 1000)}
-        />
-      </div>
-    </Card>
-  )
+  }
+
+  render() {
+    const { disabled, errorText, selected, submitting, text } = this.state
+    const selectedVoice = find(voices, { model: selected.value })
+
+    return (
+      <Card title="Sample a Custom Voice">
+        <p css={styles.lightText}>
+          Enter what you want Spokestack to say below. Use {`{{ }}`} to bracket your{' '}
+          <a href="https://en.wikipedia.org/wiki/International_Phonetic_Alphabet">IPA</a>.
+        </p>
+        <div css={styles.content}>
+          <Select
+            id="sample-voices"
+            disabled={disabled || submitting}
+            selected={selected}
+            extraCss={styles.select}
+            options={options}
+            onChange={(value) => {
+              const option = find(options, { value })
+              if (option) {
+                this.setState({ selected: option }, this.getAudio)
+              }
+            }}
+          />
+          <Button
+            large
+            disabled={disabled || submitting}
+            extraCss={styles.button}
+            onClick={this.play}>
+            <SVGIcon icon={iconPlay.id} extraCss={styles.playIcon} />
+            {submitting ? 'Synthesizing...' : 'Hear it'}
+          </Button>
+          <Textarea
+            id="sample-voice-textarea"
+            extraCss={styles.textarea}
+            label={errorText || selectedVoice.description}
+            labelCss={errorText ? styles.labelError : null}
+            loading={submitting}
+            value={text}
+            onChange={(value) => {
+              this.setState({ disabled: true, text: value }, this.getAudioDebounced)
+            }}
+          />
+        </div>
+      </Card>
+    )
+  }
 }
 
 const styles = {

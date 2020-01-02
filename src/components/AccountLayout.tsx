@@ -32,9 +32,7 @@ interface Props {
 }
 
 export default function AccountLayout({ children, location, selectFirst }: Props) {
-  if (selectFirst) {
-    links[0].forceSelect = true
-  }
+  links[0].forceSelect = selectFirst
   return (
     <Layout>
       <StickyNavLayout matchHash header="Account" links={links} location={location}>

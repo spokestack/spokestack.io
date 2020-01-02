@@ -53,8 +53,6 @@
     "react-dom": "^16.8.6",
     "react-helmet": "^5.2.1",
     "react-typography": "^0.16.19",
-    "typeface-crimson-text": "^0.0.72",
-    "typeface-rosario": "^0.0.72",
     "typescript": "^3.5.3",
     "typography": "^0.16.19",
     "typography-breakpoint-constants": "^0.16.19",

@@ -1,9 +1,7 @@
 // custom typefaces
 import 'prismjs/themes/prism-tomorrow.css'
 
-import { ApolloProvider } from '@apollo/react-hooks'
-import React from 'react'
-import client from './src/apollo/client'
+export { default as wrapRootElement } from './src/apollo/wrapRootElement'
 
 export const onClientEntry = () => {
   // IntersectionObserver polyfill for gatsby-background-image (Safari, IE)
@@ -11,9 +9,4 @@ export const onClientEntry = () => {
     import('intersection-observer')
     console.log('# IntersectionObserver is polyfilled!')
   }
-}
-
-// eslint-disable-next-line react/prop-types
-export function wrapRootElement({ element }) {
-  return <ApolloProvider client={client}>{element}</ApolloProvider>
 }

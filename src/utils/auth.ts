@@ -58,7 +58,7 @@ export function getAuthToken() {
 }
 
 export function isLoggedIn() {
-  return !!getAuthToken()
+  return typeof window !== 'undefined' && !!getAuthToken()
 }
 
 export function setAuthToken(token: string) {

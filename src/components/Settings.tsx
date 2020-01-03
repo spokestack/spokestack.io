@@ -38,13 +38,5 @@ const styles = {
     background-color: var(--text-color-dark-bg);
     border-top: 1px solid var(--main-border-color);
     border-bottom: 1px solid var(--main-border-color);
-  `,
-  inputs: css`
-    & > div {
-      margin-bottom: 20px;
-    }
-    & > div:last-child {
-      margin-bottom: 0;
-    }
   `
 }

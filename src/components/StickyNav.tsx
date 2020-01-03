@@ -1,4 +1,4 @@
-import { Global, css } from '@emotion/core'
+import { css } from '@emotion/core'
 import React, { useEffect, useState } from 'react'
 
 import { MIN_DEFAULT_MEDIA_QUERY } from 'typography-breakpoint-constants'
@@ -41,16 +41,6 @@ export default function StickyNav({ links = [], location, matchHash }: StickyNav
   const [selectedId, setSelectedId] = useState<string>(null)
   useEffect(() => {
     if (matchHash) {
-      return
-    }
-    links.forEach((link) => {
-      if (linkIsSelected(link)) {
-        setSelectedLink(link)
-      }
-    })
-  }, [])
-  if (matchHash) {
-    useEffect(() => {
       const observer = new IntersectionObserver(
         function(entries) {
           for (const entry of entries) {
@@ -71,22 +61,18 @@ export default function StickyNav({ links = [], location, matchHash }: StickyNav
         }
       })
       setSelectedId(`${hashToId(location.hash || links[0].href)}-link`)
-    }, [])
-  }
+    }
+    links.forEach((link) => {
+      if (linkIsSelected(link)) {
+        setSelectedLink(link)
+      }
+    })
+  }, [])
   const groupedLinks = groupBy(links, 'section')
   const sections = Object.keys(groupedLinks)
 
   return (
     <nav css={styles.stickyNav}>
-      <Global
-        styles={css`
-          .sticky-nav-link-active {
-            color: var(--sticky-nav-link-color-active) !important;
-            border-radius: 50px 0 0 50px;
-            background-color: var(--main-background);
-          }
-        `}
-      />
       {!matchHash && (
         <Select
           id="sticky-nav"
@@ -95,7 +81,12 @@ export default function StickyNav({ links = [], location, matchHash }: StickyNav
           iconWrapCss={styles.mobileNavIconWrap}
           iconCss={styles.mobileNavIcon}
           selected={
-            selectedLink ? { title: selectedLink.title, value: selectedLink.href } : undefined
+            selectedLink
+              ? {
+                  title: selectedLink.title,
+                  value: selectedLink.href
+                }
+              : undefined
           }
           onChange={(value) => {
             window.location.href = value
@@ -116,6 +107,7 @@ export default function StickyNav({ links = [], location, matchHash }: StickyNav
           key={`sticky-nav-section-${section}`}
           headerText={isSection(section) ? section : null}
           links={groupedLinks[section]}
+          location={location}
           matchHash={matchHash}
           onSelect={(id) => setSelectedId(id)}
           selectedId={selectedId}

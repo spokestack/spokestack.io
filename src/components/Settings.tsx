@@ -3,10 +3,11 @@ import { RouteComponentProps } from '@reach/router'
 import { css } from '@emotion/core'
 import AccountCard from './AccountCard'
 import { adjustFontSizeTo } from '../utils/typography'
+import AccountLayout from './AccountLayout'
 
-export default function Settings({}: RouteComponentProps) {
+export default function Settings({ location }: RouteComponentProps) {
   return (
-    <div>
+    <AccountLayout location={location}>
       <h2>Settings</h2>
       <AccountCard title="My Profile" id="profile">
         <div className="input-wrap">
@@ -22,7 +23,7 @@ export default function Settings({}: RouteComponentProps) {
         <h4 css={[styles.credsHeader, { borderTop: 'none' }]}>Live Credentials</h4>
         <h4 css={styles.credsHeader}>Test Credentials</h4>
       </AccountCard>
-    </div>
+    </AccountLayout>
   )
 }
 

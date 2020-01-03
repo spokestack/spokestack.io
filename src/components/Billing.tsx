@@ -2,10 +2,11 @@ import React from 'react'
 import { RouteComponentProps } from '@reach/router'
 import AccountCard from './AccountCard'
 import { css } from '@emotion/core'
+import AccountLayout from './AccountLayout'
 
-export default function Billing({}: RouteComponentProps) {
+export default function Billing({ location }: RouteComponentProps) {
   return (
-    <div>
+    <AccountLayout location={location}>
       <h2>Billing</h2>
       <AccountCard title="Overview" id="overview">
         <div className="input-wrap">
@@ -13,7 +14,7 @@ export default function Billing({}: RouteComponentProps) {
           <div css={styles.balance}>19.62474</div>
         </div>
       </AccountCard>
-    </div>
+    </AccountLayout>
   )
 }
 

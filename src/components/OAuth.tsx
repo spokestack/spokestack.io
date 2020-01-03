@@ -10,22 +10,26 @@ interface Props {
 }
 
 export default function OAuth({ checkAuth }: Props) {
-  const [error, setError] = useState<string>(null)
+  const [status, setStatus] = useState('Getting ready...')
   async function check() {
     const error = await checkAuth()
     if (error) {
-      setError(error)
+      setStatus(error)
     } else {
       navigate('/account/settings/')
     }
   }
   useEffect(() => {
+    setStatus('Authorizing...')
     check()
   }, [])
   return (
     <Layout>
+      <noscript>
+        Please <a href="https://enable-javascript.com/">enable JavaScript</a> to sign in.
+      </noscript>
       <div css={styles.container}>
-        <p>{error ? error : 'Authorizing...'}</p>
+        <p>{status}</p>
       </div>
     </Layout>
   )

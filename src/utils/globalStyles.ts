@@ -24,6 +24,7 @@ export default css`
     --button-background-hover: #06c6b0;
     --transition-easing: cubic-bezier(0.77, 0.41, 0.2, 0.84);
     --bubble-easing: cubic-bezier(0.3, 0.55, 0.54, 0.86);
+    --error-color: #ea2f5e;
 
     --link-color: var(--primary-color);
     --link-color-visited: ${primaryColor.lighten(0.1).hex()};
@@ -150,7 +151,16 @@ export default css`
     border: 1px solid var(--main-border-color);
     border-radius: 7px;
     background-color: white;
-    padding: 10px 20px;
+    padding-left: 20px;
+    padding-right: 20px;
+  }
+  .input,
+  .input-value {
+    padding-top: 10px;
+    padding-bottom: 10px;
+  }
+  .error {
+    color: var(--error-color);
   }
   .link-with-icon {
     text-decoration: none;

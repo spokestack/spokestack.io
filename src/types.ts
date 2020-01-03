@@ -39,6 +39,9 @@ export interface StickyLink {
  */
 export interface Account {
   apiKeys: ApiKeySummary[]
+  displayName: string
+  id: string
+  insertedAt: string
 }
 
 export interface ApiKey {

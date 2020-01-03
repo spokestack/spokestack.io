@@ -3,7 +3,7 @@ import { useEffect } from 'react'
 
 export default function About(): null {
   useEffect(() => {
-    navigate('/about/story')
+    navigate('/about/story/')
   }, [])
   return null
 }

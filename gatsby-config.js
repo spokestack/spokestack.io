@@ -47,6 +47,25 @@ module.exports = {
     }
   },
   plugins: [
+    // This source is only for introspection in development.
+    // It should NOT be used in gatsby graphql queries.
+    // Queries to Spokestack run only at runtime with
+    // the user's credentials, specifically on account pages.
+    !!process.env.SS_DEV_GITHUB_TOKEN && {
+      resolve: 'gatsby-source-graphql',
+      options: {
+        typeName: 'Spokestack',
+        fieldName: 'spokestack',
+        url: `${process.env.SS_API_URL}/control`,
+        headers: {
+          // Generate this token by logging into your
+          // Spokestack account with GitHub OAuth.
+          // Copy the value from localStorage
+          // and set it in your environment variables.
+          Authorization: `GitHub ${process.env.SS_DEV_GITHUB_TOKEN}`
+        }
+      }
+    },
     {
       resolve: 'gatsby-source-filesystem',
       options: {
@@ -192,5 +211,5 @@ module.exports = {
         pathToConfigModule: 'src/utils/typography'
       }
     }
-  ]
+  ].filter(Boolean)
 }

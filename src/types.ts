@@ -33,3 +33,30 @@ export interface StickyLink {
   ref?: MutableRefObject<Element>
   refSelector?: string
 }
+
+/**
+ * Remote types for the Spokestack API
+ */
+export interface Account {
+  apiKeys: ApiKeySummary[]
+}
+
+export interface ApiKey {
+  displayName: string
+  id: string
+  insertedAt: number
+  key: string
+  type: KeyType
+}
+
+export interface ApiKeySummary {
+  displayName: string
+  id: string
+  insertedAt: number
+  type: KeyType
+}
+
+export enum KeyType {
+  PRODUCTION = 'PRODUCTION',
+  TEST = 'TEST'
+}

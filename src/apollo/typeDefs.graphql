@@ -1,0 +1,89 @@
+# source: https://integration-api.spokestack.io/control
+# timestamp: Fri Jan 03 2020 15:58:01 GMT-0500 (Eastern Standard Time)
+
+schema {
+  query: RootQueryType
+  mutation: RootMutationType
+}
+
+"""
+Account details
+
+"""
+type Account {
+  apiKeys: [ApiKeySummary]
+  displayName: String
+  id: String
+  insertedAt: DateTime
+}
+
+"""
+Complete API Key object with key material present for display
+
+"""
+type ApiKey {
+  displayName: String
+  id: String
+  insertedAt: DateTime
+  key: String
+  type: KeyType
+}
+
+"""
+An intentionally restricted view of the API Key
+
+"""
+type ApiKeySummary {
+  displayName: String
+  id: String
+  insertedAt: DateTime
+  type: KeyType
+}
+
+"""
+The `DateTime` scalar type represents a date and time in the UTC
+timezone. The DateTime appears in a JSON response as an ISO8601 formatted
+string, including UTC timezone ("Z"). The parsed date and time string will
+be converted to UTC and any UTC offset other than 0 will be rejected.
+"""
+scalar DateTime
+
+enum KeyType {
+  PRODUCTION
+  TEST
+}
+
+type RootMutationType {
+  """
+  Create an account on behalf of the current user
+  
+  This will fail if the user is already associated with an account.
+  """
+  createAccount(displayName: String!): Account
+
+  """
+  Create a new API key for the specified account
+  
+  Returns the full key object including the key material which should be
+  (briefly) displayed before being hidden until explicitly requested by the
+  user.
+  """
+  createKey(accountId: ID!, displayName: String!, type: KeyType!): ApiKey
+
+  """Revoke and delete the specified API key"""
+  revokeKey(accountId: ID!, keyId: ID!): Boolean
+}
+
+type RootQueryType {
+  """Retrieve the user's account"""
+  getAccount: Account
+
+  """
+  Retrieve the key material for the specified account/key
+  
+  Given the importance of preserving the secrecy of the key material, it is
+  never sent unless explicitly requested by the user or immediately after
+  creation.
+  """
+  showKey(accountId: ID!, keyId: ID!): ApiKey
+}

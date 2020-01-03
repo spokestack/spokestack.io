@@ -26,7 +26,7 @@ interface State {
 }
 
 export default class SampleVoices extends PureComponent {
-  private audio = new Audio()
+  private audio: HTMLAudioElement
   state: State = {
     disabled: false,
     errorText: null,
@@ -36,6 +36,7 @@ export default class SampleVoices extends PureComponent {
   }
 
   componentDidMount() {
+    this.audio = new Audio()
     this.audio.addEventListener('canplaythrough', () => {
       this.setState({ disabled: false, submitting: false })
     })

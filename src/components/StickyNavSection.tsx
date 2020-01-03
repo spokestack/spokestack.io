@@ -8,10 +8,12 @@ import { css } from '@emotion/core'
 import hashToId from '../utils/hashToId'
 import iconArrowDown from '../icons/arrow-down.svg'
 import { rhythm } from '../utils/typography'
+import { WindowLocation } from '@reach/router'
 
 interface Props {
   headerText: string
   links: StickyLink[]
+  location: WindowLocation
 
   // Hash matching only
   matchHash?: boolean
@@ -22,6 +24,7 @@ interface Props {
 export default function StickyNavSection({
   headerText,
   links,
+  location,
   matchHash,
   onSelect,
   selectedId
@@ -57,14 +60,9 @@ export default function StickyNavSection({
             <a
               key={`sticky-nav-link-${i}`}
               css={styles.stickyNavLink}
-              style={{
-                color:
-                  id === selectedId
-                    ? 'var(--sticky-nav-link-color-active)'
-                    : 'var(--sticky-nav-link-color)'
-              }}
+              className={id === selectedId ? 'sticky-nav-link-active-no-bg' : ''}
               id={id}
-              href={link.href}
+              href={link.href.replace(new RegExp(location.pathname + '\\/?'), '')}
               title={link.title}
               onClick={() => onSelect(id)}>
               {link.title}
@@ -147,6 +145,16 @@ const styles = {
     }
     &:hover {
       color: var(--sticky-nav-link-color-hover);
+    }
+    &.sticky-nav-link-active,
+    &.sticky-nav-link-active-no-bg {
+      color: var(--sticky-nav-link-color-active) !important;
+      cursor: default;
+      pointer-events: none;
+    }
+    &.sticky-nav-link-active {
+      border-radius: 50px 0 0 50px;
+      background-color: var(--main-background);
     }
   `
 }

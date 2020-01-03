@@ -1,16 +1,16 @@
-import { Global, css } from '@emotion/core'
 import {
+  DEFAULT_MEDIA_QUERY,
   MIN_DEFAULT_MEDIA_QUERY,
   MIN_TABLET_MEDIA_QUERY,
-  MOBILE_MEDIA_QUERY,
-  DEFAULT_MEDIA_QUERY
+  MOBILE_MEDIA_QUERY
 } from 'typography-breakpoint-constants'
+import { Global, css } from '@emotion/core'
 import { adjustFontSizeTo, rhythm } from '../utils/typography'
 
 import { Link } from 'gatsby'
+import LoginButton from './LoginButton'
 import React from 'react'
 import SocialLinks from './SocialLinks'
-import LoginButton from './LoginButton'
 
 export default function Nav() {
   return (

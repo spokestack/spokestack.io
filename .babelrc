@@ -1,5 +1,5 @@
 {
-  "plugins": ["transform-inline-environment-variables"],
+  "plugins": ["graphql-tag", "inline-import", "transform-inline-environment-variables"],
   "presets": [
     [
       "babel-preset-gatsby",
@@ -9,5 +9,10 @@
         }
       }
     ]
-  ]
+  ],
+  "env": {
+    "production": {
+      "plugins": ["transform-remove-console"]
+    }
+  }
 }

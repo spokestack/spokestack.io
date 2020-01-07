@@ -11,6 +11,7 @@ import { Link } from 'gatsby'
 import LoginButton from './LoginButton'
 import React from 'react'
 import SocialLinks from './SocialLinks'
+import { isLoggedIn } from '../utils/auth'
 
 export default function Nav() {
   return (
@@ -40,11 +41,13 @@ export default function Nav() {
       </header>
       <nav css={styles.nav}>
         <ul css={styles.links}>
-          <li css={styles.listItem} style={{ minWidth: '85px' }}>
-            <a css={styles.navLink} href="/#products" className="nav-link">
-              Products &amp; Services
-            </a>
-          </li>
+          {!isLoggedIn() && (
+            <li css={styles.listItem} style={{ minWidth: '85px' }}>
+              <a css={styles.navLink} href="/#products" className="nav-link">
+                Products &amp; Services
+              </a>
+            </li>
+          )}
           <li css={styles.listItem}>
             <Link
               className="nav-link"
@@ -54,17 +57,6 @@ export default function Nav() {
               to="/about"
               title="About Spokestack">
               About
-            </Link>
-          </li>
-          <li css={styles.listItem}>
-            <Link
-              className="nav-link"
-              css={styles.navLink}
-              activeClassName="nav-link-active"
-              partiallyActive
-              to="/docs"
-              title="Spokestack Documentation">
-              Docs
             </Link>
           </li>
           <li css={styles.listItem}>
@@ -84,11 +76,24 @@ export default function Nav() {
               css={styles.navLink}
               activeClassName="nav-link-active"
               partiallyActive
-              to="/account"
-              title="Spokestack Account">
-              Account
+              to="/docs"
+              title="Spokestack Documentation">
+              Docs
             </Link>
           </li>
+          {isLoggedIn() && (
+            <li css={styles.listItem}>
+              <Link
+                className="nav-link"
+                css={styles.navLink}
+                activeClassName="nav-link-active"
+                partiallyActive
+                to="/account"
+                title="Spokestack Account">
+                Account
+              </Link>
+            </li>
+          )}
         </ul>
       </nav>
     </div>
@@ -172,12 +177,7 @@ const styles = {
   `,
   listItem: css`
     margin: 0;
-    width: 19%;
     height: 100%;
-
-    ${MIN_TABLET_MEDIA_QUERY} {
-      width: auto;
-    }
   `,
   navLink: css`
     --nav-link-color: var(--text-color-dark-bg);

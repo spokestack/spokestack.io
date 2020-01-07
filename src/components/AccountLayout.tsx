@@ -16,26 +16,24 @@ const links: StickyLink[] = [
     title: 'API Credentials',
     refSelector: '#api',
     section: 'Settings'
-  },
-  {
-    href: '/account/billing/#details',
-    title: 'Billing',
-    refSelector: '#details',
-    section: 'Billing'
   }
+  // {
+  //   href: '/account/billing/#details',
+  //   title: 'Billing',
+  //   refSelector: '#details',
+  //   section: 'Billing'
+  // }
 ]
 
 interface Props {
   children: React.ReactNode
-  selectFirst?: boolean
   location?: WindowLocation
 }
 
-export default function AccountLayout({ children, location, selectFirst }: Props) {
-  links[0].forceSelect = selectFirst
+export default function AccountLayout({ children, location }: Props) {
   return (
     <Layout>
-      <StickyNavLayout matchHash header="Account" links={links} location={location}>
+      <StickyNavLayout matchHash header="Radiobrain" links={links} location={location}>
         {children}
       </StickyNavLayout>
     </Layout>

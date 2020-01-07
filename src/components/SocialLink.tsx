@@ -32,6 +32,7 @@ const styles = {
     background-image: none;
     border-radius: 50%;
     margin-right: 10px;
+    transition: background-color 0.2s var(--transition-easing);
 
     &:hover {
       background-color: rgba(0, 0, 0, 0.1);

@@ -315,6 +315,10 @@ const styles = {
   summary: css`
     background-color: white;
     padding: ${rhythm(3)} 20px 20px;
+
+    ${MIN_DEFAULT_MEDIA_QUERY} {
+      padding-bottom: ${rhythm(2)};
+    }
   `,
   summaryHeader: css`
     text-align: center;

@@ -60,7 +60,9 @@ export default function StickyNav({ links = [], location, matchHash }: StickyNav
           observer.observe(elem)
         }
       })
-      setSelectedId(`${hashToId(location.hash || links[0].href)}-link`)
+      setTimeout(() => {
+        setSelectedId(`${hashToId(location.hash || links[0].href)}-link`)
+      }, 200)
     }
     links.forEach((link) => {
       if (linkIsSelected(link)) {

@@ -6,9 +6,9 @@ import { WindowLocation } from '@reach/router'
 
 const links: StickyLink[] = [
   {
-    href: '/account/settings/#profile',
-    title: 'My Profile',
-    refSelector: '#profile',
+    href: '/account/settings/#general',
+    title: 'General',
+    refSelector: '#general',
     section: 'Settings'
   },
   {

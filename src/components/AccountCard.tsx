@@ -9,12 +9,23 @@ interface Props {
   id?: string
   extraCss?: SerializedStyles
   contentCss?: SerializedStyles
+  rightContent?: React.ReactNode
 }
 
-export default function AccountCard({ title, children, id, extraCss, contentCss }: Props) {
+export default function AccountCard({
+  title,
+  children,
+  id,
+  extraCss,
+  contentCss,
+  rightContent
+}: Props) {
   return (
     <div css={[styles.card, extraCss]} className="card" id={id}>
-      <h5 css={styles.cardHeader}>{title}</h5>
+      <div css={styles.cardHeader}>
+        <h5>{title}</h5>
+        {rightContent}
+      </div>
       <div css={[styles.content, contentCss]}>{children}</div>
     </div>
   )
@@ -36,7 +47,7 @@ const styles = {
     padding: 0 20px;
     display: flex;
     flex-direction: row;
-    justify-content: flex-start;
+    justify-content: space-between;
     align-items: center;
     margin: 0;
     border-bottom: 1px solid var(--main-border-color);

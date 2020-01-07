@@ -126,11 +126,16 @@ export default css`
       height: 49px;
       padding: 0 ${rhythm(1.8)};
     }
+    &.btn-small {
+      height: 28px;
+      padding: 0 10px;
+      ${adjustFontSizeTo('14px')};
+    }
   }
   .input-wrap {
     width: 100%;
     display: grid;
-    grid-template-columns: 200px 1fr;
+    grid-template-columns: 100%;
     margin-bottom: 20px;
 
     &:last-child {
@@ -139,11 +144,9 @@ export default css`
 
     label {
       text-transform: uppercase;
-      text-align: right;
-      margin-right: 20px;
+      margin: 0 0 10px;
       display: flex;
       flex-direction: row;
-      justify-content: flex-end;
       align-items: center;
     }
   }
@@ -192,6 +195,15 @@ export default css`
     h3 {
       font-size: ${adjustFontSizeTo('25px').fontSize};
       line-height: 1.4;
+    }
+    .input-wrap {
+      grid-template-columns: 200px 1fr;
+
+      label {
+        justify-content: flex-end;
+        text-align: right;
+        margin: 0 20px 0 0;
+      }
     }
   }
 `

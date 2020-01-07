@@ -47,9 +47,9 @@ export default function UsageMap() {
         icon={<SVGIcon icon={phone.id} style={{ width: '71px', height: '143px' }} />}
       />
       <header css={styles.header}>
-        <h3>
+        <h4>
           U.S. Assistant Use by Device <sup>*</sup>
-        </h3>
+        </h4>
       </header>
       <p css={styles.credit}>
         <sup>*</sup>
@@ -159,8 +159,9 @@ const styles = {
     flex-direction: row;
     justify-content: center;
 
-    h3 {
+    h4 {
       max-width: 230px;
+      line-height: 1.2;
       text-align: center;
     }
 

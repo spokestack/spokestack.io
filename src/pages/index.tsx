@@ -5,7 +5,7 @@ import {
 } from 'typography-breakpoint-constants'
 import { PageRendererProps, graphql } from 'gatsby'
 import React, { useRef } from 'react'
-import { adjustFontSizeTo, rhythm } from '../utils/typography'
+import { rhythm } from '../utils/typography'
 
 import Card from '../components/Card'
 import Layout from '../components/Layout'
@@ -17,6 +17,7 @@ import StickyNavLayout from '../components/StickyNavLayout'
 import UsageMap from '../components/UsageMap'
 import { css } from '@emotion/core'
 import iconArrow from '../icons/arrow-forward.svg'
+import iconPlay from '../icons/play-circle-outline.svg'
 
 interface Props extends PageRendererProps {
   data: Query
@@ -69,11 +70,26 @@ export default function Index({ data, location }: Props) {
           <div css={styles.usageText}>
             <h3>Today&apos;s consumers want to speak to their products and services.</h3>
             <p>
-              Over 58% of Americans use their phone as a voice assistant<sup>*</sup>. That’s more
-              users than those of smart speaker, smart watch and desktop voice assistants combined.
-              As Airpods&trade; and other voice assistant-powered headphones gain popularity, users
-              will expect apps to have a voice and provide a hands-free experience.
+              Over 58% of Americans use their phone as a voice assistant<sup>*</sup>. That&lsquo;s
+              more users than those of smart speaker, smart watch and desktop voice assistants
+              combined. As Airpods&trade; and other voice assistant-powered headphones gain
+              popularity, users will expect apps to have a voice and provide a hands-free
+              experience.
             </p>
+            <h4>
+              <a css={styles.video} href="https://vimeo.com/spokestack">
+                <SVGIcon
+                  icon={iconPlay.id}
+                  style={{
+                    fill: 'var(--primary-color)',
+                    width: '40px',
+                    height: '40px',
+                    marginRight: '10px'
+                  }}
+                />
+                Why you need voice for your mobile app
+              </a>
+            </h4>
           </div>
           <UsageMap />
         </div>
@@ -82,102 +98,88 @@ export default function Index({ data, location }: Props) {
         <h1 css={styles.productsHeader}>Products &amp; Services</h1>
         <div id="asr" css={styles.feature} ref={links[0].ref}>
           <h2>Spokestack ASR and VAD</h2>
-          <p css={styles.title}>
+          <p className="title">
             A one-stop shop for Automatic Speech Recognition (ASR) and Voice Activity Detection
             (VAD)
           </p>
-          <div css={styles.description}>
-            <p>
-              Easily add ASR and VAD to your app with one of our{' '}
-              <a href="https://github.com/spokestack">open source libraries</a>. Spokestack ASR and
-              VAD allow you to turn user utterances into text, which is the first step to responding
-              to a user. From there, use Spokestack Wakeword, TTS, and NLU to complete the voice
-              experience.
-            </p>
-            <p>
-              <a href="/docs" className="link-with-icon">
-                Get started
-                <SVGIcon
-                  icon={iconArrow.id}
-                  style={{ fill: 'var(--primary-color)', width: '17px', height: '17px' }}
-                />
-              </a>
-            </p>
-          </div>
+          <p>
+            Easily add ASR and VAD to your app with one of our{' '}
+            <a href="https://github.com/spokestack">open source libraries</a>. Spokestack ASR and
+            VAD allow you to turn user utterances into text, which is the first step to responding
+            to a user. From there, use Spokestack Wakeword, TTS and NLU to complete the voice
+            experience.
+          </p>
+          <a href="/docs" className="link-with-icon">
+            Get started
+            <SVGIcon
+              icon={iconArrow.id}
+              style={{ fill: 'var(--primary-color)', width: '17px', height: '17px' }}
+            />
+          </a>
         </div>
         <div id="wakeword" css={styles.feature} ref={links[1].ref}>
           <h2>Spokestack Wakeword</h2>
-          <p css={styles.title}>Choose the keyword that will be the wakeword for your app.</p>
-          <div css={styles.description}>
-            <p>
-              Use your brand name or any keyword of your choice to put your app into listen mode,
-              also with the help of one of the{' '}
-              <a href="https://github.com/spokestack">Spokestack libraries</a>. Like
-              &ldquo;Siri&rdquo;, &ldquo;OK Google&rdquo;, or &ldquo;Alexa&rdquo;, your app will
-              respond to your wakeword while it is open.
-            </p>
-            <p>
-              <a href="mailto:hello@spokestack.io" className="link-with-icon">
-                Email us for details on getting a custom wakeword
-                <SVGIcon
-                  icon={iconArrow.id}
-                  style={{ fill: 'var(--primary-color)', width: '17px', height: '17px' }}
-                />
-              </a>
-            </p>
-          </div>
+          <p className="title">Choose the keyword that will be the wakeword for your app.</p>
+          <p>
+            Use your brand name or any keyword of your choice to put your app into listen mode, also
+            with the help of one of the{' '}
+            <a href="https://github.com/spokestack">Spokestack libraries</a>. Like
+            &ldquo;Siri&rdquo;, &ldquo;OK Google&rdquo;, or &ldquo;Alexa&rdquo;, your app will
+            respond to your wakeword while it is open.
+          </p>
+          <a href="mailto:hello@spokestack.io" className="link-with-icon">
+            Email us for details on getting a custom wakeword
+            <SVGIcon
+              icon={iconArrow.id}
+              style={{ fill: 'var(--primary-color)', width: '17px', height: '17px' }}
+            />
+          </a>
         </div>
         <div id="tts" css={styles.feature} ref={links[2].ref}>
           <h2>Spokestack TTS</h2>
-          <p css={styles.title}>Create a custom voice for your brand.</p>
-          <div css={styles.description}>
-            <p>
-              Get a custom voice or use the default voice for free. Respond to your users with our
-              proprietary Text-to-Speech (TTS) service.
-            </p>
-            <p>
-              Our TTS engine can create a custom voice for your brand with as little as five minutes
-              of recordings. We can also work with your own voice talent in a professional recording
-              studio to produce a high quality branded voice for your app.
-            </p>
-            <p>
-              <a href="mailto:hello@spokestack.io" className="link-with-icon">
-                Email us for details on getting a custom branded voice
-                <SVGIcon
-                  icon={iconArrow.id}
-                  style={{ fill: 'var(--primary-color)', width: '17px', height: '17px' }}
-                />
-              </a>
-            </p>
-            <p>
-              Try some of our voice samples below. Each voice is generated using different recording
-              times and methods.
-            </p>
-            <SampleVoices />
-          </div>
+          <p className="title">Create a custom voice for your brand.</p>
+          <p>
+            Get a custom voice or use the default voice for free. Respond to your users with our
+            proprietary Text-to-Speech (TTS) service.
+          </p>
+          <p>
+            Our TTS engine can create a custom voice for your brand with as little as five minutes
+            of recordings. We can also work with your own voice talent in a professional recording
+            studio to produce a high quality branded voice for your app.
+          </p>
+          <p>
+            <a href="mailto:hello@spokestack.io" className="link-with-icon">
+              Email us for details on getting a custom branded voice
+              <SVGIcon
+                icon={iconArrow.id}
+                style={{ fill: 'var(--primary-color)', width: '17px', height: '17px' }}
+              />
+            </a>
+          </p>
+          <p>
+            Try some of our voice samples below. Each voice is generated using different recording
+            times and methods.
+          </p>
+          <SampleVoices />
         </div>
         <div id="nlu" css={styles.feature} ref={links[3].ref}>
           <h2>Spokestack NLU</h2>
-          <p css={styles.title}>
+          <p className="title">
             Keep your data and customer conversations in your app where it belongs with our Natural
             Language Understanding (NLU) engine.
           </p>
-          <div css={styles.description}>
-            <p>
-              Use the Spokestack NLU engine to communicate the unique requests, context and
-              pronunciations of words that matter to you and users. Combined with Spokestack TTS,
-              Spokestack NLU helps create a voice-enabled user experience optimized for your brand.
-            </p>
-            <p>
-              <a href="mailto:hello@spokestack.io" className="link-with-icon">
-                Email us for details on getting a custom NLU for your app
-                <SVGIcon
-                  icon={iconArrow.id}
-                  style={{ fill: 'var(--primary-color)', width: '17px', height: '17px' }}
-                />
-              </a>
-            </p>
-          </div>
+          <p>
+            Use the Spokestack NLU engine to communicate the unique requests, context and
+            pronunciations of words that matter to you and users. Combined with Spokestack TTS,
+            Spokestack NLU helps create a voice-enabled user experience optimized for your brand.
+          </p>
+          <a href="mailto:hello@spokestack.io" className="link-with-icon">
+            Email us for details on getting a custom NLU for your app
+            <SVGIcon
+              icon={iconArrow.id}
+              style={{ fill: 'var(--primary-color)', width: '17px', height: '17px' }}
+            />
+          </a>
         </div>
       </StickyNavLayout>
       <section css={styles.summary}>
@@ -263,10 +265,6 @@ const styles = {
   `,
   h4: css`
     font-weight: 400;
-    ${MIN_DEFAULT_MEDIA_QUERY} {
-      font-size: ${adjustFontSizeTo('25px').fontSize};
-      line-height: ${adjustFontSizeTo('25px').lineHeight};
-    }
   `,
   usageWrap: css`
     background-color: white;
@@ -302,31 +300,21 @@ const styles = {
       }
     }
   `,
-  feature: css`
-    padding-top: ${rhythm(1)};
-
-    ${MIN_DEFAULT_MEDIA_QUERY} {
-      margin-bottom: ${rhythm(3)};
-    }
+  video: css`
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
   `,
-  title: css`
-    font-size: ${adjustFontSizeTo('22px').fontSize};
-    ${MIN_DEFAULT_MEDIA_QUERY} {
-      font-size: ${adjustFontSizeTo('25px').fontSize};
-      line-height: ${adjustFontSizeTo('25px').lineHeight};
-    }
+  feature: css`
+    padding: ${rhythm(1)} 0;
   `,
   list: css`
     list-style-image: url(/arrow-forward.svg);
   `,
-  description: css`
-    ${MIN_DEFAULT_MEDIA_QUERY} {
-      margin: ${rhythm(1.5)} 0 ${rhythm(2)};
-    }
-  `,
   summary: css`
     background-color: white;
-    padding: ${rhythm(3)} 20px;
+    padding: ${rhythm(3)} 20px 20px;
   `,
   summaryHeader: css`
     text-align: center;

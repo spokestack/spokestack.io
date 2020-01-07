@@ -41,17 +41,29 @@ const options: TypographyOptions = {
       color: 'var(--link-color-active)'
     },
     h1: {
-      marginBottom: rhythm(1)
+      fontSize: `${42 / 18}rem`,
+      marginBottom: rhythm(0.8)
+    },
+    h2: {
+      fontSize: `${33 / 18}rem`,
+      marginBottom: rhythm(0.8)
+    },
+    h3: {
+      fontSize: `${28 / 18}rem`,
+      marginBottom: rhythm(0.8)
     },
     h4: {
-      fontSize: '1.1rem',
-      lineHeight: 1.45
+      fontSize: `${23 / 18}rem`,
+      marginBottom: rhythm(0.8)
     },
     h5: {
+      fontSize: '1rem',
       margin: 0
     },
     h6: {
-      fontWeight: 400
+      fontSize: '1rem',
+      fontWeight: 400,
+      margin: 0
     },
     form: {
       margin: 0

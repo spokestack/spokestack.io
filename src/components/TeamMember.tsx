@@ -28,7 +28,7 @@ const styles = {
     text-align: center;
     max-width: 185px;
     margin: 0 auto ${rhythm(1)};
-    height: 375px;
+    height: 330px;
 
     h3 {
       margin-top: ${rhythm(1)};
@@ -38,7 +38,7 @@ const styles = {
     }
 
     ${MIN_TABLET_MEDIA_QUERY} {
-      margin-bottom: ${rhythm(3)};
+      margin-bottom: ${rhythm(2)};
     }
   `
 }

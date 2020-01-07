@@ -35,13 +35,21 @@ export default function Button({
   }
   return (
     <button css={extraCss} className={classNames.join(' ')} {...props}>
-      <div style={{ visibility: submitting ? 'hidden' : 'visible' }}>{children}</div>
+      <div css={styles.childrenWrap} style={{ visibility: submitting ? 'hidden' : 'visible' }}>
+        {children}
+      </div>
       {submitting && <LoadingIcon extraCss={styles.loading} color="var(--secondary-color)" />}
     </button>
   )
 }
 
 const styles = {
+  childrenWrap: css`
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+  `,
   loading: css`
     position: absolute;
   `

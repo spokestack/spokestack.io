@@ -40,7 +40,6 @@ const styles = {
     display: flex;
     flex-direction: column;
     padding: 10px;
-    margin-bottom: 20px;
 
     ${MIN_DEFAULT_MEDIA_QUERY} {
       padding: 20px;

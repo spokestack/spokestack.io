@@ -107,9 +107,11 @@ export default css`
     &:active:not([disabled]) {
       box-shadow: inset 0 0 5px rgba(0, 0, 0, 0.8);
     }
-    &[disabled] {
+    &[disabled],
+    &.btn-submitting {
       opacity: 0.5;
       cursor: default;
+      pointer-events: none;
     }
     &.btn-primary {
       border-color: var(--primary-color);
@@ -136,7 +138,6 @@ export default css`
     width: 100%;
     display: grid;
     grid-template-columns: 100%;
-    margin-bottom: 20px;
 
     &:last-child {
       margin-bottom: 0;
@@ -151,6 +152,7 @@ export default css`
     }
   }
   .input {
+    width: 100%;
     border: 1px solid var(--main-border-color);
     border-radius: 7px;
     background-color: white;
@@ -164,6 +166,9 @@ export default css`
   }
   .error {
     color: var(--error-color);
+  }
+  .input.error {
+    border-color: var(--error-color);
   }
   .link-with-icon {
     text-decoration: none;

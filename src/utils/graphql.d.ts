@@ -6,12 +6,7 @@ export type Scalars = {
   Boolean: boolean
   Int: number
   Float: number
-  /**
-   * A date string, such as 2007-12-03, compliant with the ISO 8601 standard for
-   * representation of dates and times using the Gregorian calendar.
-   */
   Date: any
-  /** The `JSON` scalar type represents JSON values as specified by [ECMA-404](http://www.ecma-international.org/publications/files/ECMA-ST/ECMA-404.pdf). */
   JSON: any
 }
 
@@ -35,43 +30,43 @@ export type DateQueryOperatorInput = {
 
 export type Directory = Node & {
   __typename?: 'Directory'
+  sourceInstanceName: Scalars['String']
+  absolutePath: Scalars['String']
+  relativePath: Scalars['String']
+  extension: Scalars['String']
+  size: Scalars['Int']
+  prettySize: Scalars['String']
+  modifiedTime: Scalars['Date']
+  accessTime: Scalars['Date']
+  changeTime: Scalars['Date']
+  birthTime: Scalars['Date']
+  root: Scalars['String']
+  dir: Scalars['String']
+  base: Scalars['String']
+  ext: Scalars['String']
+  name: Scalars['String']
+  relativeDirectory: Scalars['String']
+  dev: Scalars['Int']
+  mode: Scalars['Int']
+  nlink: Scalars['Int']
+  uid: Scalars['Int']
+  gid: Scalars['Int']
+  rdev: Scalars['Int']
+  ino: Scalars['Float']
+  atimeMs: Scalars['Float']
+  mtimeMs: Scalars['Float']
+  ctimeMs: Scalars['Float']
+  atime: Scalars['Date']
+  mtime: Scalars['Date']
+  ctime: Scalars['Date']
+  birthtime?: Maybe<Scalars['Date']>
+  birthtimeMs?: Maybe<Scalars['Float']>
+  blksize?: Maybe<Scalars['Int']>
+  blocks?: Maybe<Scalars['Int']>
   id: Scalars['ID']
   parent?: Maybe<Node>
   children: Array<Node>
   internal: Internal
-  sourceInstanceName?: Maybe<Scalars['String']>
-  absolutePath?: Maybe<Scalars['String']>
-  relativePath?: Maybe<Scalars['String']>
-  extension?: Maybe<Scalars['String']>
-  size?: Maybe<Scalars['Int']>
-  prettySize?: Maybe<Scalars['String']>
-  modifiedTime?: Maybe<Scalars['Date']>
-  accessTime?: Maybe<Scalars['Date']>
-  changeTime?: Maybe<Scalars['Date']>
-  birthTime?: Maybe<Scalars['Date']>
-  root?: Maybe<Scalars['String']>
-  dir?: Maybe<Scalars['String']>
-  base?: Maybe<Scalars['String']>
-  ext?: Maybe<Scalars['String']>
-  name?: Maybe<Scalars['String']>
-  relativeDirectory?: Maybe<Scalars['String']>
-  dev?: Maybe<Scalars['Int']>
-  mode?: Maybe<Scalars['Int']>
-  nlink?: Maybe<Scalars['Int']>
-  uid?: Maybe<Scalars['Int']>
-  gid?: Maybe<Scalars['Int']>
-  rdev?: Maybe<Scalars['Int']>
-  blksize?: Maybe<Scalars['Int']>
-  ino?: Maybe<Scalars['Int']>
-  blocks?: Maybe<Scalars['Int']>
-  atimeMs?: Maybe<Scalars['Float']>
-  mtimeMs?: Maybe<Scalars['Float']>
-  ctimeMs?: Maybe<Scalars['Float']>
-  birthtimeMs?: Maybe<Scalars['Float']>
-  atime?: Maybe<Scalars['Date']>
-  mtime?: Maybe<Scalars['Date']>
-  ctime?: Maybe<Scalars['Date']>
-  birthtime?: Maybe<Scalars['Date']>
 }
 
 export type DirectoryModifiedTimeArgs = {
@@ -123,13 +118,6 @@ export type DirectoryCtimeArgs = {
   locale?: Maybe<Scalars['String']>
 }
 
-export type DirectoryBirthtimeArgs = {
-  formatString?: Maybe<Scalars['String']>
-  fromNow?: Maybe<Scalars['Boolean']>
-  difference?: Maybe<Scalars['String']>
-  locale?: Maybe<Scalars['String']>
-}
-
 export type DirectoryConnection = {
   __typename?: 'DirectoryConnection'
   totalCount: Scalars['Int']
@@ -158,6 +146,39 @@ export type DirectoryEdge = {
 }
 
 export enum DirectoryFieldsEnum {
+  SourceInstanceName = 'sourceInstanceName',
+  AbsolutePath = 'absolutePath',
+  RelativePath = 'relativePath',
+  Extension = 'extension',
+  Size = 'size',
+  PrettySize = 'prettySize',
+  ModifiedTime = 'modifiedTime',
+  AccessTime = 'accessTime',
+  ChangeTime = 'changeTime',
+  BirthTime = 'birthTime',
+  Root = 'root',
+  Dir = 'dir',
+  Base = 'base',
+  Ext = 'ext',
+  Name = 'name',
+  RelativeDirectory = 'relativeDirectory',
+  Dev = 'dev',
+  Mode = 'mode',
+  Nlink = 'nlink',
+  Uid = 'uid',
+  Gid = 'gid',
+  Rdev = 'rdev',
+  Ino = 'ino',
+  AtimeMs = 'atimeMs',
+  MtimeMs = 'mtimeMs',
+  CtimeMs = 'ctimeMs',
+  Atime = 'atime',
+  Mtime = 'mtime',
+  Ctime = 'ctime',
+  Birthtime = 'birthtime',
+  BirthtimeMs = 'birthtimeMs',
+  Blksize = 'blksize',
+  Blocks = 'blocks',
   Id = 'id',
   ParentId = 'parent___id',
   ParentParentId = 'parent___parent___id',
@@ -243,47 +264,10 @@ export enum DirectoryFieldsEnum {
   InternalIgnoreType = 'internal___ignoreType',
   InternalMediaType = 'internal___mediaType',
   InternalOwner = 'internal___owner',
-  InternalType = 'internal___type',
-  SourceInstanceName = 'sourceInstanceName',
-  AbsolutePath = 'absolutePath',
-  RelativePath = 'relativePath',
-  Extension = 'extension',
-  Size = 'size',
-  PrettySize = 'prettySize',
-  ModifiedTime = 'modifiedTime',
-  AccessTime = 'accessTime',
-  ChangeTime = 'changeTime',
-  BirthTime = 'birthTime',
-  Root = 'root',
-  Dir = 'dir',
-  Base = 'base',
-  Ext = 'ext',
-  Name = 'name',
-  RelativeDirectory = 'relativeDirectory',
-  Dev = 'dev',
-  Mode = 'mode',
-  Nlink = 'nlink',
-  Uid = 'uid',
-  Gid = 'gid',
-  Rdev = 'rdev',
-  Blksize = 'blksize',
-  Ino = 'ino',
-  Blocks = 'blocks',
-  AtimeMs = 'atimeMs',
-  MtimeMs = 'mtimeMs',
-  CtimeMs = 'ctimeMs',
-  BirthtimeMs = 'birthtimeMs',
-  Atime = 'atime',
-  Mtime = 'mtime',
-  Ctime = 'ctime',
-  Birthtime = 'birthtime'
+  InternalType = 'internal___type'
 }
 
 export type DirectoryFilterInput = {
-  id?: Maybe<StringQueryOperatorInput>
-  parent?: Maybe<NodeFilterInput>
-  children?: Maybe<NodeFilterListInput>
-  internal?: Maybe<InternalFilterInput>
   sourceInstanceName?: Maybe<StringQueryOperatorInput>
   absolutePath?: Maybe<StringQueryOperatorInput>
   relativePath?: Maybe<StringQueryOperatorInput>
@@ -306,17 +290,21 @@ export type DirectoryFilterInput = {
   uid?: Maybe<IntQueryOperatorInput>
   gid?: Maybe<IntQueryOperatorInput>
   rdev?: Maybe<IntQueryOperatorInput>
-  blksize?: Maybe<IntQueryOperatorInput>
-  ino?: Maybe<IntQueryOperatorInput>
-  blocks?: Maybe<IntQueryOperatorInput>
+  ino?: Maybe<FloatQueryOperatorInput>
   atimeMs?: Maybe<FloatQueryOperatorInput>
   mtimeMs?: Maybe<FloatQueryOperatorInput>
   ctimeMs?: Maybe<FloatQueryOperatorInput>
-  birthtimeMs?: Maybe<FloatQueryOperatorInput>
   atime?: Maybe<DateQueryOperatorInput>
   mtime?: Maybe<DateQueryOperatorInput>
   ctime?: Maybe<DateQueryOperatorInput>
   birthtime?: Maybe<DateQueryOperatorInput>
+  birthtimeMs?: Maybe<FloatQueryOperatorInput>
+  blksize?: Maybe<IntQueryOperatorInput>
+  blocks?: Maybe<IntQueryOperatorInput>
+  id?: Maybe<StringQueryOperatorInput>
+  parent?: Maybe<NodeFilterInput>
+  children?: Maybe<NodeFilterListInput>
+  internal?: Maybe<InternalFilterInput>
 }
 
 export type DirectoryGroupConnection = {
@@ -342,40 +330,39 @@ export type DuotoneGradient = {
 
 export type File = Node & {
   __typename?: 'File'
+  sourceInstanceName: Scalars['String']
+  absolutePath: Scalars['String']
+  relativePath: Scalars['String']
+  extension: Scalars['String']
+  size: Scalars['Int']
+  prettySize: Scalars['String']
+  modifiedTime: Scalars['Date']
+  accessTime: Scalars['Date']
+  changeTime: Scalars['Date']
+  birthTime: Scalars['Date']
+  root: Scalars['String']
+  dir: Scalars['String']
+  base: Scalars['String']
+  ext: Scalars['String']
+  name: Scalars['String']
+  relativeDirectory: Scalars['String']
+  dev: Scalars['Int']
+  mode: Scalars['Int']
+  nlink: Scalars['Int']
+  uid: Scalars['Int']
+  gid: Scalars['Int']
+  rdev: Scalars['Int']
+  ino: Scalars['Float']
+  atimeMs: Scalars['Float']
+  mtimeMs: Scalars['Float']
+  ctimeMs: Scalars['Float']
+  atime: Scalars['Date']
+  mtime: Scalars['Date']
+  ctime: Scalars['Date']
   birthtime?: Maybe<Scalars['Date']>
   birthtimeMs?: Maybe<Scalars['Float']>
-  sourceInstanceName?: Maybe<Scalars['String']>
-  absolutePath?: Maybe<Scalars['String']>
-  relativePath?: Maybe<Scalars['String']>
-  extension?: Maybe<Scalars['String']>
-  size?: Maybe<Scalars['Int']>
-  prettySize?: Maybe<Scalars['String']>
-  modifiedTime?: Maybe<Scalars['Date']>
-  accessTime?: Maybe<Scalars['Date']>
-  changeTime?: Maybe<Scalars['Date']>
-  birthTime?: Maybe<Scalars['Date']>
-  root?: Maybe<Scalars['String']>
-  dir?: Maybe<Scalars['String']>
-  base?: Maybe<Scalars['String']>
-  ext?: Maybe<Scalars['String']>
-  name?: Maybe<Scalars['String']>
-  relativeDirectory?: Maybe<Scalars['String']>
-  dev?: Maybe<Scalars['Int']>
-  mode?: Maybe<Scalars['Int']>
-  nlink?: Maybe<Scalars['Int']>
-  uid?: Maybe<Scalars['Int']>
-  gid?: Maybe<Scalars['Int']>
-  rdev?: Maybe<Scalars['Int']>
   blksize?: Maybe<Scalars['Int']>
-  ino?: Maybe<Scalars['Int']>
   blocks?: Maybe<Scalars['Int']>
-  atimeMs?: Maybe<Scalars['Float']>
-  mtimeMs?: Maybe<Scalars['Float']>
-  ctimeMs?: Maybe<Scalars['Float']>
-  atime?: Maybe<Scalars['Date']>
-  mtime?: Maybe<Scalars['Date']>
-  ctime?: Maybe<Scalars['Date']>
-  /** Copy file to static directory and return public url to it */
   publicURL?: Maybe<Scalars['String']>
   childImageSharp?: Maybe<ImageSharp>
   id: Scalars['ID']
@@ -462,8 +449,6 @@ export type FileEdge = {
 }
 
 export enum FileFieldsEnum {
-  Birthtime = 'birthtime',
-  BirthtimeMs = 'birthtimeMs',
   SourceInstanceName = 'sourceInstanceName',
   AbsolutePath = 'absolutePath',
   RelativePath = 'relativePath',
@@ -486,15 +471,17 @@ export enum FileFieldsEnum {
   Uid = 'uid',
   Gid = 'gid',
   Rdev = 'rdev',
-  Blksize = 'blksize',
   Ino = 'ino',
-  Blocks = 'blocks',
   AtimeMs = 'atimeMs',
   MtimeMs = 'mtimeMs',
   CtimeMs = 'ctimeMs',
   Atime = 'atime',
   Mtime = 'mtime',
   Ctime = 'ctime',
+  Birthtime = 'birthtime',
+  BirthtimeMs = 'birthtimeMs',
+  Blksize = 'blksize',
+  Blocks = 'blocks',
   PublicUrl = 'publicURL',
   ChildImageSharpFixedBase64 = 'childImageSharp___fixed___base64',
   ChildImageSharpFixedTracedSvg = 'childImageSharp___fixed___tracedSVG',
@@ -737,8 +724,6 @@ export enum FileFieldsEnum {
 }
 
 export type FileFilterInput = {
-  birthtime?: Maybe<DateQueryOperatorInput>
-  birthtimeMs?: Maybe<FloatQueryOperatorInput>
   sourceInstanceName?: Maybe<StringQueryOperatorInput>
   absolutePath?: Maybe<StringQueryOperatorInput>
   relativePath?: Maybe<StringQueryOperatorInput>
@@ -761,15 +746,17 @@ export type FileFilterInput = {
   uid?: Maybe<IntQueryOperatorInput>
   gid?: Maybe<IntQueryOperatorInput>
   rdev?: Maybe<IntQueryOperatorInput>
-  blksize?: Maybe<IntQueryOperatorInput>
-  ino?: Maybe<IntQueryOperatorInput>
-  blocks?: Maybe<IntQueryOperatorInput>
+  ino?: Maybe<FloatQueryOperatorInput>
   atimeMs?: Maybe<FloatQueryOperatorInput>
   mtimeMs?: Maybe<FloatQueryOperatorInput>
   ctimeMs?: Maybe<FloatQueryOperatorInput>
   atime?: Maybe<DateQueryOperatorInput>
   mtime?: Maybe<DateQueryOperatorInput>
   ctime?: Maybe<DateQueryOperatorInput>
+  birthtime?: Maybe<DateQueryOperatorInput>
+  birthtimeMs?: Maybe<FloatQueryOperatorInput>
+  blksize?: Maybe<IntQueryOperatorInput>
+  blocks?: Maybe<IntQueryOperatorInput>
   publicURL?: Maybe<StringQueryOperatorInput>
   childImageSharp?: Maybe<ImageSharpFilterInput>
   id?: Maybe<StringQueryOperatorInput>
@@ -1414,6 +1401,7 @@ export type MarkdownRemarkHeadingsArgs = {
 }
 
 export type MarkdownRemarkTableOfContentsArgs = {
+  absolute?: Maybe<Scalars['Boolean']>
   pathToSlugField?: Maybe<Scalars['String']>
   maxDepth?: Maybe<Scalars['Int']>
   heading?: Maybe<Scalars['String']>
@@ -1644,7 +1632,6 @@ export type MarkdownWordCountFilterInput = {
   words?: Maybe<IntQueryOperatorInput>
 }
 
-/** Node Interface */
 export type Node = {
   id: Scalars['ID']
   parent?: Maybe<Node>
@@ -1696,20 +1683,117 @@ export enum PotraceTurnPolicy {
 
 export type Query = {
   __typename?: 'Query'
-  imageSharp?: Maybe<ImageSharp>
-  allImageSharp: ImageSharpConnection
-  markdownRemark?: Maybe<MarkdownRemark>
-  allMarkdownRemark: MarkdownRemarkConnection
   file?: Maybe<File>
   allFile: FileConnection
   directory?: Maybe<Directory>
   allDirectory: DirectoryConnection
+  imageSharp?: Maybe<ImageSharp>
+  allImageSharp: ImageSharpConnection
+  markdownRemark?: Maybe<MarkdownRemark>
+  allMarkdownRemark: MarkdownRemarkConnection
   site?: Maybe<Site>
   allSite: SiteConnection
   sitePlugin?: Maybe<SitePlugin>
   allSitePlugin: SitePluginConnection
   sitePage?: Maybe<SitePage>
   allSitePage: SitePageConnection
+}
+
+export type QueryFileArgs = {
+  sourceInstanceName?: Maybe<StringQueryOperatorInput>
+  absolutePath?: Maybe<StringQueryOperatorInput>
+  relativePath?: Maybe<StringQueryOperatorInput>
+  extension?: Maybe<StringQueryOperatorInput>
+  size?: Maybe<IntQueryOperatorInput>
+  prettySize?: Maybe<StringQueryOperatorInput>
+  modifiedTime?: Maybe<DateQueryOperatorInput>
+  accessTime?: Maybe<DateQueryOperatorInput>
+  changeTime?: Maybe<DateQueryOperatorInput>
+  birthTime?: Maybe<DateQueryOperatorInput>
+  root?: Maybe<StringQueryOperatorInput>
+  dir?: Maybe<StringQueryOperatorInput>
+  base?: Maybe<StringQueryOperatorInput>
+  ext?: Maybe<StringQueryOperatorInput>
+  name?: Maybe<StringQueryOperatorInput>
+  relativeDirectory?: Maybe<StringQueryOperatorInput>
+  dev?: Maybe<IntQueryOperatorInput>
+  mode?: Maybe<IntQueryOperatorInput>
+  nlink?: Maybe<IntQueryOperatorInput>
+  uid?: Maybe<IntQueryOperatorInput>
+  gid?: Maybe<IntQueryOperatorInput>
+  rdev?: Maybe<IntQueryOperatorInput>
+  ino?: Maybe<FloatQueryOperatorInput>
+  atimeMs?: Maybe<FloatQueryOperatorInput>
+  mtimeMs?: Maybe<FloatQueryOperatorInput>
+  ctimeMs?: Maybe<FloatQueryOperatorInput>
+  atime?: Maybe<DateQueryOperatorInput>
+  mtime?: Maybe<DateQueryOperatorInput>
+  ctime?: Maybe<DateQueryOperatorInput>
+  birthtime?: Maybe<DateQueryOperatorInput>
+  birthtimeMs?: Maybe<FloatQueryOperatorInput>
+  blksize?: Maybe<IntQueryOperatorInput>
+  blocks?: Maybe<IntQueryOperatorInput>
+  publicURL?: Maybe<StringQueryOperatorInput>
+  childImageSharp?: Maybe<ImageSharpFilterInput>
+  id?: Maybe<StringQueryOperatorInput>
+  parent?: Maybe<NodeFilterInput>
+  children?: Maybe<NodeFilterListInput>
+  internal?: Maybe<InternalFilterInput>
+  childMarkdownRemark?: Maybe<MarkdownRemarkFilterInput>
+}
+
+export type QueryAllFileArgs = {
+  filter?: Maybe<FileFilterInput>
+  sort?: Maybe<FileSortInput>
+  skip?: Maybe<Scalars['Int']>
+  limit?: Maybe<Scalars['Int']>
+}
+
+export type QueryDirectoryArgs = {
+  sourceInstanceName?: Maybe<StringQueryOperatorInput>
+  absolutePath?: Maybe<StringQueryOperatorInput>
+  relativePath?: Maybe<StringQueryOperatorInput>
+  extension?: Maybe<StringQueryOperatorInput>
+  size?: Maybe<IntQueryOperatorInput>
+  prettySize?: Maybe<StringQueryOperatorInput>
+  modifiedTime?: Maybe<DateQueryOperatorInput>
+  accessTime?: Maybe<DateQueryOperatorInput>
+  changeTime?: Maybe<DateQueryOperatorInput>
+  birthTime?: Maybe<DateQueryOperatorInput>
+  root?: Maybe<StringQueryOperatorInput>
+  dir?: Maybe<StringQueryOperatorInput>
+  base?: Maybe<StringQueryOperatorInput>
+  ext?: Maybe<StringQueryOperatorInput>
+  name?: Maybe<StringQueryOperatorInput>
+  relativeDirectory?: Maybe<StringQueryOperatorInput>
+  dev?: Maybe<IntQueryOperatorInput>
+  mode?: Maybe<IntQueryOperatorInput>
+  nlink?: Maybe<IntQueryOperatorInput>
+  uid?: Maybe<IntQueryOperatorInput>
+  gid?: Maybe<IntQueryOperatorInput>
+  rdev?: Maybe<IntQueryOperatorInput>
+  ino?: Maybe<FloatQueryOperatorInput>
+  atimeMs?: Maybe<FloatQueryOperatorInput>
+  mtimeMs?: Maybe<FloatQueryOperatorInput>
+  ctimeMs?: Maybe<FloatQueryOperatorInput>
+  atime?: Maybe<DateQueryOperatorInput>
+  mtime?: Maybe<DateQueryOperatorInput>
+  ctime?: Maybe<DateQueryOperatorInput>
+  birthtime?: Maybe<DateQueryOperatorInput>
+  birthtimeMs?: Maybe<FloatQueryOperatorInput>
+  blksize?: Maybe<IntQueryOperatorInput>
+  blocks?: Maybe<IntQueryOperatorInput>
+  id?: Maybe<StringQueryOperatorInput>
+  parent?: Maybe<NodeFilterInput>
+  children?: Maybe<NodeFilterListInput>
+  internal?: Maybe<InternalFilterInput>
+}
+
+export type QueryAllDirectoryArgs = {
+  filter?: Maybe<DirectoryFilterInput>
+  sort?: Maybe<DirectorySortInput>
+  skip?: Maybe<Scalars['Int']>
+  limit?: Maybe<Scalars['Int']>
 }
 
 export type QueryImageSharpArgs = {
@@ -1754,103 +1838,6 @@ export type QueryMarkdownRemarkArgs = {
 export type QueryAllMarkdownRemarkArgs = {
   filter?: Maybe<MarkdownRemarkFilterInput>
   sort?: Maybe<MarkdownRemarkSortInput>
-  skip?: Maybe<Scalars['Int']>
-  limit?: Maybe<Scalars['Int']>
-}
-
-export type QueryFileArgs = {
-  birthtime?: Maybe<DateQueryOperatorInput>
-  birthtimeMs?: Maybe<FloatQueryOperatorInput>
-  sourceInstanceName?: Maybe<StringQueryOperatorInput>
-  absolutePath?: Maybe<StringQueryOperatorInput>
-  relativePath?: Maybe<StringQueryOperatorInput>
-  extension?: Maybe<StringQueryOperatorInput>
-  size?: Maybe<IntQueryOperatorInput>
-  prettySize?: Maybe<StringQueryOperatorInput>
-  modifiedTime?: Maybe<DateQueryOperatorInput>
-  accessTime?: Maybe<DateQueryOperatorInput>
-  changeTime?: Maybe<DateQueryOperatorInput>
-  birthTime?: Maybe<DateQueryOperatorInput>
-  root?: Maybe<StringQueryOperatorInput>
-  dir?: Maybe<StringQueryOperatorInput>
-  base?: Maybe<StringQueryOperatorInput>
-  ext?: Maybe<StringQueryOperatorInput>
-  name?: Maybe<StringQueryOperatorInput>
-  relativeDirectory?: Maybe<StringQueryOperatorInput>
-  dev?: Maybe<IntQueryOperatorInput>
-  mode?: Maybe<IntQueryOperatorInput>
-  nlink?: Maybe<IntQueryOperatorInput>
-  uid?: Maybe<IntQueryOperatorInput>
-  gid?: Maybe<IntQueryOperatorInput>
-  rdev?: Maybe<IntQueryOperatorInput>
-  blksize?: Maybe<IntQueryOperatorInput>
-  ino?: Maybe<IntQueryOperatorInput>
-  blocks?: Maybe<IntQueryOperatorInput>
-  atimeMs?: Maybe<FloatQueryOperatorInput>
-  mtimeMs?: Maybe<FloatQueryOperatorInput>
-  ctimeMs?: Maybe<FloatQueryOperatorInput>
-  atime?: Maybe<DateQueryOperatorInput>
-  mtime?: Maybe<DateQueryOperatorInput>
-  ctime?: Maybe<DateQueryOperatorInput>
-  publicURL?: Maybe<StringQueryOperatorInput>
-  childImageSharp?: Maybe<ImageSharpFilterInput>
-  id?: Maybe<StringQueryOperatorInput>
-  parent?: Maybe<NodeFilterInput>
-  children?: Maybe<NodeFilterListInput>
-  internal?: Maybe<InternalFilterInput>
-  childMarkdownRemark?: Maybe<MarkdownRemarkFilterInput>
-}
-
-export type QueryAllFileArgs = {
-  filter?: Maybe<FileFilterInput>
-  sort?: Maybe<FileSortInput>
-  skip?: Maybe<Scalars['Int']>
-  limit?: Maybe<Scalars['Int']>
-}
-
-export type QueryDirectoryArgs = {
-  id?: Maybe<StringQueryOperatorInput>
-  parent?: Maybe<NodeFilterInput>
-  children?: Maybe<NodeFilterListInput>
-  internal?: Maybe<InternalFilterInput>
-  sourceInstanceName?: Maybe<StringQueryOperatorInput>
-  absolutePath?: Maybe<StringQueryOperatorInput>
-  relativePath?: Maybe<StringQueryOperatorInput>
-  extension?: Maybe<StringQueryOperatorInput>
-  size?: Maybe<IntQueryOperatorInput>
-  prettySize?: Maybe<StringQueryOperatorInput>
-  modifiedTime?: Maybe<DateQueryOperatorInput>
-  accessTime?: Maybe<DateQueryOperatorInput>
-  changeTime?: Maybe<DateQueryOperatorInput>
-  birthTime?: Maybe<DateQueryOperatorInput>
-  root?: Maybe<StringQueryOperatorInput>
-  dir?: Maybe<StringQueryOperatorInput>
-  base?: Maybe<StringQueryOperatorInput>
-  ext?: Maybe<StringQueryOperatorInput>
-  name?: Maybe<StringQueryOperatorInput>
-  relativeDirectory?: Maybe<StringQueryOperatorInput>
-  dev?: Maybe<IntQueryOperatorInput>
-  mode?: Maybe<IntQueryOperatorInput>
-  nlink?: Maybe<IntQueryOperatorInput>
-  uid?: Maybe<IntQueryOperatorInput>
-  gid?: Maybe<IntQueryOperatorInput>
-  rdev?: Maybe<IntQueryOperatorInput>
-  blksize?: Maybe<IntQueryOperatorInput>
-  ino?: Maybe<IntQueryOperatorInput>
-  blocks?: Maybe<IntQueryOperatorInput>
-  atimeMs?: Maybe<FloatQueryOperatorInput>
-  mtimeMs?: Maybe<FloatQueryOperatorInput>
-  ctimeMs?: Maybe<FloatQueryOperatorInput>
-  birthtimeMs?: Maybe<FloatQueryOperatorInput>
-  atime?: Maybe<DateQueryOperatorInput>
-  mtime?: Maybe<DateQueryOperatorInput>
-  ctime?: Maybe<DateQueryOperatorInput>
-  birthtime?: Maybe<DateQueryOperatorInput>
-}
-
-export type QueryAllDirectoryArgs = {
-  filter?: Maybe<DirectoryFilterInput>
-  sort?: Maybe<DirectorySortInput>
   skip?: Maybe<Scalars['Int']>
   limit?: Maybe<Scalars['Int']>
 }
@@ -1905,6 +1892,7 @@ export type QuerySitePageArgs = {
   internal?: Maybe<InternalFilterInput>
   path?: Maybe<StringQueryOperatorInput>
   internalComponentName?: Maybe<StringQueryOperatorInput>
+  matchPath?: Maybe<StringQueryOperatorInput>
   component?: Maybe<StringQueryOperatorInput>
   componentChunkName?: Maybe<StringQueryOperatorInput>
   isCreatedByStatefulCreatePages?: Maybe<BooleanQueryOperatorInput>
@@ -2116,6 +2104,7 @@ export type SitePage = Node & {
   internal: Internal
   path?: Maybe<Scalars['String']>
   internalComponentName?: Maybe<Scalars['String']>
+  matchPath?: Maybe<Scalars['String']>
   component?: Maybe<Scalars['String']>
   componentChunkName?: Maybe<Scalars['String']>
   isCreatedByStatefulCreatePages?: Maybe<Scalars['Boolean']>
@@ -2312,6 +2301,7 @@ export enum SitePageFieldsEnum {
   InternalType = 'internal___type',
   Path = 'path',
   InternalComponentName = 'internalComponentName',
+  MatchPath = 'matchPath',
   Component = 'component',
   ComponentChunkName = 'componentChunkName',
   IsCreatedByStatefulCreatePages = 'isCreatedByStatefulCreatePages',
@@ -2366,7 +2356,6 @@ export enum SitePageFieldsEnum {
   PluginCreatorPluginOptionsPluginsName = 'pluginCreator___pluginOptions___plugins___name',
   PluginCreatorPluginOptionsPluginsVersion = 'pluginCreator___pluginOptions___plugins___version',
   PluginCreatorPluginOptionsPluginsBrowserApIs = 'pluginCreator___pluginOptions___plugins___browserAPIs',
-  PluginCreatorPluginOptionsPluginsSsrApIs = 'pluginCreator___pluginOptions___plugins___ssrAPIs',
   PluginCreatorPluginOptionsPluginsPluginFilepath = 'pluginCreator___pluginOptions___plugins___pluginFilepath',
   PluginCreatorPluginOptionsPath = 'pluginCreator___pluginOptions___path',
   PluginCreatorPluginOptionsName = 'pluginCreator___pluginOptions___name',
@@ -2381,6 +2370,7 @@ export enum SitePageFieldsEnum {
   PluginCreatorPluginOptionsFeedsQuery = 'pluginCreator___pluginOptions___feeds___query',
   PluginCreatorPluginOptionsFeedsOutput = 'pluginCreator___pluginOptions___feeds___output',
   PluginCreatorPluginOptionsFeedsTitle = 'pluginCreator___pluginOptions___feeds___title',
+  PluginCreatorPluginOptionsPrefixes = 'pluginCreator___pluginOptions___prefixes',
   PluginCreatorPluginOptionsStartUrl = 'pluginCreator___pluginOptions___start_url',
   PluginCreatorPluginOptionsBackgroundColor = 'pluginCreator___pluginOptions___background_color',
   PluginCreatorPluginOptionsThemeColor = 'pluginCreator___pluginOptions___theme_color',
@@ -2419,6 +2409,7 @@ export type SitePageFilterInput = {
   internal?: Maybe<InternalFilterInput>
   path?: Maybe<StringQueryOperatorInput>
   internalComponentName?: Maybe<StringQueryOperatorInput>
+  matchPath?: Maybe<StringQueryOperatorInput>
   component?: Maybe<StringQueryOperatorInput>
   componentChunkName?: Maybe<StringQueryOperatorInput>
   isCreatedByStatefulCreatePages?: Maybe<BooleanQueryOperatorInput>
@@ -2586,7 +2577,6 @@ export enum SitePluginFieldsEnum {
   PluginOptionsPluginsPluginOptionsWrapperStyle = 'pluginOptions___plugins___pluginOptions___wrapperStyle',
   PluginOptionsPluginsPluginOptionsNoInlineHighlight = 'pluginOptions___plugins___pluginOptions___noInlineHighlight',
   PluginOptionsPluginsBrowserApIs = 'pluginOptions___plugins___browserAPIs',
-  PluginOptionsPluginsSsrApIs = 'pluginOptions___plugins___ssrAPIs',
   PluginOptionsPluginsPluginFilepath = 'pluginOptions___plugins___pluginFilepath',
   PluginOptionsPath = 'pluginOptions___path',
   PluginOptionsName = 'pluginOptions___name',
@@ -2601,6 +2591,7 @@ export enum SitePluginFieldsEnum {
   PluginOptionsFeedsQuery = 'pluginOptions___feeds___query',
   PluginOptionsFeedsOutput = 'pluginOptions___feeds___output',
   PluginOptionsFeedsTitle = 'pluginOptions___feeds___title',
+  PluginOptionsPrefixes = 'pluginOptions___prefixes',
   PluginOptionsStartUrl = 'pluginOptions___start_url',
   PluginOptionsBackgroundColor = 'pluginOptions___background_color',
   PluginOptionsThemeColor = 'pluginOptions___theme_color',
@@ -2741,6 +2732,7 @@ export type SitePluginPluginOptions = {
   noInlineHighlight?: Maybe<Scalars['Boolean']>
   query?: Maybe<Scalars['String']>
   feeds?: Maybe<Array<Maybe<SitePluginPluginOptionsFeeds>>>
+  prefixes?: Maybe<Array<Maybe<Scalars['String']>>>
   start_url?: Maybe<Scalars['String']>
   background_color?: Maybe<Scalars['String']>
   theme_color?: Maybe<Scalars['String']>
@@ -2779,6 +2771,7 @@ export type SitePluginPluginOptionsFilterInput = {
   noInlineHighlight?: Maybe<BooleanQueryOperatorInput>
   query?: Maybe<StringQueryOperatorInput>
   feeds?: Maybe<SitePluginPluginOptionsFeedsFilterListInput>
+  prefixes?: Maybe<StringQueryOperatorInput>
   start_url?: Maybe<StringQueryOperatorInput>
   background_color?: Maybe<StringQueryOperatorInput>
   theme_color?: Maybe<StringQueryOperatorInput>
@@ -2796,7 +2789,6 @@ export type SitePluginPluginOptionsPlugins = {
   version?: Maybe<Scalars['String']>
   pluginOptions?: Maybe<SitePluginPluginOptionsPluginsPluginOptions>
   browserAPIs?: Maybe<Array<Maybe<Scalars['String']>>>
-  ssrAPIs?: Maybe<Array<Maybe<Scalars['String']>>>
   pluginFilepath?: Maybe<Scalars['String']>
 }
 
@@ -2807,7 +2799,6 @@ export type SitePluginPluginOptionsPluginsFilterInput = {
   version?: Maybe<StringQueryOperatorInput>
   pluginOptions?: Maybe<SitePluginPluginOptionsPluginsPluginOptionsFilterInput>
   browserAPIs?: Maybe<StringQueryOperatorInput>
-  ssrAPIs?: Maybe<StringQueryOperatorInput>
   pluginFilepath?: Maybe<StringQueryOperatorInput>
 }
 

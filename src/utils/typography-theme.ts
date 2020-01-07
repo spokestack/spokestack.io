@@ -53,6 +53,9 @@ const options: TypographyOptions = {
     h6: {
       fontWeight: 400
     },
+    form: {
+      margin: 0
+    },
     blockquote: {
       ...scale(1 / 5),
       color: 'hsl(0, 0%, 40%)',

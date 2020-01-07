@@ -11,7 +11,7 @@ interface Props {
 export default function Card({ title, children, extraCss }: Props) {
   return (
     <div css={[styles.card, extraCss]} className="card">
-      <h3 css={styles.cardHeader}>{title}</h3>
+      <h4 css={styles.cardHeader}>{title}</h4>
       <div css={styles.content}>{children}</div>
     </div>
   )

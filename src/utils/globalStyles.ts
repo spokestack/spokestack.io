@@ -68,8 +68,7 @@ export default css`
     padding: 0;
   }
   h3 code {
-    font-size: ${adjustFontSizeTo('25px').fontSize};
-    line-height: 1.4;
+    ${adjustFontSizeTo('30px')};
   }
   .btn {
     position: relative;
@@ -188,18 +187,22 @@ export default css`
   .card li p {
     margin: 0;
   }
+  .title {
+    font-size: ${adjustFontSizeTo('22px').fontSize};
+  }
   ${MIN_DEFAULT_MEDIA_QUERY} {
     h1 {
       font-size: ${adjustFontSizeTo('45px').fontSize};
-      line-height: ${adjustFontSizeTo('45px').lineHeight};
     }
     h2 {
-      font-size: ${adjustFontSizeTo('30px').fontSize};
-      line-height: ${adjustFontSizeTo('30px').lineHeight};
+      font-size: ${adjustFontSizeTo('35px').fontSize};
     }
     h3 {
+      font-size: ${adjustFontSizeTo('30px').fontSize};
+    }
+    h4,
+    .title {
       font-size: ${adjustFontSizeTo('25px').fontSize};
-      line-height: 1.4;
     }
     .input-wrap {
       grid-template-columns: 200px 1fr;

@@ -46,14 +46,17 @@ const options: TypographyOptions = {
     },
     h2: {
       fontSize: `${33 / 18}rem`,
+      lineHeight: 1.45,
       marginBottom: rhythm(0.8)
     },
     h3: {
       fontSize: `${28 / 18}rem`,
+      lineHeight: 1.45,
       marginBottom: rhythm(0.8)
     },
     h4: {
       fontSize: `${23 / 18}rem`,
+      lineHeight: 1.45,
       marginBottom: rhythm(0.8)
     },
     h5: {

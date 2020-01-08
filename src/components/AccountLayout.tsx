@@ -28,12 +28,13 @@ const links: StickyLink[] = [
 interface Props {
   children: React.ReactNode
   location?: WindowLocation
+  title: string
 }
 
-export default function AccountLayout({ children, location }: Props) {
+export default function AccountLayout({ children, location, title }: Props) {
   return (
     <Layout>
-      <StickyNavLayout matchHash header="Radiobrain" links={links} location={location}>
+      <StickyNavLayout matchHash header={title} links={links} location={location}>
         {children}
       </StickyNavLayout>
     </Layout>

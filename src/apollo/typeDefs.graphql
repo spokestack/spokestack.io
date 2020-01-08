@@ -1,5 +1,5 @@
 # source: https://integration-api.spokestack.io/control
-# timestamp: Fri Jan 03 2020 15:58:01 GMT-0500 (Eastern Standard Time)
+# timestamp: Wed Jan 08 2020 14:59:12 GMT-0500 (Eastern Standard Time)
 
 schema {
   query: RootQueryType
@@ -13,8 +13,18 @@ Account details
 type Account {
   apiKeys: [ApiKeySummary]
   displayName: String
-  id: String
+  id: ID
   insertedAt: DateTime
+}
+
+"""
+Minimal Account information for listing purposes
+
+"""
+type AccountSummary {
+  displayName: String
+  id: ID
+  isInvite: Boolean
 }
 
 """
@@ -55,6 +65,18 @@ enum KeyType {
 
 type RootMutationType {
   """
+  Accept the invitation to join an account
+  
+  Since the user is implicit via the authorization header, the request merely
+  needs to specify the account ID. This means the embedded URL has to encode
+  less information. Invitations can expire, so this will return an Account if
+  the invitation is still valid. If the invitation has expired, this will
+  return a proper GraphQL error to allow the client to offer the user a flow
+  out of that case.
+  """
+  acceptInvitation(accountId: ID!): Account
+
+  """
   Create an account on behalf of the current user
   
   This will fail if the user is already associated with an account.
@@ -70,13 +92,37 @@ type RootMutationType {
   """
   createKey(accountId: ID!, displayName: String!, type: KeyType!): ApiKey
 
+  """
+  Invite a new or existing user to your account
+  
+  This will send them an invitation email that they are expected to accept.
+  `acceptInvitation` exists as a separate mutation for the client to use to
+  close the loop.
+  """
+  inviteUser(accountId: ID!, emailAddress: String!): Boolean
+
+  """Remove a user from the account"""
+  removeUser(accountId: ID!, userId: ID!): Boolean
+
   """Revoke and delete the specified API key"""
   revokeKey(accountId: ID!, keyId: ID!): Boolean
 }
 
 type RootQueryType {
   """Retrieve the user's account"""
-  getAccount: Account
+  getAccount(
+    """optional account id for multi-account disambiguation"""
+    id: ID
+  ): Account
+
+  """
+  Account summaries for all accounts the user can see
+  
+  Accounts where isInvite is false are the norm; the user is expected to
+  interact with them to view/create keys etc. Accounts where isInvite is true
+  are not meant to be interacted with beyond accepting the pending invite.
+  """
+  listAccounts: [AccountSummary]
 
   """
   Retrieve the key material for the specified account/key

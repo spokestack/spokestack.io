@@ -44,6 +44,12 @@ export interface Account {
   insertedAt: string
 }
 
+export interface AccountSummary {
+  displayName: string
+  id: string
+  isInvite: boolean
+}
+
 export interface ApiKey {
   displayName: string
   id: string

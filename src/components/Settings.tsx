@@ -1,7 +1,9 @@
 import { Account, ApiKey } from '../types'
+import React, { useState } from 'react'
+
 import AccountCard from './AccountCard'
 import AccountLayout from './AccountLayout'
-import React, { useState } from 'react'
+import AddTokenForm from './AddTokenForm'
 import { RouteComponentProps } from '@reach/router'
 import SVGIcon from './SVGIcon'
 import Token from './Token'
@@ -9,20 +11,7 @@ import { adjustFontSizeTo } from '../utils/typography'
 import { css } from '@emotion/core'
 import gql from 'graphql-tag'
 import iconAddCircle from '../icons/add-circle.svg'
-import { useQuery, useMutation } from '@apollo/react-hooks'
-import AddTokenForm from './AddTokenForm'
-
-const ACCOUNT_QUERY = gql`
-  query GetAccount {
-    getAccount {
-      apiKeys {
-        displayName
-        id
-      }
-      id
-    }
-  }
-`
+import { useMutation } from '@apollo/react-hooks'
 
 const ADD_TOKEN = gql`
   mutation CreateKey($accountId: ID!, $displayName: String!) {
@@ -34,46 +23,52 @@ const ADD_TOKEN = gql`
   }
 `
 
-interface QueryProps {
-  getAccount: Partial<Account>
+const REMOVE_TOKEN = gql`
+  mutation RevokeKey($accountId: ID!, $keyId: ID!) {
+    revokeKey(accountId: $accountId, keyId: $keyId)
+  }
+`
+
+interface Props extends RouteComponentProps {
+  account: Account
 }
 
-interface MutationProps {
-  createKey: Partial<ApiKey>
+interface CreateKeyMutation {
+  createKey: ApiKey
 }
 
-export default function Settings({ location }: RouteComponentProps) {
-  const [showForm, setShowForm] = useState(true)
-  const { data, loading, error } = useQuery<QueryProps>(ACCOUNT_QUERY, { ssr: false })
-  const [addToken, { data: addTokenData, loading: addTokenLoading }] = useMutation<MutationProps>(
-    ADD_TOKEN,
-    {
-      onCompleted: () => {
-        setShowForm(false)
-      }
+interface RemoveKeyMutation {
+  revokeKey: boolean
+}
+
+export default function Settings({ account, location }: Props) {
+  const [tokens, setTokens] = useState(account.apiKeys || [])
+  const [showForm, setShowForm] = useState(!tokens.length)
+  const [addToken, { loading: addTokenLoading }] = useMutation<CreateKeyMutation>(ADD_TOKEN, {
+    onCompleted: ({ createKey: token }) => {
+      setTokens(tokens.concat(token))
+      setShowForm(false)
     }
-  )
-  const account = (data && data.getAccount) || {}
-  const message = error ? error.message : loading ? 'Loading...' : null
+  })
+  const [removeToken] = useMutation<RemoveKeyMutation>(REMOVE_TOKEN)
   return (
-    <AccountLayout location={location}>
+    <AccountLayout location={location} title={account.displayName}>
       <h2>Settings</h2>
       <AccountCard title="General" id="general">
         <div className="input-wrap">
           <label>Project name</label>
-          <div className="input-value">{message || account.displayName}</div>
+          <div className="input-value">{account.displayName}</div>
         </div>
         <div className="input-wrap">
           <label>Project ID</label>
-          <div className={`input-value${error ? ' error' : ''}`}>{message || account.id}</div>
+          <div className="input-value">{account.id}</div>
         </div>
       </AccountCard>
       <AccountCard
         title="API Credentials"
         id="api"
         rightContent={
-          !showForm &&
-          !message && (
+          !showForm && (
             <a href="#" css={styles.addLink} onClick={() => setShowForm(true)}>
               <SVGIcon icon={iconAddCircle.id} extraCss={styles.addIcon} />
               Add token
@@ -84,26 +79,37 @@ export default function Settings({ location }: RouteComponentProps) {
           This is a list of the API access tokens associated with the current account. Tokens can
           only be viewed when creating them. Remove any tokens that don&lsquo;t look familiar.
         </p>
-        {showForm && !message && (
-          <div css={styles.tokens}>
-            {showForm && (
-              <AddTokenForm
-                submitting={addTokenLoading}
-                onSubmit={() => {
-                  addToken({
-                    variables: {
-                      accountId: account.id,
-                      displayName: account.displayName
-                    }
-                  })
-                }}
-              />
-            )}
-            {addTokenData && <Token token={addTokenData.createKey} />}
-            {account.apiKeys &&
-              account.apiKeys.map((token) => <Token key={`token-${token.id}`} token={token} />)}
-          </div>
-        )}
+        {!tokens.length && <p>You currently have no API keys. Generate one below.</p>}
+        <div css={styles.tokens}>
+          {showForm && (
+            <AddTokenForm
+              submitting={addTokenLoading}
+              onSubmit={() => {
+                addToken({
+                  variables: {
+                    accountId: account.id,
+                    displayName: account.displayName
+                  }
+                })
+              }}
+            />
+          )}
+          {tokens.map((token) => (
+            <Token
+              key={`token-${token.id}`}
+              token={token}
+              onDelete={() => {
+                removeToken({
+                  variables: {
+                    accountId: account.id,
+                    keyId: token.id
+                  }
+                })
+                setTokens(tokens.filter((t) => t.id !== token.id))
+              }}
+            />
+          ))}
+        </div>
       </AccountCard>
     </AccountLayout>
   )

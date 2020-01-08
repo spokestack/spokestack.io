@@ -1,52 +1,97 @@
-import { ApiKeySummary } from '../types'
+import React, { useRef, useState } from 'react'
+
+import { ApiKey } from '../types'
 import { MIN_DEFAULT_MEDIA_QUERY } from 'typography-breakpoint-constants'
-import React from 'react'
 import SVGIcon from './SVGIcon'
 import { css } from '@emotion/core'
+import iconCheckmark from '../icons/checkmark.svg'
+import iconCopy from '../icons/copy.svg'
 import iconDelete from '../icons/delete.svg'
 // import iconEye from '../icons/eye.svg'
 import iconKey from '../icons/key.svg'
 
 interface Props {
-  token: Partial<ApiKeySummary>
+  token: Partial<ApiKey>
+  onDelete: (token: Partial<ApiKey>) => void
 }
 
-export default function Token({ token }: Props) {
+export default function Token({ token, onDelete }: Props) {
+  const [copied, setCopied] = useState(false)
+  const textareaRef = useRef<HTMLTextAreaElement>(null)
+  function copy() {
+    if (textareaRef.current) {
+      textareaRef.current.select()
+      const success = document.execCommand('copy')
+      if (success) {
+        setCopied(true)
+        setTimeout(() => setCopied(false), 300)
+      }
+    }
+  }
   return (
-    <div css={styles.token}>
-      <div css={styles.row}>
-        <div css={[styles.iconWrap, styles.keyIconWrap]}>
-          <SVGIcon icon={iconKey.id} extraCss={styles.keyIcon} />
+    <div css={styles.container}>
+      <div css={styles.summary}>
+        <div css={styles.row}>
+          <div css={[styles.iconWrap, styles.keyIconWrap]}>
+            <SVGIcon icon={iconKey.id} extraCss={styles.keyIcon} />
+          </div>
+          <strong>Label:</strong>&nbsp;{token.displayName}
         </div>
-        <strong>Label:</strong>&nbsp;{token.displayName}
+        <div css={styles.row}>
+          {/* <a href="#" css={styles.iconWrap}>
+            <SVGIcon icon={iconEye.id} extraCss={styles.deleteIcon} />
+          </a> */}
+          {token.key ? (
+            <a onClick={copy} css={styles.iconWrap}>
+              <SVGIcon
+                icon={copied ? iconCheckmark.id : iconCopy.id}
+                extraCss={styles.deleteIcon}
+              />
+            </a>
+          ) : (
+            <div css={styles.tokenText}>•••••••••••••••••••••••••</div>
+          )}
+          <a
+            onClick={(e) => {
+              e.preventDefault()
+              onDelete(token)
+            }}
+            css={styles.iconWrap}>
+            <SVGIcon icon={iconDelete.id} extraCss={styles.deleteIcon} />
+          </a>
+        </div>
       </div>
-      <div css={styles.row}>
-        {/* <a href="#" css={styles.iconWrap}>
-          <SVGIcon icon={iconEye.id} extraCss={styles.deleteIcon} />
-        </a> */}
-        <div css={styles.tokenText}>•••••••••••••••••••••••••</div>
-        <a href="#" css={styles.iconWrap}>
-          <SVGIcon icon={iconDelete.id} extraCss={styles.deleteIcon} />
-        </a>
-      </div>
+      {token.key && (
+        <textarea ref={textareaRef} readOnly className="input" css={styles.key} value={token.key} />
+      )}
     </div>
   )
 }
 
 const styles = {
-  token: css`
+  container: css`
     border: 1px solid var(--main-border-color);
     border-radius: 7px;
-    display: flex;
-    flex-direction: column;
     padding: 10px;
 
     ${MIN_DEFAULT_MEDIA_QUERY} {
-      padding: 20px;
+      padding: 10px 20px;
+    }
+  `,
+  summary: css`
+    display: flex;
+    flex-direction: column;
+
+    ${MIN_DEFAULT_MEDIA_QUERY} {
       flex-direction: row;
       justify-content: space-between;
       align-items: center;
     }
+  `,
+  row: css`
+    display: flex;
+    flex-direction: row;
+    align-items: center;
   `,
   iconWrap: css`
     width: 44px;
@@ -73,13 +118,12 @@ const styles = {
   keyIconWrap: css`
     pointer-events: none;
   `,
-  row: css`
-    display: flex;
-    flex-direction: row;
-    align-items: center;
-  `,
   tokenText: css`
     margin: 0 5px;
+  `,
+  key: css`
+    margin-top: 10px;
+    resize: none;
   `,
   deleteIcon: css`
     fill: var(--primary-color);

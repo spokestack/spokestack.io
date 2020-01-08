@@ -1,16 +1,21 @@
+import { Account } from '../types'
+import AccountCard from './AccountCard'
+import AccountLayout from './AccountLayout'
 import React from 'react'
 import { RouteComponentProps } from '@reach/router'
-import AccountCard from './AccountCard'
 import { css } from '@emotion/core'
-import AccountLayout from './AccountLayout'
 
-export default function Billing({ location }: RouteComponentProps) {
+interface Props extends RouteComponentProps {
+  account: Account
+}
+
+export default function Billing({ account, location }: Props) {
   return (
-    <AccountLayout location={location}>
+    <AccountLayout location={location} title={account.displayName}>
       <h2>Billing</h2>
       <AccountCard title="Overview" id="overview">
         <div className="input-wrap">
-          <label htmlFor="balance">Current Balance</label>
+          <label>Current Balance</label>
           <div css={styles.balance}>19.62474</div>
         </div>
       </AccountCard>

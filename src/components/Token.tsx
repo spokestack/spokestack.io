@@ -62,7 +62,16 @@ export default function Token({ token, onDelete }: Props) {
         </div>
       </div>
       {token.key && (
-        <textarea ref={textareaRef} readOnly className="input" css={styles.key} value={token.key} />
+        <>
+          <p css={styles.save}>Save this token somewhere safe. It can only be viewed once.</p>
+          <textarea
+            ref={textareaRef}
+            readOnly
+            className="input"
+            css={styles.key}
+            value={token.key}
+          />
+        </>
       )}
     </div>
   )
@@ -102,6 +111,7 @@ const styles = {
     justify-content: center;
     align-items: center;
     transition: background-color 0.2s var(--transition-easing);
+    cursor: pointer;
 
     &:hover {
       background-color: rgba(0, 0, 0, 0.1);
@@ -120,6 +130,10 @@ const styles = {
   `,
   tokenText: css`
     margin: 0 5px;
+  `,
+  save: css`
+    text-align: center;
+    margin: 0;
   `,
   key: css`
     margin-top: 10px;

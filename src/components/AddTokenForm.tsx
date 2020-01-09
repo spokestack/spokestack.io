@@ -1,6 +1,7 @@
 import React, { useState, FormEvent } from 'react'
 import Button from './Button'
 import { css } from '@emotion/core'
+import { MIN_DEFAULT_MEDIA_QUERY } from 'typography-breakpoint-constants'
 
 interface Props {
   submitting: boolean
@@ -46,14 +47,28 @@ export default function AddTokenForm({ submitting, onSubmit }: Props) {
 const styles = {
   addToken: css`
     display: flex;
-    flex-direction: row;
+    flex-direction: column;
     align-items: center;
     border: 1px solid var(--main-border-color);
     border-radius: 7px;
     padding: 20px;
 
-    .input-wrap {
-      margin-right: 20px;
+    .btn {
+      width: 100%;
+      margin-top: 20px;
+    }
+
+    ${MIN_DEFAULT_MEDIA_QUERY} {
+      flex-direction: row;
+
+      .input-wrap {
+        margin-right: 20px;
+      }
+
+      .btn {
+        width: auto;
+        margin: 0;
+      }
     }
   `
 }

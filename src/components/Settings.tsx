@@ -43,7 +43,7 @@ interface RemoveKeyMutation {
 
 export default function Settings({ account, location }: Props) {
   const [tokens, setTokens] = useState(account.apiKeys || [])
-  const [showForm, setShowForm] = useState(!tokens.length)
+  const [showForm, setShowForm] = useState(false)
   const [addToken, { loading: addTokenLoading }] = useMutation<CreateKeyMutation>(ADD_TOKEN, {
     onCompleted: ({ createKey: token }) => {
       setTokens(tokens.concat(token))
@@ -68,7 +68,8 @@ export default function Settings({ account, location }: Props) {
         title="API Credentials"
         id="api"
         rightContent={
-          !showForm && (
+          !showForm &&
+          !!tokens.length && (
             <a href="#" css={styles.addLink} onClick={() => setShowForm(true)}>
               <SVGIcon icon={iconAddCircle.id} extraCss={styles.addIcon} />
               Add token
@@ -81,7 +82,7 @@ export default function Settings({ account, location }: Props) {
         </p>
         {!tokens.length && <p>You currently have no API keys. Generate one below.</p>}
         <div css={styles.tokens}>
-          {showForm && (
+          {(showForm || !tokens.length) && (
             <AddTokenForm
               submitting={addTokenLoading}
               onSubmit={() => {

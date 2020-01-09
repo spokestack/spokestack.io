@@ -205,7 +205,7 @@ export default css`
       font-size: ${adjustFontSizeTo('25px').fontSize};
     }
     .input-wrap {
-      grid-template-columns: 200px 1fr;
+      grid-template-columns: 180px 1fr;
 
       label {
         justify-content: flex-end;

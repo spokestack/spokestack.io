@@ -4,7 +4,7 @@ import {
   MIN_TABLET_MEDIA_QUERY
 } from 'typography-breakpoint-constants'
 import { PageRendererProps, graphql } from 'gatsby'
-import React, { useRef } from 'react'
+import React, { useRef, useEffect } from 'react'
 import { rhythm } from '../utils/typography'
 
 import Card from '../components/Card'
@@ -18,12 +18,14 @@ import UsageMap from '../components/UsageMap'
 import { css } from '@emotion/core'
 import iconArrow from '../icons/arrow-forward.svg'
 import iconPlay from '../icons/play-circle-outline.svg'
+import { requestFullscreen } from '../utils/video'
 
 interface Props extends PageRendererProps {
   data: Query
 }
 
 export default function Index({ data, location }: Props) {
+  const videoRef = useRef<HTMLVideoElement>(null)
   const siteTitle = data.site.siteMetadata.title
   const links = [
     {
@@ -47,6 +49,18 @@ export default function Index({ data, location }: Props) {
       ref: useRef<HTMLDivElement>(null)
     }
   ]
+
+  useEffect(() => {
+    const video = videoRef.current
+    const pause = () => {
+      if (!document.fullscreenElement) {
+        video.pause()
+      }
+    }
+    video.addEventListener('fullscreenchange', pause)
+    video.addEventListener('msfullscreenchange', pause)
+    video.addEventListener('webkitfullscreenchange', pause)
+  }, [])
 
   return (
     <Layout>
@@ -76,8 +90,24 @@ export default function Index({ data, location }: Props) {
               popularity, users will expect apps to have a voice and provide a hands-free
               experience.
             </p>
+            <video ref={videoRef} css={styles.video}>
+              <source src="spokestack-1920x1080.mp4" type="video/mp4" media="(min-width: 1920px)" />
+              <source src="spokestack-1280x720.mp4" type="video/mp4" media="(min-width: 1280px)" />
+              <source src="spokestack-960x540.mp4" type="video/mp4" media="(min-width: 960px)" />
+              <source src="spokestack-640x360.mp4" type="video/mp4" media="(min-width: 640px)" />
+              <source src="spokestack-426x240.mp4" type="video/mp4" />
+            </video>
             <h4>
-              <a css={styles.video} href="https://vimeo.com/spokestack">
+              <a
+                css={styles.videoLink}
+                onClick={() => {
+                  const video = videoRef.current
+                  if (!video) {
+                    return
+                  }
+                  video.play()
+                  requestFullscreen(video)
+                }}>
                 <SVGIcon
                   icon={iconPlay.id}
                   style={{
@@ -301,10 +331,15 @@ const styles = {
     }
   `,
   video: css`
+    width: 0;
+    height: 0;
+  `,
+  videoLink: css`
     display: flex;
     flex-direction: row;
     justify-content: center;
     align-items: center;
+    cursor: pointer;
   `,
   feature: css`
     padding: ${rhythm(1)} 0;

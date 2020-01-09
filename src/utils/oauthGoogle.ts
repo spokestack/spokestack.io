@@ -9,11 +9,7 @@ export function createLink() {
   // List of scopes: https://developers.google.com/identity/protocols/googlescopes
   url += `&scope=${encodeURIComponent('https://www.googleapis.com/auth/userinfo.email')}`
   url += `&state=${getStateKey()}`
-  if (process.env.NODE_ENV !== 'production') {
-    url += '&redirect_uri=http://localhost:8000/oauth/google'
-  } else {
-    url += '&redirect_uri=https://spokestack.io/oauth/google'
-  }
+  url += `&redirect_uri=${location.origin}/oauth/google/`
   return url
 }
 

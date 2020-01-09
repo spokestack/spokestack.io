@@ -70,7 +70,7 @@ export default function Settings({ account, location }: Props) {
         rightContent={
           !showForm &&
           !!tokens.length && (
-            <a href="#" css={styles.addLink} onClick={() => setShowForm(true)}>
+            <a css={styles.addLink} onClick={() => setShowForm(true)}>
               <SVGIcon icon={iconAddCircle.id} extraCss={styles.addIcon} />
               Add token
             </a>
@@ -123,6 +123,7 @@ const styles = {
     align-items: center;
     ${adjustFontSizeTo('16px')};
     text-decoration: none;
+    cursor: pointer;
 
     &:hover svg {
       fill: var(--link-color-hover);

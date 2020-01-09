@@ -38,7 +38,7 @@ export default function Token({ token, onDelete }: Props) {
           <strong>Label:</strong>&nbsp;{token.displayName}
         </div>
         <div css={styles.row}>
-          {/* <a href="#" css={styles.iconWrap}>
+          {/* <a css={styles.iconWrap}>
             <SVGIcon icon={iconEye.id} extraCss={styles.deleteIcon} />
           </a> */}
           {token.key ? (

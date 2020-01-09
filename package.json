@@ -97,7 +97,7 @@
     "lint-staged": "^9.2.1",
     "mkdirp": "^0.5.1",
     "prettier": "^1.18.2",
-    "semantic-release": "^15.13.18",
+    "semantic-release": "^16.0.0",
     "shelljs": "^0.8.3"
   },
   "resolutions": {

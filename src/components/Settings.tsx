@@ -85,11 +85,11 @@ export default function Settings({ account, location }: Props) {
           {(showForm || !tokens.length) && (
             <AddTokenForm
               submitting={addTokenLoading}
-              onSubmit={() => {
+              onSubmit={(displayName) => {
                 addToken({
                   variables: {
-                    accountId: account.id,
-                    displayName: account.displayName
+                    displayName,
+                    accountId: account.id
                   }
                 })
               }}

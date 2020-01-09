@@ -7,7 +7,6 @@ import { css } from '@emotion/core'
 import iconCheckmark from '../icons/checkmark.svg'
 import iconCopy from '../icons/copy.svg'
 import iconDelete from '../icons/delete.svg'
-// import iconEye from '../icons/eye.svg'
 import iconKey from '../icons/key.svg'
 
 interface Props {
@@ -38,9 +37,6 @@ export default function Token({ token, onDelete }: Props) {
           <strong>Label:</strong>&nbsp;{token.displayName}
         </div>
         <div css={styles.row}>
-          {/* <a css={styles.iconWrap}>
-            <SVGIcon icon={iconEye.id} extraCss={styles.deleteIcon} />
-          </a> */}
           {token.key ? (
             <a onClick={copy} css={styles.iconWrap}>
               <SVGIcon

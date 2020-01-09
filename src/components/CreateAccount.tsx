@@ -30,11 +30,9 @@ interface CreateAccountMutation {
 export default function CreateAccount({}: RouteComponentProps) {
   const [accountName, setAccountName] = useState('')
   const [invalid, setInvalid] = useState(false)
-  const [createAccount, { error }] = useMutation<CreateAccountMutation>(CREATE_ACCOUNT, {
-    onCompleted: (data) => {
-      if (data && data.createAccount) {
-        navigate('/account/settings')
-      }
+  const [createAccount, { error, loading }] = useMutation<CreateAccountMutation>(CREATE_ACCOUNT, {
+    onCompleted: () => {
+      navigate('/account/settings/')
     }
   })
 
@@ -63,6 +61,7 @@ export default function CreateAccount({}: RouteComponentProps) {
               <input
                 id="account-name"
                 type="text"
+                disabled={loading}
                 className={`input${invalid ? ' error' : ''}`}
                 value={accountName}
                 onChange={(e) => {
@@ -71,7 +70,7 @@ export default function CreateAccount({}: RouteComponentProps) {
                 }}
               />
             </div>
-            <Button primary type="submit" extraCss={styles.button}>
+            <Button primary disabled={loading} type="submit" extraCss={styles.button}>
               Create
             </Button>
           </form>

@@ -53,13 +53,15 @@ export default function RouteWithAccount({ component: Component, ...props }: Pro
     return null
   }
   const listAccountsResult = useQuery<ListAccountsQuery>(LIST_ACCOUNTS_QUERY, {
-    ssr: false
+    ssr: false,
+    fetchPolicy: 'network-only'
   })
   // TODO: save the current account ID
   // to localStorage and pass that in
   // variables here
   const [getAccount, getAccountResult] = useLazyQuery<AccountQuery>(ACCOUNT_QUERY, {
-    ssr: false
+    ssr: false,
+    fetchPolicy: 'network-only'
   })
   const accounts = (listAccountsResult.data || {}).listAccounts || []
   const loading = listAccountsResult.loading || getAccountResult.loading

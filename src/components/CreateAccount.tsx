@@ -14,10 +14,6 @@ import { useMutation } from '@apollo/react-hooks'
 const CREATE_ACCOUNT = gql`
   mutation CreateAccount($displayName: String!) {
     createAccount(displayName: $displayName) {
-      apiKeys {
-        displayName
-        id
-      }
       id
     }
   }

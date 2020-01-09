@@ -36,11 +36,15 @@ export default class SampleVoices extends PureComponent {
   }
 
   componentDidMount() {
-    this.audio = new Audio()
+    this.getAudio()
+  }
+
+  loadAudio(url: string) {
+    this.audio = new Audio(url)
     this.audio.addEventListener('canplaythrough', () => {
       this.setState({ disabled: false, submitting: false })
     })
-    this.getAudio()
+    this.audio.load()
   }
 
   getAudio = async () => {
@@ -54,8 +58,7 @@ export default class SampleVoices extends PureComponent {
     })
     const [synthError, response] = await synthesize(selected.value, text)
     if (!synthError && response && response.url) {
-      this.audio.src = response.url
-      this.audio.load()
+      this.loadAudio(response.url)
     } else {
       this.setState({
         disabled: false,
@@ -70,7 +73,7 @@ export default class SampleVoices extends PureComponent {
 
   play = () => {
     const { disabled, submitting } = this.state
-    if (!disabled && !submitting) {
+    if (this.audio && !disabled && !submitting) {
       this.audio.currentTime = 0
       this.audio.play()
     }

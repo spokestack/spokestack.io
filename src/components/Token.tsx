@@ -23,7 +23,7 @@ export default function Token({ token, onDelete }: Props) {
       const success = document.execCommand('copy')
       if (success) {
         setCopied(true)
-        setTimeout(() => setCopied(false), 300)
+        setTimeout(() => setCopied(false), 500)
       }
     }
   }
@@ -38,7 +38,7 @@ export default function Token({ token, onDelete }: Props) {
         </div>
         <div css={styles.row}>
           {token.key ? (
-            <a onClick={copy} css={styles.iconWrap}>
+            <a title="Copy key" onClick={copy} css={styles.iconWrap}>
               <SVGIcon
                 icon={copied ? iconCheckmark.id : iconCopy.id}
                 extraCss={styles.deleteIcon}
@@ -48,6 +48,7 @@ export default function Token({ token, onDelete }: Props) {
             <div css={styles.tokenText}>•••••••••••••••••••••••••</div>
           )}
           <a
+            title="Revoke key"
             onClick={(e) => {
               e.preventDefault()
               onDelete(token)

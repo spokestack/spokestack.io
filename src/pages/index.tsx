@@ -4,8 +4,7 @@ import {
   MIN_TABLET_MEDIA_QUERY
 } from 'typography-breakpoint-constants'
 import { PageRendererProps, graphql } from 'gatsby'
-import React, { useRef, useEffect } from 'react'
-import { rhythm } from '../utils/typography'
+import React, { useEffect, useRef, useState } from 'react'
 
 import Card from '../components/Card'
 import Layout from '../components/Layout'
@@ -14,11 +13,10 @@ import SEO from '../components/SEO'
 import SVGIcon from '../components/SVGIcon'
 import SampleVoices from '../components/SampleVoices'
 import StickyNavLayout from '../components/StickyNavLayout'
-import UsageMap from '../components/UsageMap'
 import { css } from '@emotion/core'
 import iconArrow from '../icons/arrow-forward.svg'
-import iconPlay from '../icons/play-circle-outline.svg'
-import { requestFullscreen } from '../utils/video'
+import iconPlay from '../icons/play.svg'
+import { rhythm } from '../utils/typography'
 
 interface Props extends PageRendererProps {
   data: Query
@@ -26,6 +24,7 @@ interface Props extends PageRendererProps {
 
 export default function Index({ data, location }: Props) {
   const videoRef = useRef<HTMLVideoElement>(null)
+  const [played, setPlayed] = useState(false)
   const siteTitle = data.site.siteMetadata.title
   const links = [
     {
@@ -51,15 +50,9 @@ export default function Index({ data, location }: Props) {
   ]
 
   useEffect(() => {
-    const video = videoRef.current
-    const pause = () => {
-      if (!document.fullscreenElement) {
-        video.pause()
-      }
-    }
-    video.addEventListener('fullscreenchange', pause)
-    video.addEventListener('msfullscreenchange', pause)
-    video.addEventListener('webkitfullscreenchange', pause)
+    videoRef.current.addEventListener('playing', () => {
+      setPlayed(true)
+    })
   }, [])
 
   return (
@@ -82,46 +75,35 @@ export default function Index({ data, location }: Props) {
       <div css={styles.usageWrap}>
         <div css={styles.usage}>
           <div css={styles.usageText}>
-            <h3>Today&apos;s consumers want to speak to their products and services.</h3>
+            <h3>Why your mobile app needs voice control</h3>
             <p>
-              Over 58% of Americans use their phone as a voice assistant<sup>*</sup>. That&lsquo;s
-              more users than those of smart speaker, smart watch and desktop voice assistants
-              combined. As Airpods&trade; and other voice assistant-powered headphones gain
-              popularity, users will expect apps to have a voice and provide a hands-free
-              experience.
+              Over{' '}
+              <a href="https://voicebot.ai/2019/01/15/twice-the-number-of-u-s-adults-have-tried-in-car-voice-assistants-as-smart-speakers/">
+                58% of Americans
+              </a>{' '}
+              use their phone as a voice assistant. That&lsquo;s more users than those of smart
+              speaker, smart watch and desktop voice assistants combined. As Airpods&trade; and
+              other voice assistant-powered headphones gain popularity, users will expect apps to
+              have a voice and provide a hands-free experience.
             </p>
-            <video ref={videoRef} css={styles.video}>
+          </div>
+          <div css={styles.videoWrap}>
+            <video ref={videoRef} controls={played} css={styles.video} poster="/poster_2x.jpg">
               <source src="spokestack-1920x1080.mp4" type="video/mp4" media="(min-width: 1920px)" />
               <source src="spokestack-1280x720.mp4" type="video/mp4" media="(min-width: 1280px)" />
               <source src="spokestack-960x540.mp4" type="video/mp4" media="(min-width: 960px)" />
               <source src="spokestack-640x360.mp4" type="video/mp4" media="(min-width: 640px)" />
               <source src="spokestack-426x240.mp4" type="video/mp4" />
             </video>
-            <h4>
-              <a
-                css={styles.videoLink}
-                onClick={() => {
-                  const video = videoRef.current
-                  if (!video) {
-                    return
-                  }
-                  video.play()
-                  requestFullscreen(video)
-                }}>
-                <SVGIcon
-                  icon={iconPlay.id}
-                  style={{
-                    fill: 'var(--primary-color)',
-                    width: '40px',
-                    height: '40px',
-                    marginRight: '10px'
-                  }}
-                />
-                Why you need voice for your mobile app
-              </a>
-            </h4>
+            <a
+              css={styles.playLink}
+              onClick={() => videoRef.current.play()}
+              style={played ? { display: 'none' } : null}>
+              <div className="play-icon">
+                <SVGIcon icon={iconPlay.id} style={{ width: '30px', height: '35px' }} />
+              </div>
+            </a>
           </div>
-          <UsageMap />
         </div>
       </div>
       <StickyNavLayout id="products" matchHash links={links} location={location}>
@@ -306,40 +288,68 @@ const styles = {
     display: flex;
     flex-direction: column;
     align-items: center;
+    padding: 0 20px ${rhythm(2)};
 
     ${MIN_DEFAULT_MEDIA_QUERY} {
       display: grid;
-      grid-template-columns: 1fr 640px;
-      max-width: ${LARGE_DISPLAY_WIDTH};
+      grid-template-columns: 1fr 1fr;
+      max-width: 1200px;
       margin: 0 auto;
-      padding-right: 20px;
+      padding: ${rhythm(2)} 20px ${rhythm(3)};
     }
   `,
   usageText: css`
-    padding: ${rhythm(0.5)} 20px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    max-width: 520px;
+    padding: ${rhythm(0.5)} 0;
+    text-align: center;
 
-    h3,
-    p {
-      max-width: 600px;
+    h3 {
+      max-width: 400px;
     }
 
-    ${MIN_TABLET_MEDIA_QUERY} {
-      h3,
-      p {
-        text-align: center;
-      }
+    ${MIN_DEFAULT_MEDIA_QUERY} {
+      padding-right: 20px;
     }
+  `,
+  videoWrap: css`
+    position: relative;
   `,
   video: css`
-    width: 0;
-    height: 0;
+    width: 100%;
+    max-width: 600px;
+    border-radius: 10px;
   `,
-  videoLink: css`
+  playLink: css`
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    right: 0;
     display: flex;
-    flex-direction: row;
     justify-content: center;
     align-items: center;
     cursor: pointer;
+
+    .play-icon {
+      width: 100px;
+      height: 100px;
+      border-radius: 50%;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      padding-left: 5px;
+      background-color: var(--primary-color);
+      transition: transform 0.2s var(--transition-easing);
+    }
+    &:hover .play-icon {
+      transform: scale(1.1);
+    }
+    &:active .play-icon {
+      transform: scale(0.9);
+    }
   `,
   feature: css`
     padding: ${rhythm(1)} 0;

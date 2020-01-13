@@ -136,7 +136,7 @@
     }
   },
   "release": {
-    "branch": "develop",
+    "branches": ["develop"],
     "ci": false,
     "npmPublish": false,
     "pre-commit": "yarn lint:fix",

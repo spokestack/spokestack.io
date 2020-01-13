@@ -106,7 +106,7 @@ Check the working directory is clean of all changes after committing.
 
 ## Commit message guidelines
 
-Commit messages should follow [Conventional Commits Specification(https://www.conventionalcommits.org).
+Commit messages should follow [Conventional Commits Specification](https://www.conventionalcommits.org).
 
 This is also enforced on commit using a commit message hook.
 

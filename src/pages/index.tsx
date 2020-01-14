@@ -50,9 +50,11 @@ export default function Index({ data, location }: Props) {
   ]
 
   useEffect(() => {
-    videoRef.current.addEventListener('playing', () => {
-      setPlayed(true)
-    })
+    if (videoRef.current) {
+      videoRef.current.addEventListener('playing', () => {
+        setPlayed(true)
+      })
+    }
   }, [])
 
   return (

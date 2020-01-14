@@ -31,8 +31,6 @@ Currently, Spokestack is focused on pronunciation of English words and loan word
  'ɵ', 'χ']
 ```
 
-and the emphasis symbols `ˈ`, `,`, `ˌ`, and `ː`.
-
 Using invalid characters will not cause an error, but it might result in unexpected pronunciation.
 
 ### Some brief examples

@@ -36,6 +36,8 @@ fun onMicButtonTap(view: View) {
 
 ### Wakeword activation
 
+To use the demo "Spokestack" wakeword, download the TensorFlow Lite models: [detect](https://d3dmqd7cy685il.cloudfront.net/model/wake/spokestack/detect.lite) | [encode](https://d3dmqd7cy685il.cloudfront.net/model/wake/spokestack/encode.lite) | [filter](https://d3dmqd7cy685il.cloudfront.net/model/wake/spokestack/filter.lite)
+
 ```kotlin
 pipeline = SpeechPipeline.Builder()
     .setInputClass("io.spokestack.spokestack.android.MicrophoneInput")
@@ -68,6 +70,17 @@ private fun decompress(modelName: String) {
     val fos = FileOutputStream(filterFile)
     fos.write(buffer)
     fos.close()
+}
+```
+
+### Tap-to-talk + ASR
+
+If you need the pipeline to be started in order to recognize a wakeword, but you still want to allow the user to manually activate ASR via a button, call this inside your button handler:
+
+```kotlin
+// assumes `pipeline` is a `SpeechPipeline`, and `start` has already been called on it
+fun onMicButtonTap(view: View) {
+    pipeline.context?.isActive = true
 }
 ```
 

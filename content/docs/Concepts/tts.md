@@ -5,7 +5,7 @@ description: Documentation for Spokestack's controllable TTS system.
 draft: false
 ---
 
-Spokestack offers a rich, controllable text-to-speech (TTS) system. The voices available to use in your app are determined by your API key, but we offer a demo voice to all users so that you can try custom TTS in your app without making a commitment. If you need a unique voice for your brand, [contact us](mailto:hello@spokestack.io), and we can work with you to create a custom experience for your users.
+Spokestack offers a rich, controllable text-to-speech (TTS) system. The voices available to use in your app are determined by your API client identifier, but we offer a demo voice to all users so that you can try custom TTS in your app without making a commitment. If you need a unique voice for your brand, [contact us](mailto:hello@spokestack.io), and we can work with you to create a custom experience for your users.
 
 Apart from voice selection, Spokestack's TTS enables fine control over pronunciation by supporting a subset of the [SSML](https://www.w3.org/TR/speech-synthesis11/) standard. Synthesis defaults to using raw text, but you can opt into using SSML instead; see the platform-specific documentation ([iOS](https://spokestack.github.io/spokestack-ios/Classes/TextToSpeechInput.html) | [Android](https://www.javadoc.io/doc/io.spokestack/spokestack-android/latest/io/spokestack/spokestack/tts/SpokestackTTSClient.html)) for details.
 

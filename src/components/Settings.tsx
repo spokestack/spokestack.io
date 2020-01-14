@@ -65,7 +65,7 @@ export default function Settings({ account, location }: Props) {
         </div>
       </AccountCard>
       <AccountCard
-        title="API Credentials"
+        title="API Access"
         id="api"
         rightContent={
           !showForm &&

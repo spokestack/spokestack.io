@@ -6,7 +6,8 @@
   "Getting Started (Android)",
   "Cookbook (Android)",
   "Speech Pipeline (Android)",
-  "TTS",
+  "TTS (Android)",
   "Speech Pipeline Configuration",
-  "Wakeword Models"
+  "Wakeword Models",
+  "TTS"
 ]

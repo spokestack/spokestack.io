@@ -1,6 +1,6 @@
-const fetch = require('node-fetch')
 const shell = require('shelljs')
 const fs = require('fs')
+const fetch = require('isomorphic-unfetch')
 
 const apiUrl = process.env.SS_API_URL
 const githubToken = process.env.SS_DEV_GITHUB_TOKEN

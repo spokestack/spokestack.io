@@ -28,6 +28,8 @@ const styles = {
     grid-template-columns: 100%;
   `,
   content: css`
+    display: flex;
+    flex-direction: column;
     display: grid;
     grid-template-columns: 100%;
   `

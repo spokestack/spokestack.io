@@ -114,7 +114,6 @@ before you'll be able to recognize a wakeword again.
 
 If speech is being processed when `deactivate` is called, it will still be delivered to your `SpeechEventListener`'s `didRecognize` method when processing is complete.
 
-
 ### Play back synthesis result using your own `AVPlayer`
 
 ```swift
@@ -130,7 +129,7 @@ If speech is being processed when `deactivate` is called, it will still be deliv
         player.replaceCurrentItem(with: playerItem)
         player.play()
      }
-     
+
     // implement the other functions of the TextToSpeechDelegate protocol...
 ```
 

@@ -173,7 +173,7 @@ class MyViewController: UIViewController, SpeechEventListener, TextToSpeechDeleg
     func didBeginSpeaking() {
         // handle the response playback beginning if desired
     }
-    
+
     func didFinishSpeaking() {
         // handle the response playback ending if desired
     }

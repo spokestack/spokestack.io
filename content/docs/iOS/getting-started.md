@@ -11,7 +11,7 @@ One caveat before we start, though: _This is not a collection of best practices_
 
 ## Prerequisites
 
-Your app needs to target iOS 11 or higher in order to use speech recognition.
+Your app needs to target iOS 11 or higher in order to use speech recognition, and iOS 13 or higher in order to use text to speech.
 
 ## Installation
 
@@ -170,15 +170,16 @@ import AVFoundation
 
 class MyViewController: UIViewController, SpeechEventListener, TextToSpeechDelegate {
 
-    // with your properties
-    let player = AVPlayer()
+    func didBeginSpeaking() {
+        // handle the response playback beginning if desired
+    }
+    
+    func didFinishSpeaking() {
+        // handle the response playback ending if desired
+    }
 
-    ...
-
-    func success(url: URL) {
-        let playerItem = AVPlayerItem(url: url)
-        player.replaceCurrentItem(with: playerItem)
-        player.play()
+    func success(result: TextToSpeechResult) {
+        // handle the result if desired
     }
 
     func failure(error: Error) {
@@ -190,27 +191,30 @@ class MyViewController: UIViewController, SpeechEventListener, TextToSpeechDeleg
     }
 ```
 
-Note that you'll need a strong reference to the `AVPlayer`; you can't just create it inside your `success` implementation.
-
-At runtime, you'll need to send your text to Spokestack:
+To play the voice response represented by your input with the default audio system, just call the `speak` function!
 
 ```swift
 // with your properties
 // assumes `self` adopts `TextToSpeechDelegate`
+// uses default SpeechConfiguration values for api access.
 let tts = TextToSpeech(self, configuration: SpeechConfiguration())
 
 ...
 
 func speak(_ text: String) {
     let input = TextToSpeechInput(text)
-    tts.synthesize(input)
+    tts.speak(input)
 }
 ```
 
-This example sets you up to use the demo voice available for free with Spokestack; for more configuration options, see [the TTS guide](/docs/Concepts/tts).
+The `speak` function will call your delegates' `didBeginSpeaking` and `didFinishSpeaking` at the start and finish, respectivly, of response playback.
+
+In this example, `SpeechConfiguration.apiId` and `SpeechConfiguration.apiSecret` are set to sample values that let you try Spokestack TTS with a demo voice, without creating an account. You can [get your own free API credentials](https://spokestack.io/login). For more TTS input configuration options, see [the TTS guide](/docs/Concepts/tts).
+
+If you want finer-grain control over how the TTS response is played back, you're free to feed the `TextToSpeechResult.url` in the `success` handler into your own audio player. See the [cookbook](/docs/iOS/cookbook) for a quick version of that recipe.
 
 ## Conclusion
 
-That's all there is to it! Your app is now configured to accept voice commands. Obviously there's more we could tell you, and you can have much more control over the speech recognition process (including, but not limited to, configuring the pipeline's sensitivity, using a different ASR provider, or adding your own custom wakeword model). If you're interested in these advanced topics, check out our other guides. We'll be adding to them as Spokestack grows.
+That's all there is to it! Your app is now configured to accept voice commands and play back synthetic voice responses. Obviously there's more we could tell you, and you can have much more control over the speech recognition process (including, but not limited to, configuring the pipeline's sensitivity, using a different ASR provider, or adding your own custom wakeword model). If you're interested in these advanced topics, check out our other guides. We'll be adding to them as Spokestack grows.
 
 Thanks for reading!

@@ -113,3 +113,41 @@ pipeline.start()
 before you'll be able to recognize a wakeword again.
 
 If speech is being processed when `deactivate` is called, it will still be delivered to your `SpeechEventListener`'s `didRecognize` method when processing is complete.
+
+
+### Play back synthesis result using your own `AVPlayer`
+
+```swift
+ class MyViewController: UIViewController, SpeechEventListener, TextToSpeechDelegate {
+
+    // with your properties
+    let player = AVPlayer()
+
+    ...
+
+    func success(url: URL) {
+        let playerItem = AVPlayerItem(url: url)
+        player.replaceCurrentItem(with: playerItem)
+        player.play()
+     }
+     
+    // implement the other functions of the TextToSpeechDelegate protocol...
+```
+
+Note that you'll need a strong reference to the `AVPlayer`; you can't just create it inside your `success` implementation.
+
+At runtime, you'll send your text to Spokestack:
+
+```swift
+// with your properties
+// assumes `self` adopts `TextToSpeechDelegate`
+// uses default SpeechConfiguration values for api access.
+let tts = TextToSpeech(self, configuration: SpeechConfiguration())
+
+...
+
+func speak(_ text: String) {
+    let input = TextToSpeechInput(text)
+    tts.synthesize(input)
+}
+```

@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react'
-
+import * as theme from '../utils/theme'
 import { css } from '@emotion/core'
 
 interface Props {
@@ -29,8 +29,8 @@ const styles = {
     left: 0;
     right: 0;
     border-radius: 50px 0 0 50px;
-    background-color: var(--main-background);
-    transition: transform 0.2s var(--transition-easing), height 0.2s var(--transition-easing);
+    background-color: ${theme.mainBackground};
+    transition: transform 0.2s ${theme.transitionEasing}, height 0.2s ${theme.transitionEasing};
     z-index: -1;
   `
 }

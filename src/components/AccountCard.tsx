@@ -2,6 +2,7 @@ import { SerializedStyles, css } from '@emotion/core'
 
 import React from 'react'
 import { rhythm } from '../utils/typography'
+import * as theme from '../utils/theme'
 
 interface Props {
   title: string
@@ -36,7 +37,7 @@ const styles = {
     display: flex;
     flex-direction: column;
     background-color: white;
-    border: 1px solid var(--main-border-color);
+    border: 1px solid ${theme.mainBorder};
     border-radius: 7px;
     overflow: hidden;
     max-width: 700px;
@@ -50,7 +51,7 @@ const styles = {
     justify-content: space-between;
     align-items: center;
     margin: 0;
-    border-bottom: 1px solid var(--main-border-color);
+    border-bottom: 1px solid ${theme.mainBorder};
   `,
   content: css`
     position: relative;

@@ -11,7 +11,7 @@ import { css } from '@emotion/core'
 import debounce from 'lodash/debounce'
 import find from 'lodash/find'
 import iconPlay from '../icons/play-circle.svg'
-import { secondaryColor } from '../utils/globalStyles'
+import * as theme from '../utils/theme'
 import synthesize from '../utils/synthesize'
 import voices from '../utils/voices'
 
@@ -147,19 +147,27 @@ const styles = {
   `,
   lightText: css`
     ${adjustFontSizeTo('16px')};
+    color: ${theme.textLight};
     text-align: center;
-    color: var(--text-color-light);
     margin-bottom: 20px;
   `,
   select: css`
     grid-area: select;
+
+    ${theme.ieBreakpoint} {
+      margin-bottom: 20px;
+    }
   `,
   button: css`
     width: 100%;
     grid-area: button;
+
+    ${theme.ieBreakpoint} {
+      margin-bottom: 20px;
+    }
   `,
   playIcon: css`
-    fill: var(--text-color);
+    fill: ${theme.text};
     width: 16px;
     height: 16px;
     margin-right: 5px;
@@ -169,7 +177,7 @@ const styles = {
     grid-area: textarea;
   `,
   labelError: css`
-    color: var(--text-color-error);
+    color: ${theme.textError};
   `,
   loading: css`
     position: absolute;
@@ -180,7 +188,7 @@ const styles = {
     display: flex;
     justify-content: center;
     align-items: center;
-    background-color: ${secondaryColor.fade(0.2).toString()};
+    background-color: ${theme.secondaryColor.fade(0.2).toString()};
     /* color: white; */
     z-index: 101;
 

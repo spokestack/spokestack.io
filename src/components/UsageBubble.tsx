@@ -2,6 +2,7 @@ import { SerializedStyles, css } from '@emotion/core'
 
 import React from 'react'
 import { rhythm } from '../utils/typography'
+import * as theme from '../utils/theme'
 
 interface Props {
   className?: string
@@ -27,7 +28,7 @@ const styles = {
     justify-content: center;
     align-items: center;
     text-align: center;
-    background-color: var(--primary-color);
+    background-color: ${theme.primary};
     border-radius: 50%;
     color: white;
 

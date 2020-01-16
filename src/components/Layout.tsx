@@ -30,6 +30,7 @@ const styles = {
   content: css`
     display: flex;
     flex-direction: column;
+    align-items: center;
     display: grid;
     grid-template-columns: 100%;
   `

@@ -1,6 +1,7 @@
 import { MIN_DEFAULT_MEDIA_QUERY, MIN_MOBILE_MEDIA_QUERY } from 'typography-breakpoint-constants'
 import React, { useRef, useState } from 'react'
 
+import * as theme from '../utils/theme'
 import { ApiKey } from '../types'
 import SVGIcon from './SVGIcon'
 import { css } from '@emotion/core'
@@ -110,7 +111,7 @@ export default function Token({ token, onDelete }: Props) {
 
 const styles = {
   container: css`
-    border: 1px solid var(--main-border-color);
+    border: 1px solid ${theme.mainBorder};
     border-radius: 7px;
     padding: 10px 20px;
 
@@ -148,7 +149,7 @@ const styles = {
     flex-direction: row;
     justify-content: center;
     align-items: center;
-    transition: background-color 0.2s var(--transition-easing);
+    transition: background-color 0.2s ${theme.transitionEasing};
     cursor: pointer;
 
     &:hover {
@@ -159,7 +160,7 @@ const styles = {
     }
   `,
   keyIcon: css`
-    fill: var(--text-color);
+    fill: ${theme.text};
     width: 20px;
     height: 20px;
   `,
@@ -178,7 +179,7 @@ const styles = {
     }
   `,
   deleteIcon: css`
-    fill: var(--primary-color);
+    fill: ${theme.primary};
     width: 20px;
     height: 20px;
   `

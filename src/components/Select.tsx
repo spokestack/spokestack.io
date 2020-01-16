@@ -4,7 +4,7 @@ import { SerializedStyles, css } from '@emotion/core'
 import { MIN_DEFAULT_MEDIA_QUERY } from 'typography-breakpoint-constants'
 import SVGIcon from './SVGIcon'
 import iconArrowDown from '../icons/arrow-down.svg'
-import { primaryColor } from '../utils/globalStyles'
+import * as theme from '../utils/theme'
 
 export interface Option {
   title: string
@@ -107,7 +107,7 @@ const styles = {
 
     &.select-open {
       label {
-        outline: var(--primary-color) auto 1px;
+        outline: ${theme.primary} auto 1px;
       }
       .icon {
         transform: rotateZ(180deg);
@@ -135,7 +135,7 @@ const styles = {
     justify-content: space-between;
     align-items: center;
     background-color: white;
-    border: 1px solid var(--main-border-color);
+    border: 1px solid ${theme.mainBorder};
     border-radius: 25px;
     cursor: pointer;
     z-index: 99;
@@ -143,7 +143,7 @@ const styles = {
     p {
       width: 100%;
       overflow: hidden;
-      color: var(--header-color);
+      color: ${theme.header};
       margin: 0;
       white-space: nowrap;
       text-overflow: ellipsis;
@@ -157,15 +157,15 @@ const styles = {
     width: 50px;
     height: 100%;
     flex-shrink: 0;
-    border-left: 1px solid var(--main-border-color);
-    background-color: var(--text-color-dark-bg);
+    border-left: 1px solid ${theme.mainBorder};
+    background-color: ${theme.textDarkBg};
     border-radius: 0 25px 25px 0;
   `,
   icon: css`
-    fill: var(--primary-color);
+    fill: ${theme.primary};
     width: 25px;
     height: 25px;
-    transition: transform 0.1s var(--transition-easing);
+    transition: transform 0.1s ${theme.transitionEasing};
   `,
   select: css`
     position: absolute;
@@ -183,7 +183,7 @@ const styles = {
     optgroup,
     option {
       width: 100%;
-      color: var(--text-color);
+      color: ${theme.text};
     }
 
     ${MIN_DEFAULT_MEDIA_QUERY} {
@@ -197,8 +197,8 @@ const styles = {
     max-height: 185px;
     overflow-y: auto;
     background-color: white;
-    border: 1px solid var(--main-border-color);
-    transition: transform 0.2s var(--transition-easing), opacity 0.2s var(--transition-easing);
+    border: 1px solid ${theme.mainBorder};
+    transition: transform 0.2s ${theme.transitionEasing}, opacity 0.2s ${theme.transitionEasing};
     transform: translateY(-50%) scaleY(0);
     opacity: 0;
   `,
@@ -206,7 +206,7 @@ const styles = {
     padding: 10px 20px;
     cursor: pointer;
     &:hover {
-      background-color: ${primaryColor.fade(0.9).string()};
+      background-color: ${theme.primaryColor.fade(0.9).string()};
     }
   `
 }

@@ -1,6 +1,7 @@
 import { css } from '@emotion/core'
 import React, { useEffect, useState } from 'react'
 
+import * as theme from '../utils/theme'
 import { MIN_DEFAULT_MEDIA_QUERY } from 'typography-breakpoint-constants'
 import NavSelectedBackground from './NavSelectedBackground'
 import Select from './Select'
@@ -79,6 +80,7 @@ export default function StickyNav({ links = [], location, matchHash }: StickyNav
         <Select
           id="sticky-nav"
           extraCss={styles.mobileNav}
+          selectCss={styles.mobileNavSelect}
           labelCss={styles.mobileNavLabel}
           iconWrapCss={styles.mobileNavIconWrap}
           iconCss={styles.mobileNavIcon}
@@ -122,14 +124,11 @@ export default function StickyNav({ links = [], location, matchHash }: StickyNav
 
 const styles = {
   stickyNav: css`
-    --sticky-nav-link-color: #8da6e3;
-    --sticky-nav-link-color-hover: var(--link-color-hover);
-    --sticky-nav-link-color-active: var(--link-color);
-
     ${MIN_DEFAULT_MEDIA_QUERY} {
       position: sticky;
       top: 25px;
       margin-bottom: 25px;
+      min-width: 250px;
     }
   `,
   mobileNav: css`
@@ -137,6 +136,10 @@ const styles = {
     ${MIN_DEFAULT_MEDIA_QUERY} {
       display: none;
     }
+  `,
+  mobileNavSelect: css`
+    height: 64px;
+    padding-left: 20px;
   `,
   mobileNavLabel: css`
     border: none;
@@ -152,7 +155,7 @@ const styles = {
     background: transparent;
   `,
   mobileNavIcon: css`
-    fill: var(--header-color);
+    fill: ${theme.header};
   `,
   section: css`
     display: flex;
@@ -162,13 +165,13 @@ const styles = {
     padding: 15px 45px;
     text-decoration: none;
     user-select: none;
-    color: var(--sticky-nav-link-color);
+    color: ${theme.linkStickyNav};
 
     &:visited {
-      color: var(--sticky-nav-link-color);
+      color: ${theme.linkStickyNav};
     }
     &:hover {
-      color: var(--sticky-nav-link-color-hover);
+      color: ${theme.linkStickyNavHover};
     }
   `
 }

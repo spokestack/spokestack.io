@@ -1,5 +1,5 @@
 import { SerializedStyles, css } from '@emotion/core'
-
+import * as theme from '../utils/theme'
 import React from 'react'
 
 interface Props {
@@ -22,14 +22,14 @@ const styles = {
     display: flex;
     flex-direction: column;
     background-color: white;
-    border: 1px solid var(--secondary-color);
+    border: 1px solid ${theme.secondary};
     border-radius: 7px;
     overflow: hidden;
     max-width: 700px;
   `,
   cardHeader: css`
-    background-color: var(--secondary-color);
-    color: var(--primary-color);
+    background-color: ${theme.secondary};
+    color: ${theme.primary};
     padding: 10px 30px;
     display: flex;
     flex-direction: row;

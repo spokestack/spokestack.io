@@ -12,6 +12,7 @@ import LoginButton from './LoginButton'
 import React from 'react'
 import SocialLinks from './SocialLinks'
 import { isLoggedIn } from '../utils/auth'
+import * as theme from '../utils/theme'
 
 export default function Nav() {
   return (
@@ -19,7 +20,7 @@ export default function Nav() {
       <Global
         styles={css`
           .nav-link-active {
-            color: var(--secondary-color) !important;
+            color: ${theme.secondary} !important;
             font-weight: bold;
             cursor: default;
           }
@@ -104,7 +105,7 @@ const styles = {
   navContainer: css`
     position: relative;
     height: 100px;
-    background-color: var(--primary-color);
+    background-color: ${theme.primary};
     padding: 0 ${rhythm(0.8)};
     display: flex;
     flex-direction: column;
@@ -147,7 +148,7 @@ const styles = {
   `,
   nav: css`
     padding: 0 ${rhythm(0.4)};
-    transition: all 0.2s var(--transition-easing);
+    transition: all 0.2s ${theme.transitionEasing};
 
     ${MIN_TABLET_MEDIA_QUERY} {
       position: absolute;
@@ -180,8 +181,7 @@ const styles = {
     height: 100%;
   `,
   navLink: css`
-    --nav-link-color: var(--text-color-dark-bg);
-    color: var(--nav-link-color);
+    color: ${theme.textDarkBg};
     font-size: ${adjustFontSizeTo('14px').fontSize};
     font-weight: 400;
     line-height: 1.1;
@@ -193,13 +193,13 @@ const styles = {
     height: 100%;
     text-align: center;
     text-decoration: none;
-    transition: all 0.2s var(--transition-easing);
+    transition: all 0.2s ${theme.transitionEasing};
     padding: 5px ${rhythm(0.2)} 8px;
     user-select: none;
 
     &:hover,
     &:visited {
-      color: var(--nav-link-color);
+      color: ${theme.textDarkBg};
       text-decoration: none;
     }
     &:after {
@@ -211,7 +211,7 @@ const styles = {
       width: 0;
       height: 0;
       transition: width 0.1s ease-in-out, height 0.1s ease-in-out, left 0.1s ease-in-out;
-      background-color: var(--secondary-color);
+      background-color: ${theme.secondary};
     }
     &:hover:after {
       left: 0;

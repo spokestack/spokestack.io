@@ -33,12 +33,15 @@ export default function Team() {
 
 const styles = {
   teamMembers: css`
+    display: flex;
     display: grid;
     grid-template-columns: 100%;
     max-width: 608px;
     margin: 0 auto;
 
     ${MIN_TABLET_MEDIA_QUERY} {
+      flex-direction: row;
+      flex-wrap: wrap;
       grid-gap: 25px;
       grid-template-columns: 185px 185px 185px;
     }

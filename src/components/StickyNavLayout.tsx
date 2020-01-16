@@ -9,6 +9,7 @@ import StickyNav, { StickyNavProps } from './StickyNav'
 import React from 'react'
 import { css } from '@emotion/core'
 import { rhythm } from '../utils/typography'
+import { ieBreakpoint } from '../utils/theme'
 
 interface Props extends StickyNavProps {
   children: React.ReactNode
@@ -40,11 +41,16 @@ const styles = {
     flex-direction: column;
 
     ${MIN_DEFAULT_MEDIA_QUERY} {
+      flex-direction: row;
       display: grid;
       grid-template-columns: minmax(250px, 365px) minmax(700px, ${DEFAULT_WIDTH});
       grid-template-areas:
         'sidenav content'
         'sidenav author';
+    }
+
+    ${ieBreakpoint} {
+      width: 100%;
     }
   `,
   containerWithRight: css`
@@ -79,6 +85,10 @@ const styles = {
     }
     ${MIN_LARGER_DISPLAY_MEDIA_QUERY} {
       padding-left: ${rhythm(4)};
+    }
+
+    ${ieBreakpoint} {
+      width: 100%;
     }
   `
 }

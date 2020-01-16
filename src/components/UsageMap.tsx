@@ -6,6 +6,7 @@ import SVGIcon from './SVGIcon'
 import UsageBubble from './UsageBubble'
 import car from '../icons/car.svg'
 import phone from '../icons/phone.svg'
+import { bubbleEasing } from '../utils/theme'
 
 export default function UsageMap() {
   const containerRef = useRef<HTMLDivElement>(null)
@@ -90,13 +91,13 @@ const styles = {
     }
     .animate {
       .usage-bubble.smart-speakers {
-        animation: slideDownLeft 3s var(--bubble-easing) forwards;
+        animation: slideDownLeft 3s ${bubbleEasing} forwards;
       }
       .usage-bubble.cars {
-        animation: slideRight 3s var(--bubble-easing) forwards;
+        animation: slideRight 3s ${bubbleEasing} forwards;
       }
       .usage-bubble.phones {
-        animation: slideUpLeft 3s var(--bubble-easing) forwards;
+        animation: slideUpLeft 3s ${bubbleEasing} forwards;
       }
     }
   `,

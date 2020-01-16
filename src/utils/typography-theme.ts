@@ -1,5 +1,6 @@
 import { MOBILE_MEDIA_QUERY } from 'typography-breakpoint-constants'
 import { TypographyOptions } from 'typography'
+import * as theme from '../utils/theme'
 
 const options: TypographyOptions = {
   // title: 'Spokestack',
@@ -13,8 +14,8 @@ const options: TypographyOptions = {
   ],
   headerFontFamily: ['Roboto', 'Georgia', 'sans-serif'],
   bodyFontFamily: ['Roboto', 'Georgia', 'sans-serif'],
-  bodyColor: 'var(--text-color)',
-  headerColor: 'var(--header-color)',
+  bodyColor: theme.text,
+  headerColor: theme.header,
   headerWeight: 700,
   bodyWeight: 400,
   boldWeight: 700,
@@ -26,25 +27,25 @@ const options: TypographyOptions = {
       letterSpacing: '.03em'
     },
     a: {
-      color: 'var(--link-color)',
+      color: theme.link,
       fontWeight: 700,
       textDecoration: 'underline',
-      textDecorationColor: 'var(--link-color)',
+      textDecorationColor: theme.link,
       textDecorationThickness: '.1em',
       textUnderlineOffset: '2px',
-      transition: 'color 0.1s var(--transition-easing)'
+      transition: `color 0.1s ${theme.transitionEasing}`
     },
     'a:visited': {
-      color: 'var(--link-color-visited)',
-      textDecorationColor: 'var(--link-color-visited)'
+      color: theme.linkVisited,
+      textDecorationColor: theme.linkVisited
     },
     'a:hover': {
-      color: 'var(--link-color-hover)',
-      textDecorationColor: 'var(--link-color-hover)'
+      color: theme.linkHover,
+      textDecorationColor: theme.linkHover
     },
     'a:active': {
-      color: 'var(--link-color-active)',
-      textDecorationColor: 'var(--link-color-active)'
+      color: theme.linkActive,
+      textDecorationColor: theme.linkActive
     },
     h1: {
       fontSize: `${42 / 18}rem`,

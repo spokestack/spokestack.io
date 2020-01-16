@@ -1,48 +1,16 @@
 import { adjustFontSizeTo, rhythm } from './typography'
-
-import Color from 'color'
 import { MIN_DEFAULT_MEDIA_QUERY } from 'typography-breakpoint-constants'
 import { css } from '@emotion/core'
-
-export const primaryColor = Color('#2f5bea')
-export const secondaryColor = Color('#61fae9')
-export const textColor = Color('#323e48')
+import * as theme from './theme'
 
 export default css`
   html {
-    --main-background: #f6f9fc;
-    --primary-color: ${primaryColor.hex()};
-    --secondary-color: ${secondaryColor.hex()};
-    --text-color: ${textColor.hex()};
-    --text-color-light: ${textColor.fade(0.5).string()};
-    --text-color-error: #ea2e31;
-    --header-color: #2c363f;
-    --footer-background: var(--header-color);
-    --text-color-dark-bg: #f6f9fc;
-    --main-border-color: #e6e9e9;
-    --button-background: var(--secondary-color);
-    --button-background-hover: #06c6b0;
-    --transition-easing: cubic-bezier(0.77, 0.41, 0.2, 0.84);
-    --bubble-easing: cubic-bezier(0.3, 0.55, 0.54, 0.86);
-    --error-color: #ea2f5e;
-
-    --link-color: var(--primary-color);
-    --link-color-visited: ${primaryColor.lighten(0.1).hex()};
-    --link-color-hover: ${primaryColor.darken(0.2).hex()};
-    --link-color-active: ${primaryColor.darken(0.4).hex()};
-
-    --link-color-visited-secondary: ${secondaryColor.lighten(0.1).hex()};
-    --link-color-hover-secondary: ${secondaryColor.darken(0.4).hex()};
-    --link-color-active-secondary: ${secondaryColor.darken(0.6).hex()};
-
-    --code-background: #cce4ff;
-
     height: 100%;
     min-width: 300px;
-    background-color: var(--main-background);
+    background-color: ${theme.mainBackground};
   }
   :focus {
-    outline: var(--primary-color) auto 1px;
+    outline: ${theme.primary} auto 1px;
   }
   section {
     padding: ${rhythm(1.3)} 20px;
@@ -61,7 +29,7 @@ export default css`
     margin: 0 0 ${rhythm(1)};
   }
   code {
-    background-color: var(--code-background);
+    background-color: ${theme.codeBackground};
     padding: ${rhythm(0.1)} ${rhythm(0.2)};
   }
   pre code {
@@ -78,16 +46,16 @@ export default css`
     justify-content: center;
     align-items: center;
     text-align: center;
-    background-color: var(--button-background);
-    border: 1px solid var(--button-background);
+    background-color: ${theme.buttonBackground};
+    border: 1px solid ${theme.buttonBackground};
     border-radius: 24px;
     padding: 0 ${rhythm(1)};
     white-space: nowrap;
-    transition: background-color 0.2s var(--transition-easing),
-      border-color 0.2s var(--transition-easing);
+    transition: background-color 0.2s ${theme.transitionEasing},
+      border-color 0.2s ${theme.transitionEasing};
     cursor: pointer;
     text-decoration: none;
-    color: var(--text-color);
+    color: ${theme.text};
     font-weight: 400;
     user-select: none;
 
@@ -96,12 +64,12 @@ export default css`
     }
 
     &:visited {
-      color: var(--text-color);
+      color: ${theme.text};
     }
     &:hover:not([disabled]) {
-      background-color: var(--button-background-hover);
-      border-color: var(--button-background-hover);
-      color: var(--text-color);
+      background-color: ${theme.buttonBackgroundHover};
+      border-color: ${theme.buttonBackgroundHover};
+      color: ${theme.text};
     }
     &:active:not([disabled]) {
       box-shadow: inset 0 0 5px rgba(0, 0, 0, 0.8);
@@ -113,13 +81,13 @@ export default css`
       pointer-events: none;
     }
     &.btn-primary {
-      border-color: var(--primary-color);
-      background-color: var(--primary-color);
+      border-color: ${theme.primary};
+      background-color: ${theme.primary};
       color: white;
 
       &:hover:not([disabled]) {
-        background-color: var(--link-color-hover);
-        border-color: var(--link-color-hover);
+        background-color: ${theme.linkHover};
+        border-color: ${theme.linkHover};
         color: white;
       }
     }
@@ -152,7 +120,7 @@ export default css`
   }
   .input {
     width: 100%;
-    border: 1px solid var(--main-border-color);
+    border: 1px solid ${theme.mainBorder};
     border-radius: 7px;
     background-color: white;
     padding-left: 20px;
@@ -164,10 +132,10 @@ export default css`
     padding-bottom: 10px;
   }
   .error {
-    color: var(--error-color);
+    color: ${theme.error};
   }
   .input.error {
-    border-color: var(--error-color);
+    border-color: ${theme.error};
   }
   .link-with-icon {
     text-decoration: none;

@@ -6,6 +6,7 @@ import {
 import { PageRendererProps, graphql } from 'gatsby'
 import React, { useEffect, useRef, useState } from 'react'
 
+import * as theme from '../utils/theme'
 import Card from '../components/Card'
 import Layout from '../components/Layout'
 import { Query } from '../utils/graphql'
@@ -70,7 +71,7 @@ export default function Index({ data, location }: Props) {
           Get started
           <SVGIcon
             icon={iconArrow.id}
-            style={{ fill: 'var(--header-color)', width: '17px', height: '17px' }}
+            style={{ fill: theme.header, width: '17px', height: '17px' }}
           />
         </a>
       </header>
@@ -127,7 +128,7 @@ export default function Index({ data, location }: Props) {
             Get started
             <SVGIcon
               icon={iconArrow.id}
-              style={{ fill: 'var(--primary-color)', width: '17px', height: '17px' }}
+              style={{ fill: theme.primary, width: '17px', height: '17px' }}
             />
           </a>
         </div>
@@ -145,7 +146,7 @@ export default function Index({ data, location }: Props) {
             Email us for details on getting a custom wakeword
             <SVGIcon
               icon={iconArrow.id}
-              style={{ fill: 'var(--primary-color)', width: '17px', height: '17px' }}
+              style={{ fill: theme.primary, width: '17px', height: '17px' }}
             />
           </a>
         </div>
@@ -166,7 +167,7 @@ export default function Index({ data, location }: Props) {
               Email us for details on getting a custom branded voice
               <SVGIcon
                 icon={iconArrow.id}
-                style={{ fill: 'var(--primary-color)', width: '17px', height: '17px' }}
+                style={{ fill: theme.primary, width: '17px', height: '17px' }}
               />
             </a>
           </p>
@@ -191,7 +192,7 @@ export default function Index({ data, location }: Props) {
             Email us for details on getting a custom NLU for your app
             <SVGIcon
               icon={iconArrow.id}
-              style={{ fill: 'var(--primary-color)', width: '17px', height: '17px' }}
+              style={{ fill: theme.primary, width: '17px', height: '17px' }}
             />
           </a>
         </div>
@@ -199,7 +200,12 @@ export default function Index({ data, location }: Props) {
       <section css={styles.summary}>
         <h1 css={styles.summaryHeader}>Why Choose Spokestack?</h1>
         <div css={styles.summaryDetails}>
-          <Card title="Spokestack ASR and VAD" extraCss={styles.largeCard}>
+          <Card
+            title="Spokestack ASR and VAD"
+            extraCss={css`
+              ${styles.card}
+              ${styles.largeCard}
+            `}>
             <ul css={styles.list}>
               <li>
                 <p>One-stop shop for adding ASR and VAD to your mobile apps</p>
@@ -212,7 +218,12 @@ export default function Index({ data, location }: Props) {
               </li>
             </ul>
           </Card>
-          <Card title="Spokestack TTS" extraCss={styles.largeCard}>
+          <Card
+            title="Spokestack TTS"
+            extraCss={css`
+              ${styles.card}
+              ${styles.largeCard}
+            `}>
             <ul css={styles.list}>
               <li>
                 <p>Hand off model training and prosody</p>
@@ -225,7 +236,7 @@ export default function Index({ data, location }: Props) {
               </li>
             </ul>
           </Card>
-          <Card title="Spokestack Wakeword">
+          <Card title="Spokestack Wakeword" extraCss={styles.card}>
             <ul css={styles.list}>
               <li>
                 <p>
@@ -235,7 +246,7 @@ export default function Index({ data, location }: Props) {
               </li>
             </ul>
           </Card>
-          <Card title="Spokestack NLU">
+          <Card title="Spokestack NLU" extraCss={styles.card}>
             <ul css={styles.list}>
               <li>
                 <p>
@@ -259,9 +270,10 @@ const styles = {
     align-items: center;
     text-align: center;
     padding: ${rhythm(1.3)} 20px 160px;
-    background: var(--primary-color) url(/background.svg) no-repeat;
+    background: ${theme.primary} url(/background.svg) no-repeat;
     background-position: center bottom;
-    color: var(--text-color-dark-bg);
+    color: ${theme.textDarkBg};
+    width: 100%;
 
     @media (min-width: 1440px) {
       background-size: cover;
@@ -271,7 +283,7 @@ const styles = {
     }
   `,
   headerText: css`
-    color: var(--text-color-dark-bg);
+    color: ${theme.textDarkBg};
     max-width: 600px;
   `,
   productsHeader: css`
@@ -281,6 +293,7 @@ const styles = {
     font-weight: 400;
   `,
   usageWrap: css`
+    width: 100%;
     background-color: white;
     margin-top: -1px;
     z-index: 1;
@@ -293,6 +306,7 @@ const styles = {
     padding: 0 20px ${rhythm(2)};
 
     ${MIN_DEFAULT_MEDIA_QUERY} {
+      flex-direction: row;
       display: grid;
       grid-template-columns: 1fr 1fr;
       max-width: 1200px;
@@ -310,6 +324,10 @@ const styles = {
 
     h3 {
       max-width: 400px;
+    }
+
+    p {
+      max-width: 520px;
     }
 
     ${MIN_DEFAULT_MEDIA_QUERY} {
@@ -343,8 +361,8 @@ const styles = {
       justify-content: center;
       align-items: center;
       padding-left: 5px;
-      background-color: var(--primary-color);
-      transition: transform 0.2s var(--transition-easing);
+      background-color: ${theme.primary};
+      transition: transform 0.2s ${theme.transitionEasing};
     }
     &:hover .play-icon {
       transform: scale(1.1);
@@ -360,6 +378,7 @@ const styles = {
     list-style-image: url(/arrow-forward.svg);
   `,
   summary: css`
+    width: 100%;
     background-color: white;
     padding: ${rhythm(3)} 20px 20px;
 
@@ -371,18 +390,29 @@ const styles = {
     text-align: center;
   `,
   summaryDetails: css`
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
     display: grid;
     grid-gap: 20px;
     grid-template-columns: 100%;
     margin-top: ${rhythm(2)};
 
     ${MIN_DEFAULT_MEDIA_QUERY} {
+      width: 100%;
       max-width: ${LARGE_DISPLAY_WIDTH};
       margin-left: auto;
       margin-right: auto;
       grid-template-columns: 1fr 1fr;
       grid-auto-columns: minmax(300px, auto);
       padding-right: 0;
+    }
+  `,
+  card: css`
+    ${theme.ieBreakpoint} {
+      width: 100%;
+      max-width: none;
+      margin-bottom: 20px;
     }
   `,
   largeCard: css`

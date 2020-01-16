@@ -2,6 +2,7 @@ import React, { useState, FormEvent } from 'react'
 import Button from './Button'
 import { css } from '@emotion/core'
 import { MIN_DEFAULT_MEDIA_QUERY } from 'typography-breakpoint-constants'
+import * as theme from '../utils/theme'
 
 interface Props {
   submitting: boolean
@@ -49,7 +50,7 @@ const styles = {
     display: flex;
     flex-direction: column;
     align-items: center;
-    border: 1px solid var(--main-border-color);
+    border: 1px solid ${theme.mainBorder};
     border-radius: 7px;
     padding: 20px;
 

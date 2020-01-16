@@ -29,14 +29,12 @@ const styles = {
     flex-direction: column;
     justify-content: center;
     align-items: center;
-    background-image: none;
     border-radius: 50%;
     margin-right: 10px;
     transition: background-color 0.2s var(--transition-easing);
 
     &:hover {
       background-color: rgba(0, 0, 0, 0.1);
-      background-image: none;
     }
     &:active {
       box-shadow: inset 0 0 5px rgba(0, 0, 0, 0.7);

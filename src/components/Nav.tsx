@@ -193,7 +193,6 @@ const styles = {
     height: 100%;
     text-align: center;
     text-decoration: none;
-    background-image: none;
     transition: all 0.2s var(--transition-easing);
     padding: 5px ${rhythm(0.2)} 8px;
     user-select: none;
@@ -202,7 +201,6 @@ const styles = {
     &:visited {
       color: var(--nav-link-color);
       text-decoration: none;
-      background-image: none;
     }
     &:after {
       content: '';

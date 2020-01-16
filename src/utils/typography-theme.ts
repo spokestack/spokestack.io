@@ -29,16 +29,22 @@ const options: TypographyOptions = {
       color: 'var(--link-color)',
       fontWeight: 700,
       textDecoration: 'underline',
+      textDecorationColor: 'var(--link-color)',
+      textDecorationThickness: '.1em',
+      textUnderlineOffset: '2px',
       transition: 'color 0.1s var(--transition-easing)'
     },
     'a:visited': {
-      color: 'var(--link-color-visited)'
+      color: 'var(--link-color-visited)',
+      textDecorationColor: 'var(--link-color-visited)'
     },
     'a:hover': {
-      color: 'var(--link-color-hover)'
+      color: 'var(--link-color-hover)',
+      textDecorationColor: 'var(--link-color-hover)'
     },
     'a:active': {
-      color: 'var(--link-color-active)'
+      color: 'var(--link-color-active)',
+      textDecorationColor: 'var(--link-color-active)'
     },
     h1: {
       fontSize: `${42 / 18}rem`,

@@ -149,6 +149,9 @@ const styles = {
       text-overflow: ellipsis;
       padding-left: 20px;
     }
+    ${theme.ieBreakpoint} {
+      display: none;
+    }
   `,
   iconWrap: css`
     display: flex;

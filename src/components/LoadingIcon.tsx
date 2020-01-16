@@ -1,13 +1,13 @@
 import { SerializedStyles, css, keyframes } from '@emotion/core'
-
 import React from 'react'
+import { primary, transitionEasing } from '../utils/theme'
 
 interface Props {
   color?: string
   extraCss?: SerializedStyles
 }
 
-export default function LoadingIcon({ color = 'var(--primary-color)', extraCss }: Props) {
+export default function LoadingIcon({ color = primary, extraCss }: Props) {
   return (
     <svg css={[styles.icon, extraCss]} width="25px" height="25px" viewBox="0 0 25 25">
       <path
@@ -35,6 +35,6 @@ const styles = {
     fill: none;
     stroke-width: 1;
     stroke-dasharray: 130;
-    animation: ${dashAnimation} 1.5s infinite alternate var(--transition-easing);
+    animation: ${dashAnimation} 1.5s infinite alternate ${transitionEasing};
   `
 }

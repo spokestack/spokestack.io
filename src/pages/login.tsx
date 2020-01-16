@@ -1,6 +1,6 @@
 import { DEFAULT_WIDTH, MIN_DEFAULT_MEDIA_QUERY } from 'typography-breakpoint-constants'
 import React, { useEffect, useState } from 'react'
-
+import * as theme from '../utils/theme'
 import Layout from '../components/Layout'
 import SVGIcon from '../components/SVGIcon'
 import { createLink as createGitHubLink } from '../utils/oauthGitHub'
@@ -105,14 +105,15 @@ const styles = {
     margin-right: 25px;
     background-color: white;
     border-radius: 25px 0 0 25px;
-    border-right: 1px solid var(--primary-color);
+    border-right: 1px solid ${theme.primary};
   `,
   linkIcon: css`
-    fill: var(--primary-color);
+    fill: ${theme.primary};
     width: 25px;
     height: 25px;
   `,
   list: css`
+    width: 100%;
     list-style: none;
     margin: 0;
 

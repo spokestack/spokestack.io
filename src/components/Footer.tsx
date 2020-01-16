@@ -1,6 +1,7 @@
 import { LARGER_DISPLAY_WIDTH, MIN_DEFAULT_MEDIA_QUERY } from 'typography-breakpoint-constants'
 import { rhythm } from '../utils/typography'
 import { graphql, useStaticQuery } from 'gatsby'
+import * as theme from '../utils/theme'
 
 import React from 'react'
 import { css } from '@emotion/core'
@@ -54,8 +55,8 @@ export default function Footer() {
 
 const styles = {
   footer: css`
-    background-color: var(--footer-background);
-    color: var(--text-color-dark-bg);
+    background-color: ${theme.footerBackground};
+    color: ${theme.textDarkBg};
     padding: ${rhythm(1)} ${rhythm(1.5)} ${rhythm(2)};
   `,
   wrapper: css`
@@ -98,16 +99,16 @@ const styles = {
       margin-bottom: 20px;
 
       a {
-        color: var(--secondary-color);
+        color: ${theme.linkSecondary};
 
         &:visited {
-          color: var(--link-color-visited-secondary);
+          color: ${theme.linkSecondaryVisited};
         }
         &:hover {
-          color: var(--link-color-hover-secondary);
+          color: ${theme.linkSecondaryHover};
         }
         &:active {
-          color: var(--link-color-active-secondary);
+          color: ${theme.linkSecondaryActive};
         }
       }
     }

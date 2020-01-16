@@ -2,6 +2,7 @@ import { MIN_TABLET_MEDIA_QUERY } from 'typography-breakpoint-constants'
 import React from 'react'
 import { css } from '@emotion/core'
 import { rhythm } from '../utils/typography'
+import { ieBreakpoint } from '../utils/theme'
 
 interface Props {
   avatar: React.ReactNode
@@ -39,6 +40,10 @@ const styles = {
 
     ${MIN_TABLET_MEDIA_QUERY} {
       margin-bottom: ${rhythm(2)};
+    }
+
+    ${ieBreakpoint} {
+      margin-right: 20px;
     }
   `
 }

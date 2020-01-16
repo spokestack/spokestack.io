@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from 'react'
 
+import * as theme from '../utils/theme'
 import { DEFAULT_MEDIA_QUERY } from 'typography-breakpoint-constants'
 import { Link } from 'gatsby'
 import SVGIcon from './SVGIcon'
@@ -113,12 +114,12 @@ const styles = {
       justify-content: space-between;
       align-items: center;
       margin: 0;
-      color: var(--header-color);
+      color: ${theme.header};
       cursor: pointer;
     }
   `,
   headerIcon: css`
-    fill: var(--header-color);
+    fill: ${theme.header};
     width: 25px;
     height: 25px;
 
@@ -138,23 +139,23 @@ const styles = {
     padding: 15px 45px;
     text-decoration: none;
     user-select: none;
-    color: var(--sticky-nav-link-color);
+    color: ${theme.linkStickyNav};
 
     &:visited {
-      color: var(--sticky-nav-link-color);
+      color: ${theme.linkStickyNav};
     }
     &:hover {
-      color: var(--sticky-nav-link-color-hover);
+      color: ${theme.linkStickyNavHover};
     }
     &.sticky-nav-link-active,
     &.sticky-nav-link-active-no-bg {
-      color: var(--sticky-nav-link-color-active) !important;
+      color: ${theme.linkStickyNavActive} !important;
       cursor: default;
       pointer-events: none;
     }
     &.sticky-nav-link-active {
       border-radius: 50px 0 0 50px;
-      background-color: var(--main-background);
+      background-color: ${theme.mainBackground};
     }
   `
 }

@@ -2,6 +2,7 @@ import React, { ButtonHTMLAttributes } from 'react'
 
 import { SerializedStyles, css } from '@emotion/core'
 import LoadingIcon from './LoadingIcon'
+import * as theme from '../utils/theme'
 
 interface Props extends ButtonHTMLAttributes<HTMLButtonElement> {
   extraCss?: SerializedStyles
@@ -38,7 +39,7 @@ export default function Button({
       <div css={styles.childrenWrap} style={{ visibility: submitting ? 'hidden' : 'visible' }}>
         {children}
       </div>
-      {submitting && <LoadingIcon extraCss={styles.loading} color="var(--secondary-color)" />}
+      {submitting && <LoadingIcon extraCss={styles.loading} color={theme.secondary} />}
     </button>
   )
 }

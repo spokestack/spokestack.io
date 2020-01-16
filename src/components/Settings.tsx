@@ -1,6 +1,6 @@
 import { Account, ApiKey } from '../types'
 import React, { useState } from 'react'
-
+import * as theme from '../utils/theme'
 import AccountCard from './AccountCard'
 import AccountLayout from './AccountLayout'
 import AddTokenForm from './AddTokenForm'
@@ -65,7 +65,7 @@ export default function Settings({ account, location }: Props) {
         </div>
       </AccountCard>
       <AccountCard
-        title="API Access"
+        title="API Credentials"
         id="api"
         rightContent={
           !showForm &&
@@ -126,14 +126,14 @@ const styles = {
     cursor: pointer;
 
     &:hover svg {
-      fill: var(--link-color-hover);
+      fill: ${theme.linkHover};
     }
     &:active svg {
-      fill: var(--link-color-active);
+      fill: ${theme.linkActive};
     }
   `,
   addIcon: css`
-    fill: var(--primary-color);
+    fill: ${theme.primary};
     width: 20px;
     height: 20px;
     margin: 0 5px 0 0;

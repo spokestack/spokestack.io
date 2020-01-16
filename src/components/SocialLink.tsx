@@ -2,6 +2,7 @@ import { SerializedStyles, css } from '@emotion/core'
 
 import React from 'react'
 import SVGIcon from './SVGIcon'
+import { transitionEasing } from '../utils/theme'
 
 interface Props {
   href: string
@@ -31,7 +32,7 @@ const styles = {
     align-items: center;
     border-radius: 50%;
     margin-right: 10px;
-    transition: background-color 0.2s var(--transition-easing);
+    transition: background-color 0.2s ${transitionEasing};
 
     &:hover {
       background-color: rgba(0, 0, 0, 0.1);

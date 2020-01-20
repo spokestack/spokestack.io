@@ -62,14 +62,7 @@ To enable voice control, your app needs three things:
 
 ### 1. Permissions
 
-To accept voice input, you need _at least_ the `RECORD_AUDIO` permission, and to perform speech recognition and TTS, you'll need to network access, so add these lines to the `manifest` elment of your app's `AndroidManifest.xml`:
-
-```xml
-<uses-permission android:name="android.permission.INTERNET"/>
-<uses-permission android:name="android.permission.RECORD_AUDIO"/>
-```
-
-Starting with Android 6.0, the `RECORD_AUDIO` permission requires you to request it from the user at runtime; see the [Android developer documentation](https://developer.android.com/training/permissions/requesting.html) for more information on how to do this.
+To accept voice input, you need _at least_ the `RECORD_AUDIO` permission, and to perform speech recognition and TTS, you'll need to network access (the `INTERNET` permission). Both permissions are included in the Spokestack AAR, so you shouldn't need to add them explicitly. Starting with Android 6.0, however, the `RECORD_AUDIO` permission must be requested from the user at runtime; see the [Android developer documentation](https://developer.android.com/training/permissions/requesting.html) for more information on how to do this. You'll also have to deal with the user potentially denying these permissions (or granting them at first and removing them later), but that's outside the scope of this guide.
 
 Note that sending audio over the network can use a considerable amount of data, so you may also want to look into WiFi-related permissions and allow the user to disable voice control when using cellular data.
 

@@ -71,9 +71,7 @@ export default function DocsPage({ post, selectFirst }: Props) {
 export const docsPageQuery = graphql`
   query docsPageQuery {
     allMarkdownRemark(
-      sort: { fields: [frontmatter___date], order: DESC }
       filter: { fileAbsolutePath: { regex: "/docs/" }, frontmatter: { draft: { ne: true } } }
-      limit: 10
     ) {
       edges {
         node {
@@ -82,7 +80,6 @@ export const docsPageQuery = graphql`
             folder
           }
           frontmatter {
-            date(formatString: "MMMM DD, YYYY")
             description
             navId
             title

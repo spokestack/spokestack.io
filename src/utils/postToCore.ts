@@ -1,11 +1,3 @@
-if (!process.env.PYLON_CORE_URL) {
-  if (process.env.NODE_ENV !== 'production') {
-    console.warn('PYLON_CORE_URL is not set in the environment. Some things may not work properly.')
-  } else {
-    throw new Error('PYLON_CORE_URL is not set in the environment.')
-  }
-}
-
 interface RequestOptions extends Omit<RequestInit, 'body'> {
   body?: { [key: string]: any } | string
 }
@@ -22,6 +14,9 @@ export default function postToCore(url: string, options?: RequestOptions) {
   }
   if (options.body) {
     options.body = JSON.stringify(options.body)
+  }
+  if (!process.env.PYLON_CORE_URL) {
+    throw new Error('PYLON_CORE_URL is not set in the environment.')
   }
   return fetch(`${process.env.PYLON_CORE_URL}${url}`, options as RequestInit)
     .then((response) => {

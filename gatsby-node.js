@@ -5,16 +5,24 @@ const isProd = process.env.NODE_ENV === 'production'
 const rdocs = /\/docs\//
 const rspokestackWebsite = /.*?spokestack-website\//
 
+function throwInProd(message) {
+  if (process.env.NODE_ENV !== 'production') {
+    console.warn(`${message} Some things may not work properly.`)
+  } else {
+    throw new Error(message)
+  }
+}
+
 if (!process.env.SS_GITHUB_CLIENT_ID) {
-  throw new Error('SS_GITHUB_CLIENT_ID needs to be set in environment variables.')
+  throwInProd('SS_GITHUB_CLIENT_ID is not set in the environment.')
 }
 
 if (!process.env.SS_API_URL) {
-  throw new Error('SS_API_URL should be set in environment variables.')
+  throwInProd('SS_API_URL is not set in the environment.')
 }
 
 if (!process.env.SS_GOOGLE_CLIENT_ID) {
-  throw new Error('SS_GOOGLE_CLIENT_ID needs to be set in environment variables.')
+  throwInProd('SS_GOOGLE_CLIENT_ID is not set in the environment.')
 }
 
 function createPages(createPage, posts, template) {

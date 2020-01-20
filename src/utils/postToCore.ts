@@ -1,7 +1,9 @@
-const coreUrl = process.env.PYLON_CORE_URL
-
-if (!coreUrl) {
-  throw new Error('PYLON_CORE_URL is not set in the environment')
+if (!process.env.PYLON_CORE_URL) {
+  if (process.env.NODE_ENV !== 'production') {
+    console.warn('PYLON_CORE_URL is not set in the environment. Some things may not work properly.')
+  } else {
+    throw new Error('PYLON_CORE_URL is not set in the environment.')
+  }
 }
 
 interface RequestOptions extends Omit<RequestInit, 'body'> {
@@ -21,7 +23,7 @@ export default function postToCore(url: string, options?: RequestOptions) {
   if (options.body) {
     options.body = JSON.stringify(options.body)
   }
-  return fetch(`${coreUrl}${url}`, options as RequestInit)
+  return fetch(`${process.env.PYLON_CORE_URL}${url}`, options as RequestInit)
     .then((response) => {
       if (response.ok) {
         return [null, response]

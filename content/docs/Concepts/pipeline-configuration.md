@@ -83,16 +83,20 @@ These parameters may be adjusted at runtime without rebuilding/retraining the ML
   _Not available on iOS_
 
 - `vad-fall-delay`
-  The falling edge delay is the number of milliseconds to delay deactivating the VAD after voiced speech is no longer detected. This parameter ensures that the wakeword trigger continues to run between words in a phrase for slow talkers and words with leading/trailing unvoiced phonemes. It also has a subtle interaction with `wake-active-min` for activations with and without pauses after the wakeword. This parameter should be tuned specifically to the wakeword being used.
+  The falling edge delay is the number of milliseconds to delay deactivating the VAD after voiced speech is no longer detected. This parameter ensures that the wakeword trigger continues to run between words in a phrase for slow talkers and words with leading/trailing unvoiced phonemes. It also has a subtle interaction with `active-min` for activations with and without pauses after the wakeword. This parameter should be tuned specifically to the wakeword being used.
 
 - `wake-threshold`
   This is the threshold that is compared with the detector model's posterior probability, in order to determine whether to activate the pipeline. It is the primary means of tuning precision/recall for model performance. A standard approach is to choose this threshold such that the model outputs no more than 1 false positive per hour in the test set. This parameter takes on values in the range [0, 1] and defaults to 0.5.
 
-- `wake-active-min`
-  This parameter represents the minimum number of milliseconds that a wakeword activation must remain active. It is used to prevent a VAD deactivation at the end of the wakeword utterance from prematurely terminating the wakeword activation, when a user pauses between saying the wakeword and making the system request. It should be tuned alongside `vad-fall-delay` and is typically longer than `vad-fall-delay`.
+- `active-min`
+  This parameter represents the minimum number of milliseconds that a pipeline activation must last. It is used to prevent a VAD deactivation at the end of the wakeword utterance from prematurely terminating the wakeword activation when a user pauses between saying the wakeword and making the system request. It should be tuned alongside `vad-fall-delay` and is typically longer than `vad-fall-delay`.
 
-- `wake-active-max`
+  **iOS name**: `wakeActiveMin`
+
+- `active-max`
   The maximum activation length (milliseconds) is the maximum amount of time any activation can take, even if a VAD deactivation does not occur. This limits the amount of audio processed further in the pipeline by allowing the pipeline activation to time out. The maximum activation length applies to wakeword activations, as well as manual activations (external calls to `context.set-active`). It should be tuned to the longest expected user utterance.
+
+  **iOS name**: `wakeActiveMax`
 
 - `sample-rate`
   The number of audio samples per second sent to the wakeword detector. Defaults to 16000 (16kHz).

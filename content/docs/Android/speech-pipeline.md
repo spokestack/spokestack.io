@@ -13,11 +13,23 @@ As the name implies, `SpeechPipeline` is a collection of distinct modular compon
 
 All pipeline processing is done on a background thread to avoid blocking the UI.
 
-Other configuration available at build time include properties, described in [the configuration guide](/docs/Concepts/pipeline-configuration) and the [Javadoc](https://www.javadoc.io/doc/io.spokestack/spokestack-android) for the various pipeline stages; and the designated speech event listener(s), which we'll talk about a bit later.
+## How do I set it up?
 
-Stage order matters in the build process; audio is processed by each stage in turn, according to the order in which it's declared at build time. For example, a stage that activates ASR based on the presence of the wakeword needs to be placed before the ASR stage, and any stages that process audio to make the wakeword detector's job easier must be declared before the wakeword detection stage. The order of configuration properties, on the other hand, does not matter, and their declarations can be placed before or after those of processing stages.
+Configuration available at build time include properties, described in [the configuration guide](/docs/Concepts/pipeline-configuration) and the [Javadoc](https://www.javadoc.io/doc/io.spokestack/spokestack-android) for the various pipeline stages; and the designated speech event listener(s), which we'll talk about a bit later.
 
-Both the input classes and processing stages are loaded dynamically via reflection on their class names, making it straightforward to implement a custom pipeline component to fit your specific needs: Just implement the `SpeechProcessor` interface (or `SpeechInput` if you need to accept input from a source other than the Android microphone) and include its full class name in the pipeline builder at the appropriate location. Note that descriptions of the various stages below assume well-behaved implementations; custom implementations can of course do whatever they want in their `process` method, regarless of whether it meets the pipeline's general expectations.
+Stage order matters in the build process; audio is processed by each stage in turn, according to the order in which it's declared at build time. For example, a stage that activates ASR based on the presence of the wakeword needs to be placed before the ASR stage, and any stages that process audio to make the wakeword detector's job easier (for example, gain control) must be declared before the wakeword detection stage. The order of configuration properties, on the other hand, does not matter, and their declarations can be placed before or after those of processing stages.
+
+Spokestack offers several pre-built "profiles" that bundle input class, stage classes, and in some cases configuration properties tuned to support different app configurations. See the [Javadoc](https://www.javadoc.io/doc/io.spokestack/spokestack-android) for the `io.spokestack.spokestack.profile` package for a complete listing, but here's a brief summary:
+
+- Profiles whose names begin with `VADTrigger` send any detected speech straight to the chosen speech recognizer.
+- `TFWakeword` profiles use [TensorFlow Lite](https://www.tensorflow.org/lite) for wakeword recognition.
+- `PushToTalk` profiles have no automatic triggering; the pipeline's `activate` method must be called to perform speech recognition.
+
+Profiles take care of all configuration that can be managed in a one-size-fits-all fashion, but note that some components require additional configuration, such as third-party API keys, paths to TensorFlow models, or runtime objects from an Android application. See the javadoc for your chosen profile to see if anything else is required.
+
+Any configuration properties set after a profile is applied will override configuration set by that profile, but any processing stages added after the profile will be added to those established by the profile, just as if the profile's configuration had been performed directly as chained calls to the pipeline builder.
+
+Input classes, processing stages, and profiles are all loaded dynamically via their class names, making it straightforward to create a custom profile or pipeline component to fit your specific needs: Just have your class implement the `PipelineProfile` interface to create a profile,  the `SpeechInput` interface to create an input class, or the `SpeechProcessor` interface to create a processing stage. Note that descriptions of the various processing stages below assume well-behaved implementations; custom implementations can of course do whatever they want in their `process` method, regarless of whether it meets the pipeline's general expectations.
 
 ## How does it work?
 
@@ -28,6 +40,8 @@ This is the speech pipeline's state machine:
 As you can see, once the pipeline has been is built (after the return of `SpeechPipeline.Builder.build()`), calling `start()` puts it into a passive listening state—or it will if the pipeline has been properly configured. You _could_ have an ASR class as the only stage, in which case an ASR request would start immediately upon calling `start()`. This is almost certainly not what you want.
 
 While the pipeline is listening passively, it sends audio through its stages a frame at a time (a "frame" defaults to 20 ms of audio, but [it's configurable](/docs/Concepts/pipeline-configuration)). That audio is not leaving the device, though; it's waiting for a stage to recognize a trigger word or phrase and set the pipeline's `SpeechContext` to `active`. The classes that do this in Spokestack typically have names that end in `Trigger`; see `WakewordTrigger` and `VoiceActivityTrigger` for examples.
+
+The pipeline can also be activated by calling its `activate` method. This is what you'd do to implement push-to-talk. Once activated, it can be deactivated by calling `deactivate`, or it will remain active until a pre-set timeout is triggered (see `active-min` and `active-max` in the [configuration documentation](/docs/Concepts/pipeline-configuration)).
 
 When active, audio frames are not processed on-device but are instead sent to an ASR service to be transcribed (if an ASR component is registered in the pipeline; these components have names that end in `SpeechRecognizer`). These ASR requests end when a pre-set timeout is reached or when the pipeline's `SpeechContext` is manually set to inactive. At that point, the ASR service's best effort at a transcription is delivered via a speech event to any registered listeners.
 

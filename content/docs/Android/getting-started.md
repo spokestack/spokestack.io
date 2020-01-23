@@ -11,13 +11,19 @@ One caveat before we start, though: _This is not a collection of best practices_
 
 ## Installation
 
-First, you'll need to declare the Spokestack dependencies in your project. Because Spokestack includes native libraries, this is slightly more involved than a normal dependency. You'll need to add the following to your app's top-level `build.gradle`:
+First, you'll need to declare the Spokestack dependencies in your project. Because Spokestack includes native libraries, this is slightly more involved than a normal dependency. You'll need to add the following to your project's top-level `build.gradle`:
 
 ```groovy
 // inside the buildscript block
 dependencies {
     // (other dependencies)
     classpath 'com.nabilhachicha:android-native-dependencies:0.1.2'
+}
+
+// if you're using Azure Speech Service, this goes in the allProjects block
+repositories {
+    // (other repositories)
+    maven { url 'https://csspeechstorage.blob.core.windows.net/maven/' }
 }
 ```
 
@@ -36,7 +42,7 @@ compileOptions {
 // in the dependencies block
 dependencies {
     // (other dependencies)
-    implementation 'io.spokestack:spokestack-android:4.0.0'
+    implementation 'io.spokestack:spokestack-android:5.0.0'
 
     // if you plan to use Google ASR, also include these
     implementation 'com.google.cloud:google-cloud-speech:1.22.2'
@@ -44,11 +50,14 @@ dependencies {
 
     // for TensorFlow Lite-powered wakeword detection, add this one too
     implementation 'org.tensorflow:tensorflow-lite:1.14.0'
+
+    // for Azure Speech Service
+    implementation 'com.microsoft.cognitiveservices.speech:client-sdk:1.9.0'
 }
 
 // a new top-level block if you don't already have native dependencies
 native_dependencies {
-    artifact 'io.spokestack:spokestack-android:4.0.0'
+    artifact 'io.spokestack:spokestack-android:5.0.0'
 }
 ```
 

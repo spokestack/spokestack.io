@@ -4,6 +4,7 @@ import React, { ReactNode } from 'react'
 import Footer from './Footer'
 import Nav from './Nav'
 import globalStyles from '../utils/globalStyles'
+import { ieBreakpoint } from '../utils/theme'
 
 interface Props {
   children: ReactNode
@@ -28,10 +29,13 @@ const styles = {
     grid-template-columns: 100%;
   `,
   content: css`
-    display: flex;
-    flex-direction: column;
-    align-items: center;
     display: grid;
     grid-template-columns: 100%;
+
+    ${ieBreakpoint} {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+    }
   `
 }

@@ -29,7 +29,7 @@ Profiles take care of all configuration that can be managed in a one-size-fits-a
 
 Any configuration properties set after a profile is applied will override configuration set by that profile, but any processing stages added after the profile will be added to those established by the profile, just as if the profile's configuration had been performed directly as chained calls to the pipeline builder.
 
-Input classes, processing stages, and profiles are all loaded dynamically via their class names, making it straightforward to create a custom profile or pipeline component to fit your specific needs: Just have your class implement the `PipelineProfile` interface to create a profile,  the `SpeechInput` interface to create an input class, or the `SpeechProcessor` interface to create a processing stage. Note that descriptions of the various processing stages below assume well-behaved implementations; custom implementations can of course do whatever they want in their `process` method, regarless of whether it meets the pipeline's general expectations.
+Input classes, processing stages, and profiles are all loaded dynamically via their class names, making it straightforward to create a custom profile or pipeline component to fit your specific needs: Just have your class implement the `PipelineProfile` interface to create a profile, the `SpeechInput` interface to create an input class, or the `SpeechProcessor` interface to create a processing stage. Note that descriptions of the various processing stages below assume well-behaved implementations; custom implementations can of course do whatever they want in their `process` method, regarless of whether it meets the pipeline's general expectations.
 
 ## How does it work?
 

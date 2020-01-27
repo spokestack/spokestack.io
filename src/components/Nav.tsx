@@ -142,7 +142,8 @@ const mobileLink = css`
   color: ${theme.textDarkBg};
   text-align: center;
   text-decoration: none;
-  transition: background-color 0.2s ${theme.transitionEasing}, color 0.2s ${theme.transitionEasing};
+  transition: background-color 0.2s ${theme.transitionEasing},
+    color 0.2s ${theme.transitionEasing};
   padding: 0 20px;
   user-select: none;
 
@@ -307,7 +308,8 @@ const styles = {
         right: 0;
         width: 0;
         height: 0;
-        transition: width 0.1s ease-in-out, height 0.1s ease-in-out, left 0.1s ease-in-out;
+        transition: width 0.1s ease-in-out, height 0.1s ease-in-out,
+          left 0.1s ease-in-out;
         background-color: ${theme.secondary};
       }
       &:hover:after {

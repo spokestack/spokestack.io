@@ -17,7 +17,11 @@ import { useMutation } from '@apollo/react-hooks'
 
 const ADD_TOKEN = gql`
   mutation CreateKey($accountId: ID!, $displayName: String!) {
-    createKey(accountId: $accountId, displayName: $displayName, type: PRODUCTION) {
+    createKey(
+      accountId: $accountId
+      displayName: $displayName
+      type: PRODUCTION
+    ) {
       displayName
       id
       key
@@ -46,7 +50,9 @@ interface RemoveKeyMutation {
 export default function Settings({ account, location }: Props) {
   const [tokens, setTokens] = useState((account || {}).apiKeys || [])
   const [showForm, setShowForm] = useState(false)
-  const [addToken, { loading: addTokenLoading }] = useMutation<CreateKeyMutation>(ADD_TOKEN, {
+  const [addToken, { loading: addTokenLoading }] = useMutation<
+    CreateKeyMutation
+  >(ADD_TOKEN, {
     onCompleted: ({ createKey: token }) => {
       setTokens(tokens.concat(token))
       setShowForm(false)
@@ -81,10 +87,13 @@ export default function Settings({ account, location }: Props) {
           )
         }>
         <p>
-          This is a list of the API access tokens associated with the current account. Tokens can
-          only be viewed when creating them. Remove any tokens that don&lsquo;t look familiar.
+          This is a list of the API access tokens associated with the current
+          account. Tokens can only be viewed when creating them. Remove any
+          tokens that don&lsquo;t look familiar.
         </p>
-        {!tokens.length && <p>You currently have no API keys. Generate one below.</p>}
+        {!tokens.length && (
+          <p>You currently have no API keys. Generate one below.</p>
+        )}
         <div css={styles.tokens}>
           {(showForm || !tokens.length) && (
             <AddTokenForm

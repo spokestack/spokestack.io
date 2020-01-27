@@ -36,10 +36,14 @@ export default function Button({
   }
   return (
     <button css={extraCss} className={classNames.join(' ')} {...props}>
-      <div css={styles.childrenWrap} style={{ visibility: submitting ? 'hidden' : 'visible' }}>
+      <div
+        css={styles.childrenWrap}
+        style={{ visibility: submitting ? 'hidden' : 'visible' }}>
         {children}
       </div>
-      {submitting && <LoadingIcon extraCss={styles.loading} color={theme.secondary} />}
+      {submitting && (
+        <LoadingIcon extraCss={styles.loading} color={theme.secondary} />
+      )}
     </button>
   )
 }

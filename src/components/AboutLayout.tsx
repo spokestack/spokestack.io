@@ -24,7 +24,13 @@ export default function About({ children }: Props) {
       <SEO
         title="About us"
         description="About our team"
-        keywords={['spokestack', 'about', 'our story', 'voice', 'artificial intelligence']}
+        keywords={[
+          'spokestack',
+          'about',
+          'our story',
+          'voice',
+          'artificial intelligence'
+        ]}
       />
       <StickyNavLayout header="About" links={links}>
         {children}

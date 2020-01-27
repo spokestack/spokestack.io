@@ -1,4 +1,7 @@
-import { DEFAULT_WIDTH, MIN_DEFAULT_MEDIA_QUERY } from 'typography-breakpoint-constants'
+import {
+  DEFAULT_WIDTH,
+  MIN_DEFAULT_MEDIA_QUERY
+} from 'typography-breakpoint-constants'
 import React, { useEffect, useState } from 'react'
 import * as theme from '../utils/theme'
 import Layout from '../components/Layout'
@@ -21,16 +24,24 @@ export default function OAuth() {
   return (
     <Layout>
       <div css={styles.container}>
-        <h4 css={styles.header}>Sign in or create an account, no credit card required</h4>
+        <h4 css={styles.header}>
+          Sign in or create an account, no credit card required
+        </h4>
         <div css={styles.content}>
           <div css={styles.links}>
-            <a href={gitHubLink} className="btn btn-primary btn-large" css={styles.button}>
+            <a
+              href={gitHubLink}
+              className="btn btn-primary btn-large"
+              css={styles.button}>
               <div css={styles.iconWrap}>
                 <SVGIcon icon={iconGitHub.id} css={styles.linkIcon} />
               </div>
               Sign In Using GitHub
             </a>
-            <a href={googleLink} className="btn btn-primary btn-large" css={styles.button}>
+            <a
+              href={googleLink}
+              className="btn btn-primary btn-large"
+              css={styles.button}>
               <div css={styles.iconWrap}>
                 <SVGIcon icon={iconGoogle.id} css={styles.linkIcon} />
               </div>
@@ -43,12 +54,13 @@ export default function OAuth() {
               You pick the wakeword
             </li>
             <li>
-              <SVGIcon icon={iconCheckmark.id} css={styles.iconCheckmark} />A one-stop shop for
-              automatic speech recognition
+              <SVGIcon icon={iconCheckmark.id} css={styles.iconCheckmark} />A
+              one-stop shop for automatic speech recognition
             </li>
             <li>
-              <SVGIcon icon={iconCheckmark.id} css={styles.iconCheckmark} />A natural language
-              understanding engine that keeps your data and customer conversations in your app
+              <SVGIcon icon={iconCheckmark.id} css={styles.iconCheckmark} />A
+              natural language understanding engine that keeps your data and
+              customer conversations in your app
             </li>
             <li>
               <SVGIcon icon={iconCheckmark.id} css={styles.iconCheckmark} />

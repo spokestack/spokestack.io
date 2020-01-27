@@ -11,7 +11,8 @@ export interface Option {
   value?: string
 }
 
-interface Props extends Omit<SelectHTMLAttributes<HTMLSelectElement>, 'onChange'> {
+interface Props
+  extends Omit<SelectHTMLAttributes<HTMLSelectElement>, 'onChange'> {
   id: string
   // Don't need to set options if children is set
   options?: Option[]
@@ -201,7 +202,8 @@ const styles = {
     overflow-y: auto;
     background-color: white;
     border: 1px solid ${theme.mainBorder};
-    transition: transform 0.2s ${theme.transitionEasing}, opacity 0.2s ${theme.transitionEasing};
+    transition: transform 0.2s ${theme.transitionEasing},
+      opacity 0.2s ${theme.transitionEasing};
     transform: translateY(-50%) scaleY(0);
     opacity: 0;
   `,

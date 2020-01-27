@@ -51,7 +51,9 @@ export async function getAccessToken(
       (error) => {
         console.error(error)
         return [
-          new Error('There was a problem authorizing with GitHub. Please check your network.')
+          new Error(
+            'There was a problem authorizing with GitHub. Please check your network.'
+          )
         ]
       }
     )

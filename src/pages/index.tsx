@@ -65,9 +65,11 @@ export default function Index({ data, location }: Props) {
       <SEO title={siteTitle} keywords={['spokestack', 'mobile', 'voice']} />
       <header css={styles.header}>
         <h1 css={styles.headerText}>Give your mobile app a voice&trade;</h1>
-        <h4 css={[styles.headerText, styles.h4]} className="spokestack-speakable">
-          Spokestack is a powerful platform of open source libraries and robust services to make
-          your app fully voice-enabled.
+        <h4
+          css={[styles.headerText, styles.h4]}
+          className="spokestack-speakable">
+          Spokestack is a powerful platform of open source libraries and robust
+          services to make your app fully voice-enabled.
         </h4>
         <a href="/docs" className="btn btn-large">
           Get started
@@ -86,18 +88,39 @@ export default function Index({ data, location }: Props) {
               <a href="https://voicebot.ai/2019/01/15/twice-the-number-of-u-s-adults-have-tried-in-car-voice-assistants-as-smart-speakers/">
                 58% of Americans
               </a>{' '}
-              use their phone as a voice assistant. That&lsquo;s more users than those of smart
-              speaker, smart watch and desktop voice assistants combined. As Airpods&trade; and
-              other voice assistant-powered headphones gain popularity, users will expect apps to
-              have a voice and provide a hands-free experience.
+              use their phone as a voice assistant. That&lsquo;s more users than
+              those of smart speaker, smart watch and desktop voice assistants
+              combined. As Airpods&trade; and other voice assistant-powered
+              headphones gain popularity, users will expect apps to have a voice
+              and provide a hands-free experience.
             </p>
           </div>
           <div css={styles.videoWrap}>
-            <video ref={videoRef} controls={played} css={styles.video} poster="/poster_2x.jpg">
-              <source src="spokestack-1920x1080.mp4" type="video/mp4" media="(min-width: 1920px)" />
-              <source src="spokestack-1280x720.mp4" type="video/mp4" media="(min-width: 1280px)" />
-              <source src="spokestack-960x540.mp4" type="video/mp4" media="(min-width: 960px)" />
-              <source src="spokestack-640x360.mp4" type="video/mp4" media="(min-width: 640px)" />
+            <video
+              ref={videoRef}
+              controls={played}
+              css={styles.video}
+              poster="/poster_2x.jpg">
+              <source
+                src="spokestack-1920x1080.mp4"
+                type="video/mp4"
+                media="(min-width: 1920px)"
+              />
+              <source
+                src="spokestack-1280x720.mp4"
+                type="video/mp4"
+                media="(min-width: 1280px)"
+              />
+              <source
+                src="spokestack-960x540.mp4"
+                type="video/mp4"
+                media="(min-width: 960px)"
+              />
+              <source
+                src="spokestack-640x360.mp4"
+                type="video/mp4"
+                media="(min-width: 640px)"
+              />
               <source src="spokestack-426x240.mp4" type="video/mp4" />
             </video>
             <a
@@ -105,28 +128,38 @@ export default function Index({ data, location }: Props) {
               onClick={() => videoRef.current.play()}
               style={played ? { display: 'none' } : null}>
               <div className="play-icon">
-                <SVGIcon icon={iconPlay.id} style={{ width: '30px', height: '35px' }} />
+                <SVGIcon
+                  icon={iconPlay.id}
+                  style={{ width: '30px', height: '35px' }}
+                />
               </div>
             </a>
           </div>
         </div>
       </div>
-      <StickyNavLayout id="products" matchHash links={links} location={location}>
+      <StickyNavLayout
+        id="products"
+        matchHash
+        links={links}
+        location={location}>
         <h1 id="asr" css={styles.productsHeader}>
           Products &amp; Services
         </h1>
-        <div css={styles.feature} style={{ paddingTop: rhythm(1) }} ref={links[0].ref}>
+        <div
+          css={styles.feature}
+          style={{ paddingTop: rhythm(1) }}
+          ref={links[0].ref}>
           <h2>Spokestack ASR and VAD</h2>
           <p className="title">
-            A one-stop shop for Automatic Speech Recognition (ASR) and Voice Activity Detection
-            (VAD)
+            A one-stop shop for Automatic Speech Recognition (ASR) and Voice
+            Activity Detection (VAD)
           </p>
           <p>
             Easily add ASR and VAD to your app with one of our{' '}
-            <a href="https://github.com/spokestack">open source libraries</a>. Spokestack ASR and
-            VAD allow you to turn user utterances into text, which is the first step to responding
-            to a user. From there, use Spokestack Wakeword, TTS and NLU to complete the voice
-            experience.
+            <a href="https://github.com/spokestack">open source libraries</a>.
+            Spokestack ASR and VAD allow you to turn user utterances into text,
+            which is the first step to responding to a user. From there, use
+            Spokestack Wakeword, TTS and NLU to complete the voice experience.
           </p>
           <a href="/docs" className="link-with-icon">
             Get started
@@ -138,13 +171,16 @@ export default function Index({ data, location }: Props) {
         </div>
         <div id="wakeword" css={styles.feature} ref={links[1].ref}>
           <h2>Spokestack Wakeword</h2>
-          <p className="title">Choose the keyword that will be the wakeword for your app.</p>
+          <p className="title">
+            Choose the keyword that will be the wakeword for your app.
+          </p>
           <p>
-            Use your brand name or any keyword of your choice to put your app into listen mode, also
-            with the help of one of the{' '}
-            <a href="https://github.com/spokestack">Spokestack libraries</a>. Like
-            &ldquo;Siri&rdquo;, &ldquo;OK Google&rdquo;, or &ldquo;Alexa&rdquo;, your app will
-            respond to your wakeword while it is open.
+            Use your brand name or any keyword of your choice to put your app
+            into listen mode, also with the help of one of the{' '}
+            <a href="https://github.com/spokestack">Spokestack libraries</a>.
+            Like &ldquo;Siri&rdquo;, &ldquo;OK Google&rdquo;, or
+            &ldquo;Alexa&rdquo;, your app will respond to your wakeword while it
+            is open.
           </p>
           <a href="mailto:hello@spokestack.io" className="link-with-icon">
             Email us for details on getting a custom wakeword
@@ -158,13 +194,14 @@ export default function Index({ data, location }: Props) {
           <h2>Spokestack TTS</h2>
           <p className="title">Create a custom voice for your brand.</p>
           <p>
-            Get a custom voice or use the default voice for free. Respond to your users with our
-            proprietary Text-to-Speech (TTS) service.
+            Get a custom voice or use the default voice for free. Respond to
+            your users with our proprietary Text-to-Speech (TTS) service.
           </p>
           <p>
-            Our TTS engine can create a custom voice for your brand with as little as five minutes
-            of recordings. We can also work with your own voice talent in a professional recording
-            studio to produce a high quality branded voice for your app.
+            Our TTS engine can create a custom voice for your brand with as
+            little as five minutes of recordings. We can also work with your own
+            voice talent in a professional recording studio to produce a high
+            quality branded voice for your app.
           </p>
           <p>
             <a href="mailto:hello@spokestack.io" className="link-with-icon">
@@ -176,21 +213,22 @@ export default function Index({ data, location }: Props) {
             </a>
           </p>
           <p>
-            Try some of our voice samples below. Each voice is generated using different recording
-            times and methods.
+            Try some of our voice samples below. Each voice is generated using
+            different recording times and methods.
           </p>
           <SampleVoices />
         </div>
         <div id="nlu" css={styles.feature} ref={links[3].ref}>
           <h2>Spokestack NLU</h2>
           <p className="title">
-            Keep your data and customer conversations in your app where it belongs with our Natural
-            Language Understanding (NLU) engine.
+            Keep your data and customer conversations in your app where it
+            belongs with our Natural Language Understanding (NLU) engine.
           </p>
           <p>
-            Use the Spokestack NLU engine to communicate the unique requests, context and
-            pronunciations of words that matter to you and users. Combined with Spokestack TTS,
-            Spokestack NLU helps create a voice-enabled user experience optimized for your brand.
+            Use the Spokestack NLU engine to communicate the unique requests,
+            context and pronunciations of words that matter to you and users.
+            Combined with Spokestack TTS, Spokestack NLU helps create a
+            voice-enabled user experience optimized for your brand.
           </p>
           <a href="mailto:hello@spokestack.io" className="link-with-icon">
             Email us for details on getting a custom NLU for your app
@@ -216,8 +254,9 @@ export default function Index({ data, location }: Props) {
               </li>
               <li>
                 <p>
-                  Easily add Text-to-Speech (TTS) and a wakeword to your app with Spokestack or
-                  other providers, such as Siri, Google Assistant, or Alexa
+                  Easily add Text-to-Speech (TTS) and a wakeword to your app
+                  with Spokestack or other providers, such as Siri, Google
+                  Assistant, or Alexa
                 </p>
               </li>
             </ul>
@@ -236,7 +275,10 @@ export default function Index({ data, location }: Props) {
                 <p>Fast, built to deliver responses at real time</p>
               </li>
               <li>
-                <p>Know exactly what your customers are saying without an intermediary</p>
+                <p>
+                  Know exactly what your customers are saying without an
+                  intermediary
+                </p>
               </li>
             </ul>
           </Card>
@@ -244,8 +286,8 @@ export default function Index({ data, location }: Props) {
             <ul css={styles.list}>
               <li>
                 <p>
-                  Add a custom wakeword that suits your brand without training a Machine Learning
-                  model on your own
+                  Add a custom wakeword that suits your brand without training a
+                  Machine Learning model on your own
                 </p>
               </li>
             </ul>
@@ -254,8 +296,8 @@ export default function Index({ data, location }: Props) {
             <ul css={styles.list}>
               <li>
                 <p>
-                  A cross-platform NLU built for multimodal management and consistency throughout
-                  the user experience
+                  A cross-platform NLU built for multimodal management and
+                  consistency throughout the user experience
                 </p>
               </li>
             </ul>

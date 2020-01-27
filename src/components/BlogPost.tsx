@@ -36,7 +36,9 @@ export default function Blog({ post, selectFirst }: Props) {
       />
       <StickyNavLayout
         links={links}
-        rightContent={<Author author={post.frontmatter.author as TeamMemberName} />}>
+        rightContent={
+          <Author author={post.frontmatter.author as TeamMemberName} />
+        }>
         {selectFirst ? (
           <h1>
             <a href={post.fields.slug}>{post.frontmatter.title}</a>
@@ -55,7 +57,10 @@ export const blogPageQuery = graphql`
   query blogPageQuery {
     allMarkdownRemark(
       sort: { fields: [frontmatter___date], order: DESC }
-      filter: { fileAbsolutePath: { regex: "/blog/" }, frontmatter: { draft: { ne: true } } }
+      filter: {
+        fileAbsolutePath: { regex: "/blog/" }
+        frontmatter: { draft: { ne: true } }
+      }
       limit: 10
     ) {
       edges {

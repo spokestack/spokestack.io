@@ -33,7 +33,10 @@ export default function SocialLink({
       ]}
       href={href}
       title={title}>
-      <SVGIcon icon={icon} style={{ width: `${iconSize}px`, height: `${iconSize}px` }} />
+      <SVGIcon
+        icon={icon}
+        style={{ width: `${iconSize}px`, height: `${iconSize}px` }}
+      />
       <span css={[styles.title, titleCss]}>{title}</span>
     </a>
   )

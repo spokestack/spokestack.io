@@ -1,4 +1,7 @@
-import { LARGER_DISPLAY_WIDTH, MIN_DEFAULT_MEDIA_QUERY } from 'typography-breakpoint-constants'
+import {
+  LARGER_DISPLAY_WIDTH,
+  MIN_DEFAULT_MEDIA_QUERY
+} from 'typography-breakpoint-constants'
 import { rhythm } from '../utils/typography'
 import { graphql, useStaticQuery } from 'gatsby'
 import * as theme from '../utils/theme'

@@ -18,7 +18,13 @@ interface Props extends StickyNavProps {
   rightContent?: React.ReactNode
 }
 
-export default function StickyNavLayout({ children, id, header, rightContent, ...props }: Props) {
+export default function StickyNavLayout({
+  children,
+  id,
+  header,
+  rightContent,
+  ...props
+}: Props) {
   const style = [styles.container]
   if (rightContent) {
     style.push(styles.containerWithRight)
@@ -43,7 +49,10 @@ const styles = {
     ${MIN_DEFAULT_MEDIA_QUERY} {
       flex-direction: row;
       display: grid;
-      grid-template-columns: minmax(300px, 365px) minmax(700px, ${DEFAULT_WIDTH});
+      grid-template-columns: minmax(300px, 365px) minmax(
+          700px,
+          ${DEFAULT_WIDTH}
+        );
       grid-template-areas:
         'sidenav content'
         'sidenav author';

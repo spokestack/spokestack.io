@@ -2,17 +2,20 @@ export default [
   {
     model: 'ropp-v3',
     label: 'Spokestack Free',
-    description: 'A studio recording of a professional voice actor using 12 hours of audio.'
+    description:
+      'A studio recording of a professional voice actor using 12 hours of audio.'
   },
   {
     model: 'prieto',
     label: 'Calm',
-    description: 'A studio recording of a professional voice actor using 6 hours of audio.'
+    description:
+      'A studio recording of a professional voice actor using 6 hours of audio.'
   },
   {
     model: 'jej',
     label: 'Authoritative',
-    description: 'A cd-quality studio recording of a professional actor using 5 hours of audio.'
+    description:
+      'A cd-quality studio recording of a professional actor using 5 hours of audio.'
   },
   {
     model: 'shelby',
@@ -28,7 +31,8 @@ export default [
   {
     model: 'ljspeech',
     label: 'Clear',
-    description: 'An experienced amateur likely from a home recording using 24 hours of audio.'
+    description:
+      'An experienced amateur likely from a home recording using 24 hours of audio.'
   },
 
   {
@@ -39,28 +43,33 @@ export default [
   {
     model: 'josh',
     label: 'Amateur 2',
-    description: 'An amateur home recording with a consumer microphone using 17 minutes of audio.'
+    description:
+      'An amateur home recording with a consumer microphone using 17 minutes of audio.'
   },
   {
     model: 'bonnie',
     label: 'Amateur 3',
-    description: 'A usb microphone recording on a laptop using 17 minutes of audio.'
+    description:
+      'A usb microphone recording on a laptop using 17 minutes of audio.'
   },
 
   {
     model: 'noel',
     label: 'iPhone Recorded',
-    description: 'An amateur home recording from an iPhone using 5 minutes of audio.'
+    description:
+      'An amateur home recording from an iPhone using 5 minutes of audio.'
   },
   {
     model: 'jemima',
     label: 'Casual',
-    description: 'An amateur home recording from an iPhone using 5 minutes of audio.'
+    description:
+      'An amateur home recording from an iPhone using 5 minutes of audio.'
   },
   {
     model: 'zeke',
     label: 'Child',
-    description: 'An amateur home recording from an iPhone using 5 minutes of audio.'
+    description:
+      'An amateur home recording from an iPhone using 5 minutes of audio.'
   },
   {
     model: 'alexa',

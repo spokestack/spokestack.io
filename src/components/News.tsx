@@ -22,7 +22,11 @@ export default function News() {
       <a
         href="https://www.linkedin.com/pulse/project-voice-2020-post-mortem-report-bradley-metrock/"
         css={styles.newsLink}>
-        <Image fixed={linkedin.childImageSharp.fixed} alt="Linked In" css={styles.newsLinkImage} />
+        <Image
+          fixed={linkedin.childImageSharp.fixed}
+          alt="Linked In"
+          css={styles.newsLinkImage}
+        />
         <span>Project Voice 2020: Post-Mortem Report</span>
       </a>
       <a
@@ -33,12 +37,18 @@ export default function News() {
           alt="Voicebot AI"
           css={styles.newsLinkImage}
         />
-        <span>How Spokestack Gives Mobile Apps Their Own Branded Voice Assistant</span>
+        <span>
+          How Spokestack Gives Mobile Apps Their Own Branded Voice Assistant
+        </span>
       </a>
       <a
         href="https://medium.com/@kwylez/spokestack-framework-and-rss-sample-app-400ba7a2f879"
         css={styles.newsLink}>
-        <Image fixed={medium.childImageSharp.fixed} alt="Medium" css={styles.newsLinkImage} />
+        <Image
+          fixed={medium.childImageSharp.fixed}
+          alt="Medium"
+          css={styles.newsLinkImage}
+        />
         <span>Spokestack Framework and RSS Sample App</span>
       </a>
     </div>

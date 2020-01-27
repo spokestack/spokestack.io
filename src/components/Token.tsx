@@ -1,4 +1,7 @@
-import { MIN_DEFAULT_MEDIA_QUERY, MIN_MOBILE_MEDIA_QUERY } from 'typography-breakpoint-constants'
+import {
+  MIN_DEFAULT_MEDIA_QUERY,
+  MIN_MOBILE_MEDIA_QUERY
+} from 'typography-breakpoint-constants'
 import React, { useRef, useState } from 'react'
 
 import * as theme from '../utils/theme'
@@ -92,7 +95,9 @@ export default function Token({ token, onDelete }: Props) {
       </div>
       {token.key ? (
         <>
-          <p css={styles.save}>Save this token somewhere safe. It can only be viewed once.</p>
+          <p css={styles.save}>
+            Save this token somewhere safe. It can only be viewed once.
+          </p>
           <textarea
             ref={secretRef}
             id={`secret-${token.id}`}

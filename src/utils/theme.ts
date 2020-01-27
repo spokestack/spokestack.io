@@ -40,4 +40,5 @@ export const linkStickyNav = '#8da6e3'
 export const linkStickyNavHover = linkHover
 export const linkStickyNavActive = link
 
-export const ieBreakpoint = '@media all and (-ms-high-contrast: none), (-ms-high-contrast: active)'
+export const ieBreakpoint =
+  '@media all and (-ms-high-contrast: none), (-ms-high-contrast: active)'

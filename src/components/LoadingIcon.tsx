@@ -9,7 +9,11 @@ interface Props {
 
 export default function LoadingIcon({ color = primary, extraCss }: Props) {
   return (
-    <svg css={[styles.icon, extraCss]} width="25px" height="25px" viewBox="0 0 25 25">
+    <svg
+      css={[styles.icon, extraCss]}
+      width="25px"
+      height="25px"
+      viewBox="0 0 25 25">
       <path
         css={styles.path}
         style={{ stroke: color }}

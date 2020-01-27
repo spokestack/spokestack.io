@@ -11,7 +11,10 @@ interface Props {
 
 export default function Hamburger({ extraCss, open, onClick }: Props) {
   return (
-    <a css={[styles.hamburger, extraCss]} className={open ? 'open' : ''} onClick={onClick}>
+    <a
+      css={[styles.hamburger, extraCss]}
+      className={open ? 'open' : ''}
+      onClick={onClick}>
       <span css={styles.line} style={{ top: 0 }} />
       <span css={styles.line} style={{ top: 7 }} />
       <span css={styles.line} style={{ top: 14 }} />
@@ -45,6 +48,7 @@ const styles = {
     right: 0;
     height: 1px;
     background-color: white;
-    transition: opacity 0.2s ${transitionEasing}, transform 0.2s ${transitionEasing};
+    transition: opacity 0.2s ${transitionEasing},
+      transform 0.2s ${transitionEasing};
   `
 }

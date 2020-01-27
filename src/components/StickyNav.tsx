@@ -34,7 +34,11 @@ function optionsFromLinks(links: StickyLink[]) {
   ))
 }
 
-export default function StickyNav({ links = [], location, matchHash }: StickyNavProps) {
+export default function StickyNav({
+  links = [],
+  location,
+  matchHash
+}: StickyNavProps) {
   if (!links.length || (matchHash && !location)) {
     return null
   }
@@ -56,7 +60,9 @@ export default function StickyNav({ links = [], location, matchHash }: StickyNav
         }
       )
       links.forEach((link) => {
-        const elem = (link.ref && link.ref.current) || document.querySelector(link.refSelector)
+        const elem =
+          (link.ref && link.ref.current) ||
+          document.querySelector(link.refSelector)
         if (elem) {
           observer.observe(elem)
         }

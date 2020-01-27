@@ -11,7 +11,12 @@ interface Props {
   text: string
 }
 
-export default function UsageBubble({ className, icon, extraCss, text }: Props) {
+export default function UsageBubble({
+  className,
+  icon,
+  extraCss,
+  text
+}: Props) {
   return (
     <div css={[styles.bubble, extraCss]} className={className}>
       {icon ? <div css={styles.iconWrap}>{icon}</div> : null}

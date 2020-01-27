@@ -26,7 +26,8 @@ export default function OAuth({ checkAuth }: Props) {
   return (
     <Layout>
       <noscript>
-        Please <a href="https://enable-javascript.com/">enable JavaScript</a> to sign in.
+        Please <a href="https://enable-javascript.com/">enable JavaScript</a> to
+        sign in.
       </noscript>
       <div css={styles.container}>
         <p>{status}</p>

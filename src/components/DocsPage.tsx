@@ -46,8 +46,15 @@ export default function DocsPage({ post, selectFirst }: Props) {
     <Layout>
       <SEO
         title="Docs"
-        description={post.frontmatter.description || 'Documentation for the Spokestack API'}
-        keywords={['spokestack', 'documentation', 'voice', 'artificial intelligence']}
+        description={
+          post.frontmatter.description || 'Documentation for the Spokestack API'
+        }
+        keywords={[
+          'spokestack',
+          'documentation',
+          'voice',
+          'artificial intelligence'
+        ]}
       />
       <StickyNavLayout links={orderedLinks}>
         {selectFirst ? (
@@ -58,7 +65,10 @@ export default function DocsPage({ post, selectFirst }: Props) {
           <h1>{post.frontmatter.title}</h1>
         )}
         <p>
-          <a href={post.fields.githubLink} rel="noopener noreferrer" target="_blank">
+          <a
+            href={post.fields.githubLink}
+            rel="noopener noreferrer"
+            target="_blank">
             Edit on GitHub
           </a>
         </p>
@@ -71,7 +81,10 @@ export default function DocsPage({ post, selectFirst }: Props) {
 export const docsPageQuery = graphql`
   query docsPageQuery {
     allMarkdownRemark(
-      filter: { fileAbsolutePath: { regex: "/docs/" }, frontmatter: { draft: { ne: true } } }
+      filter: {
+        fileAbsolutePath: { regex: "/docs/" }
+        frontmatter: { draft: { ne: true } }
+      }
     ) {
       edges {
         node {

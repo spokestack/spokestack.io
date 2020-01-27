@@ -18,7 +18,11 @@ export default function LoginButton() {
       <SVGIcon icon={iconArrow.id} extraCss={styles.icon} />
     </a>
   ) : (
-    <Link className="btn" css={styles.loginButton} activeStyle={{ display: 'none' }} to="/login">
+    <Link
+      className="btn"
+      css={styles.loginButton}
+      activeStyle={{ display: 'none' }}
+      to="/login">
       Sign In / Sign Up
       <SVGIcon icon={iconArrow.id} extraCss={styles.icon} />
     </Link>
@@ -36,7 +40,8 @@ const styles = {
     font-weight: 700;
     border-radius: 0;
     border: none;
-    transition: background-color 0.2s ${transitionEasing}, color 0.2s ${transitionEasing};
+    transition: background-color 0.2s ${transitionEasing},
+      color 0.2s ${transitionEasing};
     svg {
       transition: fill 0.2s ${transitionEasing};
     }

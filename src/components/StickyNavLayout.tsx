@@ -78,6 +78,8 @@ const styles = {
     }
   `,
   content: css`
+    padding: 20px;
+
     ${MIN_DEFAULT_MEDIA_QUERY} {
       grid-area: content;
       padding-left: ${rhythm(3)};

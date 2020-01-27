@@ -27,6 +27,8 @@ const styles = {
     display: grid;
     grid-template-rows: auto 1fr auto;
     grid-template-columns: 100%;
+    /* Offset for the Nav */
+    padding-top: 60px;
   `,
   content: css`
     display: grid;

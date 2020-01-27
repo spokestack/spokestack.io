@@ -1,3 +1,5 @@
+import * as theme from '../utils/theme'
+
 import {
   LARGE_DISPLAY_WIDTH,
   MIN_DEFAULT_MEDIA_QUERY,
@@ -6,9 +8,9 @@ import {
 import { PageRendererProps, graphql } from 'gatsby'
 import React, { useEffect, useRef, useState } from 'react'
 
-import * as theme from '../utils/theme'
 import Card from '../components/Card'
 import Layout from '../components/Layout'
+import News from '../components/News'
 import { Query } from '../utils/graphql'
 import SEO from '../components/SEO'
 import SVGIcon from '../components/SVGIcon'
@@ -110,8 +112,10 @@ export default function Index({ data, location }: Props) {
         </div>
       </div>
       <StickyNavLayout id="products" matchHash links={links} location={location}>
-        <h1 css={styles.productsHeader}>Products &amp; Services</h1>
-        <div id="asr" css={styles.feature} ref={links[0].ref}>
+        <h1 id="asr" css={styles.productsHeader}>
+          Products &amp; Services
+        </h1>
+        <div css={styles.feature} style={{ paddingTop: rhythm(1) }} ref={links[0].ref}>
           <h2>Spokestack ASR and VAD</h2>
           <p className="title">
             A one-stop shop for Automatic Speech Recognition (ASR) and Voice Activity Detection
@@ -197,7 +201,7 @@ export default function Index({ data, location }: Props) {
           </a>
         </div>
       </StickyNavLayout>
-      <section css={styles.summary}>
+      <section css={[styles.summary, { backgroundColor: 'white' }]}>
         <h1 css={styles.summaryHeader}>Why Choose Spokestack?</h1>
         <div css={styles.summaryDetails}>
           <Card
@@ -258,6 +262,10 @@ export default function Index({ data, location }: Props) {
           </Card>
         </div>
       </section>
+      <section id="news" css={styles.summary}>
+        <h1 css={styles.summaryHeader}>In the News</h1>
+        <News />
+      </section>
     </Layout>
   )
 }
@@ -287,6 +295,7 @@ const styles = {
     max-width: 600px;
   `,
   productsHeader: css`
+    margin-top: 60px;
     margin-bottom: 0;
   `,
   h4: css`
@@ -372,14 +381,13 @@ const styles = {
     }
   `,
   feature: css`
-    padding: ${rhythm(1)} 0;
+    padding: ${rhythm(2.5)} 0 ${rhythm(1)};
   `,
   list: css`
     list-style-image: url(/arrow-forward.svg);
   `,
   summary: css`
     width: 100%;
-    background-color: white;
     padding: ${rhythm(3)} 20px 20px;
 
     ${MIN_DEFAULT_MEDIA_QUERY} {

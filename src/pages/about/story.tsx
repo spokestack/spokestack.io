@@ -8,8 +8,8 @@ export default function Story() {
       <p>
         Our team has worked together on voice user interfaces (VUI) for over three years. We started
         off making multi-modal services that worked on Alexa, Google, and Cortana. If you need a 
-        <a href="https://thebartender.io">drink</a> or <a href="https://tasted.com">recipe</a>, you
-        should try them out.
+        <a href="https://thebartender.io">drink</a> or 
+        <a href="https://tasted.com">recipe</a>, you should try them out.
       </p>
       <p>
         While we were making our smart speaker skills, we released our{' '}

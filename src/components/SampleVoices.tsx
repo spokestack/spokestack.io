@@ -15,7 +15,10 @@ import * as theme from '../utils/theme'
 import synthesize from '../utils/synthesize'
 import voices from '../utils/voices'
 
-const options = voices.map((voice) => ({ value: voice.model, title: voice.label }))
+const options = voices.map((voice) => ({
+  value: voice.model,
+  title: voice.label
+}))
 
 interface State {
   disabled: boolean

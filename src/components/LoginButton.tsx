@@ -1,38 +1,56 @@
-import React from 'react'
+import {
+  LARGE_DISPLAY_MEDIA_QUERY,
+  MIN_LARGE_DISPLAY_MEDIA_QUERY
+} from 'typography-breakpoint-constants'
 import { isLoggedIn, logout } from '../utils/auth'
-import iconArrow from '../icons/arrow-forward.svg'
+import { primary, secondary, transitionEasing } from '../utils/theme'
+
+import { Link } from 'gatsby'
+import React from 'react'
 import SVGIcon from './SVGIcon'
 import { css } from '@emotion/core'
-import { Link } from 'gatsby'
-import { DEFAULT_MEDIA_QUERY, MIN_DEFAULT_MEDIA_QUERY } from 'typography-breakpoint-constants'
-import { secondary, transitionEasing, primary } from '../utils/theme'
+import iconArrow from '../icons/arrow-forward.svg'
 
 export default function LoginButton() {
   return isLoggedIn() ? (
     <a className="btn" css={styles.loginButton} onClick={() => logout()}>
       Sign Out
-      <SVGIcon icon={iconArrow.id} style={{ fill: secondary, width: '17px', height: '17px' }} />
+      <SVGIcon icon={iconArrow.id} extraCss={styles.icon} />
     </a>
   ) : (
-    <Link className="btn" activeStyle={{ display: 'none' }} to="/login" css={styles.loginButton}>
-      Sign In / Create
-      <SVGIcon icon={iconArrow.id} style={{ fill: secondary, width: '17px', height: '17px' }} />
+    <Link className="btn" css={styles.loginButton} activeStyle={{ display: 'none' }} to="/login">
+      Sign In / Sign Up
+      <SVGIcon icon={iconArrow.id} extraCss={styles.icon} />
     </Link>
   )
 }
 
 const styles = {
   loginButton: css`
-    background-color: transparent !important;
-    color: ${secondary} !important;
+    position: fixed;
+    bottom: 0;
+    width: 100%;
+    height: 60px;
+    background-color: white !important;
+    color: ${primary} !important;
+    font-weight: 700;
+    border-radius: 0;
+    border: none;
     transition: background-color 0.2s ${transitionEasing}, color 0.2s ${transitionEasing};
-    margin-left: 20px;
-
     svg {
       transition: fill 0.2s ${transitionEasing};
     }
 
-    ${MIN_DEFAULT_MEDIA_QUERY} {
+    ${MIN_LARGE_DISPLAY_MEDIA_QUERY} {
+      position: relative;
+      width: auto;
+      border-radius: 24px;
+      font-weight: 400;
+      height: 38px;
+      background-color: transparent !important;
+      color: ${secondary} !important;
+      border: 1px solid ${secondary};
+
       &:hover {
         color: ${primary} !important;
         background-color: ${secondary} !important;
@@ -42,22 +60,14 @@ const styles = {
         }
       }
     }
+  `,
+  icon: css`
+    fill: ${secondary};
+    width: 17px;
+    height: 17px;
 
-    ${DEFAULT_MEDIA_QUERY} {
-      border: none;
-      padding: 0 10px;
-      border-radius: 0;
-
-      &:hover {
-        background-image: linear-gradient(to bottom, rgba(0, 0, 0, 0) 50%, ${secondary} 50%);
-        background-repeat: repeat-x;
-        background-size: 0.2em 0.2em;
-        background-position: 0 100%;
-      }
-
-      &:active {
-        box-shadow: none !important;
-      }
+    ${LARGE_DISPLAY_MEDIA_QUERY} {
+      display: none;
     }
   `
 }

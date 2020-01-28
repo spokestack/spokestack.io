@@ -8,6 +8,8 @@ import { StickyLink } from '../types'
 import StickyNavLayout from '../components/StickyNavLayout'
 import order from '../../content/docs/nav.json'
 import sortBy from 'lodash/sortBy'
+import { css } from '@emotion/core'
+import { text } from '../utils/theme'
 
 interface Props {
   post: MarkdownRemark
@@ -58,7 +60,13 @@ export default function DocsPage({ post, selectFirst }: Props) {
       />
       <StickyNavLayout links={orderedLinks}>
         {selectFirst ? (
-          <h1>
+          <h1
+            css={css`
+              a:not(:hover),
+              a:visited:not(:hover) {
+                color: ${text};
+              }
+            `}>
             <a href={post.fields.slug}>{post.frontmatter.title}</a>
           </h1>
         ) : (

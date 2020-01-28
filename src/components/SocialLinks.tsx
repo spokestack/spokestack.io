@@ -5,6 +5,7 @@ import { SerializedStyles } from '@emotion/core'
 import SocialLink from './SocialLink'
 import githubIcon from '../icons/github.svg'
 import twitterIcon from '../icons/twitter.svg'
+import stackIcon from '../icons/stackoverflow.svg'
 
 const socialQuery = graphql`
   query socialQuery {
@@ -13,6 +14,7 @@ const socialQuery = graphql`
         social {
           twitter
           github
+          stackoverflow
         }
       }
     }
@@ -42,6 +44,14 @@ export default function SocialLinks({ iconSize, extraCss, titleCss }: Props) {
         href={social.github}
         title="GitHub"
         icon={githubIcon.id}
+        iconSize={iconSize}
+        extraCss={extraCss}
+        titleCss={titleCss}
+      />
+      <SocialLink
+        href={social.stackoverflow}
+        title="Stack Overflow"
+        icon={stackIcon.id}
         iconSize={iconSize}
         extraCss={extraCss}
         titleCss={titleCss}

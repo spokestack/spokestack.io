@@ -1,7 +1,7 @@
 import * as theme from '../utils/theme'
 
 import {
-  LARGE_DISPLAY_WIDTH,
+  DEFAULT_WIDTH,
   MIN_DEFAULT_MEDIA_QUERY,
   MIN_TABLET_MEDIA_QUERY
 } from 'typography-breakpoint-constants'
@@ -142,13 +142,8 @@ export default function Index({ data, location }: Props) {
         matchHash
         links={links}
         location={location}>
-        <h1 id="asr" css={styles.productsHeader}>
-          Products &amp; Services
-        </h1>
-        <div
-          css={styles.feature}
-          style={{ paddingTop: rhythm(1) }}
-          ref={links[0].ref}>
+        <h1 css={styles.productsHeader}>Products &amp; Services</h1>
+        <div id="asr" css={styles.feature} ref={links[0].ref}>
           <h2>Spokestack ASR and VAD</h2>
           <p className="title">
             A one-stop shop for Automatic Speech Recognition (ASR) and Voice
@@ -362,7 +357,7 @@ const styles = {
       grid-template-columns: 1fr 1fr;
       max-width: 1200px;
       margin: 0 auto;
-      padding: ${rhythm(2)} 20px ${rhythm(3)};
+      padding: ${rhythm(5)} 20px ${rhythm(6)};
     }
   `,
   usageText: css`
@@ -450,7 +445,7 @@ const styles = {
 
     ${MIN_DEFAULT_MEDIA_QUERY} {
       width: 100%;
-      max-width: ${LARGE_DISPLAY_WIDTH};
+      max-width: ${DEFAULT_WIDTH};
       margin-left: auto;
       margin-right: auto;
       grid-template-columns: 1fr 1fr;

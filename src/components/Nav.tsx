@@ -152,10 +152,11 @@ const mobileLink = css`
     color: ${theme.textDarkBg};
     text-decoration: none;
   }
-  &:hover {
+  &:hover,
+  &.nav-link-active {
     background-color: rgba(0, 0, 0, 0.1);
   }
-  &:active {
+  &:active:not(.nav-link-active) {
     background-color: rgba(0, 0, 0, 0.2);
   }
 `
@@ -293,11 +294,12 @@ const styles = {
       font-size: ${adjustFontSizeTo('16px').fontSize};
 
       &:hover,
+      &.nav-link-active,
       &:visited {
-        background-color: none;
+        background: none !important;
       }
       &:active {
-        background-color: none;
+        background: none !important;
         text-shadow: 0 0 1px rgba(39, 110, 202, 0.6);
       }
       &:after {

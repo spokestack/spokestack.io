@@ -86,6 +86,7 @@ const styles = {
   container: css`
     display: flex;
     flex-direction: column;
+    align-items: center;
     padding: ${rhythm(1)} 20px;
   `,
   form: css`

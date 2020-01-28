@@ -87,7 +87,7 @@ const styles = {
     }
   `,
   content: css`
-    padding: 20px;
+    padding: ${rhythm(2)} 20px;
 
     ${MIN_DEFAULT_MEDIA_QUERY} {
       grid-area: content;

@@ -2,6 +2,7 @@ import { Global, css } from '@emotion/core'
 import React, { ReactNode } from 'react'
 
 import Footer from './Footer'
+import { MIN_DEFAULT_MEDIA_QUERY } from 'typography-breakpoint-constants'
 import Nav from './Nav'
 import globalStyles from '../utils/globalStyles'
 import { ieBreakpoint } from '../utils/theme'
@@ -38,6 +39,10 @@ const styles = {
       display: flex;
       flex-direction: column;
       align-items: center;
+    }
+
+    ${MIN_DEFAULT_MEDIA_QUERY} {
+      min-height: calc(100vh - 60px);
     }
   `
 }

@@ -32,6 +32,6 @@ const styles = {
     background-color: ${theme.mainBackground};
     transition: transform 0.2s ${theme.transitionEasing},
       height 0.2s ${theme.transitionEasing};
-    z-index: -1;
+    z-index: 0;
   `
 }

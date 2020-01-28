@@ -4,7 +4,10 @@ import Image, { FixedObject } from 'gatsby-image'
 import { graphql, useStaticQuery } from 'gatsby'
 
 import Color from 'color'
-import { MIN_DEFAULT_MEDIA_QUERY } from 'typography-breakpoint-constants'
+import {
+  MIN_DEFAULT_MEDIA_QUERY,
+  DEFAULT_WIDTH
+} from 'typography-breakpoint-constants'
 import { Query } from '../utils/graphql'
 import React from 'react'
 import { css } from '@emotion/core'
@@ -66,6 +69,9 @@ const styles = {
       display: grid;
       grid-gap: 20px;
       grid-template-columns: 1fr 1fr 1fr;
+      max-width: ${DEFAULT_WIDTH};
+      margin-left: auto;
+      margin-right: auto;
     }
   `,
   newsLink: css`

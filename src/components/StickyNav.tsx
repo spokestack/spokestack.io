@@ -67,10 +67,8 @@ export default function StickyNav({
         .reverse()
       const onScroll = throttle(() => {
         if (navigating) {
-          console.log('Early return')
           return
         }
-        console.log('Not navigating')
         const scroll = window.scrollY + window.innerHeight
         for (const loc of orderedLocs) {
           if (scroll > loc + 120) {
@@ -158,10 +156,12 @@ export default function StickyNav({
 const styles = {
   stickyNav: css`
     ${MIN_DEFAULT_MEDIA_QUERY} {
+      position: relative;
       position: sticky;
       top: 60px;
       margin-bottom: 25px;
       min-width: 250px;
+      overflow-y: auto;
     }
   `,
   mobileNav: css`

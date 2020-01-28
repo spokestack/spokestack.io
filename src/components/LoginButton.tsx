@@ -31,7 +31,7 @@ export default function LoginButton() {
 
 const styles = {
   loginButton: css`
-    position: fixed;
+    position: absolute;
     bottom: 0;
     width: 100%;
     height: 60px;
@@ -42,6 +42,7 @@ const styles = {
     border: none;
     transition: background-color 0.2s ${transitionEasing},
       color 0.2s ${transitionEasing};
+    flex-shrink: 0;
     svg {
       transition: fill 0.2s ${transitionEasing};
     }

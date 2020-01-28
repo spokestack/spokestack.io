@@ -137,6 +137,7 @@ const styles = {
   stickyNavDetails: css`
     display: none;
     flex-direction: column;
+    z-index: 1;
 
     &.open {
       display: flex;

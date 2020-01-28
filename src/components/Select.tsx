@@ -193,6 +193,12 @@ const styles = {
     ${MIN_DEFAULT_MEDIA_QUERY} {
       display: none;
     }
+
+    ${theme.ieBreakpoint} {
+      display: block;
+      height: 50px;
+      background-color: white;
+    }
   `,
   dropdown: css`
     position: absolute;

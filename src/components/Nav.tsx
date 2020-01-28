@@ -199,6 +199,8 @@ const styles = {
   `,
   hamburger: css`
     position: absolute;
+    top: 50%;
+    margin-top: -7px;
     left: 20px;
 
     ${MIN_LARGE_DISPLAY_MEDIA_QUERY} {
@@ -230,6 +232,7 @@ const styles = {
     transform: translateY(-100%);
     transition: transform 0.2s ${theme.transitionEasing};
     background-color: ${theme.primary};
+    overflow: hidden;
 
     &.mobile-open {
       transform: translateY(0);
@@ -251,7 +254,7 @@ const styles = {
 
     ${MIN_LARGE_DISPLAY_MEDIA_QUERY} {
       width: auto;
-      overflow-y: none;
+      overflow: hidden;
       display: flex;
       flex-direction: row;
     }
@@ -261,7 +264,7 @@ const styles = {
     flex-direction: column;
     justify-content: center;
     align-items: center;
-    width: 100%;
+    flex-grow: 1;
     list-style: none;
     margin: 0;
 
@@ -322,6 +325,7 @@ const styles = {
     }
   `,
   socialLink: css`
+    flex-shrink: 0;
     ${LARGE_DISPLAY_MEDIA_QUERY} {
       border-radius: 0;
       ${mobileLink}

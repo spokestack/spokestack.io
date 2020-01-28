@@ -8,7 +8,7 @@ import StickyNav, { StickyNavProps } from './StickyNav'
 
 import React from 'react'
 import { css } from '@emotion/core'
-import { ieBreakpoint } from '../utils/theme'
+import { ieBreakpoint, ieBreakpointMinDefault } from '../utils/theme'
 import { rhythm } from '../utils/typography'
 
 interface Props extends StickyNavProps {
@@ -78,6 +78,9 @@ const styles = {
       grid-area: sidenav;
       background-color: white;
       padding: 25px 0 10px 50px;
+    }
+    ${ieBreakpointMinDefault} {
+      padding-bottom: 50px;
     }
   `,
   stickyNavHeader: css`

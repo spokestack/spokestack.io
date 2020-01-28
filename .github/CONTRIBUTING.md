@@ -34,6 +34,12 @@ updated unit tests in the `test` directory. Don’t worry about regenerating the
 
 Edit the markdown files in the `docs/` folder. If you don't see your changes right away after they are released, allow some time for the changes to propagate.
 
+## Installation
+
+[Fork the repo](https://help.github.com/en/github/getting-started-with-github/fork-a-repo), and [clone](https://help.github.com/en/github/creating-cloning-and-archiving-repositories/cloning-a-repository) to a directory of your choosing.
+
+Then run `yarn` to install dependencies.
+
 ## Testing
 
 Tests are written with [mocha](https://mochajs.org/) and [Node's official assert module](https://nodejs.org/api/assert.html#assert_assert).

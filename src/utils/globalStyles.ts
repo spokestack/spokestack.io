@@ -1,7 +1,9 @@
+import * as theme from './theme'
+
 import { adjustFontSizeTo, rhythm } from './typography'
+
 import { MIN_DEFAULT_MEDIA_QUERY } from 'typography-breakpoint-constants'
 import { css } from '@emotion/core'
-import * as theme from './theme'
 
 export default css`
   html {
@@ -11,9 +13,6 @@ export default css`
   }
   :focus {
     outline: ${theme.primary} auto 1px;
-  }
-  section {
-    padding: ${rhythm(1.3)} 20px;
   }
   .gatsby-resp-image-link {
     background-image: none;

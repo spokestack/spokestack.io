@@ -8,8 +8,8 @@ import StickyNav, { StickyNavProps } from './StickyNav'
 
 import React from 'react'
 import { css } from '@emotion/core'
+import { ieBreakpoint, ieBreakpointMinDefault } from '../utils/theme'
 import { rhythm } from '../utils/typography'
-import { ieBreakpoint } from '../utils/theme'
 
 interface Props extends StickyNavProps {
   children: React.ReactNode
@@ -18,7 +18,13 @@ interface Props extends StickyNavProps {
   rightContent?: React.ReactNode
 }
 
-export default function StickyNavLayout({ children, id, header, rightContent, ...props }: Props) {
+export default function StickyNavLayout({
+  children,
+  id,
+  header,
+  rightContent,
+  ...props
+}: Props) {
   const style = [styles.container]
   if (rightContent) {
     style.push(styles.containerWithRight)
@@ -43,7 +49,10 @@ const styles = {
     ${MIN_DEFAULT_MEDIA_QUERY} {
       flex-direction: row;
       display: grid;
-      grid-template-columns: minmax(250px, 365px) minmax(700px, ${DEFAULT_WIDTH});
+      grid-template-columns: minmax(300px, 365px) minmax(
+          700px,
+          ${DEFAULT_WIDTH}
+        );
       grid-template-areas:
         'sidenav content'
         'sidenav author';
@@ -68,7 +77,10 @@ const styles = {
     ${MIN_DEFAULT_MEDIA_QUERY} {
       grid-area: sidenav;
       background-color: white;
-      padding: 25px 0 0 50px;
+      padding: 25px 0 10px 50px;
+    }
+    ${ieBreakpointMinDefault} {
+      padding-bottom: 50px;
     }
   `,
   stickyNavHeader: css`
@@ -78,6 +90,8 @@ const styles = {
     }
   `,
   content: css`
+    padding: ${rhythm(2)} 20px;
+
     ${MIN_DEFAULT_MEDIA_QUERY} {
       grid-area: content;
       padding-left: ${rhythm(3)};

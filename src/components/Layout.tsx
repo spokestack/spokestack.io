@@ -2,8 +2,10 @@ import { Global, css } from '@emotion/core'
 import React, { ReactNode } from 'react'
 
 import Footer from './Footer'
+import { MIN_DEFAULT_MEDIA_QUERY } from 'typography-breakpoint-constants'
 import Nav from './Nav'
 import globalStyles from '../utils/globalStyles'
+import { ieBreakpoint } from '../utils/theme'
 
 interface Props {
   children: ReactNode
@@ -26,12 +28,21 @@ const styles = {
     display: grid;
     grid-template-rows: auto 1fr auto;
     grid-template-columns: 100%;
+    /* Offset for the Nav */
+    padding-top: 60px;
   `,
   content: css`
-    display: flex;
-    flex-direction: column;
-    align-items: center;
     display: grid;
     grid-template-columns: 100%;
+
+    ${ieBreakpoint} {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+    }
+
+    ${MIN_DEFAULT_MEDIA_QUERY} {
+      min-height: calc(100vh - 60px);
+    }
   `
 }

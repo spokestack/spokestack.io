@@ -17,10 +17,16 @@ function setUserToken(token: string) {
 
 async function createAnonymousUser() {
   // Create a user token that lives 3 hours
-  const [error, response] = await postToCore('/user/v1/login', { body: { ttl: 10800 } })
+  const [error, response] = await postToCore('/user/v1/login', {
+    body: { ttl: 10800 }
+  })
   if (error || !response) {
     console.error(error)
-    return [new Error('Authorization request failed. Please check your network connection.')]
+    return [
+      new Error(
+        'Authorization request failed. Please check your network connection.'
+      )
+    ]
   }
   const status = response.status
   if (response.ok) {
@@ -30,7 +36,9 @@ async function createAnonymousUser() {
       return [null, token]
     }
     return [
-      new Error(`Authorization response returned status: ${status} with no X-Authorization header`)
+      new Error(
+        `Authorization response returned status: ${status} with no X-Authorization header`
+      )
     ]
   }
   return [new Error(`Authorization response returned status: ${status}`)]

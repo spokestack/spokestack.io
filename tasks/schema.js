@@ -12,7 +12,9 @@ if (!apiUrl) {
 }
 
 if (!githubToken) {
-  shell.echo('This script requires SS_DEV_GITHUB_TOKEN to be set in the environment.')
+  shell.echo(
+    'This script requires SS_DEV_GITHUB_TOKEN to be set in the environment.'
+  )
   shell.exit(1)
 }
 
@@ -64,7 +66,9 @@ postToCore('/control', {
   .then((result) => result.json())
   .then((result) => {
     // Filter out any type information unrelated to unions or interfaces
-    const filteredData = result.data.__schema.types.filter((type) => type.possibleTypes !== null)
+    const filteredData = result.data.__schema.types.filter(
+      (type) => type.possibleTypes !== null
+    )
     result.data.__schema.types = filteredData
     fs.writeFile(
       './src/apollo/fragmentTypes.json',

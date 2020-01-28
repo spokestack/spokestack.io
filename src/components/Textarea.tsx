@@ -3,7 +3,8 @@ import { SerializedStyles, css } from '@emotion/core'
 import * as theme from '../utils/theme'
 import LoadingIcon from './LoadingIcon'
 
-interface Props extends Omit<TextareaHTMLAttributes<HTMLTextAreaElement>, 'onChange'> {
+interface Props
+  extends Omit<TextareaHTMLAttributes<HTMLTextAreaElement>, 'onChange'> {
   id: string
   label: string
   extraCss?: SerializedStyles

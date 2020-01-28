@@ -28,7 +28,10 @@ export default function UsageMap() {
     observer.observe(containerRef.current)
   }, [])
   return (
-    <div ref={containerRef} css={styles.usageMap} className={show ? 'animate' : ''}>
+    <div
+      ref={containerRef}
+      css={styles.usageMap}
+      className={show ? 'animate' : ''}>
       <Global styles={styles.global} />
       <UsageBubble
         className="usage-bubble smart-speakers"
@@ -39,13 +42,17 @@ export default function UsageMap() {
         className="usage-bubble cars"
         extraCss={styles.cars}
         text="45% Cars"
-        icon={<SVGIcon icon={car.id} style={{ width: '81px', height: '56px' }} />}
+        icon={
+          <SVGIcon icon={car.id} style={{ width: '81px', height: '56px' }} />
+        }
       />
       <UsageBubble
         className="usage-bubble phones"
         extraCss={styles.phones}
         text="58% Smartphones"
-        icon={<SVGIcon icon={phone.id} style={{ width: '71px', height: '143px' }} />}
+        icon={
+          <SVGIcon icon={phone.id} style={{ width: '71px', height: '143px' }} />
+        }
       />
       <header css={styles.header}>
         <h4>

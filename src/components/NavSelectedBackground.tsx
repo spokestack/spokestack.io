@@ -30,7 +30,8 @@ const styles = {
     right: 0;
     border-radius: 50px 0 0 50px;
     background-color: ${theme.mainBackground};
-    transition: transform 0.2s ${theme.transitionEasing}, height 0.2s ${theme.transitionEasing};
-    z-index: -1;
+    transition: transform 0.2s ${theme.transitionEasing},
+      height 0.2s ${theme.transitionEasing};
+    z-index: 0;
   `
 }

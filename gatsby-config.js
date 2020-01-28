@@ -8,7 +8,8 @@ module.exports = {
     siteUrl: 'https://spokestack.io/',
     social: {
       twitter: 'https://twitter.com/spokestack',
-      github: 'https://github.com/spokestack'
+      github: 'https://github.com/spokestack',
+      stackoverflow: 'https://stackoverflow.com/questions/tagged/spokestack'
     },
     // Should match the queries in src/components/TeamMembers.tsx
     team: {
@@ -148,7 +149,8 @@ module.exports = {
             serialize: ({ query: { site, allMarkdownRemark } }) => {
               return allMarkdownRemark.edges.map((edge) => {
                 return Object.assign({}, edge.node.frontmatter, {
-                  description: edge.node.frontmatter.description || edge.node.excerpt,
+                  description:
+                    edge.node.frontmatter.description || edge.node.excerpt,
                   date: edge.node.frontmatter.date,
                   url: site.siteMetadata.siteUrl + edge.node.fields.slug,
                   guid: site.siteMetadata.siteUrl + edge.node.fields.slug,

@@ -1,20 +1,21 @@
-import {
-  DEFAULT_MEDIA_QUERY,
-  MIN_DEFAULT_MEDIA_QUERY,
-  MIN_TABLET_MEDIA_QUERY,
-  MOBILE_MEDIA_QUERY
-} from 'typography-breakpoint-constants'
-import { Global, css } from '@emotion/core'
-import { adjustFontSizeTo, rhythm } from '../utils/typography'
-
-import { Link } from 'gatsby'
-import LoginButton from './LoginButton'
-import React from 'react'
-import SocialLinks from './SocialLinks'
-import { isLoggedIn } from '../utils/auth'
 import * as theme from '../utils/theme'
 
+import { Global, css } from '@emotion/core'
+import {
+  LARGE_DISPLAY_MEDIA_QUERY,
+  MIN_LARGE_DISPLAY_MEDIA_QUERY
+} from 'typography-breakpoint-constants'
+import React, { useState } from 'react'
+
+import Hamburger from './Hamburger'
+import { Link } from 'gatsby'
+import LoginButton from './LoginButton'
+import SocialLinks from './SocialLinks'
+import { adjustFontSizeTo } from '../utils/typography'
+import { isLoggedIn } from '../utils/auth'
+
 export default function Nav() {
+  const [mobileOpen, setMobileOpen] = useState(false)
   return (
     <div css={styles.navContainer}>
       <Global
@@ -31,103 +32,183 @@ export default function Nav() {
           }
         `}
       />
-      <header css={styles.header}>
-        <a href="/" css={styles.logoLink}>
-          <img src="/logo.svg" css={styles.logo} />
-        </a>
-        <div css={styles.rightLinks}>
-          <SocialLinks iconSize={25} extraCss={styles.desktopLink} />
-          <LoginButton />
-        </div>
-      </header>
-      <nav css={styles.nav}>
-        <ul css={styles.links}>
-          {!isLoggedIn() && (
-            <li css={styles.listItem} style={{ minWidth: '85px' }}>
-              <a css={styles.navLink} href="/#products" className="nav-link">
-                Products &amp; Services
+      <nav css={styles.nav} className={mobileOpen ? 'mobile-open' : ''}>
+        <div css={styles.navContent}>
+          <ul css={styles.links}>
+            {!isLoggedIn() && (
+              <li css={styles.listItem} style={{ minWidth: '85px' }}>
+                <a
+                  css={styles.navLink}
+                  style={{ minWidth: '130px' }}
+                  href="/#products"
+                  className="nav-link"
+                  onClick={() => setMobileOpen(false)}>
+                  Products &amp; Services
+                </a>
+              </li>
+            )}
+            <li css={styles.listItem}>
+              <a
+                css={styles.navLink}
+                href="/#news"
+                className="nav-link"
+                onClick={() => setMobileOpen(false)}>
+                In the News
               </a>
             </li>
-          )}
-          <li css={styles.listItem}>
-            <Link
-              className="nav-link"
-              css={styles.navLink}
-              activeClassName="nav-link-active"
-              partiallyActive
-              to="/about"
-              title="About Spokestack">
-              About
-            </Link>
-          </li>
-          <li css={styles.listItem}>
-            <Link
-              className="nav-link"
-              css={styles.navLink}
-              activeClassName="nav-link-active"
-              partiallyActive
-              to="/blog"
-              title="Spokestack Blog">
-              Blog
-            </Link>
-          </li>
-          <li css={styles.listItem}>
-            <Link
-              className="nav-link"
-              css={styles.navLink}
-              activeClassName="nav-link-active"
-              partiallyActive
-              to="/docs"
-              title="Spokestack Documentation">
-              Docs
-            </Link>
-          </li>
-          {isLoggedIn() && (
             <li css={styles.listItem}>
               <Link
                 className="nav-link"
                 css={styles.navLink}
                 activeClassName="nav-link-active"
                 partiallyActive
-                to="/account"
-                title="Spokestack Account">
-                Account
+                to="/about"
+                title="About Spokestack">
+                About
               </Link>
             </li>
-          )}
-        </ul>
+            <li css={styles.listItem}>
+              <Link
+                className="nav-link"
+                css={styles.navLink}
+                activeClassName="nav-link-active"
+                partiallyActive
+                to="/blog"
+                title="Spokestack Blog">
+                Blog
+              </Link>
+            </li>
+            <li css={styles.listItem}>
+              <Link
+                className="nav-link"
+                css={styles.navLink}
+                activeClassName="nav-link-active"
+                partiallyActive
+                to="/docs"
+                title="Spokestack Documentation">
+                Docs
+              </Link>
+            </li>
+            {isLoggedIn() && (
+              <li css={styles.listItem}>
+                <Link
+                  className="nav-link"
+                  css={styles.navLink}
+                  activeClassName="nav-link-active"
+                  partiallyActive
+                  to="/account"
+                  title="Spokestack Account">
+                  Account
+                </Link>
+              </li>
+            )}
+          </ul>
+          <div css={styles.rightLinks}>
+            <SocialLinks
+              iconSize={25}
+              extraCss={styles.socialLink}
+              titleCss={styles.socialLinkTitle}
+            />
+            <LoginButton />
+          </div>
+        </div>
       </nav>
+      <header css={styles.header}>
+        <Hamburger
+          open={mobileOpen}
+          onClick={() => {
+            setMobileOpen(!mobileOpen)
+          }}
+          extraCss={styles.hamburger}
+        />
+        <a href="/" css={styles.logoLink}>
+          <img src="/logo.svg" css={styles.logo} />
+        </a>
+      </header>
     </div>
   )
 }
 
+const mobileLink = css`
+  position: relative;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+  height: 60px;
+  font-size: ${adjustFontSizeTo('18px').fontSize};
+  font-weight: 400;
+  line-height: 1.1;
+  color: ${theme.textDarkBg};
+  text-align: center;
+  text-decoration: none;
+  transition: background-color 0.2s ${theme.transitionEasing},
+    color 0.2s ${theme.transitionEasing};
+  padding: 0 20px;
+  user-select: none;
+
+  &:hover,
+  &:visited {
+    color: ${theme.textDarkBg};
+    text-decoration: none;
+  }
+  &:hover,
+  &.nav-link-active {
+    background-color: rgba(0, 0, 0, 0.1);
+  }
+  &:active:not(.nav-link-active) {
+    background-color: rgba(0, 0, 0, 0.2);
+  }
+`
+
 const styles = {
   navContainer: css`
-    position: relative;
-    height: 100px;
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 60px;
     background-color: ${theme.primary};
-    padding: 0 ${rhythm(0.8)};
     display: flex;
     flex-direction: column;
     justify-content: center;
+    z-index: 9999;
 
-    ${MIN_TABLET_MEDIA_QUERY} {
-      height: 60px;
+    ${MIN_LARGE_DISPLAY_MEDIA_QUERY} {
+      position: absolute;
+      flex-direction: row-reverse;
+      justify-content: space-between;
+      padding: 0 20px;
     }
   `,
   header: css`
+    position: relative;
     display: flex;
     flex-direction: row;
-    justify-content: space-between;
+    justify-content: center;
     align-items: center;
     height: 60px;
+    background-color: ${theme.primary};
+    user-select: none;
+
+    ${MIN_LARGE_DISPLAY_MEDIA_QUERY} {
+      justify-content: flex-start;
+      background: none;
+      margin-right: 20px;
+    }
+  `,
+  hamburger: css`
+    position: absolute;
+    top: 50%;
+    margin-top: -7px;
+    left: 20px;
+
+    ${MIN_LARGE_DISPLAY_MEDIA_QUERY} {
+      display: none;
+    }
   `,
   logoLink: css`
     line-height: 0;
-    ${MOBILE_MEDIA_QUERY} {
-      width: 38px;
-      overflow: hidden;
-    }
   `,
   logo: css`
     line-height: 0;
@@ -136,95 +217,123 @@ const styles = {
     width: 185px;
     height: 60px;
   `,
-  rightLinks: css`
-    display: flex;
-    flex-direction: row;
-    align-items: center;
-  `,
   desktopLink: css`
-    ${DEFAULT_MEDIA_QUERY} {
+    ${LARGE_DISPLAY_MEDIA_QUERY} {
       display: none;
     }
   `,
   nav: css`
-    padding: 0 ${rhythm(0.4)};
-    transition: all 0.2s ${theme.transitionEasing};
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    padding: 60px 0;
+    transform: translateY(-100%);
+    transition: transform 0.2s ${theme.transitionEasing};
+    background-color: ${theme.primary};
+    overflow: hidden;
 
-    ${MIN_TABLET_MEDIA_QUERY} {
-      position: absolute;
-      top: 0;
-      left: 235px;
-      right: 145px;
-      height: 60px;
+    &.mobile-open {
+      transform: translateY(0);
     }
-    ${MIN_DEFAULT_MEDIA_QUERY} {
-      right: 350px;
+
+    ${MIN_LARGE_DISPLAY_MEDIA_QUERY} {
+      transform: none;
+      position: relative;
+      bottom: auto;
+      width: 100%;
+      height: 60px;
+      padding: 0;
+    }
+  `,
+  navContent: css`
+    width: 100%;
+    height: 100%;
+    overflow-y: auto;
+
+    ${MIN_LARGE_DISPLAY_MEDIA_QUERY} {
+      width: auto;
+      overflow: hidden;
+      display: flex;
+      flex-direction: row;
     }
   `,
   links: css`
     display: flex;
-    flex-direction: row;
+    flex-direction: column;
     justify-content: center;
     align-items: center;
-    width: 100%;
-    height: 40px;
+    flex-grow: 1;
     list-style: none;
     margin: 0;
 
-    ${MIN_TABLET_MEDIA_QUERY} {
+    ${MIN_LARGE_DISPLAY_MEDIA_QUERY} {
+      flex-direction: row;
       justify-content: flex-start;
-      height: 60px;
+    }
+  `,
+  rightLinks: css`
+    display: flex;
+    flex-direction: column;
+
+    ${MIN_LARGE_DISPLAY_MEDIA_QUERY} {
+      flex-direction: row;
+      align-items: center;
     }
   `,
   listItem: css`
     margin: 0;
-    height: 100%;
+    width: 100%;
+
+    ${MIN_LARGE_DISPLAY_MEDIA_QUERY} {
+      width: auto;
+    }
   `,
   navLink: css`
-    color: ${theme.textDarkBg};
-    font-size: ${adjustFontSizeTo('14px').fontSize};
-    font-weight: 400;
-    line-height: 1.1;
-    position: relative;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    width: 100%;
-    height: 100%;
-    text-align: center;
-    text-decoration: none;
-    transition: all 0.2s ${theme.transitionEasing};
-    padding: 5px ${rhythm(0.2)} 8px;
-    user-select: none;
-
-    &:hover,
-    &:visited {
-      color: ${theme.textDarkBg};
-      text-decoration: none;
-    }
-    &:after {
-      content: '';
-      position: absolute;
-      bottom: 0;
-      left: 50%;
-      right: 0;
-      width: 0;
-      height: 0;
-      transition: width 0.1s ease-in-out, height 0.1s ease-in-out, left 0.1s ease-in-out;
-      background-color: ${theme.secondary};
-    }
-    &:hover:after {
-      left: 0;
-      height: 4px;
-      width: 100%;
-    }
-    &:active {
-      text-shadow: 0 0 1px rgba(39, 110, 202, 0.6);
-    }
-
-    ${MIN_TABLET_MEDIA_QUERY} {
+    ${mobileLink}
+    ${MIN_LARGE_DISPLAY_MEDIA_QUERY} {
+      width: auto;
       font-size: ${adjustFontSizeTo('16px').fontSize};
-      margin-right: 15px;
+
+      &:hover,
+      &.nav-link-active,
+      &:visited {
+        background: none !important;
+      }
+      &:active {
+        background: none !important;
+        text-shadow: 0 0 1px rgba(39, 110, 202, 0.6);
+      }
+      &:after {
+        content: '';
+        position: absolute;
+        bottom: 0;
+        left: 50%;
+        right: 0;
+        width: 0;
+        height: 0;
+        transition: width 0.1s ease-in-out, height 0.1s ease-in-out,
+          left 0.1s ease-in-out;
+        background-color: ${theme.secondary};
+      }
+      &:hover:after {
+        left: 0;
+        height: 4px;
+        width: 100%;
+      }
+    }
+  `,
+  socialLink: css`
+    flex-shrink: 0;
+    ${LARGE_DISPLAY_MEDIA_QUERY} {
+      border-radius: 0;
+      ${mobileLink}
+    }
+  `,
+  socialLinkTitle: css`
+    ${MIN_LARGE_DISPLAY_MEDIA_QUERY} {
+      display: none;
     }
   `
 }

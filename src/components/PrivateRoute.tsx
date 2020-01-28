@@ -10,7 +10,10 @@ interface Props extends RouteComponentProps {
   component: React.ComponentType<any>
 }
 
-export default function PrivateRoute({ component: Component, ...props }: Props) {
+export default function PrivateRoute({
+  component: Component,
+  ...props
+}: Props) {
   if (!isLoggedIn() && !rlogin.test(props.location.pathname)) {
     if (typeof window !== 'undefined') {
       navigate('/login')

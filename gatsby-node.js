@@ -85,9 +85,17 @@ exports.createPages = ({ graphql, actions }) => {
     }
 
     // Create blog posts pages
-    createPages(createPage, result.data.blog.edges, path.resolve('./src/templates/blog-post.tsx'))
+    createPages(
+      createPage,
+      result.data.blog.edges,
+      path.resolve('./src/templates/blog-post.tsx')
+    )
     // Create docs pages
-    createPages(createPage, result.data.docs.edges, path.resolve('./src/templates/docs-page.tsx'))
+    createPages(
+      createPage,
+      result.data.docs.edges,
+      path.resolve('./src/templates/docs-page.tsx')
+    )
 
     return null
   })

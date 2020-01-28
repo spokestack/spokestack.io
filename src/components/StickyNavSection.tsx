@@ -32,7 +32,9 @@ export default function StickyNavSection({
 }: Props) {
   const storageKey = `sticky-nav-section-${headerText}`
   const [open, setOpen] = useState(
-    typeof window !== 'undefined' ? localStorage.getItem(storageKey) !== 'false' : true
+    typeof window !== 'undefined'
+      ? localStorage.getItem(storageKey) !== 'false'
+      : true
   )
   useEffect(() => {
     if (headerText) {
@@ -61,9 +63,14 @@ export default function StickyNavSection({
             <a
               key={`sticky-nav-link-${i}`}
               css={styles.stickyNavLink}
-              className={id === selectedId ? 'sticky-nav-link-active-no-bg' : ''}
+              className={
+                id === selectedId ? 'sticky-nav-link-active-no-bg' : ''
+              }
               id={id}
-              href={link.href.replace(new RegExp(location.pathname + '\\/?'), '')}
+              href={link.href.replace(
+                new RegExp(location.pathname + '\\/?'),
+                ''
+              )}
               title={link.title}
               onClick={() => onSelect(id)}>
               {link.title}
@@ -130,6 +137,7 @@ const styles = {
   stickyNavDetails: css`
     display: none;
     flex-direction: column;
+    z-index: 1;
 
     &.open {
       display: flex;

@@ -1,5 +1,8 @@
-import { SerializedStyles, css } from '@emotion/core'
 import * as theme from '../utils/theme'
+
+import { SerializedStyles, css } from '@emotion/core'
+
+import { MIN_DEFAULT_MEDIA_QUERY } from 'typography-breakpoint-constants'
 import React from 'react'
 
 interface Props {
@@ -22,14 +25,16 @@ const styles = {
     display: flex;
     flex-direction: column;
     background-color: white;
-    border: 1px solid ${theme.secondary};
+    border: 1px solid ${theme.mainBorder};
     border-radius: 7px;
     overflow: hidden;
-    max-width: 700px;
+    ${MIN_DEFAULT_MEDIA_QUERY} {
+      max-width: 700px;
+    }
   `,
   cardHeader: css`
-    background-color: ${theme.secondary};
-    color: ${theme.primary};
+    background-color: ${theme.primary};
+    color: ${theme.textDarkBg};
     padding: 10px 30px;
     display: flex;
     flex-direction: row;

@@ -8,6 +8,8 @@ import { StickyLink } from '../types'
 import StickyNavLayout from '../components/StickyNavLayout'
 import order from '../../content/docs/nav.json'
 import sortBy from 'lodash/sortBy'
+import { css } from '@emotion/core'
+import { text } from '../utils/theme'
 
 interface Props {
   post: MarkdownRemark
@@ -46,19 +48,35 @@ export default function DocsPage({ post, selectFirst }: Props) {
     <Layout>
       <SEO
         title="Docs"
-        description={post.frontmatter.description || 'Documentation for the Spokestack API'}
-        keywords={['spokestack', 'documentation', 'voice', 'artificial intelligence']}
+        description={
+          post.frontmatter.description || 'Documentation for the Spokestack API'
+        }
+        keywords={[
+          'spokestack',
+          'documentation',
+          'voice',
+          'artificial intelligence'
+        ]}
       />
       <StickyNavLayout links={orderedLinks}>
         {selectFirst ? (
-          <h1>
+          <h1
+            css={css`
+              a:not(:hover),
+              a:visited:not(:hover) {
+                color: ${text};
+              }
+            `}>
             <a href={post.fields.slug}>{post.frontmatter.title}</a>
           </h1>
         ) : (
           <h1>{post.frontmatter.title}</h1>
         )}
         <p>
-          <a href={post.fields.githubLink} rel="noopener noreferrer" target="_blank">
+          <a
+            href={post.fields.githubLink}
+            rel="noopener noreferrer"
+            target="_blank">
             Edit on GitHub
           </a>
         </p>
@@ -71,7 +89,10 @@ export default function DocsPage({ post, selectFirst }: Props) {
 export const docsPageQuery = graphql`
   query docsPageQuery {
     allMarkdownRemark(
-      filter: { fileAbsolutePath: { regex: "/docs/" }, frontmatter: { draft: { ne: true } } }
+      filter: {
+        fileAbsolutePath: { regex: "/docs/" }
+        frontmatter: { draft: { ne: true } }
+      }
     ) {
       edges {
         node {

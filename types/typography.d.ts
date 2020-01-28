@@ -14,7 +14,9 @@ export interface BaseLine {
 export interface VerticalRhythm {
   rhythm: (value: number) => string
   scale: (value: number) => BaseLine
-  adjustFontSizeTo: (value?: number | string) => { fontSize: string; lineHeight: string }
+  adjustFontSizeTo: (
+    value?: number | string
+  ) => { fontSize: string; lineHeight: string }
   linesForFontSize: (fontSize: number) => number
   establishBaseline: () => BaseLine
 }

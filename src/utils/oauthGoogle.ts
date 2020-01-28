@@ -7,7 +7,9 @@ export function createLink() {
   url += `?client_id=${clientId}`
   url += '&response_type=token'
   // List of scopes: https://developers.google.com/identity/protocols/googlescopes
-  url += `&scope=${encodeURIComponent('https://www.googleapis.com/auth/userinfo.email')}`
+  url += `&scope=${encodeURIComponent(
+    'https://www.googleapis.com/auth/userinfo.email'
+  )}`
   url += `&state=${getStateKey()}`
   url += `&redirect_uri=${location.origin}/oauth/google/`
   return url

@@ -58,6 +58,8 @@ function post(title, description) {
 if (args.length) {
   post(...args)
 } else {
-  console.log('Usage: yarn post "Blog Post Title" "This is a blog post description."')
+  console.log(
+    'Usage: yarn post "Blog Post Title" "This is a blog post description."'
+  )
   throw new Error('Missing arguments')
 }

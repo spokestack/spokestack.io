@@ -30,7 +30,7 @@ export interface StickyLink {
   navId?: string
   section?: string
   forceSelect?: boolean
-  ref?: MutableRefObject<Element>
+  ref?: MutableRefObject<HTMLElement>
   refSelector?: string
 }
 

@@ -45,7 +45,10 @@ interface Props extends RouteComponentProps {
   component: React.ComponentType<any>
 }
 
-export default function RouteWithAccount({ component: Component, ...props }: Props) {
+export default function RouteWithAccount({
+  component: Component,
+  ...props
+}: Props) {
   if (!isLoggedIn()) {
     if (typeof window !== 'undefined') {
       navigate('/login')
@@ -59,10 +62,13 @@ export default function RouteWithAccount({ component: Component, ...props }: Pro
   // TODO: save the current account ID
   // to localStorage and pass that in
   // variables here
-  const [getAccount, getAccountResult] = useLazyQuery<AccountQuery>(ACCOUNT_QUERY, {
-    ssr: false,
-    fetchPolicy: 'network-only'
-  })
+  const [getAccount, getAccountResult] = useLazyQuery<AccountQuery>(
+    ACCOUNT_QUERY,
+    {
+      ssr: false,
+      fetchPolicy: 'network-only'
+    }
+  )
   const accounts = (listAccountsResult.data || {}).listAccounts || []
   const loading = listAccountsResult.loading || getAccountResult.loading
   const error = listAccountsResult.error || getAccountResult.error
@@ -71,7 +77,10 @@ export default function RouteWithAccount({ component: Component, ...props }: Pro
   if (error) {
     return (
       <ErrorPage title="Account Settings">
-        <h4>There was a problem retrieving your account. Please refresh and try again.</h4>
+        <h4>
+          There was a problem retrieving your account. Please refresh and try
+          again.
+        </h4>
         <p>Debugging details:</p>
         <p>
           <code>{error.message}</code>

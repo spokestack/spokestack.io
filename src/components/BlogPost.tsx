@@ -7,6 +7,8 @@ import Layout from '../components/Layout'
 import React from 'react'
 import SEO from '../components/SEO'
 import StickyNavLayout from '../components/StickyNavLayout'
+import { css } from '@emotion/core'
+import { text } from '../utils/theme'
 
 interface Props {
   post: MarkdownRemark
@@ -36,9 +38,17 @@ export default function Blog({ post, selectFirst }: Props) {
       />
       <StickyNavLayout
         links={links}
-        rightContent={<Author author={post.frontmatter.author as TeamMemberName} />}>
+        rightContent={
+          <Author author={post.frontmatter.author as TeamMemberName} />
+        }>
         {selectFirst ? (
-          <h1>
+          <h1
+            css={css`
+              a:not(:hover),
+              a:visited:not(:hover) {
+                color: ${text};
+              }
+            `}>
             <a href={post.fields.slug}>{post.frontmatter.title}</a>
           </h1>
         ) : (
@@ -55,7 +65,10 @@ export const blogPageQuery = graphql`
   query blogPageQuery {
     allMarkdownRemark(
       sort: { fields: [frontmatter___date], order: DESC }
-      filter: { fileAbsolutePath: { regex: "/blog/" }, frontmatter: { draft: { ne: true } } }
+      filter: {
+        fileAbsolutePath: { regex: "/blog/" }
+        frontmatter: { draft: { ne: true } }
+      }
       limit: 10
     ) {
       edges {

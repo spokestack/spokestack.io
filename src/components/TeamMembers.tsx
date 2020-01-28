@@ -1,4 +1,7 @@
-import { MIN_DEFAULT_MEDIA_QUERY, MIN_TABLET_MEDIA_QUERY } from 'typography-breakpoint-constants'
+import {
+  MIN_DEFAULT_MEDIA_QUERY,
+  MIN_TABLET_MEDIA_QUERY
+} from 'typography-breakpoint-constants'
 import { TeamImages, TeamMemberName } from '../types'
 import { graphql, useStaticQuery } from 'gatsby'
 
@@ -21,7 +24,13 @@ export default function Team() {
         return (
           <TeamMember
             key={`team-member-${key}`}
-            avatar={<Img alt={teamMember.name} fixed={image} style={styles.memberImage} />}
+            avatar={
+              <Img
+                alt={teamMember.name}
+                fixed={image}
+                style={styles.memberImage}
+              />
+            }
             name={teamMember.name}
             title={teamMember.title}
           />

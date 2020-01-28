@@ -1,6 +1,8 @@
+import * as theme from '../utils/theme'
+
 import { Account, ApiKey } from '../types'
 import React, { useState } from 'react'
-import * as theme from '../utils/theme'
+
 import AccountCard from './AccountCard'
 import AccountLayout from './AccountLayout'
 import AddTokenForm from './AddTokenForm'
@@ -15,7 +17,11 @@ import { useMutation } from '@apollo/react-hooks'
 
 const ADD_TOKEN = gql`
   mutation CreateKey($accountId: ID!, $displayName: String!) {
-    createKey(accountId: $accountId, displayName: $displayName, type: PRODUCTION) {
+    createKey(
+      accountId: $accountId
+      displayName: $displayName
+      type: PRODUCTION
+    ) {
       displayName
       id
       key
@@ -42,26 +48,30 @@ interface RemoveKeyMutation {
 }
 
 export default function Settings({ account, location }: Props) {
-  const [tokens, setTokens] = useState(account.apiKeys || [])
+  const [tokens, setTokens] = useState((account || {}).apiKeys || [])
   const [showForm, setShowForm] = useState(false)
-  const [addToken, { loading: addTokenLoading }] = useMutation<CreateKeyMutation>(ADD_TOKEN, {
+  const [addToken, { loading: addTokenLoading }] = useMutation<
+    CreateKeyMutation
+  >(ADD_TOKEN, {
     onCompleted: ({ createKey: token }) => {
       setTokens(tokens.concat(token))
       setShowForm(false)
     }
   })
   const [removeToken] = useMutation<RemoveKeyMutation>(REMOVE_TOKEN)
+  const displayName = (account || {}).displayName || ''
+  const accountId = (account || {}).id || ''
   return (
-    <AccountLayout location={location} title={account.displayName}>
+    <AccountLayout location={location} title={displayName}>
       <h2>Settings</h2>
       <AccountCard title="General" id="general">
         <div className="input-wrap">
           <label>Project name</label>
-          <div className="input-value">{account.displayName}</div>
+          <div className="input-value">{displayName}</div>
         </div>
         <div className="input-wrap">
           <label>Project ID</label>
-          <div className="input-value">{account.id}</div>
+          <div className="input-value">{accountId}</div>
         </div>
       </AccountCard>
       <AccountCard
@@ -77,10 +87,13 @@ export default function Settings({ account, location }: Props) {
           )
         }>
         <p>
-          This is a list of the API access tokens associated with the current account. Tokens can
-          only be viewed when creating them. Remove any tokens that don&lsquo;t look familiar.
+          This is a list of the API access tokens associated with the current
+          account. Tokens can only be viewed when creating them. Remove any
+          tokens that don&lsquo;t look familiar.
         </p>
-        {!tokens.length && <p>You currently have no API keys. Generate one below.</p>}
+        {!tokens.length && (
+          <p>You currently have no API keys. Generate one below.</p>
+        )}
         <div css={styles.tokens}>
           {(showForm || !tokens.length) && (
             <AddTokenForm
@@ -89,7 +102,7 @@ export default function Settings({ account, location }: Props) {
                 addToken({
                   variables: {
                     displayName,
-                    accountId: account.id
+                    accountId: accountId
                   }
                 })
               }}
@@ -102,7 +115,7 @@ export default function Settings({ account, location }: Props) {
               onDelete={() => {
                 removeToken({
                   variables: {
-                    accountId: account.id,
+                    accountId: accountId,
                     keyId: token.id
                   }
                 })

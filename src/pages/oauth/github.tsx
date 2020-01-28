@@ -8,7 +8,10 @@ export default function GitHubOAuth() {
     const query = parseQuery(window.location.search)
     const [authError] = await getAccessToken(query.code, query.state)
     if (authError) {
-      return authError.message || 'There was problem authorizing with GitHub. Please try again.'
+      return (
+        authError.message ||
+        'There was problem authorizing with GitHub. Please try again.'
+      )
     }
   }
   return <OAuth checkAuth={checkAuth} />

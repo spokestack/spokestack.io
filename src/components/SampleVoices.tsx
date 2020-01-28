@@ -15,7 +15,10 @@ import * as theme from '../utils/theme'
 import synthesize from '../utils/synthesize'
 import voices from '../utils/voices'
 
-const options = voices.map((voice) => ({ value: voice.model, title: voice.label }))
+const options = voices.map((voice) => ({
+  value: voice.model,
+  title: voice.label
+}))
 
 interface State {
   disabled: boolean
@@ -64,7 +67,8 @@ export default class SampleVoices extends PureComponent {
         disabled: false,
         submitting: false,
         errorText:
-          synthError.message || 'There was a problem synthesizing the text. Please try again.'
+          synthError.message ||
+          'There was a problem synthesizing the text. Please try again.'
       })
     }
   }
@@ -86,8 +90,12 @@ export default class SampleVoices extends PureComponent {
     return (
       <Card title="Sample a Custom Voice">
         <p css={styles.lightText}>
-          Enter what you want Spokestack to say below. Use {`{{ }}`} to bracket your{' '}
-          <a href="https://en.wikipedia.org/wiki/International_Phonetic_Alphabet">IPA</a>.
+          Enter what you want Spokestack to say below. Use {`{{ }}`} to bracket
+          your{' '}
+          <a href="https://en.wikipedia.org/wiki/International_Phonetic_Alphabet">
+            IPA
+          </a>
+          .
         </p>
         <div css={styles.content}>
           <Select
@@ -119,7 +127,10 @@ export default class SampleVoices extends PureComponent {
             loading={submitting}
             value={text}
             onChange={(value) => {
-              this.setState({ disabled: true, text: value }, this.getAudioDebounced)
+              this.setState(
+                { disabled: true, text: value },
+                this.getAudioDebounced
+              )
             }}
           />
         </div>

@@ -2,8 +2,8 @@ import {
   LARGE_DISPLAY_MEDIA_QUERY,
   MIN_LARGE_DISPLAY_MEDIA_QUERY
 } from 'typography-breakpoint-constants'
+import { grayDark, primary, secondary, transitionEasing } from '../utils/theme'
 import { isLoggedIn, logout } from '../utils/auth'
-import { primary, secondary, transitionEasing } from '../utils/theme'
 
 import { Link } from 'gatsby'
 import React from 'react'
@@ -45,6 +45,10 @@ const styles = {
     flex-shrink: 0;
     svg {
       transition: fill 0.2s ${transitionEasing};
+    }
+
+    &:hover {
+      background-color: ${grayDark} !important;
     }
 
     ${MIN_LARGE_DISPLAY_MEDIA_QUERY} {

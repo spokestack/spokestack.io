@@ -57,6 +57,15 @@ export default function Nav() {
               </a>
             </li>
             <li css={styles.listItem}>
+              <a
+                css={styles.navLink}
+                href="/#events"
+                className="nav-link"
+                onClick={() => setMobileOpen(false)}>
+                Events
+              </a>
+            </li>
+            <li css={styles.listItem}>
               <Link
                 className="nav-link"
                 css={styles.navLink}

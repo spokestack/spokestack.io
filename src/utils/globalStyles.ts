@@ -51,7 +51,8 @@ export default css`
     padding: 0 ${rhythm(1)};
     white-space: nowrap;
     transition: background-color 0.2s ${theme.transitionEasing},
-      border-color 0.2s ${theme.transitionEasing};
+      border-color 0.2s ${theme.transitionEasing},
+      color 0.2s ${theme.transitionEasing};
     cursor: pointer;
     text-decoration: none;
     color: ${theme.text};
@@ -81,12 +82,12 @@ export default css`
     }
     &.btn-primary {
       border-color: ${theme.primary};
-      background-color: ${theme.primary};
-      color: white;
+      background-color: white;
+      color: ${theme.primary};
 
       &:hover:not([disabled]) {
-        background-color: ${theme.linkHover};
-        border-color: ${theme.linkHover};
+        background-color: ${theme.primary};
+        border-color: ${theme.primary};
         color: white;
       }
     }

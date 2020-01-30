@@ -3,12 +3,14 @@ import * as theme from '../utils/theme'
 import {
   DEFAULT_WIDTH,
   MIN_DEFAULT_MEDIA_QUERY,
+  MIN_LARGE_DISPLAY_MEDIA_QUERY,
   MIN_TABLET_MEDIA_QUERY
 } from 'typography-breakpoint-constants'
 import { PageRendererProps, graphql } from 'gatsby'
 import React, { useEffect, useRef, useState } from 'react'
 
 import Card from '../components/Card'
+import Events from '../components/Events'
 import Layout from '../components/Layout'
 import News from '../components/News'
 import { Query } from '../utils/graphql'
@@ -137,6 +139,10 @@ export default function Index({ data, location }: Props) {
           </div>
         </div>
       </div>
+      <section id="news" css={styles.summary}>
+        <h1 css={styles.summaryHeader}>In the News</h1>
+        <News />
+      </section>
       <StickyNavLayout
         id="products"
         matchHash
@@ -299,9 +305,9 @@ export default function Index({ data, location }: Props) {
           </Card>
         </div>
       </section>
-      <section id="news" css={styles.summary}>
-        <h1 css={styles.summaryHeader}>In the News</h1>
-        <News />
+      <section id="events" css={styles.summary}>
+        <h1 css={styles.summaryHeader}>Events &amp; Workshops</h1>
+        <Events />
       </section>
     </Layout>
   )
@@ -334,6 +340,10 @@ const styles = {
   productsHeader: css`
     margin-top: 60px;
     margin-bottom: 0;
+
+    ${MIN_LARGE_DISPLAY_MEDIA_QUERY} {
+      margin-top: 20px;
+    }
   `,
   h4: css`
     font-weight: 400;
@@ -419,6 +429,10 @@ const styles = {
   `,
   feature: css`
     padding: ${rhythm(2.5)} 0 ${rhythm(1)};
+
+    ${MIN_LARGE_DISPLAY_MEDIA_QUERY} {
+      padding-top: ${rhythm(1)};
+    }
   `,
   list: css`
     list-style-image: url(/arrow-forward.svg);

@@ -78,10 +78,24 @@ const styles = {
   about: css`
     display: flex;
     flex-direction: column;
+    align-items: center;
+    width: 100%;
     max-width: 600px;
+    margin-bottom: ${rhythm(2)};
 
     p {
       margin: 0;
+    }
+
+    p,
+    h3 {
+      width: 100%;
+    }
+
+    ${MIN_DEFAULT_MEDIA_QUERY} {
+      width: auto;
+      align-items: flex-start;
+      margin-bottom: 0;
     }
   `,
   registerButton: css`

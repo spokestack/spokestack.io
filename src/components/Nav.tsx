@@ -199,11 +199,11 @@ const styles = {
     height: 60px;
     background-color: ${theme.primary};
     user-select: none;
+    flex-shrink: 0;
 
     ${MIN_LARGE_DISPLAY_MEDIA_QUERY} {
       justify-content: flex-start;
       background: none;
-      margin-right: 20px;
     }
   `,
   hamburger: css`
@@ -248,12 +248,13 @@ const styles = {
     }
 
     ${MIN_LARGE_DISPLAY_MEDIA_QUERY} {
-      transform: none;
       position: relative;
       bottom: auto;
       width: 100%;
       height: 60px;
       padding: 0;
+      margin-left: 20px;
+      transform: none;
     }
   `,
   navContent: css`

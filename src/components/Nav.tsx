@@ -57,6 +57,15 @@ export default function Nav() {
               </a>
             </li>
             <li css={styles.listItem}>
+              <a
+                css={styles.navLink}
+                href="/#events"
+                className="nav-link"
+                onClick={() => setMobileOpen(false)}>
+                Events
+              </a>
+            </li>
+            <li css={styles.listItem}>
               <Link
                 className="nav-link"
                 css={styles.navLink}
@@ -190,11 +199,11 @@ const styles = {
     height: 60px;
     background-color: ${theme.primary};
     user-select: none;
+    flex-shrink: 0;
 
     ${MIN_LARGE_DISPLAY_MEDIA_QUERY} {
       justify-content: flex-start;
       background: none;
-      margin-right: 20px;
     }
   `,
   hamburger: css`
@@ -239,12 +248,13 @@ const styles = {
     }
 
     ${MIN_LARGE_DISPLAY_MEDIA_QUERY} {
-      transform: none;
       position: relative;
       bottom: auto;
       width: 100%;
       height: 60px;
       padding: 0;
+      margin-left: 20px;
+      transform: none;
     }
   `,
   navContent: css`

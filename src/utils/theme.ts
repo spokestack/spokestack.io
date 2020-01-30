@@ -14,6 +14,8 @@ export const textLight = textColor.fade(0.5).toString()
 export const textError = '#ea2e31'
 export const textDarkBg = mainBackground
 
+export const grayDark = '#c9c9c9'
+
 export const header = '#2c363f'
 export const footerBackground = header
 export const buttonBackground = secondary

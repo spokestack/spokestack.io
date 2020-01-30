@@ -12,18 +12,6 @@ export default [
       'A studio recording of a professional voice actor using 6 hours of audio.'
   },
   {
-    model: 'jej',
-    label: 'Authoritative',
-    description:
-      'A cd-quality studio recording of a professional actor using 5 hours of audio.'
-  },
-  {
-    model: 'shelby',
-    label: 'Regional',
-    description:
-      'A tape-quality recording of an author reading his own work using 6 hours of audio.'
-  },
-  {
     model: 'trump',
     label: 'Celebrity',
     description: 'An event recording from a speech using 25 minutes of audio.'

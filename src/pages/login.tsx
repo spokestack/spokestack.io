@@ -106,6 +106,13 @@ const styles = {
   button: css`
     padding-left: 0 !important;
     margin-bottom: 20px;
+
+    background-color: ${theme.primary} !important;
+    color: white !important;
+
+    &:hover {
+      background-color: ${theme.primaryColor.darken(0.2).hex()} !important;
+    }
   `,
   iconWrap: css`
     display: flex;

@@ -104,9 +104,17 @@ const styles = {
   `,
   details: css`
     display: flex;
-    flex-direction: row;
+    flex-direction: column;
+    justify-content: center;
     align-items: center;
+    text-align: center;
     color: ${theme.primary};
+
+    @media (min-width: 320px) {
+      flex-direction: row;
+      justify-content: flex-start;
+      text-align: left;
+    }
   `,
   date: css`
     display: flex;

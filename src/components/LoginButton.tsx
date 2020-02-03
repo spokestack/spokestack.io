@@ -18,11 +18,7 @@ export default function LoginButton() {
       <SVGIcon icon={iconArrow.id} extraCss={styles.icon} />
     </a>
   ) : (
-    <Link
-      className="btn"
-      css={styles.loginButton}
-      activeStyle={{ display: 'none' }}
-      to="/login">
+    <Link className="btn" css={styles.loginButton} to="/login">
       Sign In / Sign Up
       <SVGIcon icon={iconArrow.id} extraCss={styles.icon} />
     </Link>

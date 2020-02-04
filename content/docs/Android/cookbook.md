@@ -18,11 +18,7 @@ private var pipeline: SpeechPipeline? = null
 
 // later on, in a setup function
 pipeline = SpeechPipeline.Builder()
-    .setInputClass("io.spokestack.spokestack.android.MicrophoneInput")
-    .addStageClass("io.spokestack.spokestack.webrtc.AutomaticGainControl")
-    .addStageClass("io.spokestack.spokestack.webrtc.VoiceActivityDetector")
-    .addStageClass("io.spokestack.spokestack.webrtc.VoiceActivityTrigger")
-    .addStageClass("io.spokestack.spokestack.google.GoogleSpeechRecognizer")
+    .useProfile("io.spokestack.spokestack.profile.VADTriggerGoogleASR")
     .setProperty("google-credentials", "<google-credentials>")
     .setProperty("locale", "en-US")
     .addOnSpeechEventListener(this)
@@ -40,19 +36,11 @@ To use the demo "Spokestack" wakeword, download the TensorFlow Lite models: [det
 
 ```kotlin
 pipeline = SpeechPipeline.Builder()
-    .setInputClass("io.spokestack.spokestack.android.MicrophoneInput")
-    .addStageClass("io.spokestack.spokestack.webrtc.AutomaticGainControl")
-    .addStageClass("io.spokestack.spokestack.webrtc.VoiceActivityDetector")
-    .addStageClass("io.spokestack.spokestack.wakeword.WakewordTrigger")
-    .addStageClass("io.spokestack.spokestack.google.GoogleSpeechRecognizer")
-    .setProperty("vad-fall-delay", 200)
-    .setProperty("pre-emphasis", 0.97)
+    .useProfile("io.spokestack.spokestack.profile.TFWakewordAndroidASR")
     .setProperty("wake-filter-path", "<tensorflow-lite-filter-path>")
     .setProperty("wake-encode-path", "<tensorflow-lite-encode-path>")
     .setProperty("wake-detect-path", "<tensorflow-lite-detect-path>")
-    .setProperty("wake-smooth-length", 50)
-    .setProperty("google-credentials", "<google-credentials>")
-    .setProperty("locale", "en-US")
+    .setAndroidContext(applicationContext)
     .addOnSpeechEventListener(this)
     .build();
 ```
@@ -80,7 +68,7 @@ If you need the pipeline to be started in order to recognize a wakeword, but you
 ```kotlin
 // assumes `pipeline` is a `SpeechPipeline`, and `start` has already been called on it
 fun onMicButtonTap(view: View) {
-    pipeline.context?.isActive = true
+    pipeline.activate()
 }
 ```
 
@@ -91,8 +79,7 @@ If you need to stop ASR before the timeout is reached (for example, your app has
 ```kotlin
 // `pipeline` is a `SpeechPipeline` instance
 func cancelAsr() {
-    pipeline.context.isActive = false
-    pipeline.context.dispatch(SpeechContext.Event.DEACTIVATE)
+    pipeline.deactivate()
 }
 ```
 

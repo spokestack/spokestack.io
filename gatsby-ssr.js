@@ -1,7 +1,7 @@
 import React from 'react'
 export { default as wrapRootElement } from './src/apollo/wrapRootElement'
 
-export function onRenderBody({ setHeadComponents, setPostBodyComponents }) {
+export function onRenderBody({ setPostBodyComponents }) {
   setPostBodyComponents([
     <script
       key="speakable"

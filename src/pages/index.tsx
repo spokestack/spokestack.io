@@ -22,6 +22,7 @@ import { css } from '@emotion/core'
 import iconArrow from '../icons/arrow-forward.svg'
 import iconPlay from '../icons/play.svg'
 import { rhythm } from '../utils/typography'
+import Newsletter from '../components/Newsletter'
 
 interface Props extends PageRendererProps {
   data: Query
@@ -309,6 +310,9 @@ export default function Index({ data, location }: Props) {
         <h1 css={styles.summaryHeader}>Events &amp; Workshops</h1>
         <Events />
       </section>
+      <section id="newsletter" css={styles.newsletter}>
+        <Newsletter />
+      </section>
     </Layout>
   )
 }
@@ -466,6 +470,11 @@ const styles = {
       grid-auto-columns: minmax(300px, auto);
       padding-right: 0;
     }
+  `,
+  newsletter: css`
+    background-color: ${theme.primary};
+    color: white;
+    padding: ${rhythm(2)} 20px;
   `,
   card: css`
     ${theme.ieBreakpoint} {

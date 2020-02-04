@@ -10,6 +10,7 @@ interface Props extends ButtonHTMLAttributes<HTMLButtonElement> {
   small?: boolean
   primary?: boolean
   submitting?: boolean
+  loadingColor?: string
 }
 
 export default function Button({
@@ -19,6 +20,7 @@ export default function Button({
   small,
   primary,
   submitting,
+  loadingColor = theme.secondary,
   ...props
 }: Props) {
   const classNames = ['btn']
@@ -42,7 +44,7 @@ export default function Button({
         {children}
       </div>
       {submitting && (
-        <LoadingIcon extraCss={styles.loading} color={theme.secondary} />
+        <LoadingIcon extraCss={styles.loading} color={loadingColor} />
       )}
     </button>
   )
@@ -57,5 +59,6 @@ const styles = {
   `,
   loading: css`
     position: absolute;
+    margin: 0 !important;
   `
 }

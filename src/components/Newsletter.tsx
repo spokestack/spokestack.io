@@ -36,7 +36,6 @@ export default function Newsletter() {
         technologies, straight to your inbox on weekdays. Brought to you by
         Spokestack.
       </p>
-      {status && <p>{status}</p>}
       <div css={styles.inputWrap}>
         <input
           type="email"

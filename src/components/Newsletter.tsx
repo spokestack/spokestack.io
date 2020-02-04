@@ -9,7 +9,7 @@ import { MIN_TABLET_MEDIA_QUERY } from 'typography-breakpoint-constants'
 
 export default function Newsletter() {
   const formRef = useRef<HTMLFormElement>(null)
-  const [status, setStatus] = useState<string>(null)
+  const [invalid, setInvalid] = useState(false)
   function submit(e: FormEvent<HTMLFormElement>) {
     const form = formRef.current
     if (!form) {
@@ -18,10 +18,10 @@ export default function Newsletter() {
     const email = form.email.value
     if (!email || !validateEmail(email)) {
       e.preventDefault()
-      setStatus('Please enter a valid email address')
+      setInvalid(true)
       return
     }
-    setStatus(null)
+    setInvalid(false)
   }
   return (
     <form
@@ -41,7 +41,7 @@ export default function Newsletter() {
         <input
           type="email"
           name="email"
-          className="input"
+          className={`input${invalid ? ' error' : ''}`}
           placeholder="Enter email"
         />
         <Button type="submit">

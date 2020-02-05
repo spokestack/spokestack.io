@@ -9,9 +9,11 @@ This guide will get you up and running with Spokestack for Android, and you'll b
 
 One caveat before we start, though: _This is not a collection of best practices_. We're going to be trading thoughtful organization for convenience here, so when we say something like "put this in your main activity", just know that you might not want to leave it there long-term. OK, now that that's out of the way, let's jump in.
 
+To follow along with these snippets in the context of a full project, download our [Android skeleton](https://github.com/spokestack/android-skeleton) app. It's not much to look at on a phone screen, but it might be easier than copying and pasting code snippets from this guide as we list them.
+
 ## Installation
 
-First, you'll need to declare the Spokestack dependencies in your project. Because Spokestack includes native libraries, this is slightly more involved than a normal dependency. You'll need to add the following to your project's top-level `build.gradle`:
+First, you'll need to declare the Spokestack dependencies in your project. Because Spokestack includes native libraries, this is slightly more involved than a normal dependency. You'll need to download the Android NDK (`SDK Manager` -> `SDK Tools` tab in Android Studio, or see [here](https://developer.android.com/ndk/downloads)), add the following to your project's top-level `build.gradle`:
 
 ```groovy
 // inside the buildscript block
@@ -27,13 +29,14 @@ repositories {
 }
 ```
 
-and this to your module's `build.gradle`:
+and add this to your module's `build.gradle`:
 
 ```groovy
 // before the android block:
 apply plugin: 'android-native-dependencies'
 
 // in the android block:
+ndkVersion "your.version.here"
 compileOptions {
         sourceCompatibility JavaVersion.VERSION_1_8
         targetCompatibility JavaVersion.VERSION_1_8
@@ -71,7 +74,9 @@ To enable voice control, your app needs three things:
 
 ### 1. Permissions
 
-To accept voice input, you need _at least_ the `RECORD_AUDIO` permission, and to perform speech recognition and TTS, you'll need to network access (the `INTERNET` permission). Both permissions are included in the Spokestack AAR, so you shouldn't need to add them explicitly. Starting with Android 6.0, however, the `RECORD_AUDIO` permission must be requested from the user at runtime; see the [Android developer documentation](https://developer.android.com/training/permissions/requesting.html) for more information on how to do this. You'll also have to deal with the user potentially denying these permissions (or granting them at first and removing them later), but that's outside the scope of this guide.
+To accept voice input, you need _at least_ the `RECORD_AUDIO` permission, and to perform speech recognition and TTS, you'll need to network access. These permissions are added automatically by the manifest included with the Spokestack library as of version 5.0.0, so you shouldn't need to add them explicitly.
+
+Starting with Android 6.0, however, the `RECORD_AUDIO` permission requires you to request it from the user at runtime. Please see the [Android developer documentation](https://developer.android.com/training/permissions/requesting.html) for more information on how to do this. You'll also have to deal with the user potentially denying these permissions (or granting them at first and removing them later), but that's outside the scope of this guide.
 
 Note that sending audio over the network can use a considerable amount of data, so you may also want to look into WiFi-related permissions and allow the user to disable voice control when using cellular data.
 

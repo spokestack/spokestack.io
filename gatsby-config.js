@@ -48,17 +48,6 @@ module.exports = {
     },
     events: [
       {
-        title: 'Voice Is Just Another Interface',
-        description:
-          'Keyboards, GUIs, and touchscreens have all been major revolutions in the human-computer interface. How can you prepare your mobile apps for the voice interface?',
-        month: 'Feb',
-        day: '06',
-        time: '12:00pm - 1:00pm',
-        locationLine1: 'The Edney, Floor 5',
-        locationLine2: 'Chattanooga, TN',
-        url: 'https://www.meetup.com/chadevs/events/268178537/'
-      },
-      {
         title: 'How to Add Voice to Mobile Workshop',
         description:
           'Leave this workshop with some voice design best practices and a simple voice-controlled app of your own.',

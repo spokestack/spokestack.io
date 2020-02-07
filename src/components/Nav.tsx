@@ -153,8 +153,9 @@ const mobileLink = css`
   text-decoration: none;
   transition: background-color 0.2s ${theme.transitionEasing},
     color 0.2s ${theme.transitionEasing};
-  padding: 0 20px;
+  padding: 0 15px;
   user-select: none;
+  white-space: nowrap;
 
   &:hover,
   &:visited {

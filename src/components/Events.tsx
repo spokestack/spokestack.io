@@ -17,6 +17,9 @@ export default function Events() {
       siteMetadata: { events }
     }
   } = useStaticQuery<Query>(eventsQuery)
+  if (!events || !events.length) {
+    return null
+  }
   return (
     <div css={styles.container}>
       {events.map((event, i) => (
@@ -119,6 +122,7 @@ const styles = {
   date: css`
     display: flex;
     flex-direction: column;
+    justify-content: center;
     align-items: center;
     margin-right: 25px;
     font-weight: 700;
@@ -126,9 +130,11 @@ const styles = {
   `,
   month: css`
     ${adjustFontSizeTo('32px')};
+    line-height: 1.4;
   `,
   day: css`
     ${adjustFontSizeTo('50px')};
+    line-height: 1;
   `,
   location: css`
     display: flex;

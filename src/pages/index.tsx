@@ -306,10 +306,12 @@ export default function Index({ data, location }: Props) {
           </Card>
         </div>
       </section>
-      <section id="events" css={styles.summary}>
-        <h1 css={styles.summaryHeader}>Events &amp; Workshops</h1>
-        <Events />
-      </section>
+      {!!data.site.siteMetadata.events.length && (
+        <section id="events" css={styles.summary}>
+          <h1 css={styles.summaryHeader}>Events &amp; Workshops</h1>
+          <Events />
+        </section>
+      )}
       <section id="newsletter" css={styles.newsletter}>
         <Newsletter />
       </section>
@@ -495,6 +497,9 @@ export const pageQuery = graphql`
     site {
       siteMetadata {
         title
+        events {
+          title
+        }
       }
     }
   }

@@ -8,7 +8,7 @@ import { StickyLink } from '../types'
 import { css } from '@emotion/core'
 import hashToId from '../utils/hashToId'
 import iconArrowDown from '../icons/arrow-down.svg'
-import { rhythm } from '../utils/typography'
+import { adjustFontSizeTo } from '../utils/typography'
 import { WindowLocation } from '@reach/router'
 
 interface Props {
@@ -105,7 +105,7 @@ const styles = {
   stickyNavSection: css`
     display: flex;
     flex-direction: column;
-    margin-bottom: ${rhythm(1)};
+    margin-bottom: 10px;
 
     ${DEFAULT_MEDIA_QUERY} {
       display: none;
@@ -114,6 +114,7 @@ const styles = {
   stickyNavHeader: css`
     margin: 0 0 10px;
     padding: 0 15px 0 45px;
+    ${adjustFontSizeTo('16px')};
 
     a {
       display: flex;
@@ -144,7 +145,9 @@ const styles = {
     }
   `,
   stickyNavLink: css`
-    padding: 15px 45px;
+    font-size: ${adjustFontSizeTo('16px').fontSize};
+    line-height: 1.2;
+    padding: 10px 45px;
     text-decoration: none;
     user-select: none;
     color: ${theme.linkStickyNav};

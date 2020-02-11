@@ -2,7 +2,10 @@ import { login } from './auth'
 import postToCore from './postToCore'
 import sanitizeIPA from './sanitizeIPA'
 
-export default async function synthesize(voice: string, text: string) {
+export default async function synthesize(
+  text: string,
+  { voice, isMarkdown }: { voice: string; isMarkdown: boolean }
+) {
   const [loginError, token] = await login()
   if (loginError || !token) {
     return [
@@ -10,7 +13,7 @@ export default async function synthesize(voice: string, text: string) {
         new Error('Failed to generate auth token. Please check your network.')
     ]
   }
-  if (!(text = sanitizeIPA(text))) {
+  if (!isMarkdown && !(text = sanitizeIPA(text))) {
     return [
       new Error('The text is not valid. Please double check the brackets.')
     ]
@@ -19,7 +22,7 @@ export default async function synthesize(voice: string, text: string) {
     headers: {
       Authorization: token
     },
-    body: { voice, text }
+    body: { voice, text, mode: isMarkdown ? 'markdown' : 'parl' }
   })
   if (synthError) {
     return [synthError]

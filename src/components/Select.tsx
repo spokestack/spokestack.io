@@ -167,8 +167,8 @@ const styles = {
   `,
   icon: css`
     fill: ${theme.primary};
-    width: 25px;
-    height: 25px;
+    width: 20px;
+    height: 20px;
     transition: transform 0.1s ${theme.transitionEasing};
   `,
   select: css`

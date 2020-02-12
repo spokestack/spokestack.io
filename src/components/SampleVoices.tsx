@@ -18,7 +18,7 @@ import voices from '../utils/voices'
 const defaultStrings = {
   ipa: 'Hello, welcome to {{spoʊkstæk}}. What would you like to say?',
   md:
-    'Hello, welcome to (spokestack)[ipa:"spoʊkstæk"]. Would would you like to say?'
+    'Hello, welcome to (spokestack)[ipa:"spoʊkstæk"]. What would you like to say?'
 }
 
 const options = voices.map((voice) => ({

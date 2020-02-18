@@ -23,6 +23,7 @@ import iconArrow from '../icons/arrow-forward.svg'
 import iconPlay from '../icons/play.svg'
 import { rhythm } from '../utils/typography'
 import Newsletter from '../components/Newsletter'
+import voices from '../utils/voices'
 
 interface Props extends PageRendererProps {
   data: Query
@@ -218,7 +219,7 @@ export default function Index({ data, location }: Props) {
             Try some of our voice samples below. Each voice is generated using
             different recording times and methods.
           </p>
-          <SampleVoices />
+          <SampleVoices voices={voices.slice(0, -2)} />
         </div>
         <div id="nlu" css={styles.feature} ref={links[3].ref}>
           <h2>Spokestack NLU</h2>

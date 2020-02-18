@@ -63,5 +63,15 @@ export default [
     model: 'alexa',
     label: 'Generic AI Voice',
     description: 'Robot to robot recording'
+  },
+  {
+    model: 'gm-79397',
+    label: 'GM Voice 1',
+    description: 'A GM voice for demo purposes.'
+  },
+  {
+    model: 'gm-144280',
+    label: 'GM Voice 2',
+    description: 'A GM voice for demo purposes.'
   }
 ]

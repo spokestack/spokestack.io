@@ -13,7 +13,7 @@ import find from 'lodash/find'
 import iconPlay from '../icons/play-circle.svg'
 import * as theme from '../utils/theme'
 import synthesize from '../utils/synthesize'
-import voices from '../utils/voices'
+import { Voice } from '../types'
 
 const defaultStrings = {
   ipa: 'Hello, welcome to {{spoʊkstæk}}. What would you like to say?',
@@ -21,10 +21,9 @@ const defaultStrings = {
     'Hello, welcome to (spokestack)[ipa:"spoʊkstæk"]. What would you like to say?'
 }
 
-const options = voices.map((voice) => ({
-  value: voice.model,
-  title: voice.label
-}))
+interface Props {
+  voices: Voice[]
+}
 
 interface State {
   disabled: boolean
@@ -35,15 +34,24 @@ interface State {
   text: string
 }
 
-export default class SampleVoices extends PureComponent {
+export default class SampleVoices extends PureComponent<Props, State> {
   private audio: HTMLAudioElement
-  state: State = {
-    disabled: false,
-    errorText: null,
-    selected: options[0],
-    speechMarkdown: false,
-    submitting: false,
-    text: defaultStrings.ipa
+  private options: Option[]
+
+  constructor(props: Props) {
+    super(props)
+    this.options = props.voices.map((voice) => ({
+      value: voice.model,
+      title: voice.label
+    }))
+    this.state = {
+      disabled: false,
+      errorText: null,
+      selected: this.options[0],
+      speechMarkdown: false,
+      submitting: false,
+      text: defaultStrings.ipa
+    }
   }
 
   componentDidMount() {
@@ -95,6 +103,7 @@ export default class SampleVoices extends PureComponent {
   }
 
   render() {
+    const { voices } = this.props
     const {
       disabled,
       errorText,
@@ -130,9 +139,9 @@ export default class SampleVoices extends PureComponent {
               selected={selected}
               extraCss={styles.select}
               iconWrapCss={styles.selectIconWrap}
-              options={options}
+              options={this.options}
               onChange={(value) => {
-                const option = find(options, { value })
+                const option = find(this.options, { value })
                 if (option) {
                   this.setState({ selected: option }, this.getAudio)
                 }

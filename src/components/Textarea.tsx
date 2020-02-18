@@ -2,6 +2,7 @@ import React, { TextareaHTMLAttributes } from 'react'
 import { SerializedStyles, css } from '@emotion/core'
 import * as theme from '../utils/theme'
 import LoadingIcon from './LoadingIcon'
+import { MIN_TABLET_MEDIA_QUERY } from 'typography-breakpoint-constants'
 
 interface Props
   extends Omit<TextareaHTMLAttributes<HTMLTextAreaElement>, 'onChange'> {
@@ -49,12 +50,16 @@ const styles = {
   `,
   textarea: css`
     width: 100%;
-    min-height: 120px;
+    min-height: 200px;
     line-height: 1.4;
     border: 1px solid ${theme.mainBorder};
     padding: 15px 20px;
     border-radius: 7px 7px 0 0;
     resize: vertical;
+
+    ${MIN_TABLET_MEDIA_QUERY} {
+      min-height: 120px;
+    }
   `,
   label: css`
     width: 100%;

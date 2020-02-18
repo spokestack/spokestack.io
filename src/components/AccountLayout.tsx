@@ -16,6 +16,12 @@ const links: StickyLink[] = [
     title: 'API Credentials',
     refSelector: '#api',
     section: 'Settings'
+  },
+  {
+    href: '/account/settings/#voices',
+    title: 'Sample Voices',
+    refSelector: '#voices',
+    section: 'Settings'
   }
   // {
   //   href: '/account/billing/#details',

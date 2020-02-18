@@ -14,6 +14,8 @@ import { css } from '@emotion/core'
 import gql from 'graphql-tag'
 import iconAddCircle from '../icons/add-circle.svg'
 import { useMutation } from '@apollo/react-hooks'
+import SampleVoices from './SampleVoices'
+import voices from '../utils/voices'
 
 const ADD_TOKEN = gql`
   mutation CreateKey($accountId: ID!, $displayName: String!) {
@@ -125,6 +127,9 @@ export default function Settings({ account, location }: Props) {
           ))}
         </div>
       </AccountCard>
+      <div id="voices">
+        <SampleVoices voices={voices} />
+      </div>
     </AccountLayout>
   )
 }

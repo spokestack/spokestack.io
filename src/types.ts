@@ -34,6 +34,12 @@ export interface StickyLink {
   refSelector?: string
 }
 
+export interface Voice {
+  model: string
+  label: string
+  description: string
+}
+
 /**
  * Remote types for the Spokestack API
  */

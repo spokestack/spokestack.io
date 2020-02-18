@@ -31,10 +31,10 @@ in your terminal.
 
 ## Integration
 
-In order for your app to accept voice input via Spokestack, it needs three things:
+In order for your app to accept voice input via Spokestack, it needs four things:
 
 1. the proper iOS permissions
-2. An active `AVAudioSession`
+2. an active `AVAudioSession`
 3. an instance of Spokestack's `SpeechPipeline`
 4. a delegate to receive system events and user input from `SpeechPipeline`
 

@@ -7,8 +7,6 @@ import Layout from '../components/Layout'
 import React from 'react'
 import SEO from '../components/SEO'
 import StickyNavLayout from '../components/StickyNavLayout'
-import { css } from '@emotion/core'
-import { text } from '../utils/theme'
 
 interface Props {
   post: MarkdownRemark
@@ -42,13 +40,7 @@ export default function Blog({ post, selectFirst }: Props) {
           <Author author={post.frontmatter.author as TeamMemberName} />
         }>
         {selectFirst ? (
-          <h1
-            css={css`
-              a:not(:hover),
-              a:visited:not(:hover) {
-                color: ${text};
-              }
-            `}>
+          <h1>
             <a href={post.fields.slug}>{post.frontmatter.title}</a>
           </h1>
         ) : (

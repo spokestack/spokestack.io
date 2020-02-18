@@ -4,11 +4,16 @@ export const primaryColor = Color('#2f5bea')
 export const secondaryColor = Color('#61fae9')
 export const textColor = Color('#323e48')
 export const linkColor = primaryColor
+export const linkColorDark = Color('#99caff')
+export const codeBackgroundColor = Color('#cce4ff')
 
-export const mainBackground = '#f6f9fc'
 export const primary = primaryColor.hex()
 export const secondary = secondaryColor.hex()
 
+export const mainBackground = '#f6f9fc'
+export const mainBackgroundDark = textColor.hex()
+export const stickyNavBackground = 'white'
+export const stickyNavBackgroundDark = textColor.darken(0.3).hex()
 export const text = textColor.hex()
 export const textLight = textColor.fade(0.5).toString()
 export const textError = '#ea2e31'
@@ -26,12 +31,15 @@ export const transitionEasing = 'cubic-bezier(0.77, 0.41, 0.2, 0.84)'
 export const bubbleEasing = 'cubic-bezier(0.3, 0.55, 0.54, 0.86)'
 
 export const error = '#ea2f5e'
-export const codeBackground = '#cce4ff'
+export const codeBackground = codeBackgroundColor.fade(0.7).toString()
 
 export const link = linkColor.hex()
 export const linkVisited = linkColor.lighten(0.1).hex()
 export const linkHover = linkColor.darken(0.2).hex()
 export const linkActive = linkColor.darken(0.4).hex()
+export const linkDark = linkColorDark.hex()
+export const linkDarkHover = linkColorDark.darken(0.2).hex()
+export const linkDarkActive = linkColorDark.darken(0.4).hex()
 
 export const linkSecondary = secondaryColor.hex()
 export const linkSecondaryVisited = secondaryColor.lighten(0.1).hex()

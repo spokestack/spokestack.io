@@ -13,6 +13,7 @@ export default function NavSelectedBackground({ selectedId }: Props) {
   }, [selectedId])
   return selected ? (
     <div
+      className="nav-selected-bg"
       css={styles.container}
       style={{
         transform: `translateY(${selected.offsetTop}px)`,
@@ -29,7 +30,6 @@ const styles = {
     left: 0;
     right: 0;
     border-radius: 50px 0 0 50px;
-    background-color: ${theme.mainBackground};
     transition: transform 0.2s ${theme.transitionEasing},
       height 0.2s ${theme.transitionEasing};
     z-index: 0;

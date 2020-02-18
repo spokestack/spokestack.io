@@ -31,11 +31,13 @@ export default function StickyNavLayout({
   }
   return (
     <div id={id} css={style}>
-      <div css={styles.stickyNavWrap}>
+      <div css={styles.stickyNavWrap} className="sticky-nav-wrap">
         {header && <h3 css={styles.stickyNavHeader}>{header}</h3>}
         <StickyNav {...props} />
       </div>
-      <section css={styles.content}>{children}</section>
+      <section className="main-content" css={styles.content}>
+        {children}
+      </section>
       {rightContent}
     </div>
   )
@@ -76,7 +78,6 @@ const styles = {
   stickyNavWrap: css`
     ${MIN_DEFAULT_MEDIA_QUERY} {
       grid-area: sidenav;
-      background-color: white;
       padding: 25px 0 10px 50px;
     }
     ${ieBreakpointMinDefault} {

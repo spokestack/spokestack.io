@@ -11,6 +11,71 @@ export default css`
     min-width: 300px;
     background-color: ${theme.mainBackground};
   }
+  h1 a {
+    color: ${theme.text};
+  }
+  .sticky-nav-wrap {
+    background-color: ${theme.stickyNavBackground};
+  }
+  .nav-selected-bg,
+  .sticky-nav-link-active {
+    background-color: ${theme.mainBackground};
+  }
+  .sticky-nav-link-active,
+  .sticky-nav-link-active-no-bg {
+    color: ${theme.linkStickyNavActive} !important;
+  }
+  .sticky-nav-header-icon {
+    fill: ${theme.header};
+  }
+  html.dark-mode {
+    background-color: ${theme.text};
+
+    body,
+    h1,
+    h2,
+    h3,
+    h4,
+    h5,
+    h6,
+    a,
+    a:visited,
+    h1 a,
+    .main-content h1 a {
+      color: ${theme.textDarkBg};
+    }
+    a {
+      &:hover {
+        color: ${theme.linkDarkHover};
+      }
+      &:active {
+        color: ${theme.linkDarkActive};
+      }
+    }
+    .main-content a {
+      color: ${theme.linkDark};
+      text-decoration-color: ${theme.linkDark};
+
+      &:hover {
+        color: ${theme.primary};
+        text-decoration-color: ${theme.primary};
+      }
+    }
+    .sticky-nav-wrap {
+      background-color: ${theme.stickyNavBackgroundDark};
+    }
+    .nav-selected-bg,
+    .sticky-nav-link-active {
+      background-color: ${theme.mainBackgroundDark};
+    }
+    .sticky-nav-link-active,
+    .sticky-nav-link-active-no-bg {
+      color: ${theme.linkDark} !important;
+    }
+    .sticky-nav-header-icon {
+      fill: ${theme.textDarkBg};
+    }
+  }
   :focus {
     outline: ${theme.primary} auto 1px;
   }

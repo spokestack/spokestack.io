@@ -49,7 +49,7 @@ export default function StickyNavSection({
           <a>
             {headerText}
             <SVGIcon
-              className={open ? 'open' : ''}
+              className={`sticky-nav-header-icon ${open ? 'open' : ''}`}
               extraCss={styles.headerIcon}
               icon={iconArrowDown.id}
             />
@@ -127,7 +127,6 @@ const styles = {
     }
   `,
   headerIcon: css`
-    fill: ${theme.header};
     width: 25px;
     height: 25px;
 
@@ -160,13 +159,11 @@ const styles = {
     }
     &.sticky-nav-link-active,
     &.sticky-nav-link-active-no-bg {
-      color: ${theme.linkStickyNavActive} !important;
       cursor: default;
       pointer-events: none;
     }
     &.sticky-nav-link-active {
       border-radius: 50px 0 0 50px;
-      background-color: ${theme.mainBackground};
     }
   `
 }

@@ -101,7 +101,7 @@ Human-to-human conversation is second nature. Talking to a voice assistant doesn
 >
 > **MYRUNBUDDY** > [Recording Run + Map] "You’re. 5 miles away from the 3 mile marker.”
 
-_In this example, the response would read as “you’re [pause] five miles away…” - a big difference!  A good TTS engine can handle decimals with correct period placement. To make this more conversational, change this to something like, “You’re half a mile away from the 3 mile marker.”
+_In this example, the response would read as “you’re [pause] five miles away…” - a big difference! A good TTS engine can handle decimals with correct period placement. To make this more conversational, change this to something like, “You’re half a mile away from the 3 mile marker.”_
 
 ## 6. Provide variety & consistency
 

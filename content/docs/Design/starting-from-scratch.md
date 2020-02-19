@@ -21,7 +21,7 @@ Our maps include the following actors:
 >
 > **Questions (optional).** Think of this map as a starting point. Make note of anything you’re unsure about.
 
-As an example, we’ve started a map for an imagined fitness tracker, MyRunBuddy. 
+As an example, we’ve started a map for an imagined fitness tracker, MyRunBuddy.
 ![](https://paper-attachments.dropbox.com/s_64309765F21EEABBFEB095F2281AAE0D852D3B39607DDCA807D5E9D53AAABE5C_1581629577075_MyRunBuddy+-+actors+new.png)
 
 ## **2. Start by opening the app.**

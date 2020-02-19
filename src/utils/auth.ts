@@ -95,7 +95,7 @@ export function setProvider(provider: string) {
 }
 
 export function getDarkModePref() {
-  return !!localStorage.getItem(darkModeKey)
+  return typeof window !== 'undefined' && !!localStorage.getItem(darkModeKey)
 }
 
 export function setDarkModePref(dark: boolean) {

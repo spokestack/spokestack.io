@@ -33,10 +33,10 @@ in your terminal.
 
 In order for your app to accept voice input via Spokestack, it needs four things:
 
-1. the proper iOS permissions
-2. an active `AVAudioSession`
-3. an instance of Spokestack's `SpeechPipeline`
-4. a delegate to receive system events and user input from `SpeechPipeline`
+1. The proper iOS permissions
+2. An active `AVAudioSession`
+3. An instance of Spokestack's `SpeechPipeline`
+4. Delegates to receive system events from `SpeechPipeline`
 
 ### 1. Permissions
 
@@ -65,7 +65,7 @@ func application(_ application: UIApplication, didFinishLaunchingWithOptions lau
     let audioSession = AVAudioSession.sharedInstance()
     do {
         try audioSession.setCategory(AVAudioSession.Category.playAndRecord, mode: AVAudioSession.Mode.default,
-                                     options: AVAudioSession.CategoryOptions.defaultToSpeaker)
+                                     options: [AVAudioSession.CategoryOptions.defaultToSpeaker, AVAudioSession.CategoryOptions.allowBluetooth, AVAudioSession.CategoryOptions.allowAirPlay])
         try audioSession.setActive(true)
     } catch let error as NSError {
         // handle error
@@ -73,15 +73,16 @@ func application(_ application: UIApplication, didFinishLaunchingWithOptions lau
 }
 ```
 
-### 3. `SpeechPipeline`
+### 3. `SpeechPipeline` & `TextToSpeech`
 
-With the proper permissions in place, it's time to decide where you'd like to receive and process speech input. In a single-view app, the easiest place for this is going to be your main view controller. `import Spokestack` at the top of the file, and add a `SpeechPipeline` member:
+With the proper permissions in place, it's time to decide where you'd like to receive and process speech input and output. In a single-view app, the easiest place for this is going to be your main view controller. `import Spokestack` at the top of the file, and add `SpeechPipeline` and `TextToSpeech` class members:
 
 ```swift
-private let pipeline = SpeechPipeline(self, pipelineDelegate: self)
+public let pipeline = SpeechPipeline(self, pipelineDelegate: self)
+public let tts = TextToSpeech(self, configuration: SpeechConfiguration())
 ```
 
-then, after things are loaded:
+Note that these components must persist outside the scope of the calling function, so don't declare it inside a function call that will get garbage collected! If this is confusing, please consult the [fuller discussion of the pipeline](speech-pipeline). Then, after things are loaded:
 
 ```swift
 pipeline.start()
@@ -89,7 +90,7 @@ pipeline.start()
 
 Note that we're using a convenience initializer for `SpeechPipeline` that makes a variety of configuration decisions on our behalf. There's more to talk about here, but they're topics for another guide.
 
-The `self` in this example means that the class containing this pipeline also adopts `PipelineDelegate` and `SpeechEventListener`, which, conveniently enough, is the next step.
+The `self` in this example means that the class containing this pipeline also adopts `PipelineDelegate`, `SpeechEventListener`, and `TextToSpeechDelegate` which, conveniently enough, are the next steps.
 
 ### 4. Delegate methods
 
@@ -187,7 +188,7 @@ class MyViewController: UIViewController, SpeechEventListener, TextToSpeechDeleg
     }
 
     func didTrace(_ trace: String) {
-        // log trace
+        // log trace. Note that tracing verbosity of each component is determined by the SpeechConfiguration.tracing setting!
     }
 ```
 
@@ -207,11 +208,11 @@ func speak(_ text: String) {
 }
 ```
 
-The `speak` function will call your delegates' `didBeginSpeaking` and `didFinishSpeaking` at the start and finish, respectivly, of response playback.
+The `speak` function will call your delegate's `didBeginSpeaking` and `didFinishSpeaking` at the start and finish, respectively, of response playback.
 
 In this example, `SpeechConfiguration.apiId` and `SpeechConfiguration.apiSecret` are set to sample values that let you try Spokestack TTS with a demo voice, without creating an account. You can [get your own free API credentials](https://spokestack.io/login). For more TTS input configuration options, see [the TTS guide](/docs/Concepts/tts).
 
-If you want finer-grain control over how the TTS response is played back, you're free to feed the `TextToSpeechResult.url` in the `success` handler into your own audio player. See the [cookbook](/docs/iOS/cookbook) for a quick version of that recipe.
+If you want more fine-grained control over how the TTS response is played back, you're free to feed the `TextToSpeechResult.url` in the `success` handler into your own audio player. See the [cookbook](cookbook) for a quick version of that recipe.
 
 ## Conclusion
 

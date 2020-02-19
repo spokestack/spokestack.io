@@ -1,6 +1,7 @@
+import * as theme from '../utils/theme'
+
 import { MOBILE_MEDIA_QUERY } from 'typography-breakpoint-constants'
 import { TypographyOptions } from 'typography'
-import * as theme from '../utils/theme'
 
 const options: TypographyOptions = {
   // title: 'Spokestack',
@@ -32,8 +33,7 @@ const options: TypographyOptions = {
       textDecoration: 'underline',
       textDecorationColor: theme.link,
       textDecorationThickness: '.1em',
-      textUnderlineOffset: '2px',
-      transition: `color 0.1s ${theme.transitionEasing}`
+      textUnderlineOffset: '2px'
     },
     'a:visited': {
       color: theme.linkVisited,

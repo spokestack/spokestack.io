@@ -108,7 +108,6 @@ export default function StickyNav({
           selectCss={styles.mobileNavSelect}
           labelCss={styles.mobileNavLabel}
           iconWrapCss={styles.mobileNavIconWrap}
-          iconCss={styles.mobileNavIcon}
           selected={
             selectedLink
               ? {
@@ -186,9 +185,6 @@ const styles = {
   mobileNavIconWrap: css`
     border: none;
     background: transparent;
-  `,
-  mobileNavIcon: css`
-    fill: ${theme.header};
   `,
   section: css`
     display: flex;

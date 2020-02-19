@@ -21,7 +21,7 @@ Even if you already have an idea of who your users are, adding voice to your app
 > **Are your users iOS or Android?**
 > This will influence which platform you should/will focus on.
 >
-> **How familiar are your users with voice assistants? How often do they use them? If not, why?**
+> **How familiar are your users with voice assistants? How often do they use them? If they don't use voice assistants, why not?**
 > This will help you understand their motivations. If they don’t already use voice in their day-to-day routine, it’s important to understand why. For some, it may be a technical limitation or afterthought. For others, they may not understand the value.
 
 # **Yes, that might mean a survey**

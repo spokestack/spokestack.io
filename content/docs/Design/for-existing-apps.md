@@ -15,7 +15,7 @@ We include the following:
 >
 > **Voice.** This will include audio output. We’ll fill in this row later.
 >
-> **Screen\*\***.\*\* This will include visual output.
+> **Screen.** This will include visual output.
 >
 > **Support.** This will include anything not included in the top three rows (back-end, front-end, marketing, etc.). Keep these broad.
 >

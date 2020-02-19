@@ -5,7 +5,7 @@ description: Script and storyboard responses to the user.
 draft: false
 ---
 
-When a user expresses an intent and your app responds, we call this interaction a **turn**. Your script will reflect turns you defined in your [experience map](/docs/Design/map-out-integration) in more detail. You’ll also want to reference your [initial list of intents](/docs/Design/map-out-integration).
+When a user expresses an intent and your app responds, we call this interaction a **turn**. Your script will reflect turns you defined in your [experience map](/docs/Design/map-out-integration) in more detail. You’ll also want to reference your initial list of intents.
 
 If you have more than one experience map, create scripts to represent each scenario. We use [Dropbox Paper](https://www.dropbox.com/paper), but any collaborative editor will work.
 
@@ -36,7 +36,7 @@ Here’s an example:
 
 # **4. Respond.**
 
-Focus on the conversational aspect of your response for now. We’ll get to [visual responses](/docs/Design/tips-for-designing-visual-output) in step #8. Refer to our [best practices](/docs/Design/tips-for-writing-dialog) if you get stuck. Label each turn with its corresponding intent. \*\*\*\*Write any variations below each response. Note any assumptions and remaining questions below each turn.
+Focus on the conversational aspect of your response for now. We’ll get to [visual responses](/docs/Design/tips-for-designing-visual-output) in step #8. Refer to our [best practices](/docs/Design/tips-for-writing-dialog) if you get stuck. Label each turn with its corresponding intent. Write any variations below each response. Note any assumptions and remaining questions below each turn.
 
 > Pace
 > **RETURN USER:** [Listening] “MyRunBuddy, how fast am I running?”

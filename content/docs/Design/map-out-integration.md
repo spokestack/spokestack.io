@@ -43,7 +43,7 @@ You need a shared document in case you need to gather feedback and share your ma
 
 # **The exercise**
 
-## [**For existing apps**](/docs/Design/for-existing-apps) \*\*\*\*
+## [**For existing apps**](/docs/Design/for-existing-apps)
 
 This will provide a convenience for users by incorporating a call-and-response experience. This exercise might also help those wanting to build upon one of our pre-existing demos.
 

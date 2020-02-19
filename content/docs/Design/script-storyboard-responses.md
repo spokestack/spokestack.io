@@ -64,8 +64,7 @@ Go back and revise your original script. Repeat steps 6 & 7 a few times until yo
 # **8. Replace [square brackets] with visuals.**
 
 Now that you’ve established what you’re going to say, it’s time to make [UI decisions](/docs/Design/tips-for-designing-visual-output). We use [Sketch](https://www.sketch.com/) to wireframe and mock up ideas. Export screens from your tool of choice and pair them with corresponding turns.
-[Adobe XD](https://www.googleadservices.com/pagead/aclk?sa=L&ai=DChcSEwiXs56Lw8znAhUFpLMKHV0JCPgYABAAGgJxbg&ohost=www.google.com&cid=CAESQOD27NwYvUndVIkFoGVBtCUnQV--Xs17mozEEQUBNJhCu1KxlQBaUgjBLdBXTgG-MQK3vmhw-0w_igQAcqeKCaE&sig=AOD64_0Nv14O4kKFrl5i2FYPHzlG6DHP7w&q=&ved=2ahUKEwi8-5SLw8znAhWvSt8KHaACC2gQ0Qx6BAgTEAE&adurl=)
-Create a prototype if it’s helpful. [Adobe XD](https://www.adobe.com/products/xd.html?sdid=12B9F15S&mv=Search&ef_id=CjwKCAiA4Y7yBRB8EiwADV1hacKOV9sHq556fq_QvGjvfCqqclV9lY0JL-nkJ-gTsUMp6ZA3UVYNThoC6mQQAvD_BwE:G:s&s_kwcid=AL!3085!3!315233774109!e!!g!!adobe%20xd) [AAdobe XDAAdobe XD](https://www.googleadservices.com/pagead/aclk?sa=L&ai=DChcSEwiXs56Lw8znAhUFpLMKHV0JCPgYABAAGgJxbg&ohost=www.google.com&cid=CAESQOD27NwYvUndVIkFoGVBtCUnQV--Xs17mozEEQUBNJhCu1KxlQBaUgjBLdBXTgG-MQK3vmhw-0w_igQAcqeKCaE&sig=AOD64_0Nv14O4kKFrl5i2FYPHzlG6DHP7w&q=&ved=2ahUKEwi8-5SLw8znAhWvSt8KHaACC2gQ0Qx6BAgTEAE&adurl=)is the best option we’ve found for prototyping with voice. Understand the [challenges](/docs/Design/test-with-real-people) of adding voice to a prototype before proceeding.
+Create a prototype if it’s helpful. [Adobe XD](https://www.adobe.com/products/xd.html) is the best option we’ve found for prototyping with voice. Understand the [challenges](/docs/Design/test-with-real-people) of adding voice to a prototype before proceeding.
 
 # **9. Review & tweak.**
 

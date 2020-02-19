@@ -29,6 +29,6 @@ Some benefits of this pairing include the following:
 
 1. **More control.** A multi-modal approach lets users choose how they interact. Users are able to choose how they input and receive output. This could mean voice-only makes sense in some situations. Gesture-only or some combination of both could make sense in other situations.
 
-2) **Higher success rate**. Multi-modal experiences deliver on a limited domain or set of domains. For example, you're unlikely to find someone asking to have a pizza delivered to their house on a fitness app.
+2. **Higher success rate**. Multi-modal experiences deliver on a limited domain or set of domains. For example, you're unlikely to find someone asking to have a pizza delivered to their house on a fitness app.
 
 3. **Faster information.** In addition to speech-to-text being faster than typing, you’re able to condense multiple tasks into one. For example, think about how you'd book a hotel room. Instead of using a form, you could start with “book me a hotel room at the Marriott in downtown Austin on February third.”

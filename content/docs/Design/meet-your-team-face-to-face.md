@@ -21,7 +21,7 @@ Notice the language they use when talking about features in the app. What words 
 
 ## **Gauge familiarity with multi-modal**
 
-Dig a little bit deeper. Understand their relationship to voice-only as well multi-modal experiences. You might ask:
+Dig a little bit deeper. Understand their relationship to voice-only as well as multi-modal experiences. You might ask:
 
 1. Is voice technology already an integral part of your daily life? If not, why?
 2. How do you use voice technology, if at all? When? Where?

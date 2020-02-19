@@ -30,13 +30,13 @@ There are many ways of gathering this information; we use [Google Surveys](https
 
 Take survey results with a grain of salt. Use them as a starting point for further exploration rather than definitive results. You’ll also be able to use this as a recruiting tool when looking for interview and [test candidates](/docs/Design/test-with-real-people). If you want to recruit candidates for [in-person user testing](/docs/Design/test-with-real-people) later on, make sure you ask for location.
 
-# **Talk to** **the people** **you’re trying to target**
+# **Talk to the people you’re trying to target**
 
 Conduct [user interviews](https://www.nngroup.com/articles/user-interviews/) remote or in-person. Schedule time with candidates you’ve found from your survey and offer them an incentive if able.
 
 Before the interview, create a document or **one-sheet** for each participant. Include the date and the name of the participant in the document’s title. For shared documentation, we use [Google Docs](https://www.google.com/docs/about/). Review survey responses with your team. Write down relevant information under demographics. Here’s a [template](https://docs.google.com/document/d/15YtXuLhlOKrNa6m9ElFBuG-O2ppCc4obVlivl4Dhqfk/edit?usp=sharing) to get you started.
 
-You’ll be in charge of the discussion. Come prepared with questions, but feel free to improvise. Questions will come to mind as your conversation progresses. We recommend using a script. Here’s an [example](https://docs.google.com/document/d/1KdaeVRv1nlvMvZTMyglkvuv8EG8z6Lcv8Ca9-oLUkjY/edit?usp=sharing) we adopted from Steve Krug’s [Rocket Surgery Made Easy](https://www.amazon.com/Rocket-Surgery-Made-Easy-Yourself/dp/0321657292). Write down questions specific to a candidate on their one-sheet and make note in your script of when to ask them.
+You’ll be in charge of the discussion. Come prepared with questions, but feel free to improvise. Questions will come to mind as your conversation progresses. We recommend using a script. Here’s an [example](https://docs.google.com/document/d/1KdaeVRv1nlvMvZTMyglkvuv8EG8z6Lcv8Ca9-oLUkjY/edit?usp=sharing) we adapted from Steve Krug’s [Rocket Surgery Made Easy](https://www.amazon.com/Rocket-Surgery-Made-Easy-Yourself/dp/0321657292). Write down questions specific to a candidate on their one-sheet and make note in your script of when to ask them.
 
 Look for the following during your interviews:
 

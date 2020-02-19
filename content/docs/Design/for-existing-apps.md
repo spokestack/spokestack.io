@@ -17,7 +17,7 @@ We include the following:
 >
 > **Screen\*\***.\*\* This will include visual output.
 >
-> **Support.** This will anything not included in the top three rows (back-end, front-end, marketing, etc.). Keep these broad.
+> **Support.** This will include anything not included in the top three rows (back-end, front-end, marketing, etc.). Keep these broad.
 >
 > **Questions (optional).** You won’t have anything here yet, but questions may arise later when you include voice control in your map.
 

@@ -19,11 +19,11 @@ When creating a multi-modal experience, don't design and build flows in isolatio
 
 An [experience map](https://www.nngroup.com/articles/channels-devices-touchpoints/) is a list of inputs from left to right with simultaneous outputs below. Multi-modal maps include intents and gestures followed by voice and visual outputs. A complete map will provide a better sense of scope before building anything.
 
-Inspiration for this exercise comes from the [](https://www.thesprintbook.com/how)[Sketch Phase](https://www.thesprintbook.com/how) of _The Design Sprint_ and [How to Make an Experience Map](https://blog.carbonfive.com/2017/08/03/experience-mapping-2/).
+Inspiration for this exercise comes from the [Sketch Phase](https://www.thesprintbook.com/how) of _The Design Sprint_ and [How to Make an Experience Map](https://blog.carbonfive.com/2017/08/03/experience-mapping-2/).
 
 # **Getting Started**
 
-Setup will depend on whether you’ll be working with a **colocated** **team**, a **remote team**, or as an **individual**.
+Setup will depend on whether you’ll be working with a **colocated team**, a **remote team**, or as an **individual**.
 
 ## **Colocated teams**
 
@@ -33,13 +33,13 @@ Invite everyone to your meeting space. Include a variety of teammates with diffe
 
 ## **Remote teams**
 
-You need a shared document that everyone can access and a video conferencing tool. For shared documentation, we use [](https://www.google.com/sheets/about/)[Google Sheets](https://www.google.com/sheets/about/). For video conferencing, we use [](https://zoom.us/)[Zoom](https://zoom.us/).
+You need a shared document that everyone can access and a video conferencing tool. For shared documentation, we use [Google Sheets](https://www.google.com/sheets/about/). For video conferencing, we use [Zoom](https://zoom.us/).
 
 Schedule a video conference among colleagues with differing areas of expertise. Choose someone to guide and document the discussion. They need to screen share documentation as you go along. They may want to also record the video conference for future reference.
 
 ## **Individuals**
 
-You need a shared document in case you need to gather feedback and share your map later on. We use [](https://www.google.com/sheets/about/)[Google Sheets](https://www.google.com/sheets/about/).
+You need a shared document in case you need to gather feedback and share your map later on. We use [Google Sheets](https://www.google.com/sheets/about/).
 
 # **The exercise**
 

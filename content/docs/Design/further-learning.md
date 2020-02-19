@@ -5,7 +5,7 @@ description: More resources for learning
 draft: false
 ---
 
-[Conversational Design](https://www.amazon.com/Conversational-Design-Erika-Hall/dp/1937557677/ref=sr_1_1?keywords=conversational+design&qid=1581373286&sr=8-1)
+[Conversational Design](https://www.amazon.com/Conversational-Design-Erika-Hall/dp/1937557677)
 Erika Hall
 
 [Conversational Design Guide](https://developers.google.com/assistant/actions/design)
@@ -17,7 +17,7 @@ Frederik Goossens
 [Designing the Future, with Voice](https://vimeo.com/288109032)
 Karen Kaushansky
 
-[Designing Voice User Interfaces: Principles of Conversational Experiences](https://www.amazon.com/Designing-Voice-User-Interfaces-Conversational/dp/1491955414/ref=as_li_ss_tl?ie=UTF8&qid=1515808361&sr=8-1&keywords=designing+voice+user+interfaces&linkCode=ll1&tag=uxma08e-20&linkId=43b7936128cfffd415048e1d95efade3)
+[Designing Voice User Interfaces: Principles of Conversational Experiences](https://www.amazon.com/Designing-Voice-User-Interfaces-Conversational/dp/1491955414)
 Cathy Pearl
 
 [How Channels, Devices, and Touchpoints Impact the Customer Journey](https://www.nngroup.com/articles/channels-devices-touchpoints/)

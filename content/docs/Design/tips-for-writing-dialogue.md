@@ -22,7 +22,7 @@ Here’s an example. Information contained in [square brackets] communicates cor
 >
 > **MYRUNBUDDY** > [Create account] “Welcome to MyRunBuddy! Let’s start by creating an account.”
 
-_Since this user is new to MyRunBuddy, we’ve started by giving the user an instruction. This can_ _bee_ _brief when paired with a visual, in this case_ _a screen for account creation\*\*. Users aren’t going to want to input private account information using their voice._
+_Since this user is new to MyRunBuddy, we’ve started by giving the user an instruction. This can be brief when paired with a visual, in this case a screen for account creation. Users aren’t going to want to input private account information using their voice._
 
 If you’re greeting a return user, welcome them back. If it’s been awhile, reestablish expectations so they remember what they can ask.
 
@@ -41,7 +41,7 @@ When introducing intents, limit yourself to three. Say the most important intent
 >
 > **MYRUNBUDDY** > [Recording Run] “Starting. To check your run’s progress, say ‘What’s my pace?’ or ‘How far have I run?’”
 
-_The user heard these prompts because it's their first time recording a run. Use your best judgement with what types of intents to include here. Revealing how to_ _phrase_ _one intent might clue them in on how to say other similar intents. This is something worth_ [_testing_](/dos/design/test-with-real-people/user-testing) _with your users._
+_The user heard these prompts because it's their first time recording a run. Use your best judgement with what types of intents to include here. Revealing how to phrase one intent might clue them in on how to say other similar intents. This is something worth [testing](/dos/design/test-with-real-people/user-testing) with your users._
 
 ## 2. Confirm information
 
@@ -51,13 +51,13 @@ This lets the user know that an action is complete ([Golden Rule #4:](https://ww
 >
 > **MYRUNBUDDY** > [Confirmation + Recording Run] “Starting…”
 
-_Since this user has recored a run before using their voice, there’s no follow-up to the app’s confirmation. We’ll_ [_show you examples_](/docs/Design/tips-for-designing-visual-output) _of things you might want to include along with a confirmation in later steps._
+_Since this user has recored a run before using their voice, there’s no follow-up to the app’s confirmation. We’ll [show you examples](/docs/Design/tips-for-designing-visual-output) of things you might want to include along with a confirmation in later steps._
 
-Confirmations don’t always need to be conversational. Consider sounds. In the example above, instead of saying “starting,” you could replace this with a beep or swoosh soup.
+Confirmations don’t always need to be conversational. Consider sounds. In the example above, instead of saying “starting,” you could replace this with a beep or swoosh sound.
 
 ## 3. Be relevant
 
-Voice input for complex queries is faster and more convenient. Especially for users who are multi-tasking. And yet, the average person can read faster than they can listen. Consider whether a voice response, a [visual response](/docs/Design/tips-for-designing-visual-output), or both is appropriate. Respect your users’ time; don’t inconvenience them by taking too long to respond. A well-crafted response ([Golden Rule #3:](https://www.cs.umd.edu/users/ben/goldenrules.html) “offer informative feedback”) will increase re-engagement.
+Voice input for complex queries is faster and more convenient, especially for users who are multi-tasking. And yet, the average person can read faster than they can listen. Consider whether a voice response, a [visual response](/docs/Design/tips-for-designing-visual-output), or both is appropriate. Respect your users’ time; don’t inconvenience them by taking too long to respond. A well-crafted response ([Golden Rule #3:](https://www.cs.umd.edu/users/ben/goldenrules.html) “offer informative feedback”) will increase re-engagement.
 
 > **RETURN USER** > [Listening] “MyRunBuddy, what’s my pace?”
 >
@@ -77,7 +77,7 @@ Include scenarios in your script where the user’s intent isn’t understood. D
 >
 > **MYRUNBUDDY** > [Recording Run] “Stopping…Would you like to save this run?”
 
-_In this example, the app misheard the user’s_ _‘stop’ intent for_ _‘start’. This goes back to step #2: “confirm information”. The app let the user confirm an important action (in this case, ending a workout) before taking it. This prevents costly errors before they happen._
+_In this example, the app misheard the user’s ‘stop’ intent for ‘start’. This goes back to step #2: “confirm information”. The app let the user confirm an important action (in this case, ending a workout) before taking it. This prevents costly errors before they happen._
 
 Don’t ask a question if you won’t be able to understand the answer. Even at the risk of sounding less conversational.
 
@@ -91,7 +91,7 @@ Don’t ask a question if you won’t be able to understand the answer. Even at 
 
 _In this example, the app added a question to make the app sound more human. When the user answered the question, the app failed to respond as this question wasn’t supported by a yes/no intent._
 
-Include scenarios in your script for your app failing to receive speech input at all. What if they take longer than anticipated to answer a question? Account for scenarios in which users aren't sure how to phrase their question or response. What if there’s a long pause? You’ll want to re-prompt the user if this occurs. For example, if Siri doesn’t hear anything after a while, you might hear “Uh huh,” “I’m here,” or “Yes?”
+Include scenarios in your script for your app failing to receive speech input at all. What if they take longer than anticipated to answer a question? Account for scenarios in which users aren't sure how to phrase their question or response. What if there’s a long pause? You’ll want to re-prompt the user if this occurs. For example, if Siri doesn’t hear anything after awhile, you might hear “Uh huh,” “I’m here,” or “Yes?”
 
 ## 5. Talk like a human
 
@@ -101,7 +101,7 @@ Human-to-human conversation is second nature. Talking to a voice assistant doesn
 >
 > **MYRUNBUDDY** > [Recording Run + Map] "You’re. 5 miles away from the 3 mile marker.”
 
-_In this example, the response would read as_ _“you’re [pause] five miles away…” - a big difference!_ A good TTS engine can handle decimals with correct period placement. _To make this more conversational, change this to something like_ _“You’re half a mile away from the 3 mile marker.”_
+_In this example, the response would read as “you’re [pause] five miles away…” - a big difference!  A good TTS engine can handle decimals with correct period placement. To make this more conversational, change this to something like, “You’re half a mile away from the 3 mile marker.”
 
 ## 6. Provide variety & consistency
 

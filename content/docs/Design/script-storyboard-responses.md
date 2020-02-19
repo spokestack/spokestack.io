@@ -5,7 +5,7 @@ description: Script and storyboard responses to the user.
 draft: false
 ---
 
-When a user expresses an intent and your app responds, we call this interaction a **turn**. Your script will reflect turns you defined in your [experience map](/docs/Design/map-out-integration) in more detail. You’ll also want to reference your [initial list of intents](/docs/Design/map-out-integration).
+When a user expresses an intent and your app responds, we call this interaction a **turn**. Your script will reflect turns you defined in your [experience map](/docs/Design/map-out-integration) in more detail. You’ll also want to reference your initial list of intents.
 
 If you have more than one experience map, create scripts to represent each scenario. We use [Dropbox Paper](https://www.dropbox.com/paper), but any collaborative editor will work.
 

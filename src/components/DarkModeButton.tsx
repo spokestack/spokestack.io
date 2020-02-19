@@ -6,7 +6,7 @@ import { getDarkModePref, setDarkModePref } from '../utils/auth'
 import { css } from '@emotion/core'
 
 export default function DarkModeButton() {
-  const [dark, setDark] = useState(false)
+  const [dark, setDark] = useState(getDarkModePref())
 
   function toggleDarkMode() {
     const html = document.querySelector('html')

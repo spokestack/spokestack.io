@@ -1,12 +1,12 @@
 import * as theme from '../utils/theme'
 
-import React, { useState } from 'react'
+import React, { useEffect, useState } from 'react'
 import { getDarkModePref, setDarkModePref } from '../utils/auth'
 
 import { css } from '@emotion/core'
 
 export default function DarkModeButton() {
-  const [dark, setDark] = useState(getDarkModePref())
+  const [dark, setDark] = useState(false)
 
   function toggleDarkMode() {
     const html = document.querySelector('html')
@@ -18,6 +18,10 @@ export default function DarkModeButton() {
     setDarkModePref(newDark)
     html.classList[newDark ? 'add' : 'remove']('dark-mode')
   }
+
+  useEffect(() => {
+    setDark(getDarkModePref())
+  }, [])
 
   return (
     <button css={styles.button} onClick={toggleDarkMode}>

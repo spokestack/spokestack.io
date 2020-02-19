@@ -1,10 +1,11 @@
+import * as theme from '../utils/theme'
+
 import React, { SelectHTMLAttributes, useState } from 'react'
 import { SerializedStyles, css } from '@emotion/core'
 
 import { MIN_DEFAULT_MEDIA_QUERY } from 'typography-breakpoint-constants'
 import SVGIcon from './SVGIcon'
 import iconArrowDown from '../icons/arrow-down.svg'
-import * as theme from '../utils/theme'
 
 export interface Option {
   title: string
@@ -46,6 +47,7 @@ export default function Select({
       className={`${open ? 'select-open' : ''}${disabled ? ' disabled' : ''}`}>
       <label
         htmlFor={id}
+        className="select-label"
         css={[styles.label, labelCss]}
         onClick={() => {
           setOpen(!disabled && !open)
@@ -135,7 +137,6 @@ const styles = {
     display: flex;
     justify-content: space-between;
     align-items: center;
-    background-color: white;
     border: 1px solid ${theme.mainBorder};
     border-radius: 25px;
     cursor: pointer;
@@ -144,7 +145,6 @@ const styles = {
     p {
       width: 100%;
       overflow: hidden;
-      color: ${theme.header};
       margin: 0;
       white-space: nowrap;
       text-overflow: ellipsis;

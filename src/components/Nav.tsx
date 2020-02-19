@@ -159,7 +159,7 @@ const mobileLink = css`
 
   &:hover,
   &:visited {
-    color: ${theme.textDarkBg};
+    color: ${theme.textDarkBg} !important;
     text-decoration: none;
   }
   &:hover,

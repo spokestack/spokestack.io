@@ -1,12 +1,15 @@
 import { MarkdownRemark, Query } from '../utils/graphql'
 import { graphql, useStaticQuery } from 'gatsby'
 
+import DarkModeButton from '../components/DarkModeButton'
 import Layout from '../components/Layout'
 import React from 'react'
 import SEO from '../components/SEO'
 import { StickyLink } from '../types'
 import StickyNavLayout from '../components/StickyNavLayout'
+import { css } from '@emotion/core'
 import order from '../../content/docs/nav.json'
+import { rhythm } from '../utils/typography'
 import sortBy from 'lodash/sortBy'
 
 interface Props {
@@ -42,6 +45,7 @@ export default function DocsPage({ post, selectFirst }: Props) {
   if (selectFirst) {
     orderedLinks[0].forceSelect = true
   }
+
   return (
     <Layout>
       <SEO
@@ -57,13 +61,16 @@ export default function DocsPage({ post, selectFirst }: Props) {
         ]}
       />
       <StickyNavLayout links={orderedLinks}>
-        {selectFirst ? (
-          <h1>
-            <a href={post.fields.slug}>{post.frontmatter.title}</a>
-          </h1>
-        ) : (
-          <h1>{post.frontmatter.title}</h1>
-        )}
+        <header css={styles.docsHeader}>
+          {selectFirst ? (
+            <h1>
+              <a href={post.fields.slug}>{post.frontmatter.title}</a>
+            </h1>
+          ) : (
+            <h1>{post.frontmatter.title}</h1>
+          )}
+          <DarkModeButton />
+        </header>
         <p>
           <a
             href={post.fields.githubLink}
@@ -76,6 +83,20 @@ export default function DocsPage({ post, selectFirst }: Props) {
       </StickyNavLayout>
     </Layout>
   )
+}
+
+const styles = {
+  docsHeader: css`
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: ${rhythm(1)};
+
+    h1 {
+      margin: 0;
+    }
+  `
 }
 
 export const docsPageQuery = graphql`

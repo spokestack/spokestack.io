@@ -1,11 +1,12 @@
+import { navigate } from 'gatsby'
 import postToCore from './postToCore'
 import { v4 } from 'uuid'
-import { navigate } from 'gatsby'
 
 const userTokenKey = 'spokestack-user-token-v1'
 const authTokenKey = 'spokestack-auth-token-v1'
 const providerKey = 'spokestack-auth-provider-v1'
 const stateKey = 'spokestack-auth-state-v1'
+const darkModeKey = 'spokestack-auth-dark-mode-v1'
 
 function getUserToken() {
   return localStorage.getItem(userTokenKey)
@@ -93,10 +94,23 @@ export function setProvider(provider: string) {
   return localStorage.setItem(providerKey, provider)
 }
 
+export function getDarkModePref() {
+  return !!localStorage.getItem(darkModeKey)
+}
+
+export function setDarkModePref(dark: boolean) {
+  if (dark) {
+    localStorage.setItem(darkModeKey, 'true')
+  } else {
+    localStorage.removeItem(darkModeKey)
+  }
+}
+
 export function logout() {
   localStorage.removeItem(userTokenKey)
   localStorage.removeItem(authTokenKey)
   localStorage.removeItem(providerKey)
   localStorage.removeItem(stateKey)
+  localStorage.removeItem(darkModeKey)
   navigate('/login')
 }

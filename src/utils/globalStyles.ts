@@ -14,6 +14,10 @@ export default css`
   h1 a {
     color: ${theme.text};
   }
+  .select-label {
+    background-color: white;
+    color: ${theme.header};
+  }
   .sticky-nav-wrap {
     background-color: ${theme.stickyNavBackground};
   }
@@ -25,11 +29,31 @@ export default css`
   .sticky-nav-link-active-no-bg {
     color: ${theme.linkStickyNavActive} !important;
   }
+  .sticky-nav-wrap .select-label .icon,
   .sticky-nav-header-icon {
     fill: ${theme.header};
   }
+  html,
+  body,
+  h1,
+  h2,
+  h3,
+  h4,
+  h5,
+  a,
+  .sticky-nav-wrap,
+  .nav-selected-bg,
+  .sticky-nav-link-active,
+  .sticky-nav-link-active-no-bg,
+  .sticky-nav-header-icon {
+    transition: background-color 0.2s ${theme.transitionEasing},
+      color 0.1s ${theme.transitionEasing},
+      border-color 0.1s ${theme.transitionEasing},
+      text-decoration-color 0.1s ${theme.transitionEasing},
+      fill 0.1s ${theme.transitionEasing};
+  }
   html.dark-mode {
-    background-color: ${theme.text};
+    background-color: ${theme.mainBackgroundDark};
 
     body,
     h1,
@@ -61,6 +85,10 @@ export default css`
         text-decoration-color: ${theme.primary};
       }
     }
+    .select-label {
+      background-color: ${theme.stickyNavBackgroundDark};
+      color: ${theme.textDarkBg};
+    }
     .sticky-nav-wrap {
       background-color: ${theme.stickyNavBackgroundDark};
     }
@@ -72,6 +100,7 @@ export default css`
     .sticky-nav-link-active-no-bg {
       color: ${theme.linkDark} !important;
     }
+    .sticky-nav-wrap .select-label .icon,
     .sticky-nav-header-icon {
       fill: ${theme.textDarkBg};
     }

@@ -36,7 +36,7 @@ Here’s an example:
 
 # **4. Respond.**
 
-Focus on the conversational aspect of your response for now. We’ll get to [visual responses](/docs/Design/tips-for-designing-visual-output) in step #8. Refer to our [best practices](/docs/Design/tips-for-writing-dialog) if you get stuck. Label each turn with its corresponding intent. \*\*\*\*Write any variations below each response. Note any assumptions and remaining questions below each turn.
+Focus on the conversational aspect of your response for now. We’ll get to [visual responses](/docs/Design/tips-for-designing-visual-output) in step #8. Refer to our [best practices](/docs/Design/tips-for-writing-dialog) if you get stuck. Label each turn with its corresponding intent. Write any variations below each response. Note any assumptions and remaining questions below each turn.
 
 > Pace
 > **RETURN USER:** [Listening] “MyRunBuddy, how fast am I running?”

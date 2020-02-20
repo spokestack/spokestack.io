@@ -60,7 +60,7 @@ jobs:
           command: aws s3 sync --delete public s3://beta.spokestack.io/
       - run:
           name: Enable cloudfront cli
-          command: avp aws configure set preview.cloudfront true
+          command: aws configure set preview.cloudfront true
       - run:
           name: Invalidate the cdn caches
           command: aws cloudfront create-invalidation --distribution-id E1VWEXJMB3URMJ --paths "/*"
@@ -85,7 +85,7 @@ jobs:
           command: aws s3 sync --delete public s3://spokestack.io/
       - run:
           name: Enable cloudfront cli
-          command: avp aws configure set preview.cloudfront true
+          command: aws configure set preview.cloudfront true
       - run:
           name: Invalidate the cdn caches
           command: aws cloudfront create-invalidation --distribution-id E1P3DI1Q9L6OBH --paths "/*"

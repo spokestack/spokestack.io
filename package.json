@@ -67,7 +67,7 @@
     "typescript": "^3.5.3",
     "typography": "^0.16.19",
     "typography-breakpoint-constants": "^0.16.19",
-    "uuid": "^3.3.3"
+    "uuid": "^7.0.0"
   },
   "devDependencies": {
     "@commitlint/cli": "^8.1.0",

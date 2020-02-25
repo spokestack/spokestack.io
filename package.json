@@ -5,22 +5,23 @@
   "version": "1.6.1",
   "author": "Timmy Willison <4timmywil@gmail.com>",
   "scripts": {
-    "build": "yarn clean && gatsby build",
+    "build": "npm run clean && gatsby build",
     "clean": "gatsby clean",
     "commit": "git-cz",
     "deploy": "gatsby build && gh-pages -d public -b master",
     "eslint": "eslint .",
     "format": "prettier --write \"**/*.tsx\" \"**/*.ts\" \"**/*.js\" \"**/*.md\"",
-    "lint": "concurrently --raw \"yarn type-check\" \"yarn eslint\" \"yarn prettier\"",
-    "lint:fix": "concurrently --raw \"yarn type-check\" \"lint-staged\"",
+    "lint": "concurrently --raw \"npm run type-check\" \"npm run eslint\" \"npm run prettier\"",
+    "lint:fix": "concurrently --raw \"npm run type-check\" \"lint-staged\"",
     "post": "node tasks/post.js",
+    "preinstall": "npm-force-resolutions",
     "prettier": "prettier --check \"**/*.tsx\" \"**/*.ts\" \"**/*.js\" \"**/*.md\"",
     "release": "semantic-release",
     "schema": "graphql-codegen --config codegen.yml && prettier --write \"**/graphql.d.ts\"",
     "schema:remote": "node tasks/schema.js",
     "serve": "gatsby serve",
-    "start": "yarn clean && gatsby develop",
-    "test": "yarn lint",
+    "start": "npm run clean && gatsby develop",
+    "test": "npm run lint",
     "type-check": "tsc -p tsconfig.json --noEmit"
   },
   "dependencies": {
@@ -59,6 +60,7 @@
     "intersection-observer": "^0.7.0",
     "isomorphic-unfetch": "^3.0.0",
     "lodash": "^4.17.15",
+    "npm-force-resolutions": "0.0.3",
     "prismjs": "^1.17.1",
     "react": "^16.8.6",
     "react-dom": "^16.8.6",
@@ -94,16 +96,17 @@
     "eslint-config-prettier": "^6.5.0",
     "eslint-plugin-prettier": "^3.1.1",
     "eslint-plugin-react": "^7.16.0",
-    "graphql-cli": "^3.0.14",
+    "graphql-cli": "^4.0.1-beta.2",
     "husky": "^4.0.6",
     "lint-staged": "^10.0.1",
     "mkdirp": "^1.0.0",
     "prettier": "^1.18.2",
     "semantic-release": "^17.0.0",
-    "shelljs": "^0.8.3"
+    "shelljs": "^0.8.3",
+    "vfile-message": "^2.0.2"
   },
   "resolutions": {
-    "lodash": ">=4.17.15",
+    "lodash": ">=4.17.12",
     "vfile-message": ">=2.0.2"
   },
   "bugs": {
@@ -134,7 +137,7 @@
   "husky": {
     "hooks": {
       "commit-msg": "commitlint -E HUSKY_GIT_PARAMS",
-      "pre-commit": "env FORCE_COLOR=1 yarn lint:fix"
+      "pre-commit": "env FORCE_COLOR=1 npm run lint:fix"
     }
   },
   "release": {
@@ -143,7 +146,7 @@
     ],
     "ci": false,
     "npmPublish": false,
-    "pre-commit": "yarn lint:fix",
+    "pre-commit": "npm run lint:fix",
     "plugins": [
       "@semantic-release/commit-analyzer",
       "@semantic-release/release-notes-generator",

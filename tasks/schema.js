@@ -19,7 +19,7 @@ if (!githubToken) {
 }
 
 if (!shell.which('graphql')) {
-  shell.echo('This script requires graphql-cli (yarn add -D graphql-cli).')
+  shell.echo('This script requires graphql-cli (npm install -D graphql-cli).')
   shell.exit(1)
 }
 

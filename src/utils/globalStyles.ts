@@ -252,6 +252,17 @@ export default css`
   .title {
     font-size: ${adjustFontSizeTo('22px').fontSize};
   }
+  .docs-header {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: ${rhythm(1)};
+
+    h1 {
+      margin: 0;
+    }
+  }
   ${MIN_DEFAULT_MEDIA_QUERY} {
     h1 {
       font-size: ${adjustFontSizeTo('45px').fontSize};

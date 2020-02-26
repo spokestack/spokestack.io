@@ -14,7 +14,7 @@
     "lint": "concurrently --raw \"npm run type-check\" \"npm run eslint\" \"npm run prettier\"",
     "lint:fix": "concurrently --raw \"npm run type-check\" \"lint-staged\"",
     "post": "node tasks/post.js",
-    "preinstall": "npm-force-resolutions",
+    "preinstall": "npx npm-force-resolutions",
     "prettier": "prettier --check \"**/*.tsx\" \"**/*.ts\" \"**/*.js\" \"**/*.md\"",
     "release": "semantic-release",
     "schema": "graphql-codegen --config codegen.yml && prettier --write \"**/graphql.d.ts\"",

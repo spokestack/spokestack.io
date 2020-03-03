@@ -10,7 +10,7 @@ import { PageRendererProps, graphql } from 'gatsby'
 import React, { useEffect, useRef, useState } from 'react'
 
 import Card from '../components/Card'
-import Events from '../components/Events'
+// import Events from '../components/Events'
 import Layout from '../components/Layout'
 import News from '../components/News'
 import { Query } from '../utils/graphql'
@@ -307,12 +307,10 @@ export default function Index({ data, location }: Props) {
           </Card>
         </div>
       </section>
-      {!!data.site.siteMetadata.events.length && (
-        <section id="events" css={styles.summary}>
-          <h1 css={styles.summaryHeader}>Events &amp; Workshops</h1>
-          <Events />
-        </section>
-      )}
+      {/* <section id="events" css={styles.summary}>
+        <h1 css={styles.summaryHeader}>Events &amp; Workshops</h1>
+        <Events />
+      </section> */}
       <section id="newsletter" css={styles.newsletter}>
         <Newsletter />
       </section>

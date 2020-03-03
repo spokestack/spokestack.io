@@ -56,7 +56,7 @@ export default function Nav() {
                 In the News
               </a>
             </li>
-            <li css={styles.listItem}>
+            {/* <li css={styles.listItem}>
               <a
                 css={styles.navLink}
                 href="/#events"
@@ -64,7 +64,7 @@ export default function Nav() {
                 onClick={() => setMobileOpen(false)}>
                 Events
               </a>
-            </li>
+            </li> */}
             <li css={styles.listItem}>
               <Link
                 className="nav-link"

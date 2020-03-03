@@ -12,18 +12,6 @@ export default [
       'A studio recording of a professional voice actor using 6 hours of audio.'
   },
   {
-    model: 'trump',
-    label: 'Celebrity',
-    description: 'An event recording from a speech using 25 minutes of audio.'
-  },
-  {
-    model: 'ljspeech',
-    label: 'Clear',
-    description:
-      'An experienced amateur likely from a home recording using 24 hours of audio.'
-  },
-
-  {
     model: 'tatum',
     label: 'Amateur 1',
     description: 'A studio recording by an amateur using 17 minutes of audio.'

@@ -5,7 +5,7 @@ import { getDarkModePref } from './src/utils/auth'
 
 export { default as wrapRootElement } from './src/apollo/wrapRootElement'
 
-const rdocs = /^\/docs/
+const rdark = /^\/(?:docs|blog)/
 
 export const onClientEntry = () => {
   // IntersectionObserver polyfill for gatsby-background-image (Safari, IE)
@@ -20,7 +20,7 @@ export const onRouteUpdate = ({ location }) => {
   if (!html) {
     return
   }
-  if (rdocs.test(location.pathname) && getDarkModePref()) {
+  if (rdark.test(location.pathname) && getDarkModePref()) {
     html.classList.add('dark-mode')
   } else {
     html.classList.remove('dark-mode')

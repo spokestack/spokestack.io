@@ -2,8 +2,8 @@
 
 ### tldr;
 
-- Run the site with `yarn start`
-- Run tests with `yarn test`
+- Run the site with `npm start`
+- Run tests with `npm test`
 - Prettier enforces the style guide and will format on commit.
 
 **[Supported browsers](https://browserl.ist/?q=%3E0.35%25%2C+not+op_mini+all)**: (basically IE 11, modern desktop and mobile browsers)
@@ -38,7 +38,7 @@ Edit the markdown files in the `docs/` folder. If you don't see your changes rig
 
 [Fork the repo](https://help.github.com/en/github/getting-started-with-github/fork-a-repo), and [clone](https://help.github.com/en/github/creating-cloning-and-archiving-repositories/cloning-a-repository) to a directory of your choosing.
 
-Then run `yarn` to install dependencies.
+Then run `npm install` to install dependencies.
 
 ## Testing
 
@@ -47,17 +47,17 @@ Tests are written with [mocha](https://mochajs.org/) and [Node's official assert
 Here are the npm scripts that run tests:
 
 ```bash
-$ yarn test # Lints and runs the unit tests
-$ yarn test:unit # Runs the unit tests
-$ yarn test:watch # Watches files and runs the unit tests on file save
+$ npm test # Lints and runs the unit tests
+$ npm run test:unit # Runs the unit tests
+$ npm run test:watch # Watches files and runs the unit tests on file save
 ```
 
 ## Running the site
 
-To run the site, first make sure dependencies are installed (`yarn` or `npm i`) and run the following:
+To run the site, first make sure dependencies are installed (`npm i`) and run the following:
 
 ```bash
-$ yarn start
+$ npm start
 ```
 
 This spins up a local server at http://localhost:8000.
@@ -65,8 +65,8 @@ This spins up a local server at http://localhost:8000.
 To test in production mode, run the following:
 
 ```bash
-$ yarn build # or npm run build
-$ yarn serve
+$ npm run build
+$ npm run serve
 ```
 
 ## Coding Guidelines
@@ -97,13 +97,13 @@ established in the code.
 Guidelines are enforced using [ESLint](https://eslint.org/) and [Prettier](https://prettier.io/):
 
 ```bash
-$ yarn lint # or npm run lint
+$ npm run lint
 ```
 
 Some things are fixable automatically.
 
 ```bash
-$ yarn lint:fix
+$ npm run lint:fix
 ```
 
 This script is run on commit, which means that the commit may need amending if any changes were made as a result of the commit.
@@ -121,14 +121,14 @@ spokestack.io includes a helpful prompt for committing to guide you in the proce
 Run the following after staging files:
 
 ```bash
-$ yarn commit
+$ npm run commit
 ```
 
 ## Updating GraphQL query types
 
 The TypeScript types are generated from the schema using [GraphQL Code Generator](https://github.com/dotansimha/graphql-code-generator#readme).
 
-To update, run `yarn schema`.
+To update, run `npm run schema`.
 
 ## Adding a new documentation page
 

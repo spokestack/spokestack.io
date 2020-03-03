@@ -7,9 +7,7 @@ import React from 'react'
 import SEO from '../components/SEO'
 import { StickyLink } from '../types'
 import StickyNavLayout from '../components/StickyNavLayout'
-import { css } from '@emotion/core'
 import order from '../../content/docs/nav.json'
-import { rhythm } from '../utils/typography'
 import sortBy from 'lodash/sortBy'
 
 interface Props {
@@ -61,7 +59,7 @@ export default function DocsPage({ post, selectFirst }: Props) {
         ]}
       />
       <StickyNavLayout links={orderedLinks}>
-        <header css={styles.docsHeader}>
+        <header className="docs-header">
           {selectFirst ? (
             <h1>
               <a href={post.fields.slug}>{post.frontmatter.title}</a>
@@ -83,20 +81,6 @@ export default function DocsPage({ post, selectFirst }: Props) {
       </StickyNavLayout>
     </Layout>
   )
-}
-
-const styles = {
-  docsHeader: css`
-    display: flex;
-    flex-direction: row;
-    justify-content: space-between;
-    align-items: center;
-    margin-bottom: ${rhythm(1)};
-
-    h1 {
-      margin: 0;
-    }
-  `
 }
 
 export const docsPageQuery = graphql`

@@ -59,7 +59,7 @@ if (args.length) {
   post(...args)
 } else {
   console.log(
-    'Usage: yarn post "Blog Post Title" "This is a blog post description."'
+    'Usage: npm run post "Blog Post Title" "This is a blog post description."'
   )
   throw new Error('Missing arguments')
 }

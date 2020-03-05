@@ -6,7 +6,7 @@ import LoadingPage from './LoadingPage'
 import React from 'react'
 import { RouteComponentProps } from '@reach/router'
 import gql from 'graphql-tag'
-import { isLoggedIn } from '../utils/auth'
+import { isLoggedIn, clearStorage } from '../utils/auth'
 import { navigate } from 'gatsby'
 
 const LIST_ACCOUNTS_QUERY = gql`
@@ -75,12 +75,13 @@ export default function RouteWithAccount({
   const account = getAccountResult.data && getAccountResult.data.getAccount
 
   if (error) {
+    clearStorage()
     return (
       <ErrorPage title="Account Settings">
-        <h4>
-          There was a problem retrieving your account. Please refresh and try
-          again.
-        </h4>
+        <h4>We&rsquo;re sorry! There was a problem retrieving your account.</h4>
+        <h2>
+          Please <a href="/login">log in</a> again.
+        </h2>
         <p>Debugging details:</p>
         <p>
           <code>{error.message}</code>

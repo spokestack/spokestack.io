@@ -106,11 +106,15 @@ export function setDarkModePref(dark: boolean) {
   }
 }
 
-export function logout() {
+export function clearStorage() {
   localStorage.removeItem(userTokenKey)
   localStorage.removeItem(authTokenKey)
   localStorage.removeItem(providerKey)
   localStorage.removeItem(stateKey)
   localStorage.removeItem(darkModeKey)
+}
+
+export function logout() {
+  clearStorage()
   navigate('/login')
 }

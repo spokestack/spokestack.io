@@ -17,5 +17,23 @@ export default new ApolloClient({
       })
     }
   },
+  onError: (error = {}) => {
+    const graphQLErrors = error.graphQLErrors
+    const networkError = error.networkError
+    if (graphQLErrors) {
+      if (Array.isArray(graphQLErrors)) {
+        graphQLErrors.forEach(function({ message, locations, path }) {
+          console.warn(
+            `[GraphQL error]: Message: ${message}, Location: ${locations}, Path: ${path}`
+          )
+        })
+      } else {
+        console.log(graphQLErrors)
+      }
+    }
+    if (networkError) {
+      console.warn('[Network error]: ' + networkError)
+    }
+  },
   typeDefs
 })

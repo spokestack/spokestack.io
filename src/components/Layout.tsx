@@ -34,6 +34,7 @@ const styles = {
   content: css`
     display: grid;
     grid-template-columns: 100%;
+    min-height: 300px;
 
     ${ieBreakpoint} {
       display: flex;

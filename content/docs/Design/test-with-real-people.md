@@ -5,85 +5,62 @@ description: Some ways to test with real people
 draft: false
 ---
 
-Remember the survey and one-sheets you created while [getting to know your audience](/docs/Design/get-to-know-your-audience)? Refer to your findings from both when figuring out what and whom to test your app with. What's your target audience’s comfort level with multi-modal interfaces and/or voice? We recommend testing a beta version of your app rather than a prototype.
+Remember the survey and one-sheets you created while [getting to know your audience](/docs/Design/get-to-know-your-audience)? Refer to your findings from both when figuring out what and who to test your app with. What's your target audience’s comfort level with multi-modal interfaces and/or voice?
 
-Here’s why:
+Create prototypes using [Adobe XD](https://www.adobe.com/products/xd/details.html) and/or [Sketch](https://www.sketch.com/) to review design decisions with your team. Test a beta version of your app rather than a prototype in different contexts where possible. You want people to test your app on their phones, not in a browser. Include public test environments and candidates with varying accents where possible.
 
-# **Challenges of testing multi-modal prototypes**
+Conduct these tests unmoderated or moderated, remote or co-located.  
 
-There are many script prototyping tools, but few that account for the addition of visuals. The three main tools we have tried include Sketch, Invision, and Adobe XD.
+# Unmoderated, remote
 
-## Sketch & Invision
+We recommend this if you're limited by time, man-power, and/or budget. Unmoderated candidates tend to give more honest feedback. Yet, you’re unable to help users when they’re stuck and ask follow-up questions. We use “task completion” tests for iOS, Android, or both on [UserBob](https://userbob.com/).
 
-## Adobe XD
+Prior to testing, create a [one-sheet](/docs/Design/get-to-know-your-audience) for each participant. Include relevant information provided by the testing platform under demographics.
 
-# **Tips for testing a multi-modal interface**
 
-Test how they use your app in different contexts where possible. Do this either unmoderated or moderated. You want people to test your app on their phones, not in a browser. Include public test environments and candidates with varying accents.
+1. **Write research questions.** These should include uncertainties you want to put to rest. Don’t expose these to users. Think of these as internal measurement tools. Here are some examples:
 
-- How do they interact with your app outside of your experience map?
-- What types of things are they asking for? Are these accounted for in your experience?
-
-## **Unmoderated (remote)**
-
-We recommend this if you're limited by time, manpower, and/or budget. Unmoderated candidates tend to give more honest feedback. One disadvantage is that you’re unable to help the user when they get stuck or ask follow-up questions. For remote testing, we use “task completion” tests for iOS, Android, or both on [UserBob](https://userbob.com/).
-
-1. **Write research questions.**
-   These should include uncertainties you want to put to rest. Don’t expose these to your users. Think of these as internal measurement tools. Here are some examples:
 
 - Do users understand the concept?
 - Do they know what to ask or say? Are they asking the right questions? If not, what are they asking?
 - Are they running into any errors?
 - Where applicable, do they understand that your app is wakeword-enabled? Did they use this feature? If not, why?
 
-2. **Provide a url for testing.**
-   This could include a link to the iTunes Store or Google Play Store. If testing a beta version of an app, send them an invitation before testing. Provide instructions not to download before the test.
 
-3. **Write a list of tasks based on your research questions, no more than 15.**
-   Include follow-up questions to tasks you want further clarity on. A good follow-up question to ask before a user completes a task is: What would you expect to happen here? Try to avoid questions that project future behavior. It’s hard to get honest feedback from projections.
+2. **Provide a url for testing.** This could include a link to the app or google play store. Invite candidates to test the beta version of your app before testing. Provide instructions not to download before the test.
 
-4. **Include a description of what the user should do.**
-   Think of this as your intro. Add this before your list of tasks. Here’s an example:
 
-> We’re asking you to test a mobile app that lets you record different types of fitness activities. This is a work in progress, so if something doesn’t work, explain what you would expect to happen and move on. We’re testing the app, not you — no need to worry about making mistakes.
->
+3. **Write a list of tasks based on your research questions, no more than 15.** Include follow-up questions to tasks you want further clarity on. A good follow-up question to ask before a user completes a task is: What would you expect to happen here? Try to avoid questions that project future behavior as it’s hard to get honest feedback.
+
+
+4. **Include a description of what the user should do.** Think of this as your intro. Add this before your list of tasks. Here’s an example:
+
+
+> We’re asking you to test a mobile app that lets you record different types of fitness activities. This is a work in progress, so if something doesn’t work, explain what you would expect to happen and move on. We’re testing the app, not you - no need to worry about making mistakes.
+> 
 > Below are a series of tasks. Try completing each task using the app on your phone. As much as possible, think out loud as you go along: say what you’re looking at, what you’re trying to do, and what you’re thinking.
 
-5. **Iterate on your tasks and description if users get hung up on phrasing or if there's a bug.**
 
-Remember, you’re collecting qualitative data, not quantitative. If you start to see users saying the same things, finish up that round of testing. Move on to tweaking your product before the next round of testing.
+5. **Iterate on your tasks and description if users get hung up on phrasing or if there's a bug.** Remember, you’re collecting qualitative data, not quantitative. If you start to see users saying the same things, finish up that round of testing. Move on to tweaking your product before the next round of testing.
 
-## **Moderated**
+# Moderated, remote & co-located
 
-You’re able to ask more follow-up questions and improvise, but feedback can sometimes be less honest. We recommend this if you have more time and are able to meet your users face-to-face, either remote or colocated.
+This will feel very similar to the user interviews you conducted while [getting to know your audience](/docs/Design/get-to-know-your-audience). You can ask follow-up questions and improvise, but feedback can be less honest. Do this if you have more time and can meet users face-to-face.
 
-Use your survey to recruit candidates. For colocated tests, make sure candidates are local. Allow yourself a week or more to schedule time to meet one-on-one with candidates. We use Calendly and/or Google Calendar to schedule meetings and share testing times with teammates.
+Use your survey to recruit candidates. Allow yourself at least a week to schedule time to meet one-on-one with candidates. Email them a link where they can schedule a time to meet. We use [Calendly](https://calendly.com/) and/or [Google Calendar](https://calendar.google.com/) to schedule meetings and share test times with the team. Provide instructions on how to sign-up for a time slot and set expectations for your meeting. Offer them an incentive if able.
 
-Emailing your candidates.
+If co-located, make sure candidates are local. Decide where you’ll meet them. Will the environment be public? Or, more private? Will there be background noise? Keep in mind the context of what you are testing when making these decisions. Encourage users to bring and use their own device for testing. Bring a few extra mobile devices for testing in case users are unable to download your app.
 
-Gather a list of tasks that you’re the most unsure about, no more than 10. What are you trying to learn from these candidates? Add these research questions to the top of your script. Write a test script. Here’s a sample to get you started.
+Closer to your scheduled meeting, invite them to the beta version of your app. Provide instructions not to download before the test in your reminder email. Include a link to your video conference if remote and instruct on how they can join. If they don’t follow this instruction, it’s fine as long as they haven’t interacted with your app. You want a fresh perspective.
 
-1. **Write research questions.**
-   These should include product uncertainties you want to put to rest. Don’t expose these to your users. Think of these as internal measurement tools. Here are some examples:
+Follow the same steps you would for unmoderated remote testing, but come prepared with a test script. Include instructions, tasks, and questions you may have. Here’s a [sample](https://docs.google.com/document/d/1291FI3KTP8ycVwqcaTJITAe5jQHfnt_t5XaLnMBbD6E/edit) to get you started adopted from Steve Krug’s [Rocket Surgery Made Easy](https://www.amazon.com/Rocket-Surgery-Made-Easy-Yourself/dp/0321657292).
 
-- Do users understand the concept?
-- Do they know what to ask or say? Are they asking the right questions? If not, what are they asking?
-- Are they running into any errors?
-- Where applicable, do they understand that your app is wakeword-enabled? Did they use this feature? If not, why?
+Prior to testing, create a [one-sheet](/docs/Design/get-to-know-your-audience) for each participant. Include relevant information from the survey or your email correspondence under demographics. Write down questions specific to a candidate on their one-sheet and make not in your script of when to ask them.
 
-2. **Provide a url for testing.**
-   This could include a link to the iTunes Store or Google Play Store. If testing a beta version of an app, send them an invitation before testing. Provide instructions not to download before the test. It’s best for users to use their own device for testing to eliminate unforeseen barriers. Bring a few extra mobile devices for testing as a back-up in case users are unable to download your app.
+Have your one-sheet on hand during the interview for infrequent note taking. If candidates feel comfortable, stream the discussion so your team can ask questions. For live streaming, we use [Zoom](https://zoom.us/). For internal communication during interviews, we use [Slack](https://slack.com/).
 
-3. **Write a list of tasks based on your research questions, no more than 15.**
-   Include follow-up questions to tasks you want further clarity on. A good follow-up question to ask before a user completes a task is: What would you expect to happen here? Try to avoid questions that project future behavior. It’s hard to get honest feedback from projections.
+After the interview, use your recording to document takeaways. Discuss insights with fellow observers. Allow no more than 20 minutes for this.
 
-4. **Include a description of what the user should do.**
-   This of this as your intro. Add this before your list of tasks. Here’s an example:
+Every project presents a new set of challenges. Need someone to facilitate this process? We can help.
 
-> We’re asking you to test a mobile app that lets you record different types of fitness activities. This is a work in progress, so if something doesn’t work, explain what you would expect to happen and move on. We’re testing the app, not you — no need to worry about making mistakes.
->
-> Below are a series of tasks. Try completing each task using the app on your phone. As much as possible, think out loud as you go along: say what you’re looking at, what you’re trying to do, and what you’re thinking.
-
-5. **Iterate on your tasks and descriptions if users get hung up on phrasing or if there's a bug.**
-
-Remember, you’re collecting qualitative data, not quantitative. If you start to see users saying the same things, finish up that round of testing. Move on to tweaking your product before the next round of testing.
+[Email us for more details →](mailto: hello@spokestack.io)

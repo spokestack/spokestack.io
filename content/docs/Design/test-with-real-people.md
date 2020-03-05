@@ -9,7 +9,7 @@ Remember the survey and one-sheets you created while [getting to know your audie
 
 Create prototypes using [Adobe XD](https://www.adobe.com/products/xd/details.html) and/or [Sketch](https://www.sketch.com/) to review design decisions with your team. Test a beta version of your app rather than a prototype in different contexts where possible. You want people to test your app on their phones, not in a browser. Include public test environments and candidates with varying accents where possible.
 
-Conduct these tests unmoderated or moderated, remote or co-located.  
+Conduct these tests unmoderated or moderated, remote or co-located.
 
 # Unmoderated, remote
 
@@ -17,29 +17,22 @@ We recommend this if you're limited by time, man-power, and/or budget. Unmoderat
 
 Prior to testing, create a [one-sheet](/docs/Design/get-to-know-your-audience) for each participant. Include relevant information provided by the testing platform under demographics.
 
-
 1. **Write research questions.** These should include uncertainties you want to put to rest. Don’t expose these to users. Think of these as internal measurement tools. Here are some examples:
-
 
 - Do users understand the concept?
 - Do they know what to ask or say? Are they asking the right questions? If not, what are they asking?
 - Are they running into any errors?
 - Where applicable, do they understand that your app is wakeword-enabled? Did they use this feature? If not, why?
 
-
 2. **Provide a url for testing.** This could include a link to the app or google play store. Invite candidates to test the beta version of your app before testing. Provide instructions not to download before the test.
-
 
 3. **Write a list of tasks based on your research questions, no more than 15.** Include follow-up questions to tasks you want further clarity on. A good follow-up question to ask before a user completes a task is: What would you expect to happen here? Try to avoid questions that project future behavior as it’s hard to get honest feedback.
 
-
 4. **Include a description of what the user should do.** Think of this as your intro. Add this before your list of tasks. Here’s an example:
 
-
 > We’re asking you to test a mobile app that lets you record different types of fitness activities. This is a work in progress, so if something doesn’t work, explain what you would expect to happen and move on. We’re testing the app, not you - no need to worry about making mistakes.
-> 
+>
 > Below are a series of tasks. Try completing each task using the app on your phone. As much as possible, think out loud as you go along: say what you’re looking at, what you’re trying to do, and what you’re thinking.
-
 
 5. **Iterate on your tasks and description if users get hung up on phrasing or if there's a bug.** Remember, you’re collecting qualitative data, not quantitative. If you start to see users saying the same things, finish up that round of testing. Move on to tweaking your product before the next round of testing.
 

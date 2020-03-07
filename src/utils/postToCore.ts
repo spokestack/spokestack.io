@@ -2,6 +2,8 @@ interface RequestOptions extends Omit<RequestInit, 'body'> {
   body?: { [key: string]: any } | string
 }
 
+const coreUrl = 'https://core.pylon.com'
+
 export default function postToCore(url: string, options?: RequestOptions) {
   options = {
     ...options,
@@ -15,10 +17,7 @@ export default function postToCore(url: string, options?: RequestOptions) {
   if (options.body) {
     options.body = JSON.stringify(options.body)
   }
-  if (!process.env.PYLON_CORE_URL) {
-    throw new Error('PYLON_CORE_URL is not set in the environment.')
-  }
-  return fetch(`${process.env.PYLON_CORE_URL}${url}`, options as RequestInit)
+  return fetch(`${coreUrl}${url}`, options as RequestInit)
     .then((response) => {
       if (response.ok) {
         return [null, response]

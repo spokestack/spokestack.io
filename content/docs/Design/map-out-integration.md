@@ -5,54 +5,75 @@ description: Consider what users want to ask and how you will respond.
 draft: false
 ---
 
-Before [writing a script](/docs/Design/script-storyboard-responses), consider what you want users to ask and how you will respond. This is why it's important to [know your audience](/docs/Design/get-to-know-your-audience). Focus on specific tasks that users can fulfill using voice. For example, buying a movie ticket. Actions the user wishes to perform are called **intents**. Buying a movie ticket could include intents to search for a movie title, to select a showtime, and one to confirm the purchase. The phrasing used to express an intent is called an **utterance**. For example, an utterance for the 'SearchMovie' intent could be 'I want to see 1917'.
+After identifying the right use cases for voice and multi-modal interactions in your app, the next step is to plan the integration. A useful technique is to create an customer journey or experience map.
 
-Visualize any problem(s) and or tasks/scenarios you're trying to solve for. Write down a rough list of intents before mapping. Think of this as a fluid list that will help frame how you teach users what to ask. Keep adding intents to this list throughout as you see fit.
+## Experience Mapping
 
-Imagine you're working on a fitness tracker. For the purposes of this exercise, let's call it MyRunBuddy. Here's a list of some intents you might include:
-
-![](https://paper-attachments.dropbox.com/s_C4D40CF4264B091F315BA630BFCAF3A9024DF8E8F6C6ED7DCF4188B1D6A5EE61_1580942864791_MyRunBuddy+-+intents.png)
-
-## What is it?
-
-When creating a multi-modal experience, don't design and build flows in isolation. This is where a mapping exercise can help.
-
-An [experience map](https://www.nngroup.com/articles/channels-devices-touchpoints/) is a list of inputs from left to right with simultaneous outputs below. Multi-modal maps include intents and gestures followed by voice and visual outputs. A complete map will provide a better sense of scope before building anything.
+An experience map is a list of inputs from left to right with simultaneous outputs below. Multi-modal maps include intents and gestures followed by voice and visual outputs. A complete map will provide a better sense of scope before building anything.
 
 Inspiration for this exercise comes from the [Sketch Phase](https://www.thesprintbook.com/how) of _The Design Sprint_ and [How to Make an Experience Map](https://blog.carbonfive.com/2017/08/03/experience-mapping-2/).
 
-## Getting Started
+## Intents and Utterances
 
-Setup will depend on whether you'll be working with a **colocated team**, a **remote team**, or as an **individual**.
+When experience mapping for multimodal devices we often think of the inputs as either gestures or `intents`. The term intent has specific meaning in the world of natural language understanding (NLU). One of the jobs of an NLU system is to listen to what a user says and convert that to an `intent`. The phrase a user says to express an `intent` is often referred to as an `utterance`.
 
-### Colocated teams
+For example, if you are building an app that sells movie tickets, one action you likely want to handle is searching for a movie. If a user says "I want to see 1917", the NLU process might resolve that to the `SearchMovie` intent. Part of what Spokestack does is handle the tricky mapping of `utterances` to `intents`. For the design process, you can mostly just focus on the actions or intents you want to handle.
 
-You need sticky notes (4-6 different colors), markers, and an empty wall. Tape is optional, but recommended for sticky notes that become less sticky.
+A good first step is to write down a rough list of applicable intents. Think of this as a fluid list that will help frame how you teach users what to ask. Keep adding intents to this list throughout as you see fit.
 
-Invite everyone to your meeting space. Include a variety of teammates with differing areas of expertise. Choose someone to lead and record the discussion using sticky notes.
+### Example: Intent List
 
-### Remote teams
+As a thought example, imagine you're working on a run tracking app. Here's a list of some intents you might include:
 
-You need a shared document that everyone can access and a video conferencing tool. For shared documentation, we use [Google Sheets](https://www.google.com/sheets/about/). For video conferencing, we use [Zoom](https://zoom.us/).
+![](https://paper-attachments.dropbox.com/s_C4D40CF4264B091F315BA630BFCAF3A9024DF8E8F6C6ED7DCF4188B1D6A5EE61_1580942864791_MyRunBuddy+-+intents.png)
 
-Schedule a video conference among colleagues with differing areas of expertise. Choose someone to guide and document the discussion. They need to screen share documentation as you go along. They may want to also record the video conference for future reference.
+## Actors and Actions
 
-### Individuals
+The type of experience map we are using lists "actors" in the app along the left axis. The bottom axis represents time as the actor moves through the app. Each actor and/or touch point needs a separate sticky or cell in a color unique to them. Leave space at the bottom for any questions that may come up, and space towards the top for your voice.
 
-You need a shared document in case you need to gather feedback and share your map later on. We use [Google Sheets](https://www.google.com/sheets/about/).
+![](https://paper-attachments.dropbox.com/s_64309765F21EEABBFEB095F2281AAE0D852D3B39607DDCA807D5E9D53AAABE5C_1581629577075_MyRunBuddy+-+actors+new.png)
 
-## The exercise
+Our maps include the following actors:
 
-### [For existing apps](/docs/Design/for-existing-apps)
+- **User.** This will include gestures and intents. Distinguish gestures from intents using quotes. For example, you could write "pace" on a sticky note or cell to capture a user who's asking how fast they're running. Create separate maps for **return** and **new users**. Consider how you'll onboard voice to new users. iOS has separate permissions for microphone & speech recognition. Android users only have to grant the 'record audio' permission.
 
-This will provide a convenience for users by incorporating a call-and-response experience. This exercise might also help those wanting to build upon one of our pre-existing demos.
+- **Voice.** This will include audio output. How will you respond to your user? When will you allow them to speak? Will they be able to interrupt? Prompts and responses should be in quotes. Don't fill in this column if the feature/interaction in question isn't relevant. This will serve as the basis for [your script](script-storyboard-responses) later on.
 
-### [Starting from scratch](/docs/Design/starting-from-scratch)
+- **Screen.** This will include visual output. What visuals will you add to communicate that you're listening to the user? To communicate that you heard and interpreted the user's intent? What visuals will you provide if providing touch-to-talk support? Remember to keep these high-level. We'll get to [best practices](/docs/Design/tips-for-designing-visual-output) for designing these in a later section.
 
-This exercise is for those who have a basic idea in mind, but are unsure of where to start design-wise.
+- **Support.** This will include actions performed by actors not included in the top three rows (e.g. application server, customer support, and app logic).
 
-### A custom solution
+There is a fourth row that is not actually an actor but more of a notes section. Including it as an actor is perhaps not semantically correct, but still a nice way of organizing our thoughts.
 
-We provide on-site and remote experience mapping workshops tailored to your organization.
+- **Questions (optional).** Notes and unresolved questions.
+
+## Building a Map
+
+### Pick a Starting Point
+
+Most mobile apps will require multiple experience maps to accomodate all the possibly user journies. If you are mapping a new app, a logical starting point might be when a new user opens the app for the first time. For an existing app, a starting point could be when a user returns to the app for a specific reason. Pick a starting point and start listing actions until something would happen on the device. Each action goes on a separate sticky note or cell in the same color as the corresponding actor and/or touch point. Keep your actions platform-agnostic. For example, instead of "tap the home button", which refers to older iPhones, write "wake up device".
+
+|                                                              A starting map for a new app                                                               |                                                             A starting map for an existing app                                                             |
+| :-----------------------------------------------------------------------------------------------------------------------------------------------------: | :--------------------------------------------------------------------------------------------------------------------------------------------------------: |
+| ![](https://paper-attachments.dropbox.com/s_64309765F21EEABBFEB095F2281AAE0D852D3B39607DDCA807D5E9D53AAABE5C_1581629849651_MyRunBuddy+-+new+column.png) | ![](https://paper-attachments.dropbox.com/s_2D0F9EFCECAA3D6E12857EAAD162866F99CA40129F0BD81B218A102B4CF8D9B0_1581626920121_MyRunBuddy+-+as-is+initial.png) |
+
+### Continue Mapping
+
+Map top to bottom, left to right until you capture your user experience without voice. Don't worry about UI specifics at this point. Capture high-level inputs and outputs that get the user to the next step. Move actions around until the order represents your app's flow. Look for any holes in the map that need further clarity. Document lapses in time where necessary.
+
+Consider these questions as you progress
+
+- What is their next task?
+- What information do they use to get there?
+
+Nothing is set in stone. That's the beauty of using stickies. Move actions around until the order feels right to you. Once you've exhausted your initial list of intents, you're done. Look for any holes in the map that need further clarity.
+
+As an example we mapped the user opening the app for the first time, creating an account, starting a run, and finishing a run. This does not include how a user would ask for their run stats (see "questions"). To account for this, you might either want to go back and try to fit these into your initial map or include these in your script later.
+
+![](https://paper-attachments.dropbox.com/s_64309765F21EEABBFEB095F2281AAE0D852D3B39607DDCA807D5E9D53AAABE5C_1581630226823_MyRunBuddy+-+new+complete.png)
+
+## A custom solution
+
+Is this all a bit overwhelming? We provide on-site and remote experience mapping workshops tailored to your organization.
 
 [Email us for more details →](mailto: hello@spokestack.io)

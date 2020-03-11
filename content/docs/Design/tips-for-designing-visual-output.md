@@ -80,6 +80,8 @@ In this example, it's clear what type of output the user will receive since they
 
 ![](https://paper-attachments.dropbox.com/s_BF5D22BAD9421AD3845A926151A97CA26F837572D6DA91B630753CEABD822986_1581541264633_MyRunBuddy+-+Show+me.png)
 
+---
+
 Need help executing? We can provide the design support you need for your next project.
 
 [Email us for more details →](mailto: hello@spokestack.io)

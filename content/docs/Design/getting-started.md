@@ -35,10 +35,10 @@ Here are some benefits of pairing visual and audio responses in a mobile app:
 
 1. **Faster Input** - Simple voice dictation is roughly three times faster than typing. Complex voice requests can be more efficient than navigating multiple visual menus. For example, "Book me a hotel room at the Marriott in downtown Austin on February third." could be much faster than going through an equal number of visual forms.
 
-2. **Faster Output** - While voice input is faster than typing, voice output is slower than reading. Visual output can convey information back to the user in less time than voice output alone. In the above example, a smartphone can display a list of room options instead of trying to read each one out loud.
+1. **Faster Output** - While voice input is faster than typing, voice output is slower than reading. Visual output can convey information back to the user in less time than voice output alone. In the above example, a smartphone can display a list of room options instead of trying to read each one out loud.
 
-3. **Sensitive Information** - A voice response can be inappropriate with sensitive information. For example, the response to "Show me my bank balance" is likely better delivered on the screen than out loud.
+1. **Sensitive Information** - A voice response can be inappropriate with sensitive information. For example, the response to "Show me my bank balance" is likely better delivered on the screen than out loud.
 
-4. **Integration With Existing Assets** - No need to make significant changes to your app's interface to integrate voice. An initial integration can include shortcuts to accomplishing existing tasks within your app.
+1. **Integration With Existing Assets** - No need to make significant changes to your app's interface to integrate voice. An initial integration can include shortcuts to accomplishing existing tasks within your app.
 
-5. **Authentication** - Smartphones have authentication already built in using passcodes, fingerprint ids, and facial recognition.
+1. **Authentication** - Smartphones have authentication already built in using passcodes, fingerprint ids, and facial recognition.

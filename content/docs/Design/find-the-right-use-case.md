@@ -18,6 +18,6 @@ Focus on measurable objectives that have been hard to solve with visual UI chang
 
 Context is key with multi-modal interactions. What are people doing while using your app? Some examples include commuting (driving, biking, walking, etc.), exercising, cooking, and childcare. Your users may not always be able to touch their device. This is where voice input and output can be valuable.
 
-What environment are people in while using your app? Are they somewhere where it might be hard for the device to hear them? If so, touch input may be more appropriate. Are they somewhere where others may overhear them?  If so, visual output may be more appropriate.
+What environment are people in while using your app? Are they somewhere where it might be hard for the device to hear them? If so, touch input may be more appropriate. Are they somewhere where others may overhear them? If so, visual output may be more appropriate.
 
 Finally, what devices are your users pairing with their mobile device? Some examples to consider include Airpods, smart watches, and other voice-activated wearables.

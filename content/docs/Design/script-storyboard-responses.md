@@ -5,28 +5,28 @@ description: Script responses to the user.
 draft: false
 ---
 
-The next step after creating an [experience map](/docs/Design/map-out-integration) that includes voice actions or responses is to start writing a script. When a user expresses an intent and your app responds, we call this interaction a **turn**. Your script will represent dialog for turns you defined in your experience map.
+The next step after creating a multi-modal [experience map](/docs/Design/map-out-integration) is to write a script. When users express an `intent` and your app responds, we call this interaction a `turn`. Your script will represent dialog for `turns` defined in your experience map.
 
 ## Setting the scene
 
 Identify the starting point of your experience map and provide some context. Format contextual clues in italics.
 
-- What's going through their mind?
+- What might the user be thinking about?
 - What are they trying to do?
-- Think back to any scenarios you created during discovery. Where are they currently in the flow?
+- Where are they currently in the flow?
 - Have they granted the necessary permissions?
 
 Here's an example:
 
-_The user has gone through onboarding and has their microphone on. They are familiar with using the app including voice commands. In this scenario, the app is open in the background on their phone. They are currently in the middle of a recorded run with their phone in an armband. To speak to MyRunBuddy, they move their arm towards their face._
+_The user has gone through onboarding and has their microphone on. They are familiar with using the app including voice commands. In this scenario, the app is open in the background on their phone. They are currently in the middle of a recorded run with their phone in an armband. To speak to the fitness tracker, they move their arm towards their face._
 
 ## Writing a Script
 
-Using the context of the scene, for each turn in your experience map, repeat the following steps:
+Keep the context of this scene for each turn in mind when reviewing your experience map. With this in mind, repeat the following steps:
 
 ### 1. Select an Intent or Gesture
 
-Give your user a clear label and, again, be descriptive. Specify whether this is a new or return user. Treat this like you would any other script by bolding the user's name and following it with a colon. Use quotes to differentiate between a user's intents and gestures. Include descriptions of what you would expect to happen on the screen in [square brackets]. Keep these broad and don't make any specific UI decisions at this point.
+Give your user a clear label. Be descriptive. Specify whether this is a new or return user. Treat this like you would any other script by bolding the user's name and following it with a colon. Use quotes to differentiate between a user's `intents` and gestures. Include descriptions of what you would expect to happen on the screen in [square brackets]. Keep these broad and don't make any specific UI decisions at this point.
 
 Here's an example:
 
@@ -34,7 +34,7 @@ Here's an example:
 
 ### 2. Draft a Response
 
-Focus on the conversational aspect of your response for now. We'll get to [visual responses](/docs/Design/tips-for-designing-visual-output) later. Refer to our [best practices](/docs/Design/tips-for-writing-dialog) if you get stuck. Label each turn with its corresponding intent. Write any variations below each response. Note any assumptions and remaining questions below each turn.
+Focus on the conversational aspect of your response for now. We'll get to [visual responses](/docs/Design/tips-for-designing-visual-output) later. Refer to our [best practices](/docs/Design/tips-for-writing-dialog) if you get stuck. Label each turn with its corresponding `intent`. Write any variations below each response. Note any assumptions and remaining questions below each turn.
 
 **_Pace_**  
 **RETURN USER:** [Listening] "MyRunBuddy, how fast am I running?"  
@@ -42,18 +42,18 @@ Focus on the conversational aspect of your response for now. We'll get to [visua
 
 ### 3. Move to the Next Intent or Gesture
 
-Once you've exhausted your experience map, write turns for anything outside that flow. This is where your list of intents will come in handy.
+Once you've exhausted your experience map, write turns for anything outside that flow. This is where your list of `intents` will come in handy.
 
-1. How will you respond if you weren't able to match what the user said with an intent?
+1. How will you respond if you weren't able to match what the user said with an `intent`?
 2. If you ask a question, how will you respond if the user responds with a negative?
 
-Your script is complete once you've exhausted both your experience map(s) and intent list. Write a several variations of your responses. Go back to [best practice](/docs/Design/tips-for-writing-dialog) rule #6 if you get stuck.
+Your script is complete once you've exhausted both your experience map(s) and list of `intents`. Write several variations for responses where necessary. Go back to [best practice](/docs/Design/tips-for-writing-dialog) rule #6 if you get stuck.
 
 Here's an [example](https://www.dropbox.com/scl/fi/0weo35v72i901bynq2j8o/MyRunBuddy-MVP-Return-User-PUBLIC.paper?dl=0&rlkey=mzwmhjl00xznfaxxxo17kjjz1) of a drafted script excluding visual output. We'll get to that in a later step.
 
 ## Test and Refine Your Script
 
-Do your interaction sound human and natural? Type responses [here](https://labs.spokestack.io/) to hear how a synthetic voice might read them. Refer to [step #5](/docs/Design/tips-for-writing-dialog) if you get stuck.
+Does your interaction sound human and natural? Type responses [here](https://labs.spokestack.io/) to hear how a synthetic voice might read them. Refer to [step #5](/docs/Design/tips-for-writing-dialog) if you get stuck.
 
 ## Introduce Visuals
 

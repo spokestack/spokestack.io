@@ -1,7 +1,7 @@
 ---
-title: Script & Storyboard Responses
-navId: Script and Storyboard Responses
-description: Script and storyboard responses to the user.
+title: Script Responses
+navId: Script Responses
+description: Script responses to the user.
 draft: false
 ---
 

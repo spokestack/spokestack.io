@@ -51,11 +51,11 @@ Our fourth row is not an actor, but more of a section for notes . Including it a
 
 ### Prepare your Space
 
-You need sticky notes (4-6 different colors), markers, and an empty wall. Tape is optional, but recommended for sticky notes that become less sticky. Invite a variety of teammates with differing areas of expertise to your space. Choose someone to lead and record the discussion using sticky notes. 
+You need sticky notes (4-6 different colors), markers, and an empty wall. Tape is optional, but recommended for sticky notes that become less sticky. Invite a variety of teammates with differing areas of expertise to your space. Choose someone to lead and record the discussion using sticky notes.
 
 ### Pick a Starting Point
 
-Most mobile apps need multiple experience maps to accomodate all possible user journeys. Establish  a starting point for each. If mapping a new app, a logical starting point might be when a new user opens the app for the first time. For an existing app, you might start when a user returns to the app for a specific reason.
+Most mobile apps need multiple experience maps to accomodate all possible user journeys. Establish a starting point for each. If mapping a new app, a logical starting point might be when a new user opens the app for the first time. For an existing app, you might start when a user returns to the app for a specific reason.
 
 List user actions until you would expect something to happen on the device. Each action goes on a separate sticky note in the same color as the corresponding actor and/or touch point. Keep your actions platform-agnostic. For example, instead of "tap the home button", which refers to older iPhones, write "wake up device".
 

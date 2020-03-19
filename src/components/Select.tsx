@@ -5,7 +5,6 @@ import { SerializedStyles, css } from '@emotion/core'
 
 import { MIN_DEFAULT_MEDIA_QUERY } from 'typography-breakpoint-constants'
 import SVGIcon from './SVGIcon'
-import iconArrowDown from '../icons/arrow-down.svg'
 
 export interface Option {
   title: string
@@ -56,7 +55,7 @@ export default function Select({
         <div css={[styles.iconWrap, iconWrapCss]}>
           <SVGIcon
             className="icon"
-            icon={iconArrowDown.id}
+            icon="#arrow-down"
             extraCss={css`
               ${styles.icon}
               ${iconCss}

@@ -3,9 +3,6 @@ import { graphql, useStaticQuery } from 'gatsby'
 import React from 'react'
 import { SerializedStyles } from '@emotion/core'
 import SocialLink from './SocialLink'
-import githubIcon from '../icons/github.svg'
-import twitterIcon from '../icons/twitter.svg'
-import stackIcon from '../icons/stackoverflow.svg'
 
 const socialQuery = graphql`
   query socialQuery {
@@ -35,7 +32,7 @@ export default function SocialLinks({ iconSize, extraCss, titleCss }: Props) {
       <SocialLink
         href={social.twitter}
         title="Twitter"
-        icon={twitterIcon.id}
+        icon="#twitter"
         iconSize={iconSize}
         extraCss={extraCss}
         titleCss={titleCss}
@@ -43,7 +40,7 @@ export default function SocialLinks({ iconSize, extraCss, titleCss }: Props) {
       <SocialLink
         href={social.github}
         title="GitHub"
-        icon={githubIcon.id}
+        icon="#github"
         iconSize={iconSize}
         extraCss={extraCss}
         titleCss={titleCss}
@@ -51,7 +48,7 @@ export default function SocialLinks({ iconSize, extraCss, titleCss }: Props) {
       <SocialLink
         href={social.stackoverflow}
         title="Stack Overflow"
-        icon={stackIcon.id}
+        icon="#stackoverflow"
         iconSize={iconSize}
         extraCss={extraCss}
         titleCss={titleCss}

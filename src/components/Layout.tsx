@@ -6,6 +6,7 @@ import { MIN_DEFAULT_MEDIA_QUERY } from 'typography-breakpoint-constants'
 import Nav from './Nav'
 import globalStyles from '../utils/globalStyles'
 import { ieBreakpoint } from '../utils/theme'
+import Sprite from '../../svg-sprite.svg'
 
 interface Props {
   children: ReactNode
@@ -15,6 +16,7 @@ export default function Layout({ children }: Props) {
   return (
     <div css={styles.container}>
       <Global styles={globalStyles} />
+      <Sprite />
       <Nav />
       <main css={styles.content}>{children}</main>
       <Footer />

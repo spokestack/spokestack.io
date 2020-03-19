@@ -9,18 +9,17 @@ import { Link } from 'gatsby'
 import React from 'react'
 import SVGIcon from './SVGIcon'
 import { css } from '@emotion/core'
-import iconArrow from '../icons/arrow-forward.svg'
 
 export default function LoginButton() {
   return isLoggedIn() ? (
     <a className="btn" css={styles.loginButton} onClick={() => logout()}>
       Sign Out
-      <SVGIcon icon={iconArrow.id} extraCss={styles.icon} />
+      <SVGIcon icon="#arrow-forward" extraCss={styles.icon} />
     </a>
   ) : (
     <Link className="btn" css={styles.loginButton} to="/login">
       Sign In / Sign Up
-      <SVGIcon icon={iconArrow.id} extraCss={styles.icon} />
+      <SVGIcon icon="#arrow-forward" extraCss={styles.icon} />
     </Link>
   )
 }
@@ -43,7 +42,8 @@ const styles = {
       transition: fill 0.2s ${transitionEasing};
     }
 
-    &:hover {
+    &:hover,
+    &:active {
       background-color: ${grayDark} !important;
     }
 
@@ -57,7 +57,8 @@ const styles = {
       color: ${secondary} !important;
       border: 1px solid ${secondary};
 
-      &:hover {
+      &:hover,
+      &:active {
         color: ${primary} !important;
         background-color: ${secondary} !important;
 

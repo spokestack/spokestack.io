@@ -8,10 +8,6 @@ import * as theme from '../utils/theme'
 import { ApiKey } from '../types'
 import SVGIcon from './SVGIcon'
 import { css } from '@emotion/core'
-import iconCheckmark from '../icons/checkmark.svg'
-import iconCopy from '../icons/copy.svg'
-import iconDelete from '../icons/delete.svg'
-import iconKey from '../icons/key.svg'
 
 interface Props {
   token: Partial<ApiKey>
@@ -49,7 +45,7 @@ export default function Token({ token, onDelete }: Props) {
         <div css={styles.row}>
           <div css={styles.name}>
             <div css={[styles.iconWrap, styles.keyIconWrap]}>
-              <SVGIcon icon={iconKey.id} extraCss={styles.keyIcon} />
+              <SVGIcon icon="#key" extraCss={styles.keyIcon} />
             </div>
             <label>Label:</label>
             {token.displayName}
@@ -61,14 +57,14 @@ export default function Token({ token, onDelete }: Props) {
               onDelete(token)
             }}
             css={styles.iconWrap}>
-            <SVGIcon icon={iconDelete.id} extraCss={styles.deleteIcon} />
+            <SVGIcon icon="#delete" extraCss={styles.deleteIcon} />
           </a>
         </div>
         <div css={styles.row}>
           <label htmlFor={`token-${token.id}`}>Identity</label>
           <a title="Copy identity" onClick={copyId} css={styles.iconWrap}>
             <SVGIcon
-              icon={copiedId ? iconCheckmark.id : iconCopy.id}
+              icon={copiedId ? '#checkmark' : '#copy'}
               extraCss={styles.deleteIcon}
             />
           </a>
@@ -87,7 +83,7 @@ export default function Token({ token, onDelete }: Props) {
         {!!token.key && (
           <a title="Copy key" onClick={copySecret} css={styles.iconWrap}>
             <SVGIcon
-              icon={copiedSecret ? iconCheckmark.id : iconCopy.id}
+              icon={copiedSecret ? '#checkmark' : '#copy'}
               extraCss={styles.deleteIcon}
             />
           </a>

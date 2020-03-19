@@ -10,7 +10,6 @@ import { adjustFontSizeTo } from '../utils/typography'
 import { css } from '@emotion/core'
 import debounce from 'lodash/debounce'
 import find from 'lodash/find'
-import iconPlay from '../icons/play-circle.svg'
 import * as theme from '../utils/theme'
 import synthesize from '../utils/synthesize'
 import { Voice } from '../types'
@@ -193,7 +192,7 @@ export default class SampleVoices extends PureComponent<Props, State> {
             disabled={disabled || submitting}
             extraCss={styles.button}
             onClick={this.play}>
-            <SVGIcon icon={iconPlay.id} extraCss={styles.playIcon} />
+            <SVGIcon icon="#play-circle" extraCss={styles.playIcon} />
             {submitting ? 'Synthesizing...' : 'Hear it'}
           </Button>
         </div>

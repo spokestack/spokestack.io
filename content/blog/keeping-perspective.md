@@ -6,7 +6,7 @@ author: mike
 draft: false
 ---
 
-Since 2012, I watch [this presentation](https://vimeo.com/34017777) by Wilson Minor at the 2011 Build Conference at least once a year. I watched it again last week as a way of trying to refocus myself on our product development work in the midst of all the stress with our current pandemic. I find watching Wilson’s talk helps to not only reset my thinking about why we make things but the consequences of making things - even if they are digital and potentially ephemeral. If you can spare 38 minutes, it's worth your time.  
+Since 2012, I watch [this presentation](https://vimeo.com/34017777) by Wilson Minor at the 2011 Build Conference at least once a year. I watched it again last week as a way of trying to refocus myself on our product development work in the midst of all the stress with our current pandemic. I find watching Wilson’s talk helps to not only reset my thinking about why we make things but the consequences of making things - even if they are digital and potentially ephemeral. If you can spare 38 minutes, it's worth your time.
 
 Nine years ago, before we knew the full impact of how mobile and social services might affect our lives, Wilson referenced a quote that not only addressed these (at the time) nascent products but everyday products we already take for granted. This quote in his presentation from Marshall McLuhan was this:
 
@@ -25,4 +25,3 @@ We have a ways to go before we can know how our work might impact people’s liv
 If you have any ideas or specific problems where our voice interface experience can improve you or your users’ lives, please reach out to us and help us shape Spokestack into a better tool.
 
 Most important, keep building. We will build a better future despite the setbacks.
-

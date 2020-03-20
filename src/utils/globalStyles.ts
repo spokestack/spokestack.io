@@ -14,6 +14,9 @@ export default css`
   h1 a {
     color: ${theme.text};
   }
+  blockquote {
+    color: hsl(0, 0%, 40%);
+  }
   .select-label {
     background-color: white;
     color: ${theme.header};
@@ -75,6 +78,10 @@ export default css`
       &:active {
         color: ${theme.linkDarkActive};
       }
+    }
+    blockquote {
+      color: hsl(0, 0%, 80%);
+      border-left-color: hsl(0, 0%, 80%);
     }
     .main-content a {
       color: ${theme.linkDark};

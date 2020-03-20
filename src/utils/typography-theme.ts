@@ -80,7 +80,6 @@ const options: TypographyOptions = {
     },
     blockquote: {
       ...scale(1 / 5),
-      color: 'hsl(0, 0%, 40%)',
       paddingLeft: rhythm(13 / 16),
       marginLeft: rhythm(-1),
       borderLeft: `${rhythm(3 / 16)} solid ${'hsl(0, 0%, 13%)'}`

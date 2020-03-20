@@ -156,7 +156,7 @@
     "tagFormat": "${version}"
   },
   "lint-staged": {
-    "*.{ts,tsx,js,jsx}": [
+    "*.{ts,tsx,js,jsx,md}": [
       "prettier --write",
       "eslint --fix ."
     ]

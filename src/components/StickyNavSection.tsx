@@ -7,7 +7,6 @@ import SVGIcon from './SVGIcon'
 import { StickyLink } from '../types'
 import { css } from '@emotion/core'
 import hashToId from '../utils/hashToId'
-import iconArrowDown from '../icons/arrow-down.svg'
 import { adjustFontSizeTo } from '../utils/typography'
 import { WindowLocation } from '@reach/router'
 
@@ -50,8 +49,8 @@ export default function StickyNavSection({
             {headerText}
             <SVGIcon
               className={`sticky-nav-header-icon ${open ? 'open' : ''}`}
+              icon="#arrow-down"
               extraCss={styles.headerIcon}
-              icon={iconArrowDown.id}
             />
           </a>
         </h3>
@@ -113,7 +112,7 @@ const styles = {
   `,
   stickyNavHeader: css`
     margin: 0 0 10px;
-    padding: 0 15px 0 45px;
+    padding: 0 15px 0 40px;
     ${adjustFontSizeTo('16px')};
 
     a {

@@ -3,7 +3,6 @@ import Button from './Button'
 import validateEmail from '../utils/validateEmail'
 import { css } from '@emotion/core'
 import SVGIcon from './SVGIcon'
-import iconArrow from '../icons/arrow-forward.svg'
 import * as theme from '../utils/theme'
 import { MIN_TABLET_MEDIA_QUERY } from 'typography-breakpoint-constants'
 
@@ -45,7 +44,7 @@ export default function Newsletter() {
         />
         <Button type="submit">
           Subscribe
-          <SVGIcon icon={iconArrow.id} extraCss={styles.icon} />
+          <SVGIcon icon="#arrow-forward" extraCss={styles.icon} />
         </Button>
       </div>
     </form>

@@ -9,9 +9,6 @@ import SVGIcon from '../components/SVGIcon'
 import { createLink as createGitHubLink } from '../utils/oauthGitHub'
 import { createLink as createGoogleLink } from '../utils/oauthGoogle'
 import { css } from '@emotion/core'
-import iconCheckmark from '../icons/checkmark.svg'
-import iconGitHub from '../icons/github.svg'
-import iconGoogle from '../icons/google.svg'
 import { rhythm } from '../utils/typography'
 
 export default function OAuth() {
@@ -34,7 +31,7 @@ export default function OAuth() {
               className="btn btn-primary btn-large"
               css={styles.button}>
               <div css={styles.iconWrap}>
-                <SVGIcon icon={iconGitHub.id} css={styles.linkIcon} />
+                <SVGIcon icon="#github" css={styles.linkIcon} />
               </div>
               Sign In Using GitHub
             </a>
@@ -43,27 +40,27 @@ export default function OAuth() {
               className="btn btn-primary btn-large"
               css={styles.button}>
               <div css={styles.iconWrap}>
-                <SVGIcon icon={iconGoogle.id} css={styles.linkIcon} />
+                <SVGIcon icon="#google" css={styles.linkIcon} />
               </div>
               Sign In Using Google
             </a>
           </div>
           <ul css={styles.list}>
             <li>
-              <SVGIcon icon={iconCheckmark.id} css={styles.iconCheckmark} />
+              <SVGIcon icon="#checkmark" css={styles.iconCheckmark} />
               You pick the wakeword
             </li>
             <li>
-              <SVGIcon icon={iconCheckmark.id} css={styles.iconCheckmark} />A
-              one-stop shop for automatic speech recognition
+              <SVGIcon icon="#checkmark" css={styles.iconCheckmark} />A one-stop
+              shop for automatic speech recognition
             </li>
             <li>
-              <SVGIcon icon={iconCheckmark.id} css={styles.iconCheckmark} />A
-              natural language understanding engine that keeps your data and
-              customer conversations in your app
+              <SVGIcon icon="#checkmark" css={styles.iconCheckmark} />A natural
+              language understanding engine that keeps your data and customer
+              conversations in your app
             </li>
             <li>
-              <SVGIcon icon={iconCheckmark.id} css={styles.iconCheckmark} />
+              <SVGIcon icon="#checkmark" css={styles.iconCheckmark} />
               Create a custom voice for your brand
             </li>
           </ul>

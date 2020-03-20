@@ -12,7 +12,6 @@ import Token from './Token'
 import { adjustFontSizeTo } from '../utils/typography'
 import { css } from '@emotion/core'
 import gql from 'graphql-tag'
-import iconAddCircle from '../icons/add-circle.svg'
 import { useMutation } from '@apollo/react-hooks'
 import SampleVoices from './SampleVoices'
 import voices from '../utils/voices'
@@ -83,7 +82,7 @@ export default function Settings({ account, location }: Props) {
           !showForm &&
           !!tokens.length && (
             <a css={styles.addLink} onClick={() => setShowForm(true)}>
-              <SVGIcon icon={iconAddCircle.id} extraCss={styles.addIcon} />
+              <SVGIcon icon="#add-circle" extraCss={styles.addIcon} />
               Add token
             </a>
           )

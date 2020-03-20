@@ -19,8 +19,6 @@ import SVGIcon from '../components/SVGIcon'
 import SampleVoices from '../components/SampleVoices'
 import StickyNavLayout from '../components/StickyNavLayout'
 import { css } from '@emotion/core'
-import iconArrow from '../icons/arrow-forward.svg'
-import iconPlay from '../icons/play.svg'
 import { rhythm } from '../utils/typography'
 import Newsletter from '../components/Newsletter'
 import voices from '../utils/voices'
@@ -78,7 +76,7 @@ export default function Index({ data, location }: Props) {
         <a href="/docs" className="btn btn-large">
           Get started
           <SVGIcon
-            icon={iconArrow.id}
+            icon="#arrow-forward"
             style={{ fill: theme.header, width: '17px', height: '17px' }}
           />
         </a>
@@ -133,7 +131,7 @@ export default function Index({ data, location }: Props) {
               style={played ? { display: 'none' } : null}>
               <div className="play-icon">
                 <SVGIcon
-                  icon={iconPlay.id}
+                  icon="#play"
                   style={{ width: '30px', height: '35px' }}
                 />
               </div>
@@ -167,7 +165,7 @@ export default function Index({ data, location }: Props) {
           <a href="/docs" className="link-with-icon">
             Get started
             <SVGIcon
-              icon={iconArrow.id}
+              icon="#arrow-forward"
               style={{ fill: theme.primary, width: '17px', height: '17px' }}
             />
           </a>
@@ -188,7 +186,7 @@ export default function Index({ data, location }: Props) {
           <a href="mailto:hello@spokestack.io" className="link-with-icon">
             Email us for details on getting a custom wakeword
             <SVGIcon
-              icon={iconArrow.id}
+              icon="#arrow-forward"
               style={{ fill: theme.primary, width: '17px', height: '17px' }}
             />
           </a>
@@ -210,7 +208,7 @@ export default function Index({ data, location }: Props) {
             <a href="mailto:hello@spokestack.io" className="link-with-icon">
               Email us for details on getting a custom branded voice
               <SVGIcon
-                icon={iconArrow.id}
+                icon="#arrow-forward"
                 style={{ fill: theme.primary, width: '17px', height: '17px' }}
               />
             </a>
@@ -236,7 +234,7 @@ export default function Index({ data, location }: Props) {
           <a href="mailto:hello@spokestack.io" className="link-with-icon">
             Email us for details on getting a custom NLU for your app
             <SVGIcon
-              icon={iconArrow.id}
+              icon="#arrow-forward"
               style={{ fill: theme.primary, width: '17px', height: '17px' }}
             />
           </a>

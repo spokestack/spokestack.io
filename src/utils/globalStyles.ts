@@ -160,7 +160,8 @@ export default css`
     &:visited {
       color: ${theme.text};
     }
-    &:hover:not([disabled]) {
+    &:hover:not([disabled]),
+    &:active:not([disabled]) {
       background-color: ${theme.buttonBackgroundHover};
       border-color: ${theme.buttonBackgroundHover};
       color: ${theme.text};
@@ -179,7 +180,8 @@ export default css`
       background-color: white;
       color: ${theme.primary};
 
-      &:hover:not([disabled]) {
+      &:hover:not([disabled]),
+      &:active:not([disabled]) {
         background-color: ${theme.primary};
         border-color: ${theme.primary};
         color: white;

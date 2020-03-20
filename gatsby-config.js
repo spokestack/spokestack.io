@@ -112,11 +112,11 @@ module.exports = {
         respectDNT: true
       }
     },
-    'gatsby-plugin-svg-sprite',
     'gatsby-plugin-optimize-svgs',
     'gatsby-transformer-sharp',
     'gatsby-plugin-sharp',
     'gatsby-image',
+    'gatsby-plugin-react-svg',
     {
       resolve: 'gatsby-transformer-remark',
       options: {

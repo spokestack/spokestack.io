@@ -6,7 +6,7 @@ import { MIN_DEFAULT_MEDIA_QUERY } from 'typography-breakpoint-constants'
 import Nav from './Nav'
 import globalStyles from '../utils/globalStyles'
 import { ieBreakpoint } from '../utils/theme'
-import Sprite from '../../svg-sprite.svg'
+import Sprite from '../svg-sprite.svg'
 
 interface Props {
   children: ReactNode

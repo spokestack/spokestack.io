@@ -26,7 +26,7 @@ export default function LoginButton() {
 
 const styles = {
   loginButton: css`
-    position: absolute;
+    position: absolute !important;
     bottom: 0;
     width: 100%;
     height: 60px;
@@ -48,7 +48,7 @@ const styles = {
     }
 
     ${MIN_LARGE_DISPLAY_MEDIA_QUERY} {
-      position: relative;
+      position: relative !important;
       width: auto;
       border-radius: 24px;
       font-weight: 400;

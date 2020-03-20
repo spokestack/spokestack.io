@@ -76,6 +76,7 @@ const styles = {
     cursor: pointer;
     padding: 0;
     width: 30px;
+    flex-shrink: 0;
   `,
   track: css`
     position: absolute;

@@ -6,7 +6,6 @@ export type TeamMemberName =
   | 'elizabeth'
   | 'josh'
   | 'mike'
-  | 'neil'
   | 'noel'
   | 'timmy'
   | 'will'
@@ -16,7 +15,6 @@ export interface TeamImages {
   elizabeth: { childImageSharp: { fixed: FixedObject } }
   josh: { childImageSharp: { fixed: FixedObject } }
   mike: { childImageSharp: { fixed: FixedObject } }
-  neil: { childImageSharp: { fixed: FixedObject } }
   noel: { childImageSharp: { fixed: FixedObject } }
   shelby: { childImageSharp: { fixed: FixedObject } }
   timmy: { childImageSharp: { fixed: FixedObject } }

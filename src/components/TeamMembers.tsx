@@ -124,10 +124,6 @@ export const teamFragment = graphql`
   fragment TeamMembers on Site {
     siteMetadata {
       team {
-        neil {
-          name
-          title
-        }
         will {
           name
           title

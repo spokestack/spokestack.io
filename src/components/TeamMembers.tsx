@@ -96,13 +96,6 @@ const teamQuery = graphql`
         }
       }
     }
-    neil: file(absolutePath: { regex: "/headshots/neil.png/" }) {
-      childImageSharp {
-        fixed(width: 186, height: 186) {
-          ...GatsbyImageSharpFixed
-        }
-      }
-    }
     noel: file(absolutePath: { regex: "/headshots/noel.png/" }) {
       childImageSharp {
         fixed(width: 186, height: 186, cropFocus: NORTH) {

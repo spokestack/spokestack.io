@@ -13,10 +13,6 @@ module.exports = {
     },
     // Should match the queries in src/components/TeamMembers.tsx
     team: {
-      neil: {
-        name: 'Neil Menne',
-        title: 'Principal Back-End Engineer'
-      },
       will: {
         name: 'Will Rice',
         title: 'Data Science Engineer'

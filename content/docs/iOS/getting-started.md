@@ -131,11 +131,11 @@ If a wakeword-driven experience isn't for you, or if you want to give users a ta
 
 ## Understanding your users
 
-Inside `SpeechEventListener`'s' `didRecognize` delegate function, the `result.transcript` will give you the raw text of what the user just said. Translating that raw text into an action in your app is the job of an NLU, or natural language understanding, component. Spokestack leaves the choice of NLU up to you, but we offer our own full-featured NLU component for Spokestack based on years of research and lessons learned from working with the other services that runs directly on your phone, instead of having to call back to a cloud somewhere. Speaking of clouds, there are a variety of cloud-based NLU services out there like ([DialogFlow](https://dialogflow.com/), [LUIS](https://www.luis.ai/home), or [wit.ai](https://wit.ai/), to name a few. Finally, if your app is simple enough, you can make your own with string matching or regular expressions.
+Inside `SpeechEventListener`'s' `didRecognize` delegate function, the `result.transcript` will give you the raw text of what the user just said. Translating that raw text into an action in your app is the job of an NLU, or natural language understanding, component. Spokestack leaves the choice of NLU up to you, but we do offer our own full-featured NLU component for Spokestack based on years of research and lessons learned from working with other services. Our NLU runs directly on your user's device, instead of calling back to the cloud. If you're a fan of the cloud, though, you might want to check out ([DialogFlow](https://dialogflow.com/), [LUIS](https://www.luis.ai/home), or [wit.ai](https://wit.ai/). And if your app is simple enough, you can make your own NLU with string matching or regular expressions (see the [cookbook](cookbook) for an example of this).
 
 Let's run through a quick usage of Spokestack's `TensorflowNLU`. In `SpeechEventListener`'s' `didRecognize`, ask the NLU to classify what the ASR has recognized:
 
-```
+```swift
 class MyViewController: UIViewController, SpeechEventListener, NLUDelegate {
 
     // ...other SpeechEventListener functions...
@@ -146,9 +146,9 @@ class MyViewController: UIViewController, SpeechEventListener, NLUDelegate {
     }
 ```
 
-Earlier, if you recalled, we claimed that `MyViewController` already implemented the `NLUDelegate` protocol. The `nlu.classify` call above will return the classification results to a function in that delegate.
+Earlier, if you recall, we claimed that `MyViewController` already implemented the `NLUDelegate` protocol. The `nlu.classify` call above will return the classification results to a function in that delegate.
 
-```
+```swift
 class MyViewController: UIViewController, SpeechEventListener, NLUDelegate {
 
     // ...other delegate functions...

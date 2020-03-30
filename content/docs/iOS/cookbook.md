@@ -146,9 +146,9 @@ class MyViewController: UIViewController, SpeechEventListener {
 
 ### Extracting an intent slot value from `NLUResult`
 
-Sticking with a timer app example, here's how to extract a slot value from an `NLUResult`, like one delivered to `NLUDelegate`'s `cliassification` event. Note that the intent and slot names area pre-determined by the NLU model metadata.
+Sticking with the timer app example, here's how to extract a slot value from an `NLUResult`, like one delivered to `NLUDelegate`'s `classification` event. Note that the intent and slot names are pre-determined by the NLU model metadata.
 
-```
+```swift
 class MyViewController: UIViewController, SpeechEventListener, NLUDelegate {
 
     // ...other delegate functions...

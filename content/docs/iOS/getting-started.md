@@ -5,13 +5,13 @@ description: Getting started with the Spokestack iOS API
 draft: false
 ---
 
-This guide will get you up and running with Spokestack for iOS, and you'll be hearing and talking to your users in no time.
+This guide will get you up and running with Spokestack for iOS, and you'll be hearing and responding to your users in no time. We'll start with how to integrate speech recognition, and then move on to how to process that recognized speech using natural langauge understanding, and finally learn how to speak back to your users using text to speech.
 
 One caveat before we start, though: _This is not a collection of best practices_. We're going to be trading thoughtful organization for convenience here, so when we say something like "put this in your view controller", just know that you might not want to leave it there long-term. OK, now that that's out of the way, let's jump right in.
 
 ## Prerequisites
 
-Your app needs to target iOS 11 or higher in order to use speech recognition, and iOS 13 or higher in order to use text to speech.
+Your app needs to target iOS 11 or higher in order to use speech recognition and natural language understanding, and iOS 13 or higher in order to use text to speech.
 
 ## Installation
 
@@ -73,13 +73,16 @@ func application(_ application: UIApplication, didFinishLaunchingWithOptions lau
 }
 ```
 
-### 3. `SpeechPipeline` & `TextToSpeech`
+### 3. Speech Pipeline and Controllers
 
-With the proper permissions in place, it's time to decide where you'd like to receive and process speech input and output. In a single-view app, the easiest place for this is going to be your main view controller. `import Spokestack` at the top of the file, and add `SpeechPipeline` and `TextToSpeech` class members:
+With the proper permissions in place, it's time to decide where you'd like to receive and process speech input and output. In a single-view app, the easiest place for this is going to be your main view controller. `import Spokestack` at the top of the file, and add `SpeechPipeline`, `TensorflowNLU`, and `TextToSpeech` class members:
 
 ```swift
+public let configuration = SpeechConfiguration()
 public let pipeline = SpeechPipeline(self, pipelineDelegate: self)
-public let tts = TextToSpeech(self, configuration: SpeechConfiguration())
+public let tts = TextToSpeech(self, configuration: configuration)
+public let nlu = try! NLUTensorflow(self, configuration: configuration)
+
 ```
 
 Note that these components must persist outside the scope of the calling function, so don't declare it inside a function call that will get garbage collected! If this is confusing, please consult the [fuller discussion of the pipeline](speech-pipeline). Then, after things are loaded:
@@ -90,11 +93,11 @@ pipeline.start()
 
 Note that we're using a convenience initializer for `SpeechPipeline` that makes a variety of configuration decisions on our behalf. There's more to talk about here, but they're topics for another guide.
 
-The `self` in this example means that the class containing this pipeline also adopts `PipelineDelegate`, `SpeechEventListener`, and `TextToSpeechDelegate` which, conveniently enough, are the next steps.
+The `self` in this example means that the class containing this pipeline also adopts `PipelineDelegate`, `SpeechEventListener`, `NLUDelegate`, and `TextToSpeechDelegate` which, conveniently enough, are the next steps.
 
-### 4. Delegate methods
+### 4. Implementing Delegates
 
-Now that we have a pipeline, we need to either adopt the `PipelineDelegate` and `SpeechEventListener` protocols or add extensions for them. We'll do that in the same class we used in the previous step.
+Now that we have a pipeline for speech and controllers for NLU and TTS, we need to provide implementations for the delegates so that they can send events to you. We'll do that in the same class we used in the previous step.
 
 If you want to disable any buttons or show a special "listening" indicator while recording, put those things in the `PipelineDelegate`'s `didStart` and `didStop` methods; otherwise, the main methods you'll want to implement are `SpeechEventListener`'s' `activate`, `deactivate`, and `didRecognize`. The basic layout for the first two would be:
 
@@ -112,38 +115,6 @@ func deactivate() {
 
 All we're doing here is reflecting system events back to the main pipeline. See [the `SpeechPipeline` guide](speech-pipeline) for more discussion.
 
-Inside `didRecognize`, `result.transcript` will give you the raw text of what the user just said. Translating that raw text into an action in your app is the job of an NLU, or natural language understanding, component. Spokestack currently leaves the choice of NLU up to the app: There's a variety of NLU services out there ([DialogFlow](https://dialogflow.com/), [LUIS](https://www.luis.ai/home), or [wit.ai](https://wit.ai/), to name a few), or, if your app is simple enough, you can make your own with string matching or regular expressions.
-
-We know that NLU is an important piece of the puzzle, and we're working on a full-featured NLU component for Spokestack based on years of research and lessons learned from working with the other services; we'll update this space when it's ready.
-
-For the sake of our demo, though, let's say you're creating a voice-controlled timer. `didRecognize` might look something like this:
-
-```swift
-class MyViewController: UIViewController, SpeechEventListener {
-
-    ...
-
-    func didRecognize(_ result: SpeechContext) {
-        let userText = result.transcript
-        if userText.range(of: "(?i)start",
-                          options: .regularExpression) != nil {
-            // start the timer and change the UI accordingly
-            return
-        }
-        if userText.range(of: "(?i)stop",
-                          options: .regularExpression) != nil {
-            // stop the timer and change the UI accordingly
-            return
-        }
-        if userText.range(of: "(?i)reset|start over",
-                          options: .regularExpression) != nil {
-            // reset the timer and change the UI accordingly
-            return
-        }
-    }
-}
-```
-
 ## To wake or not to wake
 
 Now that you _have_ the pipeline all set up, how do you _use_ it? It's easy, but the answer depends on your app's needs:
@@ -157,6 +128,53 @@ Note that, as we mentioned earlier, the very first time you start a speech pipel
 #### I want the user to tap a button before talking
 
 If a wakeword-driven experience isn't for you, or if you want to give users a tap-to-talk option, just call `pipeline.start()` followed by `pipeline.activate()` in the action of whatever button you want to activate the microphone. This skips the wakeword step of the pipeline and starts the automatic speech recognition (ASR) component directly. ASR will stop automatically after the user is silent for a few seconds (how _many_ seconds is one of the configuration parameters we hinted at earlier) or after a preconfigured timeout is reached, but if you need to stop listening immediately for any reason, just call `pipeline.stop()`.
+
+## Understanding your users
+
+Inside `SpeechEventListener`'s' `didRecognize` delegate function, the `result.transcript` will give you the raw text of what the user just said. Translating that raw text into an action in your app is the job of an NLU, or natural language understanding, component. Spokestack leaves the choice of NLU up to you, but we offer our own full-featured NLU component for Spokestack based on years of research and lessons learned from working with the other services that runs directly on your phone, instead of having to call back to a cloud somewhere. Speaking of clouds, there are a variety of cloud-based NLU services out there like ([DialogFlow](https://dialogflow.com/), [LUIS](https://www.luis.ai/home), or [wit.ai](https://wit.ai/), to name a few. Finally, if your app is simple enough, you can make your own with string matching or regular expressions.
+
+Let's run through a quick usage of Spokestack's `TensorflowNLU`. In `SpeechEventListener`'s' `didRecognize`, ask the NLU to classify what the ASR has recognized:
+
+```
+class MyViewController: UIViewController, SpeechEventListener, NLUDelegate {
+
+    // ...other SpeechEventListener functions...
+
+    func didRecognize(_ result: SpeechContext) {
+        let userText = result.transcript
+        let classification = self.nlu.classify(utterance: userText, context: [:])
+    }
+```
+
+Earlier, if you recalled, we claimed that `MyViewController` already implemented the `NLUDelegate` protocol. The `nlu.classify` call above will return the classification results to a function in that delegate.
+
+```
+class MyViewController: UIViewController, SpeechEventListener, NLUDelegate {
+
+    // ...other delegate functions...
+
+    func classification(result: NLUResult) {
+        let intent = result.intent
+        let slots = result.slots
+        switch result.intent {
+        // using the example of a timer
+        case "start":
+            // start the timer and change the UI accordingly
+            return
+        case "stop":
+            // stop the timer and change the UI accordingly
+            return
+        case "reset":
+            // reset the timer and change the UI accordingly
+            return
+        case default:
+            // for when the model doesn't match the intent
+            return
+        }
+    }
+```
+
+You'll note that the intents are just a single string. A intent-based classifier will regularize all sorts of related langague into a single canonical intent, eg "let's go" or "please cease" get classified as `start` and `stop`, respectively.
 
 ## Talking back to your users
 

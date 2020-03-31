@@ -157,9 +157,9 @@ class MyViewController: UIViewController, SpeechEventListener, NLUDelegate {
         switch result.intent {
         // using the example of a timer
         case "start":
-            // the "start" intent can have a slot named "duration"
-            let duration = result.slots["duration"].value
-            let units = result.slots["duration"].type
+            // the "start" intent can have slots named "duration" and "units"
+            let duration = result.slots["duration"]!.value as! Int 
+            let units = result.slots["units"]!.value
             // start a timer for `duration` `units` (eg 60 seconds) and change the UI accordingly
             return
         }

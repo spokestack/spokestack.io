@@ -114,6 +114,59 @@ before you'll be able to recognize a wakeword again.
 
 If speech is being processed when `deactivate` is called, it will still be delivered to your `SpeechEventListener`'s `didRecognize` method when processing is complete.
 
+### Regex-based NLU
+
+Let's say you're creating a voice-controlled timer and wish to perform simplistic natural language processing to respond to a handful of commands: `start, stop, reset, start over`. `SpeechEventListener`'s' `didRecognize` might look something like this:
+
+```swift
+class MyViewController: UIViewController, SpeechEventListener {
+
+    // ...other SpeechEventListener functions...
+
+    func didRecognize(_ result: SpeechContext) {
+        let userText = result.transcript
+        if userText.range(of: "(?i)start",
+                          options: .regularExpression) != nil {
+            // start the timer and change the UI accordingly
+            return
+        }
+        if userText.range(of: "(?i)stop",
+                          options: .regularExpression) != nil {
+            // stop the timer and change the UI accordingly
+            return
+        }
+        if userText.range(of: "(?i)reset|start over",
+                          options: .regularExpression) != nil {
+            // reset the timer and change the UI accordingly
+            return
+        }
+    }
+}
+```
+
+### Extracting an intent slot value from `NLUResult`
+
+Sticking with the timer app example, here's how to extract a slot value from an `NLUResult`, like one delivered to `NLUDelegate`'s `classification` event. Note that the intent and slot names are pre-determined by the NLU model metadata.
+
+```swift
+class MyViewController: UIViewController, SpeechEventListener, NLUDelegate {
+
+    // ...other delegate functions...
+
+    func classification(result: NLUResult) {
+        switch result.intent {
+        // using the example of a timer
+        case "start":
+            // the "start" intent can have slots named "duration" and "units"
+            let duration = result.slots!["duration"]!.value as! Int
+            let units = result.slots!["units"]!.value
+            // start a timer for `duration` `units` (eg 60 seconds) and change the UI accordingly
+            return
+        }
+    }
+}
+```
+
 ### Play back synthesis result using your own `AVPlayer`
 
 ```swift

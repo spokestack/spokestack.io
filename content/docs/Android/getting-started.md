@@ -5,7 +5,7 @@ description: Getting started with the Spokestack Android API
 draft: false
 ---
 
-This guide will get you up and running with Spokestack for Android, and you'll be hearing and talking to your users in no time.
+This guide will get you up and running with Spokestack for Android, and you'll be hearing and responding to your users in no time.
 
 One caveat before we start, though: _This is not a collection of best practices_. We're going to be trading thoughtful organization for convenience here, so when we say something like "put this in your main activity", just know that you might not want to leave it there long-term. OK, now that that's out of the way, let's jump in.
 
@@ -134,29 +134,34 @@ class MyActivity : AppCompatActivity(), OnSpeechEventListener {
 
 We've listed all possible speech events here; see [the documentation](https://www.javadoc.io/doc/io.spokestack/spokestack-android/latest/io/spokestack/spokestack/SpeechContext.Event.html) for a description of what each event means. Briefly, though, `ACTIVATE` and `DEACTIVATE` reflect the state of ASR—if you want to show any special UI components while your app is actively listening to the user, these events would be useful for showing/hiding them.
 
-If the event is `RECOGNIZE`, `context.transcript` will give you the raw text of what the user just said. Translating that raw text into an action in your app is the job of an NLU, or natural language understanding, component. Spokestack currently leaves the choice of NLU up to the app: There's a variety of NLU services out there ([DialogFlow](https://dialogflow.com/), [LUIS](https://www.luis.ai/home), or [wit.ai](https://wit.ai/), to name a few), or, if your app is simple enough, you can make your own with string matching or regular expressions.
+## From text to meaning
 
-We know that NLU is an important piece of the puzzle, and we're working on a full-featured NLU component for Spokestack based on years of research and lessons learned from working with the other services; we'll update this space when it's ready.
+If the event is `RECOGNIZE`, `context.transcript` will give you the raw text of what the user just said. Translating that raw text into an action in your app is the job of an NLU, or natural language understanding, component. Spokestack offers custom NLU models that run entirely on-device, removing a network request from the equation. There are also a variety of cloud NLU providers: [DialogFlow](https://dialogflow.com/), [LUIS](https://www.luis.ai/home), or [wit.ai](https://wit.ai/), to name a few. If your app is simple enough, you can even make your own with string matching or regular expressions (see the [cookbook](cookbook) for an example).
 
-For the sake of our demo, though, let's say you're creating a voice-controlled timer. `handleSpeech` might look something like this:
+We'll briefly cover setup and use of the Spokestack NLU component here, but see the [NLU guide](nlu) for more details on its design and use.
 
 ```kotlin
-private fun handleSpeech(transcript: String) {
-    when {
-        Regex("(?i)start").matches(transcript) -> {
-            // start the timer and change the UI accordingly
-        }
-        Regex("(?i)stop").matches(transcript) -> {
-            // stop the timer and change the UI accordingly
-        }
-        Regex("(?i)reset|start over").matches(transcript) -> {
-            // reset the timer and change the UI accordingly
+val nlu = TensorflowNLU.Builder()
+    .setProperty("nlu-model-path", "$cacheDir/nlu.tflite")
+    .setProperty("nlu-metadata-path", "$cacheDir/metadata.json")
+    .setProperty("wordpiece-vocab-path", "$cacheDir/vocab.txt")
+    .addTraceListener(this)
+    .build()
+
+// ...
+
+GlobalScope.launch(Dispatchers.Default) {
+    nlu?.let {
+        val result = it.classify(utterance).get()
+        withContext(Dispatchers.Main) {
+            // result.intent contains the user's intent
+            // result.slots contains slots detected in the utterance
         }
     }
 }
 ```
 
-It's important to note that the speech pipeline runs on a background thread, so any UI changes related to speech events should be wrapped in a `runOnUiThread { }` block.
+Note the use of Kotlin [coroutine context](https://kotlin.github.io/kotlinx.coroutines/kotlinx-coroutines-core/kotlinx.coroutines/with-context.html) to force the waiting for the classification result onto a background thread. Classification itself always runs on a background thread, but the result must be retrieved either by a blocking call or a callback registered to the return of `classify()`. We chose the former here for simplicity. Any UI changes needed to react to the result should happen on the main thread, which is why we switch back to `Dispatchers.Main` once the result is available. Again, the [NLU guide](nlu) explains all this in more depth.
 
 ## Talking back to your users
 

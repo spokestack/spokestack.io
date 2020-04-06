@@ -1,13 +1,13 @@
 import * as theme from '../utils/theme'
 
+import {
+  DEFAULT_WIDTH,
+  MIN_DEFAULT_MEDIA_QUERY
+} from 'typography-breakpoint-constants'
 import Image, { FixedObject } from 'gatsby-image'
 import { graphql, useStaticQuery } from 'gatsby'
 
 import Color from 'color'
-import {
-  MIN_DEFAULT_MEDIA_QUERY,
-  DEFAULT_WIDTH
-} from 'typography-breakpoint-constants'
 import { Query } from '../utils/graphql'
 import React from 'react'
 import { css } from '@emotion/core'
@@ -88,9 +88,7 @@ const styles = {
     transition: background-color 0.1s ${theme.transitionEasing};
 
     &:hover {
-      background-color: ${Color('#fff')
-        .darken(0.1)
-        .hex()};
+      background-color: ${Color('#fff').darken(0.1).hex()};
     }
     &:active {
       box-shadow: inset 0 0 5px rgba(0, 0, 0, 0.5);

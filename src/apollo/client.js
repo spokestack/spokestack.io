@@ -1,7 +1,8 @@
 import { getAuthToken, getProvider } from '../utils/auth'
+
 import ApolloClient from 'apollo-boost'
-import typeDefs from './typeDefs.graphql'
 import fetch from 'isomorphic-unfetch'
+import typeDefs from './typeDefs.graphql'
 
 export default new ApolloClient({
   fetch,
@@ -22,7 +23,7 @@ export default new ApolloClient({
     const networkError = error.networkError
     if (graphQLErrors) {
       if (Array.isArray(graphQLErrors)) {
-        graphQLErrors.forEach(function({ message, locations, path }) {
+        graphQLErrors.forEach(function ({ message, locations, path }) {
           console.warn(
             `[GraphQL error]: Message: ${message}, Location: ${locations}, Path: ${path}`
           )

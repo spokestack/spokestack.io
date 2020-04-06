@@ -67,7 +67,6 @@
     "typescript": "^3.8.3",
     "typography": "^0.16.19",
     "typography-breakpoint-constants": "^0.16.19",
-    "unified": "^9.0.0",
     "uuid": "^7.0.3"
   },
   "devDependencies": {

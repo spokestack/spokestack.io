@@ -25,6 +25,10 @@
 		<path d="M15 16h4v2h-4zm0-8h7v2h-7zm0 4h6v2h-6zM3 18c0 1.1.9 2 2 2h6c1.1 0 2-.9 2-2V8H3v10zM14 5h-3l-1-1H6L5 5H2v2h12z" />
 		<path fill="none" d="M0 0h24v24H0z" />
 	</symbol>
+	<symbol id="download" viewBox="0 0 24 24">
+	  <path d="M19 9h-4V3H9v6H5l7 7 7-7zM5 18v2h14v-2H5z"/>
+		<path d="M0 0h24v24H0z" fill="none"/>
+	</symbol>
 	<symbol id="eye" viewBox="0 0 24 24">
 		<path d="M0 0h24v24H0z" fill="none" />
 		<path d="M12 4.5C7 4.5 2.73 7.61 1 12c1.73 4.39 6 7.5 11 7.5s9.27-3.11 11-7.5c-1.73-4.39-6-7.5-11-7.5zM12 17c-2.76 0-5-2.24-5-5s2.24-5 5-5 5 2.24 5 5-2.24 5-5 5zm0-8c-1.66 0-3 1.34-3 3s1.34 3 3 3 3-1.34 3-3-1.34-3-3-3z" />

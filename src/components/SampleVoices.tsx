@@ -21,6 +21,7 @@ const defaultStrings = {
 }
 
 interface Props {
+  allowDownload?: boolean
   voices: Voice[]
 }
 
@@ -102,7 +103,7 @@ export default class SampleVoices extends PureComponent<Props, State> {
   }
 
   render() {
-    const { voices } = this.props
+    const { allowDownload, voices } = this.props
     const {
       disabled,
       errorText,
@@ -187,14 +188,43 @@ export default class SampleVoices extends PureComponent<Props, State> {
               )
             }}
           />
-          <Button
-            large
-            disabled={disabled || submitting}
-            extraCss={styles.button}
-            onClick={this.play}>
-            <SVGIcon icon="#play-circle" extraCss={styles.playIcon} />
-            {submitting ? 'Synthesizing...' : 'Hear it'}
-          </Button>
+          <div css={styles.buttons}>
+            {allowDownload &&
+            !disabled &&
+            !submitting &&
+            !!(this.audio && this.audio.src) ? (
+              <a
+                className="btn btn-primary"
+                download="download"
+                css={styles.downloadLink}
+                href={this.audio.src}>
+                <SVGIcon
+                  icon="#download"
+                  extraCss={css`
+                    ${styles.icon}
+                    ${styles.downloadIcon}
+                  `}
+                />
+                Download
+              </a>
+            ) : (
+              <div />
+            )}
+            <Button
+              large
+              disabled={disabled || submitting}
+              extraCss={styles.playButton}
+              onClick={this.play}>
+              <SVGIcon
+                icon="#play-circle"
+                extraCss={css`
+                  ${styles.icon}
+                  ${styles.playIcon}
+                `}
+              />
+              {submitting ? 'Synthesizing...' : 'Hear it'}
+            </Button>
+          </div>
         </div>
       </Card>
     )
@@ -295,15 +325,48 @@ const styles = {
   speechMarkdownStatus: css`
     color: ${theme.primary};
   `,
-  button: css`
-    align-self: flex-end;
+  buttons: css`
+    display: grid;
+    grid-template-columns: 1fr;
+    grid-gap: 20px;
+
+    ${MIN_TABLET_MEDIA_QUERY} {
+      width: 100%;
+      display: flex;
+      flex-direction: row;
+      justify-content: space-between;
+      align-items: center;
+      align-self: flex-end;
+      grid-gap: 0;
+    }
+  `,
+  downloadLink: css`
+    svg {
+      transition: fill 0.2s ${theme.transitionEasing};
+    }
+    &:hover svg,
+    &:active svg {
+      fill: white;
+    }
+  `,
+  playButton: css`
+    ${MIN_TABLET_MEDIA_QUERY} {
+      margin-left: 20px;
+    }
+  `,
+  icon: css`
+    margin-right: 5px;
+    margin-left: 0 !important;
   `,
   playIcon: css`
     fill: ${theme.text};
-    width: 16px;
-    height: 16px;
-    margin-right: 5px;
-    margin-left: 0 !important;
+    width: 18px;
+    height: 18px;
+  `,
+  downloadIcon: css`
+    fill: ${theme.primary};
+    width: 24px;
+    height: 24px;
   `,
   textarea: css`
     margin-bottom: 20px;

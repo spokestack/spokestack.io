@@ -127,7 +127,7 @@ export default function Settings({ account, location }: Props) {
         </div>
       </AccountCard>
       <div id="voices">
-        <SampleVoices voices={voices} />
+        <SampleVoices allowDownload voices={voices} />
       </div>
     </AccountLayout>
   )

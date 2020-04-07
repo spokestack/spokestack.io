@@ -136,13 +136,13 @@ Inside `SpeechEventListener`'s' `didRecognize` delegate function, the `result.tr
 Let's run through a quick usage of Spokestack's `TensorflowNLU`. In `SpeechEventListener`'s' `didRecognize`, ask the NLU to classify what the ASR has recognized:
 
 ```swift
-class MyViewController: UIViewController, SpeechEventListener, NLUDelegate {
+class MyViewController: UIViewController, SpeechEventListener, NLU
 
     // ...other SpeechEventListener functions...
 
     func didRecognize(_ result: SpeechContext) {
         let userText = result.transcript
-        let classification = self.nlu.classify(utterance: userText, context: [:])
+        let classification = self.nlu.classify(utterance: userText)
     }
 ```
 

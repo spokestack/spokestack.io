@@ -1,10 +1,12 @@
+import * as theme from '../utils/theme'
+
 import {
   MIN_DEFAULT_MEDIA_QUERY,
-  MIN_MOBILE_MEDIA_QUERY
+  MIN_MOBILE_MEDIA_QUERY,
+  MIN_TABLET_MEDIA_QUERY
 } from 'typography-breakpoint-constants'
 import React, { useRef, useState } from 'react'
 
-import * as theme from '../utils/theme'
 import { ApiKey } from '../types'
 import SVGIcon from './SVGIcon'
 import { css } from '@emotion/core'
@@ -44,10 +46,12 @@ export default function Token({ token, onDelete }: Props) {
       <div css={styles.summary}>
         <div css={styles.row}>
           <div css={styles.name}>
-            <div css={[styles.iconWrap, styles.keyIconWrap]}>
-              <SVGIcon icon="#key" extraCss={styles.keyIcon} />
+            <div css={styles.labelWrap}>
+              <div css={[styles.keyIconWrap]}>
+                <SVGIcon icon="#key" extraCss={styles.keyIcon} />
+              </div>
+              <label>Label</label>
             </div>
-            <label>Label:</label>
             {token.displayName}
           </div>
           <a
@@ -117,8 +121,13 @@ const styles = {
     padding: 10px 20px;
 
     label {
+      font-size: 80%;
       font-weight: 800;
-      margin-right: 5px;
+      margin-right: 10px;
+
+      ${MIN_DEFAULT_MEDIA_QUERY} {
+        font-size: 100%;
+      }
     }
 
     ${MIN_DEFAULT_MEDIA_QUERY} {
@@ -136,11 +145,20 @@ const styles = {
     justify-content: space-between;
     align-items: center;
   `,
-  name: css`
+  labelWrap: css`
     display: flex;
     flex-direction: row;
+    justify-content: flex-start;
     align-items: center;
-    white-space: nowrap;
+  `,
+  name: css`
+    display: flex;
+    flex-direction: column;
+
+    ${MIN_TABLET_MEDIA_QUERY} {
+      flex-direction: row;
+      align-items: center;
+    }
   `,
   iconWrap: css`
     width: 44px;
@@ -167,6 +185,7 @@ const styles = {
   `,
   keyIconWrap: css`
     pointer-events: none;
+    margin-right: 10px;
   `,
   save: css`
     margin-bottom: 10px;

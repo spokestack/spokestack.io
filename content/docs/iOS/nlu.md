@@ -38,7 +38,7 @@ class NLU:  NLUDelegate {
     nlu.classify(utterance: "turn the lights on in the kitchen")
 
     func classification(result: NLUResult) {
-        // Utilize the results as appropriate
+        // Utilize the result intent and slot(s) as appropriate
     }
 
     func failure(error: Error) {
@@ -80,7 +80,7 @@ let _ = nlu.classify(utterances: utterances)
         }
     }, receiveValue: { results in
         let _ = results.map({
-            // Utilize the results as appropriate
+            // Utilize the result's intents and slots as appropriate
         })
     })
 ```

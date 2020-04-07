@@ -136,7 +136,7 @@ Inside `SpeechEventListener`'s' `didRecognize` delegate function, the `result.tr
 Let's run through a quick usage of Spokestack's `TensorflowNLU`. In `SpeechEventListener`'s' `didRecognize`, ask the NLU to classify what the ASR has recognized:
 
 ```swift
-class MyViewController: UIViewController, SpeechEventListener, NLU
+class MyViewController: UIViewController, SpeechEventListener, NLUDelegate {
 
     // ...other SpeechEventListener functions...
 
@@ -149,8 +149,6 @@ class MyViewController: UIViewController, SpeechEventListener, NLU
 Earlier, if you recall, we claimed that `MyViewController` already implemented the `NLUDelegate` protocol. The `nlu.classify` call above will return the classification results to a function in that delegate.
 
 ```swift
-class MyViewController: UIViewController, SpeechEventListener, NLUDelegate {
-
     // ...other delegate functions...
 
     func classification(result: NLUResult) {

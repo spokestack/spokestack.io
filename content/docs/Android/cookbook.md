@@ -98,3 +98,40 @@ pipeline.start()
 ```
 
 before you'll be able to recognize a wakeword again. In-flight ASR requests will produce transcripts here as well.
+
+### Regex-based NLU
+
+Using regexes for NLU is only advised if you only want to support a narrow range of user utterances (perhaps keywords/simple commands), but it's simple enough to implement. Remember that an `OnSpeechEventListener` will receive the transcript of a user utterance in a `RECOGNIZE` event. From there, it's as easy as feeding the transcript through a series of regexes (make sure they're ordered in such a way that a more generic expression doesn't accidentally capture text meant for a more specific one).
+
+Let's imagine you're creating a voice-controlled timer. It's probably not the best idea to put your NLU directly in your main Activity, but we'll do it here so you can see all the relevant code, starting with the event listener:
+
+```kotlin
+class MyActivity : AppCompatActivity(), OnSpeechEventListener {
+
+    // ...
+
+    override fun onEvent(event: SpeechContext.Event?, context: SpeechContext?) {
+        when (event) {
+            // ...
+            SpeechContext.Event.RECOGNIZE -> context?.let { handleSpeech(it.transcript) }
+            else -> {
+                // ...
+            }
+        }
+    }
+
+    private fun handleSpeech(transcript: String) {
+        when {
+            Regex("(?i)start").matches(transcript) -> {
+                // start the timer and change the UI accordingly
+            }
+            Regex("(?i)stop").matches(transcript) -> {
+                // stop the timer and change the UI accordingly
+            }
+            Regex("(?i)reset|start over").matches(transcript) -> {
+                // reset the timer and change the UI accordingly
+            }
+        }
+    }
+}
+```

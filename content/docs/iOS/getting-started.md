@@ -142,15 +142,13 @@ class MyViewController: UIViewController, SpeechEventListener, NLUDelegate {
 
     func didRecognize(_ result: SpeechContext) {
         let userText = result.transcript
-        let classification = self.nlu.classify(utterance: userText, context: [:])
+        let classification = self.nlu.classify(utterance: userText)
     }
 ```
 
 Earlier, if you recall, we claimed that `MyViewController` already implemented the `NLUDelegate` protocol. The `nlu.classify` call above will return the classification results to a function in that delegate.
 
 ```swift
-class MyViewController: UIViewController, SpeechEventListener, NLUDelegate {
-
     // ...other delegate functions...
 
     func classification(result: NLUResult) {

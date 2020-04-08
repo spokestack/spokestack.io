@@ -5,7 +5,7 @@ description: Understanding the iOS NLU API
 draft: false
 ---
 
-This is a companion to the [NLU concept guide](docs/Concepts/nlu), which discusses the NLU subsystem holistically. Here we'll talk about usage issues specific to the Android client library.
+This is a companion to the [NLU concept guide](docs/Concepts/nlu), which discusses the NLU subsystem holistically. Here we'll talk about usage issues specific to the iOS client library.
 
 ### Configuration
 
@@ -15,16 +15,15 @@ The Spokestack NLU most commonly uses the following `SpeechConfiguration` proper
 - `nluModelPath`: The bundle path to the nlu model
 - `nluModelMetadataPath`: The bundle path to the nlu model metadata
 
-The following properties are configurable, but should not be changed unless a different NLU model or vocabulary is being used (ie if you're changing this, you already know why you're doing so):
+The following properties are configurable, but should not be changed unless a different NLU model or vocabulary is being used (i.e., if you're changing these, you already know why you're doing so):
 
 - `nluTerminatorTokenIndex`
-- `nluPaddingTokenIndex`
 - `nluPaddingTokenIndex`
 - `nluMaxTokenLength`
 
 ## Usage
 
-As mentioned in the [Getting Started](getting-started) guide, initializing the Spokestack NLU is like inititalizing the TTS component. Both a delegate callback interface and a publisher interface are provided. The call to `classify` is the same for either interface, but the result and `DispatchQueue` that the classification runs on are returned differently.
+As mentioned in the [Getting Started](getting-started) guide, initializing the Spokestack NLU is like initializing the TTS component. Both a delegate callback interface and a publisher interface are provided. The call to `classify` is the same for either interface, but the result and `DispatchQueue` that the classification runs on are handled differently.
 
 ### 1) Delegate
 

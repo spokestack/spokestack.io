@@ -52,8 +52,6 @@ class NLU:  NLUDelegate {
 }
 ```
 
-assuming that `self` implements `NLUDelegate`.
-
 When it comes time to classify an utterance using the delegate interface, Spokestack's NLU does all the heavy lifting on a configurable async `DispatchQueue`. Set `SpeechConfiguration.delegateDispatchQueue` to a `DispatchQueue` with your desired QoS. The `classify` function will run and call your delegate in that queue. By default `NLUTensorflow.classify` will run with a QoS of [`userInitiated`](https://developer.apple.com/documentation/dispatch/dispatchqos/qosclass/userinitiated).
 
 ### 2) Publisher (Combine)

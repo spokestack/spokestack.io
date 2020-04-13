@@ -68,7 +68,7 @@ In the event that a user's intent is misheard or misunderstood, give them an alt
 
 ### Touch to Talk
 
-This is where context comes into play. A user who uses your app in public spaces with lots of background sound may be harder to hear. If this is how your users use your app, consider adding a touch to talk option. This will allow users to invoke listening by touch instead of using a wakeword. Place this button somewhere on the screen that is accessible one-handed.
+This is where [context](/docs/Design/find-the-right-use-case) comes into play. A user who uses your app in public spaces with lots of background sound may be harder to hear. If this is how your users use your app, consider adding a touch to talk option. This will allow users to invoke listening by touch instead of using a wakeword. Place this button somewhere on the screen that is accessible one-handed.
 
 ## 5. Provide variety & consistency
 

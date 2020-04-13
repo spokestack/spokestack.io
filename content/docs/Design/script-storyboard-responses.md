@@ -47,13 +47,13 @@ Once you've exhausted your experience map, write turns for anything outside that
 1. How will you respond if you weren't able to match what the user said with an `intent`?
 2. If you ask a question, how will you respond if the user responds with a negative?
 
-Your script is complete once you've exhausted both your experience map(s) and list of `intents`. Write several variations for responses where necessary. Go back to [best practice](/docs/Design/tips-for-writing-dialog) rule #6 if you get stuck.
+Your script is complete once you've exhausted both your experience map(s) and list of `intents`. Write several variations for responses where necessary. Go back to [best practices](/docs/Design/tips-for-writing-dialog) if you get stuck.
 
 Here's an [example](https://www.dropbox.com/scl/fi/0weo35v72i901bynq2j8o/MyRunBuddy-MVP-Return-User-PUBLIC.paper?dl=0&rlkey=mzwmhjl00xznfaxxxo17kjjz1) of a drafted script excluding visual output. We'll get to that in a later step.
 
 ## Test and Refine Your Script
 
-Does your interaction sound human and natural? Type responses [here](https://labs.spokestack.io/) to hear how a synthetic voice might read them. Refer to [step #5](/docs/Design/tips-for-writing-dialog) if you get stuck.
+Does your interaction sound human and natural? Type responses [here](https://labs.spokestack.io/) to hear how a synthetic voice might read them. Refer to [best practices](/docs/Design/tips-for-writing-dialog) if you get stuck.
 
 ## Introduce Visuals
 

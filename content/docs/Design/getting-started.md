@@ -5,11 +5,11 @@ description: Getting started with designing your app to work with Spokestack
 draft: false
 ---
 
-In this section, we'll introduce you to design considerations for voice-enabled, multi-modal apps. Smartphones are well-suited for this type of interaction because they have a screen, a microphone, _and_ a speaker. All best practices and exercises in this section maximize these capabilities by design. We'll cover how to [map an experience[(docs/Design/map-out-integration), [write dialogue](docs/Design/script-storyboard-responses), [design a multi-modal UI](docs/Design/tips-for-designing-visual-output), and conduct a user test.
+In this section, we'll introduce you to design considerations for voice-enabled, multimodal apps. Smartphones are well-suited for this type of interaction because they have a screen, a microphone, _and_ a speaker. All best practices and exercises in this section maximize these capabilities by design. We'll cover how to [map an experience](docs/Design/map-out-integration), [write dialogue](docs/Design/script-storyboard-responses), and [design a multi-modal UI](docs/Design/tips-for-designing-visual-output).
 
 ## Modes of Interaction
 
-Before we start, understand how your users interact with your apps and how you're able to respond.
+Before we start, it's important to understand how your users interact with your apps and how you're able to respond.
 
 ### Touch Input / Display Output
 

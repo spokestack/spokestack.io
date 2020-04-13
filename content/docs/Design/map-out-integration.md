@@ -5,11 +5,11 @@ description: Consider what users want to ask and how you will respond.
 draft: false
 ---
 
-After [identifying the right use cases](docs/Design/find-the-right-use-case) for multi-modal voice, map how you'll integrate them into your app. A useful technique for this is to create a customer journey or experience map.
+After [identifying the right use cases](docs/Design/find-the-right-use-case) for multimodal voice, map how you'll integrate them into your app. A useful technique for this is to create a customer journey or experience map.
 
 ## Experience Mapping
 
-An experience map is a list of inputs from left to right with simultaneous outputs below. Multi-modal maps include intents and gestures followed by voice and visual outputs. A complete map will provide a better sense of scope before building anything.
+An experience map is a list of inputs from left to right with simultaneous outputs below. Multimodal maps include intents and gestures followed by voice and visual outputs. A complete map will provide a better sense of scope before building anything.
 
 Inspiration for this exercise comes from the [Sketch Phase](https://www.thesprintbook.com/how) of _The Design Sprint_ and [How to Make an Experience Map](https://blog.carbonfive.com/2017/08/03/experience-mapping-2/).
 
@@ -48,8 +48,6 @@ Our fourth row is not an actor, but more of a section for notes . Including it a
 - **Questions (optional).** This will include notes and unresolved questions.
 
 ## Building a Map
-
-### Prepare your Space
 
 You need sticky notes (4-6 different colors), markers, and an empty wall. Tape is optional, but recommended for sticky notes that become less sticky. Invite a variety of teammates with differing areas of expertise to your space. Choose someone to lead and record the discussion using sticky notes.
 

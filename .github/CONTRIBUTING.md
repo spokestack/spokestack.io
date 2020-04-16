@@ -8,7 +8,7 @@
 
 **[Supported browsers](https://browserl.ist/?q=%3E0.35%25%2C+not+op_mini+all)**: (basically IE 11, modern desktop and mobile browsers)
 
-Contributions are always welcome. Before contributing please [search the issue tracker](https://github.com/timmywil/panzoom/issues); your issue
+Contributions are always welcome. Before contributing please [search the issue tracker](https://github.com/spokestack/spokestack-website/issues); your issue
 may have already been discussed or fixed in `master`. To contribute,
 [fork](https://help.github.com/articles/fork-a-repo/) Panzoom, commit your changes,
 & [send a pull request](https://help.github.com/articles/using-pull-requests/).
@@ -16,12 +16,12 @@ may have already been discussed or fixed in `master`. To contribute,
 ## Feature Requests
 
 Feature requests should be submitted in the
-[issue tracker](https://github.com/timmywil/panzoom/issues), with a description of
+[issue tracker](https://github.com/spokestack/spokestack-website/issues), with a description of
 the expected behavior & use case, where they’ll remain closed until sufficient interest,
 [e.g. :+1: reactions](https://help.github.com/articles/about-discussions-in-issues-and-pull-requests/),
-has been [shown by the community](https://github.com/timmywil/panzoom/issues?q=label%3A%22votes+needed%22+sort%3Areactions-%2B1-desc).
+has been [shown by the community](https://github.com/spokestack/spokestack-website/issues?q=label%3A%22votes+needed%22+sort%3Areactions-%2B1-desc).
 Before submitting a request, please search for similar ones in the
-[closed issues](https://github.com/timmywil/panzoom/issues?q=is%3Aissue+is%3Aclosed+label%3Afeature).
+[closed issues](https://github.com/spokestack/spokestack-website/issues?q=is%3Aissue+is%3Aclosed+label%3Afeature).
 
 This convention is borrowed from [lodash](https://github.com/lodash/lodash). It helps keep the open issues list uncluttered.
 
@@ -91,7 +91,7 @@ established in the code.
   Comments are kept to a minimum, but are encouraged to explain confusing bits of code.
 
 - **Types**:<br>
-  Panzoom is written in TypeScript and documentation is generated from the type annotations.
+  This website is written in TypeScript.
   Any code additions should be properly typed, with no use of `any`.
 
 Guidelines are enforced using [ESLint](https://eslint.org/) and [Prettier](https://prettier.io/):

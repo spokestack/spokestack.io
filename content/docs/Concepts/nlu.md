@@ -13,15 +13,17 @@ Today's NLU systems are typically built around the intent/slot model of semantic
 
 ## Model description
 
-Every Spokestack NLU model consists of three files: a Wordpiece vocabulary text file, a TensorFlow model binary file, and a metadata JSON file.
+Every Spokestack NLU model consists of three files: a Wordpiece vocabulary (text), a TensorFlow Lite model (binary), and metadata (JSON).
 
 ### Wordpiece
 
-Each utterance is processed using Wordpiece tokenization, a variant of [Byte pair encoding](https://en.wikipedia.org/wiki/Byte_pair_encoding) originally described in [this paper](https://static.googleusercontent.com/media/research.google.com/ja//pubs/archive/37842.pdf), to divide user utterances into tokens. The wordpiece vocabulary is pretrained and distributed along with the model; the tokens produced by the tokenizer are encoded into a sequence of integer IDs according to this vocabulary.
+Each input string is processed using Wordpiece tokenization, a variant of [Byte pair encoding](https://en.wikipedia.org/wiki/Byte_pair_encoding) originally described in [this paper](https://static.googleusercontent.com/media/research.google.com/ja//pubs/archive/37842.pdf), to divide user utterances into tokens. Once the input has been tokenized according to the pretrained vocabulary, the tokens are encoded into a sequence of integer IDs, each ID corresponding to that token's position in the vocabulary file.
 
 ### Tensorflow
 
-Spokestack's NLU model runs on [TensorFlow Lite](https://www.tensorflow.org/lite) and is built on top of Google's [BERT](<https://en.wikipedia.org/wiki/BERT_(language_model)>) language model, using a pretrained version of it to leverage information learned from billions of words. The sequence of integers representing the user utterance is then padded with a special separator token and trailing 0s to bring the sequence to a predetermined length. That padded sequence is the model's input (shaped `[1, sequence_length]`), and the output is two tensors representing posterior probabilities for intent classification and tag classification for each token (`[1, num_intents]` and `[1, num_tags, sequence_length]`, respectively).
+Spokestack's NLU model runs on [TensorFlow Lite](https://www.tensorflow.org/lite) and is built on top of Google's [BERT](<https://en.wikipedia.org/wiki/BERT_(language_model)>) language model, using a pretrained version of it to leverage information learned from billions of words. 
+
+At inference time, the sequence of token IDs described in the previous section is padded with a special separator ID and trailing 0s to bring the sequence to a predetermined length. That padded sequence is the model's input (shaped `[1, sequence_length]`), and the output is two tensors representing posterior probabilities for intent classification and tag classification for each token (`[1, num_intents]` and `[1, num_tags, sequence_length]`, respectively).
 
 ### Metadata
 

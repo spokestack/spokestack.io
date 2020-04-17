@@ -27,7 +27,7 @@ As mentioned in the [Getting Started](getting-started) guide, initializing the S
 
 ### Controller
 
-The controller initialization is straightforward--simply tell the `SpeechConfiguration` where the three required files are for the Spokestack NLU model you're using (here we assume that they're contained in the app's bundle with hardcoded names), and then initialize the controller.
+The controller initialization is straightforward--simply tell the `SpeechConfiguration` where to find the three files required for the Spokestack NLU model you're using (here we assume that they're contained in the app's bundle with hardcoded names), and then initialize the controller.
 
 class NLU {
 public let config = SpeechConfiguration()

@@ -88,7 +88,9 @@ const styles = {
     transition: background-color 0.1s ${theme.transitionEasing};
 
     &:hover {
-      background-color: ${Color('#fff').darken(0.1).hex()};
+      background-color: ${Color('#fff')
+        .darken(0.1)
+        .hex()};
     }
     &:active {
       box-shadow: inset 0 0 5px rgba(0, 0, 0, 0.5);

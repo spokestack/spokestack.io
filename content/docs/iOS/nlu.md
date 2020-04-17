@@ -35,7 +35,7 @@ config.nluVocabularyPath = Bundle(for: type(of: self)).path(forResource: "vocab"
 config.nluModelPath = Bundle(for: type(of: self)).path(forResource: "nlu", ofType: "tflite")
 config.nluModelMetadataPath = Bundle(for: type(of: self)).path(forResource: "nlu", ofType: "json")
 public let nlu = try! NLUTensorflow(self, configuration: config)
-  
+
 }
 
 ### 1) Delegate

@@ -20,7 +20,7 @@ val nlu = TensorflowNLU.Builder()
     .build()
 ```
 
-The configuration properties above refer to the three required file for the Spokestack NLU model you're using. They're stored at the root of the app's cache directory here for convenience.
+The configuration properties above refer to the three required files for the Spokestack NLU model you're using. They're stored at the root of the app's cache directory here for convenience.
 
 When it comes time to classify an utterance, Spokestack's NLU does all the heavy lifting on a background thread and returns an [`AsyncResult`](https://www.javadoc.io/doc/io.spokestack/spokestack-android/latest/io/spokestack/spokestack/util/AsyncResult.html) that wraps the eventual classification data. This custom version of [`Future`](https://docs.oracle.com/javase/7/docs/api/java/util/concurrent/Future.html) exists to enable different approaches to retrieving the classification:
 

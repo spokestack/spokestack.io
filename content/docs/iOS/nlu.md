@@ -5,7 +5,7 @@ description: Understanding the iOS NLU API
 draft: false
 ---
 
-This is a companion to the [NLU concept guide](docs/Concepts/nlu), which discusses the NLU subsystem holistically. Here we'll talk about usage issues specific to the iOS client library.
+This is a companion to the [NLU concept guide](/docs/Concepts/nlu), which discusses the NLU subsystem holistically. Here we'll talk about usage issues specific to the iOS client library.
 
 ### Configuration
 
@@ -25,14 +25,26 @@ The following properties are configurable, but should not be changed unless a di
 
 As mentioned in the [Getting Started](getting-started) guide, initializing the Spokestack NLU is like initializing the TTS component. Both a delegate callback interface and a publisher interface are provided. The call to `classify` is the same for either interface, but the result and `DispatchQueue` that the classification runs on are handled differently.
 
+### Controller
+
+The controller initialization is straightforward--simply tell the `SpeechConfiguration` where to find the three files required for the Spokestack NLU model you're using (here we assume that they're contained in the app's bundle with hardcoded names), and then initialize the controller.
+
+```swift
+class NLU {
+    public let config = SpeechConfiguration()
+    config.nluVocabularyPath = Bundle(for: type(of: self)).path(forResource: "vocab", ofType: "txt")
+    config.nluModelPath = Bundle(for: type(of: self)).path(forResource: "nlu", ofType: "tflite")
+   config.nluModelMetadataPath = Bundle(for: type(of: self)).path(forResource: "nlu", ofType: "json")
+    public let nlu = try! NLUTensorflow(self, configuration: config)
+}
+```
+
 ### 1) Delegate
 
 A delegate interface is as simple as:
 
 ```swift
-class NLU:  NLUDelegate {
-
-    public let nlu = try! NLUTensorflow(self, configuration: SpeechConfiguration())
+extension NLU:  NLUDelegate {
 
     nlu.classify(utterance: "turn the lights on in the kitchen")
 
@@ -59,8 +71,6 @@ The publisher interface to the classifier can take advantage of a simpler setup,
 
 ```swift
 // using Combine
-
-let nlu = try! NLUTensorflow(configuration: SpeechConfiguration())
 
 let utterances = ["turn the lights on in the kitchen"]
 

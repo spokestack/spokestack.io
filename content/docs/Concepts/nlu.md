@@ -21,7 +21,7 @@ Each input string is processed using Wordpiece tokenization, a variant of [Byte 
 
 ### Tensorflow
 
-Spokestack's NLU model runs on [TensorFlow Lite](https://www.tensorflow.org/lite) and is built on top of Google's [BERT](<https://en.wikipedia.org/wiki/BERT_(language_model)>) language model, using a pretrained version of it to leverage information learned from billions of words. 
+Spokestack's NLU model runs on [TensorFlow Lite](https://www.tensorflow.org/lite) and is built on top of Google's [BERT](<https://en.wikipedia.org/wiki/BERT_(language_model)>) language model, using a pretrained version of it to leverage information learned from billions of words.
 
 At inference time, the sequence of token IDs described in the previous section is padded with a special separator ID and trailing 0s to bring the sequence to a predetermined length. That padded sequence is the model's input (shaped `[1, sequence_length]`), and the output is two tensors representing posterior probabilities for intent classification and tag classification for each token (`[1, num_intents]` and `[1, num_tags, sequence_length]`, respectively).
 

@@ -61,10 +61,7 @@ export default function StickyNav({
           console.warn(`Link for ${link.title} not found`)
         }
       })
-      const orderedLocs = Object.keys(locs)
-        .map(Number)
-        .sort()
-        .reverse()
+      const orderedLocs = Object.keys(locs).map(Number).sort().reverse()
       const onScroll = throttle(() => {
         if (navigating) {
           return

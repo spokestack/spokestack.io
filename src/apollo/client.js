@@ -23,7 +23,7 @@ export default new ApolloClient({
     const networkError = error.networkError
     if (graphQLErrors) {
       if (Array.isArray(graphQLErrors)) {
-        graphQLErrors.forEach(function({ message, locations, path }) {
+        graphQLErrors.forEach(function ({ message, locations, path }) {
           console.warn(
             `[GraphQL error]: Message: ${message}, Location: ${locations}, Path: ${path}`
           )

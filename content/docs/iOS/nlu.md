@@ -29,14 +29,15 @@ As mentioned in the [Getting Started](getting-started) guide, initializing the S
 
 The controller initialization is straightforward--simply tell the `SpeechConfiguration` where to find the three files required for the Spokestack NLU model you're using (here we assume that they're contained in the app's bundle with hardcoded names), and then initialize the controller.
 
+```swift
 class NLU {
-public let config = SpeechConfiguration()
-config.nluVocabularyPath = Bundle(for: type(of: self)).path(forResource: "vocab", ofType: "txt")
-config.nluModelPath = Bundle(for: type(of: self)).path(forResource: "nlu", ofType: "tflite")
-config.nluModelMetadataPath = Bundle(for: type(of: self)).path(forResource: "nlu", ofType: "json")
-public let nlu = try! NLUTensorflow(self, configuration: config)
-
+    public let config = SpeechConfiguration()
+    config.nluVocabularyPath = Bundle(for: type(of: self)).path(forResource: "vocab", ofType: "txt")
+    config.nluModelPath = Bundle(for: type(of: self)).path(forResource: "nlu", ofType: "tflite")
+   config.nluModelMetadataPath = Bundle(for: type(of: self)).path(forResource: "nlu", ofType: "json")
+    public let nlu = try! NLUTensorflow(self, configuration: config)
 }
+```
 
 ### 1) Delegate
 

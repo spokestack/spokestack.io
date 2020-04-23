@@ -1,6 +1,6 @@
 ## 🚀 [spokestack.io](https://spokestack.io)
 
-[![Greenkeeper badge](https://badges.greenkeeper.io/spokestack/spokestack-website.svg)](https://greenkeeper.io/)
+[![CircleCI](https://circleci.com/gh/spokestack/spokestack-website.svg?style=svg)](https://circleci.com/gh/spokestack/spokestack-website)
 
 This site is built with ❤️ by the Spokestack team using [Gatsby][gatsby] in [TypeScript][typescript].
 

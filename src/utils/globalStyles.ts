@@ -55,6 +55,17 @@ export default css`
       text-decoration-color 0.1s ${theme.transitionEasing},
       fill 0.1s ${theme.transitionEasing};
   }
+  .dark-mode-track {
+    background-color: ${theme.mainBorder};
+  }
+  .dark-mode-knob {
+    transform: translateX(0);
+    box-shadow: 0 0 0 1px ${theme.mainBorder};
+    background-color: ${theme.mainBackground};
+  }
+  .dark-mode-icon--dark {
+    opacity: 0;
+  }
   html.dark-mode {
     background-color: ${theme.mainBackgroundDark};
 
@@ -110,6 +121,21 @@ export default css`
     .sticky-nav-wrap .select-label .icon,
     .sticky-nav-header-icon {
       fill: ${theme.textDarkBg};
+    }
+
+    .dark-mode-track {
+      background-color: ${theme.codeBackground};
+    }
+    .dark-mode-knob {
+      transform: translateX(12px);
+      box-shadow: 0 0 0 1px ${theme.codeBackground};
+      background-color: ${theme.mainBackgroundDark};
+    }
+    .dark-mode-icon--dark {
+      opacity: 1;
+    }
+    .dark-mode-icon--light {
+      opacity: 0;
     }
   }
   :focus {

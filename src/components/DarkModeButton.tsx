@@ -1,6 +1,6 @@
 import * as theme from '../utils/theme'
 
-import React, { useEffect, useState } from 'react'
+import React, { useState } from 'react'
 import { getDarkModePref, setDarkModePref } from '../utils/auth'
 
 import { css } from '@emotion/core'
@@ -19,32 +19,13 @@ export default function DarkModeButton() {
     html.classList[newDark ? 'add' : 'remove']('dark-mode')
   }
 
-  useEffect(() => {
-    setDark(getDarkModePref())
-  }, [])
-
   return (
     <button css={styles.button} onClick={toggleDarkMode}>
-      <div
-        css={styles.track}
-        style={{
-          backgroundColor: dark ? theme.codeBackground : theme.mainBorder
-        }}
-      />
-      <div
-        css={styles.knob}
-        style={{
-          transform: `translateX(${dark ? '12px' : '0'})`,
-          boxShadow: `0 0 0 1px ${
-            dark ? theme.codeBackground : theme.mainBorder
-          }`,
-          backgroundColor: dark
-            ? theme.mainBackgroundDark
-            : theme.mainBackground
-        }}>
+      <div className="dark-mode-track" css={styles.track} />
+      <div className="dark-mode-knob" css={styles.knob}>
         <div
-          css={[styles.icon, styles.lightIcon]}
-          style={{ opacity: dark ? 0 : 1 }}>
+          className="dark-mode-icon--light"
+          css={[styles.icon, styles.lightIcon]}>
           <svg
             style={{ width: '12px', height: '12px' }}
             viewBox="0 0 16 16"
@@ -53,8 +34,8 @@ export default function DarkModeButton() {
           </svg>
         </div>
         <div
-          css={[styles.icon, styles.darkIcon]}
-          style={{ opacity: dark ? 1 : 0 }}>
+          className="dark-mode-icon--dark"
+          css={[styles.icon, styles.darkIcon]}>
           <svg
             style={{ width: '12px', height: '12px' }}
             viewBox="0 0 17 16"

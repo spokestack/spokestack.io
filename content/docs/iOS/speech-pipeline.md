@@ -63,7 +63,7 @@ If you're using Spokestack's wakeword feature _without_ ASR, you should not call
 
 **Push to Talk**
 
-If you start the pipeline from a user interaction like a button press that calls `pipeline.activate()`, `SpeechDelegate.activate` will not be called. If you wish to display a "listening" indicator in your UI when you should do so in the same method that calls `pipeline.activate()` but remove it when `SpeechDelegate.deactivate` is called.
+If you start the pipeline from a user interaction like a button press that calls `pipeline.activate()`, `SpeechDelegate.activate` will not be called. If you wish to display a "listening" indicator in your UI, you should do so in the same method that calls `pipeline.activate()` but remove it when `SpeechDelegate.deactivate` is called.
 
 ### 4. `wakewordService`
 

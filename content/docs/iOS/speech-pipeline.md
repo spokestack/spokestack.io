@@ -47,7 +47,7 @@ The speech configuration is comprehensive enough to have its own guide, but in s
 The speech delegate receives most of the interesting system events from the pipeline. The types of events it receives depends on whether the ASR has been activated from a wakeword or by using `pipeline.activate()`.
 
 - `SpeechDelegate.activate`: called immediately after a wakeword has been recognized. Note that this is not called after a manual `pipeline.activate()`.
-- `SpeechDelegate.deactivate`: called after ASR has been completed or timed out. Note that this is not called after a manual `pipeline.deactivate()`.
+- `SpeechDelegate.deactivate`: called after ASR has completed or timed out. Note that this is not called after a manual `pipeline.deactivate()`.
 - `SpeechDelegate.didRecognize`: called after ASR has successfully recognized an utterance. `SpeechDelegate.deactivate` will also be called.
 - `SpeechDelegate.didTimeout`: called after ASR timed out while listening for an utterance. `SpeechDelegate.deactivate` will also be called.
 

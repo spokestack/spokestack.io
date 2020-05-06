@@ -44,9 +44,9 @@ The speech configuration is comprehensive enough to have its own guide, but in s
 
 ### 3. `speechDelegate`
 
-The speech delegate receives most of the interesting system events from the pipeline, including notifications that the wakeword has been recognized (`activate`), ASR has completed or timed out (`deactivate`), and that ASR has recognized a user utterance (`didRecognize`). Your implementations of all these methods will be very important to how your app handles voice interactions, because the delegate acts as a kind of gatekeeper between speech events and pipeline operation.
+The speech delegate receives most of the interesting system events from the pipeline, including notifications that the wakeword has been recognized (`didActivate`), ASR has completed or timed out (`didDeactivate`), and that ASR has recognized a user utterance (`didRecognize`). Your implementations of all these methods will be very important to how your app handles voice interactions, because the delegate acts as a kind of gatekeeper between speech events and pipeline operation.
 
-If you're using Spokestack's wakeword feature _without_ ASR, you don't need to interact with the pipeline in these methods, but if you do want ASR, it's important to call `pipeline.activate()` in your delegate's `activate` implementation so the pipeline can activate the ASR component. You may also wish to display a "listening" indicator in your UI when you receive `activate` and remove it when `deactivate` is called.
+If you're using Spokestack's wakeword feature _without_ ASR, you don't need to interact with the pipeline in these methods, but if you do want ASR, it's important to call `pipeline.activate()` in your delegate's `didActivate` implementation so the pipeline can activate the ASR component. You may also wish to display a "listening" indicator in your UI when you receive `didActivate` and remove it when `didDeactivate` is called.
 
 ### 4. `wakewordService`
 
@@ -54,7 +54,7 @@ The wakeword service is in charge of, you guessed it, recognizing that the user 
 
 ### 5. `pipelineDelegate`
 
-The pipeline delegate receives system events from the pipeline itself, including notifications of both successful initialization and errors during setup. This is where any error handling will occur, and the `start` and `stop` methods tell you when Spokestack is using the microphone. You'll recall that earlier we mentioned a UI "listening" indicator would go in `speechDelegate`'s `activate` method, and that's true in many cases — often you'll want to alert the user that you're expecting a voice command from them (that the ASR component is active and interpreting their speech). If, however, you want to let the user know that the device's microphone _itself_ is active (which it naturally will be when waiting for a wakeword), you'll want to condition that indicator on the pipeline's `start` and `stop` events.
+The pipeline delegate receives system events from the pipeline itself, including notifications of both successful initialization and errors during setup. This is where any error handling will occur, and the `start` and `stop` methods tell you when Spokestack is using the microphone. You'll recall that earlier we mentioned a UI "listening" indicator would go in `speechDelegate`'s `didActivate` method, and that's true in many cases — often you'll want to alert the user that you're expecting a voice command from them (that the ASR component is active and interpreting their speech). If, however, you want to let the user know that the device's microphone _itself_ is active (which it naturally will be when waiting for a wakeword), you'll want to condition that indicator on the pipeline's `start` and `stop` events.
 
 ## Other methods
 
@@ -70,7 +70,7 @@ The `SpeechPipeline` itself, as a manager of shared resources, is a prime candid
 
 ### `activate`/`deactivate`
 
-As mentioned before, these methods control the pipeline's ASR component. `activate` should be called in the `speechDelegate`'s `activate` implementation if ASR is desired, and it can also be called manually—for example, to enable "tap to talk" instead of (or in addition to) using a wakeword. Similarly, `deactivate` should be called when the `speechDelegate`'s `deactivate` implementation is called, or when the user manually cancels ASR via a button you've provided for such a purpose.
+As mentioned before, these methods control the pipeline's ASR component. `activate` should be called in the `speechDelegate`'s `didActivate` implementation if ASR is desired, and it can also be called manually—for example, to enable "tap to talk" instead of (or in addition to) using a wakeword. Similarly, `deactivate` should be called when the `speechDelegate`'s `didDeactivate` implementation is called, or when the user manually cancels ASR via a button you've provided for such a purpose.
 
 ### `start`/`stop`
 

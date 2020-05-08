@@ -99,16 +99,16 @@ The `self` in this example means that the class containing this pipeline also ad
 
 Now that we have a pipeline for speech and controllers for NLU and TTS, we need to provide implementations for the delegates so that they can send events to you. We'll do that in the same class we used in the previous step.
 
-If you want to disable any buttons or show a special "listening" indicator while recording, put those things in the `PipelineDelegate`'s `didStart` and `didStop` methods; otherwise, the main methods you'll want to implement are `SpeechEventListener`'s' `activate`, `deactivate`, and `didRecognize`. The basic layout for the first two would be:
+If you want to disable any buttons or show a special "listening" indicator while recording, put those things in the `PipelineDelegate`'s `didStart` and `didStop` methods; otherwise, the main methods you'll want to implement are `SpeechEventListener`'s' `didActivate`, `didDeactivate`, and `didRecognize`. The basic layout for the first two would be:
 
 ```swift
 // assumes `self` is the class from before; it
 // has a `SpeechPipeline` member
-func activate() {
+func didActivate() {
     self.pipeline.activate()
 }
 
-func deactivate() {
+func didDeactivate() {
     self.pipeline.deactivate()
 }
 ```

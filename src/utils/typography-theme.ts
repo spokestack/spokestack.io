@@ -80,9 +80,12 @@ const options: TypographyOptions = {
     },
     blockquote: {
       ...scale(1 / 5),
-      paddingLeft: rhythm(13 / 16),
-      marginLeft: rhythm(-1),
-      borderLeft: `${rhythm(3 / 16)} solid ${'hsl(0, 0%, 13%)'}`
+      paddingLeft: rhythm(1),
+      marginLeft: 0,
+      paddingTop: rhythm(1 / 3),
+      paddingBottom: rhythm(1 / 3),
+      borderLeft: `${rhythm(3 / 16)} solid ${theme.primaryLight}`,
+      fontStyle: 'italic'
     },
     [MOBILE_MEDIA_QUERY]: {
       blockquote: {

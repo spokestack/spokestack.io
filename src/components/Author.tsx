@@ -1,11 +1,12 @@
+import * as theme from '../utils/theme'
+
+import { Global, css } from '@emotion/core'
 import { TeamImages, TeamMemberName } from '../types'
 import { graphql, useStaticQuery } from 'gatsby'
 
 import Image from 'gatsby-image'
-import { MIN_LARGER_DISPLAY_MEDIA_QUERY } from 'typography-breakpoint-constants'
 import { Query } from '../utils/graphql'
 import React from 'react'
-import { css } from '@emotion/core'
 import { rhythm } from '../utils/typography'
 
 type QueryType = Query & TeamImages
@@ -21,46 +22,52 @@ export default function Author({ author }: Props) {
   }
   const { name, title } = data.site.siteMetadata.team[author]
   return (
-    <div css={styles.container}>
-      <div css={styles.content}>
-        <p>Author</p>
-        {data[author] && (
-          <Image
-            fixed={data[author].childImageSharp.fixed}
-            alt={name}
-            css={styles.imageWrap}
-            imgStyle={styles.image}
-          />
-        )}
-        <h3 css={styles.name}>{name}</h3>
-        <p css={styles.title}>{title}</p>
-      </div>
+    <div className="author" css={styles.container}>
+      <Global
+        styles={css`
+          html.dark-mode {
+            .author {
+              background-color: ${theme.codeBackground};
+              border-left-color: ${theme.mainBorderDark};
+              border-right-color: ${theme.mainBorderDark};
+              border-bottom-color: ${theme.mainBorderDark};
+            }
+            .author-bio {
+              color: white;
+            }
+          }
+        `}
+      />
+      {data[author] && (
+        <Image
+          fixed={data[author].childImageSharp.fixed}
+          alt={name}
+          css={styles.imageWrap}
+          imgStyle={styles.image}
+        />
+      )}
+      <p css={styles.about}>About the Author</p>
+      <h4 css={styles.name}>{name}</h4>
+      <p className="author-bio" css={styles.bio}>
+        {title}
+      </p>
     </div>
   )
 }
 
 const styles = {
   container: css`
-    grid-area: author;
-    display: flex;
-    justify-content: center;
-    ${MIN_LARGER_DISPLAY_MEDIA_QUERY} {
-      justify-content: flex-start;
-    }
-  `,
-  content: css`
-    min-width: 285px;
     display: flex;
     flex-direction: column;
     justify-content: flex-start;
     align-items: center;
     text-align: center;
-    margin: ${rhythm(1)} 0;
-
-    ${MIN_LARGER_DISPLAY_MEDIA_QUERY} {
-      padding-right: 100px;
-      margin-top: ${rhythm(8)};
-    }
+    background-color: white;
+    padding: 25px;
+    margin-top: 5px;
+    border: 1px solid ${theme.mainBorder};
+    border-top: 3px solid ${theme.primaryLight};
+    border-radius: 0 0 7px 7px;
   `,
   imageWrap: css`
     margin: 0 0 ${rhythm(1)};
@@ -70,11 +77,17 @@ const styles = {
   image: {
     borderRadius: '50%'
   },
+  about: css`
+    font-size: 16px;
+    font-style: italic;
+    margin: 0 0 5px;
+  `,
   name: css`
     margin-bottom: 0;
   `,
-  title: css`
-    opacity: 0.5;
+  bio: css`
+    color: ${theme.headerColor.fade(0.25).toString()};
+    margin: 0;
   `
 }
 

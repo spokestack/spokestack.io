@@ -10,7 +10,7 @@ I watch [this presentation](https://vimeo.com/34017777) by Wilson Minor at the 2
 
 Nine years ago, before we knew the full impact of mobile and social apps would have on our lives, Wilson used a quote from Marshall McLuhan and adapted by Winston Churchill to explain the future:
 
-> "We Shape Our Tools, and Thereafter Our Tools Shape Us"
+> "We shape our tools, and thereafter our tools shape us."
 
 This quote is a reminder that the things we build impact the world. Even if it [looks like a toy at first](https://cdixon.org/2010/01/03/the-next-big-thing-will-start-out-looking-like-a-toy), like [Chris Dixon](https://twitter.com/cdixon) said 10 years ago. At the beginning of a project, you may not understand all potential uses for what you are building. But, if you keep your eyes and ears open, some of those uses may find you.
 

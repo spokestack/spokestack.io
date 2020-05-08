@@ -336,7 +336,6 @@ const styles = {
     }
   `,
   socialLink: css`
-    flex-shrink: 0;
     ${LARGE_DISPLAY_MEDIA_QUERY} {
       border-radius: 0;
       ${mobileLink}

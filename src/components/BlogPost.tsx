@@ -7,7 +7,6 @@ import { StickyLink, TeamMemberName } from '../types'
 import { graphql, useStaticQuery } from 'gatsby'
 
 import Author from './Author'
-// import Author from './Author'
 import DarkModeButton from './DarkModeButton'
 import Layout from '../components/Layout'
 import React from 'react'
@@ -80,7 +79,9 @@ export default function Blog({ post, selectFirst }: Props) {
           </div>
           <h6>Related Articles</h6>
           <div>
-            <a href="#">Why We&rsquo;re Building Spokestack</a>
+            <a href="#" className="content-link">
+              Why We&rsquo;re Building Spokestack
+            </a>
           </div>
         </section>
       </div>
@@ -92,11 +93,10 @@ const styles = {
   container: css`
     display: flex;
     flex-direction: column;
-    padding: ${rhythm(2)} 20px;
+    padding: 20px 20px ${rhythm(2)};
 
     ${MIN_DEFAULT_MEDIA_QUERY} {
-      padding-left: 100px;
-      padding-right: 100px;
+      padding: ${rhythm(2)} 100px;
       display: grid;
       grid-template-columns: minmax(290px, 350px) minmax(
           700px,
@@ -110,6 +110,11 @@ const styles = {
   `,
   author: css`
     grid-area: author;
+    margin-bottom: 50px;
+
+    ${MIN_DEFAULT_MEDIA_QUERY} {
+      margin-bottom: 0;
+    }
   `,
   content: css`
     grid-area: content;

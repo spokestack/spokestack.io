@@ -98,7 +98,8 @@ export default css`
       color: hsl(0, 0%, 80%);
       border-left-color: hsl(0, 0%, 80%);
     }
-    .main-content a {
+    .main-content a,
+    a.content-link {
       color: ${theme.linkDark};
       text-decoration-color: ${theme.linkDark};
 

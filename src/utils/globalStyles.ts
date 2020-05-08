@@ -90,6 +90,10 @@ export default css`
         color: ${theme.linkDarkActive};
       }
     }
+    .btn.btn-primary {
+      border-color: ${theme.linkDark};
+      color: ${theme.linkDark};
+    }
     blockquote {
       color: hsl(0, 0%, 80%);
       border-left-color: hsl(0, 0%, 80%);
@@ -209,8 +213,8 @@ export default css`
       pointer-events: none;
     }
     &.btn-primary {
+      background-color: transparent;
       border-color: ${theme.primary};
-      background-color: white;
       color: ${theme.primary};
 
       &:hover:not([disabled]),
@@ -225,9 +229,10 @@ export default css`
       padding: 0 ${rhythm(1.8)};
     }
     &.btn-small {
-      height: 28px;
-      padding: 0 10px;
+      height: 33px;
+      padding: 0 15px;
       ${adjustFontSizeTo('14px')};
+      font-weight: 600;
     }
   }
   .input-wrap {

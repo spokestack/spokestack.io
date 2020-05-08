@@ -10,16 +10,19 @@ export type TeamMemberName =
   | 'timmy'
   | 'will'
 
+interface SharpImage {
+  childImageSharp: { fixed: FixedObject }
+}
+
 export interface TeamImages {
-  brent: { childImageSharp: { fixed: FixedObject } }
-  elizabeth: { childImageSharp: { fixed: FixedObject } }
-  josh: { childImageSharp: { fixed: FixedObject } }
-  mike: { childImageSharp: { fixed: FixedObject } }
-  noel: { childImageSharp: { fixed: FixedObject } }
-  shelby: { childImageSharp: { fixed: FixedObject } }
-  timmy: { childImageSharp: { fixed: FixedObject } }
-  tyler: { childImageSharp: { fixed: FixedObject } }
-  will: { childImageSharp: { fixed: FixedObject } }
+  brent: SharpImage
+  elizabeth: SharpImage
+  josh: SharpImage
+  mike: SharpImage
+  noel: SharpImage
+  shelby: SharpImage
+  timmy: SharpImage
+  will: SharpImage
 }
 
 export interface StickyLink {

@@ -304,6 +304,10 @@ export default css`
       margin: 0;
     }
   }
+  .floating-image--left,
+  .floating-image--right {
+    margin: 20px auto;
+  }
   ${MIN_DEFAULT_MEDIA_QUERY} {
     h1 {
       font-size: ${adjustFontSizeTo('45px').fontSize};
@@ -326,6 +330,19 @@ export default css`
         text-align: right;
         margin: 0 20px 0 0;
       }
+    }
+    .floating-image--left {
+      float: left;
+      margin-right: 20px;
+    }
+    .floating-image--right {
+      float: right;
+      margin-left: 20px;
+    }
+    .floating-image--left,
+    .floating-image--right {
+      clear: both;
+      margin-bottom: 20px;
     }
   }
 `

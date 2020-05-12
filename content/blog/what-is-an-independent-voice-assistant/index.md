@@ -25,11 +25,13 @@ Building an independent voice assistant offers more control over the customer ex
 2. A voice that best represents their brand over the platform’s voice (e.g. Siri's voice)
 3. Data on intents and experiences that the company can use to inform product and service decisions.
 
-![What can I play for you?](./image2.png)
-
 ## How Are Independent Voice Assistants Used?
 
+<div class="floating-image--left" style="width: 300px;"><img src="./image2.png" width="300" alt="What can I play for you?" /></div>
+
 Voice assistants can be integrated with existing mobile apps and/or websites. These can entail something as simple as offering voice search using a touch-to-talk mic button. They can also be more dynamic experiences that involve things like wake words to activate listening and content that is broken out into conversational pieces like step-by-step instructions.
+
+<div class="floating-image--right" style="width: 100px;"><img src="./image1.png" width="100" alt="Add to Siri" /></div>
 
 Independent voice assistants can also co-exist with third party voice platforms (e.g. Siri, Google, Alexa). Currently, iOS and Android prefer using deep links ([Siri Shortcuts](https://support.apple.com/en-us/HT209055) for iOS; [App Actions](https://developers.google.com/assistant/app/overview) for Android) to interface with Siri and Google Assistant. Deep links require developers to link to parts of their application based on what the user says to Siri and Google Assistant. Developers who add voice to their app can have deep links resolve to a listening screen that asks the user “How may I help you?” and take over the conversation.
 
@@ -42,8 +44,6 @@ The difference between the types of voice assistants comes down to who controls 
 **Platform Assistants** handle natural language processing, speech synthesis, and a wake word that activates listening ("Hey Siri"), _and_ are tightly integrated with hardware such as smart speakers and mobile devices. These assistants are usually [general AIs](https://www.springboard.com/blog/narrow-vs-general-ai/) that try to answer every question a user may have. They also provide marketplaces for third party "voice apps" that make platform assistants smarter.
 
 _Examples_: Siri, Alexa, Google Assistant, Bixby, [Mycroft](https://mycroft.ai/), [Snips](https://snips.ai/) (now Sonos).
-
-![Add to Siri](./image1.png)
 
 **Voice Apps** exist within a platform assistant. They wrap content and services into an API that platform assistants can access and distribute. These apps offload natural language processing, speech synthesis and wake word control to platform assistants. They’re usually described in relation to the platforms where they operate, such as [Alexa Skills](https://www.amazon.com/alexa-skills/b?ie=UTF8&node=13727921011), [Google Actions](https://assistant.google.com/explore), [Bixby Capsules](https://www.samsung.com/us/explore/bixby/), etc.
 

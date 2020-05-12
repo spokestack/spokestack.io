@@ -1,6 +1,7 @@
 import {
   DEFAULT_WIDTH,
-  MIN_DEFAULT_MEDIA_QUERY
+  MIN_DEFAULT_MEDIA_QUERY,
+  MIN_LARGE_DISPLAY_MEDIA_QUERY
 } from 'typography-breakpoint-constants'
 import { RelatedLink, TeamMemberName } from '../types'
 
@@ -84,9 +85,9 @@ const styles = {
     padding: 20px 20px ${rhythm(2)};
 
     ${MIN_DEFAULT_MEDIA_QUERY} {
-      padding: ${rhythm(2)} 100px;
+      padding: ${rhythm(2)} 40px;
       display: grid;
-      grid-template-columns: minmax(290px, 350px) minmax(
+      grid-template-columns: minmax(200px, 350px) minmax(
           700px,
           ${DEFAULT_WIDTH}
         );
@@ -94,6 +95,10 @@ const styles = {
       grid-template-areas:
         'author  content'
         'related content';
+    }
+    ${MIN_LARGE_DISPLAY_MEDIA_QUERY} {
+      padding-left: 100px;
+      padding-right: 100px;
     }
   `,
   author: css`

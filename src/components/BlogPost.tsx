@@ -40,7 +40,7 @@ export default function BlogPost({ post, related }: Props) {
         </section>
         {post.fields && (
           <section css={styles.related}>
-            {post.fields.tags && post.fields.tags.length && (
+            {post.fields.tags && !!post.fields.tags.length && (
               <>
                 <h6>Related Tags</h6>
                 <div css={styles.tags}>
@@ -55,7 +55,7 @@ export default function BlogPost({ post, related }: Props) {
                 </div>
               </>
             )}
-            {related && related.length && (
+            {related && !!related.length && (
               <>
                 <h6>Related Articles</h6>
                 <div>

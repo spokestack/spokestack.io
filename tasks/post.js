@@ -24,15 +24,16 @@ draft: true
 function post(title, description) {
   return new Promise((resolve, reject) => {
     const dir = path.join(__dirname, '/../content/blog/')
-    mkdirp(dir, (mkdirErr) => {
+    mkdirp(dir).then((mkdirErr) => {
       if (mkdirErr) {
         return reject(mkdirErr)
       }
+      const date = new Date()
       fs.writeFile(
         path.join(dir, `${title.toLowerCase().replace(rspaces, '-')}.md`),
         postTemplate({
           title,
-          date: new Date().toISOString(),
+          date: `${date.toISOString().slice(0, 10)}`,
           description
         }),
         'utf8',

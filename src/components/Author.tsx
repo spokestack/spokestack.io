@@ -48,7 +48,8 @@ export default function Author({ author }: Props) {
       )}
       <p css={styles.about}>About the Author</p>
       <h4 css={styles.name}>
-        <a href={`/blog/author/${author}`}>{name}</a>
+        {/* <a href={`/blog/author/${author}`}>{name}</a> */}
+        {name}
       </h4>
       <p className="author-bio" css={styles.bio}>
         {title}

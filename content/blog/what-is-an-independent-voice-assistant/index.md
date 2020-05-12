@@ -35,8 +35,6 @@ Independent voice assistants can also co-exist with third party voice platforms 
 
 There is another scenario where companies can retain more control of the conversation on smart speakers by Alexa, but that’s a bit more complicated. We’ll save that for another post.
 
-![Add to Siri](./image1.png)
-
 ## Different Types of Voice Assistants
 
 The difference between the types of voice assistants comes down to who controls the experience and how the voice assistant is accessed. The following is how we think about the different types of voice assistants based on control and access.
@@ -44,6 +42,8 @@ The difference between the types of voice assistants comes down to who controls 
 **Platform Assistants** handle natural language processing, speech synthesis, and a wake word that activates listening ("Hey Siri"), _and_ are tightly integrated with hardware such as smart speakers and mobile devices. These assistants are usually [general AIs](https://www.springboard.com/blog/narrow-vs-general-ai/) that try to answer every question a user may have. They also provide marketplaces for third party "voice apps" that make platform assistants smarter.
 
 _Examples_: Siri, Alexa, Google Assistant, Bixby, [Mycroft](https://mycroft.ai/), [Snips](https://snips.ai/) (now Sonos).
+
+![Add to Siri](./image1.png)
 
 **Voice Apps** exist within a platform assistant. They wrap content and services into an API that platform assistants can access and distribute. These apps offload natural language processing, speech synthesis and wake word control to platform assistants. They’re usually described in relation to the platforms where they operate, such as [Alexa Skills](https://www.amazon.com/alexa-skills/b?ie=UTF8&node=13727921011), [Google Actions](https://assistant.google.com/explore), [Bixby Capsules](https://www.samsung.com/us/explore/bixby/), etc.
 

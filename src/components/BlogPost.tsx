@@ -2,13 +2,13 @@ import {
   DEFAULT_WIDTH,
   MIN_DEFAULT_MEDIA_QUERY
 } from 'typography-breakpoint-constants'
-import { MarkdownRemark, Query } from '../utils/graphql'
-import { StickyLink, TeamMemberName } from '../types'
-import { graphql, useStaticQuery } from 'gatsby'
+import { RelatedLink, TeamMemberName } from '../types'
 
 import Author from './Author'
 import DarkModeButton from './DarkModeButton'
 import Layout from '../components/Layout'
+import { Link } from 'gatsby'
+import { MarkdownRemark } from '../utils/graphql'
 import React from 'react'
 import SEO from '../components/SEO'
 import { css } from '@emotion/core'
@@ -16,29 +16,15 @@ import { rhythm } from '../utils/typography'
 
 interface Props {
   post: MarkdownRemark
-  selectFirst?: boolean
+  related?: RelatedLink[]
 }
 
-export default function Blog({ post, selectFirst }: Props) {
-  const links: StickyLink[] = []
-  const data = useStaticQuery<Query>(blogPageQuery)
-  const posts = data.allMarkdownRemark.edges
-  posts.forEach(({ node }) => {
-    links.push({
-      href: node.fields.slug,
-      section: node.fields.folder,
-      title: node.frontmatter.title
-    })
-  })
-  if (selectFirst) {
-    links[0].forceSelect = true
-  }
+export default function BlogPost({ post, related }: Props) {
   return (
     <Layout>
       <SEO
         title="Blog"
         description={post.frontmatter.description || 'The Spokestack Blog'}
-        keywords={['spokestack', 'blog', 'voice', 'artificial intelligence']}
       />
       <div css={styles.container}>
         <section css={styles.author}>
@@ -46,44 +32,46 @@ export default function Blog({ post, selectFirst }: Props) {
         </section>
         <section className="main-content" css={styles.content}>
           <header className="docs-header">
-            {selectFirst ? (
-              <h1>
-                <a href={post.fields.slug}>{post.frontmatter.title}</a>
-              </h1>
-            ) : (
-              <h1>{post.frontmatter.title}</h1>
-            )}
+            <h1>{post.frontmatter.title}</h1>
             <DarkModeButton />
           </header>
           <p>{post.frontmatter.date}</p>
           <div dangerouslySetInnerHTML={{ __html: post.html }} />
         </section>
-        <section css={styles.related}>
-          <h6>Related Tags</h6>
-          <div css={styles.tags}>
-            <a href="#" className="btn btn-primary btn-small">
-              Business
-            </a>
-            <a href="#" className="btn btn-primary btn-small">
-              Marketing
-            </a>
-            <a href="#" className="btn btn-primary btn-small">
-              Design
-            </a>
-            <a href="#" className="btn btn-primary btn-small">
-              NLU
-            </a>
-            <a href="#" className="btn btn-primary btn-small">
-              Product
-            </a>
-          </div>
-          <h6>Related Articles</h6>
-          <div>
-            <a href="#" className="content-link">
-              Why We&rsquo;re Building Spokestack
-            </a>
-          </div>
-        </section>
+        {post.fields && (
+          <section css={styles.related}>
+            {post.fields.tags && post.fields.tags.length && (
+              <>
+                <h6>Related Tags</h6>
+                <div css={styles.tags}>
+                  {post.fields.tags.map((tag, i) => (
+                    <a
+                      href="#"
+                      key={`tag-${i}`}
+                      className="btn btn-primary btn-small">
+                      {tag}
+                    </a>
+                  ))}
+                </div>
+              </>
+            )}
+            {related && related.length && (
+              <>
+                <h6>Related Articles</h6>
+                <div>
+                  {related.map((link, i) => (
+                    <Link
+                      key={`related-${i}`}
+                      to={link.href}
+                      className="content-link">
+                      {link.title}
+                    </Link>
+                  ))}
+                </div>
+              </>
+            )}
+          </section>
+        )}
       </div>
     </Layout>
   )
@@ -144,30 +132,3 @@ const styles = {
     }
   `
 }
-
-export const blogPageQuery = graphql`
-  query blogPageQuery {
-    allMarkdownRemark(
-      sort: { fields: [frontmatter___date], order: DESC }
-      filter: {
-        fileAbsolutePath: { regex: "/blog/" }
-        frontmatter: { draft: { ne: true } }
-      }
-      limit: 10
-    ) {
-      edges {
-        node {
-          fields {
-            folder
-            slug
-          }
-          frontmatter {
-            date(formatString: "MMMM DD, YYYY")
-            description
-            title
-          }
-        }
-      }
-    }
-  }
-`

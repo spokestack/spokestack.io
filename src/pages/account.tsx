@@ -21,7 +21,6 @@ export default function Account({ location }: RouteComponentProps) {
       <SEO
         title="Account"
         description="Your Spokestack account settings and billing"
-        keywords={['spokestack', 'account', 'voice', 'artificial intelligence']}
       />
       <Router>
         <PrivateRoute path="/account/create" component={CreateAccount} />

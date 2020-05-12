@@ -47,7 +47,9 @@ export default function Author({ author }: Props) {
         />
       )}
       <p css={styles.about}>About the Author</p>
-      <h4 css={styles.name}>{name}</h4>
+      <h4 css={styles.name}>
+        <a href={`/blog/author/${author}`}>{name}</a>
+      </h4>
       <p className="author-bio" css={styles.bio}>
         {title}
       </p>
@@ -84,6 +86,16 @@ const styles = {
   `,
   name: css`
     margin-bottom: 0;
+    a {
+      color: ${theme.header};
+
+      &:hover {
+        color: ${theme.linkHover};
+      }
+      &:active {
+        color: ${theme.linkActive};
+      }
+    }
   `,
   bio: css`
     color: ${theme.headerColor.fade(0.25).toString()};

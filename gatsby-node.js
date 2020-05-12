@@ -25,79 +25,110 @@ if (!process.env.SS_GOOGLE_CLIENT_ID) {
   throwInProd('SS_GOOGLE_CLIENT_ID is not set in the environment.')
 }
 
-function createPages(createPage, posts, template) {
-  posts.forEach((post, index) => {
+async function getRelated({ tags, slug, graphql }) {
+  if (tags) {
+    const result = await graphql(`
+      {
+        allMarkdownRemark(
+          filter: {
+            fields: {
+              slug: { ne: "${slug}" }
+              tags: { in: ${JSON.stringify(tags)} }
+            }
+          }
+        ) {
+          nodes {
+            frontmatter {
+              title
+            }
+            fields {
+              slug
+            }
+          }
+        }
+      }
+    `)
+    return result.data.allMarkdownRemark.nodes.map((node) => ({
+      title: node.frontmatter.title,
+      href: node.fields.slug
+    }))
+  }
+}
+
+function createPages({ actions, graphql, posts, template }) {
+  const { createPage } = actions
+  return posts.map(async (post, index) => {
     const previous = index === posts.length - 1 ? null : posts[index + 1].node
     const next = index === 0 ? null : posts[index - 1].node
+    const fields = post.node.fields
+    const slug = fields.slug
+    const context = {
+      next,
+      previous,
+      slug
+    }
+    const related = await getRelated({ tags: fields.tags, slug, graphql })
+    if (related) {
+      context.related = related
+    }
 
     createPage({
-      path: post.node.fields.slug,
+      path: slug,
       component: template,
-      context: {
-        slug: post.node.fields.slug,
-        previous,
-        next
-      }
+      context
     })
   })
 }
 
-exports.createPages = ({ graphql, actions }) => {
-  const { createPage } = actions
-
-  return graphql(
-    `
-      {
-        blog: allMarkdownRemark(
-          sort: { fields: [frontmatter___date], order: DESC },
-          filter: { fileAbsolutePath: { regex: "/blog/" }${
-            isProd ? ',frontmatter: { draft: { ne: true } }' : ''
-          } },
-          limit: 1000
-        ) {
-          edges {
-            node {
-              fields {
-                slug
-              }
-            }
-          }
-        }
-        docs: allMarkdownRemark(
-          filter: { fileAbsolutePath: { regex: "/docs/" }${
-            isProd ? ',frontmatter: { draft: { ne: true } }' : ''
-          } },
-          limit: 1000
-        ) {
-          edges {
-            node {
-              fields {
-                slug
-              }
+exports.createPages = async ({ graphql, actions }) => {
+  const result = await graphql(`
+    {
+      blog: allMarkdownRemark(
+        sort: { fields: [frontmatter___date], order: DESC },
+        filter: { fileAbsolutePath: { regex: "/blog/" }${
+          isProd ? ',frontmatter: { draft: { ne: true } }' : ''
+        } },
+        limit: 1000
+      ) {
+        edges {
+          node {
+            fields {
+              slug
+              tags
             }
           }
         }
       }
-    `
-  ).then((result) => {
-    if (result.errors) {
-      throw result.errors
+      docs: allMarkdownRemark(
+        filter: { fileAbsolutePath: { regex: "/docs/" }${
+          isProd ? ',frontmatter: { draft: { ne: true } }' : ''
+        } },
+        limit: 1000
+      ) {
+        edges {
+          node {
+            fields {
+              slug
+            }
+          }
+        }
+      }
     }
+  `)
 
-    // Create blog posts pages
-    createPages(
-      createPage,
-      result.data.blog.edges,
-      path.resolve('./src/templates/blog-post.tsx')
-    )
-    // Create docs pages
-    createPages(
-      createPage,
-      result.data.docs.edges,
-      path.resolve('./src/templates/docs-page.tsx')
-    )
-
-    return null
+  // Create blog posts pages
+  await createPages({
+    actions,
+    graphql,
+    posts: result.data.blog.edges,
+    template: path.resolve('./src/templates/blog-post.tsx')
+  })
+  // Create docs pages
+  await createPages({
+    actions,
+    graphql,
+    posts: result.data.docs.edges,
+    template: path.resolve('./src/templates/docs-page.tsx')
   })
 }
 
@@ -118,6 +149,14 @@ exports.onCreateNode = ({ node, actions, getNode }) => {
       node,
       value: folder !== 'docs' && folder !== 'blog' ? folder : null
     })
+    if (node.frontmatter.tags) {
+      const tags = node.frontmatter.tags.split(/,\s*/)
+      createNodeField({
+        name: 'tags',
+        node,
+        value: tags
+      })
+    }
     if (isDocsPage) {
       const path = node.fileAbsolutePath.replace(rspokestackWebsite, '')
       createNodeField({

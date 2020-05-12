@@ -76,3 +76,8 @@ export enum KeyType {
   PRODUCTION = 'PRODUCTION',
   TEST = 'TEST'
 }
+
+export interface RelatedLink {
+  title: string
+  href: string
+}

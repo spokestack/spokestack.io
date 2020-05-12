@@ -1,21 +1,31 @@
-import { PageRendererProps, graphql } from 'gatsby'
+import { MarkdownRemark, Query } from '../utils/graphql'
+import { PageRendererProps, graphql, navigate } from 'gatsby'
 
-import BlogPost from '../components/BlogPost'
-import { Query } from '../utils/graphql'
-import React from 'react'
+import { RelatedLink } from '../types'
+import { useEffect } from 'react'
 
 type Props = PageRendererProps & {
   data: Query & {
     firstPost: Query['allMarkdownRemark']
   }
+  // Created by createPage in gatsby-node.js
+  pageContext: {
+    related: RelatedLink[]
+    slug: string
+    previous: MarkdownRemark
+    next: MarkdownRemark
+  }
 }
 
-export default function Blog({ data }: Props) {
-  return <BlogPost selectFirst post={data.firstPost.edges[0].node} />
+export default function Blog({ data }: Props): null {
+  useEffect(() => {
+    navigate(data.firstPost.edges[0].node.fields.slug)
+  }, [])
+  return null
 }
 
 export const pageQuery = graphql`
-  query {
+  query blogQuery {
     firstPost: allMarkdownRemark(
       sort: { fields: [frontmatter___date], order: DESC }
       filter: {
@@ -26,16 +36,8 @@ export const pageQuery = graphql`
     ) {
       edges {
         node {
-          html
           fields {
             slug
-            githubLink
-          }
-          frontmatter {
-            author
-            date(formatString: "MMMM DD, YYYY")
-            description
-            title
           }
         }
       }

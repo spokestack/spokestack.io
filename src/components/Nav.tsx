@@ -35,36 +35,15 @@ export default function Nav() {
       <nav css={styles.nav} className={mobileOpen ? 'mobile-open' : ''}>
         <div css={styles.navContent}>
           <ul css={styles.links}>
-            {!isLoggedIn() && (
-              <li css={styles.listItem} style={{ minWidth: '85px' }}>
-                <a
-                  css={styles.navLink}
-                  style={{ minWidth: '130px' }}
-                  href="/#products"
-                  className="nav-link"
-                  onClick={() => setMobileOpen(false)}>
-                  Products &amp; Services
-                </a>
-              </li>
-            )}
-            <li css={styles.listItem}>
+            <li css={styles.listItem} style={{ minWidth: '85px' }}>
               <a
                 css={styles.navLink}
-                href="/#news"
+                href="/#products"
                 className="nav-link"
                 onClick={() => setMobileOpen(false)}>
-                In the News
+                Features
               </a>
             </li>
-            {/* <li css={styles.listItem}>
-              <a
-                css={styles.navLink}
-                href="/#events"
-                className="nav-link"
-                onClick={() => setMobileOpen(false)}>
-                Events
-              </a>
-            </li> */}
             <li css={styles.listItem}>
               <Link
                 className="nav-link"

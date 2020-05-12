@@ -4,7 +4,7 @@ module.exports = {
     title: 'Spokestack',
     author: 'Spokestack',
     description:
-      'Mobile voice development platform that enables customized voice navigation for mobile and browser applications',
+      'Spokestack is a powerful platform of open source libraries and robust services to make your app fully voice-enabled.',
     siteUrl: 'https://spokestack.io/',
     social: {
       twitter: 'https://twitter.com/spokestack',
@@ -222,6 +222,7 @@ module.exports = {
       options: {
         pathToConfigModule: 'src/utils/typography'
       }
-    }
+    },
+    'gatsby-plugin-remove-trailing-slashes'
   ].filter(Boolean)
 }

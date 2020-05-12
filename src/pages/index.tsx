@@ -10,9 +10,9 @@ import { PageRendererProps, graphql } from 'gatsby'
 import React, { useEffect, useRef, useState } from 'react'
 
 import Card from '../components/Card'
-// import Events from '../components/Events'
 import Layout from '../components/Layout'
 import News from '../components/News'
+import Newsletter from '../components/Newsletter'
 import { Query } from '../utils/graphql'
 import SEO from '../components/SEO'
 import SVGIcon from '../components/SVGIcon'
@@ -20,7 +20,6 @@ import SampleVoices from '../components/SampleVoices'
 import StickyNavLayout from '../components/StickyNavLayout'
 import { css } from '@emotion/core'
 import { rhythm } from '../utils/typography'
-import Newsletter from '../components/Newsletter'
 import voices from '../utils/voices'
 
 interface Props extends PageRendererProps {
@@ -64,7 +63,7 @@ export default function Index({ data, location }: Props) {
 
   return (
     <Layout>
-      <SEO title={siteTitle} keywords={['spokestack', 'mobile', 'voice']} />
+      <SEO title={siteTitle} />
       <header css={styles.header}>
         <h1 css={styles.headerText}>Give your mobile app a voice&trade;</h1>
         <h4
@@ -490,7 +489,7 @@ const styles = {
 }
 
 export const pageQuery = graphql`
-  query {
+  query indexQuery {
     site {
       siteMetadata {
         title

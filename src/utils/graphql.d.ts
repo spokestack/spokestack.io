@@ -6,7 +6,12 @@ export type Scalars = {
   Boolean: boolean
   Int: number
   Float: number
+  /**
+   * A date string, such as 2007-12-03, compliant with the ISO 8601 standard for
+   * representation of dates and times using the Gregorian calendar.
+   */
   Date: any
+  /** The `JSON` scalar type represents JSON values as specified by [ECMA-404](http://www.ecma-international.org/publications/files/ECMA-ST/ECMA-404.pdf). */
   JSON: any
 }
 
@@ -367,6 +372,7 @@ export type File = Node & {
   birthtimeMs?: Maybe<Scalars['Float']>
   blksize?: Maybe<Scalars['Int']>
   blocks?: Maybe<Scalars['Int']>
+  /** Copy file to static directory and return public url to it */
   publicURL?: Maybe<Scalars['String']>
   childImageSharp?: Maybe<ImageSharp>
   id: Scalars['ID']
@@ -669,6 +675,7 @@ export enum FileFieldsEnum {
   ChildMarkdownRemarkFrontmatterDate = 'childMarkdownRemark___frontmatter___date',
   ChildMarkdownRemarkFrontmatterDescription = 'childMarkdownRemark___frontmatter___description',
   ChildMarkdownRemarkFrontmatterAuthor = 'childMarkdownRemark___frontmatter___author',
+  ChildMarkdownRemarkFrontmatterTags = 'childMarkdownRemark___frontmatter___tags',
   ChildMarkdownRemarkFrontmatterDraft = 'childMarkdownRemark___frontmatter___draft',
   ChildMarkdownRemarkFrontmatterNavId = 'childMarkdownRemark___frontmatter___navId',
   ChildMarkdownRemarkExcerpt = 'childMarkdownRemark___excerpt',
@@ -676,11 +683,13 @@ export enum FileFieldsEnum {
   ChildMarkdownRemarkFileAbsolutePath = 'childMarkdownRemark___fileAbsolutePath',
   ChildMarkdownRemarkFieldsSlug = 'childMarkdownRemark___fields___slug',
   ChildMarkdownRemarkFieldsFolder = 'childMarkdownRemark___fields___folder',
+  ChildMarkdownRemarkFieldsTags = 'childMarkdownRemark___fields___tags',
   ChildMarkdownRemarkFieldsGithubLink = 'childMarkdownRemark___fields___githubLink',
   ChildMarkdownRemarkHtml = 'childMarkdownRemark___html',
   ChildMarkdownRemarkHtmlAst = 'childMarkdownRemark___htmlAst',
   ChildMarkdownRemarkExcerptAst = 'childMarkdownRemark___excerptAst',
   ChildMarkdownRemarkHeadings = 'childMarkdownRemark___headings',
+  ChildMarkdownRemarkHeadingsId = 'childMarkdownRemark___headings___id',
   ChildMarkdownRemarkHeadingsValue = 'childMarkdownRemark___headings___value',
   ChildMarkdownRemarkHeadingsDepth = 'childMarkdownRemark___headings___depth',
   ChildMarkdownRemarkTimeToRead = 'childMarkdownRemark___timeToRead',
@@ -1176,8 +1185,8 @@ export type ImageSharpFluid = {
   sizes: Scalars['String']
   originalImg?: Maybe<Scalars['String']>
   originalName?: Maybe<Scalars['String']>
-  presentationWidth?: Maybe<Scalars['Int']>
-  presentationHeight?: Maybe<Scalars['Int']>
+  presentationWidth: Scalars['Int']
+  presentationHeight: Scalars['Int']
 }
 
 export type ImageSharpFluidFilterInput = {
@@ -1276,8 +1285,8 @@ export type ImageSharpSizes = {
   sizes: Scalars['String']
   originalImg?: Maybe<Scalars['String']>
   originalName?: Maybe<Scalars['String']>
-  presentationWidth?: Maybe<Scalars['Int']>
-  presentationHeight?: Maybe<Scalars['Int']>
+  presentationWidth: Scalars['Int']
+  presentationHeight: Scalars['Int']
 }
 
 export type ImageSharpSizesFilterInput = {
@@ -1351,11 +1360,13 @@ export enum MarkdownExcerptFormats {
 
 export type MarkdownHeading = {
   __typename?: 'MarkdownHeading'
+  id?: Maybe<Scalars['String']>
   value?: Maybe<Scalars['String']>
   depth?: Maybe<Scalars['Int']>
 }
 
 export type MarkdownHeadingFilterInput = {
+  id?: Maybe<StringQueryOperatorInput>
   value?: Maybe<StringQueryOperatorInput>
   depth?: Maybe<IntQueryOperatorInput>
 }
@@ -1446,6 +1457,7 @@ export type MarkdownRemarkFields = {
   __typename?: 'MarkdownRemarkFields'
   slug?: Maybe<Scalars['String']>
   folder?: Maybe<Scalars['String']>
+  tags?: Maybe<Array<Maybe<Scalars['String']>>>
   githubLink?: Maybe<Scalars['String']>
 }
 
@@ -1455,6 +1467,7 @@ export enum MarkdownRemarkFieldsEnum {
   FrontmatterDate = 'frontmatter___date',
   FrontmatterDescription = 'frontmatter___description',
   FrontmatterAuthor = 'frontmatter___author',
+  FrontmatterTags = 'frontmatter___tags',
   FrontmatterDraft = 'frontmatter___draft',
   FrontmatterNavId = 'frontmatter___navId',
   Excerpt = 'excerpt',
@@ -1462,11 +1475,13 @@ export enum MarkdownRemarkFieldsEnum {
   FileAbsolutePath = 'fileAbsolutePath',
   FieldsSlug = 'fields___slug',
   FieldsFolder = 'fields___folder',
+  FieldsTags = 'fields___tags',
   FieldsGithubLink = 'fields___githubLink',
   Html = 'html',
   HtmlAst = 'htmlAst',
   ExcerptAst = 'excerptAst',
   Headings = 'headings',
+  HeadingsId = 'headings___id',
   HeadingsValue = 'headings___value',
   HeadingsDepth = 'headings___depth',
   TimeToRead = 'timeToRead',
@@ -1564,6 +1579,7 @@ export enum MarkdownRemarkFieldsEnum {
 export type MarkdownRemarkFieldsFilterInput = {
   slug?: Maybe<StringQueryOperatorInput>
   folder?: Maybe<StringQueryOperatorInput>
+  tags?: Maybe<StringQueryOperatorInput>
   githubLink?: Maybe<StringQueryOperatorInput>
 }
 
@@ -1592,6 +1608,7 @@ export type MarkdownRemarkFrontmatter = {
   date?: Maybe<Scalars['Date']>
   description?: Maybe<Scalars['String']>
   author?: Maybe<Scalars['String']>
+  tags?: Maybe<Scalars['String']>
   draft?: Maybe<Scalars['Boolean']>
   navId?: Maybe<Scalars['String']>
 }
@@ -1608,6 +1625,7 @@ export type MarkdownRemarkFrontmatterFilterInput = {
   date?: Maybe<DateQueryOperatorInput>
   description?: Maybe<StringQueryOperatorInput>
   author?: Maybe<StringQueryOperatorInput>
+  tags?: Maybe<StringQueryOperatorInput>
   draft?: Maybe<BooleanQueryOperatorInput>
   navId?: Maybe<StringQueryOperatorInput>
 }
@@ -1640,6 +1658,7 @@ export type MarkdownWordCountFilterInput = {
   words?: Maybe<IntQueryOperatorInput>
 }
 
+/** Node Interface */
 export type Node = {
   id: Scalars['ID']
   parent?: Maybe<Node>

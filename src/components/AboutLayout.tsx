@@ -5,11 +5,11 @@ import StickyNavLayout from './StickyNavLayout'
 
 const links = [
   {
-    href: '/about/story/',
+    href: '/about/story',
     title: 'Story'
   },
   {
-    href: '/about/team/',
+    href: '/about/team',
     title: 'Team'
   }
 ]
@@ -21,17 +21,7 @@ interface Props {
 export default function About({ children }: Props) {
   return (
     <Layout>
-      <SEO
-        title="About us"
-        description="About our team"
-        keywords={[
-          'spokestack',
-          'about',
-          'our story',
-          'voice',
-          'artificial intelligence'
-        ]}
-      />
+      <SEO title="About us" description="About our team" />
       <StickyNavLayout header="About" links={links}>
         {children}
       </StickyNavLayout>

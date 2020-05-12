@@ -1,6 +1,6 @@
 ---
 title: Keeping Perspective
-date: '2020-03-20T13:17:39.257Z'
+date: '2020-03-20'
 description: Keep perspective on what you are building in tough times
 author: mike
 tags: Business, Marketing

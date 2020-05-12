@@ -46,7 +46,7 @@ export default function BlogPost({ post, related }: Props) {
                 <div css={styles.tags}>
                   {post.fields.tags.map((tag, i) => (
                     <a
-                      href="#"
+                      // href="#"
                       key={`tag-${i}`}
                       className="btn btn-primary btn-small">
                       {tag}

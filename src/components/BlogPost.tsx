@@ -25,6 +25,7 @@ export default function BlogPost({ post, related }: Props) {
     <Layout>
       <SEO
         title="Blog"
+        longTitle={post.frontmatter.title}
         description={post.frontmatter.description || 'The Spokestack Blog'}
       />
       <div css={styles.container}>

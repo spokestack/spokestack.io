@@ -48,6 +48,7 @@ export default function DocsPage({ post, selectFirst }: Props) {
     <Layout>
       <SEO
         title="Docs"
+        longTitle="Spokestack Documentation"
         description={
           post.frontmatter.description || 'Documentation for the Spokestack API'
         }

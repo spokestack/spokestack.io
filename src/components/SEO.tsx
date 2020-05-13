@@ -10,6 +10,7 @@ type Meta =
 
 interface Props {
   title: string
+  longTitle?: string
   description?: string
   lang?: string
   meta?: Meta[]
@@ -17,6 +18,7 @@ interface Props {
 
 export default function SEO({
   title,
+  longTitle,
   description = '',
   lang = 'en',
   meta = []
@@ -55,7 +57,7 @@ export default function SEO({
         },
         {
           property: 'og:title',
-          content: title
+          content: longTitle || title
         },
         {
           property: 'og:description',
@@ -75,7 +77,7 @@ export default function SEO({
         },
         {
           name: 'twitter:title',
-          content: title
+          content: longTitle || title
         },
         {
           name: 'twitter:description',

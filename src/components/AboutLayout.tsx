@@ -21,7 +21,11 @@ interface Props {
 export default function About({ children }: Props) {
   return (
     <Layout>
-      <SEO title="About us" description="About our team" />
+      <SEO
+        title="About us"
+        longTitle="Learn about the company Spokestack"
+        description="About our team"
+      />
       <StickyNavLayout header="About" links={links}>
         {children}
       </StickyNavLayout>

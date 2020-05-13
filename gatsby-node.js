@@ -3,7 +3,9 @@ const { createFilePath } = require('gatsby-source-filesystem')
 
 const isProd = process.env.NODE_ENV === 'production'
 const rdocs = /\/docs\//
+const rspaces = /\s+/g
 const rspokestackWebsite = /.*?spokestack-website\//
+const postsPerPage = 5
 
 function throwInProd(message) {
   if (process.env.NODE_ENV !== 'production') {
@@ -53,6 +55,53 @@ async function getRelated({ tags, slug, graphql }) {
       href: node.fields.slug
     }))
   }
+}
+
+async function createTagPages({ tag, tags, actions, graphql, template }) {
+  const { createPage } = actions
+  const result = await graphql(`
+    {
+      allMarkdownRemark(
+        sort: { fields: [frontmatter___date], order: DESC },
+        filter: {
+          fileAbsolutePath: { regex: "/blog/" },
+          fields: { tags: { in: ["${tag}"] } }
+          ${isProd ? ',frontmatter: { draft: { ne: true } }' : ''}
+        },
+        limit: 1000
+      ) {
+        edges {
+          node {
+            fields {
+              slug
+            }
+          }
+        }
+      }
+    }
+  `)
+  if (result.errors) {
+    console.error(result.errors)
+    reporter.panicOnBuild('Error while running GraphQL query')
+    return
+  }
+  const posts = result.data.allMarkdownRemark.edges
+  const numPages = Math.ceil(posts.length / postsPerPage)
+  const url = `/blog/tag/${tag.toLowerCase().replace(rspaces, '-')}`
+  Array.from({ length: numPages }).forEach((_, i) => {
+    createPage({
+      path: i === 0 ? url : `${url}/${i + 1}`,
+      component: template,
+      context: {
+        tag,
+        tags,
+        limit: postsPerPage,
+        skip: i * postsPerPage,
+        numPages,
+        currentPage: i + 1
+      }
+    })
+  })
 }
 
 function createPages({ actions, graphql, posts, template }) {
@@ -113,6 +162,20 @@ exports.createPages = async ({ graphql, actions, reporter }) => {
           }
         }
       }
+      tags: allMarkdownRemark(
+        filter: {
+          fileAbsolutePath: { regex: "/blog/" }
+          fields: { tags: { ne: null } }
+        }
+      ) {
+        edges {
+          node {
+            fields {
+              tags
+            }
+          }
+        }
+      }
     }
   `)
   if (result.errors) {
@@ -121,21 +184,41 @@ exports.createPages = async ({ graphql, actions, reporter }) => {
     return
   }
 
+  // Create tag filter pages
+  const tags = result.data.tags.edges.reduce((acc, current) => {
+    current.node.fields.tags.forEach((tag) => {
+      if (acc.indexOf(tag) === -1) {
+        acc.push(tag)
+      }
+    })
+    return acc
+  }, [])
+
   // Create blog post list pages
   const { createPage } = actions
   const posts = result.data.blog.edges
-  const postsPerPage = 5
   const numPages = Math.ceil(posts.length / postsPerPage)
   Array.from({ length: numPages }).forEach((_, i) => {
     createPage({
       path: i === 0 ? `/blog` : `/blog/${i + 1}`,
       component: path.resolve('./src/templates/blog-list.tsx'),
       context: {
+        tags,
         limit: postsPerPage,
         skip: i * postsPerPage,
         numPages,
         currentPage: i + 1
       }
+    })
+  })
+
+  tags.forEach((tag) => {
+    createTagPages({
+      tag,
+      tags,
+      actions,
+      graphql,
+      template: path.resolve('./src/templates/blog-list-tag.tsx')
     })
   })
 

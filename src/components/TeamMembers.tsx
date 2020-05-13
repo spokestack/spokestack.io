@@ -127,30 +127,37 @@ export const teamFragment = graphql`
         will {
           name
           title
+          bio
         }
         elizabeth {
           name
           title
+          bio
         }
         brent {
           name
           title
+          bio
         }
         mike {
           name
           title
+          bio
         }
         noel {
           name
           title
+          bio
         }
         timmy {
           name
           title
+          bio
         }
         josh {
           name
           title
+          bio
         }
       }
     }

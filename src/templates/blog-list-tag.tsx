@@ -3,6 +3,7 @@ import { PageRendererProps, graphql } from 'gatsby'
 import BlogList from '../components/BlogList'
 import { Query } from '../utils/graphql'
 import React from 'react'
+import SEO from '../components/SEO'
 
 type Props = PageRendererProps & {
   data: Query
@@ -22,15 +23,22 @@ export default function BlogListTemplate({
   pageContext: { currentPage, numPages, tag, tags }
 }: Props) {
   const posts = data.allMarkdownRemark.edges
+  const longTitle = `${posts.length} articles tagged with "${tag}"`
   return (
-    <BlogList
-      currentPage={currentPage}
-      numPages={numPages}
-      posts={posts}
-      selectedTag={tag}
-      tags={tags}
-      title={`${posts.length} articles tagged with "${tag}"`}
-    />
+    <>
+      <SEO
+        title="Blog"
+        longTitle={longTitle}
+        description="Check out all of our articles related to voice assistants, voice search, Alexa skills, and more."
+      />
+      <BlogList
+        currentPage={currentPage}
+        numPages={numPages}
+        posts={posts}
+        tags={tags}
+        title={longTitle}
+      />
+    </>
   )
 }
 

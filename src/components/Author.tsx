@@ -5,6 +5,7 @@ import { TeamImages, TeamMemberName } from '../types'
 import { graphql, useStaticQuery } from 'gatsby'
 
 import AuthorImage from './AuthorImage'
+import Color from 'color'
 import { Query } from '../utils/graphql'
 import React from 'react'
 import { rhythm } from '../utils/typography'
@@ -22,7 +23,10 @@ export default function Author({ author }: Props) {
   }
   const { name, title } = data.site.siteMetadata.team[author]
   return (
-    <div className="author" css={styles.container}>
+    <a
+      href={`/blog/author/${author}`}
+      className="author"
+      css={styles.container}>
       <Global
         styles={css`
           html.dark-mode {
@@ -31,6 +35,19 @@ export default function Author({ author }: Props) {
               border-left-color: ${theme.mainBorderDark};
               border-right-color: ${theme.mainBorderDark};
               border-bottom-color: ${theme.mainBorderDark};
+
+              &,
+              &:visited,
+              &:hover,
+              &:active {
+                color: ${theme.textDarkBg};
+              }
+
+              &:hover {
+                background-color: ${theme.codeBackgroundColor
+                  .darken(0.1)
+                  .hex()};
+              }
             }
             .author-bio {
               color: white;
@@ -38,16 +55,13 @@ export default function Author({ author }: Props) {
           }
         `}
       />
-      <AuthorImage author={author} />
+      <AuthorImage author={author} extraCss={styles.image} />
       <p css={styles.about}>About the Author</p>
-      <h4 css={styles.name}>
-        {/* <a href={`/blog/author/${author}`}>{name}</a> */}
-        {name}
-      </h4>
+      <h4 css={styles.name}>{name}</h4>
       <p className="author-bio" css={styles.bio}>
         {title}
       </p>
-    </div>
+    </a>
   )
 }
 
@@ -64,6 +78,23 @@ const styles = {
     border: 1px solid ${theme.mainBorder};
     border-top: 3px solid ${theme.primaryLight};
     border-radius: 0 0 7px 7px;
+    text-decoration: none;
+    font-weight: 400;
+
+    &,
+    &:visited,
+    &:hover,
+    &:active {
+      color: ${theme.text};
+    }
+
+    &:hover {
+      background-color: ${Color('#fff').darken(0.03).hex()};
+    }
+
+    &:active {
+      box-shadow: inset 0 0 3px rgba(0, 0, 0, 0.5);
+    }
   `,
   image: css`
     margin: 0 0 ${rhythm(1)};

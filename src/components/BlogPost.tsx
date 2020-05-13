@@ -14,8 +14,8 @@ import React from 'react'
 import SEO from '../components/SEO'
 import Tags from './Tags'
 import { css } from '@emotion/core'
-import { rhythm } from '../utils/typography'
 import findImage from '../utils/findImage'
+import { rhythm } from '../utils/typography'
 
 interface Props {
   post: MarkdownRemark
@@ -78,7 +78,7 @@ const styles = {
       padding: ${rhythm(2)} 40px;
       display: grid;
       grid-template-columns: minmax(200px, 350px) minmax(
-          700px,
+          608px,
           ${DEFAULT_WIDTH}
         );
       grid-template-rows: auto 1fr;

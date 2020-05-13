@@ -57,6 +57,55 @@ async function getRelated({ tags, slug, graphql }) {
   }
 }
 
+async function createAuthorPages({ author, tags, actions, graphql, template }) {
+  const { createPage } = actions
+  const result = await graphql(`
+    {
+      allMarkdownRemark(
+        sort: { fields: [frontmatter___date], order: DESC },
+        filter: {
+          fileAbsolutePath: { regex: "/blog/" },
+          frontmatter: {
+            ${isProd ? 'draft: { ne: true },' : ''}
+            author: { eq: "${author}" }
+          }
+        },
+        limit: 1000
+      ) {
+        edges {
+          node {
+            fields {
+              slug
+            }
+          }
+        }
+      }
+    }
+  `)
+  if (result.errors) {
+    console.error(result.errors)
+    reporter.panicOnBuild('Error while running GraphQL query')
+    return
+  }
+  const posts = result.data.allMarkdownRemark.edges
+  const numPages = Math.ceil(posts.length / postsPerPage)
+  const url = `/blog/author/${author}`
+  Array.from({ length: numPages }).forEach((_, i) => {
+    createPage({
+      path: i === 0 ? url : `${url}/${i + 1}`,
+      component: template,
+      context: {
+        author,
+        tags,
+        limit: postsPerPage,
+        skip: i * postsPerPage,
+        numPages,
+        currentPage: i + 1
+      }
+    })
+  })
+}
+
 async function createTagPages({ tag, tags, actions, graphql, template }) {
   const { createPage } = actions
   const result = await graphql(`
@@ -132,6 +181,11 @@ function createPages({ actions, graphql, posts, template }) {
 exports.createPages = async ({ graphql, actions, reporter }) => {
   const result = await graphql(`
     {
+      authors: __type(name: "SiteSiteMetadataTeam") {
+        fields {
+          name
+        }
+      }
       blog: allMarkdownRemark(
         sort: { fields: [frontmatter___date], order: DESC },
         filter: { fileAbsolutePath: { regex: "/blog/" }${
@@ -193,6 +247,27 @@ exports.createPages = async ({ graphql, actions, reporter }) => {
     })
     return acc
   }, [])
+  tags.forEach((tag) => {
+    createTagPages({
+      tag,
+      tags,
+      actions,
+      graphql,
+      template: path.resolve('./src/templates/blog-list-tag.tsx')
+    })
+  })
+
+  // Create author pages
+  const authors = result.data.authors.fields.map((field) => field.name)
+  authors.forEach((author) => {
+    createAuthorPages({
+      author,
+      tags,
+      actions,
+      graphql,
+      template: path.resolve('./src/templates/blog-list-author.tsx')
+    })
+  })
 
   // Create blog post list pages
   const { createPage } = actions
@@ -209,16 +284,6 @@ exports.createPages = async ({ graphql, actions, reporter }) => {
         numPages,
         currentPage: i + 1
       }
-    })
-  })
-
-  tags.forEach((tag) => {
-    createTagPages({
-      tag,
-      tags,
-      actions,
-      graphql,
-      template: path.resolve('./src/templates/blog-list-tag.tsx')
     })
   })
 

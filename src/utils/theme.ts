@@ -5,9 +5,10 @@ export const primaryLightColor = Color('#99caff')
 export const secondaryColor = Color('#61fae9')
 export const textColor = Color('#323e48')
 export const headerColor = Color('#2c363f')
+export const mainBorderColor = Color('#e6e9e9')
 export const linkColor = primaryColor
 export const linkColorDark = primaryLightColor
-export const codeBackgroundColor = Color('#cce4ff').fade(0.7)
+export const codeBackgroundColor = Color('#5b6a79')
 
 export const primary = primaryColor.hex()
 export const primaryLight = primaryLightColor.hex()
@@ -28,14 +29,14 @@ export const header = headerColor.hex()
 export const footerBackground = header
 export const buttonBackground = secondary
 export const buttonBackgroundHover = secondaryColor.darken(0.4).hex()
-export const mainBorder = '#e6e9e9'
+export const mainBorder = mainBorderColor.hex()
 export const mainBorderDark = '#96a2a2'
 
 export const transitionEasing = 'cubic-bezier(0.77, 0.41, 0.2, 0.84)'
 export const bubbleEasing = 'cubic-bezier(0.3, 0.55, 0.54, 0.86)'
 
 export const error = '#ea2f5e'
-export const codeBackground = codeBackgroundColor.toString()
+export const codeBackground = codeBackgroundColor.hex()
 
 export const link = linkColor.hex()
 export const linkVisited = linkColor.lighten(0.1).hex()

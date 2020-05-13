@@ -1,35 +1,37 @@
 import * as theme from '../utils/theme'
 
-import { Global, css } from '@emotion/core'
 import {
+  DEFAULT_WIDTH,
   MIN_DEFAULT_MEDIA_QUERY,
   MIN_LARGE_DISPLAY_MEDIA_QUERY
 } from 'typography-breakpoint-constants'
+import { Global, SerializedStyles, css } from '@emotion/core'
 
 import BlogListItem from '../components/BlogListItem'
 import DarkModeButton from '../components/DarkModeButton'
 import Layout from '../components/Layout'
 import { MarkdownRemarkEdge } from '../utils/graphql'
 import React from 'react'
-import SEO from '../components/SEO'
 import SVGIcon from '../components/SVGIcon'
 import Tags from '../components/Tags'
 import { rhythm } from '../utils/typography'
 
 interface Props {
   currentPage: number
+  extraCss?: SerializedStyles
+  header?: React.ReactNode
   numPages: number
   posts: MarkdownRemarkEdge[]
-  selectedTag?: string
   tags: string[]
-  title: string
+  title?: string
 }
 
 export default function BlogList({
   currentPage,
+  extraCss,
+  header,
   numPages,
   posts,
-  selectedTag,
   tags,
   title
 }: Props) {
@@ -51,21 +53,20 @@ export default function BlogList({
           }
         `}
       />
-      <SEO
-        title="Blog"
-        description={
-          'The Spokestack Blog. Check out all of our articles related to voice assistants, voice search, Alexa skills, and more.'
-        }
-      />
-      <div className="blog-list" css={styles.container}>
-        <div css={styles.sidenav}>
-          <Tags header="All Tags" tags={tags} selected={selectedTag} />
+      <div className="blog-list" css={[styles.container, extraCss]}>
+        <div className="bg-banner" css={styles.bgBanner} />
+        <div className="sidenav" css={styles.sidenav}>
+          <Tags header="Tags" tags={tags} />
         </div>
         <div css={styles.content}>
-          <header className="docs-header">
-            <h1>{title}</h1>
-            <DarkModeButton />
-          </header>
+          {header ? (
+            header
+          ) : (
+            <header className="docs-header" css={styles.header}>
+              <h1>{title}</h1>
+              <DarkModeButton />
+            </header>
+          )}
           {posts.map(({ node }) => (
             <BlogListItem key={node.fields.slug} post={node} />
           ))}
@@ -106,15 +107,18 @@ export default function BlogList({
 
 const styles = {
   container: css`
+    position: relative;
     display: flex;
     flex-direction: column;
     padding: 20px 20px ${rhythm(2)};
 
     ${MIN_DEFAULT_MEDIA_QUERY} {
-      padding: ${rhythm(2)} 40px;
+      padding-top: 215px;
+      padding-left: 40px;
+      padding-right: 40px;
       flex-direction: row;
       display: grid;
-      grid-template-columns: minmax(300px, 365px) 608px;
+      grid-template-columns: minmax(300px, 365px) 1fr minmax(300px, 365px);
       grid-template-areas: 'sidenav content';
     }
 
@@ -127,11 +131,54 @@ const styles = {
       width: 100%;
     }
   `,
+  bgBanner: css`
+    ${MIN_DEFAULT_MEDIA_QUERY} {
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      height: 260px;
+      z-index: -1;
+      background: linear-gradient(
+          ${theme.primaryColor.fade(0.9).toString()},
+          ${theme.primaryColor.fade(0.9).toString()}
+        ),
+        url(/logo-light-blue-rotated.svg) -180px -180px no-repeat,
+        url(/logo-light-blue-flipped.svg) -180px 350px no-repeat,
+        url(/logo-light-blue.svg) 380px 40px no-repeat,
+        url(/logo-light-blue-rotated.svg) 900px -180px no-repeat,
+        url(/logo-light-blue-flipped.svg) 900px 350px no-repeat,
+        url(/logo-light-blue.svg) 1400px 40px no-repeat,
+        url(/logo-light-blue-rotated.svg) 1900px -180px no-repeat,
+        url(/logo-light-blue-flipped.svg) 1900px 350px no-repeat;
+    }
+  `,
   sidenav: css`
     grid-area: sidenav;
+    padding-right: 20px;
+    margin-bottom: 40px;
+
+    ${MIN_DEFAULT_MEDIA_QUERY} {
+      padding-top: 50px;
+    }
   `,
   content: css`
+    position: relative;
     grid-area: content;
+    max-width: ${DEFAULT_WIDTH};
+    margin: 0 auto;
+
+    ${MIN_DEFAULT_MEDIA_QUERY} {
+      min-width: 608px;
+    }
+  `,
+  header: css`
+    ${MIN_DEFAULT_MEDIA_QUERY} {
+      position: absolute;
+      left: 0;
+      right: 0;
+      bottom: 100%;
+    }
   `,
   blogNavLinks: css`
     display: flex;

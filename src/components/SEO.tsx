@@ -30,9 +30,10 @@ export default function SEO({
       query {
         site {
           siteMetadata {
-            title
-            description
             author
+            description
+            logo
+            title
           }
         }
       }
@@ -71,7 +72,7 @@ export default function SEO({
         },
         {
           property: 'og:image',
-          content: image || 'https://spokestack.io/mark.svg'
+          content: image || site.siteMetadata.logo
         },
         {
           name: 'twitter:card',
@@ -91,7 +92,7 @@ export default function SEO({
         },
         {
           name: 'twitter:image',
-          content: image || 'https://spokestack.io/mark.svg'
+          content: image || site.siteMetadata.logo
         }
       ].concat(meta)}
     />

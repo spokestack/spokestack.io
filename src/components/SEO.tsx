@@ -12,6 +12,7 @@ interface Props {
   title: string
   longTitle?: string
   description?: string
+  image?: string
   lang?: string
   meta?: Meta[]
 }
@@ -20,6 +21,7 @@ export default function SEO({
   title,
   longTitle,
   description = '',
+  image,
   lang = 'en',
   meta = []
 }: Props) {
@@ -68,6 +70,10 @@ export default function SEO({
           content: 'website'
         },
         {
+          property: 'og:image',
+          content: image || 'https://spokestack.io/mark.svg'
+        },
+        {
           name: 'twitter:card',
           content: 'summary'
         },
@@ -82,6 +88,10 @@ export default function SEO({
         {
           name: 'twitter:description',
           content: metaDescription
+        },
+        {
+          name: 'twitter:image',
+          content: image || 'https://spokestack.io/mark.svg'
         }
       ].concat(meta)}
     />

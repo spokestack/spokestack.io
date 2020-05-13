@@ -14,6 +14,7 @@ import React from 'react'
 import SEO from '../components/SEO'
 import { css } from '@emotion/core'
 import { rhythm } from '../utils/typography'
+import findImage from '../utils/findImage'
 
 interface Props {
   post: MarkdownRemark
@@ -27,6 +28,7 @@ export default function BlogPost({ post, related }: Props) {
         title="Blog"
         longTitle={post.frontmatter.title}
         description={post.frontmatter.description || 'The Spokestack Blog'}
+        image={findImage(post.html)}
       />
       <div css={styles.container}>
         <section css={styles.author}>

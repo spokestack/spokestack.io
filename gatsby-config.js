@@ -6,7 +6,7 @@ module.exports = {
     description:
       'Spokestack is a powerful platform of open source libraries and robust services to make your app fully voice-enabled.',
     siteUrl: 'https://spokestack.io/',
-    logo: 'https://spokestack.io/spokestack-logo.png',
+    logo: 'https://spokestack.io/spokestack-logo.jpg',
     social: {
       twitter: 'https://twitter.com/spokestack',
       github: 'https://github.com/spokestack',

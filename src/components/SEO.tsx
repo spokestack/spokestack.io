@@ -27,7 +27,7 @@ export default function SEO({
 }: Props) {
   const { site } = useStaticQuery<Query>(
     graphql`
-      query {
+      query seoQuery {
         site {
           siteMetadata {
             author

@@ -71,9 +71,10 @@ const options: TypographyOptions = {
       margin: 0
     },
     h6: {
-      fontSize: '1rem',
+      fontSize: '0.8rem',
       fontWeight: 400,
-      margin: 0
+      fontStyle: 'italic',
+      margin: `${rhythm(1)} 0 ${rhythm(0.8)}`
     },
     form: {
       margin: 0

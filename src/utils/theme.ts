@@ -7,7 +7,7 @@ export const textColor = Color('#323e48')
 export const headerColor = Color('#2c363f')
 export const linkColor = primaryColor
 export const linkColorDark = primaryLightColor
-export const codeBackgroundColor = Color('#cce4ff')
+export const codeBackgroundColor = Color('#cce4ff').fade(0.7)
 
 export const primary = primaryColor.hex()
 export const primaryLight = primaryLightColor.hex()
@@ -35,7 +35,7 @@ export const transitionEasing = 'cubic-bezier(0.77, 0.41, 0.2, 0.84)'
 export const bubbleEasing = 'cubic-bezier(0.3, 0.55, 0.54, 0.86)'
 
 export const error = '#ea2f5e'
-export const codeBackground = codeBackgroundColor.fade(0.7).toString()
+export const codeBackground = codeBackgroundColor.toString()
 
 export const link = linkColor.hex()
 export const linkVisited = linkColor.lighten(0.1).hex()

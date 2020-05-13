@@ -12,6 +12,7 @@ import { Link } from 'gatsby'
 import { MarkdownRemark } from '../utils/graphql'
 import React from 'react'
 import SEO from '../components/SEO'
+import Tags from './Tags'
 import { css } from '@emotion/core'
 import { rhythm } from '../utils/typography'
 import findImage from '../utils/findImage'
@@ -44,21 +45,7 @@ export default function BlogPost({ post, related }: Props) {
         </section>
         {post.fields && (
           <section css={styles.related}>
-            {post.fields.tags && !!post.fields.tags.length && (
-              <>
-                <h6>Related Tags</h6>
-                <div css={styles.tags}>
-                  {post.fields.tags.map((tag, i) => (
-                    <a
-                      // href="#"
-                      key={`tag-${i}`}
-                      className="btn btn-primary btn-small">
-                      {tag}
-                    </a>
-                  ))}
-                </div>
-              </>
-            )}
+            <Tags tags={post.fields.tags} header="Related Tags" />
             {related && !!related.length && (
               <>
                 <h6>Related Articles</h6>
@@ -122,21 +109,5 @@ const styles = {
   related: css`
     grid-area: related;
     padding: 0 20px;
-
-    h6 {
-      margin: ${rhythm(1)} 0 ${rhythm(0.8)};
-      font-style: italic;
-      font-size: 80%;
-    }
-  `,
-  tags: css`
-    display: flex;
-    flex-wrap: wrap;
-    margin: -5px;
-
-    .btn {
-      display: inline-flex;
-      margin: 5px;
-    }
   `
 }

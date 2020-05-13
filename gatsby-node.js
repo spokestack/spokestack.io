@@ -80,7 +80,7 @@ function createPages({ actions, graphql, posts, template }) {
   })
 }
 
-exports.createPages = async ({ graphql, actions }) => {
+exports.createPages = async ({ graphql, actions, reporter }) => {
   const result = await graphql(`
     {
       blog: allMarkdownRemark(
@@ -115,6 +115,29 @@ exports.createPages = async ({ graphql, actions }) => {
       }
     }
   `)
+  if (result.errors) {
+    console.error(result.errors)
+    reporter.panicOnBuild('Error while running GraphQL query')
+    return
+  }
+
+  // Create blog post list pages
+  const { createPage } = actions
+  const posts = result.data.blog.edges
+  const postsPerPage = 5
+  const numPages = Math.ceil(posts.length / postsPerPage)
+  Array.from({ length: numPages }).forEach((_, i) => {
+    createPage({
+      path: i === 0 ? `/blog` : `/blog/${i + 1}`,
+      component: path.resolve('./src/templates/blog-list.tsx'),
+      context: {
+        limit: postsPerPage,
+        skip: i * postsPerPage,
+        numPages,
+        currentPage: i + 1
+      }
+    })
+  })
 
   // Create blog posts pages
   await createPages({

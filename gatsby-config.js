@@ -13,6 +13,7 @@ module.exports = {
       stackoverflow: 'https://stackoverflow.com/questions/tagged/spokestack'
     },
     // Should match the queries in src/components/TeamMembers.tsx
+    // and images in src/components/AuthorImage.tsx
     team: {
       will: {
         name: 'Will Rice',

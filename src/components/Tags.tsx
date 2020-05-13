@@ -1,12 +1,18 @@
+import * as theme from '../utils/theme'
+
+import { Link } from 'gatsby'
 import React from 'react'
 import { css } from '@emotion/core'
 
 interface Props {
   header: string
+  selected?: string
   tags: string[]
 }
 
-export default function Tags({ header, tags }: Props) {
+const rspaces = /\s+/g
+
+export default function Tags({ header, selected, tags }: Props) {
   if (!tags || !tags.length) {
     return null
   }
@@ -15,12 +21,14 @@ export default function Tags({ header, tags }: Props) {
       {header && <h6>{header}</h6>}
       <div css={styles.tags}>
         {tags.map((tag, i) => (
-          <a
-            // href="#"
+          <Link
             key={`tag-${i}`}
-            className="btn btn-primary btn-small">
+            to={`/blog/tag/${tag.toLowerCase().replace(rspaces, '-')}`}
+            className={`btn btn-primary btn-small${
+              selected === tag ? ' tag-active' : ''
+            }`}>
             {tag}
-          </a>
+          </Link>
         ))}
       </div>
     </>
@@ -36,6 +44,13 @@ const styles = {
     .btn {
       display: inline-flex;
       margin: 5px;
+    }
+
+    .tag-active {
+      background-color: ${theme.primary} !important;
+      border-color: ${theme.primary} !important;
+      color: white !important;
+      cursor: default;
     }
   `
 }

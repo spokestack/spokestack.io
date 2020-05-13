@@ -12,29 +12,35 @@ type Props = PageRendererProps & {
     limit: number
     numPages: number
     skip: number
+    tag: string
     tags: string[]
   }
 }
 
 export default function BlogListTemplate({
   data,
-  pageContext: { numPages, currentPage, tags }
+  pageContext: { currentPage, numPages, tag, tags }
 }: Props) {
+  const posts = data.allMarkdownRemark.edges
   return (
     <BlogList
       currentPage={currentPage}
       numPages={numPages}
-      posts={data.allMarkdownRemark.edges}
+      posts={posts}
+      selectedTag={tag}
       tags={tags}
-      title="Blog"
+      title={`${posts.length} articles tagged with "${tag}"`}
     />
   )
 }
 
 export const blogListQuery = graphql`
-  query blogListQuery($skip: Int!, $limit: Int!) {
+  query blogListTagQuery($skip: Int!, $limit: Int!, $tag: String!) {
     allMarkdownRemark(
-      filter: { fileAbsolutePath: { regex: "/blog/" } }
+      filter: {
+        fileAbsolutePath: { regex: "/blog/" }
+        fields: { tags: { in: [$tag] } }
+      }
       sort: { fields: [frontmatter___date], order: DESC }
       limit: $limit
       skip: $skip

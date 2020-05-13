@@ -17,31 +17,39 @@ module.exports = {
     team: {
       will: {
         name: 'Will Rice',
-        title: 'Data Science Engineer'
+        title: 'Data Science Engineer',
+        bio: ''
       },
       elizabeth: {
         name: 'Elizabeth Ropp',
-        title: 'UX & Product Design'
+        title: 'UX & Product Design',
+        bio: ''
       },
       brent: {
         name: 'Brent Spell',
-        title: 'CTO'
+        title: 'CTO',
+        bio: ''
       },
       mike: {
         name: 'Mike Tatum',
-        title: 'CEO'
+        title: 'CEO',
+        bio:
+          "Mike is the CEO of Spokestack. He loves whipping up Butter puns and building tools that make developers' lives better."
       },
       noel: {
         name: 'Noel Weichbrodt',
-        title: 'Principal Engineer'
+        title: 'Principal Engineer',
+        bio: ''
       },
       timmy: {
         name: 'Timmy Willison',
-        title: 'Front-End Engineer'
+        title: 'Front-End Engineer',
+        bio: ''
       },
       josh: {
         name: 'Josh Ziegler',
-        title: 'Conversation Engineer'
+        title: 'Conversation Engineer',
+        bio: ''
       }
     },
     events: [

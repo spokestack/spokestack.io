@@ -36,26 +36,12 @@ export default css`
   .sticky-nav-header-icon {
     fill: ${theme.header};
   }
-  html,
-  body,
-  h1,
-  h2,
-  h3,
-  h4,
-  h5,
-  a,
-  .sticky-nav-wrap,
-  .nav-selected-bg,
-  .sticky-nav-link-active,
-  .sticky-nav-link-active-no-bg,
-  .sticky-nav-header-icon {
-    transition: background-color 0.2s ${theme.transitionEasing},
-      color 0.1s ${theme.transitionEasing},
-      border-color 0.1s ${theme.transitionEasing},
-      text-decoration-color 0.1s ${theme.transitionEasing},
-      fill 0.1s ${theme.transitionEasing};
+  a {
+    transition: color 0.1s ${theme.transitionEasing},
+      text-decoration-color 0.1s ${theme.transitionEasing};
   }
   .dark-mode-track {
+    border: 1px solid ${theme.mainBorderColor.darken(0.05).hex()};
     background-color: ${theme.mainBorder};
   }
   .dark-mode-knob {
@@ -130,6 +116,7 @@ export default css`
 
     .dark-mode-track {
       background-color: ${theme.codeBackground};
+      border-color: ${theme.codeBackgroundColor.darken(0.05).hex()};
     }
     .dark-mode-knob {
       transform: translateX(12px);

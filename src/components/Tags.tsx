@@ -6,13 +6,12 @@ import { css } from '@emotion/core'
 
 interface Props {
   header: string
-  selected?: string
   tags: string[]
 }
 
 const rspaces = /\s+/g
 
-export default function Tags({ header, selected, tags }: Props) {
+export default function Tags({ header, tags }: Props) {
   if (!tags || !tags.length) {
     return null
   }
@@ -20,13 +19,18 @@ export default function Tags({ header, selected, tags }: Props) {
     <>
       {header && <h6>{header}</h6>}
       <div css={styles.tags}>
+        <Link
+          to="/blog"
+          activeClassName="tag-active"
+          className="btn btn-primary btn-small">
+          All
+        </Link>
         {tags.map((tag, i) => (
           <Link
             key={`tag-${i}`}
             to={`/blog/tag/${tag.toLowerCase().replace(rspaces, '-')}`}
-            className={`btn btn-primary btn-small${
-              selected === tag ? ' tag-active' : ''
-            }`}>
+            activeClassName="tag-active"
+            className="btn btn-primary btn-small">
             {tag}
           </Link>
         ))}

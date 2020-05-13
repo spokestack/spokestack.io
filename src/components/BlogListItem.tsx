@@ -41,9 +41,7 @@ export default function BlogListItem({ post }: Props) {
             }
 
             &:hover {
-              background-color: ${theme.codeBackgroundColor
-                .darken(0.1)
-                .toString()};
+              background-color: ${theme.codeBackgroundColor.darken(0.1).hex()};
             }
           }
         `}

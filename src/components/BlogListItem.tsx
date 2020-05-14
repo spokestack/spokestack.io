@@ -47,13 +47,11 @@ export default function BlogListItem({ post }: Props) {
         `}
       />
       <div css={styles.author}>
-        <Link css={styles.authorImageLink} to={`/blog/author/${author}`}>
-          <AuthorImage author={author} extraCss={styles.image} />
-        </Link>
+        <AuthorImage author={author} extraCss={styles.image} />
         <p>
-          <Link css={styles.authorLink} to={`/blog/author/${author}`}>
+          <span>
             {name}, {title}
-          </Link>
+          </span>
           <span css={styles.dot}>•</span>
           <span css={styles.date}>{post.frontmatter.date}</span>
         </p>
@@ -102,25 +100,6 @@ const styles = {
 
     p {
       margin: 0;
-    }
-  `,
-  authorImageLink: css`
-    line-height: 0;
-  `,
-  authorLink: css`
-    text-decoration: none;
-
-    &,
-    &:visited {
-      color: ${theme.text};
-      font-weight: 400;
-    }
-
-    &:hover {
-      color: ${theme.linkHover};
-    }
-    &:active {
-      color: ${theme.linkActive};
     }
   `,
   dot: css`

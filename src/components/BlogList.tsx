@@ -20,16 +20,21 @@ interface Props {
   currentPage: number
   extraCss?: SerializedStyles
   header?: React.ReactNode
+  // Url that shows all tags
+  homeUrl?: string
   numPages: number
   posts: MarkdownRemarkEdge[]
   tags: string[]
   title?: string
 }
 
+const SIDEBAR_MAX_WIDTH = '365px'
+
 export default function BlogList({
   currentPage,
   extraCss,
   header,
+  homeUrl,
   numPages,
   posts,
   tags,
@@ -55,51 +60,53 @@ export default function BlogList({
       />
       <div className="blog-list" css={[styles.container, extraCss]}>
         <div className="bg-banner" css={styles.bgBanner} />
-        <div className="sidenav" css={styles.sidenav}>
-          <Tags header="Tags" tags={tags} />
-        </div>
-        <div css={styles.content}>
-          {header ? (
-            header
-          ) : (
-            <header className="docs-header" css={styles.header}>
-              <h1>{title}</h1>
-              <DarkModeButton />
-            </header>
-          )}
-          {posts.map(({ node }) => (
-            <BlogListItem key={node.fields.slug} post={node} />
-          ))}
-          {(hasPrevious || hasNext) && (
-            <div className="blog-nav-links" css={styles.blogNavLinks}>
-              {hasPrevious ? (
-                <a href={`/blog/${currentPage - 1}`} css={styles.blogNavLink}>
-                  <SVGIcon
-                    className="icon"
-                    icon="#arrow-forward"
-                    extraCss={css`
-                      ${styles.iconArrow}
-                      transform: rotateY(180deg);
-                    `}
-                  />
-                  Previous
-                </a>
-              ) : (
-                <div />
-              )}
-              {hasNext && (
-                <a href={`/blog/${currentPage + 1}`} css={styles.blogNavLink}>
-                  Next
-                  <SVGIcon
-                    className="icon"
-                    icon="#arrow-forward"
-                    extraCss={styles.iconArrow}
-                  />
-                </a>
-              )}
-            </div>
-          )}
-        </div>
+        <section css={styles.blogContent}>
+          <div className="sidenav" css={styles.sidenav}>
+            <Tags allUrl={homeUrl} header="Tags" tags={tags} />
+          </div>
+          <div css={styles.content}>
+            {header ? (
+              header
+            ) : (
+              <header className="docs-header" css={styles.header}>
+                <h1>{title}</h1>
+                <DarkModeButton />
+              </header>
+            )}
+            {posts.map(({ node }) => (
+              <BlogListItem key={node.fields.slug} post={node} />
+            ))}
+            {(hasPrevious || hasNext) && (
+              <div className="blog-nav-links" css={styles.blogNavLinks}>
+                {hasPrevious ? (
+                  <a href={`/blog/${currentPage - 1}`} css={styles.blogNavLink}>
+                    <SVGIcon
+                      className="icon"
+                      icon="#arrow-forward"
+                      extraCss={css`
+                        ${styles.iconArrow}
+                        transform: rotateY(180deg);
+                      `}
+                    />
+                    Previous
+                  </a>
+                ) : (
+                  <div />
+                )}
+                {hasNext && (
+                  <a href={`/blog/${currentPage + 1}`} css={styles.blogNavLink}>
+                    Next
+                    <SVGIcon
+                      className="icon"
+                      icon="#arrow-forward"
+                      extraCss={styles.iconArrow}
+                    />
+                  </a>
+                )}
+              </div>
+            )}
+          </div>
+        </section>
       </div>
     </Layout>
   )
@@ -108,27 +115,17 @@ export default function BlogList({
 const styles = {
   container: css`
     position: relative;
-    display: flex;
-    flex-direction: column;
     padding: 20px 20px ${rhythm(2)};
 
     ${MIN_DEFAULT_MEDIA_QUERY} {
       padding-top: 215px;
       padding-left: 40px;
       padding-right: 40px;
-      flex-direction: row;
-      display: grid;
-      grid-template-columns: minmax(300px, 365px) 1fr minmax(300px, 365px);
-      grid-template-areas: 'sidenav content';
     }
 
     ${MIN_LARGE_DISPLAY_MEDIA_QUERY} {
       padding-left: 100px;
       padding-right: 100px;
-    }
-
-    ${theme.ieBreakpoint} {
-      width: 100%;
     }
   `,
   bgBanner: css`
@@ -153,6 +150,23 @@ const styles = {
         url(/logo-light-blue-flipped.svg) 1900px 350px no-repeat;
     }
   `,
+  blogContent: css`
+    display: flex;
+    flex-direction: column;
+
+    ${MIN_DEFAULT_MEDIA_QUERY} {
+      flex-direction: row;
+      display: grid;
+      grid-template-columns:
+        minmax(300px, ${SIDEBAR_MAX_WIDTH}) minmax(608px, ${DEFAULT_WIDTH})
+        minmax(300px, ${SIDEBAR_MAX_WIDTH});
+      grid-template-areas: 'sidenav content';
+      margin: 0 auto;
+      max-width: calc(
+        ${SIDEBAR_MAX_WIDTH} + ${DEFAULT_WIDTH} + ${SIDEBAR_MAX_WIDTH}
+      );
+    }
+  `,
   sidenav: css`
     grid-area: sidenav;
     padding-right: 20px;
@@ -165,12 +179,6 @@ const styles = {
   content: css`
     position: relative;
     grid-area: content;
-    max-width: ${DEFAULT_WIDTH};
-    margin: 0 auto;
-
-    ${MIN_DEFAULT_MEDIA_QUERY} {
-      min-width: 608px;
-    }
   `,
   header: css`
     ${MIN_DEFAULT_MEDIA_QUERY} {

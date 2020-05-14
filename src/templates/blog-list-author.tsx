@@ -7,27 +7,19 @@ import AuthorImage from '../components/AuthorImage'
 import BlogList from '../components/BlogList'
 import DarkModeButton from '../components/DarkModeButton'
 import { MIN_DEFAULT_MEDIA_QUERY } from 'typography-breakpoint-constants'
+import { PageContext } from '../types'
 import { Query } from '../utils/graphql'
 import React from 'react'
 import SEO from '../components/SEO'
-import { TeamMemberName } from '../types'
 
 type Props = PageRendererProps & {
   data: Query
-  // Created by createPage in gatsby-node.js
-  pageContext: {
-    author: TeamMemberName
-    currentPage: number
-    limit: number
-    numPages: number
-    skip: number
-    tags: string[]
-  }
+  pageContext: PageContext
 }
 
-export default function BlogListTemplate({
+export default function BlogListAuthorTemplate({
   data,
-  pageContext: { author, currentPage, numPages, tags }
+  pageContext: { author, currentPage, numPages, slug, tags }
 }: Props) {
   const posts = data.allMarkdownRemark.edges
   const { name, bio, title } = data.site.siteMetadata.team[author]
@@ -54,6 +46,7 @@ export default function BlogListTemplate({
         numPages={numPages}
         posts={posts}
         tags={tags}
+        homeUrl={slug}
         header={
           <div css={styles.author}>
             <AuthorImage author={author} extraCss={styles.image} />
@@ -80,7 +73,7 @@ const styles = {
         height: 500px;
       }
       .sidenav {
-        padding-top: 450px;
+        padding-top: 445px;
       }
     }
   `,

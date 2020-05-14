@@ -1,24 +1,17 @@
 import { PageRendererProps, graphql } from 'gatsby'
 
 import BlogList from '../components/BlogList'
+import { PageContext } from '../types'
 import { Query } from '../utils/graphql'
 import React from 'react'
 import SEO from '../components/SEO'
 
 type Props = PageRendererProps & {
   data: Query
-  // Created by createPage in gatsby-node.js
-  pageContext: {
-    currentPage: number
-    limit: number
-    numPages: number
-    skip: number
-    tag: string
-    tags: string[]
-  }
+  pageContext: PageContext
 }
 
-export default function BlogListTemplate({
+export default function BlogListTagTemplate({
   data,
   pageContext: { currentPage, numPages, tag, tags }
 }: Props) {
@@ -33,6 +26,7 @@ export default function BlogListTemplate({
       />
       <BlogList
         currentPage={currentPage}
+        homeUrl="/blog"
         numPages={numPages}
         posts={posts}
         tags={tags}

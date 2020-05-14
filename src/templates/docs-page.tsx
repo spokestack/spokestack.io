@@ -14,7 +14,7 @@ type Props = PageRendererProps & {
   }
 }
 
-export default function Docs({ data }: Props) {
+export default function DocsPageTemplate({ data }: Props) {
   return <DocsPage post={data.markdownRemark} />
 }
 

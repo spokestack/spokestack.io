@@ -97,6 +97,7 @@ async function createAuthorPages({ author, tags, actions, graphql, template }) {
       context: {
         author,
         tags,
+        slug: url,
         limit: postsPerPage,
         skip: i * postsPerPage,
         numPages,
@@ -144,6 +145,7 @@ async function createTagPages({ tag, tags, actions, graphql, template }) {
       context: {
         tag,
         tags,
+        slug: url,
         limit: postsPerPage,
         skip: i * postsPerPage,
         numPages,
@@ -274,11 +276,13 @@ exports.createPages = async ({ graphql, actions, reporter }) => {
   const posts = result.data.blog.edges
   const numPages = Math.ceil(posts.length / postsPerPage)
   Array.from({ length: numPages }).forEach((_, i) => {
+    const url = i === 0 ? `/blog` : `/blog/${i + 1}`
     createPage({
-      path: i === 0 ? `/blog` : `/blog/${i + 1}`,
+      path: url,
       component: path.resolve('./src/templates/blog-list.tsx'),
       context: {
         tags,
+        slug: url,
         limit: postsPerPage,
         skip: i * postsPerPage,
         numPages,

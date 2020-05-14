@@ -5,13 +5,15 @@ import React from 'react'
 import { css } from '@emotion/core'
 
 interface Props {
+  // Url that represents showing all tags
+  allUrl?: string
   header: string
   tags: string[]
 }
 
 const rspaces = /\s+/g
 
-export default function Tags({ header, tags }: Props) {
+export default function Tags({ header, allUrl, tags }: Props) {
   if (!tags || !tags.length) {
     return null
   }
@@ -19,12 +21,14 @@ export default function Tags({ header, tags }: Props) {
     <>
       {header && <h6>{header}</h6>}
       <div css={styles.tags}>
-        <Link
-          to="/blog"
-          activeClassName="tag-active"
-          className="btn btn-primary btn-small">
-          All
-        </Link>
+        {allUrl && (
+          <Link
+            to={allUrl}
+            activeClassName="tag-active"
+            className="btn btn-primary btn-small">
+            All
+          </Link>
+        )}
         {tags.map((tag, i) => (
           <Link
             key={`tag-${i}`}

@@ -5,6 +5,7 @@ import { PageRendererProps, graphql } from 'gatsby'
 
 import AuthorImage from '../components/AuthorImage'
 import BlogList from '../components/BlogList'
+import DarkModeButton from '../components/DarkModeButton'
 import { MIN_DEFAULT_MEDIA_QUERY } from 'typography-breakpoint-constants'
 import { Query } from '../utils/graphql'
 import React from 'react'
@@ -60,6 +61,9 @@ export default function BlogListTemplate({
             <p className="author-bio" css={styles.bio}>
               {bio || title}
             </p>
+            <div css={styles.headerBottom}>
+              <DarkModeButton />
+            </div>
           </div>
         }
       />
@@ -81,6 +85,7 @@ const styles = {
     }
   `,
   author: css`
+    position: relative;
     display: flex;
     flex-direction: column;
     justify-content: center;
@@ -100,6 +105,11 @@ const styles = {
     color: ${theme.headerColor.fade(0.25).toString()};
     margin: 0;
     max-width: 450px;
+  `,
+  headerBottom: css`
+    position: absolute;
+    right: 0;
+    bottom: 20px;
   `
 }
 

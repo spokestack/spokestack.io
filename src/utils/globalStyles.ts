@@ -284,7 +284,7 @@ export default css`
     display: flex;
     flex-direction: row;
     justify-content: space-between;
-    align-items: center;
+    align-items: flex-end;
     margin-bottom: ${rhythm(1)};
 
     h1 {

@@ -1,8 +1,8 @@
 import * as theme from '../utils/theme'
 
 import { Global, css } from '@emotion/core'
+import { Link, graphql, useStaticQuery } from 'gatsby'
 import { TeamImages, TeamMemberName } from '../types'
-import { graphql, useStaticQuery } from 'gatsby'
 
 import AuthorImage from './AuthorImage'
 import Color from 'color'
@@ -23,8 +23,8 @@ export default function Author({ author }: Props) {
   }
   const { name, title } = data.site.siteMetadata.team[author]
   return (
-    <a
-      href={`/blog/author/${author}`}
+    <Link
+      to={`/blog/author/${author}`}
       className="author"
       css={styles.container}>
       <Global
@@ -61,7 +61,7 @@ export default function Author({ author }: Props) {
       <p className="author-bio" css={styles.bio}>
         {title}
       </p>
-    </a>
+    </Link>
   )
 }
 

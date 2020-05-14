@@ -1,8 +1,8 @@
 import * as theme from '../utils/theme'
 
 import { Global, css } from '@emotion/core'
+import { Link, graphql, useStaticQuery } from 'gatsby'
 import { MarkdownRemark, Query } from '../utils/graphql'
-import { graphql, useStaticQuery } from 'gatsby'
 
 import AuthorImage from './AuthorImage'
 import Color from 'color'
@@ -21,9 +21,9 @@ export default function BlogListItem({ post }: Props) {
   }
   const { name, title } = data.site.siteMetadata.team[author]
   return (
-    <a
+    <Link
+      to={post.fields.slug}
       css={styles.container}
-      href={post.fields.slug}
       className="blog-list-item">
       <Global
         styles={css`
@@ -47,15 +47,20 @@ export default function BlogListItem({ post }: Props) {
         `}
       />
       <div css={styles.author}>
-        <AuthorImage author={author} extraCss={styles.image} />
+        <Link css={styles.authorImageLink} to={`/blog/author/${author}`}>
+          <AuthorImage author={author} extraCss={styles.image} />
+        </Link>
         <p>
-          {name}, {title} •{' '}
+          <Link css={styles.authorLink} to={`/blog/author/${author}`}>
+            {name}, {title}
+          </Link>
+          <span css={styles.dot}>•</span>
           <span css={styles.date}>{post.frontmatter.date}</span>
         </p>
       </div>
       <h4>{post.frontmatter.title}</h4>
       <p css={styles.excerpt}>{post.excerpt}</p>
-    </a>
+    </Link>
   )
 }
 
@@ -98,6 +103,28 @@ const styles = {
     p {
       margin: 0;
     }
+  `,
+  authorImageLink: css`
+    line-height: 0;
+  `,
+  authorLink: css`
+    text-decoration: none;
+
+    &,
+    &:visited {
+      color: ${theme.text};
+      font-weight: 400;
+    }
+
+    &:hover {
+      color: ${theme.linkHover};
+    }
+    &:active {
+      color: ${theme.linkActive};
+    }
+  `,
+  dot: css`
+    margin: 0 5px;
   `,
   image: css`
     max-width: 34px;

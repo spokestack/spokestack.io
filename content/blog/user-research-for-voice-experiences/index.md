@@ -1,17 +1,17 @@
 ---
 title: User Research for Voice Experiences
 date: '2020-05-15'
-description: The number of actions a user can take is not constrained by buttons and navigational menus. That's why it's important to start every project by identifying who exactly you're designing for.
+description: An independent voice assistant can improve your app's overall experience. Discover how to build a conversational UI and what you need to get started.
 tags: Design, Product
 author: elizabeth
 draft: false
 ---
 
-Over the last three years, I’ve worked on designing voice and chat conversations paired with mobile UIs including [The Bartender](http://www.thebartender.io) and [Tasted](http://www.tasted.com). One thing has remained clear: design for verbal input is a very different UX problem to solve for. The number of actions a user can take is not constrained by buttons and navigational menus. That’s why it’s important to start every project by identifying who exactly you’re designing for. This will help you better understand how voice can improve your overall experience.
+Over the last three years, I’ve worked on designing voice and chat conversations paired with mobile UIs including [The Bartender](http://www.thebartender.io) and [Tasted](http://www.tasted.com). One thing has remained clear: design for verbal input is a very different UX problem. The number of actions a user can take is not constrained by buttons and navigational menus. That’s why it’s important to start every project by identifying who exactly you’re designing for. This will help you better understand how voice can improve your overall experience.
 
 ## "What can I help you with?"
 
-If you’ve ever said “Hey Siri” to an iOS device, you're likely familiar with the assistant’s opening screen. “What can I help you with?” can be intimidating. You might not be sure what or how Siri can help you, if at all. Siri serves a broad audience (every iPhone user in the world) and an even broader domain of knowledge similar to a search query. [Independent voice assistants](https://spokestack.io/blog/what-is-an-independent-voice-assistant) (IVA) serve a more limited domain of knowledge. The actions a user can take, or “intents,” focus on specific tasks in your app like buying movie tickets, recording a run, or finding a cocktail recipe.
+If you’ve ever said “Hey Siri” to an iOS device, you're likely familiar with the assistant’s opening screen. “What can I help you with?” can be intimidating. You might not be sure what or how Siri can help you, if at all. Siri serves a broad audience (every iPhone user in the world) and an even broader domain of knowledge similar to a search query, which can be overwhelming. [Independent Voice Assistants](https://spokestack.io/blog/what-is-an-independent-voice-assistant) (IVA) serve a more limited domain of knowledge. The actions a user can take, or “intents,” focus on specific tasks in your app like buying movie tickets, recording a run, or finding a cocktail recipe.
 
 With fewer intents, your assistant can provide a better experience without having to know how to respond if a user asks something unrelated like “How many miles to the moon?” But, what intents _do_ \*\*your users care about? To answer that question, you need to start by understanding who you’re building for. Even if you already have an idea of who your target audience is, adding a voice assistant to your mobile app may shift your product’s reach.
 
@@ -46,7 +46,7 @@ This will be a guided discussion that you will take charge of. It’s important 
 
 ## Don’t forget who your real users are (psst, it’s not you!)
 
-You may be more savvy about voice assistants or tech in general than your subject. It’s hard to step back and really hear what users are saying when you’re eager to start designing or building a product. Ask interviewees how they would normally complete certain tasks. Observe their language including nouns, verbs, and sentiment. Your users' natural speech will inform which utterances and intents your assistant supports and how you’ll prompt these. Be on the look out for any contextual clues that might reveal how or where they’re completing these tasks. Voice interfaces allow certain tasks to be completed while multitasking. Use this to your advantage.
+You may be more savvy about voice assistants or tech in general than your audience. It’s hard to step back and really hear what users are saying when you’re eager to start designing or building a product. Ask interviewees how they would normally complete certain tasks. Observe their language including nouns, verbs, and sentiment. Your users' natural speech will inform which utterances and intents your assistant supports and how you’ll prompt these. Be on the look out for any contextual clues that might reveal how or where they’re completing these tasks. Voice interfaces allow certain tasks to be completed while multitasking. Use this to your advantage.
 
 Here’s an example from a user interview I did for a virtual host concept for AirBnb hosts. An owner I spoke with had a complicated coffee maker in one of his units. He had made a binder full of useful tips for his guests that explained how to use his appliances. However, housekeeping often misplaced the binder making it hard for his guests to find. A simple “how does the coffee maker work?” to a voice assistant followed by step-by-step instructions could satisfy the problems of both the owner and guest.
 

@@ -42,7 +42,7 @@ export default function Newsletter() {
           className={`input${invalid ? ' error' : ''}`}
           placeholder="Enter email"
         />
-        <Button type="submit">
+        <Button type="submit" extraCss={styles.button}>
           Subscribe
           <SVGIcon icon="#arrow-forward" extraCss={styles.icon} />
         </Button>
@@ -89,6 +89,11 @@ const styles = {
       .btn {
         border-radius: 0 24px 24px 0;
       }
+    }
+  `,
+  button: css`
+    ${theme.ieBreakpoint} {
+      width: 200px;
     }
   `,
   icon: css`

@@ -86,6 +86,13 @@ const styles = {
     svg {
       fill: currentColor;
     }
+
+    ${theme.ieBreakpoint} {
+      top: 50%;
+      left: 50%;
+      margin-top: -6px;
+      margin-left: -6px;
+    }
   `,
   lightIcon: css`
     color: ${theme.primary};

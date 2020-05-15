@@ -127,6 +127,10 @@ const styles = {
       padding-left: 100px;
       padding-right: 100px;
     }
+
+    ${theme.ieBreakpoint} {
+      width: 100%;
+    }
   `,
   bgBanner: css`
     ${MIN_DEFAULT_MEDIA_QUERY} {

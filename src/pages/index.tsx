@@ -473,6 +473,10 @@ const styles = {
     background-color: ${theme.primary};
     color: white;
     padding: ${rhythm(2)} 20px;
+
+    ${theme.ieBreakpoint} {
+      width: 100%;
+    }
   `,
   card: css`
     ${theme.ieBreakpoint} {

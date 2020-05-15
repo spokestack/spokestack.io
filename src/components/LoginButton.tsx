@@ -33,8 +33,8 @@ const styles = {
     background-color: white !important;
     color: ${primary} !important;
     font-weight: 700;
-    border-radius: 0;
-    border: none;
+    border-radius: 0 !important;
+    border: none !important;
     transition: background-color 0.2s ${transitionEasing},
       color 0.2s ${transitionEasing};
     flex-shrink: 0;
@@ -50,12 +50,12 @@ const styles = {
     ${MIN_LARGE_DISPLAY_MEDIA_QUERY} {
       position: relative !important;
       width: auto;
-      border-radius: 24px;
       font-weight: 400;
       height: 38px;
       background-color: transparent !important;
       color: ${secondary} !important;
-      border: 1px solid ${secondary};
+      border: 1px solid ${secondary} !important;
+      border-radius: 24px !important;
 
       &:hover,
       &:active {

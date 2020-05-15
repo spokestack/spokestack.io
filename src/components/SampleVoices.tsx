@@ -138,6 +138,7 @@ export default class SampleVoices extends PureComponent<Props, State> {
               disabled={disabled || submitting}
               selected={selected}
               extraCss={styles.select}
+              selectCss={styles.selectElem}
               iconWrapCss={styles.selectIconWrap}
               options={this.options}
               onChange={(value) => {
@@ -281,6 +282,9 @@ const styles = {
         border-bottom: none;
       }
     }
+  `,
+  selectElem: css`
+    height: 40px;
   `,
   selectIconWrap: css`
     background: none;

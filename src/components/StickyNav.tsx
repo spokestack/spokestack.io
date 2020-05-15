@@ -151,8 +151,8 @@ export default function StickyNav({
 
 const styles = {
   stickyNav: css`
+    position: relative;
     ${MIN_DEFAULT_MEDIA_QUERY} {
-      position: relative;
       position: sticky;
       top: 60px;
       margin-bottom: 25px;

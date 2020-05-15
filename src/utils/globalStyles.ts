@@ -218,7 +218,7 @@ export default css`
     }
     &.btn-small {
       height: 33px;
-      padding: 0 15px;
+      padding: 1px 15px 0;
       ${adjustFontSizeTo('14px')};
       font-weight: 600;
     }

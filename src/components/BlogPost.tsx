@@ -16,6 +16,7 @@ import Tags from './Tags'
 import { css } from '@emotion/core'
 import findImage from '../utils/findImage'
 import { rhythm } from '../utils/typography'
+import { ieBreakpoint } from '../utils/theme'
 
 interface Props {
   post: MarkdownRemark
@@ -75,7 +76,7 @@ const styles = {
     padding: 20px 20px ${rhythm(2)};
 
     ${MIN_DEFAULT_MEDIA_QUERY} {
-      padding: ${rhythm(2)} 40px;
+      flex-direction: row;
       display: grid;
       grid-template-columns: minmax(200px, 350px) minmax(
           608px,
@@ -85,10 +86,14 @@ const styles = {
       grid-template-areas:
         'author  content'
         'related content';
+      padding: ${rhythm(2)} 40px;
     }
     ${MIN_LARGE_DISPLAY_MEDIA_QUERY} {
       padding-left: 100px;
       padding-right: 100px;
+    }
+    ${ieBreakpoint} {
+      width: 100%;
     }
   `,
   author: css`
@@ -98,6 +103,10 @@ const styles = {
     ${MIN_DEFAULT_MEDIA_QUERY} {
       margin-bottom: 0;
     }
+
+    ${ieBreakpoint} {
+      min-width: 200px;
+    }
   `,
   content: css`
     grid-area: content;
@@ -105,9 +114,18 @@ const styles = {
     ${MIN_DEFAULT_MEDIA_QUERY} {
       margin-left: 50px;
     }
+
+    ${ieBreakpoint} {
+      width: 100%;
+      min-width: 500px;
+    }
   `,
   related: css`
     grid-area: related;
     padding: 0 20px;
+
+    ${ieBreakpoint} {
+      min-width: 200px;
+    }
   `
 }

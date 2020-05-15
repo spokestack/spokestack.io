@@ -80,9 +80,10 @@ const options: TypographyOptions = {
       margin: 0
     },
     figcaption: {
-      fontSize: '0.8rem',
+      fontSize: '0.9rem',
       fontStyle: 'italic',
-      maxWidth: '50%',
+      paddingLeft: rhythm(1 / 3),
+      paddingRight: rhythm(1 / 3),
       margin: '0 auto',
       textAlign: 'center'
     },

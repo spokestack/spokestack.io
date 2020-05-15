@@ -79,6 +79,13 @@ const options: TypographyOptions = {
     form: {
       margin: 0
     },
+    figcaption: {
+      fontSize: '0.8rem',
+      fontStyle: 'italic',
+      maxWidth: '50%',
+      margin: '0 auto',
+      textAlign: 'center'
+    },
     blockquote: {
       ...scale(1 / 5),
       paddingLeft: rhythm(1),

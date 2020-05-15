@@ -42,6 +42,7 @@ export const blogListQuery = graphql`
       filter: {
         fileAbsolutePath: { regex: "/blog/" }
         fields: { tags: { in: [$tag] } }
+        frontmatter: { draft: { ne: true } }
       }
       sort: { fields: [frontmatter___date], order: DESC }
       limit: $limit

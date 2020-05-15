@@ -114,7 +114,7 @@ export const blogListQuery = graphql`
     allMarkdownRemark(
       filter: {
         fileAbsolutePath: { regex: "/blog/" }
-        frontmatter: { author: { eq: $author } }
+        frontmatter: { author: { eq: $author }, draft: { ne: true } }
       }
       sort: { fields: [frontmatter___date], order: DESC }
       limit: $limit

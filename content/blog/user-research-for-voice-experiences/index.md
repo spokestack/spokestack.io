@@ -4,7 +4,7 @@ date: '2020-05-15'
 description: The number of actions a user can take is not constrained by buttons and navigational menus. That's why it's important to start every project by identifying who exactly you're designing for.
 tags: Design, Product
 author: elizabeth
-draft: true
+draft: false
 ---
 
 Over the last three years, I’ve worked on designing voice and chat conversations paired with mobile UIs including [The Bartender](http://www.thebartender.io) and [Tasted](http://www.tasted.com). One thing has remained clear: design for verbal input is a very different UX problem to solve for. The number of actions a user can take is not constrained by buttons and navigational menus. That’s why it’s important to start every project by identifying who exactly you’re designing for. This will help you better understand how voice can improve your overall experience.

@@ -1,7 +1,6 @@
 import * as theme from '../utils/theme'
 
 import {
-  DEFAULT_WIDTH,
   MIN_DEFAULT_MEDIA_QUERY,
   MIN_LARGE_DISPLAY_MEDIA_QUERY
 } from 'typography-breakpoint-constants'
@@ -27,8 +26,6 @@ interface Props {
   tags: string[]
   title?: string
 }
-
-const SIDEBAR_MAX_WIDTH = '365px'
 
 export default function BlogList({
   currentPage,
@@ -162,12 +159,17 @@ const styles = {
       flex-direction: row;
       display: grid;
       grid-template-columns:
-        minmax(300px, ${SIDEBAR_MAX_WIDTH}) minmax(608px, ${DEFAULT_WIDTH})
-        minmax(300px, ${SIDEBAR_MAX_WIDTH});
+        minmax(${theme.MIN_SIDEBAR_WIDTH}, ${theme.MAX_SIDEBAR_WIDTH}) minmax(
+          ${theme.MIN_TEXT_WIDTH},
+          ${theme.MAX_TEXT_WIDTH}
+        )
+        minmax(${theme.MIN_SIDEBAR_WIDTH}, ${theme.MAX_SIDEBAR_WIDTH});
+      grid-template-rows: auto 1fr;
       grid-template-areas: 'sidenav content';
       margin: 0 auto;
       max-width: calc(
-        ${SIDEBAR_MAX_WIDTH} + ${DEFAULT_WIDTH} + ${SIDEBAR_MAX_WIDTH}
+        ${theme.MAX_SIDEBAR_WIDTH} + ${theme.MAX_TEXT_WIDTH} +
+          ${theme.MAX_SIDEBAR_WIDTH}
       );
     }
   `,

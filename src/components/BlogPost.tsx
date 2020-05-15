@@ -1,7 +1,6 @@
 import {
   MIN_DEFAULT_MEDIA_QUERY,
-  MIN_LARGE_DISPLAY_MEDIA_QUERY,
-  LARGE_DISPLAY_WIDTH
+  MIN_LARGE_DISPLAY_MEDIA_QUERY
 } from 'typography-breakpoint-constants'
 import { RelatedLink, TeamMemberName } from '../types'
 
@@ -16,7 +15,13 @@ import Tags from './Tags'
 import { css } from '@emotion/core'
 import findImage from '../utils/findImage'
 import { rhythm } from '../utils/typography'
-import { ieBreakpoint } from '../utils/theme'
+import {
+  ieBreakpoint,
+  MAX_SIDEBAR_WIDTH,
+  MIN_TEXT_WIDTH,
+  MAX_TEXT_WIDTH,
+  MIN_SIDEBAR_WIDTH
+} from '../utils/theme'
 
 interface Props {
   post: MarkdownRemark
@@ -78,13 +83,20 @@ const styles = {
     ${MIN_DEFAULT_MEDIA_QUERY} {
       flex-direction: row;
       display: grid;
-      grid-template-columns: minmax(200px, 350px) minmax(500px, 700px);
+      grid-template-columns:
+        minmax(${MIN_SIDEBAR_WIDTH}, ${MAX_SIDEBAR_WIDTH}) minmax(
+          ${MIN_TEXT_WIDTH},
+          ${MAX_TEXT_WIDTH}
+        )
+        minmax(${MIN_SIDEBAR_WIDTH}, ${MAX_SIDEBAR_WIDTH});
       grid-template-rows: auto 1fr;
       grid-template-areas:
         'author  content'
         'related content';
       padding: ${rhythm(2)} 40px;
-      max-width: ${LARGE_DISPLAY_WIDTH};
+      max-width: calc(
+        ${MAX_SIDEBAR_WIDTH} + ${MAX_TEXT_WIDTH} + ${MAX_SIDEBAR_WIDTH}
+      );
       margin: 0 auto;
     }
     ${MIN_LARGE_DISPLAY_MEDIA_QUERY} {

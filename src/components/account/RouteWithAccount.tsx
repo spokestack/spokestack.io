@@ -1,12 +1,12 @@
-import { Account, AccountSummary } from '../types'
+import { Account, AccountSummary } from '../../types'
 import { useLazyQuery, useQuery } from '@apollo/react-hooks'
 
-import ErrorPage from './ErrorPage'
-import LoadingPage from './LoadingPage'
+import ErrorPage from '../ErrorPage'
+import LoadingPage from '../LoadingPage'
 import React from 'react'
 import { RouteComponentProps } from '@reach/router'
 import gql from 'graphql-tag'
-import { isLoggedIn, clearStorage } from '../utils/auth'
+import { isLoggedIn, clearStorage } from '../../utils/auth'
 import { navigate } from 'gatsby'
 
 const LIST_ACCOUNTS_QUERY = gql`

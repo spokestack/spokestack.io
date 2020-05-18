@@ -1,7 +1,7 @@
-import Layout from './Layout'
+import Layout from '../Layout'
 import React from 'react'
-import { StickyLink } from '../types'
-import StickyNavLayout from './StickyNavLayout'
+import { StickyLink } from '../../types'
+import StickyNavLayout from '../StickyNavLayout'
 import { WindowLocation } from '@reach/router'
 
 const links: StickyLink[] = [
@@ -18,10 +18,9 @@ const links: StickyLink[] = [
     section: 'Settings'
   },
   {
-    href: '/account/settings/#voices',
-    title: 'Sample Voices',
-    refSelector: '#voices',
-    section: 'Settings'
+    href: '/account/services/text-to-speech',
+    title: 'Text to Speech',
+    section: 'Services'
   }
   // {
   //   href: '/account/billing/#details',
@@ -34,14 +33,20 @@ const links: StickyLink[] = [
 interface Props {
   children: React.ReactNode
   location?: WindowLocation
+  matchHash?: boolean
   title: string
 }
 
-export default function AccountLayout({ children, location, title }: Props) {
+export default function AccountLayout({
+  children,
+  location,
+  matchHash,
+  title
+}: Props) {
   return (
     <Layout>
       <StickyNavLayout
-        matchHash
+        matchHash={matchHash}
         header={title}
         links={links}
         location={location}>

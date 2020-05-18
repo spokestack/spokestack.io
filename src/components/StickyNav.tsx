@@ -17,6 +17,7 @@ import throttle from 'lodash/throttle'
 export interface StickyNavProps {
   links: StickyLink[]
   location?: WindowLocation
+  hideSelect?: boolean
   matchHash?: boolean
 }
 
@@ -39,6 +40,7 @@ function optionsFromLinks(links: StickyLink[]) {
 let navigating = true
 
 export default function StickyNav({
+  hideSelect,
   links = [],
   location,
   matchHash
@@ -98,7 +100,7 @@ export default function StickyNav({
 
   return (
     <nav css={styles.stickyNav}>
-      {!matchHash && (
+      {!hideSelect && (
         <Select
           id="sticky-nav"
           extraCss={styles.mobileNav}

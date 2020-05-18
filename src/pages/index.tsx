@@ -144,6 +144,7 @@ export default function Index({ data, location }: Props) {
       </section>
       <StickyNavLayout
         id="products"
+        hideSelect
         matchHash
         links={links}
         location={location}>

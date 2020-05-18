@@ -206,7 +206,8 @@ export default css`
       color: ${theme.primary};
 
       &:hover:not([disabled]),
-      &:active:not([disabled]) {
+      &:active:not([disabled]),
+      &.btn-submitting {
         background-color: ${theme.primary};
         border-color: ${theme.primary};
         color: white;

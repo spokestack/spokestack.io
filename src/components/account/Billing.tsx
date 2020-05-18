@@ -1,4 +1,4 @@
-import { Account } from '../types'
+import { Account } from '../../types'
 import AccountCard from './AccountCard'
 import AccountLayout from './AccountLayout'
 import React from 'react'

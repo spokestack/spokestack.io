@@ -1,6 +1,7 @@
 /**
  * Create a new blog post given a title
- * Usage: node post.js "Blog Post Title" ["Here is an optional blog post description"]
+ * Usage: node post.js [author] [title] [description]
+ * Example: node post.js mike "Keeping Perspective" "Keep perspective on what you are building in tough times"
  */
 
 const path = require('path')
@@ -15,13 +16,13 @@ title: <%- title %>
 date: '<%- date %>'<% if(typeof description !== 'undefined') { %>
 description: <%- description %><% } %>
 tags:
-author: timmy
-draft: true
+author: <%- author %>
+draft: false
 ---
 
 `)
 
-function post(title, description) {
+function post(author, title, description) {
   return new Promise((resolve, reject) => {
     const name = title.toLowerCase().replace(rspaces, '-')
     const dir = path.join(__dirname, '/../content/blog/', name)
@@ -37,6 +38,7 @@ function post(title, description) {
       fs.writeFile(
         filename,
         postTemplate({
+          author,
           title,
           date: `${date.toISOString().slice(0, 10)}`,
           description

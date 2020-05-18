@@ -55,7 +55,7 @@ export default function BlogPost({ post, related }: Props) {
             {related && !!related.length && (
               <>
                 <h6>Related Articles</h6>
-                <div>
+                <div css={styles.relatedLinks}>
                   {related.map((link, i) => (
                     <Link
                       key={`related-${i}`}
@@ -137,6 +137,14 @@ const styles = {
 
     ${ieBreakpoint} {
       min-width: 200px;
+    }
+  `,
+  relatedLinks: css`
+    display: flex;
+    flex-direction: column;
+
+    a {
+      margin-bottom: 10px;
     }
   `
 }

@@ -32,12 +32,14 @@ async function getRelated({ tags, slug, graphql }) {
     const result = await graphql(`
       {
         allMarkdownRemark(
+          sort: { fields: [frontmatter___date], order: DESC },
           filter: {
             fields: {
               slug: { ne: "${slug}" }
               tags: { in: ${JSON.stringify(tags)} }
             }
           }
+          limit: 3
         ) {
           nodes {
             frontmatter {

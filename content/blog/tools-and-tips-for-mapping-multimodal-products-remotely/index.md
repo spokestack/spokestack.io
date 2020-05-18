@@ -4,7 +4,7 @@ date: '2020-05-18'
 description: Learn about the tools used at Spokestack to formulate multimodal flows for products and design Independent Voice Assistants.
 tags: Design, Product
 author: elizabeth
-draft: true
+draft: false
 ---
 
 At Spokestack, we use [experience mapping](https://spokestack.io/docs/Design/map-out-integration) as a tool to formulate multimodal flows for our products based on [researched observations and ideas](https://spokestack.io/blog/user-research-for-voice-experiences). It’s a great way to get everyone on the same page before designing or building anything. Plus, it forces us to consider _what_ exactly we want users to ask and _how_ we’ll respond, both conversationally and visually. When our team committed to being 100% distributed over two years ago, I wanted to recreate this exercise digitally. What I came up with follows many of the same steps outlined in our [design docs](https://spokestack.io/docs/Design/getting-started). However, the tools and set-up are a bit different. Here are a few considerations to keep in mind when adopting this exercise.

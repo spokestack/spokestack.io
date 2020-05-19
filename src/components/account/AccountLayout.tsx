@@ -7,12 +7,14 @@ import { WindowLocation } from '@reach/router'
 const links: StickyLink[] = [
   {
     href: '/account/settings/#general',
+    matchHash: true,
     title: 'General',
     refSelector: '#general',
     section: 'Settings'
   },
   {
     href: '/account/settings/#api',
+    matchHash: true,
     title: 'API Credentials',
     refSelector: '#api',
     section: 'Settings'
@@ -33,23 +35,13 @@ const links: StickyLink[] = [
 interface Props {
   children: React.ReactNode
   location?: WindowLocation
-  matchHash?: boolean
   title: string
 }
 
-export default function AccountLayout({
-  children,
-  location,
-  matchHash,
-  title
-}: Props) {
+export default function AccountLayout({ children, location, title }: Props) {
   return (
     <Layout>
-      <StickyNavLayout
-        matchHash={matchHash}
-        header={title}
-        links={links}
-        location={location}>
+      <StickyNavLayout header={title} links={links} location={location}>
         {children}
       </StickyNavLayout>
     </Layout>

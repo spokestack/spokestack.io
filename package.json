@@ -18,7 +18,7 @@
     "release": "semantic-release",
     "schema": "graphql-codegen --config codegen.yml && prettier --write \"**/graphql.d.ts\"",
     "schema:remote": "node tasks/schema.js",
-    "serve": "gatsby serve",
+    "serve": "serve -p 8000 public/",
     "start": "npm run clean && gatsby develop",
     "test": "npm run lint",
     "type-check": "tsc -p tsconfig.json --noEmit"

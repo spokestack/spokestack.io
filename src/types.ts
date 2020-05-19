@@ -23,13 +23,14 @@ export interface RelatedLink {
 }
 
 export interface StickyLink {
-  href: string
-  title: string
-  navId?: string
-  section?: string
   forceSelect?: boolean
+  href: string
+  matchHash?: boolean
+  navId?: string
   ref?: MutableRefObject<HTMLElement>
   refSelector?: string
+  section?: string
+  title: string
 }
 
 interface SharpImage {

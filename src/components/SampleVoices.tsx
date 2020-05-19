@@ -1,3 +1,5 @@
+import * as theme from '../utils/theme'
+
 import React, { PureComponent } from 'react'
 import Select, { Option } from './Select'
 
@@ -6,13 +8,12 @@ import Card from './Card'
 import { MIN_TABLET_MEDIA_QUERY } from 'typography-breakpoint-constants'
 import SVGIcon from './SVGIcon'
 import Textarea from './Textarea'
+import { Voice } from '../types'
 import { adjustFontSizeTo } from '../utils/typography'
 import { css } from '@emotion/core'
 import debounce from 'lodash/debounce'
 import find from 'lodash/find'
-import * as theme from '../utils/theme'
 import synthesize from '../utils/synthesize'
-import { Voice } from '../types'
 
 const defaultStrings = {
   ipa: 'Hello, welcome to {{spoʊkstæk}}. What would you like to say?',
@@ -58,11 +59,13 @@ export default class SampleVoices extends PureComponent<Props, State> {
     this.getAudio()
   }
 
+  resetState = () => {
+    this.setState({ disabled: false, submitting: false })
+  }
+
   loadAudio(url: string) {
     this.audio = new Audio(url)
-    this.audio.addEventListener('canplaythrough', () => {
-      this.setState({ disabled: false, submitting: false })
-    })
+    this.audio.addEventListener('canplaythrough', this.resetState)
     this.audio.load()
   }
 
@@ -86,7 +89,7 @@ export default class SampleVoices extends PureComponent<Props, State> {
         disabled: false,
         submitting: false,
         errorText:
-          synthError.message ||
+          (synthError && synthError.message) ||
           'There was a problem synthesizing the text. Please try again.'
       })
     }

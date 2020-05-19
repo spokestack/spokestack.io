@@ -31,7 +31,7 @@ export default function Author({ author }: Props) {
         styles={css`
           html.dark-mode {
             .author {
-              background-color: ${theme.codeBackground};
+              background-color: ${theme.authorBackground};
               border-left-color: ${theme.mainBorderDark};
               border-right-color: ${theme.mainBorderDark};
               border-bottom-color: ${theme.mainBorderDark};
@@ -44,7 +44,7 @@ export default function Author({ author }: Props) {
               }
 
               &:hover {
-                background-color: ${theme.codeBackgroundColor
+                background-color: ${theme.authorBackgroundColor
                   .darken(0.1)
                   .hex()};
               }

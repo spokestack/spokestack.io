@@ -1,9 +1,10 @@
 import AboutLayout from '../../components/AboutLayout'
+import { PageRendererProps } from 'gatsby'
 import React from 'react'
 
-export default function Story() {
+export default function Story({ location }: PageRendererProps) {
   return (
-    <AboutLayout>
+    <AboutLayout location={location}>
       <h1>Story</h1>
       <p>
         Our team has worked together on voice user interfaces (VUI) for over

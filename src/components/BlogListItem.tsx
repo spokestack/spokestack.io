@@ -28,7 +28,7 @@ export default function BlogListItem({ post }: Props) {
       <Global
         styles={css`
           html.dark-mode .blog-list-item {
-            background-color: ${theme.codeBackground};
+            background-color: ${theme.authorBackground};
             border-top-color: ${theme.mainBorderDark};
             border-right-color: ${theme.mainBorderDark};
             border-bottom-color: ${theme.mainBorderDark};
@@ -41,7 +41,9 @@ export default function BlogListItem({ post }: Props) {
             }
 
             &:hover {
-              background-color: ${theme.codeBackgroundColor.darken(0.1).hex()};
+              background-color: ${theme.authorBackgroundColor
+                .darken(0.1)
+                .hex()};
             }
           }
         `}

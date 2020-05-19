@@ -7,10 +7,12 @@ import React from 'react'
 import SEO from '../components/SEO'
 import { StickyLink } from '../types'
 import StickyNavLayout from '../components/StickyNavLayout'
+import { WindowLocation } from '@reach/router'
 import order from '../../content/docs/nav.json'
 import sortBy from 'lodash/sortBy'
 
 interface Props {
+  location: WindowLocation
   post: MarkdownRemark
   selectFirst?: boolean
 }
@@ -27,7 +29,7 @@ function orderLinks(links: StickyLink[]) {
   })
 }
 
-export default function DocsPage({ post, selectFirst }: Props) {
+export default function DocsPage({ location, post, selectFirst }: Props) {
   const links: StickyLink[] = []
   const data = useStaticQuery<Query>(docsPageQuery)
   const posts = data.allMarkdownRemark.edges
@@ -53,7 +55,7 @@ export default function DocsPage({ post, selectFirst }: Props) {
           post.frontmatter.description || 'Documentation for the Spokestack API'
         }
       />
-      <StickyNavLayout links={orderedLinks}>
+      <StickyNavLayout links={orderedLinks} location={location}>
         <header className="docs-header">
           {selectFirst ? (
             <h1>

@@ -1,22 +1,20 @@
+import * as theme from '../utils/theme'
+
 import React, { useEffect, useState } from 'react'
 
-import * as theme from '../utils/theme'
 import { DEFAULT_MEDIA_QUERY } from 'typography-breakpoint-constants'
 import { Link } from 'gatsby'
 import SVGIcon from './SVGIcon'
 import { StickyLink } from '../types'
+import { WindowLocation } from '@reach/router'
+import { adjustFontSizeTo } from '../utils/typography'
 import { css } from '@emotion/core'
 import hashToId from '../utils/hashToId'
-import { adjustFontSizeTo } from '../utils/typography'
-import { WindowLocation } from '@reach/router'
 
 interface Props {
   headerText: string
   links: StickyLink[]
   location: WindowLocation
-
-  // Hash matching only
-  matchHash?: boolean
   onSelect?: (id: string) => void
   selectedId?: string
 }
@@ -25,7 +23,6 @@ export default function StickyNavSection({
   headerText,
   links,
   location,
-  matchHash,
   onSelect,
   selectedId
 }: Props) {
@@ -58,7 +55,7 @@ export default function StickyNavSection({
       <div className={open ? 'open' : ''} css={styles.stickyNavDetails}>
         {links.map((link, i) => {
           const id = `${hashToId(link.href)}-link`
-          return matchHash ? (
+          return link.matchHash ? (
             <a
               key={`sticky-nav-link-${i}`}
               css={styles.stickyNavLink}

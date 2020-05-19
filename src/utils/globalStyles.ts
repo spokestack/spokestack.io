@@ -115,8 +115,8 @@ export default css`
     }
 
     .dark-mode-track {
-      background-color: ${theme.codeBackground};
-      border-color: ${theme.codeBackgroundColor.darken(0.05).hex()};
+      background-color: ${theme.authorBackground};
+      border-color: ${theme.authorBackgroundColor.darken(0.05).hex()};
     }
     .dark-mode-knob {
       transform: translateX(12px);

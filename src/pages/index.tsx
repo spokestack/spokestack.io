@@ -33,23 +33,27 @@ export default function Index({ data, location }: Props) {
   const links = [
     {
       href: '/#asr',
-      title: 'Spokestack ASR and VAD',
-      ref: useRef<HTMLDivElement>(null)
+      matchHash: true,
+      ref: useRef<HTMLDivElement>(null),
+      title: 'Spokestack ASR and VAD'
     },
     {
       href: '/#wakeword',
-      title: 'Spokestack Wakeword',
-      ref: useRef<HTMLDivElement>(null)
+      matchHash: true,
+      ref: useRef<HTMLDivElement>(null),
+      title: 'Spokestack Wakeword'
     },
     {
       href: '/#tts',
-      title: 'Spokestack TTS',
-      ref: useRef<HTMLDivElement>(null)
+      matchHash: true,
+      ref: useRef<HTMLDivElement>(null),
+      title: 'Spokestack TTS'
     },
     {
       href: '/#nlu',
-      title: 'Spokestack NLU',
-      ref: useRef<HTMLDivElement>(null)
+      matchHash: true,
+      ref: useRef<HTMLDivElement>(null),
+      title: 'Spokestack NLU'
     }
   ]
 
@@ -145,7 +149,6 @@ export default function Index({ data, location }: Props) {
       <StickyNavLayout
         id="products"
         hideSelect
-        matchHash
         links={links}
         location={location}>
         <h1 css={styles.productsHeader}>Products &amp; Services</h1>

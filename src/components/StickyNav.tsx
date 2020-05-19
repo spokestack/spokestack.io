@@ -15,10 +15,9 @@ import hashToId from '../utils/hashToId'
 import throttle from 'lodash/throttle'
 
 export interface StickyNavProps {
-  links: StickyLink[]
-  location?: WindowLocation
   hideSelect?: boolean
-  matchHash?: boolean
+  links: StickyLink[]
+  location: WindowLocation
 }
 
 function isSection(section: string) {
@@ -42,58 +41,59 @@ let navigating = true
 export default function StickyNav({
   hideSelect,
   links = [],
-  location,
-  matchHash
+  location
 }: StickyNavProps) {
-  if (!links.length || (matchHash && !location)) {
+  if (!links.length) {
     return null
   }
   const [selectedLink, setSelectedLink] = useState<StickyLink>(null)
   const [selectedId, setSelectedId] = useState<string>(null)
   useEffect(() => {
-    if (matchHash) {
-      const locs: { [key: number]: HTMLElement } = {}
-      links.forEach((link) => {
+    const locs: { [key: number]: HTMLElement } = {}
+    const linksWithHash: StickyLink[] = []
+    links.forEach((link) => {
+      if (link.matchHash) {
         const elem =
           (link.ref && link.ref.current) ||
           document.querySelector(link.refSelector)
         if (elem) {
           locs[elem.offsetTop + elem.offsetHeight / 3] = elem
-        } else {
-          console.warn(`Link for ${link.title} not found`)
         }
-      })
-      const orderedLocs = Object.keys(locs).map(Number).sort().reverse()
-      const onScroll = throttle(() => {
-        if (navigating) {
-          return
-        }
-        const scroll = window.scrollY + window.innerHeight
-        for (const loc of orderedLocs) {
-          if (scroll > loc + 120) {
-            const id = `${locs[loc].id}-link`
-            if (selectedId !== id) {
-              setSelectedId(id)
-            }
-            return
-          }
-        }
-      }, 50)
-      document.addEventListener('scroll', onScroll, { passive: true })
-      setTimeout(() => {
-        setSelectedId(`${hashToId(location.hash || links[0].href)}-link`)
-        navigating = false
-      }, 200)
-
-      return () => {
-        document.removeEventListener('scroll', onScroll)
-      }
-    }
-    links.forEach((link) => {
-      if (linkIsSelected(link)) {
+        linksWithHash.push(link)
+      } else if (linkIsSelected(link)) {
         setSelectedLink(link)
       }
     })
+    const orderedLocs = Object.keys(locs).map(Number).sort().reverse()
+    const onScroll = throttle(() => {
+      if (navigating) {
+        return
+      }
+      const scroll = window.scrollY + window.innerHeight
+      for (const loc of orderedLocs) {
+        if (scroll > loc + 120) {
+          const id = `${locs[loc].id}-link`
+          if (selectedId !== id) {
+            setSelectedId(id)
+          }
+          return
+        }
+      }
+    }, 50)
+    document.addEventListener('scroll', onScroll, { passive: true })
+    const timeout = setTimeout(() => {
+      if (linksWithHash.length) {
+        setSelectedId(
+          `${hashToId(location.hash || linksWithHash[0].href)}-link`
+        )
+      }
+      navigating = false
+    }, 200)
+
+    return () => {
+      clearTimeout(timeout)
+      document.removeEventListener('scroll', onScroll)
+    }
   }, [])
   const groupedLinks = groupBy(links, 'section')
   const sections = Object.keys(groupedLinks)
@@ -135,7 +135,6 @@ export default function StickyNav({
           headerText={isSection(section) ? section : null}
           links={groupedLinks[section]}
           location={location}
-          matchHash={matchHash}
           onSelect={(id) => {
             navigating = true
             setSelectedId(id)
@@ -143,10 +142,10 @@ export default function StickyNav({
               navigating = false
             }, 200)
           }}
-          selectedId={selectedId}
+          selectedId={!selectedLink && selectedId}
         />
       ))}
-      <NavSelectedBackground selectedId={selectedId} />
+      {!selectedLink && <NavSelectedBackground selectedId={selectedId} />}
     </nav>
   )
 }

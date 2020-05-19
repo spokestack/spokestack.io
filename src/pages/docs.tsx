@@ -8,8 +8,8 @@ type Props = PageRendererProps & {
   data: Query
 }
 
-export default function Docs({ data }: Props) {
-  return <DocsPage selectFirst post={data.markdownRemark} />
+export default function Docs({ data, location }: Props) {
+  return <DocsPage selectFirst location={location} post={data.markdownRemark} />
 }
 
 export const pageQuery = graphql`

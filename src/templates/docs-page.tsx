@@ -14,8 +14,8 @@ type Props = PageRendererProps & {
   }
 }
 
-export default function DocsPageTemplate({ data }: Props) {
-  return <DocsPage post={data.markdownRemark} />
+export default function DocsPageTemplate({ data, location }: Props) {
+  return <DocsPage location={location} post={data.markdownRemark} />
 }
 
 export const pageQuery = graphql`

@@ -1,6 +1,6 @@
 ---
 title: Tools and Tips for Mapping Multimodal Products Remotely
-date: '2020-05-18'
+date: '2020-05-19'
 description: Learn about the tools used at Spokestack to formulate multimodal flows for products and design Independent Voice Assistants.
 tags: Design, Product
 author: elizabeth

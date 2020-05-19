@@ -38,9 +38,6 @@ const styles = {
     transition: background-color 0.2s ${transitionEasing},
       color 0.2s ${transitionEasing};
     flex-shrink: 0;
-    svg {
-      transition: fill 0.2s ${transitionEasing};
-    }
 
     &:hover,
     &:active {
@@ -72,6 +69,7 @@ const styles = {
     fill: ${secondary};
     width: 17px;
     height: 17px;
+    transition: fill 0.2s ${transitionEasing};
 
     ${LARGE_DISPLAY_MEDIA_QUERY} {
       display: none;

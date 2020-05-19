@@ -76,7 +76,7 @@ export default function Index({ data, location }: Props) {
           Spokestack is a powerful platform of open source libraries and robust
           services to make your app fully voice-enabled.
         </h4>
-        <a href="/docs" className="btn btn-large">
+        <a href="/docs" className="btn btn-secondary btn-large">
           Get started
           <SVGIcon
             icon="#arrow-forward"

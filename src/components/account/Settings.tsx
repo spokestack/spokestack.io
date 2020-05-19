@@ -67,7 +67,9 @@ export default function Settings({ account, location }: Props) {
       <h2>Settings</h2>
       <AccountCard title="General" id="general">
         <div css={styles.row}>
-          <label>Project ID</label>
+          <label className="label" htmlFor={`account-${accountId}`}>
+            Project ID
+          </label>
           <CopyButton title="Copy Account ID" inputRef={idRef} />
         </div>
         <input

@@ -1,7 +1,7 @@
 import { PageRendererProps, navigate } from 'gatsby'
 
-import Billing from '../components/account/Billing'
 import CreateAccount from '../components/account/CreateAccount'
+// import NLU from '../components/account/NLU'
 import PrivateRoute from '../components/PrivateRoute'
 import React from 'react'
 import RouteWithAccount from '../components/account/RouteWithAccount'
@@ -26,11 +26,8 @@ export default function Account({ location }: PageRendererProps) {
       <Router>
         <PrivateRoute path="/account/create" component={CreateAccount} />
         <RouteWithAccount path="/account/settings" component={Settings} />
-        <RouteWithAccount
-          path="/account/services/text-to-speech"
-          component={TextToSpeech}
-        />
-        <RouteWithAccount path="/account/billing" component={Billing} />
+        <PrivateRoute path="/account/services/tts" component={TextToSpeech} />
+        {/* <PrivateRoute path="/account/services/nlu" component={NLU} /> */}
       </Router>
     </>
   )

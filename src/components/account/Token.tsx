@@ -1,5 +1,6 @@
 import * as theme from '../../utils/theme'
 
+import { CopyButton, DeleteButton } from '../EditButtons'
 import {
   MIN_DEFAULT_MEDIA_QUERY,
   MIN_MOBILE_MEDIA_QUERY,
@@ -10,7 +11,6 @@ import React, { useRef } from 'react'
 import { ApiKey } from '../../types'
 import SVGIcon from '../SVGIcon'
 import { css } from '@emotion/core'
-import { CopyButton, DeleteButton } from '../EditButtons'
 
 interface Props {
   token: Partial<ApiKey>
@@ -30,14 +30,16 @@ export default function Token({ token, onDelete }: Props) {
               <div css={[styles.keyIconWrap]}>
                 <SVGIcon icon="#key" extraCss={styles.keyIcon} />
               </div>
-              <label>Label</label>
+              <label className="label">Label</label>
             </div>
             {token.displayName}
           </div>
           <DeleteButton title="Revoke key" onPress={() => onDelete(token)} />
         </div>
         <div css={styles.row}>
-          <label htmlFor={`token-${token.id}`}>Identity</label>
+          <label className="label" htmlFor={`token-${token.id}`}>
+            Identity
+          </label>
           <CopyButton title="Copy identity" inputRef={idRef} />
         </div>
         <input
@@ -50,7 +52,9 @@ export default function Token({ token, onDelete }: Props) {
         />
       </div>
       <div css={styles.row}>
-        <label htmlFor={`secret-${token.id}`}>Secret key</label>
+        <label className="label" htmlFor={`secret-${token.id}`}>
+          Secret key
+        </label>
         {!!token.key && <CopyButton title="Copy key" inputRef={secretRef} />}
       </div>
       {token.key ? (
@@ -81,13 +85,7 @@ const styles = {
     padding: 10px 20px;
 
     label {
-      font-size: 80%;
-      font-weight: 800;
       margin-right: 10px;
-
-      ${MIN_DEFAULT_MEDIA_QUERY} {
-        font-size: 100%;
-      }
     }
 
     ${MIN_DEFAULT_MEDIA_QUERY} {

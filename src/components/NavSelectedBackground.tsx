@@ -1,5 +1,7 @@
-import React, { useEffect, useState } from 'react'
 import * as theme from '../utils/theme'
+
+import React, { useEffect, useState } from 'react'
+
 import { css } from '@emotion/core'
 
 interface Props {

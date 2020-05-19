@@ -1,5 +1,6 @@
 import * as theme from '../utils/theme'
 
+import { Global, css } from '@emotion/core'
 import React, { useEffect, useState } from 'react'
 
 import { DEFAULT_MEDIA_QUERY } from 'typography-breakpoint-constants'
@@ -8,7 +9,6 @@ import SVGIcon from './SVGIcon'
 import { StickyLink } from '../types'
 import { WindowLocation } from '@reach/router'
 import { adjustFontSizeTo } from '../utils/typography'
-import { css } from '@emotion/core'
 import hashToId from '../utils/hashToId'
 
 interface Props {
@@ -40,6 +40,37 @@ export default function StickyNavSection({
 
   return (
     <div css={styles.stickyNavSection}>
+      <Global
+        styles={css`
+          .sticky-nav-link-active,
+          .nav-selected-bg {
+            background-color: ${theme.mainBackground};
+          }
+          .sticky-nav-link-active,
+          .sticky-nav-link-active-no-bg {
+            color: ${theme.linkStickyNavActive} !important;
+          }
+          .sticky-nav-wrap .select-label .icon,
+          .sticky-nav-header-icon {
+            fill: ${theme.header};
+          }
+
+          html.dark-mode {
+            .nav-selected-bg,
+            .sticky-nav-link-active {
+              background-color: ${theme.mainBackgroundDark};
+            }
+            .sticky-nav-link-active,
+            .sticky-nav-link-active-no-bg {
+              color: ${theme.linkDark} !important;
+            }
+            .sticky-nav-wrap .select-label .icon,
+            .sticky-nav-header-icon {
+              fill: ${theme.textDarkBg};
+            }
+          }
+        `}
+      />
       {headerText && (
         <h3 css={styles.stickyNavHeader} onClick={() => setOpen(!open)}>
           <a>
@@ -84,6 +115,7 @@ export default function StickyNavSection({
           ) : (
             <Link
               key={`sticky-nav-link-${i}`}
+              id={id}
               css={styles.stickyNavLink}
               activeClassName="sticky-nav-link-active"
               to={link.href}

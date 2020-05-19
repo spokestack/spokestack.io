@@ -28,7 +28,7 @@ export default function Events() {
             <h3>{event.title}</h3>
             <p>{event.description}</p>
             <a
-              className="btn btn-primary btn-large"
+              className="btn btn-large"
               href={event.url}
               css={styles.registerButton}>
               Register

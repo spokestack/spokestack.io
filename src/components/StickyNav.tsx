@@ -1,6 +1,6 @@
 import * as theme from '../utils/theme'
 
-import React, { useEffect, useState } from 'react'
+import React, { useEffect, useRef, useState } from 'react'
 
 import { MIN_DEFAULT_MEDIA_QUERY } from 'typography-breakpoint-constants'
 import NavSelectedBackground from './NavSelectedBackground'
@@ -46,6 +46,7 @@ export default function StickyNav({
   if (!links.length) {
     return null
   }
+  const navRef = useRef<HTMLElement>(null)
   const [selectedLink, setSelectedLink] = useState<StickyLink>(null)
   const [selectedId, setSelectedId] = useState<string>(null)
   useEffect(() => {
@@ -95,11 +96,20 @@ export default function StickyNav({
       document.removeEventListener('scroll', onScroll)
     }
   }, [])
+  useEffect(() => {
+    if (selectedLink) {
+      const id = `${hashToId(selectedLink.href)}-link`
+      const elem = document.getElementById(id)
+      if (elem && navRef.current) {
+        navRef.current.scrollTo({ top: elem.offsetTop })
+      }
+    }
+  }, [selectedLink])
   const groupedLinks = groupBy(links, 'section')
   const sections = Object.keys(groupedLinks)
 
   return (
-    <nav css={styles.stickyNav}>
+    <nav ref={navRef} css={styles.stickyNav}>
       {!hideSelect && (
         <Select
           id="sticky-nav"
@@ -155,9 +165,11 @@ const styles = {
     position: relative;
     ${MIN_DEFAULT_MEDIA_QUERY} {
       position: sticky;
-      top: 60px;
-      margin-bottom: 25px;
+      top: 0;
+      bottom: 0;
+      padding: 25px 0;
       min-width: 250px;
+      max-height: calc(100vh - 25px);
       overflow-y: auto;
     }
   `,

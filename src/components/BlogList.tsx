@@ -1,10 +1,10 @@
 import * as theme from '../utils/theme'
 
+import { Global, SerializedStyles, css } from '@emotion/core'
 import {
   MIN_DEFAULT_MEDIA_QUERY,
   MIN_LARGE_DISPLAY_MEDIA_QUERY
 } from 'typography-breakpoint-constants'
-import { Global, SerializedStyles, css } from '@emotion/core'
 
 import BlogListItem from '../components/BlogListItem'
 import DarkModeButton from '../components/DarkModeButton'

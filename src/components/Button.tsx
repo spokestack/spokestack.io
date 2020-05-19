@@ -1,26 +1,29 @@
-import React, { ButtonHTMLAttributes } from 'react'
-
-import { SerializedStyles, css } from '@emotion/core'
-import LoadingIcon from './LoadingIcon'
 import * as theme from '../utils/theme'
+
+import React, { ButtonHTMLAttributes } from 'react'
+import { SerializedStyles, css } from '@emotion/core'
+
+import LoadingIcon from './LoadingIcon'
 
 interface Props extends ButtonHTMLAttributes<HTMLButtonElement> {
   extraCss?: SerializedStyles
   large?: boolean
-  small?: boolean
-  primary?: boolean
-  submitting?: boolean
   loadingColor?: string
+  small?: boolean
+  secondary?: boolean
+  submitting?: boolean
+  transparent?: boolean
 }
 
 export default function Button({
   children,
   extraCss,
   large,
-  small,
-  primary,
-  submitting,
   loadingColor = theme.secondary,
+  small,
+  secondary,
+  submitting,
+  transparent,
   ...props
 }: Props) {
   const classNames = ['btn']
@@ -30,11 +33,14 @@ export default function Button({
   if (small) {
     classNames.push('btn-small')
   }
-  if (primary) {
-    classNames.push('btn-primary')
+  if (secondary) {
+    classNames.push('btn-secondary')
   }
   if (submitting) {
     classNames.push('btn-submitting')
+  }
+  if (transparent) {
+    classNames.push('btn-transparent')
   }
   return (
     <button css={extraCss} className={classNames.join(' ')} {...props}>

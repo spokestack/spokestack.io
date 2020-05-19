@@ -198,7 +198,7 @@ export default class SampleVoices extends PureComponent<Props, State> {
             !submitting &&
             !!(this.audio && this.audio.src) ? (
               <a
-                className="btn btn-primary"
+                className="btn btn-transparent"
                 download="download"
                 css={styles.downloadLink}
                 href={this.audio.src}>
@@ -366,7 +366,7 @@ const styles = {
     margin-left: 0 !important;
   `,
   playIcon: css`
-    fill: ${theme.text};
+    fill: ${theme.textDarkBg};
     width: 18px;
     height: 18px;
   `,

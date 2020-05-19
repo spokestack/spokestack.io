@@ -1,8 +1,10 @@
-import React, { useState, FormEvent } from 'react'
-import Button from './Button'
-import { css } from '@emotion/core'
-import { MIN_DEFAULT_MEDIA_QUERY } from 'typography-breakpoint-constants'
 import * as theme from '../utils/theme'
+
+import React, { FormEvent, useState } from 'react'
+
+import Button from './Button'
+import { MIN_DEFAULT_MEDIA_QUERY } from 'typography-breakpoint-constants'
+import { css } from '@emotion/core'
 
 interface Props {
   submitting: boolean
@@ -38,7 +40,7 @@ export default function AddTokenForm({ submitting, onSubmit }: Props) {
           }}
         />
       </div>
-      <Button type="submit" primary submitting={submitting}>
+      <Button type="submit" submitting={submitting}>
         Add new token
       </Button>
     </form>

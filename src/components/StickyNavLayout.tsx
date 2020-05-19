@@ -1,14 +1,16 @@
+import * as theme from '../utils/theme'
+
 import {
   DEFAULT_MEDIA_QUERY,
   DEFAULT_WIDTH,
   MIN_DEFAULT_MEDIA_QUERY,
   MIN_LARGER_DISPLAY_MEDIA_QUERY
 } from 'typography-breakpoint-constants'
+import { Global, css } from '@emotion/core'
 import StickyNav, { StickyNavProps } from './StickyNav'
 import { ieBreakpoint, ieBreakpointMinDefault } from '../utils/theme'
 
 import React from 'react'
-import { css } from '@emotion/core'
 import { rhythm } from '../utils/typography'
 
 interface Props extends StickyNavProps {
@@ -26,6 +28,13 @@ export default function StickyNavLayout({
 }: Props) {
   return (
     <div id={id} css={styles.container}>
+      <Global
+        styles={css`
+          html.dark-mode .sticky-nav-wrap {
+            background-color: ${theme.stickyNavBackgroundDark};
+          }
+        `}
+      />
       <div css={styles.stickyNavWrap} className="sticky-nav-wrap">
         {header && <h3 css={styles.stickyNavHeader}>{header}</h3>}
         <StickyNav {...props} />
@@ -62,9 +71,10 @@ const styles = {
     }
   `,
   stickyNavWrap: css`
+    background-color: ${theme.stickyNavBackground};
     ${MIN_DEFAULT_MEDIA_QUERY} {
       grid-area: sidenav;
-      padding: 25px 0 10px 50px;
+      padding: 0 0 25px 50px;
     }
     ${ieBreakpointMinDefault} {
       padding-bottom: 50px;

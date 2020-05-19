@@ -68,11 +68,7 @@ export default function CreateAccount({}: RouteComponentProps) {
                 }}
               />
             </div>
-            <Button
-              primary
-              disabled={loading}
-              type="submit"
-              extraCss={styles.button}>
+            <Button disabled={loading} type="submit" extraCss={styles.button}>
               Create
             </Button>
           </form>

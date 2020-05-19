@@ -1,9 +1,9 @@
+import { Account } from '../../types'
+import AccountLayout from './AccountLayout'
 import React from 'react'
+import { RouteComponentProps } from '@reach/router'
 import SampleVoices from '../SampleVoices'
 import voices from '../../utils/voices'
-import AccountLayout from './AccountLayout'
-import { RouteComponentProps } from '@reach/router'
-import { Account } from '../../types'
 
 interface Props extends RouteComponentProps {
   account: Account
@@ -11,8 +11,9 @@ interface Props extends RouteComponentProps {
 
 export default function TextToSpeech({ location }: Props) {
   return (
-    <AccountLayout title="Text to Speech" location={location}>
-      <SampleVoices voices={voices} />
+    <AccountLayout location={location}>
+      <h2>Text-to-Speech</h2>
+      <SampleVoices allowDownload voices={voices} />
     </AccountLayout>
   )
 }

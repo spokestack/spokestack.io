@@ -1,8 +1,9 @@
 import * as theme from '../utils/theme'
 
+import { Global, css } from '@emotion/core'
+
 import { Link } from 'gatsby'
 import React from 'react'
-import { css } from '@emotion/core'
 
 interface Props {
   // Url that represents showing all tags
@@ -19,13 +20,22 @@ export default function Tags({ header, allUrl, tags }: Props) {
   }
   return (
     <>
+      <Global
+        styles={css`
+          html.dark-mode .tag-active {
+            background-color: ${theme.primaryLight} !important;
+            border-color: ${theme.primaryLight} !important;
+            color: ${theme.text} !important;
+          }
+        `}
+      />
       {header && <h6>{header}</h6>}
       <div css={styles.tags}>
         {allUrl && (
           <Link
             to={allUrl}
             activeClassName="tag-active"
-            className="btn btn-primary btn-small">
+            className="btn btn-transparent btn-small">
             All
           </Link>
         )}
@@ -34,7 +44,7 @@ export default function Tags({ header, allUrl, tags }: Props) {
             key={`tag-${i}`}
             to={`/blog/tag/${tag.toLowerCase().replace(rspaces, '-')}`}
             activeClassName="tag-active"
-            className="btn btn-primary btn-small">
+            className="btn btn-transparent btn-small">
             {tag}
           </Link>
         ))}
@@ -57,8 +67,9 @@ const styles = {
     .tag-active {
       background-color: ${theme.primary} !important;
       border-color: ${theme.primary} !important;
-      color: white !important;
+      color: ${theme.textDarkBg} !important;
       cursor: default;
+      pointer-events: none;
     }
   `
 }

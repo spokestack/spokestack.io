@@ -1,10 +1,12 @@
-import React, { useRef, useState, FormEvent } from 'react'
-import Button from './Button'
-import validateEmail from '../utils/validateEmail'
-import { css } from '@emotion/core'
-import SVGIcon from './SVGIcon'
 import * as theme from '../utils/theme'
+
+import React, { FormEvent, useRef, useState } from 'react'
+
+import Button from './Button'
 import { MIN_TABLET_MEDIA_QUERY } from 'typography-breakpoint-constants'
+import SVGIcon from './SVGIcon'
+import { css } from '@emotion/core'
+import validateEmail from '../utils/validateEmail'
 
 export default function Newsletter() {
   const formRef = useRef<HTMLFormElement>(null)
@@ -42,7 +44,7 @@ export default function Newsletter() {
           className={`input${invalid ? ' error' : ''}`}
           placeholder="Enter email"
         />
-        <Button type="submit" extraCss={styles.button}>
+        <Button type="submit" secondary extraCss={styles.button}>
           Subscribe
           <SVGIcon icon="#arrow-forward" extraCss={styles.icon} />
         </Button>

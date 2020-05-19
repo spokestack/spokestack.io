@@ -35,6 +35,7 @@ export default function SocialLink({
       title={title}>
       <SVGIcon
         icon={icon}
+        extraCss={styles.icon}
         style={{ width: `${iconSize}px`, height: `${iconSize}px` }}
       />
       <span css={[styles.title, titleCss]}>{title}</span>
@@ -62,5 +63,8 @@ const styles = {
   title: css`
     display: inline-block;
     margin-left: 15px;
+  `,
+  icon: css`
+    fill: white;
   `
 }

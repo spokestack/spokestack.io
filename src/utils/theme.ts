@@ -28,8 +28,10 @@ export const grayDark = '#c9c9c9'
 
 export const header = headerColor.hex()
 export const footerBackground = header
-export const buttonBackground = secondary
-export const buttonBackgroundHover = secondaryColor.darken(0.4).hex()
+export const buttonBackground = primary
+export const buttonBackgroundHover = primaryColor.darken(0.4).hex()
+export const buttonBackgroundDark = primaryLight
+export const buttonBackgroundDarkHover = primaryLightColor.darken(0.4).hex()
 export const mainBorder = mainBorderColor.hex()
 export const mainBorderDark = '#96a2a2'
 

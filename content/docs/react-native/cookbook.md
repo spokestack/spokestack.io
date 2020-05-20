@@ -34,24 +34,15 @@ Spokestack.initialize({
     'io.spokestack.spokestack.wakeword.WakewordTrigger' // wakeword activtation trigger
   ],
   properties: {
-    'sample-rate': 16000,
-    'frame-width': 20,
+    'wake-filter-path': filterModelPath,
+    'wake-detect-path': detectModelPath,
+    'wake-encode-path': encodeModelPath,
     'ans-policy': 'aggressive',
-    // 'agc-target-level-dbfs': 3,
+    'agc-target-level-dbfs': 3,
     'agc-compression-gain-db': 15,
     'vad-mode': 'very-aggressive',
     'vad-fall-delay': 800,
     'wake-threshold': 0.9,
-    'wake-active-min': 2000,
-    'wake-active-max': 5000,
-    wakewords: 'spokestack',
-    'wake-filter-path': filterModelPath,
-    'wake-detect-path': detectModelPath,
-    'wake-encode-path': encodeModelPath,
-    'wake-phrase-length': 2000,
-    'wake-smooth-length': 10,
-    'fft-window-size': 512,
-    'fft-hop-length': 10,
     'pre-emphasis': 0.97,
     'trace-level': Spokestack.TraceLevel.DEBUG
   }

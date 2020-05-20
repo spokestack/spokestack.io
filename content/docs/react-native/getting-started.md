@@ -27,13 +27,20 @@ Android SDK 26+, Android NDK (`SDK Manager` -> `SDK Tools` tab in Android Studio
 
 ### iOS
 
-Edit your `Podfile` to include `use_native_modules!`
+#### `Podfile`
+
+Edit your `Podfile` to include `use_native_modules!` and `use_frameworks!`, to use `platform :ios, '13.0'` or higher, and to remove all `Flipper` references and dependencies (Spokestack is a static library which must `use_frameworks!` breaking compatibility with `Flipper`).
+
+#### XCode Project
+
+1. In your XCode Project settings, select your app target (eg `MinecraftSkill`) > Build Settings > Library Search Paths : Remove the search path `"$(TOOLCHAIN_DIR)/usr/lib/swift-5.0/$(PLATFORM_NAME)"`.
+2. If your project does not already have an Objective-C - Swift bridging header, please create one: File > New File > Swift File > “Dummy.swift”, your app target > Create Bridging Header.
 
 ## Integration
 
 ### iOS
 
-In order for your app to accept voice input via Spokestack, it needs four things:
+In order for your app to accept voice input via Spokestack, it needs two things:
 
 1. The proper iOS permissions
 2. An active `AVAudioSession`
@@ -83,7 +90,7 @@ There are many options for configuring Spokestack. This example will begin captu
 
 Then we configure a text-to-speech component using a TTS API key and secret that allow you to use Spokestack voices for free!
 
-Finally we configure the natural language understanding component, which uses Spokestack NLU models. You can grab an [example NLU model](https://github.com/spokestack/spokestack-ios/blob/master/SpokestackFrameworkExample/nlu.tflite)
+Finally we configure the natural language understanding component, which uses Spokestack NLU models. To test things out, you can grab an [example NLU model](https://github.com/spokestack/spokestack-ios/blob/master/SpokestackFrameworkExample/nlu.tflite), [model metadata](https://github.com/spokestack/spokestack-ios/blob/master/SpokestackFrameworkExample/nlu.tflite), and [NLU vocabulary](https://d3dmqd7cy685il.cloudfront.net/nlu/vocab.txt).
 
 ```javascript
 import Spokestack from 'react-native-spokestack'

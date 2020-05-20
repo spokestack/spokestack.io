@@ -200,14 +200,11 @@ export default class SampleVoices extends PureComponent<Props, State> {
               <a
                 className="btn btn-transparent"
                 download="download"
-                css={styles.downloadLink}
                 href={this.audio.src}>
                 <SVGIcon
+                  className="icon"
                   icon="#download"
-                  extraCss={css`
-                    ${styles.icon}
-                    ${styles.downloadIcon}
-                  `}
+                  extraCss={styles.downloadIcon}
                 />
                 Download
               </a>
@@ -220,11 +217,9 @@ export default class SampleVoices extends PureComponent<Props, State> {
               extraCss={styles.playButton}
               onClick={this.play}>
               <SVGIcon
+                className="icon"
                 icon="#play-circle"
-                extraCss={css`
-                  ${styles.icon}
-                  ${styles.playIcon}
-                `}
+                extraCss={styles.playIcon}
               />
               {submitting ? 'Synthesizing...' : 'Hear it'}
             </Button>
@@ -347,33 +342,20 @@ const styles = {
       grid-gap: 0;
     }
   `,
-  downloadLink: css`
-    svg {
-      transition: fill 0.2s ${theme.transitionEasing};
-    }
-    &:hover svg,
-    &:active svg {
-      fill: white;
-    }
-  `,
   playButton: css`
     ${MIN_TABLET_MEDIA_QUERY} {
       margin-left: 20px;
     }
   `,
-  icon: css`
-    margin-right: 5px;
-    margin-left: 0 !important;
-  `,
   playIcon: css`
-    fill: ${theme.textDarkBg};
     width: 18px;
     height: 18px;
+    margin-right: 5px;
   `,
   downloadIcon: css`
-    fill: ${theme.primary};
     width: 24px;
     height: 24px;
+    margin-right: 5px;
   `,
   textarea: css`
     margin-bottom: 20px;

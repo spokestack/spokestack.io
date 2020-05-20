@@ -3,6 +3,7 @@ import * as theme from '../../utils/theme'
 import { Account } from '../../types'
 import AccountLayout from './AccountLayout'
 import Button from '../Button'
+import NluModels from './NluModels'
 import React from 'react'
 import { RouteComponentProps } from '@reach/router'
 import SVGIcon from '../SVGIcon'
@@ -26,6 +27,9 @@ export default function NLU({ location }: Props) {
         <SVGIcon icon="#nlu" extraCss={styles.icon} />
         Import
       </Button>
+      <section css={styles.models}>
+        <NluModels />
+      </section>
     </AccountLayout>
   )
 }
@@ -36,5 +40,8 @@ const styles = {
     width: 12px;
     height: 14px;
     margin-right: 10px;
+  `,
+  models: css`
+    margin-top: 50px;
   `
 }

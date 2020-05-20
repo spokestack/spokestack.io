@@ -2,7 +2,9 @@ import { getAuthToken, getProvider } from '../utils/auth'
 
 import ApolloClient from 'apollo-boost'
 import fetch from 'isomorphic-unfetch'
-import typeDefs from './typeDefs.graphql'
+import schema from './schema.json'
+
+console.log('Using API URL', process.env.SS_API_URL)
 
 export default new ApolloClient({
   fetch,
@@ -36,5 +38,5 @@ export default new ApolloClient({
       console.warn('[Network error]: ' + networkError)
     }
   },
-  typeDefs
+  typeDefs: schema
 })

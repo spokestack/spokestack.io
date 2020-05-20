@@ -78,15 +78,16 @@ export default css`
     white-space: nowrap;
     cursor: pointer;
     text-decoration: none;
-    color: ${theme.textDarkBg};
     font-weight: 400;
     user-select: none;
     transition: background-color 0.1s ${theme.transitionEasing},
       border-color 0.1s ${theme.transitionEasing},
       color 0.1s ${theme.transitionEasing};
+    color: ${theme.textDarkBg};
 
-    svg {
-      margin-left: ${rhythm(0.2)};
+    .icon {
+      fill: ${theme.textDarkBg};
+      transition: fill 0.1s ${theme.transitionEasing};
     }
 
     &:visited {
@@ -97,6 +98,10 @@ export default css`
       background-color: ${theme.buttonBackgroundHover};
       border-color: ${theme.buttonBackgroundHover};
       color: ${theme.textDarkBg};
+
+      .icon {
+        fill: ${theme.textDarkBg};
+      }
     }
     &:active:not([disabled]) {
       box-shadow: inset 0 0 5px rgba(0, 0, 0, 0.8);
@@ -112,12 +117,20 @@ export default css`
       border-color: ${theme.primary};
       color: ${theme.primary};
 
+      .icon {
+        fill: ${theme.primary};
+      }
+
       &:hover:not([disabled]),
       &:active:not([disabled]),
       &.btn-submitting {
         background-color: ${theme.primary};
         border-color: ${theme.primary};
         color: white;
+
+        .icon {
+          fill: white;
+        }
       }
     }
     &.btn-secondary {
@@ -125,12 +138,20 @@ export default css`
       border-color: ${theme.secondary};
       color: ${theme.text};
 
+      .icon {
+        fill: ${theme.text};
+      }
+
       &:hover:not([disabled]),
       &:active:not([disabled]),
       &.btn-submitting {
         background-color: ${theme.linkSecondaryHover};
         border-color: ${theme.linkSecondaryHover};
         color: ${theme.text};
+
+        .icon {
+          fill: ${theme.text};
+        }
       }
     }
     &.btn-large {

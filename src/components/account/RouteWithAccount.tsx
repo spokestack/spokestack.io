@@ -9,7 +9,7 @@ import gql from 'graphql-tag'
 import { navigate } from 'gatsby'
 
 const LIST_ACCOUNTS_QUERY = gql`
-  query ListAccounts {
+  query listAccounts {
     listAccounts {
       displayName
       id
@@ -19,7 +19,7 @@ const LIST_ACCOUNTS_QUERY = gql`
 `
 
 const ACCOUNT_QUERY = gql`
-  query GetAccount($id: ID) {
+  query getAccount($id: ID) {
     getAccount(id: $id) {
       apiKeys {
         displayName

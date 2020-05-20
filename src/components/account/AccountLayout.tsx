@@ -20,15 +20,15 @@ const links: StickyLink[] = [
     section: 'Settings'
   },
   {
+    href: '/account/services/nlu',
+    title: 'Language Understanding',
+    section: 'Services'
+  },
+  {
     href: '/account/services/tts',
     title: 'Text to Speech',
     section: 'Services'
   }
-  // {
-  //   href: '/account/services/nlu',
-  //   title: 'Language Understanding',
-  //   section: 'Services'
-  // }
   // {
   //   href: '/account/billing/#details',
   //   title: 'Billing',

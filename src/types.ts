@@ -98,3 +98,23 @@ export enum KeyType {
   PRODUCTION = 'PRODUCTION',
   TEST = 'TEST'
 }
+
+export interface NluModel {
+  id: string
+  insertedAt: number
+  modelUrl: string
+  name: string
+  source: NluModelSource
+  state: NluModelState
+  updatedAt: number
+}
+
+export enum NluModelSource {
+  ACCOUNT = 'ACCOUNT',
+  SHARED = 'SHARED'
+}
+
+export enum NluModelState {
+  PUBLISHED = 'PUBLISHED',
+  PENDING = 'PENDING'
+}

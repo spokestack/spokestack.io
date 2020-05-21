@@ -1,4 +1,4 @@
-import * as theme from '../../utils/theme'
+import * as theme from '../../styles/theme'
 
 import {
   NluModelSource,
@@ -10,7 +10,7 @@ import AccountCard from './AccountCard'
 import Color from 'color'
 import React from 'react'
 import SVGIcon from '../SVGIcon'
-import { adjustFontSizeTo } from '../../utils/typography'
+import { adjustFontSizeTo } from '../../styles/typography'
 import { css } from '@emotion/core'
 import { formatDate } from '../../utils/formatDate'
 import { titleCase } from 'title-case'

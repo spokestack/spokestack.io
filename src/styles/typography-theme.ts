@@ -1,4 +1,4 @@
-import * as theme from '../utils/theme'
+import * as theme from './theme'
 
 import { MOBILE_MEDIA_QUERY } from 'typography-breakpoint-constants'
 import { TypographyOptions } from 'typography'

@@ -2,7 +2,7 @@ import {
   LARGE_DISPLAY_MEDIA_QUERY,
   MIN_LARGE_DISPLAY_MEDIA_QUERY
 } from 'typography-breakpoint-constants'
-import { grayDark, primary, secondary, transitionEasing } from '../utils/theme'
+import { grayDark, primary, secondary, transitionEasing } from '../styles/theme'
 import { isLoggedIn, logout } from '../utils/auth'
 
 import { Link } from 'gatsby'
@@ -17,7 +17,11 @@ export default function LoginButton() {
       <SVGIcon icon="#arrow-forward" extraCss={styles.icon} />
     </a>
   ) : (
-    <Link className="btn" css={styles.loginButton} to="/login">
+    <Link
+      className="btn"
+      to="/login"
+      css={styles.loginButton}
+      activeStyle={{ display: 'none' }}>
       Sign In / Sign Up
       <SVGIcon icon="#arrow-forward" extraCss={styles.icon} />
     </Link>

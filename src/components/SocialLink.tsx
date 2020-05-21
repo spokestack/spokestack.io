@@ -2,7 +2,7 @@ import { SerializedStyles, css } from '@emotion/core'
 
 import React from 'react'
 import SVGIcon from './SVGIcon'
-import { transitionEasing } from '../utils/theme'
+import { transitionEasing } from '../styles/theme'
 
 interface Props {
   href: string

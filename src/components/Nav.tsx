@@ -1,4 +1,4 @@
-import * as theme from '../utils/theme'
+import * as theme from '../styles/theme'
 
 import { Global, css } from '@emotion/core'
 import {
@@ -11,7 +11,7 @@ import Hamburger from './Hamburger'
 import { Link } from 'gatsby'
 import LoginButton from './LoginButton'
 import SocialLinks from './SocialLinks'
-import { adjustFontSizeTo } from '../utils/typography'
+import { adjustFontSizeTo } from '../styles/typography'
 import { isLoggedIn } from '../utils/auth'
 
 export default function Nav() {

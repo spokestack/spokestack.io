@@ -1,4 +1,4 @@
-import * as theme from '../utils/theme'
+import * as theme from '../styles/theme'
 
 import {
   DEFAULT_WIDTH,
@@ -19,7 +19,7 @@ import SVGIcon from '../components/SVGIcon'
 import SampleVoices from '../components/SampleVoices'
 import StickyNavLayout from '../components/StickyNavLayout'
 import { css } from '@emotion/core'
-import { rhythm } from '../utils/typography'
+import { rhythm } from '../styles/typography'
 import voices from '../utils/voices'
 
 interface Props extends PageRendererProps {

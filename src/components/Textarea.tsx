@@ -1,6 +1,8 @@
+import * as theme from '../styles/theme'
+
 import React, { TextareaHTMLAttributes } from 'react'
 import { SerializedStyles, css } from '@emotion/core'
-import * as theme from '../utils/theme'
+
 import LoadingIcon from './LoadingIcon'
 import { MIN_TABLET_MEDIA_QUERY } from 'typography-breakpoint-constants'
 

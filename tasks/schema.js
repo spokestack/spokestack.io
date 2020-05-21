@@ -15,7 +15,9 @@ if (!apiUrl) {
 
 if (!githubToken) {
   throw new Error(
-    'This script requires SS_DEV_GITHUB_TOKEN to be set in the environment.'
+    `This script requires SS_DEV_GITHUB_TOKEN to be set in the environment.
+    It is the same as the "spokestack-auth-token" value in localStorage
+    after logging in with GitHub.`
   )
 }
 

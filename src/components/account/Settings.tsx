@@ -1,4 +1,4 @@
-import * as theme from '../../utils/theme'
+import * as theme from '../../styles/theme'
 
 import { Account, ApiKey } from '../../types'
 import React, { useRef, useState } from 'react'
@@ -10,7 +10,7 @@ import { CopyButton } from '../EditButtons'
 import { RouteComponentProps } from '@reach/router'
 import SVGIcon from '../SVGIcon'
 import Token from './Token'
-import { adjustFontSizeTo } from '../../utils/typography'
+import { adjustFontSizeTo } from '../../styles/typography'
 import { css } from '@emotion/core'
 import gql from 'graphql-tag'
 import { useMutation } from '@apollo/react-hooks'
@@ -60,10 +60,9 @@ export default function Settings({ account, location }: Props) {
     }
   })
   const [removeToken] = useMutation<RemoveKeyMutation>(REMOVE_TOKEN)
-  const displayName = (account || {}).displayName || ''
   const accountId = (account || {}).id || ''
   return (
-    <AccountLayout location={location} title={displayName}>
+    <AccountLayout location={location}>
       <h2>Settings</h2>
       <AccountCard title="General" id="general">
         <div css={styles.row}>

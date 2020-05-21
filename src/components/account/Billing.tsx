@@ -9,10 +9,9 @@ interface Props extends RouteComponentProps {
   account: Account
 }
 
-export default function Billing({ account, location }: Props) {
-  const displayName = (account || {}).displayName || ''
+export default function Billing({ location }: Props) {
   return (
-    <AccountLayout location={location} title={displayName}>
+    <AccountLayout location={location}>
       <h2>Billing</h2>
       <AccountCard title="Overview" id="overview">
         <div className="input-wrap">

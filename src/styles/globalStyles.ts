@@ -83,15 +83,15 @@ export default css`
     transition: background-color 0.1s ${theme.transitionEasing},
       border-color 0.1s ${theme.transitionEasing},
       color 0.1s ${theme.transitionEasing};
-    color: ${theme.textDarkBg};
 
     .icon {
       fill: ${theme.textDarkBg};
       transition: fill 0.1s ${theme.transitionEasing};
     }
 
+    &,
     &:visited {
-      color: ${theme.text};
+      color: ${theme.textDarkBg};
     }
     &:hover:not([disabled]),
     &:active:not([disabled]) {

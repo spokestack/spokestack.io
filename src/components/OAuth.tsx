@@ -1,9 +1,10 @@
 import React, { useEffect, useState } from 'react'
+
+import { DEFAULT_WIDTH } from 'typography-breakpoint-constants'
 import Layout from '../components/Layout'
 import { css } from '@emotion/core'
-import { rhythm } from '../utils/typography'
-import { DEFAULT_WIDTH } from 'typography-breakpoint-constants'
 import { navigate } from 'gatsby'
+import { rhythm } from '../styles/typography'
 
 interface Props {
   checkAuth: () => Promise<string | null>

@@ -1,4 +1,4 @@
-import * as theme from '../utils/theme'
+import * as theme from '../styles/theme'
 
 import { SerializedStyles, css } from '@emotion/core'
 

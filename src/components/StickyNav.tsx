@@ -1,4 +1,4 @@
-import * as theme from '../utils/theme'
+import * as theme from '../styles/theme'
 
 import React, { useEffect, useRef, useState } from 'react'
 
@@ -8,7 +8,7 @@ import Select from './Select'
 import { StickyLink } from '../types'
 import StickyNavSection from './StickyNavSection'
 import { WindowLocation } from '@reach/router'
-import { adjustFontSizeTo } from '../utils/typography'
+import { adjustFontSizeTo } from '../styles/typography'
 import { css } from '@emotion/core'
 import groupBy from 'lodash/groupBy'
 import hashToId from '../utils/hashToId'

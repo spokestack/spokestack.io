@@ -1,4 +1,11 @@
 import {
+  MAX_SIDEBAR_WIDTH,
+  MAX_TEXT_WIDTH,
+  MIN_SIDEBAR_WIDTH,
+  MIN_TEXT_WIDTH,
+  ieBreakpoint
+} from '../styles/theme'
+import {
   MIN_DEFAULT_MEDIA_QUERY,
   MIN_LARGE_DISPLAY_MEDIA_QUERY
 } from 'typography-breakpoint-constants'
@@ -14,14 +21,7 @@ import SEO from '../components/SEO'
 import Tags from './Tags'
 import { css } from '@emotion/core'
 import findImage from '../utils/findImage'
-import { rhythm } from '../utils/typography'
-import {
-  ieBreakpoint,
-  MAX_SIDEBAR_WIDTH,
-  MIN_TEXT_WIDTH,
-  MAX_TEXT_WIDTH,
-  MIN_SIDEBAR_WIDTH
-} from '../utils/theme'
+import { rhythm } from '../styles/typography'
 
 interface Props {
   post: MarkdownRemark

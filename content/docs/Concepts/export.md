@@ -13,7 +13,7 @@ This guide details the process of exporting an existing skill from Alexa or Dial
 
 2. Copy the contents of your [Interaction Model](https://developer.amazon.com/en-US/docs/alexa/custom-skills/create-the-interaction-model-for-your-skill.html) from the JSON Editor into a file named `InteractionModel.json`.
 
-3. Upload `InteractionModel.json` to the [Spokestack Console](spokestack.io)
+3. Upload `InteractionModel.json` to the [Spokestack Console](https://spokestack.io/account/services/nlu)
 
 ## Export From Dialogflow
 
@@ -27,4 +27,4 @@ This guide details the process of exporting an existing skill from Alexa or Dial
 
 5. Select `Export as zip` and save the `.zip` file.
 
-6. Upload the `.zip` file to the [Spokestack Console](spokestack.io)
+6. Upload the `.zip` file to the [Spokestack Console](https://spokestack.io/account/services/nlu)

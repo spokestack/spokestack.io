@@ -1,4 +1,4 @@
-import * as theme from '../utils/theme'
+import * as theme from '../styles/theme'
 
 import { Global, css } from '@emotion/core'
 import { Link, graphql, useStaticQuery } from 'gatsby'
@@ -8,7 +8,7 @@ import AuthorImage from './AuthorImage'
 import Color from 'color'
 import { Query } from '../utils/graphql'
 import React from 'react'
-import { rhythm } from '../utils/typography'
+import { rhythm } from '../styles/typography'
 
 type QueryType = Query & TeamImages
 

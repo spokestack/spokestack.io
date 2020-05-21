@@ -3,7 +3,7 @@ import Layout from '../components/Layout'
 import React from 'react'
 import SEO from '../components/SEO'
 import { css } from '@emotion/core'
-import { rhythm } from '../utils/typography'
+import { rhythm } from '../styles/typography'
 
 export default function Privacy() {
   return (

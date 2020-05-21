@@ -15,12 +15,12 @@ function throwInProd(message) {
   }
 }
 
-if (!process.env.SS_GITHUB_CLIENT_ID) {
-  throwInProd('SS_GITHUB_CLIENT_ID is not set in the environment.')
-}
-
 if (!process.env.SS_API_URL) {
   throwInProd('SS_API_URL is not set in the environment.')
+}
+
+if (!process.env.SS_GITHUB_CLIENT_ID) {
+  throwInProd('SS_GITHUB_CLIENT_ID is not set in the environment.')
 }
 
 if (!process.env.SS_GOOGLE_CLIENT_ID) {

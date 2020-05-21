@@ -1,8 +1,8 @@
 import { MIN_TABLET_MEDIA_QUERY } from 'typography-breakpoint-constants'
 import React from 'react'
 import { css } from '@emotion/core'
-import { rhythm } from '../utils/typography'
-import { ieBreakpoint } from '../utils/theme'
+import { ieBreakpoint } from '../styles/theme'
+import { rhythm } from '../styles/typography'
 
 interface Props {
   avatar: React.ReactNode

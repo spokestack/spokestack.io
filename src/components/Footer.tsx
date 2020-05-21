@@ -1,13 +1,14 @@
+import * as theme from '../styles/theme'
+
 import {
   LARGER_DISPLAY_WIDTH,
   MIN_DEFAULT_MEDIA_QUERY
 } from 'typography-breakpoint-constants'
-import { rhythm } from '../utils/typography'
 import { graphql, useStaticQuery } from 'gatsby'
-import * as theme from '../utils/theme'
 
 import React from 'react'
 import { css } from '@emotion/core'
+import { rhythm } from '../styles/typography'
 
 const footerQuery = graphql`
   query footerQuery {

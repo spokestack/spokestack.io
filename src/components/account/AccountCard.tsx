@@ -1,8 +1,9 @@
+import * as theme from '../../styles/theme'
+
 import { SerializedStyles, css } from '@emotion/core'
 
 import React from 'react'
-import { rhythm } from '../../utils/typography'
-import * as theme from '../../utils/theme'
+import { rhythm } from '../../styles/typography'
 
 interface Props {
   title: string

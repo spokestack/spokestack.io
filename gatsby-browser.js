@@ -1,5 +1,5 @@
-// custom typefaces
 import 'prismjs/themes/prism-tomorrow.css'
+
 import { getDarkModePref } from './src/utils/auth'
 
 export { default as wrapRootElement } from './src/apollo/wrapRootElement'

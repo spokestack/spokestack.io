@@ -1,4 +1,4 @@
-import * as theme from '../utils/theme'
+import * as theme from '../styles/theme'
 
 import { Global, css } from '@emotion/core'
 import React, { useEffect, useState } from 'react'
@@ -8,7 +8,7 @@ import { Link } from 'gatsby'
 import SVGIcon from './SVGIcon'
 import { StickyLink } from '../types'
 import { WindowLocation } from '@reach/router'
-import { adjustFontSizeTo } from '../utils/typography'
+import { adjustFontSizeTo } from '../styles/typography'
 import hashToId from '../utils/hashToId'
 
 interface Props {

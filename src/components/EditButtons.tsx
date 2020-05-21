@@ -1,7 +1,9 @@
+import * as theme from '../styles/theme'
+
 import React, { useState } from 'react'
+
 import SVGIcon from './SVGIcon'
 import { css } from '@emotion/core'
-import * as theme from '../utils/theme'
 
 interface CopyProps {
   inputRef: React.MutableRefObject<HTMLInputElement | HTMLTextAreaElement>

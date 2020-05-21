@@ -1,4 +1,4 @@
-import * as theme from '../../utils/theme'
+import * as theme from '../../styles/theme'
 
 import { CopyButton, DeleteButton } from '../EditButtons'
 import {

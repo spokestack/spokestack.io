@@ -1,10 +1,10 @@
-import * as theme from '../utils/theme'
+import * as theme from '../styles/theme'
 
 import {
   DEFAULT_WIDTH,
   MIN_DEFAULT_MEDIA_QUERY
 } from 'typography-breakpoint-constants'
-import { adjustFontSizeTo, rhythm } from '../utils/typography'
+import { adjustFontSizeTo, rhythm } from '../styles/typography'
 import { graphql, useStaticQuery } from 'gatsby'
 
 import { Query } from '../utils/graphql'

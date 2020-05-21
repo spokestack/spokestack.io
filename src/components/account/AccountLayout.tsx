@@ -37,16 +37,23 @@ const links: StickyLink[] = [
   // }
 ]
 
+if (process.env.NODE_ENV !== 'production') {
+  links.push({
+    href: '/account/__api',
+    title: 'Spokestack API GraphiQL',
+    section: 'Developers'
+  })
+}
+
 interface Props {
   children: React.ReactNode
   location?: WindowLocation
-  title?: string
 }
 
-export default function AccountLayout({ children, location, title }: Props) {
+export default function AccountLayout({ children, location }: Props) {
   return (
     <Layout>
-      <StickyNavLayout header={title} links={links} location={location}>
+      <StickyNavLayout links={links} location={location}>
         {children}
       </StickyNavLayout>
     </Layout>

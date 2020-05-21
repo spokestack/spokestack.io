@@ -8,7 +8,7 @@ import { RouteComponentProps } from '@reach/router'
 import { css } from '@emotion/core'
 import gql from 'graphql-tag'
 import { navigate } from 'gatsby'
-import { rhythm } from '../../utils/typography'
+import { rhythm } from '../../styles/typography'
 import { useMutation } from '@apollo/react-hooks'
 
 const CREATE_ACCOUNT = gql`

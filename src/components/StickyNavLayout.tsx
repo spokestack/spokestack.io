@@ -1,4 +1,4 @@
-import * as theme from '../utils/theme'
+import * as theme from '../styles/theme'
 
 import {
   DEFAULT_MEDIA_QUERY,
@@ -8,10 +8,10 @@ import {
 } from 'typography-breakpoint-constants'
 import { Global, css } from '@emotion/core'
 import StickyNav, { StickyNavProps } from './StickyNav'
-import { ieBreakpoint, ieBreakpointMinDefault } from '../utils/theme'
+import { ieBreakpoint, ieBreakpointMinDefault } from '../styles/theme'
 
 import React from 'react'
-import { rhythm } from '../utils/typography'
+import { rhythm } from '../styles/typography'
 
 interface Props extends StickyNavProps {
   children: React.ReactNode

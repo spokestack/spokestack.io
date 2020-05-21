@@ -1,4 +1,4 @@
-import * as theme from '../utils/theme'
+import * as theme from '../styles/theme'
 
 import {
   DEFAULT_WIDTH,
@@ -11,7 +11,7 @@ import SVGIcon from '../components/SVGIcon'
 import { createLink as createGitHubLink } from '../utils/oauthGitHub'
 import { createLink as createGoogleLink } from '../utils/oauthGoogle'
 import { css } from '@emotion/core'
-import { rhythm } from '../utils/typography'
+import { rhythm } from '../styles/typography'
 
 export default function OAuth() {
   const [gitHubLink, setGitHubLink] = useState<string>(null)

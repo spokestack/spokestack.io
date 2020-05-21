@@ -1,4 +1,4 @@
-import * as theme from '../utils/theme'
+import * as theme from '../styles/theme'
 
 import { Global, SerializedStyles, css } from '@emotion/core'
 import {
@@ -13,7 +13,7 @@ import { MarkdownRemarkEdge } from '../utils/graphql'
 import React from 'react'
 import SVGIcon from '../components/SVGIcon'
 import Tags from '../components/Tags'
-import { rhythm } from '../utils/typography'
+import { rhythm } from '../styles/typography'
 
 interface Props {
   currentPage: number

@@ -197,9 +197,9 @@ export default css`
   }
   .error {
     color: ${theme.error};
-  }
-  .input.error {
-    border-color: ${theme.error};
+    &.input {
+      border-color: ${theme.error};
+    }
   }
   .label {
     font-size: 0.8rem;

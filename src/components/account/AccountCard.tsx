@@ -41,7 +41,6 @@ const styles = {
     border: 1px solid ${theme.mainBorder};
     border-radius: 7px;
     overflow: hidden;
-    max-width: 700px;
     margin-bottom: ${rhythm(1)};
   `,
   cardHeader: css`

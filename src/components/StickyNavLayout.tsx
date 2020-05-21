@@ -54,10 +54,9 @@ const styles = {
     ${MIN_DEFAULT_MEDIA_QUERY} {
       flex-direction: row;
       display: grid;
-      grid-template-columns: minmax(300px, 365px) minmax(
-          700px,
-          ${DEFAULT_WIDTH}
-        );
+      grid-template-columns:
+        minmax(${theme.MIN_SIDEBAR_WIDTH}, ${theme.MAX_SIDEBAR_WIDTH})
+        minmax(${theme.MAX_TEXT_WIDTH}, ${DEFAULT_WIDTH});
       grid-template-areas: 'sidenav content';
     }
 

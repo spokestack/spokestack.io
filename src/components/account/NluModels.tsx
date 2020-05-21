@@ -23,6 +23,7 @@ const LIST_NLU_MODELS = gql`
 export default function NluModels() {
   const result = useQuery<{ listNluModels: NluModelType[] }>(LIST_NLU_MODELS, {
     ssr: false,
+    pollInterval: 2000,
     fetchPolicy: 'network-only'
   })
   if (result.error) {

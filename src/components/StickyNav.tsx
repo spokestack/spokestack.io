@@ -123,7 +123,10 @@ export default function StickyNav({
                   title: selectedLink.title,
                   value: selectedLink.href
                 }
-              : undefined
+              : {
+                  title: links[0].title,
+                  value: links[0].href
+                }
           }
           onChange={(value) => {
             window.location.href = value

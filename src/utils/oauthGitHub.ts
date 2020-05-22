@@ -24,13 +24,11 @@ export async function getAccessToken(
       Accept: 'application/json',
       'Content-Type': 'application/json'
     },
-    /* eslint-disable @typescript-eslint/camelcase */
     body: JSON.stringify({
       client_id: clientId,
       code,
       state: stateFromGH
     })
-    /* eslint-enable @typescript-eslint/camelcase */
   })
     .then((response) => {
       console.log(response)

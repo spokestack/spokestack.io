@@ -11,6 +11,7 @@ import { PageContext } from '../types'
 import { Query } from '../utils/graphql'
 import React from 'react'
 import SEO from '../components/SEO'
+import SocialLink from '../components/SocialLink'
 
 type Props = PageRendererProps & {
   data: Query
@@ -22,7 +23,7 @@ export default function BlogListAuthorTemplate({
   pageContext: { author, currentPage, numPages, slug, tags }
 }: Props) {
   const posts = data.allMarkdownRemark.edges
-  const { name, bio, title } = data.site.siteMetadata.team[author]
+  const { name, bio, social, title } = data.site.siteMetadata.team[author]
   const longTitle = `Here are all of the articles from ${name}.`
   return (
     <>
@@ -54,6 +55,35 @@ export default function BlogListAuthorTemplate({
             <p className="author-bio" css={styles.bio}>
               {bio || title}
             </p>
+            <div css={styles.social}>
+              {social.twitter && (
+                <SocialLink
+                  icon="#twitter"
+                  href={social.twitter}
+                  title="Twitter"
+                  extraCss={styles.socialIcon}
+                  iconCss={styles.twitterIcon}
+                />
+              )}
+              {social.linkedin && (
+                <SocialLink
+                  icon="#linkedin"
+                  href={social.linkedin}
+                  title="LinkedIn"
+                  extraCss={styles.socialIcon}
+                  iconCss={styles.linkedinIcon}
+                />
+              )}
+              {social.email && (
+                <SocialLink
+                  icon="#email"
+                  href={social.email}
+                  title="Email"
+                  extraCss={styles.socialIcon}
+                  iconCss={styles.emailIcon}
+                />
+              )}
+            </div>
             <div css={styles.headerBottom}>
               <DarkModeButton />
             </div>
@@ -103,6 +133,28 @@ const styles = {
     position: absolute;
     right: 0;
     bottom: 20px;
+  `,
+  social: css`
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    margin: 20px 0;
+  `,
+  socialIcon: css`
+    width: 50px;
+    height: 50px;
+  `,
+  twitterIcon: css`
+    width: 17px;
+    height: 15px;
+  `,
+  linkedinIcon: css`
+    width: 20px;
+    height: 20px;
+  `,
+  emailIcon: css`
+    width: 20px;
+    height: 20px;
   `
 }
 

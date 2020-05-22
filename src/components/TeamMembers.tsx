@@ -128,36 +128,71 @@ export const teamFragment = graphql`
           name
           title
           bio
+          social {
+            twitter
+            linkedin
+            email
+          }
         }
         elizabeth {
           name
           title
           bio
+          social {
+            twitter
+            linkedin
+            email
+          }
         }
         brent {
           name
           title
           bio
+          social {
+            twitter
+            linkedin
+            email
+          }
         }
         mike {
           name
           title
           bio
+          social {
+            twitter
+            linkedin
+            email
+          }
         }
         noel {
           name
           title
           bio
+          social {
+            twitter
+            linkedin
+            email
+          }
         }
         timmy {
           name
           title
           bio
+          social {
+            twitter
+            linkedin
+            email
+          }
         }
         josh {
           name
           title
           bio
+          social {
+            twitter
+            linkedin
+            email
+          }
         }
       }
     }

@@ -10,7 +10,6 @@ import React, { useState } from 'react'
 import Hamburger from './Hamburger'
 import { Link } from 'gatsby'
 import LoginButton from './LoginButton'
-import SocialLinks from './SocialLinks'
 import { adjustFontSizeTo } from '../styles/typography'
 import { isLoggedIn } from '../utils/auth'
 
@@ -92,11 +91,6 @@ export default function Nav() {
             )}
           </ul>
           <div css={styles.rightLinks}>
-            <SocialLinks
-              iconSize={25}
-              extraCss={styles.socialLink}
-              titleCss={styles.socialLinkTitle}
-            />
             <LoginButton />
           </div>
         </div>

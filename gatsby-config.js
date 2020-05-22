@@ -17,38 +17,73 @@ module.exports = {
       will: {
         name: 'Will Rice',
         title: 'Data Science Engineer',
-        bio: ''
+        bio: '',
+        social: {
+          twitter: '',
+          linkedin: '',
+          email: ''
+        }
       },
       elizabeth: {
         name: 'Elizabeth Ropp',
         title: 'UX & Product Design',
-        bio: ''
+        bio: '',
+        social: {
+          twitter: '',
+          linkedin: '',
+          email: ''
+        }
       },
       brent: {
         name: 'Brent Spell',
         title: 'CTO',
-        bio: ''
+        bio: '',
+        social: {
+          twitter: '',
+          linkedin: '',
+          email: ''
+        }
       },
       mike: {
         name: 'Mike Tatum',
         title: 'CEO',
         bio:
-          "Mike is the CEO of Spokestack. He loves whipping up Butter puns and building tools that make developers' lives better."
+          'Mike is the CEO of Spokestack. He loves making late-night purchases on Discogs and using new technologies to create better user experiences and products.',
+        social: {
+          twitter: 'https://twitter.com/miketatum',
+          linkedin: 'https://www.linkedin.com/in/miketatum/',
+          email: 'mike@spokestack.io'
+        }
       },
       noel: {
         name: 'Noel Weichbrodt',
         title: 'Principal Engineer',
-        bio: ''
+        bio: '',
+        social: {
+          twitter: '',
+          linkedin: '',
+          email: ''
+        }
       },
       timmy: {
         name: 'Timmy Willison',
         title: 'Front-End Engineer',
-        bio: ''
+        bio: '',
+        social: {
+          twitter: '',
+          linkedin: '',
+          email: ''
+        }
       },
       josh: {
         name: 'Josh Ziegler',
         title: 'Conversation Engineer',
-        bio: ''
+        bio: '',
+        social: {
+          twitter: '',
+          linkedin: '',
+          email: ''
+        }
       }
     },
     events: [

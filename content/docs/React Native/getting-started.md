@@ -2,7 +2,7 @@
 title: Getting Started
 navId: Getting Started (react-native)
 description: Getting started with the Spokestack React Native API
-draft: true
+draft: false
 ---
 
 This guide will get you up and running with Spokestack for Android, and you'll be hearing and responding to your users in no time.

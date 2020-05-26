@@ -1,6 +1,6 @@
 ---
 title: Cookbook
-navId: Cookbook (iOS)
+navId: Cookbook (react-native)
 description: Code snippets and tips for iOS
 draft: false
 ---

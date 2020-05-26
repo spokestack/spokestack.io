@@ -8,8 +8,10 @@ import SEO from '../components/SEO'
 import { StickyLink } from '../types'
 import StickyNavLayout from '../components/StickyNavLayout'
 import { WindowLocation } from '@reach/router'
+import difference from 'lodash/difference'
 import order from '../../content/docs/nav.json'
 import sortBy from 'lodash/sortBy'
+import uniqBy from 'lodash/uniqBy'
 
 interface Props {
   location: WindowLocation
@@ -17,7 +19,20 @@ interface Props {
   selectFirst?: boolean
 }
 
+function checkDups(links: StickyLink[]) {
+  const unique = uniqBy(links, (link) => link.navId)
+  if (unique.length !== links.length) {
+    const diff = difference(links, unique)
+    throw new Error(
+      `The following navIds are not unique: ${diff
+        .map((link) => link.navId)
+        .join(', ')}.`
+    )
+  }
+}
+
 function orderLinks(links: StickyLink[]) {
+  checkDups(links)
   return sortBy(links, (link) => {
     const index = order.indexOf(link.navId)
     if (index === -1) {

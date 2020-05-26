@@ -52,7 +52,7 @@ module.exports = {
         social: {
           twitter: 'https://twitter.com/miketatum',
           linkedin: 'https://www.linkedin.com/in/miketatum/',
-          email: 'mike@spokestack.io'
+          email: 'mailto:mike@spokestack.io'
         }
       },
       noel: {

@@ -31,7 +31,7 @@ export default function Newsletter() {
       method="post"
       onSubmit={submit}
       css={styles.form}>
-      <h3>Subscribe to SpokeDaily</h3>
+      <h3>Subscribe to Spokestack News</h3>
       <p>
         Today&rsquo;s must reads on mobile voice &amp; conversational
         technologies, straight to your inbox on weekdays. Brought to you by

@@ -71,7 +71,9 @@ func initPipeline() {
 }
 ```
 
-### Recognize Wakewords with [TFLite](https://www.tensorflow.org/lite)
+### Recognize Wakewords On-Device
+
+To use the demo "Spokestack" wakeword, download the TensorFlow Lite models: [detect](https://d3dmqd7cy685il.cloudfront.net/model/wake/spokestack/detect.lite) | [encode](https://d3dmqd7cy685il.cloudfront.net/model/wake/spokestack/encode.lite) | [filter](https://d3dmqd7cy685il.cloudfront.net/model/wake/spokestack/filter.lite)
 
 ```swift
 import Spokestack

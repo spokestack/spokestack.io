@@ -100,7 +100,7 @@ pipeline = SpeechPipeline.Builder()
     .build();
 ```
 
-There are many options for configuring the speech pipeline. This particular setup will start begin capturing audio when `pipeline.start()` is called and use a Voice Activity Detection (VAD) component to send any audio determined to be speech through on-device ASR using Android's `SpeechRecognizer` API. In other words, the app is always actively listening, and no wakeword detection is performed. See [the configuration guide](/docs/Android/speech-pipeline) for more information about pipeline building options.
+There are many options for configuring the speech pipeline. This particular setup will begin capturing audio when `pipeline.start()` is called and use a Voice Activity Detection (VAD) component to send any audio determined to be speech through on-device ASR using Android's `SpeechRecognizer` API. In other words, the app is always actively listening, and no wakeword detection is performed. See [the configuration guide](/docs/Android/speech-pipeline) for more information about pipeline building options.
 
 Note also the `addOnSpeechEventListener(this)` line. This is necessary to receive speech events from the pipeline, which is our next step.
 

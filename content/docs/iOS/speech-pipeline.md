@@ -35,7 +35,7 @@ Note that `speechService` can be any class that adopts the `SpeechProcessor` pro
 
 ### 2. `speechConfiguration`
 
-The speech configuration is comprehensive enough to have its own guide, but in summary, this is where most of the fine-tuning for both wakeword and ASR happens. See the [configuration guide](docs/Concepts/pipeline-configuration) or [API reference](https://spokestack.github.io/spokestack-ios/) for more details on each of these, but here are a few examples of the parameters you can change (by instantiating the class and setting the relevant property):
+The speech configuration is comprehensive enough to have its own guide, but in summary, this is where most of the fine-tuning for both wakeword and ASR happens. See the [configuration guide](/docs/Concepts/pipeline-configuration) or [API reference](https://spokestack.github.io/spokestack-ios/) for more details on each of these, but here are a few examples of the parameters you can change (by instantiating the class and setting the relevant property):
 
 - `tracing`: If you want more verbose debug logging from Spokestack components, setting this to `.TRACE` or `.DEBUG` will make you satisfied.
 - `wakewords`/`wakePhrases`: If you're using ASR-based wakeword detection, these properties let you change your app's wakeword(s).

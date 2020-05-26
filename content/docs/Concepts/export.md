@@ -2,7 +2,7 @@
 title: Export Existing Model
 navId: Export
 description: Export existing Dialogflow/Alexa model to Spokestack
-draft: true
+draft: false
 ---
 
 This guide details the process of exporting an existing skill from Alexa or Dialogflow for use with Spokestack.

@@ -27,11 +27,15 @@ To use the demo "Spokestack" wakeword, you'll need the demo TensorFlow Lite mode
 
 ```javascript
 Spokestack.initialize({
-  input: 'io.spokestack.spokestack.android.MicrophoneInput', // provides audio input into the pipeline
+  // provides audio input into the pipeline
+  input: 'io.spokestack.spokestack.android.MicrophoneInput',
   stages: [
-    'io.spokestack.spokestack.webrtc.VoiceActivityDetector', // voice activity detection
-    'io.spokestack.spokestack.ActivationTimeout', // speech recognition times out after a configurable interval when voice is no longer detected
-    'io.spokestack.spokestack.wakeword.WakewordTrigger' // wakeword activtation trigger
+    // voice activity detection
+    'io.spokestack.spokestack.webrtc.VoiceActivityDetector',
+    // speech recognition times out after a configurable interval when voice is no longer detected
+    'io.spokestack.spokestack.ActivationTimeout',
+    // wakeword activtation trigger
+    'io.spokestack.spokestack.wakeword.WakewordTrigger'
   ],
   properties: {
     'wake-filter-path': filterModelPath,
@@ -48,7 +52,9 @@ Spokestack.initialize({
   }
 })
 
-Spokestack.start() // start speech pipeline. can only start after initialize is called. begins listening for the configured wakeword.
+// Only call start after initialize is called.
+// Begins listening for the configured wakeword.
+Spokestack.start()
 ```
 
 ### Cancel ASR (before the timeout is reached)

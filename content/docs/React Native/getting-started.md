@@ -5,7 +5,7 @@ description: Getting started with the Spokestack React Native API
 draft: false
 ---
 
-This guide will get you up and running with Spokestack for Android, and you'll be hearing and responding to your users in no time.
+This guide will get you up and running with Spokestack for React Native, and you'll be hearing and responding to your users in no time.
 
 One caveat before we start, though: _This is not a collection of best practices_. We're going to be trading thoughtful organization for convenience here, so please consider how best to organize your Spokestack use for your application architecture.
 
@@ -23,18 +23,22 @@ Android SDK 26+, Android NDK (`SDK Manager` -> `SDK Tools` tab in Android Studio
 
 ## Installation
 
-`$ npm install react-native-spokestack --save && react-native link && cd ios && pod install`
+```bash
+$ npm install --save react-native-spokestack
+$ cd ios
+$ pod install
+```
 
 ### iOS
 
 #### `Podfile`
 
-Edit your `Podfile` to include `use_native_modules!` and `use_frameworks!`, to use `platform :ios, '13.0'` or higher, and to remove all `Flipper` references and dependencies (Spokestack is a static library which must `use_frameworks!` breaking compatibility with `Flipper`).
+Edit your `Podfile` to include `use_native_modules!` and `use_frameworks!`, to use `platform :ios, '13.0'` or higher, and to remove all `Flipper` references and dependencies (Spokestack is a static library and must `use_frameworks!`, which breaks compatibility with `Flipper`).
 
 #### XCode Project
 
 1. In your XCode Project settings, select your app target (eg `MinecraftSkill`) > Build Settings > Library Search Paths : Remove the search path `"$(TOOLCHAIN_DIR)/usr/lib/swift-5.0/$(PLATFORM_NAME)"`.
-2. If your project does not already have an Objective-C - Swift bridging header, please create one: File > New File > Swift File > “Dummy.swift”, your app target > Create Bridging Header.
+1. If your project does not already have an Objective-C - Swift bridging header, please create one: File > New File > Swift File > “Dummy.swift”, your app target > Create Bridging Header.
 
 ## Integration
 
@@ -43,7 +47,7 @@ Edit your `Podfile` to include `use_native_modules!` and `use_frameworks!`, to u
 In order for your app to accept voice input via Spokestack, it needs two things:
 
 1. The proper iOS permissions
-2. An active `AVAudioSession`
+1. An active `AVAudioSession`
 
 Head over to `Info.plist` in your project and add a couple keys. Here are the raw values you'll need (the keys, at least; feel free to substitute your own values):
 
@@ -201,4 +205,4 @@ The API credentials in this example set you up to use the demo voice available f
 
 ## Conclusion
 
-That's all there is to it! Your app is now configured to accept and respond to voice commands. Obviously there's more we could tell you, and you can have much more control over the speech recognition process (including, but not limited to, configuring the pipeline's sensitivity and adding your own custom wakeword models). If you're interested in these advanced topics, check out our other guides. We'll be adding to them as Spokestack grows.
+That's all there is to it! Your app is now configured to accept and respond to voice commands. Obviously there's more we could tell you, and you can have much more control over the speech recognition process (including, but not limited to, configuring the pipeline's sensitivity and adding your own custom wakeword models). If you're interested in these advanced topics, check out our other Concepts and Design guides. We'll be adding more React Native guides soon.

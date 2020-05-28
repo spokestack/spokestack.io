@@ -1,11 +1,11 @@
 import * as theme from '../styles/theme'
 
 import { Global, css } from '@emotion/core'
-import { Link, graphql, useStaticQuery } from 'gatsby'
 import { TeamImages, TeamMemberName } from '../types'
+import { graphql, useStaticQuery } from 'gatsby'
 
 import AuthorImage from './AuthorImage'
-import Color from 'color'
+import Callout from './Callout'
 import { Query } from '../utils/graphql'
 import React from 'react'
 import { rhythm } from '../styles/typography'
@@ -23,32 +23,10 @@ export default function Author({ author }: Props) {
   }
   const { name, title } = data.site.siteMetadata.team[author]
   return (
-    <Link
-      to={`/blog/author/${author}`}
-      className="author"
-      css={styles.container}>
+    <Callout href={`/blog/author/${author}`} extraCss={styles.author}>
       <Global
         styles={css`
           html.dark-mode {
-            .author {
-              background-color: ${theme.authorBackground};
-              border-left-color: ${theme.mainBorderDark};
-              border-right-color: ${theme.mainBorderDark};
-              border-bottom-color: ${theme.mainBorderDark};
-
-              &,
-              &:visited,
-              &:hover,
-              &:active {
-                color: ${theme.textDarkBg};
-              }
-
-              &:hover {
-                background-color: ${theme.authorBackgroundColor
-                  .darken(0.1)
-                  .hex()};
-              }
-            }
             .author-bio {
               color: white;
             }
@@ -61,40 +39,13 @@ export default function Author({ author }: Props) {
       <p className="author-bio" css={styles.bio}>
         {title}
       </p>
-    </Link>
+    </Callout>
   )
 }
 
 const styles = {
-  container: css`
-    display: flex;
-    flex-direction: column;
-    justify-content: flex-start;
-    align-items: center;
-    text-align: center;
-    background-color: white;
-    padding: 25px;
+  author: css`
     margin-top: 5px;
-    border: 1px solid ${theme.mainBorder};
-    border-top: 3px solid ${theme.primaryLight};
-    border-radius: 0 0 7px 7px;
-    text-decoration: none;
-    font-weight: 400;
-
-    &,
-    &:visited,
-    &:hover,
-    &:active {
-      color: ${theme.text};
-    }
-
-    &:hover {
-      background-color: ${Color('#fff').darken(0.03).hex()};
-    }
-
-    &:active {
-      box-shadow: inset 0 0 3px rgba(0, 0, 0, 0.5);
-    }
   `,
   image: css`
     margin: 0 0 ${rhythm(1)};

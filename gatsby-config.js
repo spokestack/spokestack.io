@@ -2,6 +2,10 @@ module.exports = {
   siteMetadata: {
     title: 'Spokestack',
     author: 'Spokestack',
+    contact: {
+      email: 'hello@spokestack.io',
+      phone: '(423) 425-0071'
+    },
     description:
       'Spokestack is a powerful platform of open source libraries and robust services to make your app fully voice-enabled.',
     siteUrl: 'https://spokestack.io/',
@@ -9,14 +13,15 @@ module.exports = {
     social: {
       twitter: 'https://twitter.com/spokestack',
       github: 'https://github.com/spokestack',
+      forum: 'https://forum.spokestack.io',
       stackoverflow: 'https://stackoverflow.com/questions/tagged/spokestack'
     },
     // Should match the queries in src/components/TeamMembers.tsx
     // and images in src/components/AuthorImage.tsx
     team: {
-      will: {
-        name: 'Will Rice',
-        title: 'Data Science Engineer',
+      brent: {
+        name: 'Brent Spell',
+        title: 'CTO',
         bio: '',
         social: {
           twitter: '',
@@ -34,14 +39,15 @@ module.exports = {
           email: ''
         }
       },
-      brent: {
-        name: 'Brent Spell',
-        title: 'CTO',
-        bio: '',
+      josh: {
+        name: 'Josh Ziegler',
+        title: 'Conversation Engineer',
+        bio:
+          'Josh lives at the intersection of language and technology. An avid reader, he enjoys long runs in the woods and pedantic arguments about...well, pick a topic.',
         social: {
           twitter: '',
-          linkedin: '',
-          email: ''
+          linkedin: 'https://www.linkedin.com/in/joshziegler/',
+          email: 'josh@spokestack.io'
         }
       },
       mike: {
@@ -52,7 +58,7 @@ module.exports = {
         social: {
           twitter: 'https://twitter.com/miketatum',
           linkedin: 'https://www.linkedin.com/in/miketatum/',
-          email: 'mailto:mike@spokestack.io'
+          email: 'mike@spokestack.io'
         }
       },
       noel: {
@@ -75,11 +81,10 @@ module.exports = {
           email: ''
         }
       },
-      josh: {
-        name: 'Josh Ziegler',
-        title: 'Principal Computational Linguist',
-        bio:
-          'Josh lives at the intersection of language and technology. An avid reader, he enjoys long runs in the woods and pedantic arguments about...well, pick a topic.',
+      will: {
+        name: 'Will Rice',
+        title: 'Data Science Engineer',
+        bio: '',
         social: {
           twitter: '',
           linkedin: 'https://www.linkedin.com/in/joshziegler/',

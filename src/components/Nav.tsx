@@ -1,15 +1,16 @@
 import * as theme from '../styles/theme'
 
-import { Global, css } from '@emotion/core'
 import {
-  LARGE_DISPLAY_MEDIA_QUERY,
-  MIN_LARGE_DISPLAY_MEDIA_QUERY
+  DEFAULT_MEDIA_QUERY,
+  MIN_DEFAULT_MEDIA_QUERY
 } from 'typography-breakpoint-constants'
+import { Global, css } from '@emotion/core'
 import React, { useState } from 'react'
 
 import Hamburger from './Hamburger'
 import { Link } from 'gatsby'
 import LoginButton from './LoginButton'
+import Logo from './Logo'
 import { adjustFontSizeTo } from '../styles/typography'
 import { isLoggedIn } from '../utils/auth'
 
@@ -35,13 +36,13 @@ export default function Nav() {
         <div css={styles.navContent}>
           <ul css={styles.links}>
             <li css={styles.listItem} style={{ minWidth: '85px' }}>
-              <a
+              <Link
                 css={styles.navLink}
-                href="/#products"
+                to="/"
                 className="nav-link"
                 onClick={() => setMobileOpen(false)}>
                 Features
-              </a>
+              </Link>
             </li>
             <li css={styles.listItem}>
               <Link
@@ -104,7 +105,7 @@ export default function Nav() {
           extraCss={styles.hamburger}
         />
         <a href="/" css={styles.logoLink}>
-          <img src="/logo.svg" css={styles.logo} />
+          <Logo />
         </a>
       </header>
     </div>
@@ -157,7 +158,7 @@ const styles = {
     justify-content: center;
     z-index: 9999;
 
-    ${MIN_LARGE_DISPLAY_MEDIA_QUERY} {
+    ${MIN_DEFAULT_MEDIA_QUERY} {
       position: absolute;
       flex-direction: row-reverse;
       justify-content: space-between;
@@ -175,7 +176,7 @@ const styles = {
     user-select: none;
     flex-shrink: 0;
 
-    ${MIN_LARGE_DISPLAY_MEDIA_QUERY} {
+    ${MIN_DEFAULT_MEDIA_QUERY} {
       justify-content: flex-start;
       background: none;
     }
@@ -186,22 +187,15 @@ const styles = {
     margin-top: -7px;
     left: 20px;
 
-    ${MIN_LARGE_DISPLAY_MEDIA_QUERY} {
+    ${MIN_DEFAULT_MEDIA_QUERY} {
       display: none;
     }
   `,
   logoLink: css`
     line-height: 0;
   `,
-  logo: css`
-    line-height: 0;
-    max-width: none;
-    margin: 0;
-    width: 185px;
-    height: 60px;
-  `,
   desktopLink: css`
-    ${LARGE_DISPLAY_MEDIA_QUERY} {
+    ${DEFAULT_MEDIA_QUERY} {
       display: none;
     }
   `,
@@ -221,7 +215,7 @@ const styles = {
       transform: translateY(0);
     }
 
-    ${MIN_LARGE_DISPLAY_MEDIA_QUERY} {
+    ${MIN_DEFAULT_MEDIA_QUERY} {
       position: relative;
       bottom: auto;
       width: 100%;
@@ -236,7 +230,7 @@ const styles = {
     height: 100%;
     overflow-y: auto;
 
-    ${MIN_LARGE_DISPLAY_MEDIA_QUERY} {
+    ${MIN_DEFAULT_MEDIA_QUERY} {
       width: auto;
       overflow: hidden;
       display: flex;
@@ -252,7 +246,7 @@ const styles = {
     list-style: none;
     margin: 0;
 
-    ${MIN_LARGE_DISPLAY_MEDIA_QUERY} {
+    ${MIN_DEFAULT_MEDIA_QUERY} {
       flex-direction: row;
       justify-content: flex-start;
     }
@@ -261,7 +255,7 @@ const styles = {
     display: flex;
     flex-direction: column;
 
-    ${MIN_LARGE_DISPLAY_MEDIA_QUERY} {
+    ${MIN_DEFAULT_MEDIA_QUERY} {
       flex-direction: row;
       align-items: center;
     }
@@ -270,13 +264,13 @@ const styles = {
     margin: 0;
     width: 100%;
 
-    ${MIN_LARGE_DISPLAY_MEDIA_QUERY} {
+    ${MIN_DEFAULT_MEDIA_QUERY} {
       width: auto;
     }
   `,
   navLink: css`
     ${mobileLink}
-    ${MIN_LARGE_DISPLAY_MEDIA_QUERY} {
+    ${MIN_DEFAULT_MEDIA_QUERY} {
       width: auto;
       font-size: ${adjustFontSizeTo('16px').fontSize};
 
@@ -309,13 +303,13 @@ const styles = {
     }
   `,
   socialLink: css`
-    ${LARGE_DISPLAY_MEDIA_QUERY} {
+    ${DEFAULT_MEDIA_QUERY} {
       border-radius: 0;
       ${mobileLink}
     }
   `,
   socialLinkTitle: css`
-    ${MIN_LARGE_DISPLAY_MEDIA_QUERY} {
+    ${MIN_DEFAULT_MEDIA_QUERY} {
       display: none;
     }
   `

@@ -48,7 +48,7 @@ const options: TypographyOptions = {
       textDecorationColor: theme.linkActive
     },
     h1: {
-      fontSize: `${42 / 18}rem`,
+      fontSize: `${36 / 18}rem`,
       marginBottom: rhythm(0.8)
     },
     h2: {

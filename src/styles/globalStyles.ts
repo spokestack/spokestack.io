@@ -21,6 +21,9 @@ export default css`
   blockquote {
     color: hsl(0, 0%, 40%);
   }
+  .title {
+    font-size: ${adjustFontSizeTo('20px').fontSize};
+  }
   .select-label {
     background-color: white;
     color: ${theme.header};
@@ -227,9 +230,6 @@ export default css`
   .card li p {
     margin: 0;
   }
-  .title {
-    font-size: ${adjustFontSizeTo('22px').fontSize};
-  }
   .docs-header {
     display: flex;
     flex-direction: row;
@@ -280,18 +280,27 @@ export default css`
         background-color: ${theme.buttonBackgroundDarkHover};
         border-color: ${theme.buttonBackgroundDarkHover};
       }
-    }
-    .btn.btn-transparent {
-      background-color: transparent;
-      border-color: ${theme.buttonBackgroundDark};
-      color: ${theme.buttonBackgroundDark};
 
-      &:hover:not([disabled]),
-      &:active:not([disabled]),
-      &.btn-submitting {
-        background-color: ${theme.buttonBackgroundDark};
+      &.btn-transparent {
+        background-color: transparent;
         border-color: ${theme.buttonBackgroundDark};
-        color: ${theme.text};
+        color: ${theme.buttonBackgroundDark};
+
+        .icon {
+          fill: ${theme.buttonBackgroundDark};
+        }
+
+        &:hover:not([disabled]),
+        &:active:not([disabled]),
+        &.btn-submitting {
+          background-color: ${theme.buttonBackgroundDark};
+          border-color: ${theme.buttonBackgroundDark};
+          color: ${theme.text};
+
+          .icon {
+            fill: ${theme.text};
+          }
+        }
       }
     }
     blockquote {

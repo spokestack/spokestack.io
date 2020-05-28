@@ -27,7 +27,6 @@ export const textDarkBg = mainBackground
 export const grayDark = '#c9c9c9'
 
 export const header = headerColor.hex()
-export const footerBackground = header
 export const buttonBackground = primary
 export const buttonBackgroundHover = primaryColor.darken(0.4).hex()
 export const buttonBackgroundDark = primaryLight
@@ -69,3 +68,4 @@ export const MIN_SIDEBAR_WIDTH = '250px'
 export const MAX_SIDEBAR_WIDTH = '365px'
 export const MIN_TEXT_WIDTH = '600px'
 export const MAX_TEXT_WIDTH = '700px'
+export const MAX_VIDEO_WIDTH = '714px'

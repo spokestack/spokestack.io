@@ -1,11 +1,14 @@
 import * as theme from '../styles/theme'
 
+import { Global, css } from '@emotion/core'
+import {
+  MIN_DEFAULT_MEDIA_QUERY,
+  MIN_TABLET_MEDIA_QUERY
+} from 'typography-breakpoint-constants'
 import React, { FormEvent, useRef, useState } from 'react'
 
 import Button from './Button'
-import { MIN_TABLET_MEDIA_QUERY } from 'typography-breakpoint-constants'
 import SVGIcon from './SVGIcon'
-import { css } from '@emotion/core'
 import validateEmail from '../utils/validateEmail'
 
 export default function Newsletter() {
@@ -31,12 +34,15 @@ export default function Newsletter() {
       method="post"
       onSubmit={submit}
       css={styles.form}>
-      <h3>Subscribe to Spokestack News</h3>
-      <p>
-        Today&rsquo;s must reads on mobile voice &amp; conversational
-        technologies, straight to your inbox on weekdays. Brought to you by
-        Spokestack.
-      </p>
+      <Global
+        styles={css`
+          html.dark-mode .input {
+            border-color: ${theme.primaryLight};
+            color: white;
+          }
+        `}
+      />
+      <p>Stay up-to-date with the latest news from the Spokestack community</p>
       <div css={styles.inputWrap}>
         <input
           type="email"
@@ -44,9 +50,13 @@ export default function Newsletter() {
           className={`input${invalid ? ' error' : ''}`}
           placeholder="Enter email"
         />
-        <Button type="submit" secondary extraCss={styles.button}>
+        <Button type="submit" transparent extraCss={styles.button}>
           Subscribe
-          <SVGIcon icon="#arrow-forward" extraCss={styles.icon} />
+          <SVGIcon
+            className="icon"
+            icon="#arrow-forward"
+            extraCss={styles.icon}
+          />
         </Button>
       </div>
     </form>
@@ -57,16 +67,24 @@ const styles = {
   form: css`
     display: flex;
     flex-direction: column;
+    justify-content: center;
     align-items: center;
     text-align: center;
-
-    h3 {
-      color: white;
-    }
+    padding: 50px 0;
+    border-bottom: 1px solid ${theme.mainBorder};
 
     p {
       width: 100%;
-      max-width: 600px;
+      max-width: 400px;
+      margin-bottom: 25px;
+    }
+
+    ${MIN_DEFAULT_MEDIA_QUERY} {
+      flex-direction: row;
+
+      p {
+        margin: 0;
+      }
     }
   `,
   inputWrap: css`
@@ -76,6 +94,8 @@ const styles = {
     .input {
       padding-left: 30px;
       margin-bottom: 20px;
+      background-color: transparent;
+      border-color: ${theme.primary};
     }
     .input,
     .btn {
@@ -84,9 +104,12 @@ const styles = {
 
     ${MIN_TABLET_MEDIA_QUERY} {
       flex-direction: row;
+      margin: 0 0 0 25px;
+
       .input {
         border-radius: 24px 0 0 24px;
         margin-bottom: 0;
+        border-right: none;
       }
       .btn {
         border-radius: 0 24px 24px 0;
@@ -101,6 +124,6 @@ const styles = {
   icon: css`
     width: 17px;
     height: 17px;
-    fill: ${theme.text};
+    margin-left: 5px;
   `
 }

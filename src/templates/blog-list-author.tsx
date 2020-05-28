@@ -77,7 +77,7 @@ export default function BlogListAuthorTemplate({
               {social.email && (
                 <SocialLink
                   icon="#email"
-                  href={social.email}
+                  href={`mailto:${social.email}`}
                   title="Email"
                   extraCss={styles.socialIcon}
                   iconCss={styles.emailIcon}

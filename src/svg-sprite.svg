@@ -65,16 +65,9 @@
 		<path d="M0 0h24v24H0z" fill="none" />
 		<path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-2 14.5v-9l6 4.5-6 4.5z" />
 	</symbol>
-	<symbol id="play" viewBox="0 0 34 40">
-		<g id="Website" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd" stroke-linejoin="round">
-			<g id="DSK-Home" transform="translate(-1024.000000, -887.000000)" fill="#61FAE9" fill-rule="nonzero" stroke="#61FAE9" stroke-width="4">
-				<g id="Group-6" transform="translate(732.000000, 740.500000)">
-					<g id="Group-2" transform="translate(255.000000, 117.500000)">
-						<polygon id="Path" points="39.1057692 66.6891373 39.1057692 31.1930743 68.5528846 48.9884339">
-						</polygon>
-					</g>
-				</g>
-			</g>
+	<symbol id="play" viewBox="0 0 20 22">
+		<g transform="translate(-25.000000, -22.000000)" fill-rule="nonzero">
+			<path d="M25.6537588,23.307396 L25.6537588,42.6926134 C25.6537588,43.7077402 26.7615969,44.3343954 27.6316378,43.8114126 L43.7133857,34.1446508 C44.5560327,33.6381345 44.5574722,32.4171431 43.7160219,31.9086413 L27.634274,22.1901856 C26.7642914,21.6644414 25.6537588,22.2908938 25.6537588,23.307396 Z"></path>
 		</g>
 	</symbol>
 	<symbol id="stackoverflow" viewBox="0 0 120 120">

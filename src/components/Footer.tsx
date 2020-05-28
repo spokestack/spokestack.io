@@ -1,56 +1,125 @@
 import * as theme from '../styles/theme'
 
+import { Global, css } from '@emotion/core'
 import {
-  LARGER_DISPLAY_WIDTH,
-  MIN_DEFAULT_MEDIA_QUERY
+  MIN_DEFAULT_MEDIA_QUERY,
+  MIN_LARGE_DISPLAY_MEDIA_QUERY
 } from 'typography-breakpoint-constants'
 import { graphql, useStaticQuery } from 'gatsby'
 
+import Logo from './Logo'
+import Newsletter from './Newsletter'
+import { Query } from '../utils/graphql'
 import React from 'react'
-import { css } from '@emotion/core'
-import { rhythm } from '../styles/typography'
-
-const footerQuery = graphql`
-  query footerQuery {
-    site {
-      siteMetadata {
-        author
-      }
-    }
-  }
-`
 
 export default function Footer() {
-  const { site } = useStaticQuery(footerQuery)
-  const { author } = site.siteMetadata
+  const { site } = useStaticQuery<Query>(footerQuery)
+  const { contact, social } = site.siteMetadata
   return (
     <footer css={styles.footer}>
-      <div css={styles.wrapper}>
-        <div>
-          <a href="/">
-            <img src="/logo.svg" css={styles.logo} />
+      <Global
+        styles={css`
+          html:not(.dark-mode) .footer-logo {
+            .logo--image,
+            .logo--text {
+              fill: ${theme.primary};
+            }
+          }
+        `}
+      />
+      <Newsletter />
+      <div css={styles.content}>
+        <div css={styles.column}>
+          <a href="/" css={styles.logoLink}>
+            <Logo className="footer-logo" />
+          </a>
+          <a css={styles.footerLink} href={`mailto:${contact.email}`}>
+            {contact.email}
+          </a>
+          <a css={styles.footerLink} href={`tel:${contact.phone}`}>
+            {contact.phone}
           </a>
         </div>
-        <div css={styles.links}>
-          <h3>
-            <a href="mailto:hello@spokestack.io" className="header-link">
-              Contact Us
-            </a>
-          </h3>
-          <p>
-            &copy; {new Date().getFullYear()} {author}
-          </p>
+        <div css={styles.column}>
+          <h5>Features</h5>
+          <a css={styles.footerLink} href="/features/nlu">
+            Natural Language Understanding
+          </a>
+          <a css={styles.footerLink} href="/features/asr">
+            Automatic Speech Recognition
+          </a>
+          <a css={styles.footerLink} href="/features/tts">
+            Text-to-Speech &amp; Custom Voices
+          </a>
+          <a css={styles.footerLink} href="/features/wakeword">
+            Wake Word
+          </a>
+          <a css={styles.footerLink} href="/pricing">
+            Pricing
+          </a>
         </div>
-        <div css={styles.links}>
-          <h3>
-            <a href="/#products" className="header-link">
-              Features
-            </a>
-          </h3>
-          <a href="/#asr">ASR and VAD Management</a>
-          <a href="/#tts">Text-to-Speech Integration</a>
-          <a href="/#wakeword">Wakeword Creation</a>
-          <a href="/#nlu">Spokestack NLU</a>
+        <div css={styles.column}>
+          <h5>Resources</h5>
+          <a css={styles.footerLink} href="/docs">
+            Developer Docs
+          </a>
+          <a css={styles.footerLink} href="/blog/tag/tutorial">
+            Tutorials
+          </a>
+          <a css={styles.footerLink} href="/blog">
+            Blog
+          </a>
+          <a
+            css={styles.footerLink}
+            href="https://github.com/spokestack/spokestack-ios">
+            iOS Library
+          </a>
+          <a
+            css={styles.footerLink}
+            href="https://github.com/spokestack/spokestack-android">
+            Android Library
+          </a>
+          <a
+            css={styles.footerLink}
+            href="https://github.com/spokestack/react-native-spokestack">
+            React Native Library
+          </a>
+        </div>
+        <div css={styles.column}>
+          <h5>Community</h5>
+          <a css={styles.footerLink} href="/support">
+            Support
+          </a>
+          <a css={styles.footerLink} href={social.github}>
+            GitHub
+          </a>
+          <a css={styles.footerLink} href={social.twitter}>
+            Twitter
+          </a>
+          <a css={styles.footerLink} href={social.forum}>
+            Forum
+          </a>
+          <a css={styles.footerLink} href={social.stackoverflow}>
+            Stack Overflow
+          </a>
+        </div>
+        <div css={styles.column}>
+          <h5>About</h5>
+          <a css={styles.footerLink} href="/about/team">
+            Team
+          </a>
+          <a css={styles.footerLink} href="/about/story">
+            Story
+          </a>
+        </div>
+        <div css={styles.bottom}>
+          <div css={styles.copyright}>
+            Spokestack &copy; {new Date().getFullYear()}
+          </div>
+          <div css={styles.separator}>{`//`}</div>
+          <a href="/privacy" css={[styles.footerLink, styles.privacyLink]}>
+            Privacy Policy
+          </a>
         </div>
       </div>
     </footer>
@@ -59,62 +128,115 @@ export default function Footer() {
 
 const styles = {
   footer: css`
-    background-color: ${theme.footerBackground};
-    color: ${theme.textDarkBg};
-    padding: ${rhythm(1)} ${rhythm(1.5)} ${rhythm(2)};
-  `,
-  wrapper: css`
-    max-width: ${LARGER_DISPLAY_WIDTH};
-    margin: 0 auto;
     display: flex;
     flex-direction: column;
+    padding: 0 20px 40px;
+
+    ${MIN_DEFAULT_MEDIA_QUERY} {
+      padding-left: 100px;
+      padding-right: 100px;
+    }
+  `,
+  content: css`
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    padding: 25px 0;
+    margin: 0 auto;
 
     ${MIN_DEFAULT_MEDIA_QUERY} {
       flex-direction: row;
-      justify-content: space-between;
-      padding-right: ${rhythm(2)};
+      justify-content: center;
     }
   `,
-  logo: css`
-    margin: 0;
-    width: 240px;
-    margin-right: ${rhythm(1)};
-  `,
-  links: css`
+  column: css`
     display: flex;
     flex-direction: column;
-    margin-top: 20px;
+    justify-content: flex-start;
+    align-items: center;
+    padding: 25px 0;
 
-    a:not(.header-link) {
-      color: white;
-      margin-bottom: 15px;
-      text-decoration: none;
-      font-weight: 400;
+    h5 {
+      text-transform: uppercase;
+      color: ${theme.primary};
+      margin-bottom: 25px;
+    }
 
-      &:hover {
-        color: hsl(0, 0%, 80%);
-      }
-      &:active {
-        color: hsl(0, 0%, 50%);
+    ${MIN_DEFAULT_MEDIA_QUERY} {
+      align-items: flex-start;
+
+      & + & {
+        margin-left: 40px;
       }
     }
 
-    h3 {
-      margin-bottom: 20px;
-
-      a {
-        color: ${theme.linkSecondary};
-
-        &:visited {
-          color: ${theme.linkSecondaryVisited};
-        }
-        &:hover {
-          color: ${theme.linkSecondaryHover};
-        }
-        &:active {
-          color: ${theme.linkSecondaryActive};
-        }
+    ${MIN_LARGE_DISPLAY_MEDIA_QUERY} {
+      &:not(:first-of-type) + & {
+        margin-left: 80px;
       }
+    }
+  `,
+  logoLink: css`
+    margin-top: -25px;
+  `,
+  footerLink: css`
+    text-decoration: none;
+    font-weight: 400;
+    margin-bottom: 15px;
+
+    &,
+    &:visited {
+      color: ${theme.text};
+    }
+
+    &:hover {
+      color: ${theme.textColor.darken(0.3).hex()};
+      text-decoration: underline;
+    }
+
+    &:active {
+      color: ${theme.textColor.darken(0.6).hex()};
+    }
+  `,
+  bottom: css`
+    position: absolute;
+    left: 0;
+    bottom: 0;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    white-space: nowrap;
+  `,
+  copyright: css`
+    color: ${theme.mainBorderDark};
+  `,
+  separator: css`
+    margin: 0 20px;
+  `,
+  privacyLink: css`
+    margin: 0;
+    &,
+    &:visited {
+      color: ${theme.mainBorderDark};
     }
   `
 }
+
+const footerQuery = graphql`
+  query footerQuery {
+    site {
+      siteMetadata {
+        contact {
+          email
+          phone
+        }
+        social {
+          twitter
+          github
+          forum
+          stackoverflow
+        }
+      }
+    }
+  }
+`

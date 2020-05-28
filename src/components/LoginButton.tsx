@@ -1,11 +1,8 @@
-import {
-  LARGE_DISPLAY_MEDIA_QUERY,
-  MIN_LARGE_DISPLAY_MEDIA_QUERY
-} from 'typography-breakpoint-constants'
 import { grayDark, primary, secondary, transitionEasing } from '../styles/theme'
 import { isLoggedIn, logout } from '../utils/auth'
 
 import { Link } from 'gatsby'
+import { MIN_DEFAULT_MEDIA_QUERY } from 'typography-breakpoint-constants'
 import React from 'react'
 import SVGIcon from './SVGIcon'
 import { css } from '@emotion/core'
@@ -48,7 +45,7 @@ const styles = {
       background-color: ${grayDark} !important;
     }
 
-    ${MIN_LARGE_DISPLAY_MEDIA_QUERY} {
+    ${MIN_DEFAULT_MEDIA_QUERY} {
       position: relative !important;
       width: auto;
       font-weight: 400;
@@ -74,9 +71,5 @@ const styles = {
     width: 17px;
     height: 17px;
     transition: fill 0.2s ${transitionEasing};
-
-    ${LARGE_DISPLAY_MEDIA_QUERY} {
-      display: none;
-    }
   `
 }

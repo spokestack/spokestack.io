@@ -25,7 +25,10 @@ function isSection(section: string) {
 }
 
 function linkIsSelected(link: StickyLink) {
-  return link.forceSelect || window.location.pathname.indexOf(link.href) > -1
+  return (
+    link.forceSelect ||
+    decodeURIComponent(window.location.pathname).indexOf(link.href) > -1
+  )
 }
 
 function optionsFromLinks(links: StickyLink[]) {

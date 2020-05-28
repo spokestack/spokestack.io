@@ -29,7 +29,7 @@ Now let's look at the `SpeechPipeline` initializer and talk about each component
 
 ### 1. `speechService`
 
-The speech service is responsible for performing automatic speech recognition (ASR) on arbitrary user audio. It's the component that calls `didRecognize` on your `SpeechEventListener` (which we'll talk about later). Currently, Spokestack only supports Apple's built-in ASR, via the `AppleSpeechRecognizer` class.
+The speech service is responsible for performing Automatic Speech Recognition (ASR) on arbitrary user audio. It's the component that calls `didRecognize` on your `SpeechEventListener` (which we'll talk about later). Currently, Spokestack only supports Apple's built-in ASR, via the `AppleSpeechRecognizer` class.
 
 Note that `speechService` can be any class that adopts the `SpeechProcessor` protocol, so you're free to incorporate any ASR provider you choose. Singleton instances of all `SpeechProcessor`s provided by Spokestack are available via the `SpeechProcessors` enum; for the default Apple ASR, simply pass `SpeechProcessors.appleSpeech` to the initializer above.
 

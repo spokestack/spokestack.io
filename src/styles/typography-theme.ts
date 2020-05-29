@@ -18,7 +18,7 @@ const options: TypographyOptions = {
   bodyColor: theme.text,
   headerColor: theme.header,
   headerWeight: 700,
-  bodyWeight: 400,
+  bodyWeight: 300,
   boldWeight: 700,
   overrideStyles: ({ scale, rhythm }) => ({
     html: {

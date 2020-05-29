@@ -28,7 +28,7 @@ export default function About({ children, location }: Props) {
         longTitle="Learn about the company Spokestack"
         description="About our team"
       />
-      <StickyNavLayout header="About" links={links} location={location}>
+      <StickyNavLayout links={links} location={location}>
         {children}
       </StickyNavLayout>
     </Layout>

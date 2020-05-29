@@ -1,23 +1,26 @@
 import * as theme from '../styles/theme'
 
+import { Global, SerializedStyles, css } from '@emotion/core'
 import {
-  DEFAULT_MEDIA_QUERY,
-  MIN_DEFAULT_MEDIA_QUERY
+  MIN_DEFAULT_MEDIA_QUERY,
+  MIN_LARGE_DISPLAY_MEDIA_QUERY
 } from 'typography-breakpoint-constants'
-import { Global, css } from '@emotion/core'
 import React, { useState } from 'react'
 
 import Hamburger from './Hamburger'
 import { Link } from 'gatsby'
-import LoginButton from './LoginButton'
+import LoginButtons from './LoginButtons'
 import Logo from './Logo'
 import { adjustFontSizeTo } from '../styles/typography'
-import { isLoggedIn } from '../utils/auth'
 
-export default function Nav() {
+interface Props {
+  extraCss?: SerializedStyles
+}
+
+export default function Nav({ extraCss }: Props) {
   const [mobileOpen, setMobileOpen] = useState(false)
   return (
-    <div css={styles.navContainer}>
+    <nav css={[styles.nav, extraCss]}>
       <Global
         styles={css`
           .nav-link-active {
@@ -32,70 +35,6 @@ export default function Nav() {
           }
         `}
       />
-      <nav css={styles.nav} className={mobileOpen ? 'mobile-open' : ''}>
-        <div css={styles.navContent}>
-          <ul css={styles.links}>
-            <li css={styles.listItem} style={{ minWidth: '85px' }}>
-              <Link
-                css={styles.navLink}
-                to="/"
-                className="nav-link"
-                onClick={() => setMobileOpen(false)}>
-                Features
-              </Link>
-            </li>
-            <li css={styles.listItem}>
-              <Link
-                className="nav-link"
-                css={styles.navLink}
-                activeClassName="nav-link-active"
-                partiallyActive
-                to="/about"
-                title="About Spokestack">
-                About
-              </Link>
-            </li>
-            <li css={styles.listItem}>
-              <Link
-                className="nav-link"
-                css={styles.navLink}
-                activeClassName="nav-link-active"
-                partiallyActive
-                to="/blog"
-                title="Spokestack Blog">
-                Blog
-              </Link>
-            </li>
-            <li css={styles.listItem}>
-              <Link
-                className="nav-link"
-                css={styles.navLink}
-                activeClassName="nav-link-active"
-                partiallyActive
-                to="/docs"
-                title="Spokestack Documentation">
-                Docs
-              </Link>
-            </li>
-            {isLoggedIn() && (
-              <li css={styles.listItem}>
-                <Link
-                  className="nav-link"
-                  css={styles.navLink}
-                  activeClassName="nav-link-active"
-                  partiallyActive
-                  to="/account"
-                  title="Spokestack Account">
-                  Account
-                </Link>
-              </li>
-            )}
-          </ul>
-          <div css={styles.rightLinks}>
-            <LoginButton />
-          </div>
-        </div>
-      </nav>
       <header css={styles.header}>
         <Hamburger
           open={mobileOpen}
@@ -108,45 +47,61 @@ export default function Nav() {
           <Logo />
         </a>
       </header>
-    </div>
+      <div css={styles.navContent} className={mobileOpen ? 'mobile-open' : ''}>
+        <ul css={styles.links}>
+          <li css={styles.listItem}>
+            <Link
+              css={styles.navLink}
+              to="/"
+              activeClassName="nav-link-active"
+              className="nav-link"
+              onClick={() => setMobileOpen(false)}>
+              Features
+            </Link>
+          </li>
+          <li css={styles.listItem}>
+            <Link
+              className="nav-link"
+              css={styles.navLink}
+              activeClassName="nav-link-active"
+              partiallyActive
+              to="/about"
+              title="About Spokestack">
+              Resources
+            </Link>
+          </li>
+          <li css={styles.listItem}>
+            <Link
+              className="nav-link"
+              css={styles.navLink}
+              activeClassName="nav-link-active"
+              partiallyActive
+              to="/pricing"
+              title="Spokestack Pricing">
+              Pricing
+            </Link>
+          </li>
+          <li css={styles.listItem}>
+            <Link
+              className="nav-link"
+              css={styles.navLink}
+              activeClassName="nav-link-active"
+              partiallyActive
+              to="/support"
+              title="Spokestack Support">
+              Support
+            </Link>
+          </li>
+        </ul>
+        <LoginButtons extraCss={styles.mobileLogin} />
+      </div>
+      <LoginButtons extraCss={styles.desktopLogin} />
+    </nav>
   )
 }
 
-const mobileLink = css`
-  position: relative;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  width: 100%;
-  height: 60px;
-  font-size: ${adjustFontSizeTo('18px').fontSize};
-  font-weight: 400;
-  line-height: 1.1;
-  color: ${theme.textDarkBg};
-  text-align: center;
-  text-decoration: none;
-  transition: background-color 0.2s ${theme.transitionEasing},
-    color 0.2s ${theme.transitionEasing};
-  padding: 0 15px;
-  user-select: none;
-  white-space: nowrap;
-
-  &:hover,
-  &:visited {
-    color: ${theme.textDarkBg} !important;
-    text-decoration: none;
-  }
-  &:hover,
-  &.nav-link-active {
-    background-color: rgba(0, 0, 0, 0.1);
-  }
-  &:active:not(.nav-link-active) {
-    background-color: rgba(0, 0, 0, 0.2);
-  }
-`
-
 const styles = {
-  navContainer: css`
+  nav: css`
     position: fixed;
     top: 0;
     left: 0;
@@ -156,25 +111,30 @@ const styles = {
     display: flex;
     flex-direction: column;
     justify-content: center;
-    z-index: 9999;
+    z-index: 9997;
 
     ${MIN_DEFAULT_MEDIA_QUERY} {
       position: absolute;
-      flex-direction: row-reverse;
+      flex-direction: row;
       justify-content: space-between;
-      padding: 0 20px;
+      padding: 0 50px;
+    }
+
+    ${MIN_LARGE_DISPLAY_MEDIA_QUERY} {
+      padding: 0 100px;
     }
   `,
   header: css`
+    height: 100%;
     position: relative;
     display: flex;
     flex-direction: row;
     justify-content: center;
     align-items: center;
-    height: 60px;
     background-color: ${theme.primary};
     user-select: none;
     flex-shrink: 0;
+    z-index: 9999;
 
     ${MIN_DEFAULT_MEDIA_QUERY} {
       justify-content: flex-start;
@@ -194,70 +154,49 @@ const styles = {
   logoLink: css`
     line-height: 0;
   `,
-  desktopLink: css`
-    ${DEFAULT_MEDIA_QUERY} {
-      display: none;
-    }
-  `,
-  nav: css`
+  navContent: css`
     position: fixed;
     top: 0;
     left: 0;
     right: 0;
     bottom: 0;
-    padding: 60px 0;
+    padding: 60px 0 94px;
     transform: translateY(-100%);
     transition: transform 0.2s ${theme.transitionEasing};
     background-color: ${theme.primary};
-    overflow: hidden;
+    z-index: 9998;
 
     &.mobile-open {
       transform: translateY(0);
     }
 
     ${MIN_DEFAULT_MEDIA_QUERY} {
-      position: relative;
+      position: static;
+      display: flex;
+      flex-direction: row;
+      justify-content: space-between;
+      align-items: center;
       bottom: auto;
-      width: 100%;
-      height: 60px;
       padding: 0;
       margin-left: 20px;
       transform: none;
     }
   `,
-  navContent: css`
-    width: 100%;
-    height: 100%;
-    overflow-y: auto;
-
-    ${MIN_DEFAULT_MEDIA_QUERY} {
-      width: auto;
-      overflow: hidden;
-      display: flex;
-      flex-direction: row;
-    }
-  `,
   links: css`
     display: flex;
     flex-direction: column;
-    justify-content: center;
+    justify-content: flex-start;
     align-items: center;
     flex-grow: 1;
     list-style: none;
     margin: 0;
+    height: 100%;
+    overflow-y: auto;
 
     ${MIN_DEFAULT_MEDIA_QUERY} {
       flex-direction: row;
       justify-content: flex-start;
-    }
-  `,
-  rightLinks: css`
-    display: flex;
-    flex-direction: column;
-
-    ${MIN_DEFAULT_MEDIA_QUERY} {
-      flex-direction: row;
-      align-items: center;
+      overflow: hidden;
     }
   `,
   listItem: css`
@@ -269,7 +208,36 @@ const styles = {
     }
   `,
   navLink: css`
-    ${mobileLink}
+    position: relative;
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+    width: 100%;
+    height: 60px;
+    font-size: ${adjustFontSizeTo('18px').fontSize};
+    font-weight: 300;
+    line-height: 1.1;
+    transition: background-color 0.2s ${theme.transitionEasing},
+      color 0.2s ${theme.transitionEasing};
+    padding: 0 15px;
+    user-select: none;
+    white-space: nowrap;
+
+    &,
+    &:hover,
+    &:visited {
+      color: ${theme.textDarkBg} !important;
+      text-decoration: none;
+    }
+
+    &:hover,
+    &.nav-link-active {
+      background-color: rgba(0, 0, 0, 0.1);
+    }
+    &:active:not(.nav-link-active) {
+      background-color: rgba(0, 0, 0, 0.2);
+    }
+
     ${MIN_DEFAULT_MEDIA_QUERY} {
       width: auto;
       font-size: ${adjustFontSizeTo('16px').fontSize};
@@ -302,15 +270,19 @@ const styles = {
       }
     }
   `,
-  socialLink: css`
-    ${DEFAULT_MEDIA_QUERY} {
-      border-radius: 0;
-      ${mobileLink}
-    }
-  `,
-  socialLinkTitle: css`
+  mobileLogin: css`
+    height: 94px;
+    background-color: ${theme.primary};
+
     ${MIN_DEFAULT_MEDIA_QUERY} {
       display: none;
+    }
+  `,
+  desktopLogin: css`
+    display: none;
+
+    ${MIN_DEFAULT_MEDIA_QUERY} {
+      display: flex;
     }
   `
 }

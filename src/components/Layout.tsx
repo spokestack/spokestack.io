@@ -1,4 +1,4 @@
-import { Global, css } from '@emotion/core'
+import { Global, SerializedStyles, css } from '@emotion/core'
 import React, { ReactNode } from 'react'
 
 import Footer from './Footer'
@@ -10,14 +10,16 @@ import { ieBreakpoint } from '../styles/theme'
 
 interface Props {
   children: ReactNode
+  extraCss?: SerializedStyles
+  navStyle?: SerializedStyles
 }
 
-export default function Layout({ children }: Props) {
+export default function Layout({ children, extraCss, navStyle }: Props) {
   return (
-    <div css={styles.container}>
+    <div css={[styles.container, extraCss]}>
       <Global styles={globalStyles} />
       <Sprite />
-      <Nav />
+      <Nav extraCss={navStyle} />
       <main css={styles.content}>{children}</main>
       <Footer />
     </div>

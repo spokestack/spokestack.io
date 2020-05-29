@@ -28,7 +28,8 @@ const styles = {
     text-align: center;
     background-color: ${theme.primaryLight};
     border-radius: 7px;
-    height: 400px;
+    padding: 50px 20px;
+    margin: 0 20px;
 
     h3 {
       margin-bottom: 15px;
@@ -40,6 +41,7 @@ const styles = {
     }
 
     ${MIN_DEFAULT_MEDIA_QUERY} {
+      min-height: 400px;
       margin: 0 50px;
     }
   `

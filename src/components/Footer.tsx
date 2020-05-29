@@ -3,7 +3,8 @@ import * as theme from '../styles/theme'
 import { Global, css } from '@emotion/core'
 import {
   MIN_DEFAULT_MEDIA_QUERY,
-  MIN_LARGE_DISPLAY_MEDIA_QUERY
+  MIN_LARGE_DISPLAY_MEDIA_QUERY,
+  MIN_TABLET_MEDIA_QUERY
 } from 'typography-breakpoint-constants'
 import { graphql, useStaticQuery } from 'gatsby'
 
@@ -141,7 +142,7 @@ const styles = {
     position: relative;
     display: flex;
     flex-direction: column;
-    padding: 25px 0;
+    padding: 25px 0 50px;
     margin: 0 auto;
 
     ${MIN_DEFAULT_MEDIA_QUERY} {
@@ -201,17 +202,29 @@ const styles = {
   bottom: css`
     position: absolute;
     left: 0;
+    right: 0;
     bottom: 0;
     display: flex;
-    flex-direction: row;
+    flex-direction: column;
+    justify-content: center;
     align-items: center;
     white-space: nowrap;
+
+    ${MIN_TABLET_MEDIA_QUERY} {
+      flex-direction: row;
+      justify-content: flex-start;
+    }
   `,
   copyright: css`
     color: ${theme.mainBorderDark};
   `,
   separator: css`
     margin: 0 20px;
+    display: none;
+
+    ${MIN_TABLET_MEDIA_QUERY} {
+      display: block;
+    }
   `,
   privacyLink: css`
     margin: 0;

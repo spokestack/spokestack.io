@@ -111,7 +111,7 @@ const styles = {
     flex-direction: column;
     justify-content: center;
     align-items: center;
-    padding: 50px 0;
+    padding: 50px 20px;
     min-height: 638px;
 
     h3 {

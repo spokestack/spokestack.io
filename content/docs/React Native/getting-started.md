@@ -95,22 +95,50 @@ Head over to `Info.plist` in your project and add a couple keys. Here are the ra
 
 Apple manages the various demands on a phone's audio system via [audio sessions](https://developer.apple.com/library/archive/documentation/Audio/Conceptual/AudioSessionProgrammingGuide/Introduction/Introduction.html). See their documentation for more details, but here's the minimum configuration you'll need in order to record user speech. A good place for it is your `AppDelegate`'s `application(_:didFinishLaunchingWithOptions)` method.
 
-```swift
-import AVFoundation
+Given that, and remembering to remove Flipper as discussed earlier, your `AppDelegate.m` should look similar to this:
 
-...
+```objc
+#import "AppDelegate.h"
+#import <AVFoundation/AVFoundation.h>
 
-func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions:
-    [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
-    let audioSession = AVAudioSession.sharedInstance()
-    do {
-        try audioSession.setCategory(AVAudioSession.Category.playAndRecord, mode: AVAudioSession.Mode.default,
-                                     options: [AVAudioSession.CategoryOptions.defaultToSpeaker, AVAudioSession.CategoryOptions.allowBluetooth, AVAudioSession.CategoryOptions.allowAirPlay])
-        try audioSession.setActive(true)
-    } catch let error as NSError {
-        // handle error
-    }
+#import <React/RCTBridge.h>
+#import <React/RCTBundleURLProvider.h>
+#import <React/RCTRootView.h>
+
+@implementation AppDelegate
+
+- (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions
+{
+
+  # set the AVSession to a category compatible with both recording and playback
+  [[AVAudioSession sharedInstance] setCategory:AVAudioSessionCategoryPlayAndRecord mode:AVAudioSessionModeDefault options:AVAudioSessionCategoryOptionDefaultToSpeaker  error:nil];
+  [[AVAudioSession sharedInstance] setActive:YES error:nil];
+
+  RCTBridge *bridge = [[RCTBridge alloc] initWithDelegate:self launchOptions:launchOptions];
+  RCTRootView *rootView = [[RCTRootView alloc] initWithBridge:bridge
+                                                   moduleName:@"YOUR APP NAME"
+                                            initialProperties:nil];
+
+  rootView.backgroundColor = [[UIColor alloc] initWithRed:1.0f green:1.0f blue:1.0f alpha:1];
+
+  self.window = [[UIWindow alloc] initWithFrame:[UIScreen mainScreen].bounds];
+  UIViewController *rootViewController = [UIViewController new];
+  rootViewController.view = rootView;
+  self.window.rootViewController = rootViewController;
+  [self.window makeKeyAndVisible];
+  return YES;
 }
+
+- (NSURL *)sourceURLForBridge:(RCTBridge *)bridge
+{
+#if DEBUG
+  return [[RCTBundleURLProvider sharedSettings] jsBundleURLForBundleRoot:@"index" fallbackResource:nil];
+#else
+  return [[NSBundle mainBundle] URLForResource:@"main" withExtension:@"jsbundle"];
+#endif
+}
+
+@end
 ```
 
 ### Android

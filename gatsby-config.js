@@ -1,4 +1,3 @@
-/* eslint-disable @typescript-eslint/camelcase */
 module.exports = {
   siteMetadata: {
     title: 'Spokestack',
@@ -6,40 +5,86 @@ module.exports = {
     description:
       'Spokestack is a powerful platform of open source libraries and robust services to make your app fully voice-enabled.',
     siteUrl: 'https://spokestack.io/',
+    logo: 'https://spokestack.io/logo.png',
     social: {
       twitter: 'https://twitter.com/spokestack',
       github: 'https://github.com/spokestack',
       stackoverflow: 'https://stackoverflow.com/questions/tagged/spokestack'
     },
     // Should match the queries in src/components/TeamMembers.tsx
+    // and images in src/components/AuthorImage.tsx
     team: {
       will: {
         name: 'Will Rice',
-        title: 'Data Science Engineer'
+        title: 'Data Science Engineer',
+        bio: '',
+        social: {
+          twitter: '',
+          linkedin: '',
+          email: ''
+        }
       },
       elizabeth: {
         name: 'Elizabeth Ropp',
-        title: 'UX & Product Design'
+        title: 'UX & Product Design',
+        bio: '',
+        social: {
+          twitter: '',
+          linkedin: '',
+          email: ''
+        }
       },
       brent: {
         name: 'Brent Spell',
-        title: 'CTO'
+        title: 'CTO',
+        bio: '',
+        social: {
+          twitter: '',
+          linkedin: '',
+          email: ''
+        }
       },
       mike: {
         name: 'Mike Tatum',
-        title: 'CEO'
+        title: 'CEO',
+        bio:
+          'Mike is the CEO of Spokestack. He loves making late-night purchases on Discogs and using new technologies to create better user experiences and products.',
+        social: {
+          twitter: 'https://twitter.com/miketatum',
+          linkedin: 'https://www.linkedin.com/in/miketatum/',
+          email: 'mailto:mike@spokestack.io'
+        }
       },
       noel: {
         name: 'Noel Weichbrodt',
-        title: 'Principal Engineer'
+        title: 'Principal Engineer',
+        bio: '',
+        social: {
+          twitter: '',
+          linkedin: '',
+          email: ''
+        }
       },
       timmy: {
         name: 'Timmy Willison',
-        title: 'Front-End Engineer'
+        title: 'Front-End Engineer',
+        bio: '',
+        social: {
+          twitter: '',
+          linkedin: '',
+          email: ''
+        }
       },
       josh: {
         name: 'Josh Ziegler',
-        title: 'Conversation Engineer'
+        title: 'Principal Computational Linguist',
+        bio:
+          'Josh lives at the intersection of language and technology. An avid reader, he enjoys long runs in the woods and pedantic arguments about...well, pick a topic.',
+        social: {
+          twitter: '',
+          linkedin: 'https://www.linkedin.com/in/joshziegler/',
+          email: 'mailto:josh@spokestack.io'
+        }
       }
     },
     events: [
@@ -58,25 +103,6 @@ module.exports = {
     ]
   },
   plugins: [
-    // This source is only for introspection in development.
-    // It should NOT be used in gatsby graphql queries.
-    // Queries to Spokestack run only at runtime with
-    // the user's credentials, specifically on account pages.
-    !!process.env.SS_DEV_GITHUB_TOKEN && {
-      resolve: 'gatsby-source-graphql',
-      options: {
-        typeName: 'Spokestack',
-        fieldName: 'spokestack',
-        url: `${process.env.SS_API_URL}/control`,
-        headers: {
-          // Generate this token by logging into your
-          // Spokestack account with GitHub OAuth.
-          // Copy the value from localStorage
-          // and set it in your environment variables.
-          Authorization: `GitHub ${process.env.SS_DEV_GITHUB_TOKEN}`
-        }
-      }
-    },
     {
       resolve: 'gatsby-source-filesystem',
       options: {
@@ -120,7 +146,7 @@ module.exports = {
           {
             resolve: 'gatsby-remark-images',
             options: {
-              maxWidth: 590,
+              maxWidth: 700,
               backgroundColor: 'transparent'
             }
           },
@@ -221,7 +247,7 @@ module.exports = {
     {
       resolve: 'gatsby-plugin-typography',
       options: {
-        pathToConfigModule: 'src/utils/typography'
+        pathToConfigModule: 'src/styles/typography'
       }
     },
     'gatsby-plugin-remove-trailing-slashes'

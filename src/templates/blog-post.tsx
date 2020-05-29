@@ -16,7 +16,7 @@ type Props = PageRendererProps & {
   }
 }
 
-export default function Blog({ data, pageContext }: Props) {
+export default function BlogPostTemplate({ data, pageContext }: Props) {
   return <BlogPost post={data.markdownRemark} related={pageContext.related} />
 }
 

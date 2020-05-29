@@ -1,16 +1,15 @@
-import { Account, AccountSummary } from '../types'
+import { Account, AccountSummary } from '../../types'
+import { clearStorage, isLoggedIn } from '../../utils/auth'
 import { useLazyQuery, useQuery } from '@apollo/react-hooks'
 
-import ErrorPage from './ErrorPage'
-import LoadingPage from './LoadingPage'
+import LoadingPage from '../LoadingPage'
 import React from 'react'
 import { RouteComponentProps } from '@reach/router'
 import gql from 'graphql-tag'
-import { isLoggedIn, clearStorage } from '../utils/auth'
 import { navigate } from 'gatsby'
 
 const LIST_ACCOUNTS_QUERY = gql`
-  query ListAccounts {
+  query listAccounts {
     listAccounts {
       displayName
       id
@@ -20,7 +19,7 @@ const LIST_ACCOUNTS_QUERY = gql`
 `
 
 const ACCOUNT_QUERY = gql`
-  query GetAccount($id: ID) {
+  query getAccount($id: ID) {
     getAccount(id: $id) {
       apiKeys {
         displayName
@@ -76,18 +75,8 @@ export default function RouteWithAccount({
 
   if (error) {
     clearStorage()
-    return (
-      <ErrorPage title="Account Settings">
-        <h4>We&rsquo;re sorry! There was a problem retrieving your account.</h4>
-        <h2>
-          Please <a href="/login">log in</a> again.
-        </h2>
-        <p>Debugging details:</p>
-        <p>
-          <code>{error.message}</code>
-        </p>
-      </ErrorPage>
-    )
+    navigate('/login')
+    return null
   }
   if (loading) {
     return <LoadingPage />

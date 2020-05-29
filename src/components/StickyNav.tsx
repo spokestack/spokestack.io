@@ -1,6 +1,6 @@
-import * as theme from '../utils/theme'
+import * as theme from '../styles/theme'
 
-import React, { useEffect, useState } from 'react'
+import React, { useEffect, useRef, useState } from 'react'
 
 import { MIN_DEFAULT_MEDIA_QUERY } from 'typography-breakpoint-constants'
 import NavSelectedBackground from './NavSelectedBackground'
@@ -8,16 +8,16 @@ import Select from './Select'
 import { StickyLink } from '../types'
 import StickyNavSection from './StickyNavSection'
 import { WindowLocation } from '@reach/router'
-import { adjustFontSizeTo } from '../utils/typography'
+import { adjustFontSizeTo } from '../styles/typography'
 import { css } from '@emotion/core'
 import groupBy from 'lodash/groupBy'
 import hashToId from '../utils/hashToId'
 import throttle from 'lodash/throttle'
 
 export interface StickyNavProps {
+  hideSelect?: boolean
   links: StickyLink[]
-  location?: WindowLocation
-  matchHash?: boolean
+  location: WindowLocation
 }
 
 function isSection(section: string) {
@@ -39,66 +39,78 @@ function optionsFromLinks(links: StickyLink[]) {
 let navigating = true
 
 export default function StickyNav({
+  hideSelect,
   links = [],
-  location,
-  matchHash
+  location
 }: StickyNavProps) {
-  if (!links.length || (matchHash && !location)) {
+  if (!links.length) {
     return null
   }
+  const navRef = useRef<HTMLElement>(null)
   const [selectedLink, setSelectedLink] = useState<StickyLink>(null)
   const [selectedId, setSelectedId] = useState<string>(null)
   useEffect(() => {
-    if (matchHash) {
-      const locs: { [key: number]: HTMLElement } = {}
-      links.forEach((link) => {
+    const locs: { [key: number]: HTMLElement } = {}
+    const linksWithHash: StickyLink[] = []
+    links.forEach((link) => {
+      if (link.matchHash) {
         const elem =
           (link.ref && link.ref.current) ||
           document.querySelector(link.refSelector)
         if (elem) {
           locs[elem.offsetTop + elem.offsetHeight / 3] = elem
-        } else {
-          console.warn(`Link for ${link.title} not found`)
         }
-      })
-      const orderedLocs = Object.keys(locs).map(Number).sort().reverse()
-      const onScroll = throttle(() => {
-        if (navigating) {
-          return
-        }
-        const scroll = window.scrollY + window.innerHeight
-        for (const loc of orderedLocs) {
-          if (scroll > loc + 120) {
-            const id = `${locs[loc].id}-link`
-            if (selectedId !== id) {
-              setSelectedId(id)
-            }
-            return
-          }
-        }
-      }, 50)
-      document.addEventListener('scroll', onScroll, { passive: true })
-      setTimeout(() => {
-        setSelectedId(`${hashToId(location.hash || links[0].href)}-link`)
-        navigating = false
-      }, 200)
-
-      return () => {
-        document.removeEventListener('scroll', onScroll)
-      }
-    }
-    links.forEach((link) => {
-      if (linkIsSelected(link)) {
+        linksWithHash.push(link)
+      } else if (linkIsSelected(link)) {
         setSelectedLink(link)
       }
     })
+    const orderedLocs = Object.keys(locs).map(Number).sort().reverse()
+    const onScroll = throttle(() => {
+      if (navigating) {
+        return
+      }
+      const scroll = window.scrollY + window.innerHeight
+      for (const loc of orderedLocs) {
+        if (scroll > loc + 120) {
+          const id = `${locs[loc].id}-link`
+          if (selectedId !== id) {
+            setSelectedId(id)
+          }
+          return
+        }
+      }
+    }, 50)
+    document.addEventListener('scroll', onScroll, { passive: true })
+    const timeout = setTimeout(() => {
+      if (linksWithHash.length) {
+        setSelectedId(
+          `${hashToId(location.hash || linksWithHash[0].href)}-link`
+        )
+      }
+      navigating = false
+    }, 200)
+
+    return () => {
+      clearTimeout(timeout)
+      document.removeEventListener('scroll', onScroll)
+    }
   }, [])
+  useEffect(() => {
+    if (selectedLink) {
+      const id = `${hashToId(selectedLink.href)}-link`
+      const elem = document.getElementById(id)
+      if (elem && navRef.current) {
+        navRef.current.scrollTo({ top: elem.offsetTop - 25 })
+      }
+    }
+  }, [selectedLink])
   const groupedLinks = groupBy(links, 'section')
   const sections = Object.keys(groupedLinks)
 
   return (
-    <nav css={styles.stickyNav}>
-      {!matchHash && (
+    <nav ref={navRef} css={styles.stickyNav}>
+      {!hideSelect && (
         <Select
           id="sticky-nav"
           extraCss={styles.mobileNav}
@@ -111,7 +123,10 @@ export default function StickyNav({
                   title: selectedLink.title,
                   value: selectedLink.href
                 }
-              : undefined
+              : {
+                  title: links[0].title,
+                  value: links[0].href
+                }
           }
           onChange={(value) => {
             window.location.href = value
@@ -133,7 +148,6 @@ export default function StickyNav({
           headerText={isSection(section) ? section : null}
           links={groupedLinks[section]}
           location={location}
-          matchHash={matchHash}
           onSelect={(id) => {
             navigating = true
             setSelectedId(id)
@@ -141,22 +155,24 @@ export default function StickyNav({
               navigating = false
             }, 200)
           }}
-          selectedId={selectedId}
+          selectedId={!selectedLink && selectedId}
         />
       ))}
-      <NavSelectedBackground selectedId={selectedId} />
+      {!selectedLink && <NavSelectedBackground selectedId={selectedId} />}
     </nav>
   )
 }
 
 const styles = {
   stickyNav: css`
+    position: relative;
     ${MIN_DEFAULT_MEDIA_QUERY} {
-      position: relative;
       position: sticky;
-      top: 60px;
-      margin-bottom: 25px;
+      top: 0;
+      bottom: 0;
+      padding: 25px 0;
       min-width: 250px;
+      max-height: calc(100vh - 25px);
       overflow-y: auto;
     }
   `,

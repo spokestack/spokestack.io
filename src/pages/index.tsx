@@ -1,4 +1,4 @@
-import * as theme from '../utils/theme'
+import * as theme from '../styles/theme'
 
 import {
   DEFAULT_WIDTH,
@@ -19,7 +19,7 @@ import SVGIcon from '../components/SVGIcon'
 import SampleVoices from '../components/SampleVoices'
 import StickyNavLayout from '../components/StickyNavLayout'
 import { css } from '@emotion/core'
-import { rhythm } from '../utils/typography'
+import { rhythm } from '../styles/typography'
 import voices from '../utils/voices'
 
 interface Props extends PageRendererProps {
@@ -33,23 +33,27 @@ export default function Index({ data, location }: Props) {
   const links = [
     {
       href: '/#asr',
-      title: 'Spokestack ASR and VAD',
-      ref: useRef<HTMLDivElement>(null)
+      matchHash: true,
+      ref: useRef<HTMLDivElement>(null),
+      title: 'Spokestack ASR and VAD'
     },
     {
       href: '/#wakeword',
-      title: 'Spokestack Wakeword',
-      ref: useRef<HTMLDivElement>(null)
+      matchHash: true,
+      ref: useRef<HTMLDivElement>(null),
+      title: 'Spokestack Wakeword'
     },
     {
       href: '/#tts',
-      title: 'Spokestack TTS',
-      ref: useRef<HTMLDivElement>(null)
+      matchHash: true,
+      ref: useRef<HTMLDivElement>(null),
+      title: 'Spokestack TTS'
     },
     {
       href: '/#nlu',
-      title: 'Spokestack NLU',
-      ref: useRef<HTMLDivElement>(null)
+      matchHash: true,
+      ref: useRef<HTMLDivElement>(null),
+      title: 'Spokestack NLU'
     }
   ]
 
@@ -72,7 +76,7 @@ export default function Index({ data, location }: Props) {
           Spokestack is a powerful platform of open source libraries and robust
           services to make your app fully voice-enabled.
         </h4>
-        <a href="/docs" className="btn btn-large">
+        <a href="/docs" className="btn btn-secondary btn-large">
           Get started
           <SVGIcon
             icon="#arrow-forward"
@@ -144,7 +148,7 @@ export default function Index({ data, location }: Props) {
       </section>
       <StickyNavLayout
         id="products"
-        matchHash
+        hideSelect
         links={links}
         location={location}>
         <h1 css={styles.productsHeader}>Products &amp; Services</h1>
@@ -473,6 +477,10 @@ const styles = {
     background-color: ${theme.primary};
     color: white;
     padding: ${rhythm(2)} 20px;
+
+    ${theme.ieBreakpoint} {
+      width: 100%;
+    }
   `,
   card: css`
     ${theme.ieBreakpoint} {

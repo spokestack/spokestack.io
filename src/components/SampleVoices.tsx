@@ -1,3 +1,5 @@
+import * as theme from '../styles/theme'
+
 import React, { PureComponent } from 'react'
 import Select, { Option } from './Select'
 
@@ -6,13 +8,12 @@ import Card from './Card'
 import { MIN_TABLET_MEDIA_QUERY } from 'typography-breakpoint-constants'
 import SVGIcon from './SVGIcon'
 import Textarea from './Textarea'
-import { adjustFontSizeTo } from '../utils/typography'
+import { Voice } from '../types'
+import { adjustFontSizeTo } from '../styles/typography'
 import { css } from '@emotion/core'
 import debounce from 'lodash/debounce'
 import find from 'lodash/find'
-import * as theme from '../utils/theme'
 import synthesize from '../utils/synthesize'
-import { Voice } from '../types'
 
 const defaultStrings = {
   ipa: 'Hello, welcome to {{spoʊkstæk}}. What would you like to say?',
@@ -58,11 +59,13 @@ export default class SampleVoices extends PureComponent<Props, State> {
     this.getAudio()
   }
 
+  resetState = () => {
+    this.setState({ disabled: false, submitting: false })
+  }
+
   loadAudio(url: string) {
     this.audio = new Audio(url)
-    this.audio.addEventListener('canplaythrough', () => {
-      this.setState({ disabled: false, submitting: false })
-    })
+    this.audio.addEventListener('canplaythrough', this.resetState)
     this.audio.load()
   }
 
@@ -86,7 +89,7 @@ export default class SampleVoices extends PureComponent<Props, State> {
         disabled: false,
         submitting: false,
         errorText:
-          synthError.message ||
+          (synthError && synthError.message) ||
           'There was a problem synthesizing the text. Please try again.'
       })
     }
@@ -138,6 +141,7 @@ export default class SampleVoices extends PureComponent<Props, State> {
               disabled={disabled || submitting}
               selected={selected}
               extraCss={styles.select}
+              selectCss={styles.selectElem}
               iconWrapCss={styles.selectIconWrap}
               options={this.options}
               onChange={(value) => {
@@ -194,16 +198,13 @@ export default class SampleVoices extends PureComponent<Props, State> {
             !submitting &&
             !!(this.audio && this.audio.src) ? (
               <a
-                className="btn btn-primary"
+                className="btn btn-transparent"
                 download="download"
-                css={styles.downloadLink}
                 href={this.audio.src}>
                 <SVGIcon
+                  className="icon"
                   icon="#download"
-                  extraCss={css`
-                    ${styles.icon}
-                    ${styles.downloadIcon}
-                  `}
+                  extraCss={styles.downloadIcon}
                 />
                 Download
               </a>
@@ -216,11 +217,9 @@ export default class SampleVoices extends PureComponent<Props, State> {
               extraCss={styles.playButton}
               onClick={this.play}>
               <SVGIcon
+                className="icon"
                 icon="#play-circle"
-                extraCss={css`
-                  ${styles.icon}
-                  ${styles.playIcon}
-                `}
+                extraCss={styles.playIcon}
               />
               {submitting ? 'Synthesizing...' : 'Hear it'}
             </Button>
@@ -282,6 +281,9 @@ const styles = {
       }
     }
   `,
+  selectElem: css`
+    height: 40px;
+  `,
   selectIconWrap: css`
     background: none;
     border-radius: 0;
@@ -340,33 +342,20 @@ const styles = {
       grid-gap: 0;
     }
   `,
-  downloadLink: css`
-    svg {
-      transition: fill 0.2s ${theme.transitionEasing};
-    }
-    &:hover svg,
-    &:active svg {
-      fill: white;
-    }
-  `,
   playButton: css`
     ${MIN_TABLET_MEDIA_QUERY} {
       margin-left: 20px;
     }
   `,
-  icon: css`
-    margin-right: 5px;
-    margin-left: 0 !important;
-  `,
   playIcon: css`
-    fill: ${theme.text};
     width: 18px;
     height: 18px;
+    margin-right: 5px;
   `,
   downloadIcon: css`
-    fill: ${theme.primary};
     width: 24px;
     height: 24px;
+    margin-right: 5px;
   `,
   textarea: css`
     margin-bottom: 20px;

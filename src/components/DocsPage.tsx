@@ -7,15 +7,32 @@ import React from 'react'
 import SEO from '../components/SEO'
 import { StickyLink } from '../types'
 import StickyNavLayout from '../components/StickyNavLayout'
+import { WindowLocation } from '@reach/router'
+import difference from 'lodash/difference'
 import order from '../../content/docs/nav.json'
 import sortBy from 'lodash/sortBy'
+import uniqBy from 'lodash/uniqBy'
 
 interface Props {
+  location: WindowLocation
   post: MarkdownRemark
   selectFirst?: boolean
 }
 
+function checkDups(links: StickyLink[]) {
+  const unique = uniqBy(links, (link) => link.navId)
+  if (unique.length !== links.length) {
+    const diff = difference(links, unique)
+    throw new Error(
+      `The following navIds are not unique: ${diff
+        .map((link) => link.navId)
+        .join(', ')}.`
+    )
+  }
+}
+
 function orderLinks(links: StickyLink[]) {
+  checkDups(links)
   return sortBy(links, (link) => {
     const index = order.indexOf(link.navId)
     if (index === -1) {
@@ -27,7 +44,7 @@ function orderLinks(links: StickyLink[]) {
   })
 }
 
-export default function DocsPage({ post, selectFirst }: Props) {
+export default function DocsPage({ location, post, selectFirst }: Props) {
   const links: StickyLink[] = []
   const data = useStaticQuery<Query>(docsPageQuery)
   const posts = data.allMarkdownRemark.edges
@@ -48,11 +65,12 @@ export default function DocsPage({ post, selectFirst }: Props) {
     <Layout>
       <SEO
         title="Docs"
+        longTitle="Spokestack Documentation"
         description={
           post.frontmatter.description || 'Documentation for the Spokestack API'
         }
       />
-      <StickyNavLayout links={orderedLinks}>
+      <StickyNavLayout links={orderedLinks} location={location}>
         <header className="docs-header">
           {selectFirst ? (
             <h1>

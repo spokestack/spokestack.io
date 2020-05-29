@@ -1,5 +1,11 @@
 import {
-  DEFAULT_WIDTH,
+  MAX_SIDEBAR_WIDTH,
+  MAX_TEXT_WIDTH,
+  MIN_SIDEBAR_WIDTH,
+  MIN_TEXT_WIDTH,
+  ieBreakpoint
+} from '../styles/theme'
+import {
   MIN_DEFAULT_MEDIA_QUERY,
   MIN_LARGE_DISPLAY_MEDIA_QUERY
 } from 'typography-breakpoint-constants'
@@ -12,8 +18,10 @@ import { Link } from 'gatsby'
 import { MarkdownRemark } from '../utils/graphql'
 import React from 'react'
 import SEO from '../components/SEO'
+import Tags from './Tags'
 import { css } from '@emotion/core'
-import { rhythm } from '../utils/typography'
+import findImage from '../utils/findImage'
+import { rhythm } from '../styles/typography'
 
 interface Props {
   post: MarkdownRemark
@@ -25,7 +33,9 @@ export default function BlogPost({ post, related }: Props) {
     <Layout>
       <SEO
         title="Blog"
+        longTitle={post.frontmatter.title}
         description={post.frontmatter.description || 'The Spokestack Blog'}
+        image={findImage(post.html)}
       />
       <div css={styles.container}>
         <section css={styles.author}>
@@ -41,25 +51,11 @@ export default function BlogPost({ post, related }: Props) {
         </section>
         {post.fields && (
           <section css={styles.related}>
-            {post.fields.tags && !!post.fields.tags.length && (
-              <>
-                <h6>Related Tags</h6>
-                <div css={styles.tags}>
-                  {post.fields.tags.map((tag, i) => (
-                    <a
-                      // href="#"
-                      key={`tag-${i}`}
-                      className="btn btn-primary btn-small">
-                      {tag}
-                    </a>
-                  ))}
-                </div>
-              </>
-            )}
+            <Tags tags={post.fields.tags} header="Related Tags" />
             {related && !!related.length && (
               <>
                 <h6>Related Articles</h6>
-                <div>
+                <div css={styles.relatedLinks}>
                   {related.map((link, i) => (
                     <Link
                       key={`related-${i}`}
@@ -85,20 +81,30 @@ const styles = {
     padding: 20px 20px ${rhythm(2)};
 
     ${MIN_DEFAULT_MEDIA_QUERY} {
-      padding: ${rhythm(2)} 40px;
+      flex-direction: row;
       display: grid;
-      grid-template-columns: minmax(200px, 350px) minmax(
-          700px,
-          ${DEFAULT_WIDTH}
-        );
+      grid-template-columns:
+        minmax(${MIN_SIDEBAR_WIDTH}, ${MAX_SIDEBAR_WIDTH}) minmax(
+          ${MIN_TEXT_WIDTH},
+          ${MAX_TEXT_WIDTH}
+        )
+        minmax(${MIN_SIDEBAR_WIDTH}, ${MAX_SIDEBAR_WIDTH});
       grid-template-rows: auto 1fr;
       grid-template-areas:
         'author  content'
         'related content';
+      padding: ${rhythm(2)} 40px;
+      max-width: calc(
+        ${MAX_SIDEBAR_WIDTH} + ${MAX_TEXT_WIDTH} + ${MAX_SIDEBAR_WIDTH}
+      );
+      margin: 0 auto;
     }
     ${MIN_LARGE_DISPLAY_MEDIA_QUERY} {
       padding-left: 100px;
       padding-right: 100px;
+    }
+    ${ieBreakpoint} {
+      width: 100%;
     }
   `,
   author: css`
@@ -108,6 +114,10 @@ const styles = {
     ${MIN_DEFAULT_MEDIA_QUERY} {
       margin-bottom: 0;
     }
+
+    ${ieBreakpoint} {
+      min-width: 200px;
+    }
   `,
   content: css`
     grid-area: content;
@@ -115,25 +125,26 @@ const styles = {
     ${MIN_DEFAULT_MEDIA_QUERY} {
       margin-left: 50px;
     }
+
+    ${ieBreakpoint} {
+      width: 100%;
+      min-width: 500px;
+    }
   `,
   related: css`
     grid-area: related;
     padding: 0 20px;
 
-    h6 {
-      margin: ${rhythm(1)} 0 ${rhythm(0.8)};
-      font-style: italic;
-      font-size: 80%;
+    ${ieBreakpoint} {
+      min-width: 200px;
     }
   `,
-  tags: css`
+  relatedLinks: css`
     display: flex;
-    flex-wrap: wrap;
-    margin: -5px;
+    flex-direction: column;
 
-    .btn {
-      display: inline-flex;
-      margin: 5px;
+    a {
+      margin-bottom: 10px;
     }
   `
 }

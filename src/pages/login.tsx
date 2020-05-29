@@ -1,15 +1,17 @@
+import * as theme from '../styles/theme'
+
 import {
   DEFAULT_WIDTH,
   MIN_DEFAULT_MEDIA_QUERY
 } from 'typography-breakpoint-constants'
 import React, { useEffect, useState } from 'react'
-import * as theme from '../utils/theme'
+
 import Layout from '../components/Layout'
 import SVGIcon from '../components/SVGIcon'
 import { createLink as createGitHubLink } from '../utils/oauthGitHub'
 import { createLink as createGoogleLink } from '../utils/oauthGoogle'
 import { css } from '@emotion/core'
-import { rhythm } from '../utils/typography'
+import { rhythm } from '../styles/typography'
 
 export default function OAuth() {
   const [gitHubLink, setGitHubLink] = useState<string>(null)
@@ -26,19 +28,13 @@ export default function OAuth() {
         </h4>
         <div css={styles.content}>
           <div css={styles.links}>
-            <a
-              href={gitHubLink}
-              className="btn btn-primary btn-large"
-              css={styles.button}>
+            <a href={gitHubLink} className="btn btn-large" css={styles.button}>
               <div css={styles.iconWrap}>
                 <SVGIcon icon="#github" css={styles.linkIcon} />
               </div>
               Sign In Using GitHub
             </a>
-            <a
-              href={googleLink}
-              className="btn btn-primary btn-large"
-              css={styles.button}>
+            <a href={googleLink} className="btn btn-large" css={styles.button}>
               <div css={styles.iconWrap}>
                 <SVGIcon icon="#google" css={styles.linkIcon} />
               </div>
@@ -103,13 +99,6 @@ const styles = {
   button: css`
     padding-left: 0 !important;
     margin-bottom: 20px;
-
-    background-color: ${theme.primary} !important;
-    color: white !important;
-
-    &:hover {
-      background-color: ${theme.primaryColor.darken(0.2).hex()} !important;
-    }
   `,
   iconWrap: css`
     display: flex;

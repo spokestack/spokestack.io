@@ -1,8 +1,9 @@
+import * as theme from '../../styles/theme'
+
 import { SerializedStyles, css } from '@emotion/core'
 
 import React from 'react'
-import { rhythm } from '../utils/typography'
-import * as theme from '../utils/theme'
+import { rhythm } from '../../styles/typography'
 
 interface Props {
   title: string
@@ -40,7 +41,6 @@ const styles = {
     border: 1px solid ${theme.mainBorder};
     border-radius: 7px;
     overflow: hidden;
-    max-width: 700px;
     margin-bottom: ${rhythm(1)};
   `,
   cardHeader: css`

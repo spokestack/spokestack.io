@@ -1,20 +1,19 @@
-import * as theme from '../utils/theme'
+import * as theme from '../../styles/theme'
 
-import { Account, ApiKey } from '../types'
-import React, { useState } from 'react'
+import { Account, ApiKey } from '../../types'
+import React, { useRef, useState } from 'react'
 
 import AccountCard from './AccountCard'
 import AccountLayout from './AccountLayout'
-import AddTokenForm from './AddTokenForm'
+import AddTokenForm from '../AddTokenForm'
+import { CopyButton } from '../EditButtons'
 import { RouteComponentProps } from '@reach/router'
-import SVGIcon from './SVGIcon'
+import SVGIcon from '../SVGIcon'
 import Token from './Token'
-import { adjustFontSizeTo } from '../utils/typography'
+import { adjustFontSizeTo } from '../../styles/typography'
 import { css } from '@emotion/core'
 import gql from 'graphql-tag'
 import { useMutation } from '@apollo/react-hooks'
-import SampleVoices from './SampleVoices'
-import voices from '../utils/voices'
 
 const ADD_TOKEN = gql`
   mutation CreateKey($accountId: ID!, $displayName: String!) {
@@ -49,6 +48,7 @@ interface RemoveKeyMutation {
 }
 
 export default function Settings({ account, location }: Props) {
+  const idRef = useRef<HTMLInputElement>(null)
   const [tokens, setTokens] = useState((account || {}).apiKeys || [])
   const [showForm, setShowForm] = useState(false)
   const [addToken, { loading: addTokenLoading }] = useMutation<
@@ -60,20 +60,25 @@ export default function Settings({ account, location }: Props) {
     }
   })
   const [removeToken] = useMutation<RemoveKeyMutation>(REMOVE_TOKEN)
-  const displayName = (account || {}).displayName || ''
   const accountId = (account || {}).id || ''
   return (
-    <AccountLayout location={location} title={displayName}>
+    <AccountLayout location={location}>
       <h2>Settings</h2>
       <AccountCard title="General" id="general">
-        <div className="input-wrap">
-          <label>Project name</label>
-          <div className="input-value">{displayName}</div>
+        <div css={styles.row}>
+          <label className="label" htmlFor={`account-${accountId}`}>
+            Project ID
+          </label>
+          <CopyButton title="Copy Account ID" inputRef={idRef} />
         </div>
-        <div className="input-wrap">
-          <label>Project ID</label>
-          <div className="input-value">{accountId}</div>
-        </div>
+        <input
+          ref={idRef}
+          readOnly
+          id={`account-${accountId}`}
+          type="text"
+          className="input"
+          value={accountId}
+        />
       </AccountCard>
       <AccountCard
         title="API Credentials"
@@ -126,14 +131,17 @@ export default function Settings({ account, location }: Props) {
           ))}
         </div>
       </AccountCard>
-      <div id="voices">
-        <SampleVoices allowDownload voices={voices} />
-      </div>
     </AccountLayout>
   )
 }
 
 const styles = {
+  row: css`
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+  `,
   addLink: css`
     display: flex;
     flex-direction: row;

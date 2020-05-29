@@ -1,22 +1,20 @@
+import * as theme from '../styles/theme'
+
+import { Global, css } from '@emotion/core'
 import React, { useEffect, useState } from 'react'
 
-import * as theme from '../utils/theme'
 import { DEFAULT_MEDIA_QUERY } from 'typography-breakpoint-constants'
 import { Link } from 'gatsby'
 import SVGIcon from './SVGIcon'
 import { StickyLink } from '../types'
-import { css } from '@emotion/core'
-import hashToId from '../utils/hashToId'
-import { adjustFontSizeTo } from '../utils/typography'
 import { WindowLocation } from '@reach/router'
+import { adjustFontSizeTo } from '../styles/typography'
+import hashToId from '../utils/hashToId'
 
 interface Props {
   headerText: string
   links: StickyLink[]
   location: WindowLocation
-
-  // Hash matching only
-  matchHash?: boolean
   onSelect?: (id: string) => void
   selectedId?: string
 }
@@ -25,7 +23,6 @@ export default function StickyNavSection({
   headerText,
   links,
   location,
-  matchHash,
   onSelect,
   selectedId
 }: Props) {
@@ -43,6 +40,37 @@ export default function StickyNavSection({
 
   return (
     <div css={styles.stickyNavSection}>
+      <Global
+        styles={css`
+          .sticky-nav-link-active,
+          .nav-selected-bg {
+            background-color: ${theme.mainBackground};
+          }
+          .sticky-nav-link-active,
+          .sticky-nav-link-active-no-bg {
+            color: ${theme.linkStickyNavActive} !important;
+          }
+          .sticky-nav-wrap .select-label .icon,
+          .sticky-nav-header-icon {
+            fill: ${theme.header};
+          }
+
+          html.dark-mode {
+            .nav-selected-bg,
+            .sticky-nav-link-active {
+              background-color: ${theme.mainBackgroundDark};
+            }
+            .sticky-nav-link-active,
+            .sticky-nav-link-active-no-bg {
+              color: ${theme.linkDark} !important;
+            }
+            .sticky-nav-wrap .select-label .icon,
+            .sticky-nav-header-icon {
+              fill: ${theme.textDarkBg};
+            }
+          }
+        `}
+      />
       {headerText && (
         <h3 css={styles.stickyNavHeader} onClick={() => setOpen(!open)}>
           <a>
@@ -58,7 +86,7 @@ export default function StickyNavSection({
       <div className={open ? 'open' : ''} css={styles.stickyNavDetails}>
         {links.map((link, i) => {
           const id = `${hashToId(link.href)}-link`
-          return matchHash ? (
+          return link.matchHash ? (
             <a
               key={`sticky-nav-link-${i}`}
               css={styles.stickyNavLink}
@@ -87,6 +115,7 @@ export default function StickyNavSection({
           ) : (
             <Link
               key={`sticky-nav-link-${i}`}
+              id={id}
               css={styles.stickyNavLink}
               activeClassName="sticky-nav-link-active"
               to={link.href}

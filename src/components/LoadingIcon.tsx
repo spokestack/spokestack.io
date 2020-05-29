@@ -1,6 +1,7 @@
 import { SerializedStyles, css, keyframes } from '@emotion/core'
+import { primary, transitionEasing } from '../styles/theme'
+
 import React from 'react'
-import { primary, transitionEasing } from '../utils/theme'
 
 interface Props {
   color?: string

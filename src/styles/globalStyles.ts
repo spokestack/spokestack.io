@@ -14,6 +14,10 @@ export default css`
   h1 a {
     color: ${theme.text};
   }
+  a {
+    transition: color 0.1s ${theme.transitionEasing},
+      text-decoration-color 0.1s ${theme.transitionEasing};
+  }
   blockquote {
     color: hsl(0, 0%, 40%);
   }
@@ -21,41 +25,8 @@ export default css`
     background-color: white;
     color: ${theme.header};
   }
-  .sticky-nav-wrap {
-    background-color: ${theme.stickyNavBackground};
-  }
-  .nav-selected-bg,
-  .sticky-nav-link-active {
-    background-color: ${theme.mainBackground};
-  }
-  .sticky-nav-link-active,
-  .sticky-nav-link-active-no-bg {
-    color: ${theme.linkStickyNavActive} !important;
-  }
-  .sticky-nav-wrap .select-label .icon,
-  .sticky-nav-header-icon {
-    fill: ${theme.header};
-  }
-  html,
-  body,
-  h1,
-  h2,
-  h3,
-  h4,
-  h5,
-  a,
-  .sticky-nav-wrap,
-  .nav-selected-bg,
-  .sticky-nav-link-active,
-  .sticky-nav-link-active-no-bg,
-  .sticky-nav-header-icon {
-    transition: background-color 0.2s ${theme.transitionEasing},
-      color 0.1s ${theme.transitionEasing},
-      border-color 0.1s ${theme.transitionEasing},
-      text-decoration-color 0.1s ${theme.transitionEasing},
-      fill 0.1s ${theme.transitionEasing};
-  }
   .dark-mode-track {
+    border: 1px solid ${theme.mainBorderColor.darken(0.05).hex()};
     background-color: ${theme.mainBorder};
   }
   .dark-mode-knob {
@@ -65,83 +36,6 @@ export default css`
   }
   .dark-mode-icon--dark {
     opacity: 0;
-  }
-  html.dark-mode {
-    background-color: ${theme.mainBackgroundDark};
-
-    body,
-    h1,
-    h2,
-    h3,
-    h4,
-    h5,
-    h6,
-    a,
-    a:visited,
-    h1 a,
-    .main-content h1 a {
-      color: ${theme.textDarkBg};
-    }
-    a {
-      &:hover {
-        color: ${theme.linkDarkHover};
-      }
-      &:active {
-        color: ${theme.linkDarkActive};
-      }
-    }
-    .btn.btn-primary {
-      border-color: ${theme.linkDark};
-      color: ${theme.linkDark};
-    }
-    blockquote {
-      color: hsl(0, 0%, 80%);
-      border-left-color: hsl(0, 0%, 80%);
-    }
-    .main-content a,
-    a.content-link {
-      color: ${theme.linkDark};
-      text-decoration-color: ${theme.linkDark};
-
-      &:hover {
-        color: ${theme.primary};
-        text-decoration-color: ${theme.primary};
-      }
-    }
-    .select-label {
-      background-color: ${theme.stickyNavBackgroundDark};
-      color: ${theme.textDarkBg};
-    }
-    .sticky-nav-wrap {
-      background-color: ${theme.stickyNavBackgroundDark};
-    }
-    .nav-selected-bg,
-    .sticky-nav-link-active {
-      background-color: ${theme.mainBackgroundDark};
-    }
-    .sticky-nav-link-active,
-    .sticky-nav-link-active-no-bg {
-      color: ${theme.linkDark} !important;
-    }
-    .sticky-nav-wrap .select-label .icon,
-    .sticky-nav-header-icon {
-      fill: ${theme.textDarkBg};
-    }
-
-    .dark-mode-track {
-      background-color: ${theme.codeBackground};
-    }
-    .dark-mode-knob {
-      transform: translateX(12px);
-      box-shadow: 0 0 0 1px ${theme.codeBackground};
-      background-color: ${theme.mainBackgroundDark};
-    }
-    .dark-mode-icon--dark {
-      opacity: 1;
-    }
-    .dark-mode-icon--light {
-      opacity: 0;
-    }
   }
   :focus {
     outline: ${theme.primary} auto 1px;
@@ -182,27 +76,32 @@ export default css`
     border-radius: 24px;
     padding: 0 ${rhythm(1)};
     white-space: nowrap;
-    transition: background-color 0.2s ${theme.transitionEasing},
-      border-color 0.2s ${theme.transitionEasing},
-      color 0.2s ${theme.transitionEasing};
     cursor: pointer;
     text-decoration: none;
-    color: ${theme.text};
     font-weight: 400;
     user-select: none;
+    transition: background-color 0.1s ${theme.transitionEasing},
+      border-color 0.1s ${theme.transitionEasing},
+      color 0.1s ${theme.transitionEasing};
 
-    svg {
-      margin-left: ${rhythm(0.2)};
+    .icon {
+      fill: ${theme.textDarkBg};
+      transition: fill 0.1s ${theme.transitionEasing};
     }
 
+    &,
     &:visited {
-      color: ${theme.text};
+      color: ${theme.textDarkBg};
     }
     &:hover:not([disabled]),
     &:active:not([disabled]) {
       background-color: ${theme.buttonBackgroundHover};
       border-color: ${theme.buttonBackgroundHover};
-      color: ${theme.text};
+      color: ${theme.textDarkBg};
+
+      .icon {
+        fill: ${theme.textDarkBg};
+      }
     }
     &:active:not([disabled]) {
       box-shadow: inset 0 0 5px rgba(0, 0, 0, 0.8);
@@ -213,16 +112,46 @@ export default css`
       cursor: default;
       pointer-events: none;
     }
-    &.btn-primary {
+    &.btn-transparent {
       background-color: transparent;
       border-color: ${theme.primary};
       color: ${theme.primary};
 
+      .icon {
+        fill: ${theme.primary};
+      }
+
       &:hover:not([disabled]),
-      &:active:not([disabled]) {
+      &:active:not([disabled]),
+      &.btn-submitting {
         background-color: ${theme.primary};
         border-color: ${theme.primary};
         color: white;
+
+        .icon {
+          fill: white;
+        }
+      }
+    }
+    &.btn-secondary {
+      background-color: ${theme.secondary};
+      border-color: ${theme.secondary};
+      color: ${theme.text};
+
+      .icon {
+        fill: ${theme.text};
+      }
+
+      &:hover:not([disabled]),
+      &:active:not([disabled]),
+      &.btn-submitting {
+        background-color: ${theme.linkSecondaryHover};
+        border-color: ${theme.linkSecondaryHover};
+        color: ${theme.text};
+
+        .icon {
+          fill: ${theme.text};
+        }
       }
     }
     &.btn-large {
@@ -231,7 +160,7 @@ export default css`
     }
     &.btn-small {
       height: 33px;
-      padding: 0 15px;
+      padding: 1px 15px 0;
       ${adjustFontSizeTo('14px')};
       font-weight: 600;
     }
@@ -268,9 +197,17 @@ export default css`
   }
   .error {
     color: ${theme.error};
+    &.input {
+      border-color: ${theme.error};
+    }
   }
-  .input.error {
-    border-color: ${theme.error};
+  .label {
+    font-size: 0.8rem;
+    font-weight: 700;
+
+    ${MIN_DEFAULT_MEDIA_QUERY} {
+      font-size: 1rem;
+    }
   }
   .link-with-icon {
     text-decoration: none;
@@ -297,7 +234,7 @@ export default css`
     display: flex;
     flex-direction: row;
     justify-content: space-between;
-    align-items: center;
+    align-items: flex-end;
     margin-bottom: ${rhythm(1)};
 
     h1 {
@@ -307,6 +244,88 @@ export default css`
   .floating-image--left,
   .floating-image--right {
     margin: 20px auto;
+  }
+  html.dark-mode {
+    background-color: ${theme.mainBackgroundDark};
+
+    body,
+    h1,
+    h2,
+    h3,
+    h4,
+    h5,
+    h6,
+    a,
+    a:visited,
+    h1 a,
+    .main-content h1 a {
+      color: ${theme.textDarkBg};
+    }
+    a {
+      &:hover {
+        color: ${theme.linkDarkHover};
+      }
+      &:active {
+        color: ${theme.linkDarkActive};
+      }
+    }
+    .btn {
+      background-color: ${theme.buttonBackgroundDark};
+      border-color: ${theme.buttonBackgroundDark};
+
+      &:hover:not([disabled]),
+      &:active:not([disabled]),
+      &.btn-submitting {
+        background-color: ${theme.buttonBackgroundDarkHover};
+        border-color: ${theme.buttonBackgroundDarkHover};
+      }
+    }
+    .btn.btn-transparent {
+      background-color: transparent;
+      border-color: ${theme.buttonBackgroundDark};
+      color: ${theme.buttonBackgroundDark};
+
+      &:hover:not([disabled]),
+      &:active:not([disabled]),
+      &.btn-submitting {
+        background-color: ${theme.buttonBackgroundDark};
+        border-color: ${theme.buttonBackgroundDark};
+        color: ${theme.text};
+      }
+    }
+    blockquote {
+      color: hsl(0, 0%, 80%);
+      border-left-color: hsl(0, 0%, 80%);
+    }
+    .main-content a,
+    a.content-link {
+      color: ${theme.linkDark};
+      text-decoration-color: ${theme.linkDark};
+
+      &:hover {
+        color: ${theme.primary};
+        text-decoration-color: ${theme.primary};
+      }
+    }
+    .select-label {
+      background-color: ${theme.stickyNavBackgroundDark};
+      color: ${theme.textDarkBg};
+    }
+    .dark-mode-track {
+      background-color: ${theme.authorBackground};
+      border-color: ${theme.authorBackgroundColor.darken(0.05).hex()};
+    }
+    .dark-mode-knob {
+      transform: translateX(12px);
+      box-shadow: 0 0 0 1px ${theme.codeBackground};
+      background-color: ${theme.mainBackgroundDark};
+    }
+    .dark-mode-icon--dark {
+      opacity: 1;
+    }
+    .dark-mode-icon--light {
+      opacity: 0;
+    }
   }
   ${MIN_DEFAULT_MEDIA_QUERY} {
     h1 {

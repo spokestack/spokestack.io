@@ -1,15 +1,17 @@
+import * as theme from '../styles/theme'
+
 import {
   DEFAULT_MEDIA_QUERY,
   DEFAULT_WIDTH,
   MIN_DEFAULT_MEDIA_QUERY,
   MIN_LARGER_DISPLAY_MEDIA_QUERY
 } from 'typography-breakpoint-constants'
+import { Global, css } from '@emotion/core'
 import StickyNav, { StickyNavProps } from './StickyNav'
+import { ieBreakpoint, ieBreakpointMinDefault } from '../styles/theme'
 
 import React from 'react'
-import { css } from '@emotion/core'
-import { ieBreakpoint, ieBreakpointMinDefault } from '../utils/theme'
-import { rhythm } from '../utils/typography'
+import { rhythm } from '../styles/typography'
 
 interface Props extends StickyNavProps {
   children: React.ReactNode
@@ -22,15 +24,17 @@ export default function StickyNavLayout({
   children,
   id,
   header,
-  rightContent,
   ...props
 }: Props) {
-  const style = [styles.container]
-  if (rightContent) {
-    style.push(styles.containerWithRight)
-  }
   return (
-    <div id={id} css={style}>
+    <div id={id} css={styles.container}>
+      <Global
+        styles={css`
+          html.dark-mode .sticky-nav-wrap {
+            background-color: ${theme.stickyNavBackgroundDark};
+          }
+        `}
+      />
       <div css={styles.stickyNavWrap} className="sticky-nav-wrap">
         {header && <h3 css={styles.stickyNavHeader}>{header}</h3>}
         <StickyNav {...props} />
@@ -38,7 +42,6 @@ export default function StickyNavLayout({
       <section className="main-content" css={styles.content}>
         {children}
       </section>
-      {rightContent}
     </div>
   )
 }
@@ -51,23 +54,14 @@ const styles = {
     ${MIN_DEFAULT_MEDIA_QUERY} {
       flex-direction: row;
       display: grid;
-      grid-template-columns: minmax(300px, 365px) minmax(
-          700px,
-          ${DEFAULT_WIDTH}
-        );
-      grid-template-areas:
-        'sidenav content'
-        'sidenav author';
+      grid-template-columns:
+        minmax(${theme.MIN_SIDEBAR_WIDTH}, ${theme.MAX_SIDEBAR_WIDTH})
+        minmax(${theme.MAX_TEXT_WIDTH}, ${DEFAULT_WIDTH});
+      grid-template-areas: 'sidenav content';
     }
 
     ${ieBreakpoint} {
       width: 100%;
-    }
-  `,
-  containerWithRight: css`
-    ${MIN_LARGER_DISPLAY_MEDIA_QUERY} {
-      grid-template-columns: 365px minmax(700px, ${DEFAULT_WIDTH}) 1fr;
-      grid-template-areas: 'sidenav content author';
     }
   `,
   mobileNav: css`
@@ -76,9 +70,10 @@ const styles = {
     }
   `,
   stickyNavWrap: css`
+    background-color: ${theme.stickyNavBackground};
     ${MIN_DEFAULT_MEDIA_QUERY} {
       grid-area: sidenav;
-      padding: 25px 0 10px 50px;
+      padding: 0 0 25px 50px;
     }
     ${ieBreakpointMinDefault} {
       padding-bottom: 50px;

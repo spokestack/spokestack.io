@@ -1,6 +1,7 @@
 /**
  * Create a new blog post given a title
- * Usage: node post.js "Blog Post Title" ["Here is an optional blog post description"]
+ * Usage: node post.js [author] [title] [description]
+ * Example: node post.js mike "Keeping Perspective" "Keep perspective on what you are building in tough times"
  */
 
 const path = require('path')
@@ -13,25 +14,31 @@ const rspaces = /[\s-]+/g
 const postTemplate = template(`---
 title: <%- title %>
 date: '<%- date %>'<% if(typeof description !== 'undefined') { %>
-description: <%- description %>
-<% } %>
-author: timmy
-draft: true
+description: <%- description %><% } %>
+tags:
+author: <%- author %>
+draft: false
 ---
 
 `)
 
-function post(title, description) {
+function post(author, title, description) {
   return new Promise((resolve, reject) => {
-    const dir = path.join(__dirname, '/../content/blog/')
-    mkdirp(dir).then((mkdirErr) => {
-      if (mkdirErr) {
-        return reject(mkdirErr)
+    const name = title.toLowerCase().replace(rspaces, '-')
+    const dir = path.join(__dirname, '/../content/blog/', name)
+    const filename = path.join(dir, 'index.md')
+    console.log('Creating file', filename)
+    mkdirp(dir).then((made) => {
+      if (made) {
+        console.log('Directory created at ', made)
+      } else {
+        console.log('Directory already exists ', dir)
       }
       const date = new Date()
       fs.writeFile(
-        path.join(dir, `${title.toLowerCase().replace(rspaces, '-')}.md`),
+        filename,
         postTemplate({
+          author,
           title,
           date: `${date.toISOString().slice(0, 10)}`,
           description
@@ -50,7 +57,7 @@ function post(title, description) {
       console.log(`Created post ${title}.`)
     },
     (error) => {
-      console.error(error.stack)
+      console.error(error)
       process.exit(1)
     }
   )

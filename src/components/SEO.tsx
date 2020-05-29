@@ -10,25 +10,30 @@ type Meta =
 
 interface Props {
   title: string
+  longTitle?: string
   description?: string
+  image?: string
   lang?: string
   meta?: Meta[]
 }
 
 export default function SEO({
   title,
+  longTitle,
   description = '',
+  image,
   lang = 'en',
   meta = []
 }: Props) {
   const { site } = useStaticQuery<Query>(
     graphql`
-      query {
+      query seoQuery {
         site {
           siteMetadata {
-            title
-            description
             author
+            description
+            logo
+            title
           }
         }
       }
@@ -55,7 +60,7 @@ export default function SEO({
         },
         {
           property: 'og:title',
-          content: title
+          content: longTitle || title
         },
         {
           property: 'og:description',
@@ -64,6 +69,10 @@ export default function SEO({
         {
           property: 'og:type',
           content: 'website'
+        },
+        {
+          property: 'og:image',
+          content: image || site.siteMetadata.logo
         },
         {
           name: 'twitter:card',
@@ -75,11 +84,15 @@ export default function SEO({
         },
         {
           name: 'twitter:title',
-          content: title
+          content: longTitle || title
         },
         {
           name: 'twitter:description',
           content: metaDescription
+        },
+        {
+          name: 'twitter:image',
+          content: image || site.siteMetadata.logo
         }
       ].concat(meta)}
     />

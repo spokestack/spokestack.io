@@ -23,7 +23,6 @@ export default function SVGIcon({ icon, extraCss, ...props }: Props) {
 const styles = {
   icon: css`
     display: inline-block;
-    fill: white;
     line-height: 0;
   `
 }

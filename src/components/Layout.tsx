@@ -4,9 +4,9 @@ import React, { ReactNode } from 'react'
 import Footer from './Footer'
 import { MIN_DEFAULT_MEDIA_QUERY } from 'typography-breakpoint-constants'
 import Nav from './Nav'
-import globalStyles from '../utils/globalStyles'
-import { ieBreakpoint } from '../utils/theme'
 import Sprite from '../svg-sprite.svg'
+import globalStyles from '../styles/globalStyles'
+import { ieBreakpoint } from '../styles/theme'
 
 interface Props {
   children: ReactNode

@@ -1,14 +1,14 @@
 import React, { FormEvent, useState } from 'react'
 
-import { Account } from '../types'
+import { Account } from '../../types'
 import AccountCard from './AccountCard'
-import Button from './Button'
-import Layout from './Layout'
+import Button from '../Button'
+import Layout from '../Layout'
 import { RouteComponentProps } from '@reach/router'
 import { css } from '@emotion/core'
 import gql from 'graphql-tag'
 import { navigate } from 'gatsby'
-import { rhythm } from '../utils/typography'
+import { rhythm } from '../../styles/typography'
 import { useMutation } from '@apollo/react-hooks'
 
 const CREATE_ACCOUNT = gql`
@@ -68,11 +68,7 @@ export default function CreateAccount({}: RouteComponentProps) {
                 }}
               />
             </div>
-            <Button
-              primary
-              disabled={loading}
-              type="submit"
-              extraCss={styles.button}>
+            <Button disabled={loading} type="submit" extraCss={styles.button}>
               Create
             </Button>
           </form>

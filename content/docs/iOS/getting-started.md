@@ -19,6 +19,7 @@ The rest of the guide will assume you already have the Spokestack framework inst
 
 ```bash
 pod 'Spokestack-iOS'
+platform :ios, '13.0'
 ```
 
 to your `Podfile` and running

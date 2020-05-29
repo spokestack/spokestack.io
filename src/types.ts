@@ -1,14 +1,37 @@
 import { FixedObject } from 'gatsby-image'
+import { MarkdownRemark } from './utils/graphql'
 import { MutableRefObject } from 'react'
 
-export type TeamMemberName =
-  | 'brent'
-  | 'elizabeth'
-  | 'josh'
-  | 'mike'
-  | 'noel'
-  | 'timmy'
-  | 'will'
+// Added by createPage to templates in gatsby-node.js
+export interface PageContext {
+  author: TeamMemberName
+  currentPage: number
+  limit: number
+  next: MarkdownRemark
+  numPages: number
+  related: RelatedLink[]
+  previous: MarkdownRemark
+  skip: number
+  slug: string
+  tag: string
+  tags: string[]
+}
+
+export interface RelatedLink {
+  title: string
+  href: string
+}
+
+export interface StickyLink {
+  forceSelect?: boolean
+  href: string
+  matchHash?: boolean
+  navId?: string
+  ref?: MutableRefObject<HTMLElement>
+  refSelector?: string
+  section?: string
+  title: string
+}
 
 interface SharpImage {
   childImageSharp: { fixed: FixedObject }
@@ -25,15 +48,14 @@ export interface TeamImages {
   will: SharpImage
 }
 
-export interface StickyLink {
-  href: string
-  title: string
-  navId?: string
-  section?: string
-  forceSelect?: boolean
-  ref?: MutableRefObject<HTMLElement>
-  refSelector?: string
-}
+export type TeamMemberName =
+  | 'brent'
+  | 'elizabeth'
+  | 'josh'
+  | 'mike'
+  | 'noel'
+  | 'timmy'
+  | 'will'
 
 export interface Voice {
   model: string
@@ -77,7 +99,22 @@ export enum KeyType {
   TEST = 'TEST'
 }
 
-export interface RelatedLink {
-  title: string
-  href: string
+export interface NluModel {
+  id: string
+  insertedAt: number
+  modelUrl: string
+  name: string
+  source: NluModelSource
+  state: NluModelState
+  updatedAt: number
+}
+
+export enum NluModelSource {
+  ACCOUNT = 'ACCOUNT',
+  SHARED = 'SHARED'
+}
+
+export enum NluModelState {
+  PUBLISHED = 'PUBLISHED',
+  PENDING = 'PENDING'
 }

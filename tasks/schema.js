@@ -1,29 +1,28 @@
-const shell = require('shelljs')
 const fs = require('fs')
 const fetch = require('isomorphic-unfetch')
+// Use the same introspection query as graphql
+const introspectionQuery = require('graphql').getIntrospectionQuery()
 
 const apiUrl = process.env.SS_API_URL
 const githubToken = process.env.SS_DEV_GITHUB_TOKEN
 const userToken = `GitHub ${githubToken}`
 
 if (!apiUrl) {
-  shell.echo('This script requires SS_API_URL to be set in the environment.')
-  shell.exit(1)
+  throw new Error(
+    'This script requires SS_API_URL to be set in the environment.'
+  )
 }
 
 if (!githubToken) {
-  shell.echo(
-    'This script requires SS_DEV_GITHUB_TOKEN to be set in the environment.'
+  throw new Error(
+    `This script requires SS_DEV_GITHUB_TOKEN to be set in the environment.
+    It is the same as the "spokestack-auth-token" value in localStorage
+    after logging in with GitHub.`
   )
-  shell.exit(1)
-}
-
-if (!shell.which('graphql')) {
-  shell.echo('This script requires graphql-cli (npm install -D graphql-cli).')
-  shell.exit(1)
 }
 
 console.log('API URL: ', apiUrl)
+// console.log(introspectionQuery)
 
 function postToCore(url, options = {}) {
   return fetch(`${apiUrl}${url}`, {
@@ -36,48 +35,25 @@ function postToCore(url, options = {}) {
   })
 }
 
-shell.exec(`graphql get-schema \
-  --endpoint ${apiUrl}/control \
-  --header Authorization="${userToken}" \
-  --output src/apollo/typeDefs.graphql
-`)
-
 postToCore('/control', {
   headers: {
     Authorization: userToken
   },
   body: JSON.stringify({
     variables: {},
-    query: `
-      query IntrospectionQuery {
-        __schema {
-          types {
-            kind
-            name
-            possibleTypes {
-              name
-            }
-          }
-        }
-      }
-    `
+    query: introspectionQuery
   })
 })
   .then((result) => result.json())
   .then((result) => {
-    // Filter out any type information unrelated to unions or interfaces
-    const filteredData = result.data.__schema.types.filter(
-      (type) => type.possibleTypes !== null
-    )
-    result.data.__schema.types = filteredData
     fs.writeFile(
-      './src/apollo/fragmentTypes.json',
+      './src/apollo/schema.json',
       JSON.stringify(result.data, null, '  ') + '\n',
       (err) => {
         if (err) {
-          console.error('Error writing fragmentTypes file', err)
+          console.error('Error writing schema file', err)
         } else {
-          console.log('Fragment types successfully extracted!')
+          console.log('Remote schema successfully extracted!')
         }
       }
     )

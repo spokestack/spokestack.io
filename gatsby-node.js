@@ -3,7 +3,9 @@ const { createFilePath } = require('gatsby-source-filesystem')
 
 const isProd = process.env.NODE_ENV === 'production'
 const rdocs = /\/docs\//
+const rspaces = /\s+/g
 const rspokestackWebsite = /.*?spokestack-website\//
+const postsPerPage = 5
 
 function throwInProd(message) {
   if (process.env.NODE_ENV !== 'production') {
@@ -13,12 +15,12 @@ function throwInProd(message) {
   }
 }
 
-if (!process.env.SS_GITHUB_CLIENT_ID) {
-  throwInProd('SS_GITHUB_CLIENT_ID is not set in the environment.')
-}
-
 if (!process.env.SS_API_URL) {
   throwInProd('SS_API_URL is not set in the environment.')
+}
+
+if (!process.env.SS_GITHUB_CLIENT_ID) {
+  throwInProd('SS_GITHUB_CLIENT_ID is not set in the environment.')
 }
 
 if (!process.env.SS_GOOGLE_CLIENT_ID) {
@@ -30,12 +32,14 @@ async function getRelated({ tags, slug, graphql }) {
     const result = await graphql(`
       {
         allMarkdownRemark(
+          sort: { fields: [frontmatter___date], order: DESC },
           filter: {
             fields: {
               slug: { ne: "${slug}" }
               tags: { in: ${JSON.stringify(tags)} }
             }
           }
+          limit: 3
         ) {
           nodes {
             frontmatter {
@@ -53,6 +57,104 @@ async function getRelated({ tags, slug, graphql }) {
       href: node.fields.slug
     }))
   }
+}
+
+async function createAuthorPages({ author, tags, actions, graphql, template }) {
+  const { createPage } = actions
+  const result = await graphql(`
+    {
+      allMarkdownRemark(
+        sort: { fields: [frontmatter___date], order: DESC },
+        filter: {
+          fileAbsolutePath: { regex: "/blog/" },
+          frontmatter: {
+            ${isProd ? 'draft: { ne: true },' : ''}
+            author: { eq: "${author}" }
+          }
+        },
+        limit: 1000
+      ) {
+        edges {
+          node {
+            fields {
+              slug
+            }
+          }
+        }
+      }
+    }
+  `)
+  if (result.errors) {
+    console.error(result.errors)
+    reporter.panicOnBuild('Error while running GraphQL query')
+    return
+  }
+  const posts = result.data.allMarkdownRemark.edges
+  const numPages = Math.ceil(posts.length / postsPerPage)
+  const url = `/blog/author/${author}`
+  Array.from({ length: numPages }).forEach((_, i) => {
+    createPage({
+      path: i === 0 ? url : `${url}/${i + 1}`,
+      component: template,
+      context: {
+        author,
+        tags,
+        slug: url,
+        limit: postsPerPage,
+        skip: i * postsPerPage,
+        numPages,
+        currentPage: i + 1
+      }
+    })
+  })
+}
+
+async function createTagPages({ tag, tags, actions, graphql, template }) {
+  const { createPage } = actions
+  const result = await graphql(`
+    {
+      allMarkdownRemark(
+        sort: { fields: [frontmatter___date], order: DESC },
+        filter: {
+          fileAbsolutePath: { regex: "/blog/" },
+          fields: { tags: { in: ["${tag}"] } }
+          ${isProd ? ',frontmatter: { draft: { ne: true } }' : ''}
+        },
+        limit: 1000
+      ) {
+        edges {
+          node {
+            fields {
+              slug
+            }
+          }
+        }
+      }
+    }
+  `)
+  if (result.errors) {
+    console.error(result.errors)
+    reporter.panicOnBuild('Error while running GraphQL query')
+    return
+  }
+  const posts = result.data.allMarkdownRemark.edges
+  const numPages = Math.ceil(posts.length / postsPerPage)
+  const url = `/blog/tag/${tag.toLowerCase().replace(rspaces, '-')}`
+  Array.from({ length: numPages }).forEach((_, i) => {
+    createPage({
+      path: i === 0 ? url : `${url}/${i + 1}`,
+      component: template,
+      context: {
+        tag,
+        tags,
+        slug: url,
+        limit: postsPerPage,
+        skip: i * postsPerPage,
+        numPages,
+        currentPage: i + 1
+      }
+    })
+  })
 }
 
 function createPages({ actions, graphql, posts, template }) {
@@ -80,9 +182,14 @@ function createPages({ actions, graphql, posts, template }) {
   })
 }
 
-exports.createPages = async ({ graphql, actions }) => {
+exports.createPages = async ({ graphql, actions, reporter }) => {
   const result = await graphql(`
     {
+      authors: __type(name: "SiteSiteMetadataTeam") {
+        fields {
+          name
+        }
+      }
       blog: allMarkdownRemark(
         sort: { fields: [frontmatter___date], order: DESC },
         filter: { fileAbsolutePath: { regex: "/blog/" }${
@@ -113,8 +220,78 @@ exports.createPages = async ({ graphql, actions }) => {
           }
         }
       }
+      tags: allMarkdownRemark(
+        filter: {
+          fileAbsolutePath: { regex: "/blog/" }
+          fields: { tags: { ne: null } }
+        }
+      ) {
+        edges {
+          node {
+            fields {
+              tags
+            }
+          }
+        }
+      }
     }
   `)
+  if (result.errors) {
+    console.error(result.errors)
+    reporter.panicOnBuild('Error while running GraphQL query')
+    return
+  }
+
+  // Create tag filter pages
+  const tags = result.data.tags.edges.reduce((acc, current) => {
+    current.node.fields.tags.forEach((tag) => {
+      if (acc.indexOf(tag) === -1) {
+        acc.push(tag)
+      }
+    })
+    return acc
+  }, [])
+  tags.forEach((tag) => {
+    createTagPages({
+      tag,
+      tags,
+      actions,
+      graphql,
+      template: path.resolve('./src/templates/blog-list-tag.tsx')
+    })
+  })
+
+  // Create author pages
+  const authors = result.data.authors.fields.map((field) => field.name)
+  authors.forEach((author) => {
+    createAuthorPages({
+      author,
+      tags,
+      actions,
+      graphql,
+      template: path.resolve('./src/templates/blog-list-author.tsx')
+    })
+  })
+
+  // Create blog post list pages
+  const { createPage } = actions
+  const posts = result.data.blog.edges
+  const numPages = Math.ceil(posts.length / postsPerPage)
+  Array.from({ length: numPages }).forEach((_, i) => {
+    const url = i === 0 ? `/blog` : `/blog/${i + 1}`
+    createPage({
+      path: url,
+      component: path.resolve('./src/templates/blog-list.tsx'),
+      context: {
+        tags,
+        slug: url,
+        limit: postsPerPage,
+        skip: i * postsPerPage,
+        numPages,
+        currentPage: i + 1
+      }
+    })
+  })
 
   // Create blog posts pages
   await createPages({

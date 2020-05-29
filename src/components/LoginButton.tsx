@@ -2,7 +2,7 @@ import {
   LARGE_DISPLAY_MEDIA_QUERY,
   MIN_LARGE_DISPLAY_MEDIA_QUERY
 } from 'typography-breakpoint-constants'
-import { grayDark, primary, secondary, transitionEasing } from '../utils/theme'
+import { grayDark, primary, secondary, transitionEasing } from '../styles/theme'
 import { isLoggedIn, logout } from '../utils/auth'
 
 import { Link } from 'gatsby'
@@ -17,7 +17,11 @@ export default function LoginButton() {
       <SVGIcon icon="#arrow-forward" extraCss={styles.icon} />
     </a>
   ) : (
-    <Link className="btn" css={styles.loginButton} to="/login">
+    <Link
+      className="btn"
+      to="/login"
+      css={styles.loginButton}
+      activeStyle={{ display: 'none' }}>
       Sign In / Sign Up
       <SVGIcon icon="#arrow-forward" extraCss={styles.icon} />
     </Link>
@@ -33,14 +37,11 @@ const styles = {
     background-color: white !important;
     color: ${primary} !important;
     font-weight: 700;
-    border-radius: 0;
-    border: none;
+    border-radius: 0 !important;
+    border: none !important;
     transition: background-color 0.2s ${transitionEasing},
       color 0.2s ${transitionEasing};
     flex-shrink: 0;
-    svg {
-      transition: fill 0.2s ${transitionEasing};
-    }
 
     &:hover,
     &:active {
@@ -50,12 +51,12 @@ const styles = {
     ${MIN_LARGE_DISPLAY_MEDIA_QUERY} {
       position: relative !important;
       width: auto;
-      border-radius: 24px;
       font-weight: 400;
       height: 38px;
       background-color: transparent !important;
       color: ${secondary} !important;
-      border: 1px solid ${secondary};
+      border: 1px solid ${secondary} !important;
+      border-radius: 24px !important;
 
       &:hover,
       &:active {
@@ -72,6 +73,7 @@ const styles = {
     fill: ${secondary};
     width: 17px;
     height: 17px;
+    transition: fill 0.2s ${transitionEasing};
 
     ${LARGE_DISPLAY_MEDIA_QUERY} {
       display: none;

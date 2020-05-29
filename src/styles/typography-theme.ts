@@ -1,4 +1,4 @@
-import * as theme from '../utils/theme'
+import * as theme from './theme'
 
 import { MOBILE_MEDIA_QUERY } from 'typography-breakpoint-constants'
 import { TypographyOptions } from 'typography'
@@ -71,12 +71,21 @@ const options: TypographyOptions = {
       margin: 0
     },
     h6: {
-      fontSize: '1rem',
+      fontSize: '0.8rem',
       fontWeight: 400,
-      margin: 0
+      fontStyle: 'italic',
+      margin: `${rhythm(1)} 0 ${rhythm(0.8)}`
     },
     form: {
       margin: 0
+    },
+    figcaption: {
+      fontSize: '0.9rem',
+      fontStyle: 'italic',
+      paddingLeft: rhythm(1 / 3),
+      paddingRight: rhythm(1 / 3),
+      margin: '0 auto',
+      textAlign: 'center'
     },
     blockquote: {
       ...scale(1 / 5),

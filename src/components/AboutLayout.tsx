@@ -2,6 +2,7 @@ import Layout from './Layout'
 import React from 'react'
 import SEO from './SEO'
 import StickyNavLayout from './StickyNavLayout'
+import { WindowLocation } from '@reach/router'
 
 const links = [
   {
@@ -16,13 +17,18 @@ const links = [
 
 interface Props {
   children: React.ReactNode
+  location: WindowLocation
 }
 
-export default function About({ children }: Props) {
+export default function About({ children, location }: Props) {
   return (
     <Layout>
-      <SEO title="About us" description="About our team" />
-      <StickyNavLayout header="About" links={links}>
+      <SEO
+        title="About us"
+        longTitle="Learn about the company Spokestack"
+        description="About our team"
+      />
+      <StickyNavLayout header="About" links={links} location={location}>
         {children}
       </StickyNavLayout>
     </Layout>

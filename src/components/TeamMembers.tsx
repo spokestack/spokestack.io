@@ -59,7 +59,8 @@ const styles = {
     }
   `,
   memberImage: {
-    borderRadius: '50%'
+    borderRadius: '50%',
+    flexShrink: 0
   }
 }
 
@@ -69,6 +70,13 @@ const teamQuery = graphql`
       ...TeamMembers
     }
     brent: file(absolutePath: { regex: "/headshots/brent.png/" }) {
+      childImageSharp {
+        fixed(width: 186, height: 186) {
+          ...GatsbyImageSharpFixed
+        }
+      }
+    }
+    daniel: file(absolutePath: { regex: "/headshots/daniel.png/" }) {
       childImageSharp {
         fixed(width: 186, height: 186) {
           ...GatsbyImageSharpFixed
@@ -124,7 +132,17 @@ export const teamFragment = graphql`
   fragment TeamMembers on Site {
     siteMetadata {
       team {
-        will {
+        brent {
+          name
+          title
+          bio
+          social {
+            twitter
+            linkedin
+            email
+          }
+        }
+        daniel {
           name
           title
           bio
@@ -144,7 +162,7 @@ export const teamFragment = graphql`
             email
           }
         }
-        brent {
+        josh {
           name
           title
           bio
@@ -184,7 +202,7 @@ export const teamFragment = graphql`
             email
           }
         }
-        josh {
+        will {
           name
           title
           bio

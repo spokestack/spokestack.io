@@ -29,6 +29,16 @@ module.exports = {
           email: ''
         }
       },
+      daniel: {
+        name: 'Daniel Tyreus',
+        title: 'Head of Product',
+        bio: '',
+        social: {
+          twitter: '',
+          linkedin: '',
+          email: ''
+        }
+      },
       elizabeth: {
         name: 'Elizabeth Ropp',
         title: 'UX & Product Design',

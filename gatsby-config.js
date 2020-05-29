@@ -77,12 +77,13 @@ module.exports = {
       },
       josh: {
         name: 'Josh Ziegler',
-        title: 'Conversation Engineer',
-        bio: '',
+        title: 'Principal Computational Linguist',
+        bio:
+          'Josh lives at the intersection of language and technology. An avid reader, he enjoys long runs in the woods and pedantic arguments about...well, pick a topic.',
         social: {
           twitter: '',
-          linkedin: '',
-          email: ''
+          linkedin: 'https://www.linkedin.com/in/joshziegler/',
+          email: 'mailto:josh@spokestack.io'
         }
       }
     },

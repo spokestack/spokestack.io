@@ -57,7 +57,6 @@ let pipeline: SpeechPipeline?
 func initPipeline() {
     var config = SpeechConfiguration()
     config.wakewords = "custom,phrase"
-    config.wakePhrases = "custom phrase"
 
     // `self` adopts the `SpeechEventListener` and
     // `PipelineDelegate` protocols

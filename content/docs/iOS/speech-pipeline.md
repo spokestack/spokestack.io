@@ -38,7 +38,7 @@ Note that `speechService` can be any class that adopts the `SpeechProcessor` pro
 The speech configuration is comprehensive enough to have its own guide, but in summary, this is where most of the fine-tuning for both wakeword and ASR happens. See the [configuration guide](/docs/Concepts/pipeline-configuration) or [API reference](https://spokestack.github.io/spokestack-ios/) for more details on each of these, but here are a few examples of the parameters you can change (by instantiating the class and setting the relevant property):
 
 - `tracing`: If you want more verbose debug logging from Spokestack components, setting this to `.TRACE` or `.DEBUG` will make you satisfied.
-- `wakewords`/`wakePhrases`: If you're using ASR-based wakeword detection, these properties let you change your app's wakeword(s).
+- `wakewords`: If you're using ASR-based wakeword detection, these properties let you change your app's wakeword(s).
 - `wakeActiveMax`: The maximum amount of time (in milliseconds) that ASR will remain active to capture a single user utterance.
 - (`filter`|`detect`|`encode`)`ModelName`: Names for custom [TensorFlow Lite](https://www.tensorflow.org/lite) wakeword models. Training custom models is outside the scope of this guide, but you can find a description of their requirements [here](wakeword-models).
 

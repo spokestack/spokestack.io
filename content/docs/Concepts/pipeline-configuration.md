@@ -126,8 +126,8 @@ These parameters only exist in the iOS `SpeechConfiguration` class.
 - `vadMode`
   Determines how sensitive the VAD will be, representing a tradeoff between precision (the likelihood that when the VAD is active, speech really did occur) and recall (the likelihood that the VAD will activate when speech occurs, though it might also activate for non-speech noise). See the `VADMode` enum for possible values.
 
-- `wakePhrases`
-  A comma-separated list of space-separated keyword phrases used to activate the Apple ASR-based wakeword detector. If your wakeword can be transcribed as two words, you may wish to list both variants here for the best performance; for example, `"spoke stack,spokestack"`. In addition, if you find your desired wakeword being transcribed poorly by ASR, you can include common misspellings; for example, `"spoke stack,spokestack,smoke stack,smokestack"`.
+- `wakewords`
+  A comma-separated list of space-separated keyword phrases used to activate the Apple ASR-based wakeword detector. If your wakeword can be transcribed as two words, you may wish to list both variants here for the best performance; for example, `"spoke stack, spokestack"`. In addition, if you find your desired wakeword being transcribed poorly by ASR, you can include common misspellings; for example, `"spoke stack, spokestack, smoke stack, smokestack"`.
 
 - `wakewordRequestTimeout`
   When using Apple's ASR for wakeword detection, this is the amount of time, in milliseconds, allotted to each request. Apple has an undocumented limit of 1 minute for requests to its built-in ASR, so that is an upper bound for this parameter. The Apple wakeword detector automatically restarts requests that time out, so this parameter controls how often those restarts occur when the wakeword is not detected. We recommend keeping this timeout relatively long.

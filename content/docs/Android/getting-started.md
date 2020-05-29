@@ -13,7 +13,7 @@ To follow along with these snippets in the context of a full project, download o
 
 ## Installation
 
-First, you'll need to declare the Spokestack dependencies in your project. Because Spokestack includes native libraries, this is slightly more involved than a normal dependency. You'll need to download the Android NDK (`SDK Manager` -> `SDK Tools` tab in Android Studio, or see [here](https://developer.android.com/ndk/downloads)), add the following to your project's top-level `build.gradle`:
+First, you'll need to declare the Spokestack dependencies in your project. Because Spokestack includes native libraries, this is slightly more involved than a normal dependency. You'll need to download the Android NDK (available from the `SDK Manager` -> `SDK Tools` tab in Android Studio or at [developer.android.com/ndk/downloads](https://developer.android.com/ndk/downloads)), add the following to your project's top-level `build.gradle`:
 
 ```groovy
 // inside the buildscript block

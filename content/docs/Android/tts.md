@@ -27,7 +27,7 @@ tts = TTSManager.Builder()
     .build()
 ```
 
-In this example, `spokestack-id` and `spokestack-secret` are set to sample values that let you try Spokestack TTS without creating an account. See [here](https://spokestack.io/login) to get your own free API credentials.
+In this example, `spokestack-id` and `spokestack-secret` are set to sample values that let you try Spokestack TTS without creating an account. [Create an account](https://spokestack.io/create) or [sign in](https://spokestack.io/login) to get your own free API credentials.
 
 Note also the `TTSListener` established here. This component will receive events from the TTS subsystem, including errors and audio URLs resulting from synthesis requests. If you're using Spokestack's built-in media player (described in the next section), you won't need to handle the URLs yourself, but you might still wish to log errors.
 

@@ -40,7 +40,7 @@ The speech configuration is comprehensive enough to have its own guide, but in s
 - `tracing`: If you want more verbose debug logging from Spokestack components, setting this to `.TRACE` or `.DEBUG` will make you satisfied.
 - `wakewords`: If you're using ASR-based wakeword detection, these properties let you change your app's wakeword(s).
 - `wakeActiveMax`: The maximum amount of time (in milliseconds) that ASR will remain active to capture a single user utterance.
-- (`filter`|`detect`|`encode`)`ModelName`: Names for custom [TensorFlow Lite](https://www.tensorflow.org/lite) wakeword models. Training custom models is outside the scope of this guide, but you can find a description of their requirements [here](wakeword-models).
+- (`filter`|`detect`|`encode`)`ModelName`: Names for custom [TensorFlow Lite](https://www.tensorflow.org/lite) wakeword models. Training custom models is outside the scope of this guide, but you can find a description of their requirements in our [wakeword models guid](wakeword-models).
 
 ### 3. `speechDelegate`
 
@@ -67,7 +67,7 @@ If you start the pipeline from a user interaction like a button press that calls
 
 ### 4. `wakewordService`
 
-The wakeword service is in charge of, you guessed it, recognizing that the user has said your app's wakeword. On iOS, this defaults to using Apple's built-in ASR to detect your chosen wakeword, but for better performance you might want to experiment with a customized TensorFlow Lite model. Spokestack comes with a set of models trained to detect "Spokestack" as a wakeword, but you're also free to train your own and configure Spokestack to use them at runtime. You can find descriptions of the models' requirements [here](wakeword-models), but if building and training them isn't something you want to take on, [send us an email](mailto:hello@spokestack.io), and we can discuss customization options.
+The wakeword service is in charge of, you guessed it, recognizing that the user has said your app's wakeword. On iOS, this defaults to using Apple's built-in ASR to detect your chosen wakeword, but for better performance you might want to experiment with a customized TensorFlow Lite model. Spokestack comes with a set of models trained to detect "Spokestack" as a wakeword, but you're also free to train your own and configure Spokestack to use them at runtime. You can find descriptions of the models' requirements in our [wakeword models guide](wakeword-models), but if building and training them isn't something you want to take on, [send us an email](mailto:hello@spokestack.io), and we can discuss customization options.
 
 ### 5. `pipelineDelegate`
 

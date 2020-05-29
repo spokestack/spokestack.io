@@ -14,6 +14,6 @@ Over [58% of Americans](https://voicebot.ai/2019/01/15/twice-the-number-of-u-s-a
 Here&rsquo;s an example: try saying &ldquo;Hey Siri, open {your app name}&rdquo; or &ldquo;OK, Google, open {your app name}&rdquo; depending on your phone.
 
 Did your app say anything? Did it ask what you needed? If not, Spokestack can help.
-At Spokestack, it's our mission to give every company a [unique voice](https://labs.spokestack.io), one that reinforces their brand's relationship with customers. We believe every company should have direct conversations with their customers rather than broker with intermediaries. Customers should know who they're talking to when they ask for your brand. Voice enables a new way to interact with customers that will grow your business by making your app more useful.
+At Spokestack, it's our mission to give every company a unique voice, one that reinforces their brand's relationship with customers. We believe every company should have direct conversations with their customers rather than broker with intermediaries. Customers should know who they're talking to when they ask for your brand. Voice enables a new way to interact with customers that will grow your business by making your app more useful.
 
 Finally, we believe in open source software, best practices around privacy, and making sure you have full control over conversations with your customers. We're at the forefront of the next great leap in user experiences. We're excited to partner with you to build that future together.

@@ -36,8 +36,8 @@ Here's an example:
 
 Focus on the conversational aspect of your response for now. We'll get to [visual responses](/docs/Design/tips-for-designing-visual-output) later. Refer to our [best practices](/docs/Design/tips-for-writing-dialog) if you get stuck. Label each turn with its corresponding `intent`. Write any variations below each response. Note any assumptions and remaining questions below each turn.
 
-**_Pace_**  
-**RETURN USER:** [Listening] "MyRunBuddy, how fast am I running?"  
+**_Pace_**
+**RETURN USER:** [Listening] "MyRunBuddy, how fast am I running?"
 **MYRUNBUDDY:** [Pace] "You're running a 9-minute mile pace."
 
 ### 3. Move to the Next Intent or Gesture
@@ -53,7 +53,7 @@ Here's an [example](https://www.dropbox.com/scl/fi/0weo35v72i901bynq2j8o/MyRunBu
 
 ## Test and Refine Your Script
 
-Does your interaction sound human and natural? Type responses [here](https://labs.spokestack.io/) to hear how a synthetic voice might read them. Refer to [best practices](/docs/Design/tips-for-writing-dialog) if you get stuck.
+Does your interaction sound human and natural? Try entering responses in the [account section](/account/services/tts) to hear how a synthetic voice might read them. Refer to [best practices](/docs/Design/tips-for-writing-dialog) if you get stuck.
 
 ## Introduce Visuals
 

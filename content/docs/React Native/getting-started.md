@@ -11,7 +11,7 @@ One caveat before we start, though: _This is not a collection of best practices_
 
 ## Prerequisites
 
-We assume that you already have a working react-native project (with `npm` and `cocoapods` already installed), and are adding Spokestack to that project. If you're starting from scratch, please refer to the [react-native getting started guide](https://reactnative.dev/docs/getting-started) and then come back here!
+We assume that you already have a working react-native 0.60+ project (with `npm` and `cocoapods` already installed), and are adding Spokestack to that project. If you're starting from scratch, please refer to the [react-native getting started guide](https://reactnative.dev/docs/getting-started) and then come back here!
 
 ### iOS
 

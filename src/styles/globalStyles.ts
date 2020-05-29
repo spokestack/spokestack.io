@@ -68,7 +68,7 @@ export default css`
   }
   .btn {
     position: relative;
-    height: 38px;
+    height: 44px;
     display: flex;
     flex-direction: row;
     justify-content: center;
@@ -81,7 +81,7 @@ export default css`
     white-space: nowrap;
     cursor: pointer;
     text-decoration: none;
-    font-weight: 400;
+    font-weight: 300;
     user-select: none;
     transition: background-color 0.1s ${theme.transitionEasing},
       border-color 0.1s ${theme.transitionEasing},
@@ -154,6 +154,27 @@ export default css`
 
         .icon {
           fill: ${theme.text};
+        }
+      }
+    }
+    &.btn-secondary.btn-transparent {
+      background-color: transparent;
+      border-color: ${theme.secondary};
+      color: ${theme.secondary};
+
+      .icon {
+        fill: ${theme.secondary};
+      }
+
+      &:hover:not([disabled]),
+      &:active:not([disabled]),
+      &.btn-submitting {
+        background-color: ${theme.linkSecondaryHover};
+        border-color: ${theme.linkSecondaryHover};
+        color: ${theme.primary};
+
+        .icon {
+          fill: ${theme.primary};
         }
       }
     }

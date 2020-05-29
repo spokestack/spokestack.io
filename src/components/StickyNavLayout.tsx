@@ -1,7 +1,6 @@
 import * as theme from '../styles/theme'
 
 import {
-  DEFAULT_MEDIA_QUERY,
   DEFAULT_WIDTH,
   MIN_DEFAULT_MEDIA_QUERY,
   MIN_LARGER_DISPLAY_MEDIA_QUERY
@@ -20,12 +19,7 @@ interface Props extends StickyNavProps {
   rightContent?: React.ReactNode
 }
 
-export default function StickyNavLayout({
-  children,
-  id,
-  header,
-  ...props
-}: Props) {
+export default function StickyNavLayout({ children, id, ...props }: Props) {
   return (
     <div id={id} css={styles.container}>
       <Global
@@ -36,7 +30,6 @@ export default function StickyNavLayout({
         `}
       />
       <div css={styles.stickyNavWrap} className="sticky-nav-wrap">
-        {header && <h3 css={styles.stickyNavHeader}>{header}</h3>}
         <StickyNav {...props} />
       </div>
       <section className="main-content" css={styles.content}>
@@ -77,12 +70,6 @@ const styles = {
     }
     ${ieBreakpointMinDefault} {
       padding-bottom: 50px;
-    }
-  `,
-  stickyNavHeader: css`
-    padding-left: 45px;
-    ${DEFAULT_MEDIA_QUERY} {
-      display: none;
     }
   `,
   content: css`

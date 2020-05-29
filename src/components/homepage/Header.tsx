@@ -1,6 +1,10 @@
 import * as theme from '../../styles/theme'
 
-import { MIN_DEFAULT_MEDIA_QUERY } from 'typography-breakpoint-constants'
+import {
+  MIN_DEFAULT_MEDIA_QUERY,
+  MIN_LARGE_DISPLAY_MEDIA_QUERY
+} from 'typography-breakpoint-constants'
+
 import React from 'react'
 import SVGIcon from '../SVGIcon'
 import Video from './Video'
@@ -43,6 +47,10 @@ const styles = {
       align-items: center;
       padding: 0 50px;
       height: 645px;
+    }
+
+    ${MIN_LARGE_DISPLAY_MEDIA_QUERY} {
+      padding: 0 100px;
     }
   `,
   headerContent: css`

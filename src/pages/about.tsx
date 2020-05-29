@@ -1,9 +1,9 @@
-import { navigate } from 'gatsby'
+import { replace } from 'gatsby'
 import { useEffect } from 'react'
 
 export default function About(): null {
   useEffect(() => {
-    navigate('/about/story')
+    replace('/about/story')
   }, [])
   return null
 }

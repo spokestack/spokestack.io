@@ -239,6 +239,7 @@ export default css`
 
     h1 {
       margin: 0;
+      padding-right: 20px;
     }
   }
   .floating-image--left,

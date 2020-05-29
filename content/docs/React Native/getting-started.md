@@ -15,11 +15,11 @@ We assume that you already have a working react-native project (with `npm` and `
 
 ### iOS
 
-iOS 13+, [CocoaPods](https://guides.cocoapods.org/using/using-cocoapods.html#adding-pods-to-an-xcode-project) v1.6.0+. For extended instructions, refer to the [iOS Getting Started guide](docs/iOS/getting-started)
+iOS 13+, [CocoaPods](https://guides.cocoapods.org/using/using-cocoapods.html#adding-pods-to-an-xcode-project) v1.6.0+.
 
 ### Android
 
-Android SDK 26+, Android NDK (`SDK Manager` -> `SDK Tools` tab in Android Studio, or see [here](https://developer.android.com/ndk/downloads)). For extended instructions, refer to the [Android Getting Started guide](docs/Android/getting-started)
+Android SDK 26+, Android NDK (`SDK Manager` -> `SDK Tools` tab in Android Studio, or see [here](https://developer.android.com/ndk/downloads)).
 
 ## Installation
 
@@ -39,6 +39,41 @@ Edit your `Podfile` to include `use_native_modules!` and `use_frameworks!`, to u
 
 1. In your XCode Project settings, select your app target (eg `MinecraftSkill`) > Build Settings > Library Search Paths : Remove the search path `"$(TOOLCHAIN_DIR)/usr/lib/swift-5.0/$(PLATFORM_NAME)"`.
 1. If your project does not already have an Objective-C - Swift bridging header, please create one: File > New File > Swift File > “Dummy.swift”, your app target > Create Bridging Header.
+
+### Android
+
+### `/android/gradle.properties`
+
+Due to the number of libraries React Native uses on Android, it's best to give the JVM extra memory while during compliation: `org.gradle.jvmargs=-Xmx2048m -XX:MaxPermSize=512m -XX:+HeapDumpOnOutOfMemoryError -Dfile.encoding=UTF-8`
+
+### `android/build.gradle`
+
+Spokestack has dependencies that require a slightly higher minimum SDK version that React Native requires by default:
+
+```
+buildscript {
+    ext {
+        buildToolsVersion = "28.0.3"
+        minSdkVersion = 21
+        //...
+    }
+    repositories {
+        google()
+        maven { url 'https://csspeechstorage.blob.core.windows.net/maven/' }
+        //...
+    }
+}
+
+//...
+
+allprojects{
+    repositories {
+        google()
+        maven { url 'https://csspeechstorage.blob.core.windows.net/maven/' }
+        //...
+    }
+}
+```
 
 ## Integration
 
@@ -87,6 +122,15 @@ Starting with Android 6.0, however, the `RECORD_AUDIO` permission requires you t
 Note that sending audio over the network can use a considerable amount of data, so you may also want to look into WiFi-related permissions and allow the user to disable voice control when using cellular data.
 
 Also note that [the Android emulator cannot record audio](https://developer.android.com/guide/topics/media/mediarecorder). You'll need to test the voice input parts of your app on a real device.
+
+#### `android/app/src/main/AndroidManifest.xml`
+
+```
+// for wakeword & ASR
+<uses-permission android:name="android.permission.RECORD_AUDIO" />
+// for TTS
+<uses-permission android:name="android.permission.INTERNET" />
+```
 
 ## Configuring Spokestack
 
@@ -147,7 +191,7 @@ We call `Spokestack.start()` to begin listening for speech. `Spokestack.stop()` 
 Spokestack.start() // start speech pipeline. can only start after initialize is called.
 Spokestack.stop() // stop speech pipeline
 Spokestack.activate() // manually activate the speech pipeline. The speech pipeline is now actively listening for speech to recognize.
-Spokestack.deactivate() // manually deactivate the speech pipeline. The speech pipeline is now passively waiting for an activation trigger.\
+Spokestack.deactivate() // manually deactivate the speech pipeline. The speech pipeline is now passively waiting for an activation trigger.
 ```
 
 We need to provide implementations for the speech events, so that you can receive the speech recognition results, be informed of errors and debugging events, or get notified when the pipeline activates or deactivates (for example, you may want to disable any buttons or show a special "listening" indicator while recording).

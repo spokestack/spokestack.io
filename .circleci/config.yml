@@ -103,7 +103,7 @@ workflows:
       - deploy_integration:
           filters:
             branches:
-              only: develop
+              only: feature/homepage
           requires:
             - build
       - deploy_production:

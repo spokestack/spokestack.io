@@ -50,6 +50,13 @@ const authorImageQuery = graphql`
         }
       }
     }
+    daniel: file(absolutePath: { regex: "/headshots/daniel.png/" }) {
+      childImageSharp {
+        fixed(width: 95, height: 95) {
+          ...GatsbyImageSharpFixed
+        }
+      }
+    }
     elizabeth: file(absolutePath: { regex: "/headshots/elizabeth.png/" }) {
       childImageSharp {
         fixed(width: 95, height: 95) {

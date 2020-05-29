@@ -213,6 +213,13 @@ const newsQuery = graphql`
         }
       }
     }
+    daniel: file(absolutePath: { regex: "/headshots/daniel.png/" }) {
+      childImageSharp {
+        fixed(width: 32, height: 32) {
+          ...GatsbyImageSharpFixed
+        }
+      }
+    }
     elizabeth: file(absolutePath: { regex: "/headshots/elizabeth.png/" }) {
       childImageSharp {
         fixed(width: 32, height: 32) {

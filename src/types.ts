@@ -118,3 +118,16 @@ export enum NluModelState {
   PUBLISHED = 'PUBLISHED',
   PENDING = 'PENDING'
 }
+
+export interface NluResult {
+  confidence: number
+  intent: string
+  slots: NluSlot[]
+}
+
+export interface NluSlot {
+  confidence: number
+  key: string
+  text: string | null
+  value: string
+}

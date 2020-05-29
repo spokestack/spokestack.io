@@ -6,7 +6,7 @@ import { InMemoryCache } from 'apollo-cache-inmemory'
 import { createLink } from 'apollo-absinthe-upload-link'
 import fetch from 'isomorphic-unfetch'
 import { onError } from 'apollo-link-error'
-import schema from './schema.json'
+import schema from './schema.graphql'
 
 console.log('Using API URL', process.env.SS_API_URL)
 

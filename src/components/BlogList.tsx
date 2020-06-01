@@ -218,5 +218,6 @@ const styles = {
   iconArrow: css`
     width: 18px;
     height: 18px;
+    fill: ${theme.primary};
   `
 }

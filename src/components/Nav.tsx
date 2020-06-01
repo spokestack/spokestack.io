@@ -1,17 +1,20 @@
 import * as theme from '../styles/theme'
 
-import { Global, SerializedStyles, css } from '@emotion/core'
 import {
+  DEFAULT_MEDIA_QUERY,
   MIN_DEFAULT_MEDIA_QUERY,
   MIN_LARGE_DISPLAY_MEDIA_QUERY
 } from 'typography-breakpoint-constants'
+import { Global, SerializedStyles, css } from '@emotion/core'
 import React, { useState } from 'react'
 
 import Hamburger from './Hamburger'
-import { Link } from 'gatsby'
+import Libraries from './Libraries'
 import LoginButtons from './LoginButtons'
 import Logo from './Logo'
-import { adjustFontSizeTo } from '../styles/typography'
+import NavDropdown from './NavDropdown'
+import NavLink from './NavLink'
+import NavLinkDropdown from './NavLinkDropdown'
 
 interface Props {
   extraCss?: SerializedStyles
@@ -19,6 +22,10 @@ interface Props {
 
 export default function Nav({ extraCss }: Props) {
   const [mobileOpen, setMobileOpen] = useState(false)
+  const contentStyles = [styles.navContent]
+  if (mobileOpen) {
+    contentStyles.push(styles.navContentOpen)
+  }
   return (
     <nav css={[styles.nav, extraCss]}>
       <Global
@@ -47,55 +54,77 @@ export default function Nav({ extraCss }: Props) {
           <Logo />
         </a>
       </header>
-      <div css={styles.navContent} className={mobileOpen ? 'mobile-open' : ''}>
+      <div css={contentStyles}>
         <ul css={styles.links}>
           <li css={styles.listItem}>
-            <Link
-              css={styles.navLink}
-              to="/"
-              activeClassName="nav-link-active"
-              className="nav-link"
-              onClick={() => setMobileOpen(false)}>
+            <NavLink partiallyActive to="/features" title="Spokestack Features">
               Features
-            </Link>
+            </NavLink>
           </li>
           <li css={styles.listItem}>
-            <Link
-              className="nav-link"
-              css={styles.navLink}
-              activeClassName="nav-link-active"
-              partiallyActive
-              to="/about"
-              title="About Spokestack">
-              Resources
-            </Link>
+            <NavDropdown title="Resources">
+              <div css={styles.dropdownContent}>
+                <div css={styles.dropdownColumn}>
+                  <NavLinkDropdown
+                    href="/docs"
+                    title="Developer Docs"
+                    imageUrl="/navigation/docs.svg"
+                    text="Start integrating voice using our tools &amp; services"
+                  />
+                  <NavLinkDropdown
+                    href="/blog/tag/tutorial"
+                    title="Tutorials"
+                    imageUrl="/navigation/tutorials.svg"
+                    text="Step-by-step instructions to build real-world products"
+                  />
+                  <NavLinkDropdown
+                    href="/blog"
+                    title="Blog"
+                    imageUrl="/navigation/blog.svg"
+                    text="How-to articles on creating voice assistants from our
+                    team"
+                  />
+                </div>
+                <div css={[styles.dropdownColumn, styles.desktopOnly]}>
+                  <NavLinkDropdown
+                    title="Libraries"
+                    imageUrl="/navigation/libraries.svg"
+                    text="Build a voice-enabled app using one of our open source
+                    libraries:">
+                    <Libraries />
+                  </NavLinkDropdown>
+                </div>
+                <div
+                  css={[
+                    styles.dropdownColumn,
+                    styles.dropdownColumnFull,
+                    styles.desktopOnly
+                  ]}>
+                  <h4>
+                    <a href="/docs">Get Started</a>
+                  </h4>
+                  <p>Get up &amp; running with Spokestack</p>
+                  <a className="btn btn-primary" href="/docs">
+                    View Docs
+                  </a>
+                </div>
+              </div>
+            </NavDropdown>
           </li>
           <li css={styles.listItem}>
-            <Link
-              className="nav-link"
-              css={styles.navLink}
-              activeClassName="nav-link-active"
-              partiallyActive
-              to="/pricing"
-              title="Spokestack Pricing">
+            <NavLink partiallyActive to="/pricing" title="Spokestack Pricing">
               Pricing
-            </Link>
+            </NavLink>
           </li>
           <li css={styles.listItem}>
-            <Link
-              className="nav-link"
-              css={styles.navLink}
-              activeClassName="nav-link-active"
-              partiallyActive
-              to="/support"
-              title="Spokestack Support">
+            <NavLink partiallyActive to="/support" title="Spokestack Support">
               Support
-            </Link>
+            </NavLink>
           </li>
         </ul>
         <LoginButtons extraCss={styles.mobileLogin} />
       </div>
-      <LoginButtons extraCss={styles.desktopLogin} />
+      <LoginButtons extraCss={styles.desktopOnly} />
     </nav>
   )
 }
@@ -166,10 +195,6 @@ const styles = {
     background-color: ${theme.primary};
     z-index: 9998;
 
-    &.mobile-open {
-      transform: translateY(0);
-    }
-
     ${MIN_DEFAULT_MEDIA_QUERY} {
       position: static;
       display: flex;
@@ -180,6 +205,11 @@ const styles = {
       padding: 0;
       margin-left: 20px;
       transform: none;
+    }
+  `,
+  navContentOpen: css`
+    ${DEFAULT_MEDIA_QUERY} {
+      transform: translateY(0);
     }
   `,
   links: css`
@@ -207,67 +237,33 @@ const styles = {
       width: auto;
     }
   `,
-  navLink: css`
-    position: relative;
+  dropdownContent: css`
     display: flex;
-    justify-content: flex-start;
-    align-items: center;
-    width: 100%;
-    height: 60px;
-    font-size: ${adjustFontSizeTo('18px').fontSize};
-    font-weight: 300;
-    line-height: 1.1;
-    transition: background-color 0.2s ${theme.transitionEasing},
-      color 0.2s ${theme.transitionEasing};
-    padding: 0 15px;
-    user-select: none;
-    white-space: nowrap;
-
-    &,
-    &:hover,
-    &:visited {
-      color: ${theme.textDarkBg} !important;
-      text-decoration: none;
-    }
-
-    &:hover,
-    &.nav-link-active {
-      background-color: rgba(0, 0, 0, 0.1);
-    }
-    &:active:not(.nav-link-active) {
-      background-color: rgba(0, 0, 0, 0.2);
-    }
+    flex-direction: row;
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+  `,
+  dropdownColumn: css`
+    display: flex;
+    flex-direction: column;
 
     ${MIN_DEFAULT_MEDIA_QUERY} {
-      width: auto;
-      font-size: ${adjustFontSizeTo('16px').fontSize};
+      padding: 20px 0 20px 20px;
+    }
+  `,
+  dropdownColumnFull: css`
+    grid-column: span 2;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    background-color: ${theme.primaryLighter};
 
-      &:hover,
-      &.nav-link-active,
-      &:visited {
-        background: none !important;
-      }
-      &:active {
-        background: none !important;
-        text-shadow: 0 0 1px rgba(39, 110, 202, 0.6);
-      }
-      &:after {
-        content: '';
-        position: absolute;
-        bottom: 0;
-        left: 50%;
-        right: 0;
-        width: 0;
-        height: 0;
-        transition: width 0.1s ease-in-out, height 0.1s ease-in-out,
-          left 0.1s ease-in-out;
-        background-color: ${theme.secondary};
-      }
-      &:hover:after {
-        left: 0;
-        height: 4px;
-        width: 100%;
-      }
+    ${MIN_DEFAULT_MEDIA_QUERY} {
+      padding: 50px;
+    }
+
+    ${MIN_LARGE_DISPLAY_MEDIA_QUERY} {
+      grid-column: auto;
     }
   `,
   mobileLogin: css`
@@ -278,7 +274,7 @@ const styles = {
       display: none;
     }
   `,
-  desktopLogin: css`
+  desktopOnly: css`
     display: none;
 
     ${MIN_DEFAULT_MEDIA_QUERY} {

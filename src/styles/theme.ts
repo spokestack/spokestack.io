@@ -2,6 +2,7 @@ import Color from 'color'
 
 export const primaryColor = Color('#2f5bea')
 export const primaryLightColor = Color('#99caff')
+export const primaryLighterColor = Color('#cce4ff')
 export const secondaryColor = Color('#61fae9')
 export const textColor = Color('#323e48')
 export const headerColor = Color('#2c363f')
@@ -9,10 +10,11 @@ export const mainBorderColor = Color('#e6e9e9')
 export const linkColor = primaryColor
 export const linkColorDark = primaryLightColor
 export const authorBackgroundColor = Color('#5b6a79')
-export const codeBackgroundColor = Color('#cce4ff').fade(0.7)
+export const codeBackgroundColor = primaryLighterColor.fade(0.7)
 
 export const primary = primaryColor.hex()
 export const primaryLight = primaryLightColor.hex()
+export const primaryLighter = primaryLighterColor.hex()
 export const secondary = secondaryColor.hex()
 
 export const mainBackground = '#f6f9fc'

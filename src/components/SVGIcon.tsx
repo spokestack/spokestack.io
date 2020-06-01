@@ -3,7 +3,7 @@ import { SerializedStyles, css } from '@emotion/core'
 
 interface Props extends SVGAttributes<SVGElement> {
   icon: string
-  extraCss?: SerializedStyles
+  extraCss?: SerializedStyles | SerializedStyles[]
 }
 
 /**
@@ -14,7 +14,7 @@ interface Props extends SVGAttributes<SVGElement> {
  */
 export default function SVGIcon({ icon, extraCss, ...props }: Props) {
   return (
-    <svg css={[styles.icon, extraCss]} {...props}>
+    <svg css={[styles.icon].concat(extraCss)} {...props}>
       <use xlinkHref={icon} />
     </svg>
   )

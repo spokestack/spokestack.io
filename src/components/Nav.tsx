@@ -32,8 +32,8 @@ export default function Nav({ extraCss }: Props) {
         styles={css`
           .nav-link-active {
             color: ${theme.secondary} !important;
-            font-weight: bold;
-            cursor: default;
+            font-weight: 700;
+            cursor: default !important;
           }
           .nav-link-active:after {
             width: 100% !important;

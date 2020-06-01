@@ -146,7 +146,7 @@ const styles = {
       position: absolute;
       flex-direction: row;
       justify-content: space-between;
-      padding: 0 50px;
+      padding: 0 30px;
     }
 
     ${MIN_LARGE_DISPLAY_MEDIA_QUERY} {

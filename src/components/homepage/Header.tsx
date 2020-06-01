@@ -45,7 +45,7 @@ const styles = {
     ${MIN_DEFAULT_MEDIA_QUERY} {
       flex-direction: row;
       align-items: center;
-      padding: 0 50px;
+      padding: 0 30px;
       height: 645px;
     }
 

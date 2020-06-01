@@ -22,6 +22,7 @@ const options: TypographyOptions = {
   boldWeight: 700,
   overrideStyles: ({ scale, rhythm }) => ({
     html: {
+      '-moz-osx-font-smoothing': 'grayscale',
       '-webkit-font-smoothing': 'antialiased'
     },
     body: {

@@ -81,7 +81,6 @@ const styles = {
   navLinkDesktop: css`
     ${MIN_DEFAULT_MEDIA_QUERY} {
       width: auto;
-      font-size: ${adjustFontSizeTo('16px').fontSize};
 
       &:hover,
       &.nav-link-active,

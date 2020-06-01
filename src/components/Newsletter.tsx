@@ -125,5 +125,6 @@ const styles = {
     width: 17px;
     height: 17px;
     margin-left: 5px;
+    fill: ${theme.primary};
   `
 }

@@ -5,7 +5,7 @@ import Footer from './Footer'
 import { MIN_DEFAULT_MEDIA_QUERY } from 'typography-breakpoint-constants'
 import Nav from './Nav'
 import Sprite from '../svg-sprite.svg'
-import globalStyles from '../styles/globalStyles'
+import globalStyles from '../styles/global.css'
 import { ieBreakpoint } from '../styles/theme'
 
 interface Props {

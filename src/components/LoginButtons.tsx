@@ -4,40 +4,51 @@ import { SerializedStyles, css } from '@emotion/core'
 import { isLoggedIn, logout } from '../utils/auth'
 
 import { Link } from 'gatsby'
+import { MIN_DEFAULT_MEDIA_QUERY } from 'typography-breakpoint-constants'
 import React from 'react'
 
 interface Props {
+  btnClassName?: string
+  className?: string
   extraCss?: SerializedStyles
 }
 
-export default function LoginButtons({ extraCss }: Props) {
-  return isLoggedIn() ? (
-    <div css={[styles.loginButtons, extraCss]}>
-      <Link
-        to="/account"
-        css={styles.loginLink}
-        partiallyActive
-        activeStyle={{ display: 'none' }}>
-        Account
-      </Link>
-      <a className="btn btn-secondary btn-transparent" onClick={() => logout()}>
-        Log out
-      </a>
-    </div>
-  ) : (
-    <div css={[styles.loginButtons, extraCss]}>
-      <Link
-        to="/login"
-        css={styles.loginLink}
-        activeStyle={{ display: 'none' }}>
-        Log in
-      </Link>
-      <Link
-        className="btn btn-secondary btn-transparent"
-        to="/create"
-        activeStyle={{ display: 'none' }}>
-        Sign up free
-      </Link>
+export default function LoginButtons({
+  btnClassName,
+  className,
+  extraCss
+}: Props) {
+  return (
+    <div className={className} css={[styles.loginButtons, extraCss]}>
+      {isLoggedIn() ? (
+        <>
+          <Link
+            to="/account"
+            css={styles.loginLink}
+            partiallyActive
+            activeStyle={{ display: 'none' }}>
+            Account
+          </Link>
+          <a className={`btn ${btnClassName}`} onClick={() => logout()}>
+            Log out
+          </a>
+        </>
+      ) : (
+        <>
+          <Link
+            to="/login"
+            css={styles.loginLink}
+            activeStyle={{ display: 'none' }}>
+            Log in
+          </Link>
+          <Link
+            className={`btn ${btnClassName}`}
+            to="/create"
+            activeStyle={{ display: 'none' }}>
+            Sign up free
+          </Link>
+        </>
+      )}
     </div>
   )
 }
@@ -50,20 +61,21 @@ const styles = {
     align-items: center;
   `,
   loginLink: css`
-    color: white;
     font-weight: 400;
     margin-right: 20px;
     text-decoration: none;
 
-    &,
-    &:visited {
-      color: white;
-    }
-    &:hover {
-      color: ${theme.linkSecondaryHover};
-    }
-    &:active {
-      color: ${theme.linkSecondaryActive};
+    ${MIN_DEFAULT_MEDIA_QUERY} {
+      &,
+      &:visited {
+        color: ${theme.textDarkBg};
+      }
+      &:hover {
+        color: ${theme.linkSecondaryHover};
+      }
+      &:active {
+        color: ${theme.linkSecondaryActive};
+      }
     }
   `
 }

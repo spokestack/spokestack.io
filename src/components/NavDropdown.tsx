@@ -5,11 +5,11 @@ import {
   MIN_DEFAULT_MEDIA_QUERY,
   MIN_LARGE_DISPLAY_MEDIA_QUERY
 } from 'typography-breakpoint-constants'
+import { Global, css } from '@emotion/core'
 import React, { useState } from 'react'
 
 import NavLink from './NavLink'
 import SVGIcon from './SVGIcon'
-import { css } from '@emotion/core'
 
 interface Props {
   children: React.ReactNode
@@ -24,7 +24,23 @@ export default function NavDropdown({ children, title }: Props) {
     menuStyles.push(styles.dropdownMenuOpen)
   }
   return (
-    <div css={styles.dropdown}>
+    <div className="nav-dropdown" css={styles.dropdown}>
+      <Global
+        styles={css`
+          html.dark-mode {
+            .nav-link {
+              color: ${theme.textDarkBg} !important;
+            }
+            .dropdown-content {
+              background-color: ${theme.authorBackground};
+              border-color: ${theme.mainBorderDark};
+            }
+            .dropdown-icon {
+              fill: ${theme.textDarkBg};
+            }
+          }
+        `}
+      />
       <NavLink
         href="#"
         onClick={(e) => {
@@ -48,7 +64,7 @@ export default function NavDropdown({ children, title }: Props) {
               e.preventDefault()
               setOpen(false)
             }}
-            css={styles.dropdownBack}>
+            extraCss={styles.dropdownBack}>
             <SVGIcon
               className="dropdown-icon"
               icon="#arrow-down"
@@ -89,13 +105,14 @@ const styles = {
   dropdownIcon: css`
     width: 18px;
     height: 18px;
-    fill: white;
+    fill: ${theme.header};
     margin-left: 5px;
     transform: rotateZ(270deg);
     transition: transform 0.2s ${theme.transitionEasing};
 
     ${MIN_DEFAULT_MEDIA_QUERY} {
       transform: none;
+      fill: ${theme.textDarkBg};
     }
   `,
   prevIcon: css`
@@ -104,10 +121,10 @@ const styles = {
   `,
   dropdownMenu: css`
     position: fixed;
-    top: 60px;
+    top: 60px; /* Space for nav */
     left: 0;
     right: 0;
-    bottom: 94px;
+    bottom: 94px; /* Space for login buttons */
     opacity: 0;
     transform: translateX(100%);
     visibility: hidden;
@@ -143,12 +160,13 @@ const styles = {
   dropdownContent: css`
     width: 100%;
     height: 100%;
-    background-color: ${theme.primary};
+    background-color: white;
     transition: transform 0.2s ${theme.transitionEasing};
     overflow: hidden;
+    height: 100%;
+    overflow-y: auto;
 
     ${MIN_DEFAULT_MEDIA_QUERY} {
-      background-color: white;
       border: 1px solid ${theme.mainBorder};
       border-radius: 7px;
       transform-origin: 50% -60px;

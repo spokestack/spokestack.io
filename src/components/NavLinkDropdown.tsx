@@ -1,12 +1,14 @@
 import * as theme from '../styles/theme'
 
+import { Global, SerializedStyles, css } from '@emotion/core'
+
 import { MIN_DEFAULT_MEDIA_QUERY } from 'typography-breakpoint-constants'
 import NavLink from './NavLink'
 import React from 'react'
-import { css } from '@emotion/core'
 
 interface Props {
   children?: React.ReactNode
+  extraCss?: SerializedStyles
   href?: string
   imageUrl: string
   title: string
@@ -15,6 +17,7 @@ interface Props {
 
 export default function NavLinkDropdown({
   children,
+  extraCss,
   href,
   imageUrl,
   title,
@@ -24,13 +27,26 @@ export default function NavLinkDropdown({
     <NavLink
       mobileOnly
       partiallyActive
-      extraCss={styles.dropdownLink}
+      className="nav-link-dropdown"
+      extraCss={[styles.dropdownLink, extraCss]}
       to={href}
       title={title}>
-      <img css={styles.desktopOnly} alt={title} src={imageUrl} />
+      <Global
+        styles={css`
+          html.dark-mode .nav-link-dropdown {
+            span:not(.blue),
+            p {
+              color: ${theme.textDarkBg};
+            }
+          }
+        `}
+      />
+      <img alt={title} css={styles.dropdownLinkImage} src={imageUrl} />
       <div css={styles.dropdownLinkContent}>
-        <span css={[styles.title, href ? styles.blue : null]}>{title}</span>
-        <p css={styles.desktopOnly}>{text}</p>
+        <span className={href ? 'blue' : ''} css={styles.dropdownLinkTitle}>
+          {title}
+        </span>
+        <p css={styles.dropdownLinkText}>{text}</p>
         {children}
       </div>
     </NavLink>
@@ -39,52 +55,40 @@ export default function NavLinkDropdown({
 
 const styles = {
   dropdownLink: css`
-    ${MIN_DEFAULT_MEDIA_QUERY} {
-      display: flex;
-      flex-direction: row;
-      align-items: flex-start;
+    flex-direction: row;
+    align-items: flex-start;
+    color: ${theme.text} !important;
+    height: auto;
+    padding: 20px;
+    white-space: normal;
+
+    &,
+    &:visited,
+    &:hover,
+    &:active {
       color: ${theme.text} !important;
-      height: auto;
-      padding: 10px 20px;
-      white-space: normal;
-      border-radius: 7px;
-
-      &,
-      &:visited,
-      &:hover,
-      &:active {
-        color: ${theme.text} !important;
-      }
-
-      img {
-        flex-shrink: 0;
-        width: 60px;
-        margin-right: 10px;
-      }
     }
+
+    ${MIN_DEFAULT_MEDIA_QUERY} {
+      padding: 10px 20px;
+      border-radius: 7px;
+    }
+  `,
+  dropdownLinkImage: css`
+    flex-shrink: 0;
+    width: 60px;
+    margin-right: 10px;
   `,
   dropdownLinkContent: css`
-    ${MIN_DEFAULT_MEDIA_QUERY} {
-      display: flex;
-      flex-direction: column;
-    }
+    display: flex;
+    flex-direction: column;
   `,
-  title: css`
-    ${MIN_DEFAULT_MEDIA_QUERY} {
-      color: ${theme.header};
-      font-weight: 700;
-    }
+  dropdownLinkTitle: css`
+    color: ${theme.header};
+    font-weight: 700;
+    margin-bottom: 5px;
   `,
-  blue: css`
-    ${MIN_DEFAULT_MEDIA_QUERY} {
-      color: ${theme.link};
-    }
-  `,
-  desktopOnly: css`
-    display: none;
-
-    ${MIN_DEFAULT_MEDIA_QUERY} {
-      display: block;
-    }
+  dropdownLinkText: css`
+    font-weight: 400;
   `
 }

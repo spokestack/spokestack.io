@@ -30,15 +30,35 @@ export default function Nav({ extraCss }: Props) {
     <nav css={[styles.nav, extraCss]}>
       <Global
         styles={css`
-          .nav-link-active {
-            color: ${theme.secondary} !important;
-            font-weight: 700;
-            cursor: default !important;
+          ${MIN_DEFAULT_MEDIA_QUERY} {
+            .nav-link-active {
+              color: ${theme.secondary} !important;
+              font-weight: 700;
+              cursor: default !important;
+            }
+            .nav-link-active:after {
+              width: 100% !important;
+              height: 4px !important;
+              left: 0 !important;
+            }
           }
-          .nav-link-active:after {
-            width: 100% !important;
-            height: 4px !important;
-            left: 0 !important;
+          html.dark-mode {
+            .nav-link {
+              color: ${theme.textDarkBg} !important;
+            }
+            .dropdown-col-full {
+              background-color: ${theme.primaryColor.fade(0.8).toString()};
+
+              .btn:not(:hover):not(:active) {
+                color: ${theme.text};
+              }
+            }
+            ${DEFAULT_MEDIA_QUERY} {
+              .nav-content,
+              .mobile-login-buttons {
+                background-color: ${theme.authorBackground};
+              }
+            }
           }
         `}
       />
@@ -54,7 +74,7 @@ export default function Nav({ extraCss }: Props) {
           <Logo />
         </a>
       </header>
-      <div css={contentStyles}>
+      <div className="nav-content" css={contentStyles}>
         <ul css={styles.links}>
           <li css={styles.listItem}>
             <NavLink partiallyActive to="/features" title="Spokestack Features">
@@ -66,18 +86,21 @@ export default function Nav({ extraCss }: Props) {
               <div css={styles.dropdownContent}>
                 <div css={styles.dropdownColumn}>
                   <NavLinkDropdown
+                    extraCss={styles.navLinkDropdown}
                     href="/docs"
                     title="Developer Docs"
                     imageUrl="/navigation/docs.svg"
                     text="Start integrating voice using our tools &amp; services"
                   />
                   <NavLinkDropdown
+                    extraCss={styles.navLinkDropdown}
                     href="/blog/tag/tutorial"
                     title="Tutorials"
                     imageUrl="/navigation/tutorials.svg"
                     text="Step-by-step instructions to build real-world products"
                   />
                   <NavLinkDropdown
+                    extraCss={styles.navLinkDropdown}
                     href="/blog"
                     title="Blog"
                     imageUrl="/navigation/blog.svg"
@@ -85,8 +108,9 @@ export default function Nav({ extraCss }: Props) {
                     team"
                   />
                 </div>
-                <div css={[styles.dropdownColumn, styles.desktopOnly]}>
+                <div css={styles.dropdownColumn}>
                   <NavLinkDropdown
+                    extraCss={styles.navLinkDropdown}
                     title="Libraries"
                     imageUrl="/navigation/libraries.svg"
                     text="Build a voice-enabled app using one of our open source
@@ -95,6 +119,7 @@ export default function Nav({ extraCss }: Props) {
                   </NavLinkDropdown>
                 </div>
                 <div
+                  className="dropdown-col-full"
                   css={[
                     styles.dropdownColumn,
                     styles.dropdownColumnFull,
@@ -122,12 +147,28 @@ export default function Nav({ extraCss }: Props) {
             </NavLink>
           </li>
         </ul>
-        <LoginButtons extraCss={styles.mobileLogin} />
+        <LoginButtons
+          className="mobile-login-buttons"
+          extraCss={styles.mobileLogin}
+        />
       </div>
-      <LoginButtons extraCss={styles.desktopOnly} />
+      <LoginButtons
+        btnClassName="btn-secondary btn-transparent"
+        extraCss={styles.desktopOnly}
+      />
     </nav>
   )
 }
+
+const borderTopStyle = css`
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 20px;
+  right: 20px;
+  height: 1px;
+  background-color: ${theme.mainBorder};
+`
 
 const styles = {
   nav: css`
@@ -192,7 +233,7 @@ const styles = {
     padding: 60px 0 94px;
     transform: translateY(-100%);
     transition: transform 0.2s ${theme.transitionEasing};
-    background-color: ${theme.primary};
+    background-color: white;
     z-index: 9998;
 
     ${MIN_DEFAULT_MEDIA_QUERY} {
@@ -203,8 +244,8 @@ const styles = {
       align-items: center;
       bottom: auto;
       padding: 0;
-      margin-left: 20px;
       transform: none;
+      background-color: transparent;
     }
   `,
   navContentOpen: css`
@@ -230,8 +271,16 @@ const styles = {
     }
   `,
   listItem: css`
-    margin: 0;
     width: 100%;
+    margin: 0;
+
+    ${DEFAULT_MEDIA_QUERY} {
+      position: relative;
+      & + & > .nav-link:after,
+      & + & > .nav-dropdown > .nav-link:after {
+        ${borderTopStyle};
+      }
+    }
 
     ${MIN_DEFAULT_MEDIA_QUERY} {
       width: auto;
@@ -241,7 +290,7 @@ const styles = {
     display: flex;
     flex-direction: row;
     display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
   `,
   dropdownColumn: css`
     display: flex;
@@ -266,9 +315,22 @@ const styles = {
       grid-column: auto;
     }
   `,
+  navLinkDropdown: css`
+    ${DEFAULT_MEDIA_QUERY} {
+      position: relative;
+      &:after {
+        ${borderTopStyle};
+      }
+    }
+  `,
   mobileLogin: css`
     height: 94px;
-    background-color: ${theme.primary};
+    background-color: white;
+    position: relative;
+
+    &:after {
+      ${borderTopStyle};
+    }
 
     ${MIN_DEFAULT_MEDIA_QUERY} {
       display: none;

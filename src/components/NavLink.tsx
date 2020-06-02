@@ -8,7 +8,7 @@ import { MIN_DEFAULT_MEDIA_QUERY } from 'typography-breakpoint-constants'
 import { adjustFontSizeTo } from '../styles/typography'
 
 interface Props extends AnchorHTMLAttributes<HTMLAnchorElement> {
-  extraCss?: SerializedStyles
+  extraCss?: SerializedStyles | SerializedStyles[]
   to?: string
   partiallyActive?: boolean
   mobileOnly?: boolean
@@ -22,11 +22,11 @@ export default function NavLink({
   partiallyActive,
   ...props
 }: Props) {
-  const style = [styles.navLink]
+  let style = [styles.navLink]
   if (!mobileOnly) {
     style.push(styles.navLinkDesktop)
   }
-  style.push(extraCss)
+  style = style.concat(extraCss)
   return to ? (
     <Link
       className="nav-link"
@@ -53,11 +53,10 @@ const styles = {
     width: 100%;
     height: 60px;
     font-size: ${adjustFontSizeTo('18px').fontSize};
-    font-weight: 300;
     line-height: 1.1;
     transition: background-color 0.2s ${theme.transitionEasing},
       color 0.2s ${theme.transitionEasing};
-    padding: 0 15px;
+    padding: 0 20px;
     user-select: none;
     white-space: nowrap;
 
@@ -68,7 +67,7 @@ const styles = {
     &,
     &:hover,
     &:visited {
-      color: ${theme.textDarkBg} !important;
+      color: ${theme.header} !important;
       text-decoration: none;
     }
 
@@ -83,10 +82,15 @@ const styles = {
   navLinkDesktop: css`
     ${MIN_DEFAULT_MEDIA_QUERY} {
       width: auto;
+      margin: 0;
+      padding: 0 10px;
+      font-weight: 400;
 
+      &,
       &:hover,
       &.nav-link-active,
       &:visited {
+        color: ${theme.textDarkBg} !important;
         background: none !important;
       }
       &:active {

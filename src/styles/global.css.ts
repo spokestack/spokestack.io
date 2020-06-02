@@ -24,6 +24,9 @@ export default css`
   .title {
     font-size: ${adjustFontSizeTo('20px').fontSize};
   }
+  .blue {
+    color: ${theme.primary} !important;
+  }
   .select-label {
     background-color: white;
     color: ${theme.header};
@@ -294,6 +297,7 @@ export default css`
     .btn {
       background-color: ${theme.buttonBackgroundDark};
       border-color: ${theme.buttonBackgroundDark};
+      color: ${theme.text};
 
       &:hover:not([disabled]),
       &:active:not([disabled]),
@@ -337,6 +341,9 @@ export default css`
         color: ${theme.primary};
         text-decoration-color: ${theme.primary};
       }
+    }
+    .blue {
+      color: ${theme.primaryLight} !important;
     }
     .select-label {
       background-color: ${theme.stickyNavBackgroundDark};

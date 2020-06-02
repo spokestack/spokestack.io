@@ -64,7 +64,7 @@ func initPipeline() {
         SpeechProcessors.appleSpeech.processor,
         speechConfiguration: config,
         speechDelegate: self,
-        wakewordService: SpeechProcessors.tfLiteWakeword,
+        wakewordService: SpeechProcessors.appleWakeword.processor,
         pipelineDelegate: self
     )
 }
@@ -85,7 +85,7 @@ let pipeline = SpeechPipeline(
     SpeechProcessors.appleSpeech.processor,
     speechConfiguration: SpeechConfiguration(),
     speechDelegate: self,
-    wakewordService: SpeechProcessors.tfLiteWakeword,
+    wakewordService: SpeechProcessors.tfLiteWakeword.processor,
     pipelineDelegate: self
 )
 ```

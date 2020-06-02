@@ -42,6 +42,7 @@ export default function Tags({ header, allUrl, tags }: Props) {
         {tags.map((tag, i) => (
           <Link
             key={`tag-${i}`}
+            partiallyActive
             to={`/blog/tag/${tag.toLowerCase().replace(rspaces, '-')}`}
             activeClassName="tag-active"
             className="btn btn-transparent btn-small">

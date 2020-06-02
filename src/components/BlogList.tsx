@@ -59,7 +59,7 @@ export default function BlogList({
         <div className="bg-banner" css={styles.bgBanner} />
         <section css={styles.blogContent}>
           <div className="sidenav" css={styles.sidenav}>
-            <Tags allUrl={homeUrl} header="Tags" tags={tags} />
+            <Tags allUrl="/blog" header="Tags" tags={tags} />
           </div>
           <div css={styles.content}>
             {header ? (
@@ -76,7 +76,13 @@ export default function BlogList({
             {(hasPrevious || hasNext) && (
               <div className="blog-nav-links" css={styles.blogNavLinks}>
                 {hasPrevious ? (
-                  <a href={`/blog/${currentPage - 1}`} css={styles.blogNavLink}>
+                  <a
+                    href={
+                      currentPage === 2
+                        ? homeUrl
+                        : `${homeUrl}/${currentPage - 1}`
+                    }
+                    css={styles.blogNavLink}>
                     <SVGIcon
                       className="icon"
                       icon="#arrow-forward"
@@ -91,7 +97,9 @@ export default function BlogList({
                   <div />
                 )}
                 {hasNext && (
-                  <a href={`/blog/${currentPage + 1}`} css={styles.blogNavLink}>
+                  <a
+                    href={`${homeUrl}/${currentPage + 1}`}
+                    css={styles.blogNavLink}>
                     Next
                     <SVGIcon
                       className="icon"

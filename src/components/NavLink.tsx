@@ -19,6 +19,7 @@ export default function NavLink({
   to,
   children,
   mobileOnly,
+  partiallyActive,
   ...props
 }: Props) {
   const style = [styles.navLink]
@@ -32,6 +33,7 @@ export default function NavLink({
       css={style}
       activeClassName="nav-link-active"
       to={to}
+      partiallyActive={partiallyActive}
       {...props}>
       {children}
     </Link>

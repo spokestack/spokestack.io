@@ -57,7 +57,6 @@ let pipeline: SpeechPipeline?
 func initPipeline() {
     var config = SpeechConfiguration()
     config.wakewords = "custom,phrase"
-    config.wakePhrases = "custom phrase"
 
     // `self` adopts the `SpeechEventListener` and
     // `PipelineDelegate` protocols
@@ -65,7 +64,7 @@ func initPipeline() {
         SpeechProcessors.appleSpeech.processor,
         speechConfiguration: config,
         speechDelegate: self,
-        wakewordService: SpeechProcessors.tfLiteWakeword,
+        wakewordService: SpeechProcessors.appleWakeword.processor,
         pipelineDelegate: self
     )
 }
@@ -86,7 +85,7 @@ let pipeline = SpeechPipeline(
     SpeechProcessors.appleSpeech.processor,
     speechConfiguration: SpeechConfiguration(),
     speechDelegate: self,
-    wakewordService: SpeechProcessors.tfLiteWakeword,
+    wakewordService: SpeechProcessors.tfLiteWakeword.processor,
     pipelineDelegate: self
 )
 ```

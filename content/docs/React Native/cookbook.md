@@ -9,6 +9,18 @@ This is a collection of code snippets and brief descriptions designed to help yo
 
 ### Tap to talk
 
+When configuring Spokestack, ensure that you have settings that make sense for a button-activated ASR activation. A wakeword or VAD trigger, for example, would not make much sense since you'll be triggering ASR from a button.
+
+```javascript
+stages: [
+  'io.spokestack.spokestack.webrtc.VoiceActivityDetector', // voice activity detection
+  'io.spokestack.spokestack.ActivationTimeout', // speech recognition times out after a configurable interval when voice is no longer detected
+  'io.spokestack.spokestack.google.GoogleSpeechRecognizer'
+]
+```
+
+Then it's just a matter of calling `activate()` when a button is pushed!
+
 ```javascript
 onTalkButtonPressed () {
   // if the pipeline has been started elsewhere, you

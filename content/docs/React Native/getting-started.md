@@ -11,15 +11,15 @@ One caveat before we start, though: _This is not a collection of best practices_
 
 ## Prerequisites
 
-We assume that you already have a working react-native project (with `npm` and `cocoapods` already installed), and are adding Spokestack to that project. If you're starting from scratch, please refer to the [react-native getting started guide](https://reactnative.dev/docs/getting-started) and then come back here!
+We assume that you already have a working react-native 0.60+ project (with `npm` and `cocoapods` already installed), and are adding Spokestack to that project. If you're starting from scratch, please refer to the [react-native getting started guide](https://reactnative.dev/docs/getting-started) and then come back here!
 
 ### iOS
 
-iOS 13+, [CocoaPods](https://guides.cocoapods.org/using/using-cocoapods.html#adding-pods-to-an-xcode-project) v1.6.0+. For extended instructions, refer to the [iOS Getting Started guide](docs/iOS/getting-started)
+iOS 13+, [CocoaPods](https://guides.cocoapods.org/using/using-cocoapods.html#adding-pods-to-an-xcode-project) v1.6.0+.
 
 ### Android
 
-Android SDK 26+, Android NDK (`SDK Manager` -> `SDK Tools` tab in Android Studio, or see [here](https://developer.android.com/ndk/downloads)). For extended instructions, refer to the [Android Getting Started guide](docs/Android/getting-started)
+Android SDK 26+, Android NDK (`SDK Manager` -> `SDK Tools` tab in Android Studio, or see [here](https://developer.android.com/ndk/downloads)).
 
 ## Installation
 
@@ -39,6 +39,41 @@ Edit your `Podfile` to include `use_native_modules!` and `use_frameworks!`, to u
 
 1. In your XCode Project settings, select your app target (eg `MinecraftSkill`) > Build Settings > Library Search Paths : Remove the search path `"$(TOOLCHAIN_DIR)/usr/lib/swift-5.0/$(PLATFORM_NAME)"`.
 1. If your project does not already have an Objective-C - Swift bridging header, please create one: File > New File > Swift File > “Dummy.swift”, your app target > Create Bridging Header.
+
+### Android
+
+### `/android/gradle.properties`
+
+Due to the number of libraries React Native uses on Android, it's best to give the JVM extra memory while during compliation: `org.gradle.jvmargs=-Xmx2048m -XX:MaxPermSize=512m -XX:+HeapDumpOnOutOfMemoryError -Dfile.encoding=UTF-8`
+
+### `android/build.gradle`
+
+Spokestack has dependencies that require a slightly higher minimum SDK version that React Native requires by default:
+
+```
+buildscript {
+    ext {
+        buildToolsVersion = "28.0.3"
+        minSdkVersion = 21
+        //...
+    }
+    repositories {
+        google()
+        maven { url 'https://csspeechstorage.blob.core.windows.net/maven/' }
+        //...
+    }
+}
+
+//...
+
+allprojects{
+    repositories {
+        google()
+        maven { url 'https://csspeechstorage.blob.core.windows.net/maven/' }
+        //...
+    }
+}
+```
 
 ## Integration
 
@@ -60,22 +95,50 @@ Head over to `Info.plist` in your project and add a couple keys. Here are the ra
 
 Apple manages the various demands on a phone's audio system via [audio sessions](https://developer.apple.com/library/archive/documentation/Audio/Conceptual/AudioSessionProgrammingGuide/Introduction/Introduction.html). See their documentation for more details, but here's the minimum configuration you'll need in order to record user speech. A good place for it is your `AppDelegate`'s `application(_:didFinishLaunchingWithOptions)` method.
 
-```swift
-import AVFoundation
+Given that, and remembering to remove Flipper as discussed earlier, your `AppDelegate.m` should look similar to this:
 
-...
+```objc
+#import "AppDelegate.h"
+#import <AVFoundation/AVFoundation.h>
 
-func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions:
-    [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
-    let audioSession = AVAudioSession.sharedInstance()
-    do {
-        try audioSession.setCategory(AVAudioSession.Category.playAndRecord, mode: AVAudioSession.Mode.default,
-                                     options: [AVAudioSession.CategoryOptions.defaultToSpeaker, AVAudioSession.CategoryOptions.allowBluetooth, AVAudioSession.CategoryOptions.allowAirPlay])
-        try audioSession.setActive(true)
-    } catch let error as NSError {
-        // handle error
-    }
+#import <React/RCTBridge.h>
+#import <React/RCTBundleURLProvider.h>
+#import <React/RCTRootView.h>
+
+@implementation AppDelegate
+
+- (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions
+{
+
+  # set the AVSession to a category compatible with both recording and playback
+  [[AVAudioSession sharedInstance] setCategory:AVAudioSessionCategoryPlayAndRecord mode:AVAudioSessionModeDefault options:AVAudioSessionCategoryOptionDefaultToSpeaker  error:nil];
+  [[AVAudioSession sharedInstance] setActive:YES error:nil];
+
+  RCTBridge *bridge = [[RCTBridge alloc] initWithDelegate:self launchOptions:launchOptions];
+  RCTRootView *rootView = [[RCTRootView alloc] initWithBridge:bridge
+                                                   moduleName:@"YOUR APP NAME"
+                                            initialProperties:nil];
+
+  rootView.backgroundColor = [[UIColor alloc] initWithRed:1.0f green:1.0f blue:1.0f alpha:1];
+
+  self.window = [[UIWindow alloc] initWithFrame:[UIScreen mainScreen].bounds];
+  UIViewController *rootViewController = [UIViewController new];
+  rootViewController.view = rootView;
+  self.window.rootViewController = rootViewController;
+  [self.window makeKeyAndVisible];
+  return YES;
 }
+
+- (NSURL *)sourceURLForBridge:(RCTBridge *)bridge
+{
+#if DEBUG
+  return [[RCTBundleURLProvider sharedSettings] jsBundleURLForBundleRoot:@"index" fallbackResource:nil];
+#else
+  return [[NSBundle mainBundle] URLForResource:@"main" withExtension:@"jsbundle"];
+#endif
+}
+
+@end
 ```
 
 ### Android
@@ -87,6 +150,15 @@ Starting with Android 6.0, however, the `RECORD_AUDIO` permission requires you t
 Note that sending audio over the network can use a considerable amount of data, so you may also want to look into WiFi-related permissions and allow the user to disable voice control when using cellular data.
 
 Also note that [the Android emulator cannot record audio](https://developer.android.com/guide/topics/media/mediarecorder). You'll need to test the voice input parts of your app on a real device.
+
+#### `android/app/src/main/AndroidManifest.xml`
+
+```
+// for wakeword & ASR
+<uses-permission android:name="android.permission.RECORD_AUDIO" />
+// for TTS
+<uses-permission android:name="android.permission.INTERNET" />
+```
 
 ## Configuring Spokestack
 
@@ -147,7 +219,7 @@ We call `Spokestack.start()` to begin listening for speech. `Spokestack.stop()` 
 Spokestack.start() // start speech pipeline. can only start after initialize is called.
 Spokestack.stop() // stop speech pipeline
 Spokestack.activate() // manually activate the speech pipeline. The speech pipeline is now actively listening for speech to recognize.
-Spokestack.deactivate() // manually deactivate the speech pipeline. The speech pipeline is now passively waiting for an activation trigger.\
+Spokestack.deactivate() // manually deactivate the speech pipeline. The speech pipeline is now passively waiting for an activation trigger.
 ```
 
 We need to provide implementations for the speech events, so that you can receive the speech recognition results, be informed of errors and debugging events, or get notified when the pipeline activates or deactivates (for example, you may want to disable any buttons or show a special "listening" indicator while recording).

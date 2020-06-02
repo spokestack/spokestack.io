@@ -277,10 +277,10 @@ exports.createPages = async ({ graphql, actions, reporter }) => {
   const { createPage } = actions
   const posts = result.data.blog.edges
   const numPages = Math.ceil(posts.length / postsPerPage)
+  const url = '/blog'
   Array.from({ length: numPages }).forEach((_, i) => {
-    const url = i === 0 ? `/blog` : `/blog/${i + 1}`
     createPage({
-      path: url,
+      path: i === 0 ? url : `/blog/${i + 1}`,
       component: path.resolve('./src/templates/blog-list.tsx'),
       context: {
         tags,

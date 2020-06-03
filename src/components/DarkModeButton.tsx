@@ -1,9 +1,8 @@
 import * as theme from '../styles/theme'
 
+import { Global, css } from '@emotion/core'
 import React, { useState } from 'react'
 import { getDarkModePref, setDarkModePref } from '../utils/auth'
-
-import { css } from '@emotion/core'
 
 export default function DarkModeButton() {
   const [dark, setDark] = useState(getDarkModePref())
@@ -21,6 +20,27 @@ export default function DarkModeButton() {
 
   return (
     <button css={styles.button} onClick={toggleDarkMode}>
+      <Global
+        styles={css`
+          html.dark-mode {
+            .dark-mode-track {
+              background-color: ${theme.authorBackground};
+              border-color: ${theme.authorBackgroundColor.darken(0.05).hex()};
+            }
+            .dark-mode-knob {
+              transform: translateX(12px);
+              box-shadow: 0 0 0 1px ${theme.codeBackground};
+              background-color: ${theme.mainBackgroundDark};
+            }
+            .dark-mode-icon--dark {
+              opacity: 1;
+            }
+            .dark-mode-icon--light {
+              opacity: 0;
+            }
+          }
+        `}
+      />
       <div className="dark-mode-track" css={styles.track} />
       <div className="dark-mode-knob" css={styles.knob}>
         <div
@@ -66,6 +86,8 @@ const styles = {
     right: 0;
     height: 12px;
     border-radius: 16px;
+    border: 1px solid ${theme.mainBorderColor.darken(0.05).hex()};
+    background-color: ${theme.mainBorder};
     transition: background-color 0.1s ${theme.transitionEasing};
   `,
   knob: css`
@@ -76,6 +98,9 @@ const styles = {
     justify-content: center;
     align-items: center;
     border-radius: 50%;
+    transform: translateX(0);
+    box-shadow: 0 0 0 1px ${theme.mainBorder};
+    background-color: ${theme.mainBackground};
     transition: transform 0.1s ${theme.transitionEasing};
   `,
   icon: css`
@@ -99,5 +124,6 @@ const styles = {
   `,
   darkIcon: css`
     color: ${theme.textDarkBg};
+    opacity: 0;
   `
 }

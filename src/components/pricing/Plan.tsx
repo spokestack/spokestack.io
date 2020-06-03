@@ -9,11 +9,13 @@ import { css } from '@emotion/core'
 
 interface Props extends HeaderProps {
   categories: CategoryProps[]
+  extraHeader?: React.ReactNode
   showBanners?: boolean
 }
 
 export default function Plan({
   cta,
+  extraHeader,
   name,
   price,
   slug,
@@ -21,8 +23,9 @@ export default function Plan({
   showBanners
 }: Props) {
   return (
-    <div>
+    <div css={styles.plan}>
       <div css={styles.card}>
+        {extraHeader}
         <Header cta={cta} name={name} price={price} slug={slug} />
         {categories.map((category) => (
           <Category
@@ -46,13 +49,20 @@ export default function Plan({
 }
 
 const styles = {
+  plan: css`
+    position: relative;
+    margin-top: 75px;
+    .btn {
+      width: 100%;
+    }
+  `,
   card: css`
     width: 100%;
     background-color: white;
     border: 1px solid ${theme.mainBorder};
     border-top: 6px solid ${theme.primaryLight};
     border-radius: 0 0 7px 7px;
-    padding: 50px 0;
+    padding: 70px 0 50px;
     margin-bottom: 25px;
   `
 }

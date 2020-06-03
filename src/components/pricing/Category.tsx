@@ -122,7 +122,8 @@ const styles = {
     ${MIN_LARGE_DISPLAY_MEDIA_QUERY} {
       padding-top: 30px;
 
-      .feature-enabled {
+      .feature-enabled,
+      .show-disabled {
         padding-left: 20px;
         &:before {
           display: none;

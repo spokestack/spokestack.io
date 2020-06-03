@@ -31,18 +31,6 @@ export default css`
     background-color: white;
     color: ${theme.header};
   }
-  .dark-mode-track {
-    border: 1px solid ${theme.mainBorderColor.darken(0.05).hex()};
-    background-color: ${theme.mainBorder};
-  }
-  .dark-mode-knob {
-    transform: translateX(0);
-    box-shadow: 0 0 0 1px ${theme.mainBorder};
-    background-color: ${theme.mainBackground};
-  }
-  .dark-mode-icon--dark {
-    opacity: 0;
-  }
   :focus {
     outline: ${theme.primary} auto 1px;
   }
@@ -348,21 +336,6 @@ export default css`
     .select-label {
       background-color: ${theme.stickyNavBackgroundDark};
       color: ${theme.textDarkBg};
-    }
-    .dark-mode-track {
-      background-color: ${theme.authorBackground};
-      border-color: ${theme.authorBackgroundColor.darken(0.05).hex()};
-    }
-    .dark-mode-knob {
-      transform: translateX(12px);
-      box-shadow: 0 0 0 1px ${theme.codeBackground};
-      background-color: ${theme.mainBackgroundDark};
-    }
-    .dark-mode-icon--dark {
-      opacity: 1;
-    }
-    .dark-mode-icon--light {
-      opacity: 0;
     }
   }
   ${MIN_DEFAULT_MEDIA_QUERY} {

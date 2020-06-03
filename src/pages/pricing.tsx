@@ -1,15 +1,22 @@
+import * as theme from '../styles/theme'
+
 import {
   MIN_DEFAULT_MEDIA_QUERY,
   MIN_LARGE_DISPLAY_MEDIA_QUERY
 } from 'typography-breakpoint-constants'
+import React, { useState } from 'react'
 
 import Layout from '../components/Layout'
 import Plan from '../components/pricing/Plan'
-import React from 'react'
 import SEO from '../components/SEO'
+import SVGIcon from '../components/SVGIcon'
+import Switch from '../components/pricing/Switch'
+import { adjustFontSizeTo } from '../styles/typography'
 import { css } from '@emotion/core'
 
 export default function Pricing() {
+  const [yearly, setYearly] = useState(true)
+
   return (
     <Layout>
       <SEO
@@ -109,8 +116,23 @@ export default function Pricing() {
         />
         <Plan
           cta="Coming soon"
-          name="Pro"
-          price="$99/mo"
+          extraHeader={
+            <Switch
+              yearly={yearly}
+              onPress={() => setYearly(!yearly)}
+              extraCss={styles.switch}
+            />
+          }
+          name={
+            <>
+              <div css={styles.saveBadge} style={{ opacity: yearly ? 1 : 0 }}>
+                <SVGIcon icon="#star" extraCss={styles.starIcon} />
+                <strong>-15%</strong>
+              </div>
+              <span>Pro</span>
+            </>
+          }
+          price={yearly ? '$84/mo' : '$99/mo'}
           categories={[
             {
               name: 'Automatic Speech Recognition (ASR)',
@@ -174,11 +196,21 @@ export default function Pricing() {
                   name: 'Spokestack synthetic voice library'
                 },
                 {
-                  enabled: true,
+                  enabled: yearly,
+                  showDisabled: true,
                   name: 'Custom synthetic voice',
-                  // TODO: Require yearly subscription
-                  mobileText: '1 custom synthetic voice',
-                  desktopText: 'Limited to 1'
+                  mobileText: yearly ? (
+                    '1 custom synthetic voice'
+                  ) : (
+                    <span className="error">
+                      Yearly subscription required for custom synthetic voices
+                    </span>
+                  ),
+                  desktopText: yearly ? (
+                    'Limited to 1'
+                  ) : (
+                    <span className="error">Yearly subscription required</span>
+                  )
                 }
               ]
             },
@@ -306,7 +338,7 @@ const styles = {
     display: flex;
     flex-direction: column;
     justify-content: stretch;
-    padding: 75px 20px;
+    padding: 0 20px 75px;
 
     ${MIN_DEFAULT_MEDIA_QUERY} {
       flex-direction: row;
@@ -320,5 +352,36 @@ const styles = {
     ${MIN_LARGE_DISPLAY_MEDIA_QUERY} {
       grid-template-columns: 186px 186px 186px;
     }
+  `,
+  saveBadge: css`
+    position: absolute;
+    top: -4px;
+    left: -53px;
+    width: 41px;
+    height: 41px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    transition: opacity 0.2s ${theme.transitionEasing};
+
+    strong {
+      font-size: ${adjustFontSizeTo('11px').fontSize};
+      position: relative;
+      color: ${theme.header};
+    }
+  `,
+  starIcon: css`
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 41px;
+    height: 41px;
+  `,
+  switch: css`
+    position: absolute;
+    top: 15px;
+    left: 50%;
+    transform: translateX(-50%);
   `
 }

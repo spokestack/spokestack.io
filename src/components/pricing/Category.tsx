@@ -12,8 +12,9 @@ import { css } from '@emotion/core'
 interface Feature {
   enabled: boolean
   name: string
-  desktopText?: string
-  mobileText?: string
+  desktopText?: React.ReactNode
+  mobileText?: React.ReactNode
+  showDisabled?: boolean
 }
 
 export interface CategoryProps {
@@ -33,22 +34,30 @@ export default function Category({
         {name}
       </h4>
       <div css={styles.features}>
-        {features.map((feature, i) => (
-          <div
-            key={`feature-${i}`}
-            className={`category-feature ${
-              feature.enabled ? 'feature-enabled' : ''
-            }`}
-            css={[styles.feature]}
-            data-banner={feature.name}>
-            <span css={styles.desktop}>
-              {feature.enabled && (feature.desktopText || <span>✓</span>)}
-            </span>
-            <span css={styles.mobile}>
-              {feature.mobileText || feature.name}
-            </span>
-          </div>
-        ))}
+        {features.map((feature, i) => {
+          const classes = ['category-feature']
+          if (feature.enabled) {
+            classes.push('feature-enabled')
+          }
+          if (feature.showDisabled) {
+            classes.push('show-disabled')
+          }
+          return (
+            <div
+              key={`feature-${i}`}
+              className={classes.join(' ')}
+              css={[styles.feature]}
+              data-banner={feature.name}>
+              <span css={styles.desktop}>
+                {(feature.enabled || feature.showDisabled) &&
+                  (feature.desktopText || <span>✓</span>)}
+              </span>
+              <span css={styles.mobile}>
+                {feature.mobileText || feature.name}
+              </span>
+            </div>
+          )
+        })}
       </div>
     </div>
   )
@@ -99,8 +108,11 @@ const styles = {
     }
   `,
   features: css`
-    .feature-enabled {
+    .feature-enabled,
+    .show-disabled {
       padding-left: 40px;
+    }
+    .feature-enabled {
       &:before {
         content: '✓';
         position: absolute;
@@ -131,7 +143,7 @@ const styles = {
       background-color: ${theme.pricingRowBackground};
     }
 
-    &:not(.feature-enabled) {
+    &:not(.feature-enabled):not(.show-disabled) {
       display: none;
     }
 

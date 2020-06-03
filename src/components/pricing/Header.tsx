@@ -6,7 +6,7 @@ import { css } from '@emotion/core'
 
 export interface HeaderProps {
   cta: string
-  name: string
+  name: React.ReactNode
   price: string
   slug?: string
 }
@@ -39,6 +39,10 @@ const styles = {
     justify-content: center;
     align-items: center;
     text-align: center;
+
+    h4 {
+      position: relative;
+    }
 
     h4,
     h2 {

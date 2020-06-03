@@ -25,7 +25,7 @@ export default function About({ children, location }: Props) {
     <Layout>
       <SEO
         title="About us"
-        longTitle="Learn about the company Spokestack"
+        longTitle="Learn about our company"
         description="About our team"
       />
       <StickyNavLayout links={links} location={location}>

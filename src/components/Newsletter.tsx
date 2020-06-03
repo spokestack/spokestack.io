@@ -71,6 +71,7 @@ const styles = {
     align-items: center;
     text-align: center;
     padding: 50px 0;
+    border-top: 1px solid ${theme.mainBorder};
     border-bottom: 1px solid ${theme.mainBorder};
 
     p {

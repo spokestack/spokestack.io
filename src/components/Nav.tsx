@@ -214,8 +214,8 @@ const styles = {
   hamburger: css`
     position: absolute;
     top: 50%;
-    margin-top: -7px;
-    left: 20px;
+    transform: translateY(-50%);
+    left: 5px;
 
     ${MIN_DEFAULT_MEDIA_QUERY} {
       display: none;

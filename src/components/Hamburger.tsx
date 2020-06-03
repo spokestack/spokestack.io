@@ -15,9 +15,11 @@ export default function Hamburger({ extraCss, open, onClick }: Props) {
       css={[styles.hamburger, extraCss]}
       className={open ? 'open' : ''}
       onClick={onClick}>
-      <span css={styles.line} style={{ top: 0 }} />
-      <span css={styles.line} style={{ top: 7 }} />
-      <span css={styles.line} style={{ top: 14 }} />
+      <div className="lines" css={styles.lines}>
+        <span css={styles.line} style={{ top: 0 }} />
+        <span css={styles.line} style={{ top: 7 }} />
+        <span css={styles.line} style={{ top: 14 }} />
+      </div>
     </a>
   )
 }
@@ -25,22 +27,30 @@ export default function Hamburger({ extraCss, open, onClick }: Props) {
 const styles = {
   hamburger: css`
     position: relative;
-    width: 15px;
-    height: 15px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 44px;
+    height: 44px;
     cursor: pointer;
 
     &.open {
-      span:first-of-type {
+      .lines span:first-of-type {
         transform: rotateZ(45deg) translate(5px, 5px) scaleX(1.2);
       }
-      span:nth-of-type(2) {
+      .lines span:nth-of-type(2) {
         transform: rotateZ(135deg) scaleX(1.2);
       }
-      span:last-of-type {
+      .lines span:last-of-type {
         transform: translateY(-8px) scale(0);
         opacity: 0;
       }
     }
+  `,
+  lines: css`
+    position: relative;
+    width: 15px;
+    height: 15px;
   `,
   line: css`
     position: absolute;

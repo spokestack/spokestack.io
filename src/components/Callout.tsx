@@ -9,11 +9,13 @@ import { adjustFontSizeTo } from '../styles/typography'
 
 interface Props {
   children: React.ReactNode
-  extraCss?: SerializedStyles
+  extraCss?: SerializedStyles | SerializedStyles[]
   href?: string
+  to?: string
 }
 
-export default function Callout({ children, extraCss, href }: Props) {
+export default function Callout({ children, extraCss, href, to }: Props) {
+  const style = [styles.callout].concat(extraCss)
   return (
     <>
       <Global
@@ -41,12 +43,16 @@ export default function Callout({ children, extraCss, href }: Props) {
           }
         `}
       />
-      {href ? (
-        <Link css={[styles.callout, extraCss]} to={href} className="callout">
+      {to ? (
+        <Link css={style} to={to} className="callout">
           {children}
         </Link>
+      ) : href ? (
+        <a css={style} href={href} className="callout">
+          {children}
+        </a>
       ) : (
-        <div css={[styles.callout, extraCss]} className="callout">
+        <div css={style} className="callout">
           {children}
         </div>
       )}

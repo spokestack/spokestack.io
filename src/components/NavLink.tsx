@@ -88,7 +88,7 @@ const styles = {
     ${MIN_DEFAULT_MEDIA_QUERY} {
       width: auto;
       margin: 0;
-      padding: 0 10px;
+      padding: 0 15px;
       font-weight: 400;
 
       &,

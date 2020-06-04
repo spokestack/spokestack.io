@@ -70,6 +70,6 @@ export const ieBreakpointMinDefault =
 
 export const MIN_SIDEBAR_WIDTH = '250px'
 export const MAX_SIDEBAR_WIDTH = '365px'
-export const MIN_TEXT_WIDTH = '600px'
-export const MAX_TEXT_WIDTH = '700px'
+export const MIN_TEXT_WIDTH = '608px'
+export const MAX_TEXT_WIDTH = '708px'
 export const MAX_VIDEO_WIDTH = '714px'

@@ -10,12 +10,15 @@ export default function Libraries() {
     <div css={styles.libraries}>
       <Global
         styles={css`
-          html.dark-mode .library-icon {
-            fill: white;
+          html.dark-mode {
+            .library-icon {
+              fill: white;
+            }
           }
         `}
       />
       <a
+        className="library-link"
         css={styles.libraryLink}
         href="https://github.com/spokestack/spokestack-ios">
         <SVGIcon
@@ -26,6 +29,7 @@ export default function Libraries() {
         iOS
       </a>
       <a
+        className="library-link"
         css={styles.libraryLink}
         href="https://github.com/spokestack/spokestack-android">
         <SVGIcon
@@ -36,6 +40,7 @@ export default function Libraries() {
         Android
       </a>
       <a
+        className="library-link"
         css={styles.libraryLink}
         href="https://github.com/spokestack/react-native-spokestack">
         <SVGIcon

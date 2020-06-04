@@ -126,7 +126,7 @@ export default function Pricing({ data }: Props) {
           extraHeader={
             <Switch
               yearly={yearly}
-              onPress={() => setYearly(!yearly)}
+              onChange={(y) => setYearly(y)}
               extraCss={styles.switch}
             />
           }

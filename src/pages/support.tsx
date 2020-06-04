@@ -72,8 +72,8 @@ export default function Support({ data }: Props) {
               Contact us
             </a>
           }
-          title="Download Spokestack Studio"
-          text="Preview the capabilities of a voice userinterface powered by Spokestack."
+          title="Can't find what you need?"
+          text="Email us a help request."
         />
       </div>
     </Layout>

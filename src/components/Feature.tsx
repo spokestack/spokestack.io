@@ -3,14 +3,15 @@ import React from 'react'
 import { css } from '@emotion/core'
 
 interface Props {
+  id: string
   imageUrl: string
   name: string
   text: string
 }
 
-export default function Feature({ imageUrl, name, text }: Props) {
+export default function Feature({ id, imageUrl, name, text }: Props) {
   return (
-    <div css={styles.feature}>
+    <div id={id} css={styles.feature}>
       <img src={imageUrl} css={styles.image} />
       <div css={styles.featureContent}>
         <h3>{name}</h3>

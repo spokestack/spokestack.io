@@ -42,11 +42,12 @@ module.exports = {
       elizabeth: {
         name: 'Elizabeth Ropp',
         title: 'UX & Product Design',
-        bio: '',
+        bio:
+          'Elizabeth designs multimodal experiences with language and visuals in mind. A classically trained violinist, she enjoys bluegrass fiddle and spicy food of all kinds.',
         social: {
-          twitter: '',
-          linkedin: '',
-          email: ''
+          twitter: 'https://twitter.com/roppem9',
+          linkedin: 'https://www.linkedin.com/in/elizabethropp/',
+          email: 'elizabeth@spokestack.io'
         }
       },
       josh: {

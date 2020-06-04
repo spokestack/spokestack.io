@@ -64,5 +64,9 @@ const styles = {
       margin: 0 auto;
       min-height: 0;
     }
+
+    .title {
+      max-width: 630px;
+    }
   `
 }

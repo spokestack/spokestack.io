@@ -14,6 +14,12 @@ interface Props {
 export default function Switch({ yearly, onChange, extraCss }: Props) {
   const [moving, setMoving] = useState(false)
   const [x, setX] = useState(yearly ? 0 : 81)
+
+  function updateYearly(newYearly: boolean) {
+    setX(newYearly ? 0 : 81)
+    onChange(newYearly)
+  }
+
   function startMove(e: React.PointerEvent) {
     e.preventDefault()
     const prevX = x
@@ -38,7 +44,11 @@ export default function Switch({ yearly, onChange, extraCss }: Props) {
       e.preventDefault()
       setMoving(false)
       const nextX = constrainX(e.clientX - startX + prevX)
-      onChange(nextX < 40)
+      if (nextX - prevX < 5) {
+        updateYearly(!yearly)
+      } else {
+        updateYearly(nextX < 40)
+      }
     }
 
     document.addEventListener('pointermove', move)
@@ -48,10 +58,7 @@ export default function Switch({ yearly, onChange, extraCss }: Props) {
   return (
     <button
       css={[styles.button, extraCss]}
-      onClick={() => {
-        setX(yearly ? 81 : 0)
-        onChange(!yearly)
-      }}>
+      onClick={() => updateYearly(!yearly)}>
       <div css={styles.track}>
         <div className="switch-text" css={styles.text}>
           Bill Yearly

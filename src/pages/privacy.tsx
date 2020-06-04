@@ -1,11 +1,19 @@
+import { PageRendererProps, graphql } from 'gatsby'
+
 import { DEFAULT_WIDTH } from 'typography-breakpoint-constants'
 import Layout from '../components/Layout'
+import { Query } from '../utils/graphql'
 import React from 'react'
 import SEO from '../components/SEO'
 import { css } from '@emotion/core'
 import { rhythm } from '../styles/typography'
 
-export default function Privacy() {
+interface Props extends PageRendererProps {
+  data: Query
+}
+
+export default function Privacy({ data }: Props) {
+  const email = data.site.siteMetadata.contact.email
   return (
     <Layout>
       <SEO title="Privacy Policy" />
@@ -18,26 +26,26 @@ export default function Privacy() {
           are committed to protecting your personal information and your right
           to privacy. If you have any questions or concerns about our policy, or
           our practices with regards to your personal information, please
-          contact us at hello@spokestack.io.
+          contact us at <a href={`mailto:${email}`}>{email}</a>.
         </p>
         <p>
           When you visit our website{' '}
-          <a href="http://www.spokestack.io/">http://www.spokestack.io</a>,
-          mobile application, Facebook application, and use our services, you
-          trust us with your personal information. We take your privacy very
-          seriously. In this privacy policy, we seek to explain to you in the
-          clearest way possible what information we collect, how we use it and
-          what rights you have in relation to it. We hope you take some time to
-          read through it carefully, as it is important. If there are any terms
-          in this privacy policy that you do not agree with, please discontinue
-          use of our Sites or Apps and our services.
+          <a href="https://spokestack.io/">https://spokestack.io</a>, mobile
+          application, Facebook application, and use our services, you trust us
+          with your personal information. We take your privacy very seriously.
+          In this privacy policy, we seek to explain to you in the clearest way
+          possible what information we collect, how we use it and what rights
+          you have in relation to it. We hope you take some time to read through
+          it carefully, as it is important. If there are any terms in this
+          privacy policy that you do not agree with, please discontinue use of
+          our Sites or Apps and our services.
         </p>
         <p>
           This privacy policy applies to all information collected through our
           website (such as{' '}
-          <a href="http://www.spokestack.io/">http://www.spokestack.io</a>),
-          mobile application, Facebook application, (&ldquo;Apps&rdquo;), and/or
-          any related services, sales, marketing or events (we refer to them
+          <a href="https://spokestack.io/">https://spokestack.io</a>), mobile
+          application, Facebook application, (&ldquo;Apps&rdquo;), and/or any
+          related services, sales, marketing or events (we refer to them
           collectively in this privacy policy as the &ldquo;Services&rdquo;).
         </p>
         <p>
@@ -366,7 +374,7 @@ export default function Privacy() {
           age has been collected, we will deactivate the account and take
           reasonable measures to promptly delete such data from our records. If
           you become aware of any data we have collected from children under age
-          18, please contact us at hello@spokestack.io.
+          18, please contact us at <a href={`mailto:${email}`}>{email}</a>.
         </p>
         <h4 id="privacyrights">7. WHAT ARE YOUR PRIVACY RIGHTS?</h4>
         <p>
@@ -387,7 +395,7 @@ export default function Privacy() {
         </p>
         <p>
           If you have questions or comments about your privacy rights, you may
-          email us at hello@spokestack.io.
+          email us at <a href={`mailto:${email}`}>{email}</a>.
         </p>
         <p>Account Information</p>
         <p>
@@ -477,8 +485,7 @@ export default function Privacy() {
         <h4 id="contact">11. HOW CAN YOU CONTACT US ABOUT THIS POLICY?</h4>
         <p>
           If you have questions or comments about this policy, you may email us
-          at <a href="mailto:hello@spokestack.io">hello@spokestack.io</a> or by
-          post to:
+          at <a href={`mailto:${email}`}>{email}</a> or by post to:
         </p>
         <p>
           Pylon ai, inc.
@@ -510,6 +517,7 @@ export default function Privacy() {
     </Layout>
   )
 }
+
 const styles = {
   container: css`
     padding: ${rhythm(1)};
@@ -517,3 +525,15 @@ const styles = {
     margin: 0 auto;
   `
 }
+
+export const pageQuery = graphql`
+  query privacyQuery {
+    site {
+      siteMetadata {
+        contact {
+          email
+        }
+      }
+    }
+  }
+`

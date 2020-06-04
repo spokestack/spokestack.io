@@ -43,7 +43,7 @@ export default function NavLink({
       {children}
     </a>
   ) : (
-    <div className="nav-link" css={style}>
+    <div className={props.className || 'nav-link'} css={style}>
       {children}
     </div>
   )

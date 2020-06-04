@@ -4,7 +4,7 @@ import { MIN_DEFAULT_MEDIA_QUERY } from 'typography-breakpoint-constants'
 import React from 'react'
 import { css } from '@emotion/core'
 
-interface Props {
+export interface BlueCardProps {
   button: React.ReactNode
   id?: string
   small?: boolean
@@ -12,7 +12,13 @@ interface Props {
   title: string
 }
 
-export default function BlueCard({ button, id, small, text, title }: Props) {
+export default function BlueCard({
+  button,
+  id,
+  small,
+  text,
+  title
+}: BlueCardProps) {
   const style = [styles.card]
   if (small) {
     style.push(styles.smallCard)

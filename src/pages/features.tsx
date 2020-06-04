@@ -32,21 +32,25 @@ export default function Features() {
           <h2>Libraries &amp; services</h2>
           <div css={styles.features}>
             <Feature
+              id="understanding"
               imageUrl="/navigation/nlu.svg"
               name="Natural language understanding"
               text="Natural language understanding (NLU) is what makes user speech actionable. Spokestack provides deep learning-based NLU models that can be deployed on device or to a web service. On-device NLU keeps your customer data away from third-party services and can operate even without a network connection."
             />
             <Feature
+              id="speech-recognition"
               imageUrl="/navigation/asr.svg"
               name="Automatic speech recognition"
               text="The technology for converting spoken words to text is known as automatic speech recognition (ASR). The Spokestack open-source native libraries provide a convenient API across multiple ASR providers such as Apple, Google, and Microsoft."
             />
             <Feature
+              id="text-to-speech"
               imageUrl="/navigation/tts.svg"
               name="Text-to-speech &amp; custom voice"
               text="Text-to-speech (TTS) is how voice user interfaces talk back. Spokestack provides a hosted TTS service that you can access directly or through our native libraries. What separates Spokestack TTS from other providers is our synthetic voice capability. Spokestack will build a custom voice model from your audio data so you can present a branded voice experience to your customers."
             />
             <Feature
+              id="wakeword"
               imageUrl="/navigation/wakeword.svg"
               name="Wake word"
               text="A wake word is a specific term or phrase that can wake up an app for active listening. “Hey Siri” and “Alexa” are two of the most widely known wake words. The Spokestack native libraries have built-in support for wake words on mobile. Our services include building a customized, high-performance wake word model for your brand."

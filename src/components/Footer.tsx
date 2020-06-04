@@ -1,12 +1,12 @@
 import * as theme from '../styles/theme'
 
 import { Global, css } from '@emotion/core'
+import { Link, graphql, useStaticQuery } from 'gatsby'
 import {
   MIN_DEFAULT_MEDIA_QUERY,
   MIN_LARGE_DISPLAY_MEDIA_QUERY,
   MIN_TABLET_MEDIA_QUERY
 } from 'typography-breakpoint-constants'
-import { graphql, useStaticQuery } from 'gatsby'
 
 import Logo from './Logo'
 import Newsletter from './Newsletter'
@@ -43,33 +43,33 @@ export default function Footer() {
         </div>
         <div css={styles.column}>
           <h5>Features</h5>
-          <a css={styles.footerLink} href="/features/nlu">
+          <Link css={styles.footerLink} to="/features#understanding">
             Natural Language Understanding
-          </a>
-          <a css={styles.footerLink} href="/features/asr">
+          </Link>
+          <Link css={styles.footerLink} to="/features#speech-recognition">
             Automatic Speech Recognition
-          </a>
-          <a css={styles.footerLink} href="/features/tts">
+          </Link>
+          <Link css={styles.footerLink} to="/features#text-to-speech">
             Text-to-Speech &amp; Custom Voices
-          </a>
-          <a css={styles.footerLink} href="/features/wakeword">
+          </Link>
+          <Link css={styles.footerLink} to="/features#wakeword">
             Wake Word
-          </a>
-          <a css={styles.footerLink} href="/pricing">
+          </Link>
+          <Link css={styles.footerLink} to="/pricing">
             Pricing
-          </a>
+          </Link>
         </div>
         <div css={styles.column}>
           <h5>Resources</h5>
-          <a css={styles.footerLink} href="/docs">
+          <Link css={styles.footerLink} to="/docs">
             Developer Docs
-          </a>
+          </Link>
           <a css={styles.footerLink} href="/blog/tag/tutorial">
             Tutorials
           </a>
-          <a css={styles.footerLink} href="/blog">
+          <Link css={styles.footerLink} to="/blog">
             Blog
-          </a>
+          </Link>
           <a
             css={styles.footerLink}
             href="https://github.com/spokestack/spokestack-ios">

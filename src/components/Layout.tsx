@@ -12,15 +12,21 @@ interface Props {
   children: ReactNode
   extraCss?: SerializedStyles
   navStyle?: SerializedStyles
+  contentStyle?: SerializedStyles
 }
 
-export default function Layout({ children, extraCss, navStyle }: Props) {
+export default function Layout({
+  children,
+  extraCss,
+  navStyle,
+  contentStyle
+}: Props) {
   return (
     <div css={[styles.container, extraCss]}>
       <Global styles={globalStyles} />
       <Sprite />
       <Nav extraCss={navStyle} />
-      <main css={styles.content}>{children}</main>
+      <main css={[styles.content, contentStyle]}>{children}</main>
       <Footer />
     </div>
   )

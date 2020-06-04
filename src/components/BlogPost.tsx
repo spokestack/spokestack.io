@@ -32,7 +32,7 @@ interface Props {
 
 export default function BlogPost({ post, related }: Props) {
   return (
-    <Layout>
+    <Layout contentStyle={styles.post}>
       <SEO
         title="Blog"
         longTitle={post.frontmatter.title}
@@ -78,6 +78,9 @@ export default function BlogPost({ post, related }: Props) {
 }
 
 const styles = {
+  post: css`
+    padding-bottom: 50px;
+  `,
   container: css`
     display: flex;
     flex-direction: column;

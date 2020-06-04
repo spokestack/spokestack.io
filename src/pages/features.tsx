@@ -63,7 +63,7 @@ export default function Features() {
             <AppStoreButton slug="https://apps.apple.com/us/app/spokestack-studio/id1508393980" />
           }
           title="Download Spokestack Studio"
-          text="Preview the capabilities of a voice userinterface powered by Spokestack."
+          text="Preview the capabilities of a voice user interface powered by Spokestack."
         />
       </div>
     </Layout>

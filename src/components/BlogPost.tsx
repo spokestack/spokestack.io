@@ -12,6 +12,7 @@ import {
 import { RelatedLink, TeamMemberName } from '../types'
 
 import Author from './Author'
+import Create from './homepage/Create'
 import DarkModeButton from './DarkModeButton'
 import Layout from '../components/Layout'
 import { Link } from 'gatsby'
@@ -21,6 +22,7 @@ import SEO from '../components/SEO'
 import Tags from './Tags'
 import { css } from '@emotion/core'
 import findImage from '../utils/findImage'
+import { isLoggedIn } from '../utils/auth'
 import { rhythm } from '../styles/typography'
 
 interface Props {
@@ -70,6 +72,7 @@ export default function BlogPost({ post, related }: Props) {
           </section>
         )}
       </div>
+      {!isLoggedIn() && <Create small />}
     </Layout>
   )
 }

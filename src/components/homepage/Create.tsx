@@ -1,7 +1,8 @@
-import BlueCard from '../BlueCard'
+import BlueCard, { BlueCardProps } from '../BlueCard'
+
 import React from 'react'
 
-export default function Create() {
+export default function Create(props: Partial<BlueCardProps>) {
   return (
     <BlueCard
       button={
@@ -13,6 +14,7 @@ export default function Create() {
       title="Create a free Spokestack account"
       text={`Create an account to access our hosted services for model import,
         natural language processing, text-to-speech, and wakeword.`}
+      {...props}
     />
   )
 }

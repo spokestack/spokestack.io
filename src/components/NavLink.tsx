@@ -15,11 +15,12 @@ interface Props extends AnchorHTMLAttributes<HTMLAnchorElement> {
 }
 
 export default function NavLink({
-  extraCss,
-  to,
   children,
+  extraCss,
+  href,
   mobileOnly,
   partiallyActive,
+  to,
   ...props
 }: Props) {
   let style = [styles.navLink]
@@ -37,10 +38,14 @@ export default function NavLink({
       {...props}>
       {children}
     </Link>
-  ) : (
-    <a className="nav-link" css={style} {...props}>
+  ) : href ? (
+    <a className="nav-link" css={style} href={href} {...props}>
       {children}
     </a>
+  ) : (
+    <div className="nav-link" css={style}>
+      {children}
+    </div>
   )
 }
 

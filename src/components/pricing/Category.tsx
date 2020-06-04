@@ -100,7 +100,7 @@ const styles = {
             ${desktopHeaderStyle};
             height: 100%;
           }
-          &:nth-child(odd):before {
+          &:nth-of-type(odd):before {
             background-color: ${theme.pricingRowBackground};
           }
         }
@@ -141,7 +141,7 @@ const styles = {
     padding: 0 20px;
     font-size: ${adjustFontSizeTo('14px').fontSize};
 
-    &:nth-child(odd) {
+    &:nth-of-type(odd) {
       background-color: ${theme.pricingRowBackground};
     }
 
@@ -157,7 +157,7 @@ const styles = {
       justify-content: center;
       text-align: center;
 
-      &:nth-child(odd):after {
+      &:nth-of-type(odd):after {
         content: '';
         position: absolute;
         top: 0;

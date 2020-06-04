@@ -4,17 +4,24 @@ import {
   MIN_DEFAULT_MEDIA_QUERY,
   MIN_LARGE_DISPLAY_MEDIA_QUERY
 } from 'typography-breakpoint-constants'
+import { PageRendererProps, graphql } from 'gatsby'
 import React, { useState } from 'react'
 
 import Layout from '../components/Layout'
 import Plan from '../components/pricing/Plan'
+import { Query } from '../utils/graphql'
 import SEO from '../components/SEO'
 import SVGIcon from '../components/SVGIcon'
 import Switch from '../components/pricing/Switch'
 import { adjustFontSizeTo } from '../styles/typography'
 import { css } from '@emotion/core'
 
-export default function Pricing() {
+interface Props extends PageRendererProps {
+  data: Query
+}
+
+export default function Pricing({ data }: Props) {
+  const { contact } = data.site.siteMetadata
   const [yearly, setYearly] = useState(true)
 
   return (
@@ -236,7 +243,7 @@ export default function Pricing() {
         <Plan
           cta="Contact us"
           name="Enterprise"
-          slug="mailto:hello@spokestack.io"
+          slug={`mailto:${contact.email}`}
           price="Custom"
           categories={[
             {
@@ -385,3 +392,15 @@ const styles = {
     transform: translateX(-50%);
   `
 }
+
+export const pageQuery = graphql`
+  query pricingQuery {
+    site {
+      siteMetadata {
+        contact {
+          email
+        }
+      }
+    }
+  }
+`

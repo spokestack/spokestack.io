@@ -321,13 +321,18 @@ export default css`
       border-left-color: hsl(0, 0%, 80%);
     }
     .main-content a,
-    a.content-link {
+    a.content-link,
+    a.library-link {
       color: ${theme.linkDark};
       text-decoration-color: ${theme.linkDark};
 
       &:hover {
-        color: ${theme.primary};
-        text-decoration-color: ${theme.primary};
+        color: ${theme.linkDarkHover};
+        text-decoration-color: ${theme.linkDarkHover};
+      }
+      &:active {
+        color: ${theme.linkDarkActive};
+        text-decoration-color: ${theme.linkDarkActive};
       }
     }
     .blue {

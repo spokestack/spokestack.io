@@ -34,7 +34,7 @@ const NewsItem = ({
   image,
   type
 }: Props) => (
-  <Callout extraCss={styles.callout} href={href}>
+  <Callout extraCss={styles.callout} to={href}>
     <div css={styles.title}>
       <h5>{type}</h5>
       <h4>{header}</h4>

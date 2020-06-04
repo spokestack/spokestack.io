@@ -23,7 +23,7 @@ export default function Author({ author }: Props) {
   }
   const { name, title } = data.site.siteMetadata.team[author]
   return (
-    <Callout href={`/blog/author/${author}`} extraCss={styles.author}>
+    <Callout to={`/blog/author/${author}`} extraCss={styles.author}>
       <Global
         styles={css`
           html.dark-mode {

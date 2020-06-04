@@ -11,10 +11,10 @@ module.exports = {
     siteUrl: 'https://spokestack.io/',
     logo: 'https://spokestack.io/logo.png',
     social: {
-      twitter: 'https://twitter.com/spokestack',
-      github: 'https://github.com/spokestack',
       forum: 'https://forum.spokestack.io',
-      stackoverflow: 'https://stackoverflow.com/questions/tagged/spokestack'
+      github: 'https://github.com/spokestack',
+      stackoverflow: 'https://stackoverflow.com/questions/tagged/spokestack',
+      twitter: 'https://twitter.com/spokestack'
     },
     // Should match the queries in src/components/TeamMembers.tsx
     // and images in src/components/AuthorImage.tsx

@@ -50,7 +50,7 @@ export default function Category({
               data-banner={feature.name}>
               <span css={styles.desktop}>
                 {(feature.enabled || feature.showDisabled) &&
-                  (feature.desktopText || <span>✓</span>)}
+                  (feature.desktopText || <strong>✓</strong>)}
               </span>
               <span css={styles.mobile}>
                 {feature.mobileText || feature.name}
@@ -117,6 +117,7 @@ const styles = {
         content: '✓';
         position: absolute;
         left: 20px;
+        font-weight: 700;
       }
     }
     ${MIN_LARGE_DISPLAY_MEDIA_QUERY} {

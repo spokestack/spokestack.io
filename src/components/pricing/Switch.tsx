@@ -1,6 +1,6 @@
 import * as theme from '../../styles/theme'
 
-import React, { useState } from 'react'
+import React, { PureComponent } from 'react'
 import { SerializedStyles, css } from '@emotion/core'
 
 import { adjustFontSizeTo } from '../../styles/typography'
@@ -11,92 +11,131 @@ interface Props {
   extraCss?: SerializedStyles
 }
 
-export default function Switch({ yearly, onChange, extraCss }: Props) {
-  const [moving, setMoving] = useState(false)
-  const [x, setX] = useState(yearly ? 0 : 81)
+interface State {
+  moving: boolean
+  x: number
+}
 
-  function updateYearly(newYearly: boolean) {
-    setX(newYearly ? 0 : 81)
-    onChange(newYearly)
+export default class Switch extends PureComponent<Props, State> {
+  private prevX: number
+  private startX: number
+
+  state: State = {
+    moving: false,
+    x: this.props.yearly ? 0 : 81
   }
 
-  function startMove(e: React.PointerEvent) {
+  componentWillUnmount() {
+    this.removeListeners()
+  }
+
+  startMove = (e: React.PointerEvent) => {
+    const { x } = this.state
     e.preventDefault()
-    const prevX = x
-    const startX = e.clientX
-    setMoving(true)
-
-    function constrainX(x: number) {
-      return Math.max(0, Math.min(81, x))
-    }
-
-    function move(e: PointerEvent) {
-      e.preventDefault()
-      e.stopPropagation()
-      const nextX = constrainX(e.clientX - startX + prevX)
-      setX(nextX)
-    }
-
-    function stopMove(e: PointerEvent) {
-      document.removeEventListener('pointermove', move)
-      document.removeEventListener('pointercancel', stopMove)
-      document.removeEventListener('pointerup', stopMove)
-      e.preventDefault()
-      setMoving(false)
-      const nextX = constrainX(e.clientX - startX + prevX)
-      if (nextX - prevX < 5) {
-        updateYearly(!yearly)
-      } else {
-        updateYearly(nextX < 40)
-      }
-    }
-
-    document.addEventListener('pointermove', move)
-    document.addEventListener('pointercancel', stopMove)
-    document.addEventListener('pointerup', stopMove)
+    this.prevX = x
+    this.startX = e.clientX
+    this.setState({ moving: true })
+    this.addListeners()
   }
-  return (
-    <button
-      css={[styles.button, extraCss]}
-      onClick={() => updateYearly(!yearly)}>
-      <div css={styles.track}>
-        <div className="switch-text" css={styles.text}>
-          Bill Yearly
+
+  move = (e: PointerEvent) => {
+    e.preventDefault()
+    e.stopPropagation()
+    this.setState({
+      x: this.nextX(e.clientX)
+    })
+  }
+
+  stopMove = (e: PointerEvent) => {
+    const { yearly } = this.props
+    this.removeListeners()
+    e.preventDefault()
+    this.setState({
+      moving: false
+    })
+    const nextX = this.nextX(e.clientX)
+    if (nextX - this.prevX < 5) {
+      this.updateYearly(!yearly)
+    } else {
+      this.updateYearly(nextX < 40)
+    }
+  }
+
+  updateYearly = (newYearly: boolean) => {
+    this.setState({
+      x: newYearly ? 0 : 81
+    })
+    this.props.onChange(newYearly)
+  }
+
+  nextX(clientX: number) {
+    return this.constrainX(clientX - this.startX + this.prevX)
+  }
+
+  constrainX(x: number) {
+    return Math.max(0, Math.min(81, x))
+  }
+
+  addListeners() {
+    document.addEventListener('pointermove', this.move)
+    document.addEventListener('pointercancel', this.stopMove)
+    document.addEventListener('pointerup', this.stopMove)
+  }
+
+  removeListeners() {
+    document.removeEventListener('pointermove', this.move)
+    document.removeEventListener('pointercancel', this.stopMove)
+    document.removeEventListener('pointerup', this.stopMove)
+  }
+
+  preventBubble(e: React.MouseEvent | React.TouchEvent) {
+    e.preventDefault()
+    e.stopPropagation()
+  }
+
+  render() {
+    const { yearly, extraCss } = this.props
+    const { moving, x } = this.state
+    return (
+      <button
+        css={[styles.button, extraCss]}
+        onClick={() => this.updateYearly(!yearly)}>
+        <div css={styles.track}>
+          <div className="switch-text" css={styles.text}>
+            Bill Yearly
+          </div>
+          <div className="switch-text" css={styles.text}>
+            Bill Monthly
+          </div>
         </div>
-        <div className="switch-text" css={styles.text}>
-          Bill Monthly
-        </div>
-      </div>
-      <div
-        css={styles.knob}
-        className={moving ? 'moving' : ''}
-        onPointerDown={startMove}
-        onClick={(e) => {
-          e.preventDefault()
-          e.stopPropagation()
-        }}
-        style={{
-          transform: moving
-            ? `translateX(${x}px)`
-            : yearly
-            ? 'none'
-            : 'translateX(81px)'
-        }}>
         <div
-          className="switch-text"
-          css={styles.text}
-          style={{ opacity: moving ? (40.5 - x) / 40.5 : yearly ? 1 : 0 }}>
-          Bill Yearly
+          css={styles.knob}
+          className={moving ? 'moving' : ''}
+          onPointerDown={this.startMove}
+          onClick={this.preventBubble}
+          style={{
+            transform: moving
+              ? `translateX(${x}px)`
+              : yearly
+              ? 'none'
+              : 'translateX(81px)'
+          }}>
+          <div
+            className="switch-text"
+            css={styles.text}
+            style={{ opacity: moving ? (40.5 - x) / 40.5 : yearly ? 1 : 0 }}>
+            Bill Yearly
+          </div>
+          <div
+            className="switch-text"
+            css={styles.text}
+            style={{ opacity: moving ? (x - 40.5) / 40.5 : yearly ? 0 : 1 }}>
+            Bill Monthly
+          </div>
         </div>
-        <div
-          className="switch-text"
-          css={styles.text}
-          style={{ opacity: moving ? (x - 40.5) / 40.5 : yearly ? 0 : 1 }}>
-          Bill Monthly
-        </div>
-      </div>
-    </button>
-  )
+      </button>
+    )
+  }
 }
 
 const styles = {

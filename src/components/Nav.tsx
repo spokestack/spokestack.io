@@ -47,7 +47,7 @@ export default function Nav({ extraCss }: Props) {
               color: ${theme.textDarkBg} !important;
             }
             .dropdown-col-full {
-              background-color: ${theme.primaryColor.fade(0.8).toString()};
+              background-color: ${theme.navFullColumnDark};
 
               .btn:not(:hover):not(:active) {
                 color: ${theme.text};

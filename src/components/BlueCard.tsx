@@ -1,8 +1,9 @@
 import * as theme from '../styles/theme'
 
+import { Global, css } from '@emotion/core'
+
 import { MIN_DEFAULT_MEDIA_QUERY } from 'typography-breakpoint-constants'
 import React from 'react'
-import { css } from '@emotion/core'
 
 export interface BlueCardProps {
   button: React.ReactNode
@@ -24,7 +25,16 @@ export default function BlueCard({
     style.push(styles.smallCard)
   }
   return (
-    <section id={id} css={style}>
+    <section id={id} className="blue-card" css={style}>
+      <Global
+        styles={css`
+          html.dark-mode {
+            .blue-card {
+              background-color: ${theme.navFullColumnDark};
+            }
+          }
+        `}
+      />
       <h3>{title}</h3>
       <div className="title">{text}</div>
       {button}
@@ -60,6 +70,7 @@ const styles = {
   `,
   smallCard: css`
     ${MIN_DEFAULT_MEDIA_QUERY} {
+      width: 100%;
       max-width: 808px;
       margin: 0 auto;
       min-height: 0;

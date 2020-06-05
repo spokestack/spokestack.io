@@ -16,6 +16,7 @@ export const primary = primaryColor.hex()
 export const primaryLight = primaryLightColor.hex()
 export const primaryLighter = primaryLighterColor.hex()
 export const secondary = secondaryColor.hex()
+export const grayDark = '#c9c9c9'
 
 export const mainBackground = '#f6f9fc'
 export const mainBackgroundDark = textColor.hex()
@@ -25,8 +26,7 @@ export const text = textColor.hex()
 export const textLight = textColor.fade(0.5).toString()
 export const textError = '#ea2e31'
 export const textDarkBg = mainBackground
-
-export const grayDark = '#c9c9c9'
+export const navFullColumnDark = primaryColor.fade(0.8).toString()
 
 export const header = headerColor.hex()
 export const buttonBackground = primary

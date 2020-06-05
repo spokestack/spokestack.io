@@ -24,7 +24,7 @@ const styles = {
     display: none;
     position: absolute;
     top: 0;
-    left: 0;
+    left: calc(50% - 304px - 310px);
     right: calc(50% - 304px);
     height: 50px;
     background-color: ${theme.pricingRowBackground};

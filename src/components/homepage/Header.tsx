@@ -18,7 +18,7 @@ export default function Header() {
         <p className="title spokestack-speakable">
           Open source tools for mobile &amp; web voice interfaces
         </p>
-        <a href="/login" className="btn btn-secondary btn-large">
+        <a href="/create" className="btn btn-secondary btn-large">
           Create acount
           <SVGIcon icon="#arrow-forward" extraCss={styles.createAccountIcon} />
         </a>

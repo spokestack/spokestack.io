@@ -1,10 +1,4 @@
-import * as theme from '../../styles/theme'
-
-import {
-  MIN_DEFAULT_MEDIA_QUERY,
-  MIN_LARGE_DISPLAY_MEDIA_QUERY
-} from 'typography-breakpoint-constants'
-
+import { MIN_LARGE_DISPLAY_MEDIA_QUERY } from 'typography-breakpoint-constants'
 import React from 'react'
 import { adjustFontSizeTo } from '../../styles/typography'
 import { css } from '@emotion/core'
@@ -16,6 +10,8 @@ interface Feature {
   mobileText?: React.ReactNode
   showDisabled?: boolean
 }
+
+const FEATURE_ROW_HEIGHT = 50
 
 export interface CategoryProps {
   name: string
@@ -68,13 +64,13 @@ const desktopHeaderStyle = css`
   top: 0;
   left: -310px;
   right: 100%;
+  height: ${FEATURE_ROW_HEIGHT}px;
   display: flex;
   flex-direction: row;
   align-items: center;
   white-space: nowrap;
   text-align: left;
   padding: 0 20px;
-  font-weight: 700;
 `
 
 const styles = {
@@ -83,7 +79,6 @@ const styles = {
     margin-top: 40px;
 
     h4 {
-      color: ${theme.pricingHeader};
       font-size: ${adjustFontSizeTo('14px').fontSize};
       margin-bottom: 10px;
       padding: 0 20px;
@@ -93,15 +88,13 @@ const styles = {
       &.show-banners {
         .category-header {
           ${desktopHeaderStyle}
+          font-weight: 700;
         }
         .category-feature {
           &:before {
             content: attr(data-banner);
             ${desktopHeaderStyle};
-            height: 100%;
-          }
-          &:nth-of-type(odd):before {
-            background-color: ${theme.pricingRowBackground};
+            font-weight: 400;
           }
         }
       }
@@ -121,7 +114,7 @@ const styles = {
       }
     }
     ${MIN_LARGE_DISPLAY_MEDIA_QUERY} {
-      padding-top: 30px;
+      padding-top: ${FEATURE_ROW_HEIGHT}px;
 
       .feature-enabled,
       .show-disabled {
@@ -137,34 +130,26 @@ const styles = {
     display: flex;
     flex-direction: row;
     align-items: center;
-    height: 53px;
-    padding: 0 20px;
+    padding: 5px 20px;
     font-size: ${adjustFontSizeTo('14px').fontSize};
-
-    &:nth-of-type(odd) {
-      background-color: ${theme.pricingRowBackground};
-    }
 
     &:not(.feature-enabled):not(.show-disabled) {
       display: none;
     }
 
-    ${MIN_DEFAULT_MEDIA_QUERY} {
-      display: flex !important;
-    }
-
     ${MIN_LARGE_DISPLAY_MEDIA_QUERY} {
+      display: flex !important;
+      height: ${FEATURE_ROW_HEIGHT}px;
       justify-content: center;
       text-align: center;
 
-      &:nth-of-type(odd):after {
+      &:after {
         content: '';
         position: absolute;
         top: 0;
         bottom: 0;
         left: -25px;
         right: 100%;
-        background-color: ${theme.pricingRowBackground};
       }
     }
   `,

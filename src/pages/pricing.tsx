@@ -5,10 +5,11 @@ import {
   MIN_LARGE_DISPLAY_MEDIA_QUERY
 } from 'typography-breakpoint-constants'
 import { PageRendererProps, graphql } from 'gatsby'
-import React, { useState } from 'react'
+import React, { useRef, useState } from 'react'
 
 import Layout from '../components/Layout'
 import Plan from '../components/pricing/Plan'
+import PricingRowBackground from '../components/pricing/PricingRowBackground'
 import { Query } from '../utils/graphql'
 import SEO from '../components/SEO'
 import SVGIcon from '../components/SVGIcon'
@@ -22,7 +23,27 @@ interface Props extends PageRendererProps {
 
 export default function Pricing({ data }: Props) {
   const { contact } = data.site.siteMetadata
+  const pricingElem = useRef<HTMLDivElement>(null)
   const [yearly, setYearly] = useState(true)
+  const [rowBgY, setRowBgY] = useState(0)
+  const [showRowBg, setShowRowBg] = useState(false)
+
+  function hover(e: React.PointerEvent<HTMLDivElement>) {
+    let elem = e.target as HTMLDivElement
+    if (elem.classList.contains('row-background')) {
+      setShowRowBg(true)
+      return
+    }
+    elem = elem && elem.closest('.category-feature')
+    if (elem) {
+      const y =
+        elem.getBoundingClientRect().top +
+        window.pageYOffset -
+        pricingElem.current.offsetTop
+      setRowBgY(y)
+    }
+    setShowRowBg(!!elem)
+  }
 
   return (
     <Layout>
@@ -31,7 +52,7 @@ export default function Pricing({ data }: Props) {
         longTitle="Spokestack Pricing"
         description="Choose between the plans available for Spokestack, including Developer (free), Pro, and Enterprise."
       />
-      <div css={styles.pricing}>
+      <div css={styles.pricing} ref={pricingElem} onPointerMove={hover}>
         <Plan
           showBanners
           cta="Sign up free"
@@ -47,7 +68,7 @@ export default function Pricing({ data }: Props) {
                   name: 'Open source ASR management'
                 },
                 {
-                  enabled: true,
+                  enabled: false,
                   name: 'Spokestack ASR'
                 }
               ]
@@ -122,6 +143,7 @@ export default function Pricing({ data }: Props) {
           ]}
         />
         <Plan
+          background={theme.primaryLighter}
           cta="Coming soon"
           extraHeader={
             <Switch
@@ -149,8 +171,11 @@ export default function Pricing({ data }: Props) {
                   name: 'Open source ASR management'
                 },
                 {
-                  enabled: true,
-                  name: 'Spokestack ASR'
+                  enabled: false,
+                  showDisabled: true,
+                  name: 'Spokestack ASR',
+                  desktopText: 'Coming soon',
+                  mobileText: 'Spokestack ASR coming soon'
                 }
               ]
             },
@@ -241,6 +266,7 @@ export default function Pricing({ data }: Props) {
           ]}
         />
         <Plan
+          background={theme.primaryLight}
           cta="Contact us"
           name="Enterprise"
           slug={`mailto:${contact.email}`}
@@ -254,8 +280,11 @@ export default function Pricing({ data }: Props) {
                   name: 'Open source ASR management'
                 },
                 {
-                  enabled: true,
-                  name: 'Spokestack ASR'
+                  enabled: false,
+                  showDisabled: true,
+                  name: 'Spokestack ASR',
+                  desktopText: 'Coming soon',
+                  mobileText: 'Spokestack ASR coming soon'
                 }
               ]
             },
@@ -335,6 +364,7 @@ export default function Pricing({ data }: Props) {
             }
           ]}
         />
+        <PricingRowBackground show={showRowBg} y={rowBgY} />
       </div>
     </Layout>
   )
@@ -342,6 +372,7 @@ export default function Pricing({ data }: Props) {
 
 const styles = {
   pricing: css`
+    position: relative;
     display: flex;
     flex-direction: column;
     justify-content: stretch;

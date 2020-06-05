@@ -109,6 +109,7 @@ const styles = {
       &:before {
         content: '✓';
         position: absolute;
+        top: 4px;
         left: 20px;
         font-weight: 700;
       }

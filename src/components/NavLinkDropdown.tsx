@@ -42,7 +42,7 @@ export default function NavLinkDropdown({
         `}
       />
       <img alt={title} css={styles.dropdownLinkImage} src={imageUrl} />
-      <div css={styles.dropdownLinkContent}>
+      <div className="ie-fix" css={styles.dropdownLinkContent}>
         <span className={href ? 'blue' : ''} css={styles.dropdownLinkTitle}>
           {title}
         </span>

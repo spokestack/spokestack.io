@@ -13,7 +13,7 @@ import { css } from '@emotion/core'
 export default function Header() {
   return (
     <header css={styles.header}>
-      <div css={styles.headerContent}>
+      <div className="ie-fix" css={styles.headerContent}>
         <h1 css={styles.headerText}>Build an Independent Voice Assistant</h1>
         <p className="title spokestack-speakable">
           Open source tools for mobile &amp; web voice interfaces

@@ -39,7 +39,7 @@ export default function BlogPost({ post, related }: Props) {
         description={post.frontmatter.description || 'The Spokestack Blog'}
         image={findImage(post.html)}
       />
-      <div css={styles.container}>
+      <div className="ie-fix" css={styles.container}>
         <section css={styles.author}>
           <Author author={post.frontmatter.author as TeamMemberName} />
         </section>
@@ -108,9 +108,6 @@ const styles = {
     ${MIN_LARGE_DISPLAY_MEDIA_QUERY} {
       padding-left: 100px;
       padding-right: 100px;
-    }
-    ${ieBreakpoint} {
-      width: 100%;
     }
   `,
   author: css`

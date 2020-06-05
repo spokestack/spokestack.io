@@ -3,6 +3,7 @@ import { SerializedStyles, css } from '@emotion/core'
 import Callout from './Callout'
 import React from 'react'
 import { adjustFontSizeTo } from '../styles/typography'
+import { ieBreakpoint } from '../styles/theme'
 
 interface Props {
   extraCss?: SerializedStyles
@@ -33,6 +34,11 @@ const styles = {
     height: 290px;
     justify-content: center;
     max-width: 290px;
+
+    ${ieBreakpoint} {
+      width: 280px;
+      margin: 10px;
+    }
   `,
   image: css`
     width: 80px;

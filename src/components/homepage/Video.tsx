@@ -16,7 +16,7 @@ export default function Video() {
     }
   }, [])
   return (
-    <div css={styles.video}>
+    <div className="ie-fix" css={styles.video}>
       <video
         ref={videoRef}
         controls={played}

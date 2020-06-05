@@ -299,6 +299,10 @@ const styles = {
     ${MIN_DEFAULT_MEDIA_QUERY} {
       padding: 20px 0 20px 20px;
     }
+
+    ${theme.ieBreakpoint} {
+      width: 100%;
+    }
   `,
   dropdownColumnFull: css`
     grid-column: span 2;

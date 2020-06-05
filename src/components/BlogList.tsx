@@ -55,7 +55,7 @@ export default function BlogList({
           }
         `}
       />
-      <div className="blog-list" css={[styles.container, extraCss]}>
+      <div className="blog-list ie-fix" css={[styles.container, extraCss]}>
         <div className="bg-banner" css={styles.bgBanner} />
         <section css={styles.blogContent}>
           <div className="sidenav" css={styles.sidenav}>
@@ -132,10 +132,6 @@ const styles = {
       padding-left: 100px;
       padding-right: 100px;
     }
-
-    ${theme.ieBreakpoint} {
-      width: 100%;
-    }
   `,
   bgBanner: css`
     ${MIN_DEFAULT_MEDIA_QUERY} {
@@ -188,6 +184,12 @@ const styles = {
 
     ${MIN_DEFAULT_MEDIA_QUERY} {
       padding-top: 50px;
+    }
+
+    ${theme.ieBreakpoint} {
+      width: 100%;
+      min-width: ${theme.MIN_SIDEBAR_WIDTH};
+      max-width: ${theme.MAX_SIDEBAR_WIDTH};
     }
   `,
   content: css`

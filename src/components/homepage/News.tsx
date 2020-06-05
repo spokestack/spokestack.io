@@ -69,7 +69,7 @@ export default function News() {
   const data = useStaticQuery<QueryType>(newsQuery)
   const posts = data.allMarkdownRemark.edges
   return (
-    <div css={styles.container}>
+    <div id="news" className="ie-fix" css={styles.container}>
       <h3>Learn how to design &amp; build for voice</h3>
       <p className="title">
         How-to articles on creating voice assistants from the Spokestack team.
@@ -128,6 +128,14 @@ const styles = {
     align-items: center;
     flex-wrap: wrap;
     text-align: center;
+
+    ${theme.ieBreakpoint} {
+      flex-direction: column;
+    }
+
+    ${theme.ieBreakpointMinDefault} {
+      flex-direction: row;
+    }
   `,
   callout: css`
     justify-content: space-between;
@@ -140,6 +148,7 @@ const styles = {
   title: css`
     display: flex;
     flex-direction: column;
+    width: 100%;
 
     h5 {
       margin-bottom: 5px;

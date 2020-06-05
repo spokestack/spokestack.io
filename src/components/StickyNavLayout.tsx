@@ -7,7 +7,7 @@ import {
 } from 'typography-breakpoint-constants'
 import { Global, css } from '@emotion/core'
 import StickyNav, { StickyNavProps } from './StickyNav'
-import { ieBreakpoint, ieBreakpointMinDefault } from '../styles/theme'
+import { ieBreakpointMinDefault } from '../styles/theme'
 
 import React from 'react'
 import { rhythm } from '../styles/typography'
@@ -21,7 +21,7 @@ interface Props extends StickyNavProps {
 
 export default function StickyNavLayout({ children, id, ...props }: Props) {
   return (
-    <div id={id} css={styles.container}>
+    <div id={id} css={styles.container} className="ie-fix">
       <Global
         styles={css`
           html.dark-mode .sticky-nav-wrap {
@@ -32,7 +32,7 @@ export default function StickyNavLayout({ children, id, ...props }: Props) {
       <div css={styles.stickyNavWrap} className="sticky-nav-wrap">
         <StickyNav {...props} />
       </div>
-      <section className="main-content" css={styles.content}>
+      <section className="main-content ie-fix" css={styles.content}>
         {children}
       </section>
     </div>
@@ -51,10 +51,6 @@ const styles = {
         minmax(${theme.MIN_SIDEBAR_WIDTH}, ${theme.MAX_SIDEBAR_WIDTH})
         minmax(${theme.MAX_TEXT_WIDTH}, ${DEFAULT_WIDTH});
       grid-template-areas: 'sidenav content';
-    }
-
-    ${ieBreakpoint} {
-      width: 100%;
     }
   `,
   mobileNav: css`
@@ -82,10 +78,6 @@ const styles = {
     }
     ${MIN_LARGER_DISPLAY_MEDIA_QUERY} {
       padding-left: ${rhythm(4)};
-    }
-
-    ${ieBreakpoint} {
-      width: 100%;
     }
   `
 }

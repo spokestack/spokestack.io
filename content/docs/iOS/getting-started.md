@@ -227,7 +227,7 @@ func speak(_ text: String) {
 
 The `speak` function will call your delegate's `didBeginSpeaking` and `didFinishSpeaking` at the start and finish, respectively, of response playback.
 
-In this example, `SpeechConfiguration.apiId` and `SpeechConfiguration.apiSecret` are set to sample values that let you try Spokestack TTS with a demo voice, without creating an account. You can [get your own free API credentials](https://spokestack.io/login). For more TTS input configuration options, see [the TTS guide](/docs/Concepts/tts).
+In this example, `SpeechConfiguration.apiId` and `SpeechConfiguration.apiSecret` are set to sample values that let you try Spokestack TTS with a demo voice, without creating an account. You can [get your own free API credentials](/create). For more TTS input configuration options, see [the TTS guide](/docs/Concepts/tts).
 
 If you want more fine-grained control over how the TTS response is played back, you're free to feed the `TextToSpeechResult.url` in the `success` handler into your own audio player. See the [cookbook](cookbook) for a quick version of that recipe.
 

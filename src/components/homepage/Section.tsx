@@ -19,6 +19,7 @@ export default function Section({ id, image, header, text }: Props) {
   return (
     <section
       id={id}
+      className="ie-fix"
       css={[
         styles.container,
         css`
@@ -27,7 +28,7 @@ export default function Section({ id, image, header, text }: Props) {
           }
         `
       ]}>
-      <div css={styles.content}>
+      <div css={styles.content} className="ie-fix">
         <h3>{header}</h3>
         <p className="title">{text}</p>
       </div>

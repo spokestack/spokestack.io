@@ -103,7 +103,7 @@ export default function StickyNav({
     if (selectedLink) {
       const id = `${hashToId(selectedLink.href)}-link`
       const elem = document.getElementById(id)
-      if (elem && navRef.current) {
+      if (elem && navRef.current && navRef.current.scrollTo) {
         navRef.current.scrollTo({ top: elem.offsetTop - 25 })
       }
     }

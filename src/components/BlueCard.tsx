@@ -67,6 +67,10 @@ const styles = {
       min-height: 400px;
       margin: 0 50px;
     }
+
+    ${theme.ieBreakpoint} {
+      width: 80%;
+    }
   `,
   smallCard: css`
     ${MIN_DEFAULT_MEDIA_QUERY} {

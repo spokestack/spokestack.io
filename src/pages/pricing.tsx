@@ -30,7 +30,7 @@ export default function Pricing({ data }: Props) {
 
   function hover(e: React.PointerEvent<HTMLDivElement>) {
     let elem = e.target as HTMLDivElement
-    if (elem.classList.contains('row-background')) {
+    if (elem.className.indexOf('row-background') > -1) {
       setShowRowBg(true)
       return
     }
@@ -52,7 +52,11 @@ export default function Pricing({ data }: Props) {
         longTitle="Spokestack Pricing"
         description="Choose between the plans available for Spokestack, including Developer (free), Pro, and Enterprise."
       />
-      <div css={styles.pricing} ref={pricingElem} onPointerMove={hover}>
+      <div
+        className="ie-fix"
+        css={styles.pricing}
+        ref={pricingElem}
+        onPointerMove={hover}>
         <Plan
           showBanners
           cta="Sign up free"

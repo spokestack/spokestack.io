@@ -27,7 +27,10 @@ export default function Plan({
 }: Props) {
   return (
     <div css={styles.plan}>
-      <div css={styles.card} style={{ backgroundColor: background || 'white' }}>
+      <div
+        css={styles.card}
+        className="ie-fix"
+        style={{ backgroundColor: background || 'white' }}>
         {extraHeader}
         <Header cta={cta} name={name} price={price} slug={slug} />
         {categories.map((category) => (
@@ -58,6 +61,12 @@ const styles = {
     height: 100%;
     .btn {
       width: 100%;
+    }
+
+    ${theme.ieBreakpointMinDefault} {
+      margin-left: 12px;
+      margin-right: 12px;
+      width: 186px;
     }
   `,
   card: css`

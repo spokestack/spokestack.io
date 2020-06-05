@@ -11,8 +11,8 @@ import { css } from '@emotion/core'
 
 export default function Solution() {
   return (
-    <section id="problem" css={styles.container}>
-      <div css={styles.content}>
+    <section id="solution" className="ie-fix" css={styles.container}>
+      <div className="ie-fix" css={styles.content}>
         <img src="/homepage/solution.svg" css={styles.solutionImage} />
         <h3>An independent voice assistant is your solution</h3>
         <p className="title">
@@ -104,6 +104,7 @@ const styles = {
 
     p {
       margin: 0;
+      width: 100%;
     }
 
     ${MIN_DEFAULT_MEDIA_QUERY} {

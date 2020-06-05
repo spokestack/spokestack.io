@@ -50,7 +50,7 @@ Due to the number of libraries React Native uses on Android, it's best to give t
 
 Spokestack has dependencies that require a slightly higher minimum SDK version that React Native requires by default:
 
-```
+```java
 buildscript {
     ext {
         buildToolsVersion = "28.0.3"
@@ -97,7 +97,7 @@ Apple manages the various demands on a phone's audio system via [audio sessions]
 
 Given that, and remembering to remove Flipper as discussed earlier, your `AppDelegate.m` should look similar to this:
 
-```objc
+```objectivec
 #import "AppDelegate.h"
 #import <AVFoundation/AVFoundation.h>
 
@@ -153,10 +153,10 @@ Also note that [the Android emulator cannot record audio](https://developer.andr
 
 #### `android/app/src/main/AndroidManifest.xml`
 
-```
-// for wakeword & ASR
+```xml
+<!-- for wakeword & ASR -->
 <uses-permission android:name="android.permission.RECORD_AUDIO" />
-// for TTS
+<!-- for TTS -->
 <uses-permission android:name="android.permission.INTERNET" />
 ```
 

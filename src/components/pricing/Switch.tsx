@@ -17,23 +17,38 @@ interface State {
 }
 
 export default class Switch extends PureComponent<Props, State> {
+  private dragged: boolean
   private prevX: number
   private startX: number
+  private knob = React.createRef<HTMLDivElement>()
 
   state: State = {
     moving: false,
     x: this.props.yearly ? 0 : 81
   }
 
+  componentDidMount() {
+    if (this.knob.current) {
+      this.knob.current.addEventListener('mousedown', this.preventBubble)
+      this.knob.current.addEventListener('touchstart', this.preventBubble)
+    }
+  }
+
   componentWillUnmount() {
+    if (this.knob.current) {
+      this.knob.current.removeEventListener('mousedown', this.preventBubble)
+      this.knob.current.removeEventListener('touchstart', this.preventBubble)
+    }
     this.removeListeners()
   }
 
   startMove = (e: React.PointerEvent) => {
     const { x } = this.state
     e.preventDefault()
+    e.stopPropagation()
     this.prevX = x
     this.startX = e.clientX
+    this.dragged = false
     this.setState({ moving: true })
     this.addListeners()
   }
@@ -41,9 +56,9 @@ export default class Switch extends PureComponent<Props, State> {
   move = (e: PointerEvent) => {
     e.preventDefault()
     e.stopPropagation()
-    this.setState({
-      x: this.nextX(e.clientX)
-    })
+    const nextX = this.nextX(e.clientX)
+    this.dragged = this.dragged || Math.abs(nextX - this.prevX) > 5
+    this.setState({ x: nextX })
   }
 
   stopMove = (e: PointerEvent) => {
@@ -53,11 +68,11 @@ export default class Switch extends PureComponent<Props, State> {
     this.setState({
       moving: false
     })
-    const nextX = this.nextX(e.clientX)
-    if (nextX - this.prevX < 5) {
-      this.updateYearly(!yearly)
-    } else {
+    if (this.dragged) {
+      const nextX = this.nextX(e.clientX)
       this.updateYearly(nextX < 40)
+    } else {
+      this.updateYearly(!yearly)
     }
   }
 
@@ -88,7 +103,7 @@ export default class Switch extends PureComponent<Props, State> {
     document.removeEventListener('pointerup', this.stopMove)
   }
 
-  preventBubble(e: React.MouseEvent | React.TouchEvent) {
+  preventBubble(e: React.MouseEvent | React.TouchEvent | Event) {
     e.preventDefault()
     e.stopPropagation()
   }
@@ -109,6 +124,7 @@ export default class Switch extends PureComponent<Props, State> {
           </div>
         </div>
         <div
+          ref={this.knob}
           css={styles.knob}
           className={moving ? 'moving' : ''}
           onPointerDown={this.startMove}

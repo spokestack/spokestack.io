@@ -35,8 +35,7 @@ export const buttonBackgroundDark = primaryLight
 export const buttonBackgroundDarkHover = primaryLightColor.darken(0.4).hex()
 export const mainBorder = mainBorderColor.hex()
 export const mainBorderDark = '#96a2a2'
-export const pricingHeader = '#8da6e3'
-export const pricingRowBackground = '#edf3f9'
+export const pricingRowBackground = primaryColor.fade(0.9).toString()
 
 export const transitionEasing = 'cubic-bezier(0.77, 0.41, 0.2, 0.84)'
 export const bubbleEasing = 'cubic-bezier(0.3, 0.55, 0.54, 0.86)'
@@ -58,7 +57,7 @@ export const linkSecondaryVisited = secondaryColor.lighten(0.1).hex()
 export const linkSecondaryHover = secondaryColor.darken(0.4).hex()
 export const linkSecondaryActive = secondaryColor.darken(0.6).hex()
 
-export const linkStickyNav = pricingHeader
+export const linkStickyNav = '#8da6e3'
 export const linkStickyNavHover = linkHover
 export const linkStickyNavActive = link
 

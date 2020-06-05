@@ -1,4 +1,5 @@
 import 'prismjs/themes/prism-tomorrow.css'
+import './src/utils/closest-polyfill.js'
 
 import { getDarkModePref } from './src/utils/auth'
 

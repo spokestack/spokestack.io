@@ -186,14 +186,14 @@ const styles = {
   `,
   knob: css`
     position: relative;
-    width: 81px;
-    height: 31px;
-    margin: 2px;
+    width: 85px;
+    height: 35px;
     display: flex;
     justify-content: center;
     align-items: center;
     border-radius: 22px;
     background-color: white;
+    border: 1px solid ${theme.primary};
 
     &:not(.moving) {
       transition: transform 0.1s ${theme.transitionEasing};
@@ -214,6 +214,7 @@ const styles = {
       justify-content: center;
       align-items: center;
       text-align: center;
+      color: ${theme.primary};
     }
   `,
   text: css`

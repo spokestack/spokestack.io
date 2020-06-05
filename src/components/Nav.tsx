@@ -94,8 +94,7 @@ export default function Nav({ extraCss }: Props) {
                   />
                   <NavLinkDropdown
                     extraCss={styles.navLinkDropdown}
-                    href="/blog/tag/tutorial"
-                    title="Tutorials"
+                    title="Tutorials (Coming Soon)"
                     imageUrl="/navigation/tutorials.svg"
                     text="Step-by-step instructions to build real-world products"
                   />

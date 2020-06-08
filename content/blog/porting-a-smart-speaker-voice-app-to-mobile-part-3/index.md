@@ -1,7 +1,7 @@
 ---
 title: Porting a Smart Speaker Voice App - Part 3
 date: '2020-06-08'
-description:
+description: Importing an Alexa or Dailogflow interaction model to create on-device Spokestack NLU.
 tags: Engineering, Product
 author: daniel
 draft: false

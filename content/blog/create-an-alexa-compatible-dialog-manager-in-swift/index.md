@@ -1,7 +1,7 @@
 ---
 title: Create an Alexa-Compatible Dialog Manager In Swift
 date: '2020-06-08'
-description:
+description: Porting the Alexa Skill dialog management from node.js to Swift.
 tags: Engineering, Tutorial
 author: daniel
 draft: false
@@ -9,7 +9,7 @@ draft: false
 
 _This tutorial is part of the [Porting a Smart Speaker Voice App to Mobile](/blog/porting-a-smart-speaker-voice-app-to-mobile-part-1) series._
 
-With Spokestack, you can make a mobile app work like a smart speaker skill or action. Spokestack provides many of the capabilities you need for a voice app such as speech recognition and text-to-speech. By importing your Alexa conversation model to Spokestack, you also get on-device natural language understanding (NLU) that behaves almost identically to how your smart speaker behaves. The next ingredient is taking the classification from the NLU and creating a response, which is the job of the dialog manager component. In this post, I’ll show how I created a simple dialog manager in Swift that mirrors the API Amazon uses in its Alexa SDK for NodeJS. While this example is specific to Amazon Alexa, the same concepts also apply to Google Assistant and other virtual assistants.
+With Spokestack, you can make a mobile app work like a smart speaker skill or action. Spokestack provides many of the capabilities you need for a voice app such as speech recognition and text-to-speech. By importing your Alexa conversation model to Spokestack, you also get on-device natural language understanding (NLU) that behaves almost identically to how your smart speaker behaves. The next step is taking the classification from the NLU and creating a response, which is the job of the dialog manager component. In this post, I’ll show how I created a simple dialog manager in Swift that mirrors the API Amazon uses in its Alexa SDK for NodeJS. While this example is specific to Amazon Alexa, the same concepts also apply to Google Assistant and other virtual assistants.
 
 ### Alexa Skill Fulfillment
 

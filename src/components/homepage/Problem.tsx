@@ -5,7 +5,7 @@ export default function Problem() {
   return (
     <Section
       id="problem"
-      image={{ url: '/homepage/problem.svg', maxWidth: '501px', left: true }}
+      image={{ url: '/homepage/problem.svg', maxWidth: '504px', left: true }}
       header="More users are relying on voice"
       text={
         <>

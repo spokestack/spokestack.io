@@ -27,6 +27,9 @@ export default css`
   .blue {
     color: ${theme.primary} !important;
   }
+  .yellow {
+    color: ${theme.yellow};
+  }
   .select-label {
     background-color: white;
     color: ${theme.header};

@@ -1,7 +1,7 @@
 ---
 title: Porting a Smart Speaker Voice App to Mobile
 date: '2020-06-08'
-description:
+description: How to port your Alexa Skill or Action on Google to a Smartphone App
 tags: Engineering, Product
 author: daniel
 draft: false

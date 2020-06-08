@@ -1,7 +1,7 @@
 ---
 title: Porting a Smart Speaker Voice App - Part 2
 date: '2020-06-08'
-description:
+description: How smart speaker voice apps can also run in mobile apps
 tags: Engineering, Product
 author: daniel
 draft: false
@@ -9,7 +9,7 @@ draft: false
 
 ## Voice Apps on Mobile
 
-In [Part 1]() of this series we covered covered what smart speaker voice apps are and some of their limitation. Part 2 describes what we need to do to port a smart speaker voice app to a smartphone.
+In [Part 1](/blog/porting-a-smart-speaker-voice-app-to-mobile-part-1) of this series we covered covered what smart speaker voice apps are and some of their limitation. Part 2 describes what we need to do to port a smart speaker voice app to a smartphone.
 
 If you’ve authored an Alexa Skill or Google Action, you’ve already mixed the ingredients needed to produce a voice app. The smart speaker hardware and virtual assistant software provide the ASR, NLU, and TTS. You create the fulfillment and dialog management with the help of the platform SDKs.
 

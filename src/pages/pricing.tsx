@@ -31,7 +31,7 @@ export default function Pricing({ data }: Props) {
   function hover(e: React.PointerEvent<HTMLDivElement>) {
     let elem = e.target as HTMLDivElement
     if (elem.className.indexOf('row-background') > -1) {
-      setShowRowBg(true)
+      setShowRowBg(!!rowBgY)
       return
     }
     elem = elem && elem.closest('.category-feature')

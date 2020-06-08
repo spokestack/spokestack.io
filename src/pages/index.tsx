@@ -63,7 +63,7 @@ export const pageQuery = graphql`
 
 const styles = {
   container: css`
-    padding-top: 40px;
+    padding-top: 100px;
     ${MIN_DEFAULT_MEDIA_QUERY} {
       padding-top: 120px;
     }

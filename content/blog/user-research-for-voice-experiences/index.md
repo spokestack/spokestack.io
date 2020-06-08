@@ -23,7 +23,7 @@ If you don’t know the answers to these questions, it’s ok. I’m going to he
 
 <figure>
 
-![Proof of concept](./image1.png)
+![Proof of concept](./image-png)
 
 <figcaption>Above are some questions I brainstormed with my team for an initial proof of concept. We wanted to better understand the pain points of managing AirBnBs.</figcaption>
 </figure>
@@ -32,17 +32,17 @@ If you don’t know the answers to these questions, it’s ok. I’m going to he
 
 Relying on your network can be a great way to quickly get initial feedback. Use a survey to gather demographic information on candidates, even old friends. Here are some tips that have helped me during recruitment:
 
-1. Allow yourself at least a week to schedule one-on-one time with each person. Following [Jakob Nielsen’s advice](https://www.nngroup.com/articles/how-many-test-users/), I’ve found success limiting this to around five people.
-1. Share a calendar link. I’ve found [Calendly](https://calendly.com/) and [Google Calendar](https://calendar.google.com/) to work well for this. Be sensitive of their time and schedule. Make it easy for them to talk to you.
-1. Offer your subjects an incentive if you’re able. We often give our participants gift cards for example.
+- Allow yourself at least a week to schedule one-on-one time with each person. Following [Jakob Nielsen’s advice](https://www.nngroup.com/articles/how-many-test-users/), I’ve found success limiting this to around five people.
+- Share a calendar link. I’ve found [Calendly](https://calendly.com/) and [Google Calendar](https://calendar.google.com/) to work well for this. Be sensitive of their time and schedule. Make it easy for them to talk to you.
+- Offer your subjects an incentive if you’re able. We often give our participants gift cards for example.
 
 ## How to guide the discussion
 
 This will be a guided discussion that you will take charge of. It’s important to come prepared. Here are a three things I make sure to do prior to an interview:
 
-1. Create a document for each person you interview that includes background information from an email correspondence or survey results. Leave room to jot down questions during your interview. Getting feedback from your users usually happens fast during an interview or usability test. You’ll have time to take more in-depth notes later. Here’s a [template](https://docs.google.com/document/d/15YtXuLhlOKrNa6m9ElFBuG-O2ppCc4obVlivl4Dhqfk/edit?usp=sharing) I usually use for this.
-1. Write a script that provides a framework for your conversation, but improvise as you see fit (see the next section). Include instructions and questions. Here’s a [sample script](https://docs.google.com/document/d/1KdaeVRv1nlvMvZTMyglkvuv8EG8z6Lcv8Ca9-oLUkjY/edit?usp=sharing) I adopted from Steve Krug’s [_Rocket Surgery Made Easy_](https://www.amazon.com/Rocket-Surgery-Made-Easy-Yourself/dp/0321657292) that helps me stay on task during interviews.
-1. It will feel silly, but it really helps to rehearse your script by doing a dry run. Have someone pretend they’re the user and read the script aloud to them. This will help iron out any kinks that may remain (and ease any pre-interview jitters).
+- Create a document for each person you interview that includes background information from an email correspondence or survey results. Leave room to jot down questions during your interview. Getting feedback from your users usually happens fast during an interview or usability test. You’ll have time to take more in-depth notes later. Here’s a [template](https://docs.google.com/document/d/15YtXuLhlOKrNa6m9ElFBuG-O2ppCc4obVlivl4Dhqfk/edit?usp=sharing) I usually use for this.
+- Write a script that provides a framework for your conversation, but improvise as you see fit (see the next section). Include instructions and questions. Here’s a [sample script](https://docs.google.com/document/d/1KdaeVRv1nlvMvZTMyglkvuv8EG8z6Lcv8Ca9-oLUkjY/edit?usp=sharing) I adopted from Steve Krug’s [_Rocket Surgery Made Easy_](https://www.amazon.com/Rocket-Surgery-Made-Easy-Yourself/dp/0321657292) that helps me stay on task during interviews.
+- It will feel silly, but it really helps to rehearse your script by doing a dry run. Have someone pretend they’re the user and read the script aloud to them. This will help iron out any kinks that may remain (and ease any pre-interview jitters).
 
 ## Don’t forget who your real users are (psst, it’s not you!)
 
@@ -56,10 +56,10 @@ If candidates feel comfortable, stream and record the discussion (we use [Zoom](
 
 After the interview, I like to use recording to document takeaways by doing the following:
 
-1. Write down observations and transcribe any statements that stood out to you after listening to your discussion a second time.
-1. Discuss and group reoccurring insights with your team.
-1. Label each group to reflect a product feature or intent.
-1. Let your observations guide the level of priority for each. Which intents will most ease the user’s experience? This will dictate focus when you start to map your multimodal flow.
+- Write down observations and transcribe any statements that stood out to you after listening to your discussion a second time.
+- Discuss and group reoccurring insights with your team.
+- Label each group to reflect a product feature or intent.
+- Let your observations guide the level of priority for each. Which intents will most ease the user’s experience? This will dictate focus when you start to map your multimodal flow.
 
 <figure>
 

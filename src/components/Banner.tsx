@@ -45,6 +45,7 @@ const styles = {
     background-color: ${theme.header};
     box-shadow: 0 2px 16px rgba(0, 0, 0, 0.5);
     font-size: ${adjustFontSizeTo('13px').fontSize};
+    padding-bottom: 1px;
     z-index: 99999;
 
     &,
@@ -67,7 +68,7 @@ const styles = {
 
     ${MIN_DEFAULT_MEDIA_QUERY} {
       position: absolute;
-      font-size: ${adjustFontSizeTo('14px').fontSize};
+      font-size: ${adjustFontSizeTo('16px').fontSize};
     }
   `,
   bannerImage: css`

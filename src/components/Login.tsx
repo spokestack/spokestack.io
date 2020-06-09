@@ -47,20 +47,32 @@ export default function Login({ header, isCreate }: Props) {
           <ul css={styles.list}>
             <li>
               <SVGIcon icon="#checkmark" css={styles.iconCheckmark} />
-              You pick the wakeword
+              Get access to our developer API
             </li>
             <li>
-              <SVGIcon icon="#checkmark" css={styles.iconCheckmark} />A one-stop
-              shop for automatic speech recognition
+              <SVGIcon icon="#checkmark" css={styles.iconCheckmark} />
+              <a href="/docs/Concepts/export">
+                Upload your interaction model
+              </a>{' '}
+              from Alexa or Google
             </li>
             <li>
-              <SVGIcon icon="#checkmark" css={styles.iconCheckmark} />A natural
-              language understanding engine that keeps your data and customer
+              <SVGIcon icon="#checkmark" css={styles.iconCheckmark} />
+              Access our on-device NLU engine that keeps your data and customer
               conversations in your app
             </li>
             <li>
               <SVGIcon icon="#checkmark" css={styles.iconCheckmark} />
-              Create a custom voice for your brand
+              Access our library of TTS voices
+            </li>
+            <li>
+              <SVGIcon icon="#checkmark" css={styles.iconCheckmark} />
+              Get access to our support resources
+            </li>
+            <li>
+              <SVGIcon icon="#checkmark" css={styles.iconCheckmark} />
+              Upgrade later to get custom voices, NLU Training and personalized
+              support
             </li>
           </ul>
         </div>

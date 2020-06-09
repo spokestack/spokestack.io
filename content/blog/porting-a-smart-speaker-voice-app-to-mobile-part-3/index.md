@@ -27,8 +27,8 @@ To get started with a free NLU model that’s compatible with Spokestack, [creat
 
 Spokestack has libraries for iOS, Android, and React Native.
 
-- Tutorial: Create an Alexa-Compatible Dialog Manager in Swift
-- Tutorial: Create an Alexa-Compatible Dialog Manager in Java
-- Tutorial: Porting the Alexa Minecraft Skill to iOS Using Spokestack
-- Tutorial: Porting the Alexa Minecraft Skill to Android Using Spokestack
-- Tutorial: Porting the Alexa Minecraft Skill to React Native Using Spokestack
+- Tutorial: [Create an Alexa-Compatible Dialog Manager in Swift](/blog/create-an-alexa-compatible-dialog-manager-in-swift)
+- Tutorial: Create an Alexa-Compatible Dialog Manager in Java (Coming Soon)
+- Tutorial: [Porting the Alexa Minecraft Skill to iOS Using Spokestack](/blog/porting-the-alexa-minecraft-skill-to-ios-using-spokestack)
+- Tutorial: Porting the Alexa Minecraft Skill to Android Using Spokestack (Coming Soon)
+- Tutorial: Porting the Alexa Minecraft Skill to React Native Using Spokestack (Coming Soon)

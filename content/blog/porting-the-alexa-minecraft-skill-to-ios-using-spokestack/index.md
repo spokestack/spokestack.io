@@ -17,7 +17,7 @@ This tutorial is a direct port of the [Alexa sample skill](https://github.com/al
 
 ## Installation and Setup
 
-The easiest way to install Spokestack on iOS is using CocoaPods as described in more detail in the [getting started docs](https://spokestack.io/docs/iOS/getting-started). Download and unzip the [example code](https://d3dmqd7cy685il.cloudfront.net/docs/minecraft-ios-tutorial.zip). In the "start" folder, you’ll see a `Podfile` with the following contents:
+The easiest way to install Spokestack on iOS is using CocoaPods as described in more detail in the [getting started docs](/docs/iOS/getting-started). Download and unzip the [example code](https://d3dmqd7cy685il.cloudfront.net/docs/minecraft-ios-tutorial.zip). In the "start" folder, you’ll see a `Podfile` with the following contents:
 
 ```
 platform :ios, '13.0'
@@ -35,11 +35,11 @@ Run the command `pod install` to download and install the dependencies. Next, op
 
 If you run the app now, you’ll see it doesn’t do much. It just displays a screen with a microphone button.
 
-![](screen1.png)
+![App with microphone button](screen1.png)
 
 Next, you’re going to start the Spokestack speech pipeline so that your app can hear you. You’re going to configure the app so that it starts listening when you press a button.
 
-The example code contains a class `PipelineStore` that implements [the delegates](https://spokestack.io/docs/iOS/speech-pipeline) in the Spokestack speech pipeline. The `init` method of our `ContentView` already calls the `pipelineStore.start()` method to start background processing. To begin actually listening, add a new function to `PipelineStore`:
+The example code contains a class `PipelineStore` that implements [the delegates](/docs/iOS/speech-pipeline) in the Spokestack speech pipeline. The `init` method of our `ContentView` already calls the `pipelineStore.start()` method to start background processing. To begin actually listening, add a new function to `PipelineStore`:
 
 ```swift
 func activatePipeline() {
@@ -86,19 +86,20 @@ Using the `ContentView` class, you can modify your button so it will toggle betw
 
 Try running the app now. At this point, you should be able to press the button, say something, and see what you said appear in the UI.
 
-![](screen2.gif)
+![Animation of app listening to speech](screen2.gif)
 
 ### Make the App Understand
 
 For this tutorial, we built an Alexa skill that allows you to ask for instructions on how to build an item in Minecraft. To do this, we needed to understand what the user is asking about and respond accordingly.
 
-This tutorial includes Alexa’s [interaction model](https://github.com/alexa/skill-sample-nodejs-howto/blob/master/models/en-US.json) JSON file. To make our app understand, you’ll need to import this interaction model into your Spokestack account and get an on-device NLU model back. The NLU model consists of three files that are already included in the `Resources` folder of an iOS project:
+This tutorial includes Alexa’s [interaction model](https://github.com/alexa/skill-sample-nodejs-howto/blob/master/models/en-US.json) JSON file. To make our app understand, you’ll need to import this interaction model into your Spokestack account and get an on-device NLU model back. The NLU model consists of two files. For convenience they are already included in the `Resources` folder of the tutorial iOS project:
 
 - nlu.tflite - a TensorFlow Lite model file
 - metadata.json - the model metadata
-- vocab.txt - a Wordpiece vocabulary
 
-There is a convenience class `NLUService` that loads these files and creates a `NLUTensorflow` instance. Now you can add an instance of the NLU service to `PipelineStore`:
+There is also a third file `vocab.txt` that is the BERT Wordpiece vocabulary. This is the same for every NLU model and can be [downloaded here](https://d3dmqd7cy685il.cloudfront.net/nlu/vocab.txt).
+
+The sample code has a convenience class `NLUService` that loads these files and creates a `NLUTensorflow` instance. Now you can add an instance of the NLU service to `PipelineStore`:
 
 ```swift
     private var nluService = NLUService("nlu")
@@ -220,7 +221,7 @@ let _ = results.map({ result in
 
 At this point your app should be able to understand and answer questions.
 
-![](screen3.gif)
+![Animation of app responding to a question](screen3.gif)
 
 ### Make the App Speak
 

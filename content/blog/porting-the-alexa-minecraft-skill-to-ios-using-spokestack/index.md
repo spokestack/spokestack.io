@@ -11,13 +11,13 @@ _This tutorial is part of the [Porting a Smart Speaker Voice App to Mobile](/blo
 
 Spokestack makes it easy to convert a smart speaker voice app like a Google Action or Alexa Skill to a mobile app. In this tutorial, we’ll go through the entire process of converting a sample Alexa skill into an iOS app using SwiftUI.
 
-We’ve provided some components and boilerplate code so you can follow along more easily. You can download the starting and final versions of the code here.
+We’ve provided some components and boilerplate code so you can follow along more easily. You can download the starting and final versions of the [code here](https://d3dmqd7cy685il.cloudfront.net/docs/minecraft-ios-tutorial.zip).
 
 This tutorial is a direct port of the [Alexa sample skill](https://github.com/alexa/skill-sample-nodejs-howto) from Alexa’s GitHub repository. We stayed as true as possible to the original and didn’t try to improve on it too much at this point.
 
 ## Installation and Setup
 
-The easiest way to install Spokestack on iOS is using CocoaPods as described in more detail in the [getting started docs](https://spokestack.io/docs/iOS/getting-started). Download and unzip the example code. In the "start" folder, you’ll see a `Podfile` with the following contents:
+The easiest way to install Spokestack on iOS is using CocoaPods as described in more detail in the [getting started docs](https://spokestack.io/docs/iOS/getting-started). Download and unzip the [example code](https://d3dmqd7cy685il.cloudfront.net/docs/minecraft-ios-tutorial.zip). In the "start" folder, you’ll see a `Podfile` with the following contents:
 
 ```
 platform :ios, '13.0'
@@ -51,7 +51,7 @@ func activatePipeline() {
 }
 ```
 
-This new function does two things. First, it calls the `activate()` method on the pipeline to start actively listening for voice input. Second, it sets the variable `isListening` to `true`. Since `isListening` is @`Published`, changes to the variable will automatically be reflected in the UI.
+This new function does two things. First, it calls the `activate()` method on the pipeline to start actively listening for voice input. Second, it sets the variable `isListening` to `true`. Since `isListening` is `@Published`, changes to the variable will automatically be reflected in the UI.
 
 Let’s also modify the `SpeechEventListener` implementation in `PipelineStore` so that you can update the UI with what the user said:
 
@@ -70,14 +70,14 @@ Using the `ContentView` class, you can modify your button so it will toggle betw
 
 ```swift
     Button(action:{
-        if (self.asrStore.isListening) {
-            self.asrStore.deactivatePipeline()
+        if (self.pipelineStore.isListening) {
+            self.pipelineStore.deactivatePipeline()
         } else {
-            self.asrStore.activatePipeline()
+            self.pipelineStore.activatePipeline()
         }
 
     }) {
-    ListeningIcon(isListening: $asrStore.isListening)
+    ListeningIcon(isListening: $pipelineStore.isListening)
         .background(Color.blue)
         .foregroundColor(Color.white)
         .cornerRadius(40)
@@ -152,7 +152,7 @@ struct RecipeHandler: RequestHandler {
     func handle(handlerInput: HandlerInput) -> Response {
         //return HandlerOutput(speak: "")
 
-        let item:Slot? = handlerInput.requestEnvelope.request.intent!.slots?["item"]
+        let item:Slot? = handlerInput.requestEnvelope.request.intent!.slots?["Item"]
 
         print("got item \(item)")
         let repromptSpeech = responses["RECIPE_NOT_FOUND_REPROMPT"]!
@@ -176,12 +176,12 @@ struct RecipeHandler: RequestHandler {
                 recipe = recipes[keys[results[0].index]]
             }
 
-            if (recipe != nil) {
-                return handlerInput.responseBuilder.speak(recipe!).getResponse()
-            } else {
+            guard let recipeContent = recipe else {
                 let speak = String(format: responses["RECIPE_NOT_FOUND_WITH_ITEM_NAME"]!,itemValue)
                 return handlerInput.responseBuilder.speak(speak + repromptSpeech).reprompt(repromptSpeech).getResponse()
             }
+
+            return handlerInput.responseBuilder.speak(recipeContent).getResponse()
         } else {
             return handlerInput.responseBuilder.speak(responses["RECIPE_NOT_FOUND_WITHOUT_ITEM_NAME"]! + repromptSpeech).reprompt(repromptSpeech).getResponse()
         }
@@ -270,16 +270,16 @@ To achieve this, modify `ContentView` as follows:
 var body: some View {
     VStack {
         ...
-        if (!asrStore.isSpeaking ) {
+        if (!pipelineStore.isSpeaking ) {
             Button(action:{
-                if (self.asrStore.isListening) {
-                    self.asrStore.deactivatePipeline()
+                if (self.pipelineStore.isListening) {
+                    self.pipelineStore.deactivatePipeline()
                 } else {
-                    self.asrStore.activatePipeline()
+                    self.pipelineStore.activatePipeline()
                 }
 
             }) {
-            ListeningIcon(isListening: $asrStore.isListening)
+            ListeningIcon(isListening: $pipelineStore.isListening)
                 .background(Color.blue)
                 .foregroundColor(Color.white)
                 .cornerRadius(40)
@@ -287,13 +287,33 @@ var body: some View {
         }
     }.onAppear{
             let speak = try! self.dialogManager.turn(type: "LaunchRequest")
-            self.asrStore.speak(speak)
+            self.pipelineStore.speak(speak)
     }
 
 }
 ```
 
 The `onAppear` event handler fires when the view first appears. The `!pipelineStore.isSpeaking` logic hides the mic button while the app is speaking.
+
+### Handling Reprompts
+
+If the user doesn't say anything while the app is listening, we should reprompt. Again in `SpeechPipeline` modify the `didTimeout()` function.
+
+```swift
+func didTimeout() {
+    print("[\(mode)] didTimeout")
+    currentResponse = try! self.dialogManager.turn(type: "TimeoutRequest")
+    print(currentResponse.speak)
+    DispatchQueue.main.async {
+        self.userSays = nil
+        self.appSays = self.currentResponse.speak
+        self.isSpeaking = true
+    }
+    self.tts.speak(TextToSpeechInput(currentResponse.speak))
+}
+```
+
+This implementation is not very clever and will continue reprompting forever or until the user taps the mic button to deactivate the pipeline. A smarter implementation might only reprompt three times before giving up.
 
 ### Wrapping Up
 

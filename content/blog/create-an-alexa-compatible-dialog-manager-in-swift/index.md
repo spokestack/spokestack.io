@@ -1,6 +1,6 @@
 ---
 title: Create an Alexa-Compatible Dialog Manager In Swift
-date: '2020-06-08'
+date: '2020-06-08T00:00:03.000Z'
 description: Porting the Alexa Skill dialog management from node.js to Swift.
 tags: Engineering, Tutorial
 author: daniel

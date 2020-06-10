@@ -1,6 +1,6 @@
 ---
 title: Porting a Smart Speaker Voice App - Part 2
-date: '2020-06-08'
+date: '2020-06-08T00:00:01.000Z'
 description: How smart speaker voice apps can also run in mobile apps
 tags: Engineering, Product
 author: daniel

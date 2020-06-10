@@ -10,9 +10,20 @@ import React from 'react'
 import { adjustFontSizeTo } from '../../styles/typography'
 import { css } from '@emotion/core'
 
+function sortPosts(posts: Query['allMarkdownRemark']['edges']) {
+  return posts.sort((a, b) => {
+    const aDate = +new Date(a.node.frontmatter.date)
+    const bDate = +new Date(b.node.frontmatter.date)
+    return bDate - aDate
+  })
+}
+
 type QueryType = Query &
   TeamImages & {
     spokestack: TeamImages['brent']
+    danielArticle: Query['allMarkdownRemark']
+    elizabethArticle: Query['allMarkdownRemark']
+    mikeArticle: Query['allMarkdownRemark']
   }
 
 interface Props {
@@ -67,7 +78,9 @@ const NewsItem = ({
 
 export default function News() {
   const data = useStaticQuery<QueryType>(newsQuery)
-  const posts = data.allMarkdownRemark.edges
+  const posts = data.danielArticle.edges.concat(
+    data.elizabethArticle.edges.concat(data.mikeArticle.edges)
+  )
   return (
     <div id="news" className="ie-fix" css={styles.container}>
       <h3>Learn how to design &amp; build for voice</h3>
@@ -83,7 +96,7 @@ export default function News() {
           image={data.spokestack.childImageSharp.fixed}
           type="Docs"
         />
-        {posts.map((edge) => {
+        {sortPosts(posts).map((edge) => {
           const post = edge.node
           const author = post.frontmatter.author as TeamMemberName
           const name = data.site.siteMetadata.team[author].name
@@ -193,13 +206,57 @@ const newsQuery = graphql`
     site {
       ...TeamMembers
     }
-    allMarkdownRemark(
+    danielArticle: allMarkdownRemark(
       filter: {
         fileAbsolutePath: { regex: "/blog/" }
-        frontmatter: { draft: { ne: true } }
+        frontmatter: { draft: { ne: true }, author: { eq: "daniel" } }
+      }
+      sort: { fields: [frontmatter___date], order: ASC }
+      limit: 1
+    ) {
+      edges {
+        node {
+          id
+          fields {
+            slug
+          }
+          frontmatter {
+            author
+            date(formatString: "MMMM DD, YYYY")
+            title
+          }
+        }
+      }
+    }
+    elizabethArticle: allMarkdownRemark(
+      filter: {
+        fileAbsolutePath: { regex: "/blog/" }
+        frontmatter: { draft: { ne: true }, author: { eq: "elizabeth" } }
       }
       sort: { fields: [frontmatter___date], order: DESC }
-      limit: 3
+      limit: 1
+    ) {
+      edges {
+        node {
+          id
+          fields {
+            slug
+          }
+          frontmatter {
+            author
+            date(formatString: "MMMM DD, YYYY")
+            title
+          }
+        }
+      }
+    }
+    mikeArticle: allMarkdownRemark(
+      filter: {
+        fileAbsolutePath: { regex: "/blog/" }
+        frontmatter: { draft: { ne: true }, author: { eq: "mike" } }
+      }
+      sort: { fields: [frontmatter___date], order: DESC }
+      limit: 1
     ) {
       edges {
         node {

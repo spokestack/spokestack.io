@@ -1,6 +1,6 @@
 ---
 title: Porting the Alexa Minecraft Skill to iOS Using Spokestack
-date: '2020-06-08'
+date: '2020-06-08T00:00:04.000Z'
 description: A tutorial on porting the Minecraft skill from the Alexa examples to a mobile app.
 tags: Engineering, Tutorial
 author: daniel

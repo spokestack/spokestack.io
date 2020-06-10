@@ -34,14 +34,14 @@ No API keys or configuration properties are required, but a Context (`android.co
 
 Android's native ASR support is very device-specific. This chart lists physical devices on which it has been tested by either the Spokestack team or our community. If you have a device that is not listed, please try it out and submit a PR with your results!
 
-| Device                 | API Level | Launches?          | On-device ASR?     |
-| ---------------------- | --------- | ------------------ | ------------------ |
-| Moto X (2nd Gen)       | 22        | :white_check_mark: | :x: `*`            |
-| Lenovo TB-X340F tablet | 27        | :white_check_mark: | :x: `*`            |
-| Pixel 1                | 29        | :white_check_mark: | :x: `**`           |
-| Pixel 3 XL             | 29        | :white_check_mark: | :white_check_mark: |
-| Pixel 3a               | 29        | :white_check_mark: | :x: `**`           |
-| Pixel 4                | 29        | :white_check_mark: | :white_check_mark: |
+| Device                 | API Level | ASR working?       |
+| ---------------------- | --------- | ------------------ |
+| Moto X (2nd Gen)       | 22        | :x: `*`            |
+| Lenovo TB-X340F tablet | 27        | :x: `*`            |
+| Pixel 1                | 29        | :x: `**`           |
+| Pixel 3 XL             | 29        | :white_check_mark: |
+| Pixel 3a               | 29        | :x: `**`           |
+| Pixel 4                | 29        | :white_check_mark: |
 
 `*` ASR fails consistently with a `SERVER_ERROR`, which seems to indicate that the server used by the device manufacturer to handle these requests is no longer operational.
 `**` Spokestack ASR fails with a `SPEECH_TIMEOUT`, but the `SpeechRecognizer` works on its own, indicating that there's an adverse reaction between Spokestack and the built-in ASR, likely to do with how microphone control is handled by the system.

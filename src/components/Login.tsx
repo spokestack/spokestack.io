@@ -12,13 +12,15 @@ import { createLink as createGitHubLink } from '../utils/oauthGitHub'
 import { createLink as createGoogleLink } from '../utils/oauthGoogle'
 import { css } from '@emotion/core'
 import { rhythm } from '../styles/typography'
+import { WindowLocation } from '@reach/router'
 
 interface Props {
   header: string
   isCreate?: boolean
+  location: WindowLocation
 }
 
-export default function Login({ header, isCreate }: Props) {
+export default function Login({ header, isCreate, location }: Props) {
   const [gitHubLink, setGitHubLink] = useState<string>(null)
   const [googleLink, setGoogleLink] = useState<string>(null)
   useEffect(() => {
@@ -26,7 +28,7 @@ export default function Login({ header, isCreate }: Props) {
     setGoogleLink(createGoogleLink)
   }, [])
   return (
-    <Layout>
+    <Layout location={location}>
       <div css={styles.container}>
         <h4 css={styles.header}>{header}</h4>
         <div css={styles.content}>

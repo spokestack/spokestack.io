@@ -20,6 +20,7 @@ type Props = PageRendererProps & {
 
 export default function BlogListAuthorTemplate({
   data,
+  location,
   pageContext: { author, currentPage, numPages, slug, tags }
 }: Props) {
   const posts = data.allMarkdownRemark.edges
@@ -44,6 +45,7 @@ export default function BlogListAuthorTemplate({
       <BlogList
         currentPage={currentPage}
         extraCss={styles.bloglist}
+        location={location}
         numPages={numPages}
         posts={posts}
         tags={tags}

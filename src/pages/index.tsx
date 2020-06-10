@@ -20,7 +20,7 @@ interface Props extends PageRendererProps {
   data: Query
 }
 
-export default function Index({ data }: Props) {
+export default function Index({ data, location }: Props) {
   const siteTitle = data.site.siteMetadata.title
 
   return (
@@ -34,6 +34,7 @@ export default function Index({ data }: Props) {
         </Banner>
       }
       extraCss={styles.container}
+      location={location}
       navStyle={styles.nav}>
       <SEO title={siteTitle} />
       <Header />

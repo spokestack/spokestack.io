@@ -16,8 +16,18 @@ type Props = PageRendererProps & {
   }
 }
 
-export default function BlogPostTemplate({ data, pageContext }: Props) {
-  return <BlogPost post={data.markdownRemark} related={pageContext.related} />
+export default function BlogPostTemplate({
+  data,
+  location,
+  pageContext
+}: Props) {
+  return (
+    <BlogPost
+      location={location}
+      post={data.markdownRemark}
+      related={pageContext.related}
+    />
+  )
 }
 
 export const pageQuery = graphql`

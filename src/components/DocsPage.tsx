@@ -62,7 +62,7 @@ export default function DocsPage({ location, post, selectFirst }: Props) {
   }
 
   return (
-    <Layout>
+    <Layout location={location}>
       <SEO
         title="Docs"
         longTitle="Spokestack Documentation"

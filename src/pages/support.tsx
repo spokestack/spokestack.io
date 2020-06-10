@@ -14,10 +14,10 @@ interface Props extends PageRendererProps {
   data: Query
 }
 
-export default function Support({ data }: Props) {
+export default function Support({ data, location }: Props) {
   const { social, contact } = data.site.siteMetadata
   return (
-    <Layout>
+    <Layout location={location}>
       <SEO
         title="Support"
         longTitle="Spokestack Support"

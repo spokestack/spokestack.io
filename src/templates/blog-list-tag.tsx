@@ -13,6 +13,7 @@ type Props = PageRendererProps & {
 
 export default function BlogListTagTemplate({
   data,
+  location,
   pageContext: { currentPage, numPages, slug, tag, tags }
 }: Props) {
   const posts = data.allMarkdownRemark.edges
@@ -27,6 +28,7 @@ export default function BlogListTagTemplate({
       <BlogList
         currentPage={currentPage}
         homeUrl={slug}
+        location={location}
         numPages={numPages}
         posts={posts}
         tags={tags}

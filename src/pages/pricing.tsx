@@ -21,7 +21,7 @@ interface Props extends PageRendererProps {
   data: Query
 }
 
-export default function Pricing({ data }: Props) {
+export default function Pricing({ data, location }: Props) {
   const { contact } = data.site.siteMetadata
   const pricingElem = useRef<HTMLDivElement>(null)
   const [yearly, setYearly] = useState(true)
@@ -46,7 +46,7 @@ export default function Pricing({ data }: Props) {
   }
 
   return (
-    <Layout>
+    <Layout location={location}>
       <SEO
         title="Pricing"
         longTitle="Spokestack Pricing"

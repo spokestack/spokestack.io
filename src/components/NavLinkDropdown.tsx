@@ -11,6 +11,7 @@ interface Props {
   extraCss?: SerializedStyles
   href?: string
   imageUrl: string
+  partiallyActive?: boolean
   title: string
   text: string
 }
@@ -20,13 +21,14 @@ export default function NavLinkDropdown({
   extraCss,
   href,
   imageUrl,
+  partiallyActive,
   title,
   text
 }: Props) {
   return (
     <NavLink
       mobileOnly
-      partiallyActive
+      partiallyActive={partiallyActive}
       className="nav-link-dropdown"
       extraCss={[styles.dropdownLink, extraCss]}
       to={href}

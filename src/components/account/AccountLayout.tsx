@@ -52,7 +52,7 @@ interface Props {
 
 export default function AccountLayout({ children, location }: Props) {
   return (
-    <Layout>
+    <Layout location={location}>
       <StickyNavLayout links={links} location={location}>
         {children}
       </StickyNavLayout>

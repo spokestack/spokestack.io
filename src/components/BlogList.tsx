@@ -14,6 +14,7 @@ import React from 'react'
 import SVGIcon from '../components/SVGIcon'
 import Tags from '../components/Tags'
 import { rhythm } from '../styles/typography'
+import { WindowLocation } from '@reach/router'
 
 interface Props {
   currentPage: number
@@ -21,6 +22,7 @@ interface Props {
   header?: React.ReactNode
   // Url that shows all tags
   homeUrl?: string
+  location: WindowLocation
   numPages: number
   posts: MarkdownRemarkEdge[]
   tags: string[]
@@ -32,6 +34,7 @@ export default function BlogList({
   extraCss,
   header,
   homeUrl,
+  location,
   numPages,
   posts,
   tags,
@@ -41,7 +44,7 @@ export default function BlogList({
   const hasNext = currentPage < numPages
 
   return (
-    <Layout>
+    <Layout location={location}>
       <Global
         styles={css`
           html.dark-mode .blog-nav-links a {

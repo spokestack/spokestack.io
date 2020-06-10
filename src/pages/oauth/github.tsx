@@ -2,8 +2,9 @@ import React from 'react'
 import { getAccessToken } from '../../utils/oauthGitHub'
 import OAuth from '../../components/OAuth'
 import parseQuery from '../../utils/parseQuery'
+import { PageRendererProps } from 'gatsby'
 
-export default function GitHubOAuth() {
+export default function GitHubOAuth({ location }: PageRendererProps) {
   async function checkAuth() {
     const query = parseQuery(window.location.search)
     const [authError] = await getAccessToken(query.code, query.state)
@@ -14,5 +15,5 @@ export default function GitHubOAuth() {
       )
     }
   }
-  return <OAuth checkAuth={checkAuth} />
+  return <OAuth checkAuth={checkAuth} location={location} />
 }

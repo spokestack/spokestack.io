@@ -2,10 +2,15 @@ import Layout from './Layout'
 import LoadingIcon from './LoadingIcon'
 import React from 'react'
 import { css } from '@emotion/core'
+import { WindowLocation } from '@reach/router'
 
-export default function LoadingPage() {
+interface Props {
+  location: WindowLocation
+}
+
+export default function LoadingPage({ location }: Props) {
   return (
-    <Layout>
+    <Layout location={location}>
       <div css={styles.container}>
         <LoadingIcon />
       </div>

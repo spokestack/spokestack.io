@@ -22,7 +22,7 @@ interface Props {
 
 export default function About({ children, location }: Props) {
   return (
-    <Layout>
+    <Layout location={location}>
       <SEO
         title="About us"
         longTitle="Learn about our company"

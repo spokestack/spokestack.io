@@ -46,6 +46,7 @@ interface Props extends RouteComponentProps {
 
 export default function RouteWithAccount({
   component: Component,
+  location,
   ...props
 }: Props) {
   if (!isLoggedIn()) {
@@ -79,7 +80,7 @@ export default function RouteWithAccount({
     return null
   }
   if (loading) {
-    return <LoadingPage />
+    return <LoadingPage location={location} />
   }
 
   if (accounts.length) {
@@ -93,5 +94,5 @@ export default function RouteWithAccount({
     return null
   }
 
-  return <Component account={account} {...props} />
+  return <Component account={account} location={location} {...props} />
 }

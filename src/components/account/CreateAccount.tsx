@@ -23,7 +23,7 @@ interface CreateAccountMutation {
   createAccount: Account
 }
 
-export default function CreateAccount({}: RouteComponentProps) {
+export default function CreateAccount({ location }: RouteComponentProps) {
   const [accountName, setAccountName] = useState('')
   const [invalid, setInvalid] = useState(false)
   const [createAccount, { error, loading }] = useMutation<
@@ -48,7 +48,7 @@ export default function CreateAccount({}: RouteComponentProps) {
     })
   }
   return (
-    <Layout>
+    <Layout location={location}>
       <div css={styles.container}>
         <AccountCard title="Create project" id="overview">
           {error && <p className="error">{error}</p>}

@@ -5,12 +5,14 @@ import Layout from '../components/Layout'
 import { css } from '@emotion/core'
 import { navigate } from 'gatsby'
 import { rhythm } from '../styles/typography'
+import { WindowLocation } from '@reach/router'
 
 interface Props {
   checkAuth: () => Promise<string | null>
+  location: WindowLocation
 }
 
-export default function OAuth({ checkAuth }: Props) {
+export default function OAuth({ checkAuth, location }: Props) {
   const [status, setStatus] = useState('Getting ready...')
   async function check() {
     const error = await checkAuth()
@@ -25,7 +27,7 @@ export default function OAuth({ checkAuth }: Props) {
     check()
   }, [])
   return (
-    <Layout>
+    <Layout location={location}>
       <noscript>
         Please <a href="https://enable-javascript.com/">enable JavaScript</a> to
         sign in.

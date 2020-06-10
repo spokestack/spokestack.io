@@ -15,12 +15,14 @@ import Logo from './Logo'
 import NavDropdown from './NavDropdown'
 import NavLink from './NavLink'
 import NavLinkDropdown from './NavLinkDropdown'
+import { WindowLocation } from '@reach/router'
 
 interface Props {
   extraCss?: SerializedStyles
+  location: WindowLocation
 }
 
-export default function Nav({ extraCss }: Props) {
+export default function Nav({ extraCss, location }: Props) {
   const [mobileOpen, setMobileOpen] = useState(false)
   const contentStyles = [styles.navContent]
   if (mobileOpen) {
@@ -88,19 +90,22 @@ export default function Nav({ extraCss }: Props) {
                   <NavLinkDropdown
                     extraCss={styles.navLinkDropdown}
                     href="/docs"
+                    partiallyActive
                     title="Developer Docs"
                     imageUrl="/navigation/docs.svg"
                     text="Start integrating voice using our tools &amp; services"
                   />
                   <NavLinkDropdown
                     extraCss={styles.navLinkDropdown}
-                    title="Tutorials (Coming Soon)"
+                    href="/blog/tag/tutorial"
+                    title="Tutorials"
                     imageUrl="/navigation/tutorials.svg"
                     text="Step-by-step instructions to build real-world products"
                   />
                   <NavLinkDropdown
                     extraCss={styles.navLinkDropdown}
                     href="/blog"
+                    partiallyActive={location.pathname !== '/blog/tag/tutorial'}
                     title="Blog"
                     imageUrl="/navigation/blog.svg"
                     text="How-to articles on creating voice assistants from our

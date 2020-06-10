@@ -7,10 +7,11 @@ import { MIN_TEXT_WIDTH } from '../styles/theme'
 import React from 'react'
 import SEO from '../components/SEO'
 import { css } from '@emotion/core'
+import { PageRendererProps } from 'gatsby'
 
-export default function Features() {
+export default function Features({ location }: PageRendererProps) {
   return (
-    <Layout>
+    <Layout location={location}>
       <SEO
         title="Features"
         longTitle="Spokestack Features"

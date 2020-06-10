@@ -7,21 +7,24 @@ import React from 'react'
 import Sprite from '../svg-sprite.svg'
 import globalStyles from '../styles/global.css'
 import { ieBreakpoint } from '../styles/theme'
+import { WindowLocation } from '@reach/router'
 
 interface Props {
   banner?: React.ReactNode
   children: React.ReactNode
-  extraCss?: SerializedStyles
-  navStyle?: SerializedStyles
   contentStyle?: SerializedStyles
+  extraCss?: SerializedStyles
+  location: WindowLocation
+  navStyle?: SerializedStyles
 }
 
 export default function Layout({
   banner,
   children,
+  contentStyle,
   extraCss,
-  navStyle,
-  contentStyle
+  location,
+  navStyle
 }: Props) {
   return (
     <>
@@ -29,7 +32,7 @@ export default function Layout({
       <div css={[styles.container, extraCss]}>
         <Global styles={globalStyles} />
         <Sprite />
-        <Nav extraCss={navStyle} />
+        <Nav extraCss={navStyle} location={location} />
         <main css={[styles.content, contentStyle]}>{children}</main>
         <Footer />
       </div>

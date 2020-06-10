@@ -24,15 +24,17 @@ import { css } from '@emotion/core'
 import findImage from '../utils/findImage'
 import { isLoggedIn } from '../utils/auth'
 import { rhythm } from '../styles/typography'
+import { WindowLocation } from '@reach/router'
 
 interface Props {
+  location: WindowLocation
   post: MarkdownRemark
   related?: RelatedLink[]
 }
 
-export default function BlogPost({ post, related }: Props) {
+export default function BlogPost({ location, post, related }: Props) {
   return (
-    <Layout contentStyle={styles.post}>
+    <Layout contentStyle={styles.post} location={location}>
       <SEO
         title="Blog"
         longTitle={post.frontmatter.title}

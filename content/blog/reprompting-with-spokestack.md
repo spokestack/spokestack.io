@@ -1,6 +1,6 @@
 ---
 title: Implementing reprompts with Spokestack
-date: '2020-06-09''
+date: '2020-06-09'
 description: A tutorial for reprompting a user after a period of inactivity
 author: josh
 tags: Tutorial

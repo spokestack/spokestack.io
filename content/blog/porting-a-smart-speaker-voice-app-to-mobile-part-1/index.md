@@ -17,10 +17,9 @@ Spokestack introduces a new way to build and access voice apps independent from 
 - Part 2: [Voice Apps on Mobile](/blog/porting-a-smart-speaker-voice-app-to-mobile-part-2)
 - Part 3: [Import an Alexa or Dialogflow Interaction Model](/blog/porting-a-smart-speaker-voice-app-to-mobile-part-3)
 - Tutorial: [Create an Alexa-Compatible Dialog Manager in Swift](/blog/create-an-alexa-compatible-dialog-manager-in-swift)
-- Tutorial: Create an Alexa-Compatible Dialog Manager in Java
 - Tutorial: [Porting the Alexa Minecraft Skill to iOS Using Spokestack](/blog/porting-the-alexa-minecraft-skill-to-ios-using-spokestack)
-- Tutorial: Porting the Alexa Minecraft Skill to Android Using Spokestack
-- Tutorial: Porting the Alexa Minecraft Skill to React Native Using Spokestack
+- Tutorial: Porting the Alexa Minecraft Skill to Android Using Spokestack (Coming Soon)
+- Tutorial: Porting the Alexa Minecraft Skill to React Native Using Spokestack (Coming Soon)
 
 ### What's Wrong With Smart Speaker Voice Apps?
 

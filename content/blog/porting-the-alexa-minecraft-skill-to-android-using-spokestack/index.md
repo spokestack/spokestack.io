@@ -1,5 +1,5 @@
 ---
-title: From Alexa Skill to Android App
+title: Porting the Alexa Minecraft Skill to Android Using Spokestack
 date: '2020-06-09'
 description: A tutorial on porting a simple Alexa skill to Android using Spokestack
 author: josh
@@ -7,9 +7,21 @@ tags: Tutorial
 draft: false
 ---
 
-This tutorial will walk you through the details of porting an Alexa skill to Android using Spokestack as a replacement for Amazon's voice services. To be specific, we'll be recreating a skill that lets the user ask for a recipe in [Minecraft](https://www.minecraft.net/en-us/). The full code for our finished app is [here](https://github.com:spokestack/minecraft-android-demo); feel free to download it for reference as you follow along. We'll go through it step by step in the tutorial for sake of discussion.
+This post is part of the _Porting a Smart Speaker Voice App to Mobile_ series, which discusses how to turn an Alexa skill into a mobile app using Spokestack as a replacement for Amazon's voice services. Other articles in the series can be found at the following links:
 
-First, a quick note on language choice. Android development has been moving toward Kotlin as its preferred language. Our other guides are written with that in mind, but we're going to switch gears for this one. Amazon provides a [Java SDK](https://developer.amazon.com/en-US/docs/alexa/alexa-skills-kit-sdk-for-java/overview.html) for Alexa development, so in order to ease friction between the two ecosystems, we'll port the skill to Java instead of Kotlin. The example code here shouldn't be too complex to translate into Kotlin if you're familiar with it.
+- Part 1: [Voice Apps on Smart Speakers](/blog/porting-a-smart-speaker-voice-app-to-mobile-part-1)
+- Part 2: [Voice Apps on Mobile](/blog/porting-a-smart-speaker-voice-app-to-mobile-part-2)
+- Part 3: [Import an Alexa or Dialogflow Interaction Model](/blog/porting-a-smart-speaker-voice-app-to-mobile-part-3)
+- Tutorial: [Create an Alexa-Compatible Dialog Manager in Swift](/blog/create-an-alexa-compatible-dialog-manager-in-swift)
+- Tutorial: [Porting the Alexa Minecraft Skill to iOS Using Spokestack](/blog/porting-the-alexa-minecraft-skill-to-ios-using-spokestack)
+- Tutorial: Porting the Alexa Minecraft Skill to Android Using Spokestack (You are here!)
+- Tutorial: Porting the Alexa Minecraft Skill to React Native Using Spokestack (Coming Soon)
+
+---
+
+This tutorial will walk you through the details of porting an Alexa skill to Android. To be specific, we'll be recreating a skill that lets the user ask for a recipe in [Minecraft](https://www.minecraft.net/en-us/). The full code for our finished app is [here](https://github.com:spokestack/minecraft-android-demo); feel free to download it for reference as you follow along. We'll go through it step by step in the tutorial for sake of discussion.
+
+First, a quick note on language choice. Android development has been moving toward Kotlin as its preferred language. Our other Android guides are written with that in mind, but we're going to switch gears for this one. Amazon provides a [Java SDK](https://developer.amazon.com/en-US/docs/alexa/alexa-skills-kit-sdk-for-java/overview.html) for Alexa development, so in order to ease friction between the two ecosystems, we'll port the skill to Java instead of Kotlin. The example code here shouldn't be too complex to translate into Kotlin if you're familiar with it.
 
 With that pretext out of the way, let's get to coding. Our first job will be to establish the mobile-specific stuff you don't have to do when setting up an Alexa skill.
 
@@ -92,16 +104,11 @@ With those caveats behind us, our next job is to make an effort to actually unde
 
 ## Integrating NLU
 
-If you've made an Alexa skill, you've been introduced to the concept of natural language understanding (NLU) in the context of smart speakers, but just as a refresher: an NLU system takes a phrase spoken naturally ("find me a sourdough recipe", also known as an _utterance_) and tries to extract enough meaning from it for the app to act on. In the current generation of NLU technology, this means turning the utterance into an _intent_, which can be thought of as analogous to a function name, and _slots_, or function arguments. Amazon does speech recognition and NLU on their servers when audio is received from an Alexa-enabled device, but Spokestack's NLU runs directly on mobile devices, saving a network trip and improving user privacy.
+[Part 3](/blog/porting-a-smart-speaker-voice-app-to-mobile-part-3) of this series includes a refresher on the concept of natural language understanding (NLU) as well as instructions for converting your Alexa model into a format usable by Spokestack, so we'll just cover the Android-specific parts here.
 
-The configuration for the Spokestack NLU is in the `Spokestack` file, just like our ASR setup. It requires three external files — a [TensorFlow Lite](https://www.tensorflow.org/lite) model, a JSON metadata file that describes its output, and a vocabulary file used to transform ASR results into input for the model. Here's how you can get your own versions of these files for your own skill (paraphrased from our [export guide](/docs/Concepts/export)). You'll need a [Spokestack account](/login) (they're free!).
+The configuration for the Spokestack NLU is in the `Spokestack` file, just like our ASR setup. It requires three external files — a [TensorFlow Lite](https://www.tensorflow.org/lite) model, a JSON metadata file that describes its output, and a vocabulary file used to transform ASR results into input for the model. These files aren't huge (typically < 20 MB total), but they're big enough that you probably want to distribute them compressed to keep your app download size down.
 
-1.  Log into the Amazon developer console, find your skill, click the "Build" tab at the top, and look for "JSON Editor" listed under your intents and slots on the left side (at the time of this writing).
-1.  Copy the entire contents of the JSON editor and paste them into a new file on your computer. Save it as `<YOUR-MODEL-NAME-HERE>.json`.
-1.  Log in to your Spokestack account, click on "Language Understanding" on the left, and upload your JSON file using the "Import" button.
-1.  Watch the email address you used to sign up for the account; we'll email you when your files are ready, and you can download them from your account page.
-
-These files aren't huge (typically < 20 MB total), but they're big enough that you probably want to distribute them compressed to keep your app download size down. To do that, place all three files in the `src/main/assets` directory under your app's root directory. You may have to manually create `assets`, but the others should have been created along with your project. Files in the `assets` directory have to be decompressed at runtime to be used. We typically do that by decompressing them to the application's cache directory on startup, then on subsequent starts checking if the files exist and decompressing again if the user has cleared the cache or the app has been updated to a new version. This is the `checkForModels` method from the last section. In the demo app, this code is in `MainActivity`, but you could put it elsewhere for sake of cleanliness:
+To do that, place all three files in the `src/main/assets` directory under your app's root directory. You may have to manually create `assets`, but the others should have been created along with your project. Files in the `assets` directory have to be decompressed at runtime to be used. We typically do that by decompressing them to the application's cache directory on startup, then on subsequent starts checking if the files exist and decompressing again if the user has cleared the cache or the app has been updated to a new version. This is the `checkForModels()` method from the previous section. In the demo app, this code is in `MainActivity`, but you could put it elsewhere for sake of cleanliness:
 
 ```java
 private void checkForModels() {
@@ -178,7 +185,7 @@ Notice what comes _after_ the NLU does its thing. That's our next step: putting 
 
 ## Recreating Dialog Management
 
-A dialog manager takes the intent and slots from the NLU along with the current context (or "state") of the conversation and decides what sort of response the system should give. In the Alexa SDK, this means that the system consults, [in order](https://developer.amazon.com/en-US/docs/alexa/alexa-skills-kit-sdk-for-java/handle-requests.html#handler-processing-order), a series of [`RequestHandler`s](https://developer.amazon.com/en-US/docs/alexa/alexa-skills-kit-sdk-for-java/develop-your-first-skill.html#implementing-request-handlers) that have been registered to a [`SkillStreamHandler`](https://developer.amazon.com/en-US/docs/alexa/alexa-skills-kit-sdk-for-java/develop-your-first-skill.html#implementing-the-skillstreamhandler).
+A dialog manager takes the intent and slots from the NLU along with the current context (or "state") of the conversation and decides what sort of response the system should give. In the Alexa SDK, this means that the system consults, [in order](https://developer.amazon.com/en-US/docs/alexa/alexa-skills-kit-sdk-for-java/handle-requests.html#handler-processing-order), a series of [`RequestHandler`](https://developer.amazon.com/en-US/docs/alexa/alexa-skills-kit-sdk-for-java/develop-your-first-skill.html#implementing-request-handlers)s that have been registered to a [`SkillStreamHandler`](https://developer.amazon.com/en-US/docs/alexa/alexa-skills-kit-sdk-for-java/develop-your-first-skill.html#implementing-the-skillstreamhandler).
 
 In Java terms, this means you have a series of classes that all implement an interface for handling user intents, and a manager class somewhere that has an ordered list of these handlers. When a request comes in, the first handler capable of responding to the request is chosen. That's all easy enough to replicate without the help of Lambda or the SDK, so let's do it.
 
@@ -307,12 +314,10 @@ private void speak(String text) {
 
 Each request handler pulls back a prompt template from the `Responses` enum and calls `formatPrompt` on it to fill it with dynamic data, so by the time the prompt is in a `Response` object, it's already in its final form, and all we need to do is pull it out and send it through TTS.
 
-Currently, one difference between a Spokestack-powered Android app and an Alexa skill is that there's no way to automatically reactivate ASR when a TTS prompt is done playing. We're working on a way to include this feature in a future release, but until then, you'll need to manage audio playback yourself without the help of `SpokestackTTSOutput` and reactivate ASR via the speech pipeline's `activate()` method.
+Some of the prompts end in questions, which imply that the microphone should be left open (and ASR activated) after the prompt plays. This is done in `Spokestack` by listening for the `PLAYBACK_COMPLETE` event from the TTS component and calling `pipeline.activate()` if the last response in the `Session` indicates expected user input.
 
 ## You're done!
 
 With ASR, NLU, and TTS in place, you've effectively recreated the Alexa experience…without Alexa! On a mobile device, you'll have much more freedom to make your touch-based UI match your voice experience, and of course you can manage user accounts your way instead of Amazon's.
 
-This tutorial has been a little involved, and we know we haven't gone over every aspect of the experience with a fine-tooth comb, so if you run into any issues, don't hesitate to reach out:
-
-[Discourse](https://forum.spokestack.io/) | [GitHub](https://github.com/spokestack/spokestack-android) | [StackOverflow](https://stackoverflow.com/questions/tagged/spokestack) | [Twitter](https://twitter.com/spokestack)
+This tutorial has been a little involved, and we know we haven't gone over every aspect of the experience with a fine-tooth comb, so if you run into any issues, don't hesitate to reach out!

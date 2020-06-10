@@ -12,7 +12,7 @@ Reprompts are a convenient feature provided by most smart speaker platforms. In 
 1. The app requests information from the user, leaving the mic open to listen for the answer
 1. The user remains silent for a pre-set length of time
 
-Platforms differ in the number of reprompts they allow an app to give the user before the platform itself takes control and shuts off the mic. With Spokestack, you can choose that number for yourself.
+Platforms differ in the number of reprompts they allow an app to give the user before the platform itself takes control and shuts off the mic — some only allow one, some will give you the chance to deliver up to four different prompts before finally giving up on the user. With Spokestack, you can choose that number for yourself. In an app where the user is expected to switch back and forth between voice and gesture input frequently, reprompts might be inappropriate altogether, but in one that's designed to be used hands-free, you might want to give the user a couple chances to answer a question.
 
 In Spokestack, reprompting is a matter of responding to the timeout event sent by the speech pipeline. In Android, this event is received by the `OnSpeechEventListener`, in Swift by the `SpeechEventListener`, or in React Native by attaching a listener to the `onTimeout` event.
 

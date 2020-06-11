@@ -1,5 +1,5 @@
 ---
-title: Export Existing Model
+title: Export Existing NLU Model
 navId: Export
 description: Export existing Dialogflow/Alexa model to Spokestack
 draft: false

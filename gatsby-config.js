@@ -248,6 +248,13 @@ module.exports = {
       }
     },
     {
+      resolve: 'gatsby-plugin-sitemap',
+      options: {
+        output: '/sitemap.xml',
+        exclude: ['/account/*', '/oauth/*']
+      }
+    },
+    {
       resolve: 'gatsby-plugin-canonical-urls',
       options: {
         siteUrl: 'https://www.spokestack.io'

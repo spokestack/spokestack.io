@@ -1,9 +1,9 @@
 ---
 title: Why We’re Building Spokestack
 date: '2019-12-10'
-description: Spokestack is a powerful platform of open source libraries and robust services to make
+description: Spokestack is a powerful platform of open source libraries and robust services to make your apps fully voice-enabled.
 author: mike
-tags: Business, Marketing
+tags: Business
 draft: false
 ---
 

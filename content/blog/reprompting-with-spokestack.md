@@ -1,6 +1,6 @@
 ---
 title: Implementing reprompts with Spokestack
-date: '2020-06-09'
+date: '2020-06-09T05:00:00.000Z'
 description: A tutorial for reprompting a user after a period of inactivity
 author: josh
 tags: Tutorial
@@ -18,7 +18,7 @@ In Spokestack, reprompting is a matter of responding to the timeout event sent b
 
 The specifics will vary based on how you've set up your app, but the basic pseudocode for the process would be:
 
-```text
+```js
 if event is TIMEOUT:
   if dialog_manager.is_waiting_for_response():
     reprompt = get_next_reprompt()

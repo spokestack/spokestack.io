@@ -35,7 +35,7 @@ export default css`
     color: ${theme.header};
   }
   :focus {
-    outline: ${theme.primary} auto 1px;
+    outline: ${theme.primary} auto 3px;
   }
   .gatsby-resp-image-link {
     background-image: none;

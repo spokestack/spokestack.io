@@ -44,11 +44,11 @@ export default function Callout({ children, extraCss, href, to }: Props) {
         `}
       />
       {to ? (
-        <Link css={style} to={to} className="callout">
+        <Link css={style} to={to} className="callout" tabIndex={0}>
           {children}
         </Link>
       ) : href ? (
-        <a css={style} href={href} className="callout">
+        <a css={style} href={href} className="callout" tabIndex={0}>
           {children}
         </a>
       ) : (

@@ -45,6 +45,7 @@ export default function Newsletter() {
       <p>Stay up-to-date with the latest news from the Spokestack community</p>
       <div css={styles.inputWrap}>
         <input
+          aria-label="Email address"
           type="email"
           name="email"
           className={`input${invalid ? ' error' : ''}`}

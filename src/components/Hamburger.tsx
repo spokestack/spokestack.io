@@ -12,6 +12,8 @@ interface Props {
 export default function Hamburger({ extraCss, open, onClick }: Props) {
   return (
     <a
+      tabIndex={0}
+      title="Toggle Mobile Navigation Menu"
       css={[styles.hamburger, extraCss]}
       className={open ? 'open' : ''}
       onClick={onClick}>

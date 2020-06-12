@@ -72,18 +72,18 @@ export default function Nav({ extraCss, location }: Props) {
           }}
           extraCss={styles.hamburger}
         />
-        <a href="/" css={styles.logoLink}>
+        <a href="/" css={styles.logoLink} aria-label="Spokestack Home">
           <Logo />
         </a>
       </header>
       <div className="nav-content" css={contentStyles}>
         <ul css={styles.links}>
-          <li css={styles.listItem}>
+          <li css={styles.listItem} aria-label="Features Navigation">
             <NavLink partiallyActive to="/features" title="Spokestack Features">
               Features
             </NavLink>
           </li>
-          <li css={styles.listItem}>
+          <li css={styles.listItem} aria-label="Resources Navigation">
             <NavDropdown title="Resources">
               <div css={styles.dropdownContent}>
                 <div css={styles.dropdownColumn}>
@@ -140,12 +140,12 @@ export default function Nav({ extraCss, location }: Props) {
               </div>
             </NavDropdown>
           </li>
-          <li css={styles.listItem}>
+          <li css={styles.listItem} aria-label="Pricing Navigation">
             <NavLink partiallyActive to="/pricing" title="Spokestack Pricing">
               Pricing
             </NavLink>
           </li>
-          <li css={styles.listItem}>
+          <li css={styles.listItem} aria-label="Support Navigation">
             <NavLink partiallyActive to="/support" title="Spokestack Support">
               Support
             </NavLink>

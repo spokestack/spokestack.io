@@ -21,8 +21,8 @@ export default function Footer() {
       <Global
         styles={css`
           html:not(.dark-mode) .footer-logo {
-            .logo--image,
-            .logo--text {
+            .logo-image,
+            .logo-text {
               fill: ${theme.primary};
             }
           }
@@ -31,7 +31,7 @@ export default function Footer() {
       <Newsletter />
       <div css={styles.content}>
         <div css={styles.column}>
-          <a href="/" css={styles.logoLink}>
+          <a href="/" css={styles.logoLink} aria-label="Spokestack Home">
             <Logo className="footer-logo" />
           </a>
           <a css={styles.footerLink} href={`mailto:${contact.email}`}>

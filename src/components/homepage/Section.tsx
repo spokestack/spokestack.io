@@ -8,6 +8,7 @@ interface Props {
   header: string
   id: string
   image: {
+    alt: string
     url: string
     maxWidth: string
     left?: boolean
@@ -34,6 +35,7 @@ export default function Section({ id, image, header, text }: Props) {
       </div>
       <div style={{ width: '132px' }} />
       <img
+        alt={image.alt}
         src={image.url}
         css={styles.platformsImage}
         style={{ maxWidth: image.maxWidth }}

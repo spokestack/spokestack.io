@@ -5,7 +5,12 @@ export default function Platforms() {
   return (
     <Section
       id="platforms"
-      image={{ url: '/homepage/platforms.svg', maxWidth: '503px', left: true }}
+      image={{
+        alt: 'Cross-platform API',
+        url: '/homepage/platforms.svg',
+        maxWidth: '503px',
+        left: true
+      }}
       header="Develop across platforms using one API"
       text={`Managing voice interfaces across iOS, Android, and web
       can be complicated, time consuming, and expensive.

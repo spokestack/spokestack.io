@@ -5,7 +5,11 @@ export default function Flexible() {
   return (
     <Section
       id="flexibility"
-      image={{ url: '/homepage/flexible.svg', maxWidth: '504px' }}
+      image={{
+        alt: 'One framework. Lots of options.',
+        url: '/homepage/flexible.svg',
+        maxWidth: '504px'
+      }}
       header="Maintain control &amp; flexibility"
       text={`Our framework allows full control of your voice assistant's
       speech pipeline. Want to use Cortana instead of

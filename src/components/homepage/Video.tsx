@@ -18,6 +18,7 @@ export default function Video() {
   return (
     <div className="ie-fix" css={styles.video}>
       <video
+        aria-label="Spokestack Introduction Video"
         ref={videoRef}
         controls={played}
         css={styles.videoElem}
@@ -45,6 +46,8 @@ export default function Video() {
         <source src="spokestack-426x240.mp4" type="video/mp4" />
       </video>
       <a
+        tabIndex={0}
+        title="Play video"
         css={styles.playLink}
         onClick={() => videoRef.current.play()}
         style={played ? { display: 'none' } : null}>

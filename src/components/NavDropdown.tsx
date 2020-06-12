@@ -42,6 +42,8 @@ export default function NavDropdown({ children, title }: Props) {
         `}
       />
       <NavLink
+        aria-haspopup="true"
+        aria-expanded={open ? 'true' : 'false'}
         href="#"
         onClick={(e) => {
           e.preventDefault()

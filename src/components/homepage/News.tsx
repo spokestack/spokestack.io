@@ -62,11 +62,25 @@ const NewsItem = ({
         imgStyle={styles.image}
       />
       <div
+        aria-label={header}
+        tabIndex={0}
         css={styles.authorLink}
         onClick={(e) => {
           e.preventDefault()
           e.stopPropagation()
           window.location.href = authorHref
+        }}
+        onKeyDown={(e) => {
+          if (
+            !e.shiftKey &&
+            !e.altKey &&
+            !e.ctrlKey &&
+            !e.metaKey &&
+            (e.keyCode === 13 || e.keyCode === 32)
+          ) {
+            e.preventDefault()
+            window.location.href = authorHref
+          }
         }}>
         {author}
       </div>

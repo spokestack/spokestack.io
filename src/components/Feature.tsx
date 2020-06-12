@@ -12,7 +12,7 @@ interface Props {
 export default function Feature({ id, imageUrl, name, text }: Props) {
   return (
     <div id={id} css={styles.feature}>
-      <img src={imageUrl} css={styles.image} />
+      <img alt={name} src={imageUrl} css={styles.image} />
       <div className="ie-fix" css={styles.featureContent}>
         <h3>{name}</h3>
         <p>{text}</p>

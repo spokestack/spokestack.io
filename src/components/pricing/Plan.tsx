@@ -46,7 +46,7 @@ export default function Plan({
           {cta}
         </Button>
       ) : (
-        <a href={slug} className="btn btn-transparent">
+        <a href={slug} className="btn btn-transparent" tabIndex={0} title={cta}>
           {cta}
         </a>
       )}

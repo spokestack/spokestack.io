@@ -5,7 +5,12 @@ export default function Products() {
   return (
     <Section
       id="products"
-      image={{ url: '/homepage/products.svg', maxWidth: '501px', left: true }}
+      image={{
+        alt: 'Support complex voice requests',
+        url: '/homepage/products.svg',
+        maxWidth: '501px',
+        left: true
+      }}
       header="Make your products more convenient &amp; accessible"
       text={`Complex voice requests can be more efficient than
       navigating multiple visual menus. Allow users to switch

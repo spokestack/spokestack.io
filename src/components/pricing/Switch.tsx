@@ -113,8 +113,21 @@ export default class Switch extends PureComponent<Props, State> {
     const { moving, x } = this.state
     return (
       <button
+        tabIndex={0}
         css={[styles.button, extraCss]}
-        onClick={() => this.updateYearly(!yearly)}>
+        onClick={() => this.updateYearly(!yearly)}
+        onKeyDown={(e) => {
+          if (
+            !e.shiftKey &&
+            !e.altKey &&
+            !e.ctrlKey &&
+            !e.metaKey &&
+            (e.keyCode === 13 || e.keyCode === 32)
+          ) {
+            e.preventDefault()
+            this.updateYearly(!yearly)
+          }
+        }}>
         <div css={styles.track}>
           <div className="switch-text" css={styles.text}>
             Bill Yearly

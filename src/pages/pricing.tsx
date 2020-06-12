@@ -30,6 +30,9 @@ export default function Pricing({ data, location }: Props) {
 
   function hover(e: React.PointerEvent<HTMLDivElement>) {
     let elem = e.target as HTMLDivElement
+    if (!elem || !elem.className) {
+      return
+    }
     if (elem.className.indexOf('row-background') > -1) {
       setShowRowBg(!!rowBgY)
       return

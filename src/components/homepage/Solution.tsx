@@ -13,7 +13,11 @@ export default function Solution() {
   return (
     <section id="solution" className="ie-fix" css={styles.container}>
       <div className="ie-fix" css={styles.content}>
-        <img src="/homepage/solution.svg" css={styles.solutionImage} />
+        <img
+          alt="Independent Voice Assistant"
+          src="/homepage/solution.svg"
+          css={styles.solutionImage}
+        />
         <h3>An independent voice assistant is your solution</h3>
         <p className="title">
           Add it to your mobile app or embed it on your website to get all the

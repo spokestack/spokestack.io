@@ -8,7 +8,7 @@ module.exports = {
     },
     description:
       'Spokestack is a powerful platform of open source libraries and robust services to make your app fully voice-enabled.',
-    siteUrl: 'https://spokestack.io/',
+    siteUrl: 'https://www.spokestack.io/',
     logo: 'https://spokestack.io/logo.png',
     social: {
       forum: 'https://forum.spokestack.io',
@@ -245,6 +245,12 @@ module.exports = {
       resolve: 'gatsby-plugin-create-client-paths',
       options: {
         prefixes: ['/account/*']
+      }
+    },
+    {
+      resolve: 'gatsby-plugin-canonical-urls',
+      options: {
+        siteUrl: 'https://www.spokestack.io'
       }
     },
     {

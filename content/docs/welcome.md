@@ -15,7 +15,7 @@ If you're looking to integrate Spokestack in your project as fast as possible, o
 
 **Would you rather start with a tutorial?**
 
-- [Swift](/blog/create-an-alexa-compatible-dialog-manager-in-swift)
+- [Swift](/blog/porting-a-smart-speaker-voice-app-to-mobile-part-1)
 - [Java] Coming soon!
 
 If you have any other questions, please check our [forum](https://forum.spokestack.io/), which we monitor closely. You might find an answer there already.

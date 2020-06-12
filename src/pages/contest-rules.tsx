@@ -41,7 +41,7 @@ export default function Rules({ location }: PageRendererProps) {
             Please fill out{' '}
             <a href="https://docs.google.com/forms/d/e/1FAIpQLSfXBFTLuyK8BWIFThCRNxMZwjgWBhVtE5EsCuQkvtaDaVvRqw/viewform">
               this online form
-            </a>
+            </a>{' '}
             to register for the contest.
           </p>
         </section>
@@ -78,12 +78,11 @@ export default function Rules({ location }: PageRendererProps) {
         <section>
           <h3>Entry Submission</h3>
           <p>
-            Before submitting an entry, you first must be registered. Register
-            for the contest through through{' '}
+            Please{' '}
             <a href="https://docs.google.com/forms/d/e/1FAIpQLSfXBFTLuyK8BWIFThCRNxMZwjgWBhVtE5EsCuQkvtaDaVvRqw/viewform">
-              this online form
-            </a>
-            .
+              register
+            </a>{' '}
+            before submitting an entry.
           </p>
           <p>
             When your submission is ready, send an email to{' '}

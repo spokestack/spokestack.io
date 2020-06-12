@@ -16,13 +16,13 @@ export default function Rules({ location }: PageRendererProps) {
           <p>
             The{' '}
             <strong>Spokestack Export to Independence Developer Contest</strong>{' '}
-            (the “Contest”) is open only to individuals who are legal residents
-            of the fifty (50) United States of America or the District of
-            Columbia who are eighteen (18) years of age or older at the time of
-            entry. Employees, officers, and directors of Spokestack (“Sponsor”),
-            and their immediate family members (spouse, parents, siblings, and
-            children) and members of the same household (whether or not
-            related), are not eligible.
+            (the &ldquo;Contest&rdquo;) is open only to individuals who are
+            legal residents of the fifty (50) United States of America or the
+            District of Columbia who are eighteen (18) years of age or older at
+            the time of entry. Employees, officers, and directors of Spokestack
+            (&ldquo;Sponsor&rdquo;), and their immediate family members (spouse,
+            parents, siblings, and children) and members of the same household
+            (whether or not related), are not eligible.
           </p>
         </section>
         <section>
@@ -36,12 +36,13 @@ export default function Rules({ location }: PageRendererProps) {
           </p>
         </section>
         <section>
-          <h3>Entry Period</h3>
+          <h3>Registration</h3>
           <p>
-            Submissions must be received between 12:00:01 a.m. Pacific Time
-            (“PT”) on July 15th, 2020, and ends at 11:59:59 p.m. PT on July
-            16th, 2020 (the “Entry Period”). The sponsor’s upload server is the
-            official time-keeping device for the Contest.
+            Please fill out{' '}
+            <a href="https://docs.google.com/forms/d/e/1FAIpQLSfXBFTLuyK8BWIFThCRNxMZwjgWBhVtE5EsCuQkvtaDaVvRqw/viewform">
+              this online form
+            </a>
+            to register for the contest.
           </p>
         </section>
         <section>
@@ -63,30 +64,46 @@ export default function Rules({ location }: PageRendererProps) {
             their smart speaker app’s interaction model and upload it to
             Spokestack for training for Spokestack’s on-device NLU service.
             Directions for exporting interaction models and uploading for
-            training are included in Spokestack’s documentation. Spokestack will
-            also include Swift, Java and React Native programming language
-            examples of Spokestack-powered mobile apps based on smart speaker
-            interaction models.
+            training are included in Spokestack’s documentation. Spokestack
+            includes Swift, Java and React Native programming language examples
+            of Spokestack-powered mobile apps based on smart speaker interaction
+            models.
           </p>
           <p>
-            Entries will be judged on usability, utility and creativity.
-            Submissions do not need to have feature parity to the original smart
-            speaker apps on which they are based.
+            Entries will be judged based on usability, utility and creativity.
+            Submissions <strong>do not</strong> need to have feature parity to
+            the original smart speaker apps on which they are based.
           </p>
+        </section>
+        <section>
+          <h3>Entry Submission</h3>
           <p>
-            <strong>Submitting an Entry</strong>: All entries should be
-            submitted through{' '}
+            Before submitting an entry, you first must be registered. Register
+            for the contest through through{' '}
             <a href="https://docs.google.com/forms/d/e/1FAIpQLSfXBFTLuyK8BWIFThCRNxMZwjgWBhVtE5EsCuQkvtaDaVvRqw/viewform">
               this online form
             </a>
             .
           </p>
+          <p>
+            When your submission is ready, send an email to{' '}
+            <a href="mailto:contest@spokestack.io">contest@spokestack.io</a>{' '}
+            that includes a short description of your app and a link to a GitHub
+            respository with instructions on how to build the application. The
+            email may also include an invite to a Testflight beta or Google Play
+            beta.
+          </p>
+          <p>
+            Submissions must be received between 12:00:01 a.m. Pacific Time
+            (&ldquo;PT&rdquo;) on June 16th, 2020, and 11:59:59 p.m. PT on July
+            16th, 2020 (the &ldquo;Entry Period&rdquo;).
+          </p>
         </section>
         <section>
           <h3>Submission Requirements</h3>
           <p>
-            The app you develop (your “Submission”) must be your own original
-            work and must not contain any material that:
+            The app you develop (your &ldquo;Submission&rdquo;) must be your own
+            original work and must not contain any material that:
           </p>
           <ul>
             <li>
@@ -124,15 +141,19 @@ export default function Rules({ location }: PageRendererProps) {
           <p>
             <strong>Gift for Entry</strong>: All entrants into the Contest will
             receive a free t-shirt. The t-shirt will be mailed to the address
-            stated provided by the contestant after submission through email.
+            stated provided by the contestant in the{' '}
+            <a href="https://docs.google.com/forms/d/e/1FAIpQLSfXBFTLuyK8BWIFThCRNxMZwjgWBhVtE5EsCuQkvtaDaVvRqw/viewform">
+              registration form
+            </a>
+            .
           </p>
         </section>
         <section>
           <h3>Determination of Winner</h3>
           <p>
-            Five (5) winners will be selected from among all Submissions meeting
-            the entry requirements received from eligible Entrants during the
-            Entry Period (each a “Winner”).
+            Five (5) winners will be selected from among all submissions meeting
+            the entry requirements received from eligible Entrants within the
+            Entry Period (each a &ldquo;Winner&rdquo;).
           </p>
           <p>
             A panel of qualified judges determined by Sponsor in its sole
@@ -221,11 +242,11 @@ export default function Rules({ location }: PageRendererProps) {
             authorized account holder of the email address used to enter will be
             deemed to be the entrant and he/she must comply with these Official
             Rules. Potential Winners may be required to show proof of being the
-            authorized account holder. The “authorized account holder” is the
-            natural person assigned an email address by an Internet access
-            provider, online service provider or other organization responsible
-            for assigning email addresses for the domain associated with the
-            submitted address.
+            authorized account holder. The &ldquo;authorized account
+            holder&rdquo; is the natural person assigned an email address by an
+            Internet access provider, online service provider or other
+            organization responsible for assigning email addresses for the
+            domain associated with the submitted address.
           </p>
           <p>
             Sponsor reserves the right to cancel, suspend, and/or modify the
@@ -290,9 +311,9 @@ export default function Rules({ location }: PageRendererProps) {
           <p>
             ENTRANTS AGREE TO RELEASE, INDEMNIFY AND HOLD HARMLESS SPONSOR AND
             ITS AFFILIATES, AND EACH OF THEIR DIRECTORS, EMPLOYEES, OFFICERS,
-            AND AGENTS (COLLECTIVELY, “RELEASED PARTIES”) FROM AND AGAINST ANY
-            INJURIES, DEATH, LOSSES, DAMAGES, CLAIMS, ACTIONS AND OTHER
-            LIABILITY OF ANY KIND RESULTING OR ARISING FROM THE CONTEST OR
+            AND AGENTS (COLLECTIVELY, &ldquo;RELEASED PARTIES&rdquo;) FROM AND
+            AGAINST ANY INJURIES, DEATH, LOSSES, DAMAGES, CLAIMS, ACTIONS AND
+            OTHER LIABILITY OF ANY KIND RESULTING OR ARISING FROM THE CONTEST OR
             ACCEPTANCE, POSSESSION, USE, MISUSE OR NONUSE OF ANY PRIZE THAT MAY
             BE AWARDED.
           </p>
@@ -373,7 +394,8 @@ export default function Rules({ location }: PageRendererProps) {
           <h3>Sponsor</h3>
           <p>
             The Contest is sponsored by Pylon ai, Inc., dba Spokestack at 369 3
-            <sup>rd</sup> Street, B575, San Rafael, CA 94901 (“Sponsor”).
+            <sup>rd</sup> Street, B575, San Rafael, CA 94901
+            (&ldquo;Sponsor&rdquo;).
           </p>
         </section>
       </div>

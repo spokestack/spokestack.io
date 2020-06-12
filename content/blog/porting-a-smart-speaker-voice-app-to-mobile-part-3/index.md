@@ -21,7 +21,12 @@ If you’ve built a Google Action or Alexa Skill, you’ve already defined a nat
 
 I want to pause to point out that you don’t have to use the Spokestack on-device NLU for your embedded assistant. Spokestack’s speech pipeline provides you with text from the ASR service. You could choose to classify this text using a hosted NLU service’s API like Google’s Dialogflow or Amazon Lex. However, running on device provides some advantages. First, it eliminates a network round trip that could result in faster performance depending on connection speeds. Second, it allows NLU to work even offline or with a poor signal. Finally, on-device NLU enhances privacy for your users by not sharing transcripts of their voice interactions with third party services.
 
-To get started with a free NLU model that’s compatible with Spokestack, [create a free account](/login) and upload your existing Alexa or Dialogflow interaction model. Detailed instructions on how to export and upload are in the "Language Understanding" section of your account portal. Spokestack will process your files and send you an email when your custom model is ready. You can then download the model and add it to your iOS or Android native app.
+To get started with a free NLU model that’s compatible with Spokestack, [create a free account](/create) and upload your existing Alexa or Dialogflow interaction model. The following instructions for that process are paraphrased from our [export guide](/docs/Concepts/export):
+
+1.  Log into the Amazon developer console, find your skill, click the "Build" tab at the top, and look for "JSON Editor" listed under your intents and slots on the left side (at the time of this writing).
+1.  Copy the entire contents of the JSON editor and paste them into a new file on your computer. Save it as `<YOUR-MODEL-NAME-HERE>.json`.
+1.  Log in to your Spokestack account, click on "Language Understanding" on the left, and upload your JSON file using the "Import" button.
+1.  Watch the email address you used to sign up for the account; we'll email you when your files are ready, and you can download them from your account page.
 
 ## Next Steps: Tutorials
 

@@ -1,6 +1,6 @@
 import { PageRendererProps, graphql } from 'gatsby'
 
-// import Banner from '../components/Banner'
+import Banner from '../components/Banner'
 import Create from '../components/homepage/Create'
 import Flexible from '../components/homepage/Flexible'
 import Header from '../components/homepage/Header'
@@ -25,14 +25,14 @@ export default function Index({ data, location }: Props) {
 
   return (
     <Layout
-      // banner={
-      //   <Banner href="https://forum.spokestack.io/t/export-to-independence-developer-contest/21">
-      //     <p>
-      //       Enter our Export to{' '}
-      //       <span className="yellow">{'{ Independence }'}</span> Contest
-      //     </p>
-      //   </Banner>
-      // }
+      banner={
+        <Banner href="https://forum.spokestack.io/t/export-to-independence-developer-contest/21">
+          <p>
+            Enter our Export to{' '}
+            <span className="yellow">{'{ Independence }'}</span> Contest
+          </p>
+        </Banner>
+      }
       extraCss={styles.container}
       location={location}
       navStyle={styles.nav}>
@@ -64,16 +64,15 @@ export const pageQuery = graphql`
 
 const styles = {
   container: css`
-    /* padding-top: 100px; */
+    padding-top: 100px;
     ${MIN_DEFAULT_MEDIA_QUERY} {
-      /* padding-top: 120px; */
-      padding-top: 80px;
+      padding-top: 120px;
     }
   `,
   nav: css`
     &,
     .nav-content {
-      /* top: 40px; */
+      top: 40px;
     }
     ${MIN_DEFAULT_MEDIA_QUERY} {
       padding-top: 20px;

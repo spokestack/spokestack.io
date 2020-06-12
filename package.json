@@ -49,6 +49,7 @@
     "gatsby-plugin-react-helmet": "^3.3.0",
     "gatsby-plugin-react-svg": "^3.0.0",
     "gatsby-plugin-sharp": "^2.6.3",
+    "gatsby-plugin-sitemap": "^2.4.5",
     "gatsby-plugin-typescript": "^2.4.0",
     "gatsby-plugin-typography": "^2.5.0",
     "gatsby-react-router-scroll": "^3.0.0",

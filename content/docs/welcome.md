@@ -18,6 +18,6 @@ If you're looking to integrate Spokestack in your project as fast as possible, o
 - [Swift](/blog/create-an-alexa-compatible-dialog-manager-in-swift)
 - [Java] Coming soon!
 
-If you do not find what you are looking for in our documentation, leave a note in our [forum](https://forum.spokestack.io/) and we'll address it there.
+If you have any other questions, please check our [forum](https://forum.spokestack.io/), which we monitor closely. You might find an answer there already.
 
 For more details on Spokestack's technology and configuration options, see the list of topics to the left. If you notice anything missing, [open an issue](https://github.com/spokestack/spokestack-website/issues) or pull request; all our documentation is available [on GitHub](https://github.com/spokestack/spokestack-website/tree/develop/content/docs)!

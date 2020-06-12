@@ -1,6 +1,6 @@
 ---
 title: Spokestack Documentation
-navId: Spokestack Documentation 
+navId: Welcome
 description: Spokestack documentation for mobile and web voice interface development
 draft: false
 ---

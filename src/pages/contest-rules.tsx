@@ -409,5 +409,9 @@ const styles = {
     max-width: ${theme.MAX_TEXT_WIDTH};
     margin: 0 auto;
     padding: 50px 20px;
+
+    ${theme.ieBreakpoint} {
+      width: 100%;
+    }
   `
 }

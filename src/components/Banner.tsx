@@ -8,15 +8,16 @@ import {
 import React from 'react'
 import { adjustFontSizeTo } from '../styles/typography'
 import { css } from '@emotion/core'
+import { Link } from 'gatsby'
 
 interface Props {
   children: React.ReactNode
-  href?: string
+  to?: string
 }
 
-export default function Banner({ children, href }: Props) {
+export default function Banner({ children, to }: Props) {
   return (
-    <a css={styles.banner} href={href}>
+    <Link css={styles.banner} to={to}>
       <img
         css={[styles.bannerImage, styles.bannerImageLeft]}
         src="/banner.svg"
@@ -26,7 +27,7 @@ export default function Banner({ children, href }: Props) {
         css={[styles.bannerImage, styles.bannerImageRight]}
         src="/banner.svg"
       />
-    </a>
+    </Link>
   )
 }
 

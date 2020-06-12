@@ -26,7 +26,7 @@ export default function Index({ data, location }: Props) {
   return (
     <Layout
       banner={
-        <Banner href="https://forum.spokestack.io/t/export-to-independence-developer-contest/21">
+        <Banner to="/blog/announcing-the-export-to-independence-contest">
           <p>
             Enter our Export to{' '}
             <span className="yellow">{'{ Independence }'}</span> Contest

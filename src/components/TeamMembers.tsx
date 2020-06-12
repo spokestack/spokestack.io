@@ -18,24 +18,28 @@ export default function Team() {
   const team = data.site.siteMetadata.team
   return (
     <div css={styles.teamMembers}>
-      {Object.keys(team).map((key) => {
-        const teamMember = team[key as TeamMemberName]
-        const image = data[key as TeamMemberName].childImageSharp.fixed
-        return (
-          <TeamMember
-            key={`team-member-${key}`}
-            avatar={
-              <Img
-                alt={teamMember.name}
-                fixed={image}
-                style={styles.memberImage}
-              />
-            }
-            name={teamMember.name}
-            title={teamMember.title}
-          />
-        )
-      })}
+      {Object.keys(team)
+        // Remove daniel from team page, but
+        // not from authors
+        .filter((key) => key !== 'daniel')
+        .map((key) => {
+          const teamMember = team[key as TeamMemberName]
+          const image = data[key as TeamMemberName].childImageSharp.fixed
+          return (
+            <TeamMember
+              key={`team-member-${key}`}
+              avatar={
+                <Img
+                  alt={teamMember.name}
+                  fixed={image}
+                  style={styles.memberImage}
+                />
+              }
+              name={teamMember.name}
+              title={teamMember.title}
+            />
+          )
+        })}
     </div>
   )
 }

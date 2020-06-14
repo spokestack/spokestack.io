@@ -31,7 +31,7 @@ module.exports = {
       },
       daniel: {
         name: 'Daniel Tyreus',
-        title: 'Head of Product',
+        title: 'Spokestack Certified Developer',
         bio: '',
         social: {
           twitter: '',

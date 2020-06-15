@@ -45,11 +45,11 @@ compileOptions {
 // in the dependencies block
 dependencies {
     // (other dependencies)
-    implementation 'io.spokestack:spokestack-android:5.0.0'
+    implementation 'io.spokestack:spokestack-android:5.6.0'
 
     // if you plan to use Google ASR, also include these
     implementation 'com.google.cloud:google-cloud-speech:1.22.2'
-    implementation 'io.grpc:grpc-okhttp:1.25.0'
+    implementation 'io.grpc:grpc-okhttp:1.28.0'
 
     // for TensorFlow Lite-powered wakeword detection, add this one too
     implementation 'org.tensorflow:tensorflow-lite:1.14.0'
@@ -60,7 +60,7 @@ dependencies {
 
 // a new top-level block if you don't already have native dependencies
 native_dependencies {
-    artifact 'io.spokestack:spokestack-android:5.0.0'
+    artifact 'io.spokestack:spokestack-android:5.6.0'
 }
 ```
 
@@ -100,7 +100,7 @@ pipeline = SpeechPipeline.Builder()
     .build();
 ```
 
-There are many options for configuring the speech pipeline. This particular setup will begin capturing audio when `pipeline.start()` is called and use a Voice Activity Detection (VAD) component to send any audio determined to be speech through on-device ASR using Android's `SpeechRecognizer` API. In other words, the app is always actively listening, and no wakeword detection is performed. See [the configuration guide](/docs/Android/speech-pipeline) for more information about pipeline building options.
+There are many options for configuring the speech pipeline. This particular setup will begin capturing audio when `pipeline.start()` is called and use a Voice Activity Detection (VAD) component to send any audio determined to be speech through on-device ASR using Android's `SpeechRecognizer` API. In other words, the app is always actively listening, and no wakeword detection is performed. See [the configuration guide](/docs/Android/speech-pipeline) for more information about pipeline building options. Using a `VADTrigger*` profile is a good way to test out ASR without having to tap a button to activate it or downloading and configuring wakeword models, but it's probably not a good choice for a production app because it'll lead to a lot of ASR false positives and conflict with any TTS prompts you're trying to play for the user.
 
 Note also the `addOnSpeechEventListener(this)` line. This is necessary to receive speech events from the pipeline, which is our next step.
 

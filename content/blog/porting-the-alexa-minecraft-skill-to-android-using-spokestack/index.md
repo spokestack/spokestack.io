@@ -85,7 +85,7 @@ public class MainActivity extends AppCompatActivity {
 }
 ```
 
-This is all we need to interact with the components we've built — the `start` method gives Spokestack control of the microphone via its `SpeechPipeline` so that we can start hearing the user. If you look at how we've set the pipeline up for this project, though, you'll notice a line that sets the pipeline's "profile" to `PushToTalkAndroidASR`. This means that we're not using a wakeword (e.g., "Alexa") to tell the app to start actively listening to the user. Spokestack does support this, and you can see an example configuration in [our Android cookbook](/docs/Android/cookbook), but we're going to use a button here for sake of simplicity. That means we'll need a microphone button and a handler that starts sending audio through speech recognition when the button is tapped:
+This is all we need to interact with the components we've built — the `start` method gives Spokestack control of the microphone via its `SpeechPipeline` so that we can start hearing the user. If you look at how we've set the pipeline up for this project, though (in `Spokestack`), you'll notice a line that sets the pipeline's "profile" to `PushToTalkAndroidASR`. This means that we're not using a wakeword (e.g., "Alexa") to tell the app to start actively listening to the user. Spokestack does support this, and you can see an example configuration in [our Android cookbook](/docs/Android/cookbook), but we're going to use a button here for sake of simplicity. That means we'll need a microphone button and a handler that starts sending audio through speech recognition when the button is tapped:
 
 ```java
 // still in MainActivity
@@ -96,7 +96,7 @@ This is all we need to interact with the components we've built — the `start` 
 
 That wasn't so bad, was it? We're manually activating the ASR, but the configuration we've set up in the `Spokestack` class will handle deactivating it after speech stops.
 
-**Note**: We're using the on-device Android ASR here because it's the easiest way to demo ASR, _if it works_. Support for native speech recognition is very device-dependent; we've found it to work on Pixel 3 and Pixel 4 devices, but not many others. Spokestack integrates with [other ASR providers](/docs/Concepts/asr), but they tend to require separate accounts and credentials; see the document for more details.
+**Note**: We're using the Android ASR here because it's the easiest way to demo ASR, but it's not available on all devices. See our [ASR documentation](/docs/Concepts/asr') for more information on it and the other ASR providers Spokestack integrates with.
 
 Also note that [the Android emulator cannot record audio](https://developer.android.com/guide/topics/media/mediarecorder). You'll need to test ASR on a real device.
 

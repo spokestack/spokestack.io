@@ -1,7 +1,7 @@
 ---
 title: Choosing the Right iOS Wakeword Service
 date: '2020-06-15'
-description: Spokestack offers two wakeword services in iOS: `appleWakeword` and `tfLiteWakeword`. Which should you use?
+description: Spokestack offers two wakeword services in iOS, `appleWakeword` and `tfLiteWakeword`. Which should you use?
 author: noel
 tags: Engineering
 draft: false

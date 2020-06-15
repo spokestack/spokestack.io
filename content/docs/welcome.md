@@ -16,8 +16,8 @@ If you're looking to integrate Spokestack in your project as fast as possible, o
 **Would you rather start with a tutorial?**
 
 - [Swift](/blog/porting-a-smart-speaker-voice-app-to-mobile-part-1)
-- [Java] Coming soon!
-
-If you have any other questions, please check our [forum](https://forum.spokestack.io/), which we monitor closely. You might find an answer there already.
+- [Java](/blog/porting-the-alexa-minecraft-skill-to-android-using-spokestack)
 
 For more details on Spokestack's technology and configuration options, see the list of topics to the left. If you notice anything missing, [open an issue](https://github.com/spokestack/spokestack-website/issues) or pull request; all our documentation is available [on GitHub](https://github.com/spokestack/spokestack-website/tree/develop/content/docs)!
+
+If you have any other questions, please check our [forum](https://forum.spokestack.io/), which we monitor closely. You might find an answer there already.

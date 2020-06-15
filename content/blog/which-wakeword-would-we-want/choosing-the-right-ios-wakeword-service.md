@@ -13,7 +13,7 @@ The answer, of course, is up to you! Spokestack always gives you options, becaus
 
 ## Wait, there's a wakeword?
 
-Indeed! If you want your app to be controllable purely by voice, you need a wakeword — a word (or short phrase) that tells your app “the next thing the user says is meant for you”. The wakeword detection component in Spokestack is responsible for detecting utterances of any of a set of keyword phrases in [soft real time](https://en.wikipedia.org/wiki/Real-time_computing#Criteria_for_real-time_computing). Once detected, the Spokestack pipeline activates, providing you with an activation event and triggering the configured speech recognition service. The accuracy, speed, and flexibility of wakeword detection depends on which service you configure.
+Indeed! If you want your app to be controllable purely by voice, you need a wakeword — a word (or short phrase) that tells your app “the next thing the user says is meant for you”. The wakeword detection component in Spokestack is responsible for detecting any of a user-defined set of keyword phrases in [soft real time](https://en.wikipedia.org/wiki/Real-time_computing#Criteria_for_real-time_computing). Once detected, the Spokestack pipeline activates, providing you with an activation event and triggering the configured speech recognition service. The accuracy, speed, and flexibility of wakeword detection depends on which service you configure.
 
 ## Ok, so which one should I use?
 
@@ -33,7 +33,7 @@ Spokestack's `appleWakeword` uses Apple's free on-device ASR to transcribe all s
 
 ## How do I distribute my app with a fast, accurate, efficient, on-device wakeword?
 
-Spokestack's `tfLiteWakeword` fits the bill for you! You'll gain fast, accurate, efficient, wakeword activation that runs entirely on-device. It features a state of the art machine learning pipeline using attention-based models; they operate continuously, each feeding output into the next, for both efficiency and accuracy.
+Spokestack's `tfLiteWakeword` fits the bill for you! You'll gain fast, accurate, efficient, wakeword activation that runs entirely on-device. It features a state-of-the-art machine learning pipeline using attention-based models; they operate continuously, each feeding output into the next, for both efficiency and accuracy.
 
 To get you started, Spokestack provides pretrained TensorFlow models that enable on-device wakeword detection. These free models, however, only recognize the word “Spokestack”; in order to have your app respond to a different word or phrase, you’ll need your own custom models.
 

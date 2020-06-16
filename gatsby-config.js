@@ -1,13 +1,13 @@
 module.exports = {
   siteMetadata: {
-    title: 'Spokestack',
+    title: 'Spokestack | Independent Voice Assistant',
     author: 'Spokestack',
     contact: {
       email: 'hello@spokestack.io',
       phone: '(423) 425-0071'
     },
     description:
-      'Spokestack is a powerful platform of open source libraries and robust services to make your app fully voice-enabled.',
+      'Build an independent voice assistant. Spokestack features open source tools for mobile and web voice interfaces. Create an account and get started.',
     siteUrl: 'https://www.spokestack.io/',
     logo: 'https://spokestack.io/logo.png',
     social: {

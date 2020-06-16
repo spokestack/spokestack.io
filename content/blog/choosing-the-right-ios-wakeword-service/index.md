@@ -21,7 +21,7 @@ In general, `tfLiteWakeword` will have better accuracy and faster activation. `a
 
 ## What wakeword do we want our app to use?
 
-What wakeword do we want our app to use? Tricky question! Answering the question means [UX research](https://spokestack.io/blog/user-research-for-voice-experiences), brand identity discussions, and even linguistics consulting. Of course Spokestack is here to help with that.
+What wakeword do we want our app to use? Tricky question! Answering the question means [UX research](/blog/user-research-for-voice-experiences), brand identity discussions, and even linguistics consulting. Of course Spokestack is here to help with that.
 
 ### Prefer
 
@@ -39,7 +39,7 @@ To get you started, Spokestack provides pretrained TensorFlow models that enable
 
 ### Prefer
 
-[Work with us to develop a custom TensorFlow model](https://spokestack.io/docs/Concepts/wakeword-models), and then distribute that model with your app configured to use `tfLiteWakeword`. When testing your app using `tfLiteWakeword`, be sure to consult the [Spokestack pipeline model hyperparameter configuration guide](https://spokestack.io/docs/Concepts/pipeline-configuration).
+[Work with us to develop a custom TensorFlow model](/docs/Concepts/wakeword-models), and then distribute that model with your app configured to use `tfLiteWakeword`. When testing your app using `tfLiteWakeword`, be sure to consult the [Spokestack pipeline model hyperparameter configuration guide](/docs/Concepts/pipeline-configuration).
 
 ### Avoid
 

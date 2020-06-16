@@ -96,7 +96,7 @@ This is all we need to interact with the components we've built — the `start` 
 
 That wasn't so bad, was it? We're manually activating the ASR, but the configuration we've set up in the `Spokestack` class will handle deactivating it after speech stops.
 
-**Note**: We're using the Android ASR here because it's the easiest way to demo ASR, but it's not available on all devices. See our [ASR documentation](/docs/Concepts/asr') for more information on it and the other ASR providers Spokestack integrates with.
+**Note**: We're using the Android ASR here because it's the easiest way to demo ASR, but it's not available on all devices. See our [ASR documentation](/docs/Concepts/asr) for more information on it and the other ASR providers Spokestack integrates with.
 
 Also note that [the Android emulator cannot record audio](https://developer.android.com/guide/topics/media/mediarecorder). You'll need to test ASR on a real device.
 

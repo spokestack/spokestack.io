@@ -1,4 +1,4 @@
-const rsrc = /<img [a-z="'].*? src=(["'])([:\/\.\w]+)\1/
+const rsrc = /<img[^>]+src=(["'])([:\/\.\w_-]+)\1/
 const rhttp = /^https?:\/\//
 const rslash = /^\//
 

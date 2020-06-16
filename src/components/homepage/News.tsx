@@ -88,7 +88,9 @@ export default function News() {
   return (
     <div id="news" className="ie-fix" css={styles.container}>
       <h2>News &amp; Tutorials</h2>
-      <p className="title">How-to articles and updates about Spokestack</p>
+      <p className="title">
+        Stay informed and learn to build your own Independent Voice Assistant
+      </p>
       <div css={styles.content}>
         <NewsItem
           author="Voicebot.ai"

@@ -20,6 +20,7 @@ function sortPosts(posts: Query['allMarkdownRemark']['edges']) {
 
 type QueryType = Query &
   TeamImages & {
+    contest: TeamImages['brent']
     spokestack: TeamImages['brent']
     danielArticle: Query['allMarkdownRemark']
     elizabethArticle: Query['allMarkdownRemark']
@@ -31,8 +32,9 @@ interface Props {
   authorHref: string
   date?: string
   header: string
-  href: string
+  href?: string
   image: FixedObject
+  to?: string
   type: string
 }
 
@@ -43,9 +45,10 @@ const NewsItem = ({
   header,
   href,
   image,
+  to,
   type
 }: Props) => (
-  <Callout extraCss={styles.callout} to={href}>
+  <Callout extraCss={styles.callout} href={href} to={to}>
     <div css={styles.title}>
       <h5>{type}</h5>
       <h4>{header}</h4>
@@ -81,20 +84,19 @@ export default function News() {
   const posts = data.danielArticle.edges.concat(
     data.elizabethArticle.edges.concat(data.mikeArticle.edges)
   )
+  console.log(data)
   return (
     <div id="news" className="ie-fix" css={styles.container}>
-      <h3>Learn how to design &amp; build for voice</h3>
-      <p className="title">
-        How-to articles on creating voice assistants from the Spokestack team.
-      </p>
+      <h2>News &amp; Tutorials</h2>
+      <p className="title">How-to articles and updates about Spokestack</p>
       <div css={styles.content}>
         <NewsItem
-          author="Spokestack"
-          authorHref="/"
-          header="Getting Started"
-          href="/docs"
-          image={data.spokestack.childImageSharp.fixed}
-          type="Docs"
+          author="Voicebot.ai"
+          authorHref="https://voicebot.ai"
+          header={`Spokestack Launches "Voice First Mobile" Model`}
+          href="https://voicebot.ai/2020/06/16/spokestack-launches-voice-first-mobile-model-to-make-mobile-voice-apps-perform-like-smart-speaker-skills/"
+          image={data.contest.childImageSharp.fixed}
+          type="News"
         />
         {sortPosts(posts).map((edge) => {
           const post = edge.node
@@ -107,9 +109,9 @@ export default function News() {
               authorHref={`/blog/author/${author}`}
               date={post.frontmatter.date}
               header={post.frontmatter.title}
-              href={post.fields.slug}
               image={data[author].childImageSharp.fixed}
-              type="Blog"
+              to={post.fields.slug}
+              type={author === 'daniel' ? 'Tutorial' : 'Blog'}
             />
           )
         })}
@@ -127,7 +129,7 @@ const styles = {
     padding: 50px 20px;
     min-height: 638px;
 
-    h3 {
+    h2 {
       margin-bottom: 10px;
     }
     .title {
@@ -336,6 +338,13 @@ const newsQuery = graphql`
       }
     }
     spokestack: file(absolutePath: { regex: "/logo.png/" }) {
+      childImageSharp {
+        fixed(width: 32, height: 32) {
+          ...GatsbyImageSharpFixed
+        }
+      }
+    }
+    contest: file(absolutePath: { regex: "/contest.png/" }) {
       childImageSharp {
         fixed(width: 32, height: 32) {
           ...GatsbyImageSharpFixed

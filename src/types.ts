@@ -39,6 +39,7 @@ interface SharpImage {
 
 export interface TeamImages {
   brent: SharpImage
+  daniel: SharpImage
   elizabeth: SharpImage
   josh: SharpImage
   mike: SharpImage
@@ -50,6 +51,7 @@ export interface TeamImages {
 
 export type TeamMemberName =
   | 'brent'
+  | 'daniel'
   | 'elizabeth'
   | 'josh'
   | 'mike'

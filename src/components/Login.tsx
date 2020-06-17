@@ -53,10 +53,12 @@ export default function Login({ header, isCreate, location }: Props) {
             </li>
             <li>
               <SVGIcon icon="#checkmark" css={styles.iconCheckmark} />
-              <a href="/docs/Concepts/export">
-                Upload your interaction model
-              </a>{' '}
-              from Alexa or Google
+              <p>
+                <a href="/docs/Concepts/export">
+                  Upload your interaction model
+                </a>{' '}
+                from Alexa or Google
+              </p>
             </li>
             <li>
               <SVGIcon icon="#checkmark" css={styles.iconCheckmark} />
@@ -142,6 +144,11 @@ const styles = {
 
     li {
       display: flex;
+      flex-direction: row;
+    }
+
+    p {
+      margin: 0;
     }
 
     ${MIN_DEFAULT_MEDIA_QUERY} {

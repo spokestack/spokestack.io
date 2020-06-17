@@ -12,6 +12,7 @@ import { Query } from '../utils/graphql'
 import React from 'react'
 import SEO from '../components/SEO'
 import SocialLink from '../components/SocialLink'
+import find from 'lodash/find'
 
 type Props = PageRendererProps & {
   data: Query
@@ -24,7 +25,9 @@ export default function BlogListAuthorTemplate({
   pageContext: { author, currentPage, numPages, slug, tags }
 }: Props) {
   const posts = data.allMarkdownRemark.edges
-  const { name, bio, social, title } = data.site.siteMetadata.team[author]
+  const { name, bio, social, title } = find(data.site.siteMetadata.team, {
+    key: author
+  })
   const longTitle = `Here are all of the articles from ${name}.`
   return (
     <>
@@ -163,7 +166,19 @@ const styles = {
 export const blogListQuery = graphql`
   query blogListAuthorQuery($skip: Int!, $limit: Int!, $author: String!) {
     site {
-      ...TeamMembers
+      siteMetadata {
+        team {
+          key
+          name
+          title
+          bio
+          social {
+            twitter
+            linkedin
+            email
+          }
+        }
+      }
     }
     allMarkdownRemark(
       filter: {

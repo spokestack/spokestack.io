@@ -185,9 +185,11 @@ function createPages({ actions, graphql, posts, template }) {
 exports.createPages = async ({ graphql, actions, reporter }) => {
   const result = await graphql(`
     {
-      authors: __type(name: "SiteSiteMetadataTeam") {
-        fields {
-          name
+      site {
+        siteMetadata {
+          team {
+            key
+          }
         }
       }
       blog: allMarkdownRemark(
@@ -262,7 +264,7 @@ exports.createPages = async ({ graphql, actions, reporter }) => {
   })
 
   // Create author pages
-  const authors = result.data.authors.fields.map((field) => field.name)
+  const authors = result.data.site.siteMetadata.team.map((member) => member.key)
   authors.forEach((author) => {
     createAuthorPages({
       author,

@@ -7,19 +7,19 @@ import { MarkdownRemark, Query } from '../utils/graphql'
 import AuthorImage from './AuthorImage'
 import Color from 'color'
 import React from 'react'
-import { TeamMemberName } from '../types'
+import find from 'lodash/find'
 
 interface Props {
   post: MarkdownRemark
 }
 
 export default function BlogListItem({ post }: Props) {
-  const author = post.frontmatter.author as TeamMemberName
+  const author = post.frontmatter.author
   const data = useStaticQuery<Query>(blogListItemQuery)
   if (!author || !data || !data.site) {
     return null
   }
-  const { name, title } = data.site.siteMetadata.team[author]
+  const { name, title } = find(data.site.siteMetadata.team, { key: author })
   return (
     <Link
       to={post.fields.slug}
@@ -123,7 +123,13 @@ const styles = {
 const blogListItemQuery = graphql`
   query blogListItemQuery {
     site {
-      ...TeamMembers
+      siteMetadata {
+        team {
+          key
+          name
+          title
+        }
+      }
     }
   }
 `

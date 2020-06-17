@@ -9,7 +9,7 @@ import {
   MIN_DEFAULT_MEDIA_QUERY,
   MIN_LARGE_DISPLAY_MEDIA_QUERY
 } from 'typography-breakpoint-constants'
-import { RelatedLink, TeamMemberName } from '../types'
+import { RelatedLink } from '../types'
 
 import Author from './Author'
 import Create from './homepage/Create'
@@ -43,7 +43,7 @@ export default function BlogPost({ location, post, related }: Props) {
       />
       <div className="ie-fix" css={styles.container}>
         <section css={styles.author}>
-          <Author author={post.frontmatter.author as TeamMemberName} />
+          <Author author={post.frontmatter.author} />
         </section>
         <section className="main-content" css={styles.content}>
           <header className="docs-header">

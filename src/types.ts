@@ -4,7 +4,7 @@ import { MutableRefObject } from 'react'
 
 // Added by createPage to templates in gatsby-node.js
 export interface PageContext {
-  author: TeamMemberName
+  author: string
   currentPage: number
   limit: number
   next: MarkdownRemark
@@ -33,31 +33,9 @@ export interface StickyLink {
   title: string
 }
 
-interface SharpImage {
+export interface SharpImage {
   childImageSharp: { fixed: FixedObject }
 }
-
-export interface TeamImages {
-  brent: SharpImage
-  daniel: SharpImage
-  elizabeth: SharpImage
-  josh: SharpImage
-  mike: SharpImage
-  noel: SharpImage
-  shelby: SharpImage
-  timmy: SharpImage
-  will: SharpImage
-}
-
-export type TeamMemberName =
-  | 'brent'
-  | 'daniel'
-  | 'elizabeth'
-  | 'josh'
-  | 'mike'
-  | 'noel'
-  | 'timmy'
-  | 'will'
 
 export interface Voice {
   model: string

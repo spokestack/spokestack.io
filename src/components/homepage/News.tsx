@@ -1,7 +1,6 @@
 import * as theme from '../../styles/theme'
 
 import Image, { FixedObject } from 'gatsby-image'
-import { TeamImages, TeamMemberName } from '../../types'
 import { graphql, useStaticQuery } from 'gatsby'
 
 import Callout from '../Callout'
@@ -9,6 +8,9 @@ import { Query } from '../../utils/graphql'
 import React from 'react'
 import { adjustFontSizeTo } from '../../styles/typography'
 import { css } from '@emotion/core'
+import { SharpImage } from '../../types'
+import find from 'lodash/find'
+import findAuthorImage from '../../utils/findAuthorImage'
 
 function sortPosts(posts: Query['allMarkdownRemark']['edges']) {
   return posts.sort((a, b) => {
@@ -18,14 +20,13 @@ function sortPosts(posts: Query['allMarkdownRemark']['edges']) {
   })
 }
 
-type QueryType = Query &
-  TeamImages & {
-    contest: TeamImages['brent']
-    spokestack: TeamImages['brent']
-    danielArticle: Query['allMarkdownRemark']
-    elizabethArticle: Query['allMarkdownRemark']
-    mikeArticle: Query['allMarkdownRemark']
-  }
+type QueryType = Query & {
+  contest: SharpImage
+  spokestack: SharpImage
+  danielArticle: Query['allMarkdownRemark']
+  elizabethArticle: Query['allMarkdownRemark']
+  mikeArticle: Query['allMarkdownRemark']
+}
 
 interface Props {
   author: string
@@ -84,7 +85,6 @@ export default function News() {
   const posts = data.danielArticle.edges.concat(
     data.elizabethArticle.edges.concat(data.mikeArticle.edges)
   )
-  console.log(data)
   return (
     <div id="news" className="ie-fix" css={styles.container}>
       <h2>News &amp; Tutorials</h2>
@@ -102,8 +102,8 @@ export default function News() {
         />
         {sortPosts(posts).map((edge) => {
           const post = edge.node
-          const author = post.frontmatter.author as TeamMemberName
-          const name = data.site.siteMetadata.team[author].name
+          const author = post.frontmatter.author
+          const { name } = find(data.site.siteMetadata.team, { key: author })
           return (
             <NewsItem
               key={post.id}
@@ -111,7 +111,7 @@ export default function News() {
               authorHref={`/blog/author/${author}`}
               date={post.frontmatter.date}
               header={post.frontmatter.title}
-              image={data[author].childImageSharp.fixed}
+              image={findAuthorImage(data, author)}
               to={post.fields.slug}
               type={author === 'daniel' ? 'Tutorial' : 'Blog'}
             />
@@ -208,7 +208,24 @@ const styles = {
 const newsQuery = graphql`
   query newsQuery {
     site {
-      ...TeamMembers
+      siteMetadata {
+        team {
+          key
+          name
+        }
+      }
+    }
+    allImageSharp(
+      filter: { fixed: { originalName: { regex: "/headshot/" } } }
+    ) {
+      edges {
+        node {
+          fixed(width: 32, height: 32) {
+            ...GatsbyImageSharpFixed_withWebp
+            originalName
+          }
+        }
+      }
     }
     danielArticle: allMarkdownRemark(
       filter: {
@@ -273,69 +290,6 @@ const newsQuery = graphql`
             date(formatString: "MMMM DD, YYYY")
             title
           }
-        }
-      }
-    }
-    brent: file(absolutePath: { regex: "/headshots/brent.png/" }) {
-      childImageSharp {
-        fixed(width: 32, height: 32) {
-          ...GatsbyImageSharpFixed
-        }
-      }
-    }
-    daniel: file(absolutePath: { regex: "/headshots/daniel.png/" }) {
-      childImageSharp {
-        fixed(width: 32, height: 32) {
-          ...GatsbyImageSharpFixed
-        }
-      }
-    }
-    elizabeth: file(absolutePath: { regex: "/headshots/elizabeth.png/" }) {
-      childImageSharp {
-        fixed(width: 32, height: 32) {
-          ...GatsbyImageSharpFixed
-        }
-      }
-    }
-    josh: file(absolutePath: { regex: "/headshots/josh.png/" }) {
-      childImageSharp {
-        fixed(width: 32, height: 32) {
-          ...GatsbyImageSharpFixed
-        }
-      }
-    }
-    mike: file(absolutePath: { regex: "/headshots/mike.png/" }) {
-      childImageSharp {
-        fixed(width: 32, height: 32) {
-          ...GatsbyImageSharpFixed
-        }
-      }
-    }
-    neil: file(absolutePath: { regex: "/headshots/neil.png/" }) {
-      childImageSharp {
-        fixed(width: 32, height: 32) {
-          ...GatsbyImageSharpFixed
-        }
-      }
-    }
-    noel: file(absolutePath: { regex: "/headshots/noel.png/" }) {
-      childImageSharp {
-        fixed(width: 32, height: 32) {
-          ...GatsbyImageSharpFixed
-        }
-      }
-    }
-    timmy: file(absolutePath: { regex: "/headshots/timmy.jpg/" }) {
-      childImageSharp {
-        fixed(width: 32, height: 32) {
-          ...GatsbyImageSharpFixed
-        }
-      }
-    }
-    will: file(absolutePath: { regex: "/headshots/will.png/" }) {
-      childImageSharp {
-        fixed(width: 32, height: 32) {
-          ...GatsbyImageSharpFixed
         }
       }
     }

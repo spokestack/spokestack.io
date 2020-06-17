@@ -1,27 +1,26 @@
 import { SerializedStyles, css } from '@emotion/core'
-import { TeamImages, TeamMemberName } from '../types'
 import { graphql, useStaticQuery } from 'gatsby'
 
 import Image from 'gatsby-image'
 import { Query } from '../utils/graphql'
 import React from 'react'
-
-type QueryType = Query & TeamImages
+import find from 'lodash/find'
+import findAuthorImage from '../utils/findAuthorImage'
 
 interface Props {
-  author: TeamMemberName
+  author: string
   extraCss?: SerializedStyles
 }
 
 export default function AuthorImage({ author, extraCss }: Props) {
-  const data = useStaticQuery<QueryType>(authorImageQuery)
-  if (!author || !data.site || !data[author]) {
+  const data = useStaticQuery<Query>(authorImageQuery)
+  if (!author || !data.site) {
     return null
   }
-  const { name } = data.site.siteMetadata.team[author]
+  const { name } = find(data.site.siteMetadata.team, { key: author })
   return (
     <Image
-      fixed={data[author].childImageSharp.fixed}
+      fixed={findAuthorImage(data, author)}
       alt={name}
       css={[styles.imageWrap, extraCss]}
       imgStyle={styles.image}
@@ -41,68 +40,22 @@ const styles = {
 const authorImageQuery = graphql`
   query authorImageQuery {
     site {
-      ...TeamMembers
-    }
-    brent: file(absolutePath: { regex: "/headshots/brent.png/" }) {
-      childImageSharp {
-        fixed(width: 95, height: 95) {
-          ...GatsbyImageSharpFixed
+      siteMetadata {
+        team {
+          key
+          name
         }
       }
     }
-    daniel: file(absolutePath: { regex: "/headshots/daniel.png/" }) {
-      childImageSharp {
-        fixed(width: 95, height: 95) {
-          ...GatsbyImageSharpFixed
-        }
-      }
-    }
-    elizabeth: file(absolutePath: { regex: "/headshots/elizabeth.png/" }) {
-      childImageSharp {
-        fixed(width: 95, height: 95) {
-          ...GatsbyImageSharpFixed
-        }
-      }
-    }
-    josh: file(absolutePath: { regex: "/headshots/josh.png/" }) {
-      childImageSharp {
-        fixed(width: 95, height: 95) {
-          ...GatsbyImageSharpFixed
-        }
-      }
-    }
-    mike: file(absolutePath: { regex: "/headshots/mike.png/" }) {
-      childImageSharp {
-        fixed(width: 95, height: 95) {
-          ...GatsbyImageSharpFixed
-        }
-      }
-    }
-    neil: file(absolutePath: { regex: "/headshots/neil.png/" }) {
-      childImageSharp {
-        fixed(width: 95, height: 95) {
-          ...GatsbyImageSharpFixed
-        }
-      }
-    }
-    noel: file(absolutePath: { regex: "/headshots/noel.png/" }) {
-      childImageSharp {
-        fixed(width: 95, height: 95) {
-          ...GatsbyImageSharpFixed
-        }
-      }
-    }
-    timmy: file(absolutePath: { regex: "/headshots/timmy.jpg/" }) {
-      childImageSharp {
-        fixed(width: 95, height: 95) {
-          ...GatsbyImageSharpFixed
-        }
-      }
-    }
-    will: file(absolutePath: { regex: "/headshots/will.png/" }) {
-      childImageSharp {
-        fixed(width: 95, height: 95) {
-          ...GatsbyImageSharpFixed
+    allImageSharp(
+      filter: { fixed: { originalName: { regex: "/headshot/" } } }
+    ) {
+      edges {
+        node {
+          fixed(width: 95, height: 95) {
+            ...GatsbyImageSharpFixed_withWebp
+            originalName
+          }
         }
       }
     }

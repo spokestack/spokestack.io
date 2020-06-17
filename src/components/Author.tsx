@@ -1,7 +1,6 @@
 import * as theme from '../styles/theme'
 
 import { Global, css } from '@emotion/core'
-import { TeamImages, TeamMemberName } from '../types'
 import { graphql, useStaticQuery } from 'gatsby'
 
 import AuthorImage from './AuthorImage'
@@ -9,19 +8,18 @@ import Callout from './Callout'
 import { Query } from '../utils/graphql'
 import React from 'react'
 import { rhythm } from '../styles/typography'
-
-type QueryType = Query & TeamImages
+import find from 'lodash/find'
 
 interface Props {
-  author: TeamMemberName
+  author: string
 }
 
 export default function Author({ author }: Props) {
-  const data = useStaticQuery<QueryType>(authorQuery)
+  const data = useStaticQuery<Query>(authorQuery)
   if (!author || !data.site) {
     return null
   }
-  const { name, title } = data.site.siteMetadata.team[author]
+  const { name, title } = find(data.site.siteMetadata.team, { key: author })
   return (
     <Callout to={`/blog/author/${author}`} extraCss={styles.author}>
       <Global
@@ -78,7 +76,13 @@ const styles = {
 const authorQuery = graphql`
   query authorQuery {
     site {
-      ...TeamMembers
+      siteMetadata {
+        team {
+          key
+          name
+          title
+        }
+      }
     }
   }
 `

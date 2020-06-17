@@ -16,11 +16,11 @@ module.exports = {
       stackoverflow: 'https://stackoverflow.com/questions/tagged/spokestack',
       twitter: 'https://twitter.com/spokestack'
     },
-    // Should match the queries in src/components/TeamMembers.tsx
-    // and images in src/components/AuthorImage.tsx
-    team: {
-      brent: {
+    team: [
+      {
+        key: 'brent',
         name: 'Brent Spell',
+        image: '/headshots/brent.png',
         title: 'CTO',
         bio: '',
         social: {
@@ -29,8 +29,10 @@ module.exports = {
           email: ''
         }
       },
-      daniel: {
+      {
+        key: 'daniel',
         name: 'Daniel Tyreus',
+        image: '/headshots/daniel.png',
         title: 'Spokestack Certified Developer',
         bio: '',
         social: {
@@ -39,8 +41,10 @@ module.exports = {
           email: ''
         }
       },
-      elizabeth: {
+      {
+        key: 'elizabeth',
         name: 'Elizabeth Ropp',
+        image: '/headshots/elizabeth.png',
         title: 'UX & Product Design',
         bio:
           'Elizabeth designs multimodal experiences with language and visuals in mind. A classically trained violinist, she enjoys bluegrass fiddle and spicy food of all kinds.',
@@ -50,8 +54,10 @@ module.exports = {
           email: 'elizabeth@spokestack.io'
         }
       },
-      josh: {
+      {
+        key: 'josh',
         name: 'Josh Ziegler',
+        image: '/headshots/josh.png',
         title: 'Conversation Engineer',
         bio:
           'Josh lives at the intersection of language and technology. An avid reader, he enjoys long runs in the woods and pedantic arguments about...well, pick a topic.',
@@ -61,8 +67,10 @@ module.exports = {
           email: 'josh@spokestack.io'
         }
       },
-      mike: {
+      {
+        key: 'mike',
         name: 'Mike Tatum',
+        image: '/headshots/mike.png',
         title: 'CEO',
         bio:
           'Mike is the CEO of Spokestack. He loves making late-night purchases on Discogs and using new technologies to create better user experiences and products.',
@@ -72,8 +80,10 @@ module.exports = {
           email: 'mike@spokestack.io'
         }
       },
-      noel: {
+      {
+        key: 'noel',
         name: 'Noel Weichbrodt',
+        image: '/headshots/noel.png',
         title: 'Principal Engineer',
         bio: '',
         social: {
@@ -82,8 +92,10 @@ module.exports = {
           email: ''
         }
       },
-      timmy: {
+      {
+        key: 'timmy',
         name: 'Timmy Willison',
+        image: '/headshots/timmy.jpg',
         title: 'Front-End Engineer',
         bio: '',
         social: {
@@ -92,8 +104,10 @@ module.exports = {
           email: ''
         }
       },
-      will: {
+      {
+        key: 'will',
         name: 'Will Rice',
+        image: '/headshots/will.png',
         title: 'Data Science Engineer',
         bio: '',
         social: {
@@ -102,7 +116,7 @@ module.exports = {
           email: 'mailto:josh@spokestack.io'
         }
       }
-    },
+    ],
     events: [
       {
         title: 'How to Add Voice to Mobile Workshop',

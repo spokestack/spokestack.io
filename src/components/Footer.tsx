@@ -112,6 +112,9 @@ export default function Footer() {
           <a css={styles.footerLink} href="/about/story">
             Story
           </a>
+          <a css={styles.footerLink} href="/about/investors">
+            Investors
+          </a>
         </div>
         <div css={styles.bottom}>
           <div css={styles.copyright}>

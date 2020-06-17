@@ -12,6 +12,10 @@ const links = [
   {
     href: '/about/team',
     title: 'Team'
+  },
+  {
+    href: '/about/investors',
+    title: 'Investors & Advisors'
   }
 ]
 
@@ -20,7 +24,7 @@ interface Props {
   location: WindowLocation
 }
 
-export default function About({ children, location }: Props) {
+export default function AboutLayout({ children, location }: Props) {
   return (
     <Layout location={location}>
       <SEO

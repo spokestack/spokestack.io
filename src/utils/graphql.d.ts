@@ -2202,6 +2202,11 @@ export enum SiteFieldsEnum {
   SiteMetadataTeamWillName = 'siteMetadata___team___will___name',
   SiteMetadataTeamWillTitle = 'siteMetadata___team___will___title',
   SiteMetadataTeamWillBio = 'siteMetadata___team___will___bio',
+  SiteMetadataInvestors = 'siteMetadata___investors',
+  SiteMetadataInvestorsName = 'siteMetadata___investors___name',
+  SiteMetadataInvestorsTitles = 'siteMetadata___investors___titles',
+  SiteMetadataInvestorsTitlesTitle = 'siteMetadata___investors___titles___title',
+  SiteMetadataInvestorsTitlesCompany = 'siteMetadata___investors___titles___company',
   SiteMetadataEvents = 'siteMetadata___events',
   SiteMetadataEventsTitle = 'siteMetadata___events___title',
   SiteMetadataEventsDescription = 'siteMetadata___events___description',
@@ -3120,6 +3125,7 @@ export type SiteSiteMetadata = {
   logo?: Maybe<Scalars['String']>
   social?: Maybe<SiteSiteMetadataSocial>
   team?: Maybe<SiteSiteMetadataTeam>
+  investors?: Maybe<Array<Maybe<SiteSiteMetadataInvestors>>>
   events?: Maybe<Array<Maybe<SiteSiteMetadataEvents>>>
 }
 
@@ -3170,7 +3176,38 @@ export type SiteSiteMetadataFilterInput = {
   logo?: Maybe<StringQueryOperatorInput>
   social?: Maybe<SiteSiteMetadataSocialFilterInput>
   team?: Maybe<SiteSiteMetadataTeamFilterInput>
+  investors?: Maybe<SiteSiteMetadataInvestorsFilterListInput>
   events?: Maybe<SiteSiteMetadataEventsFilterListInput>
+}
+
+export type SiteSiteMetadataInvestors = {
+  __typename?: 'SiteSiteMetadataInvestors'
+  name?: Maybe<Scalars['String']>
+  titles?: Maybe<Array<Maybe<SiteSiteMetadataInvestorsTitles>>>
+}
+
+export type SiteSiteMetadataInvestorsFilterInput = {
+  name?: Maybe<StringQueryOperatorInput>
+  titles?: Maybe<SiteSiteMetadataInvestorsTitlesFilterListInput>
+}
+
+export type SiteSiteMetadataInvestorsFilterListInput = {
+  elemMatch?: Maybe<SiteSiteMetadataInvestorsFilterInput>
+}
+
+export type SiteSiteMetadataInvestorsTitles = {
+  __typename?: 'SiteSiteMetadataInvestorsTitles'
+  title?: Maybe<Scalars['String']>
+  company?: Maybe<Scalars['String']>
+}
+
+export type SiteSiteMetadataInvestorsTitlesFilterInput = {
+  title?: Maybe<StringQueryOperatorInput>
+  company?: Maybe<StringQueryOperatorInput>
+}
+
+export type SiteSiteMetadataInvestorsTitlesFilterListInput = {
+  elemMatch?: Maybe<SiteSiteMetadataInvestorsTitlesFilterInput>
 }
 
 export type SiteSiteMetadataSocial = {

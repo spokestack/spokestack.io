@@ -103,6 +103,70 @@ module.exports = {
         }
       }
     },
+    investors: [
+      {
+        name: 'Shelby Bonnie',
+        titles: [
+          {
+            title: 'Chairman of the Board',
+            company: 'Spokestack'
+          }
+        ]
+      },
+      {
+        name: 'Eric Robinson',
+        titles: [
+          {
+            title: 'Former CEO',
+            company: 'Lynda'
+          }
+        ]
+      },
+      {
+        name: 'Neil Ashe',
+        titles: [
+          {
+            title: 'CEO',
+            company: 'Acuity Brands'
+          },
+          {
+            title: 'Former President & CEO',
+            company: 'Global eCommerce & Technology Walmart'
+          }
+        ]
+      },
+      {
+        name: 'David Wadhwani',
+        titles: [
+          {
+            title: 'Former President & CEO',
+            company: 'App Dynamics'
+          }
+        ]
+      },
+      {
+        name: 'Dave Hersh',
+        titles: [
+          {
+            title: 'CEO',
+            company: 'Mobilize'
+          },
+          {
+            title: 'Former CEO',
+            company: 'Jive Software'
+          }
+        ]
+      },
+      {
+        name: 'Martin Green',
+        titles: [
+          {
+            title: 'CEO',
+            company: 'Cambrian Management Company'
+          }
+        ]
+      }
+    ],
     events: [
       {
         title: 'How to Add Voice to Mobile Workshop',

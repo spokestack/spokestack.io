@@ -32,19 +32,20 @@ No API keys or configuration properties are required, but a Context (`android.co
 
 ###### Device compatibility
 
-Android's native ASR support is very device-specific. This chart lists physical devices on which it has been tested by either the Spokestack team or our community. If you have a device that is not listed, please try it out and submit a PR with your results!
+Android's native ASR support is device-dependent. For production apps targeting broad compatibility, we recommend testing for its availability by calling [`SpeechRecognizer.isRecognitionAvailable()`](<https://developer.android.com/reference/android/speech/SpeechRecognizer#isRecognitionAvailable(android.content.Context)>) and having a fallback option in place for if it returns `false`.
 
-| Device                 | API Level | ASR working?       |
-| ---------------------- | --------- | ------------------ |
-| Moto X (2nd Gen)       | 22        | :x: `*`            |
-| Lenovo TB-X340F tablet | 27        | :x: `*`            |
-| Pixel 1                | 29        | :x: `**`           |
-| Pixel 3 XL             | 29        | :white_check_mark: |
-| Pixel 3a               | 29        | :x: `**`           |
-| Pixel 4                | 29        | :white_check_mark: |
+This chart lists physical devices on which it has been tested by either the Spokestack team or our community. If you have a device that is not listed, please try it out and submit a PR with your results!
+
+| Device                 | API Level | ASR working? |
+| ---------------------- | --------- | ------------ |
+| Moto X (2nd Gen)       | 22        | &#10060;`*`  |
+| Lenovo TB-X340F tablet | 27        | &#9989;      |
+| Pixel 1                | 29        | &#9989;      |
+| Pixel 3 XL             | 29        | &#9989;      |
+| Pixel 3a               | 29        | &#9989;      |
+| Pixel 4                | 29        | &#9989;      |
 
 `*` ASR fails consistently with a `SERVER_ERROR`, which seems to indicate that the server used by the device manufacturer to handle these requests is no longer operational.
-`**` Spokestack ASR fails with a `SPEECH_TIMEOUT`, but the `SpeechRecognizer` works on its own, indicating that there's an adverse reaction between Spokestack and the built-in ASR, likely to do with how microphone control is handled by the system.
 
 ##### iOS
 
@@ -60,7 +61,7 @@ N/A
 
 ##### iOS
 
-None required! &#1F389;
+None required! &#x1F389;
 
 ---
 

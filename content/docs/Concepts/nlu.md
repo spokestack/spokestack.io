@@ -33,6 +33,12 @@ The metadata for the model is a JSON definition of the possible intents and slot
 
 See the platform-specific NLU guides([Android](/docs/Android/nlu)|[iOS](/docs/iOS/nlu)) for a discussion on design considerations in each client library and code samples.
 
+## Model confidence
+
+Since intent classification is probabilistic, the model will always arrive at _some_ answer. This answer might, however, be wildly inappropriate if the user utterance is very different from anything the model has seen during training. For this reason, the model's confidence in its answer is exposed to callers.
+
+This confidence value can be used to mimic the behavior of Amazon or Dialogflow's "fallback intents" by determining a threshold and ignoring any intent result below that value, treating it instead as your fallback intent.
+
 ## Interpreting the results
 
 The Spokestack library translates the model's numeric outputs into an intent name (a `String`), the model's confidence for that prediction (a `float`) confidence and a map of slot names (`String`s) to their values (`Slot`s). Note that slot values are custom objects instead of raw strings — a point that bears some explanation.

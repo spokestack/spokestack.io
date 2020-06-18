@@ -9,7 +9,7 @@ This guide will get you up and running with Spokestack for Android, and you'll b
 
 One caveat before we start, though: _This is not a collection of best practices_. We're going to be trading thoughtful organization for convenience here, so when we say something like "put this in your main activity", just know that you might not want to leave it there long-term. OK, now that that's out of the way, let's jump in.
 
-To follow along with these snippets in the context of a full project, download our [Android skeleton](https://github.com/spokestack/android-skeleton) app. It's not much to look at on a phone screen, but it might be easier than copying and pasting code snippets from this guide as we list them.
+To follow along with these snippets in the context of a full project, download our [Android skeleton](https://github.com/spokestack/android-skeleton) app. Its UI doesn't offer much to look at, but it might be easier than copying and pasting code snippets from this guide as we list them.
 
 ## Installation
 
@@ -161,18 +161,20 @@ GlobalScope.launch(Dispatchers.Default) {
 }
 ```
 
-Note the use of Kotlin [coroutine context](https://kotlin.github.io/kotlinx.coroutines/kotlinx-coroutines-core/kotlinx.coroutines/with-context.html) to force the waiting for the classification result onto a background thread. Classification itself always runs on a background thread, but the result must be retrieved either by a blocking call or a callback registered to the return of `classify()`. We chose the former here for simplicity. Any UI changes needed to react to the result should happen on the main thread, which is why we switch back to `Dispatchers.Main` once the result is available. Again, the [NLU guide](nlu) explains all this in more depth.
+**Note**: This example uses NLU model files you'll need to obtain elsewhere. See our [export guide](/docs/Concepts/export) for instructions on converting an Alexa or Dialogflow interaction model into Spokestack's format. See the [skeleton project](https://github.com/spokestack/android-skeleton) mentioned at the beginning of the guide or our [skill conversion tutorial](/blog/porting-the-alexa-minecraft-skill-to-android-using-spokestack) for one approach for putting the models in your app's `$cacheDir`.
+
+We've used Kotlin's [coroutine context](https://kotlin.github.io/kotlinx.coroutines/kotlinx-coroutines-core/kotlinx.coroutines/with-context.html) to force the waiting for the classification result onto a background thread. Classification itself always runs on a background thread, but the result must be retrieved either by a blocking call or a callback registered to the return of `classify()`. We chose the former here for simplicity. Any UI changes needed to react to the result should happen on the main thread, which is why we switch back to `Dispatchers.Main` once the result is available. Again, the [NLU guide](nlu) explains all this in more depth.
 
 ## Talking back to your users
 
 If you want full hands- and eyes-free interaction, you'll want to deliver responses via voice as well. This requires a text-to-speech (TTS) component, and Spokestack has one of these too!
 
-See [the TTS guide](tts) for detailed information about configuration options, but the most basic usage of the TTS subsystem looks like this:
+The most basic usage of the TTS subsystem looks like this:
 
 ```kotlin
-val tts = TTSManager.Builder
+val tts = TTSManager.Builder()
     .setTTSServiceClass("io.spokestack.spokestack.tts.SpokestackTTSService")
-    .setOutputclass("io.spokestack.spokestack.tts.SpokestackTTSOutput")
+    .setOutputClass("io.spokestack.spokestack.tts.SpokestackTTSOutput")
     .setProperty("spokestack-id", "f0bc990c-e9db-4a0c-a2b1-6a6395a3d97e")
     .setProperty("spokestack-secret",
                  "5BD5483F573D691A15CFA493C1782F451D4BD666E39A9E7B2EBE287E6A72C6B6")
@@ -184,6 +186,14 @@ val tts = TTSManager.Builder
 
 val request = SynthesisRequest.Builder("hello world").build()
 tts.synthesize(request)
+```
+
+**Note**: This example uses a media player to automatically play the synthesized audio. This is an optional dependency that you'll have to add in your `build.gradle` file. See [the TTS guide](tts) for more details; if you're just interested in getting those dependencies, here they are. You may already have one or more of them depending on the project you started with in the IDE.
+
+```groovy
+  implementation 'androidx.lifecycle:lifecycle-common-java8:2.1.0'
+  implementation 'androidx.media:media:1.1.0'
+  implementation 'com.google.android.exoplayer:exoplayer-core:2.11.0'
 ```
 
 The API credentials in this example set you up to use the demo voice available for free with Spokestack; for more configuration options and details about controlling pronunciation, see [the TTS concept guide](/docs/Concepts/tts).

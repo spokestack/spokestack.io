@@ -166,7 +166,7 @@ There are many options for configuring Spokestack. This example will begin captu
 
 Then we configure a text-to-speech component using a TTS API key and secret that allow you to use Spokestack voices for free!
 
-Finally we configure the natural language understanding component, which uses Spokestack NLU models. To test things out, you can grab an [example NLU model](https://github.com/spokestack/spokestack-ios/blob/master/SpokestackFrameworkExample/nlu.tflite), [model metadata](https://github.com/spokestack/spokestack-ios/blob/master/SpokestackFrameworkExample/nlu.tflite), and [NLU vocabulary](https://d3dmqd7cy685il.cloudfront.net/nlu/vocab.txt).
+Finally we configure the natural language understanding component, which uses Spokestack NLU models. To test things out, you can grab an [example NLU model](https://github.com/spokestack/spokestack-ios/blob/master/SpokestackFrameworkExample/nlu.tflite), [model metadata](https://github.com/spokestack/spokestack-ios/blob/master/SpokestackFrameworkExample/nlu.json), and [NLU vocabulary](https://d3dmqd7cy685il.cloudfront.net/nlu/vocab.txt).
 
 ```javascript
 import Spokestack from 'react-native-spokestack'

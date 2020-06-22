@@ -19,7 +19,7 @@ export default function Header() {
           Open source tools for mobile &amp; web voice interfaces
         </p>
         <a href="/create" className="btn btn-secondary btn-large">
-          Create acount
+          Create account
           <SVGIcon icon="#arrow-forward" extraCss={styles.createAccountIcon} />
         </a>
       </div>

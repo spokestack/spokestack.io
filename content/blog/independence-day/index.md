@@ -9,7 +9,7 @@ draft: true
 
 Today, we export to independence!
 
-![Today we celebrate our Independence Day!](https://zippy.gfycat.com/UnkemptInsignificantGelding.webm)
+![Today we celebrate our Independence Day!](./independence.gif)
 
 With apologies to President Bill Pullman, let's declare our independence from smart speakers. The voice interface, and the skills you've developed using it, are wonderful resources that are currently stuck in kitchens and dens all over the world. It's time to free them to be carried with your users wherever they are, not wherever Amazon and Google allow them. With Spokestack, your smart speaker skill can declare independence!
 
@@ -19,7 +19,7 @@ NLU-capable computers are everywhere — your smartphone, your smartwatch, your 
 
 We build Spokestack when we realized that NLU, ASR, and TTS on mobile platforms were all siloed between service providers, none of them considering the developer experience when creating a complete voice app. Not only that, all the service providers have business models that incentivize them to force everything to the cloud. So we built the Spokestack NLU service, using state of the art intent and slot TensorFlow machine learning that is familiar to Alexa and DialogueFlow developers, capable of running entirely on the mobile device to deliver speedy, privacy-preserving results. Originally, Spokestack was just used in our own voice apps, but since January we've been focused on creating a simple way for all developers — mobile, voice, smart speaker, and front-end — to make their own voice apps for mobile platforms.
 
-![Will Smith walks away from smoke](https://gph.is/28Qnphp)
+![Will Smith walks away from smoke](./will_smith.gif)
 
 ## Why do I want to declare independence?
 
@@ -29,7 +29,7 @@ What do you gain from that? You control and learn from the NLU classification of
 
 If you've ever read the EULA for smart speaker platforms, you know how rapacious they are with your data. With Spokestack, you take private the most useful bits of your data instead of feeding it for free to the [FAANG](https://en.wikipedia.org/wiki/Big_Tech).
 
-![Storming the Bastille](https://upload.wikimedia.org/wikipedia/commons/thumb/4/4e/Prise_de_la_Bastille.jpg/800px-Prise_de_la_Bastille.jpg)
+![Storming the Bastille](./bastille.jpg)
 
 ## What do I have to do to declare independence?
 

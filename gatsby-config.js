@@ -1,6 +1,6 @@
 module.exports = {
   siteMetadata: {
-    title: 'Spokestack | Independent Voice Assistant',
+    title: 'Spokestack - Independent Voice Assistant',
     author: 'Spokestack',
     contact: {
       email: 'hello@spokestack.io',

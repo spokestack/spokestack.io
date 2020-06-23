@@ -13,10 +13,8 @@ export default function Features({ location }: PageRendererProps) {
   return (
     <Layout location={location}>
       <SEO
-        title="Features"
-        longTitle="Spokestack Features"
-        description={`Discover all of the features Spokestack to make your app fully voice-enabled,
-        including Automatic Speech Recognition, Natural Language Processing, Text-to-Speech, and Wakeword.`}
+        title="Features for Voice User Interfaces | Spokestack"
+        description="Spokestack makes it easy to add voice user interfaces to your mobile apps and websites. Explore the features of our libraries and services."
       />
       <div css={styles.container}>
         <section css={styles.content}>

@@ -1,6 +1,5 @@
 import Layout from './Layout'
 import React from 'react'
-import SEO from './SEO'
 import StickyNavLayout from './StickyNavLayout'
 import { WindowLocation } from '@reach/router'
 
@@ -23,11 +22,6 @@ interface Props {
 export default function About({ children, location }: Props) {
   return (
     <Layout location={location}>
-      <SEO
-        title="About us"
-        longTitle="Learn about our company"
-        description="About our team"
-      />
       <StickyNavLayout links={links} location={location}>
         {children}
       </StickyNavLayout>

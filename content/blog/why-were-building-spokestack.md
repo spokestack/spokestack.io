@@ -1,7 +1,7 @@
 ---
 title: Why We’re Building Spokestack
 date: '2019-12-10'
-description: Spokestack is a powerful platform of open source libraries and robust services to make your apps fully voice-enabled.
+description: At Spokestack, we build tools and services that make your app fully voice-enabled. 58% of Americans already use their smartphone as a voice assistant.
 author: mike
 tags: Business
 draft: false

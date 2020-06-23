@@ -8,19 +8,20 @@ import React, { useEffect, useState } from 'react'
 
 import Layout from '../components/Layout'
 import SVGIcon from '../components/SVGIcon'
+import { WindowLocation } from '@reach/router'
 import { createLink as createGitHubLink } from '../utils/oauthGitHub'
 import { createLink as createGoogleLink } from '../utils/oauthGoogle'
 import { css } from '@emotion/core'
 import { rhythm } from '../styles/typography'
-import { WindowLocation } from '@reach/router'
 
 interface Props {
+  children?: React.ReactNode
   header: string
   isCreate?: boolean
   location: WindowLocation
 }
 
-export default function Login({ header, isCreate, location }: Props) {
+export default function Login({ children, header, isCreate, location }: Props) {
   const [gitHubLink, setGitHubLink] = useState<string>(null)
   const [googleLink, setGoogleLink] = useState<string>(null)
   useEffect(() => {
@@ -29,6 +30,7 @@ export default function Login({ header, isCreate, location }: Props) {
   }, [])
   return (
     <Layout location={location}>
+      {children}
       <div css={styles.container}>
         <h4 css={styles.header}>{header}</h4>
         <div css={styles.content}>

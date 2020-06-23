@@ -1,7 +1,7 @@
 ---
 title: What to Include in a Survey
 date: '2020-05-29'
-description: Test your Independent Voice Assistant's interface using a carefully crafted survey.
+description: Ask the right questions up front and save time later. Get examples of new voice UI product survey questions and see our sample TTS product survey.
 tags: Design,Product
 author: elizabeth
 draft: false

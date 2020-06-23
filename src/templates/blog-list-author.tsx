@@ -10,7 +10,6 @@ import { MIN_DEFAULT_MEDIA_QUERY } from 'typography-breakpoint-constants'
 import { PageContext } from '../types'
 import { Query } from '../utils/graphql'
 import React from 'react'
-import SEO from '../components/SEO'
 import SocialLink from '../components/SocialLink'
 import find from 'lodash/find'
 
@@ -28,7 +27,6 @@ export default function BlogListAuthorTemplate({
   const { name, bio, social, title } = find(data.site.siteMetadata.team, {
     key: author
   })
-  const longTitle = `Here are all of the articles from ${name}.`
   return (
     <>
       <Global
@@ -39,11 +37,6 @@ export default function BlogListAuthorTemplate({
             }
           }
         `}
-      />
-      <SEO
-        title="Blog"
-        longTitle={longTitle}
-        description="Check out all of our articles related to voice assistants, voice search, Alexa skills, and more."
       />
       <BlogList
         currentPage={currentPage}

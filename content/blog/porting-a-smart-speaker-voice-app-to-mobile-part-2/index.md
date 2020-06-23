@@ -1,7 +1,7 @@
 ---
 title: Porting a Smart Speaker Voice App - Part 2
 date: '2020-06-08T00:00:01.000Z'
-description: How smart speaker voice apps can also run in mobile apps
+description: Spokestack introduces a new way to build and access voice apps independent from major virtual assistant platforms. Take your smart speaker app mobile.
 tags: Engineering, Product
 author: daniel
 draft: false

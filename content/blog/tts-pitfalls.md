@@ -1,7 +1,7 @@
 ---
 title: TTS, outside the (black) box
 date: '2020-05-27'
-description: A TTS system isn't just about generating audio
+description: Avoid text to speech pitfalls and learn more about TTS output. Josh Ziegler shares some of the edge cases we've encountered while building our system.
 author: josh
 tags: Engineering, Linguistics
 draft: false

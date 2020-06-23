@@ -1,7 +1,7 @@
 ---
 title: User Research for Voice Experiences
 date: '2020-05-15'
-description: An independent voice assistant can improve your app's overall experience. Discover how to build a conversational UI and what you need to get started.
+description: Design for verbal input is a specific UX problem if designing voice chat conversations in mobile UIs. Learn more about designing voice user interfaces.
 tags: Design, Product
 author: elizabeth
 draft: false

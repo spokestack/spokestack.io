@@ -1,10 +1,15 @@
 import AboutLayout from '../../components/AboutLayout'
 import { PageRendererProps } from 'gatsby'
 import React from 'react'
+import SEO from '../../components/SEO'
 
 export default function Story({ location }: PageRendererProps) {
   return (
     <AboutLayout location={location}>
+      <SEO
+        title="Giving Every App a Voice — Spokestack"
+        description="Our team has worked together on voice user interfaces (VUI) for over three years. Our mission is to give every mobile app a voice."
+      />
       <h1>Story</h1>
       <p>
         Our team has worked together on voice user interfaces (VUI) for over

@@ -1,7 +1,7 @@
 ---
 title: What Is an Independent Voice Assistant?
 date: '2020-05-12'
-description: An independent voice assistant, sometimes referred to as an "owned assistant", is a type of voice interface that enables companies to directly communicate with their customers.
+description: A voice assistant is a digital assistant using voice recognition, speech synthesis, and natural language processing (NLP) for service via an app.
 tags: Product
 author: mike
 draft: false

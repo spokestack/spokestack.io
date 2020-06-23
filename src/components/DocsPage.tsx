@@ -64,10 +64,12 @@ export default function DocsPage({ location, post, selectFirst }: Props) {
   return (
     <Layout location={location}>
       <SEO
-        title="Docs"
-        longTitle="Spokestack Documentation"
+        title="Voice App Development Documentation | Spokestack"
         description={
-          post.frontmatter.description || 'Documentation for the Spokestack API'
+          'Explore our Developer Docs to learn about Spokestack’s TTS technology and configuration options. All of our documentation is also available on GitHub.' +
+          post.frontmatter.description
+            ? ` ${post.frontmatter.description}`
+            : ''
         }
       />
       <StickyNavLayout links={orderedLinks} location={location}>

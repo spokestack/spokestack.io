@@ -51,9 +51,8 @@ export default function Pricing({ data, location }: Props) {
   return (
     <Layout location={location}>
       <SEO
-        title="Pricing"
-        longTitle="Spokestack Pricing"
-        description="Choose between the plans available for Spokestack, including Developer (free), Pro, and Enterprise."
+        title="Pricing — Spokestack"
+        description="Choose the right plan for you: Free, Pro, or Enterprise. We support Automatic Speech Recognition, Natural Language Understanding, and Text to Speech."
       />
       <div
         className="ie-fix"

@@ -4,7 +4,6 @@ import BlogList from '../components/BlogList'
 import { PageContext } from '../types'
 import { Query } from '../utils/graphql'
 import React from 'react'
-import SEO from '../components/SEO'
 
 type Props = PageRendererProps & {
   data: Query
@@ -19,22 +18,15 @@ export default function BlogListTagTemplate({
   const posts = data.allMarkdownRemark.edges
   const longTitle = `${posts.length} articles tagged with "${tag}"`
   return (
-    <>
-      <SEO
-        title="Blog"
-        longTitle={longTitle}
-        description="Check out all of our articles related to voice assistants, voice search, Alexa skills, and more."
-      />
-      <BlogList
-        currentPage={currentPage}
-        homeUrl={slug}
-        location={location}
-        numPages={numPages}
-        posts={posts}
-        tags={tags}
-        title={longTitle}
-      />
-    </>
+    <BlogList
+      currentPage={currentPage}
+      homeUrl={slug}
+      location={location}
+      numPages={numPages}
+      posts={posts}
+      tags={tags}
+      title={longTitle}
+    />
   )
 }
 

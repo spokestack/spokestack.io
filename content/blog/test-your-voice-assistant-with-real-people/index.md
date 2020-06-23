@@ -1,7 +1,7 @@
 ---
-title: Test your voice assistant with real people
+title: Test Your Voice Assistant with Real People
 date: '2020-06-05'
-description: Setting aside time to test your voice assistant with actual users is a worthwhile investment in usability.
+description: Testing your voice assistant with actual users is a worthwhile investment in usability. Learn to test voice assistants during the development process.
 tags: Design,Product
 author: elizabeth
 draft: false

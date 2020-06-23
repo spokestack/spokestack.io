@@ -19,10 +19,8 @@ export default function Support({ data, location }: Props) {
   return (
     <Layout location={location}>
       <SEO
-        title="Support"
-        longTitle="Spokestack Support"
-        description={`We're here to help. Find support through multiple channels,
-          including GitHub, Twitter, Discourse, and Stack Overflow.`}
+        title="Text to Speech Voice Integration Support — Spokestack"
+        description="We offer multiple support channels that best suit your text to speech topic or voice product. Choose from GitHub, Twitter, Stack Overflow, or our Forum."
       />
       <div css={styles.container}>
         <section css={styles.content}>

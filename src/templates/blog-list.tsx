@@ -4,7 +4,6 @@ import BlogList from '../components/BlogList'
 import { PageContext } from '../types'
 import { Query } from '../utils/graphql'
 import React from 'react'
-import SEO from '../components/SEO'
 
 type Props = PageRendererProps & {
   data: Query
@@ -18,22 +17,15 @@ export default function BlogListTemplate({
   pageContext: { numPages, currentPage, slug, tags }
 }: Props) {
   return (
-    <>
-      <SEO
-        title="Blog"
-        longTitle="The Spokestack Blog"
-        description="Check out all of our articles related to voice assistants, voice search, Alexa skills, and more."
-      />
-      <BlogList
-        currentPage={currentPage}
-        homeUrl={slug}
-        location={location}
-        numPages={numPages}
-        posts={data.allMarkdownRemark.edges}
-        tags={tags}
-        title="Blog"
-      />
-    </>
+    <BlogList
+      currentPage={currentPage}
+      homeUrl={slug}
+      location={location}
+      numPages={numPages}
+      posts={data.allMarkdownRemark.edges}
+      tags={tags}
+      title="Blog"
+    />
   )
 }
 

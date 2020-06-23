@@ -9,7 +9,6 @@ import {
   MIN_DEFAULT_MEDIA_QUERY,
   MIN_LARGE_DISPLAY_MEDIA_QUERY
 } from 'typography-breakpoint-constants'
-import { RelatedLink } from '../types'
 
 import Author from './Author'
 import Create from './homepage/Create'
@@ -18,13 +17,14 @@ import Layout from '../components/Layout'
 import { Link } from 'gatsby'
 import { MarkdownRemark } from '../utils/graphql'
 import React from 'react'
+import { RelatedLink } from '../types'
 import SEO from '../components/SEO'
 import Tags from './Tags'
+import { WindowLocation } from '@reach/router'
 import { css } from '@emotion/core'
 import findImage from '../utils/findImage'
 import { isLoggedIn } from '../utils/auth'
 import { rhythm } from '../styles/typography'
-import { WindowLocation } from '@reach/router'
 
 interface Props {
   location: WindowLocation
@@ -36,9 +36,8 @@ export default function BlogPost({ location, post, related }: Props) {
   return (
     <Layout contentStyle={styles.post} location={location}>
       <SEO
-        title="Blog"
-        longTitle={post.frontmatter.title}
-        description={post.frontmatter.description || 'The Spokestack Blog'}
+        title={`${post.frontmatter.title} - Spokestack`}
+        description={post.frontmatter.description}
         image={findImage(post.html)}
       />
       <div className="ie-fix" css={styles.container}>

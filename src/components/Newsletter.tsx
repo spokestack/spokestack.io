@@ -30,7 +30,7 @@ export default function Newsletter() {
   return (
     <form
       ref={formRef}
-      action="https://spokedaily.substack.com/api/v1/free?nojs=true"
+      action="https://spokestack.substack.com/api/v1/free?nojs=true"
       method="post"
       onSubmit={submit}
       css={styles.form}>

@@ -4,7 +4,7 @@ date: '2020-06-29'
 description: With Spokestack, your voice app can declare independence!
 author: noel
 tags: Engineering
-draft: true
+draft: false
 ---
 
 ![Today we celebrate our Independence Day!](./independence.gif)

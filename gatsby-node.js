@@ -38,6 +38,9 @@ async function getRelated({ tags, slug, graphql }) {
               slug: { ne: "${slug}" }
               tags: { in: ${JSON.stringify(tags)} }
             }
+            frontmatter: {
+              ${isProd ? 'draft: { ne: true },' : ''}
+            }
           }
           limit: 3
         ) {
@@ -225,7 +228,9 @@ exports.createPages = async ({ graphql, actions, reporter }) => {
       tags: allMarkdownRemark(
         filter: {
           fileAbsolutePath: { regex: "/blog/" }
-          fields: { tags: { ne: null } }
+          fields: { tags: { ne: null } }${
+            isProd ? ',frontmatter: { draft: { ne: true } }' : ''
+          }
         }
       ) {
         edges {

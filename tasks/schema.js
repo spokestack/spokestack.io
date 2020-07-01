@@ -18,7 +18,6 @@ if (!githubToken) {
 }
 
 console.log('API URL: ', apiUrl)
-// console.log(introspectionQuery)
 
 shell.exec(`graphql-inspector diff ./src/apollo/schema.graphql ${apiUrl}/control \
   --header "Authorization:${userToken}"

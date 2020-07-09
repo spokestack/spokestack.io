@@ -19,7 +19,7 @@ This tutorial is a direct port of the [Alexa sample skill](https://github.com/al
 
 The easiest way to install Spokestack on iOS is using CocoaPods as described in more detail in the [getting started docs](/docs/iOS/getting-started). Download and unzip the [example code](https://d3dmqd7cy685il.cloudfront.net/docs/minecraft-ios-tutorial.zip). In the "start" folder, you’ll see a `Podfile` with the following contents:
 
-```
+```ruby
 platform :ios, '13.0'
 
 target 'Minecraft Skill Demo' do

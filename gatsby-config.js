@@ -193,10 +193,12 @@ module.exports = {
             }
           },
           'gatsby-remark-copy-linked-files',
-          'gatsby-remark-smartypants'
+          'gatsby-remark-smartypants',
+          'gatsby-remark-embedder'
         ]
       }
     },
+    'gatsby-plugin-twitter',
     {
       resolve: 'gatsby-plugin-feed',
       options: {

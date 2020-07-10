@@ -27,7 +27,7 @@ Because users haven't been shown enough examples of mobile apps carrying out tas
 
 We think that if Alexa trains users to understand that they can say "Hey Siri, open Alexa" to have a conversation, it will change users' expectations of mobile voice conversations.
 
-We tweeted our thoughts in a [thread on the Alexa mobile app news](https://twitter.com/spokestack/status/1280660757823160321?s=20).
+https://twitter.com/spokestack/status/1280660757823160321
 
 That's because the Alexa mobile app will help users make the mental connection that, in addition to Siri and Google Assistant, mobile apps can carry on conversations with them on their mobile device. Specifically, they can have robust conversations that help them complete tasks they wouldn't otherwise be able to accomplish as fast. It might be because they are driving or in some sort of hands-free situation. Or might just be because voice is faster and easier than tapping and typing for certain tasks. Either way, convenience tends to drive consumer adoption once they see it.
 

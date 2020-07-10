@@ -25,7 +25,11 @@ So why is it such a leap to think the same interaction can't happen on mobile?
 
 Because users haven't been shown enough examples of mobile apps carrying out tasks by voice yet.
 
-We think that if Alexa trains users to understand that they can say "Hey Siri, open Alexa" to have a conversation, it will change users' expectations of mobile voice conversations.
+We think that if Alexa trains users to understand that they can say
+
+> "Hey Siri, open Alexa"
+
+to have a conversation, it will change users' expectations of mobile voice conversations.
 
 https://twitter.com/spokestack/status/1280660757823160321
 

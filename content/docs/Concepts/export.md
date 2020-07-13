@@ -28,3 +28,11 @@ This guide details the process of exporting an existing skill from Alexa or Dial
 5. Select `Export as zip` and save the `.zip` file.
 
 6. Upload the `.zip` file to the [Spokestack Console](https://spokestack.io/account/services/nlu)
+
+## Export From Jovo
+
+1. Add your Spokestack API key and secret to your project's configuration file.
+
+2. Run the `jovo build` command to create a `platforms/spokestack` directory.
+
+3. Run the `jovo deploy` command to upload your model.

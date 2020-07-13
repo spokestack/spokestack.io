@@ -1,13 +1,13 @@
 ---
-title: Export Existing NLU Model
+title: Export An Existing NLU Model
 navId: Export
-description: Export existing Dialogflow/Alexa model to Spokestack
+description: Convert an existing Alexa, Dialogflow, or Jovo model into Spokestack's format
 draft: false
 ---
 
-This guide details the process of exporting an existing skill from Alexa or Dialogflow for use with Spokestack.
+This guide details the process of exporting an existing interaction model from Alexa, Dialogflow, or Jovo for use with Spokestack.
 
-## Export From Alexa
+## Alexa
 
 1. Go to the [Alexa Developer Console](https://developer.amazon.com/en-US/docs/alexa/devconsole/about-the-developer-console.html).
 
@@ -15,7 +15,7 @@ This guide details the process of exporting an existing skill from Alexa or Dial
 
 3. Upload `{skill_name}.json` to the [Spokestack Console](https://spokestack.io/account/services/nlu)
 
-## Export From Dialogflow
+## Dialogflow
 
 1. Go to the [Dialogflow Console](https://dialogflow.cloud.google.com/).
 
@@ -29,10 +29,10 @@ This guide details the process of exporting an existing skill from Alexa or Dial
 
 6. Upload the `.zip` file to the [Spokestack Console](https://spokestack.io/account/services/nlu)
 
-## Export From Jovo
+## Jovo
 
 1. Add your Spokestack API key and secret to your project's configuration file.
 
-2. Run the `jovo build` command to create a `platforms/spokestack` directory.
+2. Run the [`jovo build`](https://www.jovo.tech/marketplace/jovo-cli/build) command to create a `platforms/spokestack` directory.
 
-3. Run the `jovo deploy` command to upload your model.
+3. Run the [`jovo deploy`](https://www.jovo.tech/marketplace/jovo-cli/deploy) command to upload your model.

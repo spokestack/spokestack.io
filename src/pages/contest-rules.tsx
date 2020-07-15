@@ -1,8 +1,9 @@
-import React from 'react'
+import * as theme from '../styles/theme'
+
 import Layout from '../components/Layout'
 import { PageRendererProps } from 'gatsby'
+import React from 'react'
 import { css } from '@emotion/core'
-import * as theme from '../styles/theme'
 
 export default function Rules({ location }: PageRendererProps) {
   return (
@@ -94,8 +95,8 @@ export default function Rules({ location }: PageRendererProps) {
           </p>
           <p>
             Submissions must be received between 12:00:01 a.m. Pacific Time
-            (&ldquo;PT&rdquo;) on June 16th, 2020, and 11:59:59 p.m. PT on July
-            16th, 2020 (the &ldquo;Entry Period&rdquo;).
+            (&ldquo;PT&rdquo;) on June 15th, 2020, and 11:59:59 p.m. PT on
+            September 15th, 2020 (the &ldquo;Entry Period&rdquo;).
           </p>
         </section>
         <section>
@@ -197,7 +198,7 @@ export default function Rules({ location }: PageRendererProps) {
             their Submission is disqualified or if their Submission does not
             win. The potential Winners will be notified by email (in the sole
             discretion of Sponsor) provided at the time of entry on or around
-            July 14, 2020 (&ldquo;Prize Notification&rdquo;). The potential
+            October 1, 2020 (&ldquo;Prize Notification&rdquo;). The potential
             Winner must, within seven (7) days of the date of issuance, execute
             and return an Affidavit of Eligibility and Release of Liability and,
             unless prohibited by law, a Publicity Release, and any other
@@ -378,7 +379,7 @@ export default function Rules({ location }: PageRendererProps) {
             <a href="mailto:hello@spokestack.io">hello@spokestack.io</a>; or a
             self-addressed stamped envelope to Spokestack Attn: Export to
             Freedom Contest at 369 3rd Street, B575, San Rafael, CA 94901.
-            Requests must be received by September 4th, 2020.
+            Requests must be received by October 4th, 2020.
           </p>
         </section>
         <section>
@@ -386,7 +387,7 @@ export default function Rules({ location }: PageRendererProps) {
           <p>
             For a list of Winners, submit your request to{' '}
             <a href="mailto:hello@spokestack.io">hello@spokestack.io</a> by
-            September 15, 2020.
+            October 15, 2020.
           </p>
         </section>
         <section>

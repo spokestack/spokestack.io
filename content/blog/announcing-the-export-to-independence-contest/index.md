@@ -27,11 +27,11 @@ Export to Independence is a community contest to see who can best port a smart s
 - All teams that submit a final app will receive a Spokestack t-shirt for up to 3 team members
 - Every person who enters and creates an account will receive a Spokestack Smiley Facemask
 
-### Dates
+### Dates - Extended!
 
 - Contest officially starts Monday, June 15th
-- Submissions must be submitted by Wednesday, July 15th
-- Winners will be announced Saturday, August 1st
+- Submissions must be submitted by Tuesday, September 15th
+- Winners will be announced Thursday, October 1st
 
 ### Requirements
 

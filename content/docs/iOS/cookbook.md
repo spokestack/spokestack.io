@@ -16,9 +16,13 @@ import Spokestack
 
 // The default configuration uses Apple's ASR as both a
 // wakeword recognizer and speech recognizer
-// `self` adopts the `SpeechEventListener` and
-// `PipelineDelegate` protocols
-let pipeline = SpeechPipeline(self, pipelineDelegate: self)
+// `self` adopts the `SpeechEventListener` protocol
+lazy public var pipeline: SpeechPipeline = {
+    return SpeechPipelineBuilder()
+    .setListener(self)
+    .useProfile(.appleWakewordAppleSpeech)
+    .build()
+  }()
 
 ...
 
@@ -45,29 +49,20 @@ func onTalkButtonPressed() {
 
 ### Use a custom wakeword
 
-This example uses the default configuration, which is to say that Apple ASR is used as a wakeword detector. This may or may not perform well for your specific wakeword, but it should be suitable for demo purposes. Contact us for more information about developing a custom wakeword for your app.
+This example uses the same profile as the previous recipe, which is to say that Apple ASR is used as a wakeword detector. This may or may not perform well for your specific wakeword, but it should be suitable for demo purposes. Contact us for more information about developing a custom wakeword for your app.
 
 ```swift
 import Spokestack
 
 ...
 
-let pipeline: SpeechPipeline?
-
-func initPipeline() {
-    var config = SpeechConfiguration()
-    config.wakewords = "custom,phrase"
-
-    // `self` adopts the `SpeechEventListener` and
-    // `PipelineDelegate` protocols
-    self.pipeline = SpeechPipeline(
-        SpeechProcessors.appleSpeech.processor,
-        speechConfiguration: config,
-        speechDelegate: self,
-        wakewordService: SpeechProcessors.appleWakeword.processor,
-        pipelineDelegate: self
-    )
-}
+  lazy public var pipeline: SpeechPipeline = {
+          return SpeechPipelineBuilder()
+          .setListener(self)
+          .useProfile(.appleWakewordAppleSpeech)
+          .setProperty("wakewords", "custom,phrase")
+          .build()
+        }()
 ```
 
 ### Recognize Wakewords On-Device
@@ -79,14 +74,17 @@ import Spokestack
 
 ...
 
-// `self` adopts the `SpeechEventListener` and
-// `PipelineDelegate` protocols
-let pipeline = SpeechPipeline(
-    SpeechProcessors.appleSpeech.processor,
-    speechConfiguration: SpeechConfiguration(),
-    speechDelegate: self,
-    wakewordService: SpeechProcessors.tfLiteWakeword.processor,
-    pipelineDelegate: self
+// `self` adopts the `SpeechEventListener`  protocol
+// `*Path` variables are string paths to the models downloaded above
+lazy public var pipeline = SpeechPipelineBuilder()
+            .setListener(self)
+            .setDelegateDispatchQueue(DispatchQueue.main)
+            .useProfile(.tfLiteWakewordAppleSpeech)
+            .setProperty("tracing", ".PERF")
+            .setProperty("detectModelPath", detectPath)
+            .setProperty("encodeModelPath", encodePath)
+            .setProperty("filterModelPath", filterPath)
+            .build()
 )
 ```
 

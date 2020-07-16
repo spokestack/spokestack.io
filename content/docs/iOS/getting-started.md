@@ -79,11 +79,12 @@ func application(_ application: UIApplication, didFinishLaunchingWithOptions lau
 With the proper permissions in place, it's time to decide where you'd like to receive and process speech input and output. In a single-view app, the easiest place for this is going to be your main view controller. `import Spokestack` at the top of the file, and add `SpeechPipeline`, `TensorflowNLU`, and `TextToSpeech` class members:
 
 ```swift
-public let configuration = SpeechConfiguration()
-public let pipeline = SpeechPipeline(self, pipelineDelegate: self)
-public let tts = TextToSpeech(self, configuration: configuration)
-public let nlu = try! NLUTensorflow(self, configuration: configuration)
-
+public let pipeline = SpeechPipelineBuilder()
+    .setListener(self)
+    .useProfile(.vadTriggerAppleSpeech)
+    .build()
+public let tts = TextToSpeech(self, configuration: pipeline.configuration)
+public let nlu = try! NLUTensorflow(self, configuration: pipeline.configuration)
 ```
 
 Note that these components must persist outside the scope of the calling function, so don't declare it inside a function call that will get garbage collected! If this is confusing, please consult the [fuller discussion of the pipeline](speech-pipeline). Then, after things are loaded:
@@ -92,7 +93,7 @@ Note that these components must persist outside the scope of the calling functio
 pipeline.start()
 ```
 
-Note that we're using a convenience initializer for `SpeechPipeline` that makes a variety of configuration decisions on our behalf. There's more to talk about here, but they're topics for another guide.
+There are many options for configuring the speech pipeline. This particular setup will begin capturing audio when `pipeline.start()` is called and use a Voice Activity Detection (VAD) component to send any audio determined to be speech through on-device ASR using Apple's `SFSpeech` API. In other words, the app is always actively listening, and no wakeword detection is performed. See [the configuration guide](/docs/iOS/speech-pipeline) for more information about pipeline building options. Using a `vadTriggerAppleSpeech` profile is a good way to test out ASR without having to tap a button to activate it or downloading and configuring wakeword models, but it's probably not a good choice for a production app because it'll lead to a lot of ASR false positives and conflict with any TTS prompts you're trying to play for the user.
 
 The `self` in this example means that the class containing this pipeline also adopts `PipelineDelegate`, `SpeechEventListener`, `NLUDelegate`, and `TextToSpeechDelegate` which, conveniently enough, are the next steps.
 
@@ -120,15 +121,15 @@ All we're doing here is reflecting system events back to the main pipeline. See 
 
 Now that you _have_ the pipeline all set up, how do you _use_ it? It's easy, but the answer depends on your app's needs:
 
-#### I want to use a wakeword
+#### I want the user to tap a button before talking
 
-If you want your app to be controllable purely by voice, you need a wakeword -- a word (or short phrase) that tells your app "the next thing the user says is meant for you". Spokestack comes with a default wakeword ("Spokestack", believe it or not), and that's enabled by default in the `SpeechPipeline` we just set up. To begin listening for it, just call `pipeline.start()`.
+We've already configured the speech pipeline to use a tap-to-talk option! After the pipeline is started, call `pipeline.activate()` in the action of whatever button you want to activate the microphone. This skips the wakeword step of the pipeline and starts the Automatic Speech Recognition (ASR) component directly. ASR will stop automatically after the user is silent for a few seconds (how _many_ seconds is one of the configuration parameters we hinted at earlier) or after a preconfigured timeout is reached, but if you need to stop listening immediately for any reason, call `pipeline.deactivate()`. You can then call `pipeline.activate()` to start ASR again or `pipeline.stop()` to shut the pipeline down completely.
 
 Note that, as we mentioned earlier, the very first time you start a speech pipeline, the microphone is activated, so your user will be presented with permissions modals for the microphone and speech recognition; you may want to plan for this in your designs.
 
-#### I want the user to tap a button before talking
+#### I want to use a wakeword
 
-If a wakeword-driven experience isn't for you, or if you want to give users a tap-to-talk option, call `pipeline.start()` followed by `pipeline.activate()` in the action of whatever button you want to activate the microphone. This skips the wakeword step of the pipeline and starts the Automatic Speech Recognition (ASR) component directly. ASR will stop automatically after the user is silent for a few seconds (how _many_ seconds is one of the configuration parameters we hinted at earlier) or after a preconfigured timeout is reached, but if you need to stop listening immediately for any reason, call `pipeline.deactivate()`. You can then call `pipeline.activate()` to start ASR again or `pipeline.stop()` to shut the pipeline down completely.
+If you want your app to be controllable purely by voice, you need a wakeword -- a word (or short phrase) that tells your app "the next thing the user says is meant for you". Spokestack comes with a default wakeword ("Spokestack", believe it or not), and that's enabled just by changing the pipeline profile enum in the `SpeechPipeline` we just set up. Try changing `.vadTriggerAppleSpeech` to `.appleWakewordAppleSpeech` in that first code example. Then, to begin listening for it, just call `pipeline.start()`.
 
 ## Understanding your users
 

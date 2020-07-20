@@ -17,7 +17,7 @@ This is the speech pipeline's state machine:
 
 ![](images/speech_pipeline_ios.png 'iOS speech pipeline')
 
-As you can see, once the pipeline has been is built (after the return of `SpeechPipeline.Builder.build()`), calling `start()` puts it into a passive listening state—or it will if the pipeline has been properly configured. You _could_ have an ASR class as the only stage, in which case an ASR request would start immediately upon calling `start()`. This is almost certainly not what you want.
+As you can see, once the pipeline has been built (after the return of `SpeechPipelineBuilder.build()`), calling `start()` puts it into a passive listening state—or it will if the pipeline has been properly configured. You _could_ have an ASR class as the only stage, in which case an ASR request would start immediately upon calling `start()`. This is almost certainly not what you want.
 
 While the pipeline is listening passively, it sends audio through its stages a frame at a time (a "frame" defaults to 20 ms of audio, but [it's configurable](/docs/Concepts/pipeline-configuration)). That audio is not leaving the device, though; it's waiting for a stage to recognize a trigger word or phrase and set the pipeline's `SpeechContext` to `active`. The classes that do this in Spokestack have `Wakeword` or `Trigger` in their names. See `AppleWakewordRecognizer`and `VADTrigger` for examples.
 
@@ -78,10 +78,10 @@ If you start the pipeline from a user interaction like a button press that calls
 
 The speech configuration is comprehensive enough to have its own guide, but in summary, this is where most of the fine-tuning for both wakeword and ASR happens. See the [configuration guide](/docs/Concepts/pipeline-configuration) or [API reference](https://spokestack.github.io/spokestack-ios/) for more details on each of these, but here are a few examples of the parameters you can change:
 
-- `tracing`: If you want more verbose debug logging from Spokestack components, setting this to `.TRACE` or `.DEBUG` will make you satisfied.
+- `tracing`: If you want more verbose debug logging from Spokestack components, set this to `.TRACE` or `.DEBUG`.
 - `wakewords`: If you're using ASR-based wakeword detection, these properties let you change your app's wakeword(s).
 - `wakeActiveMax`: The maximum amount of time (in milliseconds) that ASR will remain active to capture a single user utterance.
-- (`filter`|`detect`|`encode`)`ModelName`: Names for custom [TensorFlow Lite](https://www.tensorflow.org/lite) wakeword models. Training custom models is outside the scope of this guide, but you can find a description of their requirements in our [wakeword models guid](wakeword-models).
+- (`filter`|`detect`|`encode`)`ModelName`: Names for custom [TensorFlow Lite](https://www.tensorflow.org/lite) wakeword models. Training custom models is outside the scope of this guide, but you can find a description of their requirements in our [wakeword models guid](/docs/Concepts/wakeword-models).
 
 ## Other methods
 
@@ -95,4 +95,4 @@ As mentioned before, these methods control the pipeline's ASR component. `pipeli
 
 These methods control the pipeline as a whole. When stopped, the pipeline consumes fewer resources, but no speech recognition, either wakeword or ASR, can happen. Call `start` to begin listening for a wakeword, and follow it immediately with a call to `activate` if you want to jump straight to ASR (this is most likely to be useful in an app that doesn't use the wakeword feature at all). Call `stop` to deactivate the microphone.
 
-Once created, a single instance of `SpeechPipeline` can be stopped and restarted at will; just remember that Spokestack cannot use the device's microphone when it is stopped, and that stopping and starting require much more resources than `activate`/`deactivate`.
+Once created, a single instance of `SpeechPipeline` can be stopped and restarted at will; just remember that Spokestack cannot use the device's microphone when it is stopped, and that `start` and `stop` are much more expensive than `activate`/`deactivate`.

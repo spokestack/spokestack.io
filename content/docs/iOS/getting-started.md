@@ -129,7 +129,7 @@ Note that, as we mentioned earlier, the very first time you start a speech pipel
 
 #### I want to use a wakeword
 
-If you want your app to be controllable purely by voice, you need a wakeword -- a word (or short phrase) that tells your app "the next thing the user says is meant for you". Spokestack comes with a default wakeword ("Spokestack", believe it or not), and that's enabled just by changing the pipeline profile enum in the `SpeechPipeline` we just set up. Try changing `.vadTriggerAppleSpeech` to `.appleWakewordAppleSpeech` in that first code example. Then, to begin listening for it, just call `pipeline.start()`.
+If you want your app to be controllable purely by voice, you need a wakeword — a word (or short phrase) that tells your app "the next thing the user says is meant for you". Spokestack comes with a default wakeword ("Spokestack", believe it or not), and that's enabled just by changing the pipeline profile enum in the `SpeechPipeline` we just set up. Try changing `.vadTriggerAppleSpeech` to `.appleWakewordAppleSpeech` in that first code example. Then, to begin listening for it, just call `pipeline.start()`.
 
 ## Understanding your users
 

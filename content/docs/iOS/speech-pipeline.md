@@ -15,13 +15,13 @@ As the name implies, `SpeechPipeline` is a collection of distinct modular compon
 
 This is the speech pipeline's state machine:
 
-![](images/speech_pipeline_android.png 'Android speech pipeline')
+![](images/speech_pipeline_ios.png 'iOS speech pipeline')
 
 As you can see, once the pipeline has been is built (after the return of `SpeechPipeline.Builder.build()`), calling `start()` puts it into a passive listening state—or it will if the pipeline has been properly configured. You _could_ have an ASR class as the only stage, in which case an ASR request would start immediately upon calling `start()`. This is almost certainly not what you want.
 
-While the pipeline is listening passively, it sends audio through its stages a frame at a time (a "frame" defaults to 20 ms of audio, but [it's configurable](/docs/Concepts/pipeline-configuration)). That audio is not leaving the device, though; it's waiting for a stage to recognize a trigger word or phrase and set the pipeline's `SpeechContext` to `active`. The classes that do this in Spokestack typically have names that end in `Trigger`; see `WakewordTrigger` and `VoiceActivityTrigger` for examples.
+While the pipeline is listening passively, it sends audio through its stages a frame at a time (a "frame" defaults to 20 ms of audio, but [it's configurable](/docs/Concepts/pipeline-configuration)). That audio is not leaving the device, though; it's waiting for a stage to recognize a trigger word or phrase and set the pipeline's `SpeechContext` to `active`. The classes that do this in Spokestack have `Wakeword` or `Trigger` in their names. See `AppleWakewordRecognizer`and `VADTrigger` for examples.
 
-The pipeline can also be activated by calling its `activate` method. This is what you'd do to implement push-to-talk. Once activated, it can be deactivated by calling `deactivate`, or it will remain active until a pre-set timeout is triggered (see `active-min` and `active-max` in the [configuration documentation](/docs/Concepts/pipeline-configuration)).
+The pipeline can also be activated by calling its `activate` method. This is what you'd do to implement push-to-talk. Once activated, it can be deactivated by calling `deactivate`, or it will remain active until a pre-set timeout is triggered (see `wakeActiveMin` and `wakeActiveMax` in the [configuration documentation](/docs/Concepts/pipeline-configuration)).
 
 When active, audio frames are not processed on-device but are instead sent to an ASR service to be transcribed (if an ASR component is registered in the pipeline; these components have names that end in `SpeechRecognizer`). These ASR requests end when a pre-set timeout is reached or when the pipeline's `SpeechContext` is manually set to inactive. At that point, the ASR service's best effort at a transcription is delivered via a speech event to any registered listeners.
 
@@ -47,11 +47,7 @@ Spokestack offers several pre-built "profiles" that bundle stage classes and in 
 - `Wakeword` profiles use either [TensorFlow Lite](https://www.tensorflow.org/lite) or an ASR-filtered wakeword triggered pipeline activation. [See an explainer](https://spokestack.io/blog/choosing-the-right-ios-wakeword-service) for how to choose between wakeword profiles.
 - `pushToTalk` profiles have no automatic triggering; the pipeline's `activate` method must be called to perform speech recognition.
 
-The wakeword service is in charge of, you guessed it, recognizing that the user has said your app's wakeword. On iOS, this defaults to using Apple's built-in ASR to detect your chosen wakeword, but for better performance you might want to experiment with a customized TensorFlow Lite model. Spokestack comes with a set of models trained to detect "Spokestack" as a wakeword, but you're also free to train your own and configure Spokestack to use them at runtime. You can find descriptions of the models' requirements in our [wakeword models guide](wakeword-models), but if building and training them isn't something you want to take on, [send us an email](mailto:hello@spokestack.io), and we can discuss customization options.
-
-The speech service is responsible for performing Automatic Speech Recognition (ASR) on arbitrary user audio. It's the component that calls `didRecognize` on your `SpeechEventListener` (which we'll talk about later). Currently, Spokestack only supports Apple's built-in ASR, via the `AppleSpeechRecognizer` class.
-
-Profiles take care of all configuration that can be managed in a one-size-fits-all fashion, but note that some components require additional configuration, such as third-party API keys, paths to TensorFlow models, or the `DispatchQueue` for sending events that are recieved on the UI thread.
+Profiles take care of all configuration that can be managed in a one-size-fits-all fashion. For example, note the paths to the wakeword models in the example above. Some components require additional configuration, such as third-party API keys, paths to TensorFlow models, or the `DispatchQueue` for sending events that are received on the UI thread.
 
 Any configuration properties set after a profile is applied will override configuration set by that profile.
 
@@ -59,24 +55,24 @@ Any configuration properties set after a profile is applied will override config
 
 All pipeline activity, including activations, deactivations, ASR timeouts, receipt of ASR transcriptions, and tracing messages/errors are delivered asynchronously to components that implement the `SpeechEventListener` protocol and are registered in the pipeline via `setListener` at build time.
 
-- `SpeechDelegate.didActivate`: called immediately after a wakeword has been recognized.
-- `SpeechDelegate.didDeactivate`: called after ASR has completed or timed out.
-- `SpeechDelegate.didRecognize`: called after ASR has successfully recognized an utterance. `SpeechDelegate.didDeactivate` will also be called.
-- `SpeechDelegate.didTimeout`: called after ASR timed out while listening for an utterance. `SpeechDelegate.didDeactivate` will also be called.
+- `didActivate`: called immediately after a wakeword has been recognized.
+- `didDeactivate`: called after ASR has completed or timed out.
+- `didRecognize`: called after ASR has successfully recognized an utterance. `didDeactivate` will also be called.
+- `didTimeout`: called after ASR timed out while listening for an utterance. `didDeactivate` will also be called.
 
-Your implementations of all these methods will be very important to how your app handles voice interactions, because the delegate acts as a kind of gatekeeper between speech events and pipeline operation. You'll recall that earlier we mentioned a UI "listening" indicator would go in `speechDelegate`'s `didActivate` method, and that's true in many cases — often you'll want to alert the user that you're expecting a voice command from them (that the ASR component is active and interpreting their speech). If, however, you want to let the user know that the device's microphone _itself_ is active (which it naturally will be when waiting for a wakeword), you'll want to condition that indicator on the pipeline's `start` and `stop` events. The types of events it receives depends on whether the ASR has been activated from a wakeword or by using `pipeline.activate()`.
+Your implementations of all these methods will be very important to how your app handles voice interactions, because the delegate acts as a kind of gatekeeper between speech events and pipeline operation. You'll recall that earlier we mentioned a UI "listening" indicator would go in `didActivate`, and that's true in many cases — often you'll want to alert the user that you're expecting a voice command from them (that the ASR component is active and interpreting their speech). If, however, you want to let the user know that the device's microphone _itself_ is active (which it naturally will be when waiting for a wakeword), you'll want to condition that indicator on the pipeline's `start` and `stop` events. The types of events it receives depends on whether the ASR has been activated from a wakeword or by using `pipeline.activate()`.
 
 **Wakeword with ASR**
 
-If you want ASR to start after your app hears the wakeword, you must call `pipeline.activate()` in your delegate's `activate` implementation so the pipeline can activate the ASR component. You may also wish to display a "listening" indicator in your UI when you receive `activate` and remove it when `deactivate` is called.
+Using a profile that has `Speech` in the name will automatically trigger ASR upon wakeword activation, also sending you the `didActivate` event.
 
 **Wakeword without ASR**
 
-If you're using Spokestack's wakeword feature _without_ ASR, you should not call `pipeline.activate()` in your delegate's `activate` implementation.
+Using a profile that does not have `Speech` in the name will send the `didActivate` event upon the wakeword being triggered.
 
 **Push to Talk**
 
-If you start the pipeline from a user interaction like a button press that calls `pipeline.activate()`, `SpeechDelegate.activate` will not be called. If you wish to display a "listening" indicator in your UI, you should do so in the same method that calls `pipeline.activate()` but remove it when `SpeechDelegate.deactivate` is called.
+If you start the pipeline from a user interaction like a button press that calls `pipeline.activate()`, `didActivate` will be called. You may also wish to display a "listening" indicator in your UI when you receive `didActivate` and remove it when `didDeactivate` is called.
 
 ### 3. `setProperty`
 

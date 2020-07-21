@@ -82,13 +82,13 @@ jobs:
           command: sudo apt-get -y -qq install awscli
       - run:
           name: Build and push static site
-          command: aws s3 sync --delete public s3://spokestack.io/
+          command: aws s3 sync --delete public s3://www.spokestack.io/
       - run:
           name: Enable cloudfront cli
           command: aws configure set preview.cloudfront true
       - run:
           name: Invalidate the cdn caches
-          command: aws cloudfront create-invalidation --distribution-id E1P3DI1Q9L6OBH --paths "/*"
+          command: aws cloudfront create-invalidation --distribution-id E3BUXJK1QMX4F5 --paths "/*"
 
 workflows:
   version: 2

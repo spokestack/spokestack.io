@@ -160,9 +160,10 @@ async function createTagPages({ tag, tags, actions, graphql, template }) {
   })
 }
 
-function createPages({ actions, graphql, posts, template }) {
+async function createPages({ actions, graphql, posts, template }) {
   const { createPage } = actions
-  return posts.map(async (post, index) => {
+  for (let index = 0; index < posts.length; index++) {
+    const post = posts[index]
     const previous = index === posts.length - 1 ? null : posts[index + 1].node
     const next = index === 0 ? null : posts[index - 1].node
     const fields = post.node.fields
@@ -177,12 +178,12 @@ function createPages({ actions, graphql, posts, template }) {
       context.related = related
     }
 
-    createPage({
+    await createPage({
       path: slug,
       component: template,
       context
     })
-  })
+  }
 }
 
 exports.createPages = async ({ graphql, actions, reporter }) => {

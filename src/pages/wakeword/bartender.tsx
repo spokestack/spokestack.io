@@ -6,10 +6,7 @@ import Wakeword from '../../components/Wakeword'
 export default function WakewordBartender({ location }: PageRendererProps) {
   return (
     <Layout location={location}>
-      <Wakeword
-        assistant="spokestack-bartender"
-        wakewords={['Hey bartender', 'Bartender']}
-      />
+      <Wakeword assistant="spokestack-bartender" />
     </Layout>
   )
 }

@@ -1,16 +1,16 @@
 import * as theme from '../styles/theme'
 
 import React, { PureComponent } from 'react'
+import { getWakeword, uploadWakeword } from '../utils/wakeword'
 
 import Button from './Button'
 import Card from './Card'
 import { CopyButton } from './EditButtons'
 import { MIN_DEFAULT_MEDIA_QUERY } from 'typography-breakpoint-constants'
 import SVGIcon from './SVGIcon'
+import { capitalize } from 'lodash'
 import { css } from '@emotion/core'
-import randomChoice from '../utils/randomChoice'
 import { record } from 'spokestack/client'
-import uploadWakeword from '../utils/uploadWakeword'
 
 const MAX_RECORD_TIME = 2.9
 
@@ -38,16 +38,17 @@ function Checkmark(props: React.SVGProps<SVGSVGElement>) {
 interface Props {
   numRecordings?: number
   assistant: string
-  wakewords: string[]
 }
 
 interface State {
   error: string
   listening: boolean
+  loading: boolean
   uploading: boolean
   remaining: number
   recorded: number
   token: string
+  wakeword: string
 }
 
 export default class Wakeword extends PureComponent<Props, State> {
@@ -61,20 +62,36 @@ export default class Wakeword extends PureComponent<Props, State> {
   state: State = {
     error: '',
     listening: false,
+    loading: false,
     uploading: false,
     remaining: this.props.numRecordings,
     recorded: 0,
-    token: ''
+    token: '',
+    wakeword: ''
   }
 
-  constructor(props: Props) {
-    super(props)
-    this.wakeword = randomChoice(props.wakewords)
+  async componentDidMount() {
+    const { assistant } = this.props
+    this.setState({ loading: true })
+    const [error, wakeword] = await getWakeword(assistant)
+    if (error) {
+      this.setState({ error: error.message, loading: false })
+      return
+    }
+    this.setState({ wakeword, loading: false })
   }
 
   getMessage() {
     const { numRecordings } = this.props
-    const { error, listening, uploading, remaining, recorded } = this.state
+    const {
+      error,
+      listening,
+      loading,
+      uploading,
+      remaining,
+      recorded,
+      wakeword
+    } = this.state
     if (error) {
       return error
     }
@@ -84,26 +101,29 @@ export default class Wakeword extends PureComponent<Props, State> {
     if (uploading) {
       return 'Uploading audio data...'
     }
+    if (loading) {
+      return 'Loading...'
+    }
     if (recorded === 0) {
-      return `Say \u201C${this.wakeword}\u201D`
+      return `Say \u201C${capitalize(wakeword)}\u201D`
     }
     if (recorded < numRecordings - 1) {
-      return `Say \u201C${this.wakeword}\u201D again`
+      return `Say \u201C${capitalize(wakeword)}\u201D again`
     }
     if (recorded === numRecordings - 1) {
-      return `Say \u201C${this.wakeword}\u201D one more time`
+      return `Say \u201C${capitalize(wakeword)}\u201D one more time`
     }
     return 'Thanks for your help!'
   }
 
   upload = async (buffer: AudioBuffer) => {
     const { assistant } = this.props
-    const { recorded } = this.state
+    const { recorded, wakeword } = this.state
     this.setState({ listening: false, uploading: true })
     const [uploadError, response] = await uploadWakeword({
       buffer,
       assistant,
-      wakeword: this.wakeword
+      wakeword
     })
     if (uploadError) {
       this.setState({ error: uploadError.message, uploading: false })
@@ -132,11 +152,10 @@ export default class Wakeword extends PureComponent<Props, State> {
     if (recorded >= numRecordings) {
       return
     }
-    this.setState({ listening: true })
     record({
       time: MAX_RECORD_TIME,
       onProgress: (remaining) => {
-        this.setState({ remaining })
+        this.setState({ listening: true, remaining })
       }
     })
       .then(this.upload)
@@ -150,7 +169,7 @@ export default class Wakeword extends PureComponent<Props, State> {
 
   render() {
     const { numRecordings } = this.props
-    const { listening, uploading, recorded, token } = this.state
+    const { error, listening, loading, uploading, recorded, token } = this.state
 
     return (
       <div css={styles.container}>
@@ -183,7 +202,7 @@ export default class Wakeword extends PureComponent<Props, State> {
               </div>
             ) : (
               <Button
-                disabled={uploading || recorded >= numRecordings}
+                disabled={loading || !!error || recorded >= numRecordings}
                 submitting={uploading || listening}
                 onClick={this.record}>
                 <SVGIcon icon="#mic" extraCss={styles.mic} />

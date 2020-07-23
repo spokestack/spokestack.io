@@ -1,6 +1,7 @@
 import WavEncoder from 'wav-encoder'
 import { login } from './auth'
 import postToCore from './postToCore'
+import randomChoice from './randomChoice'
 
 interface UploadOptions {
   buffer: AudioBuffer
@@ -8,7 +9,36 @@ interface UploadOptions {
   wakeword: string
 }
 
-export default async function uploadWakeword({
+export async function getWakeword(assistant: string) {
+  const [loginError, token] = await login()
+  if (loginError || !token) {
+    return [
+      loginError ||
+        new Error('Failed to generate auth token. Please check your network.')
+    ]
+  }
+  return fetch(
+    `${process.env.PYLON_CORE_URL}/speech/v1/${assistant}/wakeword`,
+    {
+      headers: {
+        Authorization: token
+      }
+    }
+  )
+    .then((res) => {
+      if (res.ok) {
+        return res.json()
+      }
+      throw new Error(`Error retrieving wakeword utterances: ${res.status}`)
+    })
+    .then(({ utterances }) => [null, randomChoice<string>(utterances)])
+    .catch((error) => {
+      console.error(error)
+      return [error]
+    })
+}
+
+export async function uploadWakeword({
   buffer,
   assistant,
   wakeword
@@ -55,7 +85,7 @@ export default async function uploadWakeword({
     .json()
     .then((json: Record<string, unknown>) => [null, json])
     .catch((error: Error) => {
-      console.log(error, res)
+      console.error(error)
       return [new Error('Error parsing JSON response')]
     })
 }

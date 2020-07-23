@@ -47,7 +47,7 @@ export default class Wakeword extends PureComponent<Props, State> {
     listening: false,
     loading: false,
     uploading: false,
-    remaining: this.props.numRecordings,
+    remaining: MAX_RECORD_TIME,
     recorded: 0,
     token: '',
     wakeword: ''
@@ -138,7 +138,10 @@ export default class Wakeword extends PureComponent<Props, State> {
     record({
       time: MAX_RECORD_TIME,
       onProgress: (remaining) => {
-        this.setState({ listening: true, remaining })
+        this.setState({ remaining })
+      },
+      onStart: () => {
+        this.setState({ listening: true })
       }
     })
       .then(this.upload)

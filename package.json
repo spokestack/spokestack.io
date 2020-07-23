@@ -75,7 +75,7 @@
     "react-dom": "^16.13.1",
     "react-helmet": "^6.1.0",
     "react-typography": "^0.16.19",
-    "spokestack": "^0.2.0",
+    "spokestack": "^0.3.0",
     "title-case": "^3.0.2",
     "typescript": "^3.9.7",
     "typography": "^0.16.19",

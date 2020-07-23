@@ -8,15 +8,11 @@ import { CopyButton } from './EditButtons'
 import { MIN_DEFAULT_MEDIA_QUERY } from 'typography-breakpoint-constants'
 import SVGIcon from './SVGIcon'
 import { css } from '@emotion/core'
+import randomChoice from '../utils/randomChoice'
 import { record } from 'spokestack/client'
 import uploadWakeword from '../utils/uploadWakeword'
 
 const MAX_RECORD_TIME = 2.9
-
-interface Props {
-  numRecordings?: number
-  wakeword: string
-}
 
 function Checkmark(props: React.SVGProps<SVGSVGElement>) {
   return (
@@ -42,7 +38,7 @@ function Checkmark(props: React.SVGProps<SVGSVGElement>) {
 interface Props {
   numRecordings?: number
   assistant: string
-  wakeword: string
+  wakewords: string[]
 }
 
 interface State {
@@ -56,6 +52,7 @@ interface State {
 
 export default class Wakeword extends PureComponent<Props, State> {
   private tokenRef = React.createRef<HTMLInputElement>()
+  wakeword: string
 
   static defaultProps = {
     numRecordings: 3
@@ -70,8 +67,13 @@ export default class Wakeword extends PureComponent<Props, State> {
     token: ''
   }
 
+  constructor(props: Props) {
+    super(props)
+    this.wakeword = randomChoice(props.wakewords)
+  }
+
   getMessage() {
-    const { numRecordings, wakeword } = this.props
+    const { numRecordings } = this.props
     const { error, listening, uploading, remaining, recorded } = this.state
     if (error) {
       return error
@@ -83,25 +85,25 @@ export default class Wakeword extends PureComponent<Props, State> {
       return 'Uploading audio data...'
     }
     if (recorded === 0) {
-      return `Say \u201C${wakeword}\u201D`
+      return `Say \u201C${this.wakeword}\u201D`
     }
     if (recorded < numRecordings - 1) {
-      return `Say \u201C${wakeword}\u201D again`
+      return `Say \u201C${this.wakeword}\u201D again`
     }
     if (recorded === numRecordings - 1) {
-      return `Say \u201C${wakeword}\u201D one more time`
+      return `Say \u201C${this.wakeword}\u201D one more time`
     }
     return 'Thanks for your help!'
   }
 
   upload = async (buffer: AudioBuffer) => {
-    const { assistant, wakeword } = this.props
+    const { assistant } = this.props
     const { recorded } = this.state
     this.setState({ listening: false, uploading: true })
     const [uploadError, response] = await uploadWakeword({
       buffer,
       assistant,
-      wakeword
+      wakeword: this.wakeword
     })
     if (uploadError) {
       this.setState({ error: uploadError.message, uploading: false })

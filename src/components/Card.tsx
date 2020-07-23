@@ -33,6 +33,7 @@ const styles = {
     }
   `,
   cardHeader: css`
+    width: 100%;
     background-color: ${theme.primary};
     color: ${theme.textDarkBg};
     padding: 10px 30px;

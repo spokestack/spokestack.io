@@ -29,7 +29,7 @@ export default async function synthesize(
   }
   return res
     .json()
-    .then((json: any) => [null, json])
+    .then((json: Record<string, unknown>) => [null, json])
     .catch((error: Error) => {
       console.log(error, res)
       return [new Error('Error parsing JSON response')]

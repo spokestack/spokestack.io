@@ -75,11 +75,13 @@
     "react-dom": "^16.13.1",
     "react-helmet": "^6.1.0",
     "react-typography": "^0.16.19",
+    "spokestack": "^0.2.0",
     "title-case": "^3.0.2",
     "typescript": "^3.9.7",
     "typography": "^0.16.19",
     "typography-breakpoint-constants": "^0.16.19",
-    "uuid": "^8.2.0"
+    "uuid": "^8.2.0",
+    "wav-encoder": "^1.3.0"
   },
   "devDependencies": {
     "@commitlint/cli": "^9.1.2",
@@ -97,6 +99,7 @@
     "@types/react-helmet": "^6.0.0",
     "@types/typography": "^0.16.2",
     "@types/uuid": "^8.0.0",
+    "@types/wav-encoder": "^1.3.0",
     "@typescript-eslint/eslint-plugin": "^3.7.0",
     "@typescript-eslint/parser": "^3.7.0",
     "babel-plugin-graphql-tag": "^2.5.0",

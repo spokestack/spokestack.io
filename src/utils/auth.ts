@@ -8,6 +8,14 @@ const providerKey = 'spokestack-auth-provider-v1'
 const stateKey = 'spokestack-auth-state-v1'
 const darkModeKey = 'spokestack-auth-dark-mode-v1'
 
+export function clearStorage() {
+  localStorage.removeItem(userTokenKey)
+  localStorage.removeItem(authTokenKey)
+  localStorage.removeItem(providerKey)
+  localStorage.removeItem(stateKey)
+  localStorage.removeItem(darkModeKey)
+}
+
 function getUserToken() {
   return localStorage.getItem(userTokenKey)
 }
@@ -19,7 +27,7 @@ function setUserToken(token: string) {
 async function createAnonymousUser() {
   // Create a user token that lives 3 hours
   const [error, response] = await postToCore('/user/v1/login', {
-    body: { ttl: 10800 }
+    body: JSON.stringify({ ttl: 10800 })
   })
   if (error || !response) {
     console.error(error)
@@ -104,14 +112,6 @@ export function setDarkModePref(dark: boolean) {
   } else {
     localStorage.removeItem(darkModeKey)
   }
-}
-
-export function clearStorage() {
-  localStorage.removeItem(userTokenKey)
-  localStorage.removeItem(authTokenKey)
-  localStorage.removeItem(providerKey)
-  localStorage.removeItem(stateKey)
-  localStorage.removeItem(darkModeKey)
 }
 
 export function logout() {

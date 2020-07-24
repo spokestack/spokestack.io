@@ -16,7 +16,7 @@ export const onRenderBody = ({ setPostBodyComponents }) => {
               "@type": "SpeakableSpecification",
               "cssSelector": [".spokestack-speakable"]
             },
-            "url": "https://spokestack.io"
+            "url": "https://www.spokestack.io"
           }
         `
       }}

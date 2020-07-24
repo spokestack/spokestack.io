@@ -6,7 +6,7 @@ export default function findImage(html: string) {
   const match = rsrc.exec(html)
   let src = match && match[2]
   if (src && !rhttp.test(src)) {
-    src = 'https://spokestack.io/' + src.replace(rslash, '')
+    src = 'https://www.spokestack.io/' + src.replace(rslash, '')
   }
   return src
 }

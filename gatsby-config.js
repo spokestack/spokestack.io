@@ -9,7 +9,7 @@ module.exports = {
     description:
       'Build an independent voice assistant. Spokestack features open source tools for mobile and web voice interfaces. Create an account and get started.',
     siteUrl: 'https://www.spokestack.io/',
-    logo: 'https://spokestack.io/logo.png',
+    logo: 'https://www.spokestack.io/logo.png',
     social: {
       forum: 'https://forum.spokestack.io',
       github: 'https://github.com/spokestack',
@@ -279,7 +279,7 @@ module.exports = {
     {
       resolve: 'gatsby-plugin-manifest',
       options: {
-        name: 'spokestack.io',
+        name: 'www.spokestack.io',
         start_url: '/',
         background_color: '#ffffff',
         theme_color: '#2f5bea',

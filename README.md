@@ -1,4 +1,4 @@
-## 🚀 [spokestack.io](https://spokestack.io) [![CircleCI](https://circleci.com/gh/spokestack/spokestack.io.svg?style=svg)](https://circleci.com/gh/spokestack/spokestack-website)
+## 🚀 [spokestack.io](https://www.spokestack.io) [![CircleCI](https://circleci.com/gh/spokestack/spokestack.io.svg?style=svg)](https://circleci.com/gh/spokestack/spokestack-website)
 
 This site is built with ❤️ by the Spokestack team using [Gatsby][gatsby] in [TypeScript][typescript].
 

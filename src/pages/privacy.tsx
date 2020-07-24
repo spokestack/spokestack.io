@@ -30,22 +30,22 @@ export default function Privacy({ data, location }: Props) {
         </p>
         <p>
           When you visit our website{' '}
-          <a href="https://spokestack.io/">https://spokestack.io</a>, mobile
-          application, Facebook application, and use our services, you trust us
-          with your personal information. We take your privacy very seriously.
-          In this privacy policy, we seek to explain to you in the clearest way
-          possible what information we collect, how we use it and what rights
-          you have in relation to it. We hope you take some time to read through
-          it carefully, as it is important. If there are any terms in this
-          privacy policy that you do not agree with, please discontinue use of
-          our Sites or Apps and our services.
+          <a href="https://www.spokestack.io/">https://www.spokestack.io</a>,
+          mobile application, Facebook application, and use our services, you
+          trust us with your personal information. We take your privacy very
+          seriously. In this privacy policy, we seek to explain to you in the
+          clearest way possible what information we collect, how we use it and
+          what rights you have in relation to it. We hope you take some time to
+          read through it carefully, as it is important. If there are any terms
+          in this privacy policy that you do not agree with, please discontinue
+          use of our Sites or Apps and our services.
         </p>
         <p>
           This privacy policy applies to all information collected through our
           website (such as{' '}
-          <a href="https://spokestack.io/">https://spokestack.io</a>), mobile
-          application, Facebook application, (&ldquo;Apps&rdquo;), and/or any
-          related services, sales, marketing or events (we refer to them
+          <a href="https://www.spokestack.io/">https://www.spokestack.io</a>),
+          mobile application, Facebook application, (&ldquo;Apps&rdquo;), and/or
+          any related services, sales, marketing or events (we refer to them
           collectively in this privacy policy as the &ldquo;Services&rdquo;).
         </p>
         <p>

@@ -162,7 +162,7 @@ Also note that [the Android emulator cannot record audio](https://developer.andr
 
 ## Configuring Spokestack
 
-There are many options for configuring Spokestack. This example will begin capturing audio when `Spokestack.start()` is called and use a Voice Activity Detection (VAD) component to send any audio determined to be speech through an automated speech recognition system, in this case `GoogleSpeechRecognizer`. In other words, we're configuring this app to always actively listen, and no wakeword detection is performed. Note that to use this ASR option, you will need to provide your [own Google Voice credentials](https://codelabs.developers.google.com/codelabs/cloud-speech-intro/index.html#0). See [the configuration guide](/docs/Concepts/speech-pipeline) for more information about pipeline building options.
+There are many options for configuring Spokestack. This example will begin capturing audio when `Spokestack.start()` is called and use a Voice Activity Detection (VAD) component to send any audio determined to be speech through an automated speech recognition system, in this case `GoogleSpeechRecognizer`. In other words, we're configuring this app to always actively listen, and no wakeword detection is performed. Note that to use this ASR option, you will need to provide your [own Google Voice credentials](https://codelabs.developers.google.com/codelabs/cloud-speech-intro/index.html#0). See [the configuration guide](/docs/Concepts/pipeline-configuration) for more information about pipeline building options.
 
 Then we configure a text-to-speech component using a TTS API key and secret that allow you to use Spokestack voices for free!
 

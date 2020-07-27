@@ -177,14 +177,9 @@ export default class Wakeword extends PureComponent<Props, State> {
                   id="wakeword-token"
                   type="text"
                   className="input"
+                  onFocus={() => this.tokenRef.current.select()}
                   value={token}
                 />
-                <Button
-                  transparent
-                  extraCss={styles.goAgainButton}
-                  onClick={() => window.location.reload()}>
-                  Let&rsquo;s go again!
-                </Button>
               </div>
             ) : (
               <Button

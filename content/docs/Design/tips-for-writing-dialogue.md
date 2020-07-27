@@ -1,100 +1,140 @@
 ---
-title: Tips for Writing Dialogue
+title: Best Practices for Writing a Script
 navId: Tips for Writing Dialogue
 description: Some helpful tips when writing your dialogue.
 draft: false
 ---
 
-Before we [start writing](/docs/Design/script-storyboard-responses), there are a few ground rules to keep in mind. Users tend to have a screen nearby. It's not necessary to deliver the same amount of information in each prompt as you would for a smart speaker skill. Your script should be functional. Think call and response. You might recognize some of these from "[The Eight Golden Rules of Interface Design](https://www.cs.umd.edu/users/ben/goldenrules.html)".
+Human-to-human conversation is second nature. Talking to a voice assistant on the other hand doesn’t seem natural, yet is becoming more common. At Spokestack, we support user-initiated, call and response exchanges (often referred to as [system-centric](https://books.google.com/books?id=sxidDwAAQBAJ&pg=PA288&lpg=PA288&dq=system-centric+interaction+conversational+ux&source=bl&ots=GpWt-8ZIjQ&sig=ACfU3U37Qow3LDDcUTf92htxoFYb0pQt7A&hl=en&sa=X&ved=2ahUKEwi_hqvCsovpAhUHWN8KHR0CCDwQ6AEwBnoECAsQAQ#v=onepage&q=system-centric%20interaction%20conversational%20ux&f=false) interactions). These are conducive to voice control and information retrieval.
 
-## 1. Set expectations
+Below are some ground rules to keep in mind while [writing](https://spokestack.io/docs/Design/script-storyboard-responses) system-centric dialog. These draw from industry standards found in user experience (UX) design, conversational user experience (CUX) design, and conversational analysis (CA) as well as from our own professional experiences. You might recognize some of these from Ben Schneiderman’s [_The Eight Golden Rules of Interface Design_](https://www.cs.umd.edu/users/ben/goldenrules.html) and Paul Grice’s [_Cooperative Principle_](https://en.wikipedia.org/wiki/Cooperative_principle).
 
-If your user's first intent is "open app", you'll want to start here. How would you start a conversation with a friend? "Hello" or "hi", perhaps, followed by enough context to continue.
+## Start with a greeting
 
-For new users, this will be their first interaction with your app's voice. Inform novices how to proceed ([Golden Rule #2:](https://www.cs.umd.edu/users/ben/goldenrules.html) "seek universal usability"). Do this by either asking a question or giving an instruction. Don't add dialog after a question. This might cause your user to respond before you've completed the full prompt.
+Consider how you’d start a conversation with a friend. Perhaps “Hello” or “Hi,” followed by enough context to continue communication. With system-centric exchanges, users control the conversation ([golden rule #7:](https://www.cs.umd.edu/users/ben/goldenrules.html) “keep users in control”). Consider what choices users will have and what they’ll need to elicit an appropriate response.
 
-Here's an example. Information contained in [square brackets] communicates corresponding [visuals](/docs/Design/tips-for-designing-visual-output):
+#### Give new users options, but don’t assume intent
 
-**NEW USER:** "Hey Siri, open MyRunBuddy."
-**MYRUNBUDDY:** [Create account] "Welcome to MyRunBuddy! Let's start by creating an account."
+This will be their first interaction with your app’s voice. Make a brief, but transparent first impression ([quality maxim](https://en.wikipedia.org/wiki/Cooperative_principle)). New users require varying degrees of hand holding. Do this by either asking a question or providing instruction. Well-defined prompts followed by keywords, often referred to as “slot values” or “entities,” are going to be your shortest path to success.
 
-_Since this user is new to MyRunBuddy, we've started by giving the user an instruction. This can be brief when paired with a visual, in this case a screen for account creation. Users aren't going to want to input private account information using their voice._
+It’s important to craft prompts that are brief, clear, and transparent. Here are a few things to keep in mind that help achieve these three things:
 
-If you're greeting a return user, welcome them back. If it's been awhile, reestablish expectations so they remember what they can ask.
+- Limit prompts to one idea.
+- Don’t add dialog after asking a question. This might cause your user to respond prematurely before a prompt has been fully read.
+- Be direct and avoid leading with with an open-ended prompt \*\*\*\*unless the type of feedback you’re looking for warrants it.
+- Provide an example utterance in your instructions. Revealing how to phrase one intent might clue users in on how to say other similar intents.
 
-**RETURN USER:** "Hey Siri, open MyRunBuddy."
-**MYRUNBUDDY:** [Home] "Welcome back! To start a run, say 'start running'."
+Here’s an example. As a thought example, imagine you’re working on a fitness tracking app, MyRunBuddy. Information contained in [square brackets] communicates corresponding [visuals](https://spokestack.io/docs/Design/tips-for-designing-visual-output):
 
-## 2. Educate; don't overburden
+    NEW USER: “Hey Siri, open MyRunBuddy.”
+    MYRUNBUDDY: [Create account] “Welcome to MyRunBuddy! Start by creating an account.”
 
-Let users talk like humans, but also don't overpromise. Natural language understanding (NLU) isn't conducive to _completely_ talking like a person. You want to be aware of the capabilities of the tech you're working with. Well-defined prompts followed by keywords are going to be your shortest path to a success. For example, after "Hey Siri," the screen shows "What can I help you with?". This implies to the user that they're able to ask Siri anything. You'll want to direct users to express intents your app can actually fulfill.
+Since this user is new to MyRunBuddy, we started with a direct instruction that was limited to one idea. This can be brief when paired with a visual. In this case, the instruction was paired with a screen for account creation. Users won’t want to input private account information using their voice.
 
-When introducing intents, limit yourself to three. Say the most important intent last ([Golden Rule #8:](https://www.cs.umd.edu/users/ben/goldenrules.html) "reduce short-term memory load"). This will help users remember what they can ask, even when unprompted ([Golden Rule #7:](https://www.cs.umd.edu/users/ben/goldenrules.html) "keep users in control").
+#### Welcome back return users
 
-**NEW USER:** [Listening] "Start a run."
-**MYRUNBUDDY:** [Recording Run] "Starting. To check your run's progress, say 'What's my pace? or 'How far have I run?'"
+Provide enough context to let users know they’re interfacing with the same app as before. If it’s been awhile, re-establish expectations so they remember what they can ask.
 
-_The user heard these prompts because it's their first time recording a run. Use your best judgement with what types of intents to include here. Revealing how to phrase one intent might clue them in on how to say other similar intents. This is something worth testing with your users._
+Here’s an example:
 
-## 3. Confirm information
+    RETURN USER: “Hey Siri, open MyRunBuddy.”
+    MYRUNBUDDY: [Home] “Welcome back! To record a run, say ‘start my run’.”
 
-This lets the user know that an action is complete ([Golden Rule #4:](https://www.cs.umd.edu/users/ben/goldenrules.html) "design dialogs to yield closure"). Avoid follow-ups or **reprompts** for tasks that are easy to undo. Consider how you might confirm the same information using [visuals](/docs/Design/tips-for-designing-visual-output).
+Again, we started with a direct instruction that was limited to one idea. However, in this example, we provided the user an example utterance as part of instruction. Users will be able to adapt this example utterance to meet their own needs. For example, they might say “start my walk.”
 
-**RETURN USER:** [Listening] "MyRunBuddy, start a run."
-**MYRUNBUDDY:** [Confirmation + Recording Run] "Starting…"
+## Inform users how to proceed & continuously educate them
 
-_Since this user has recored a run before using their voice, there's no follow-up to the app's confirmation. We'll [show you examples](/docs/Design/tips-for-designing-visual-output) of things you might want to include along with a confirmation in later steps._
+If designed correctly, users shouldn’t have to to learn how to speak to your assistant ([golden rule #2:](https://www.cs.umd.edu/users/ben/goldenrules.html) \*\*\*\*“seek universal usability”). However, even if your intents are intuitive, you’ll still need to help users discover new intents. This will in turn encourage future interaction. Otherwise, users will need to be motivated enough to seek out new intents on their own.
 
-Confirmations don't always need to be conversational. Consider sounds. In the example above, instead of saying "starting," you could replace this with a beep or swoosh sound.
+When educating new and return users of what they can say, continue to remain brief, clear, and transparent. To do this, consider the following:
 
-## 4. Be relevant
+- Don’t introduce more than three intents at a time. Providing too many options can impede understanding.
+- Avoid reading long lists such as menu options and [display these items visually](https://spokestack.io/docs/Design/tips-for-designing-visual-output) instead.
+- Say the most important intent (your call to action) either first or last ([golden rule #8:](https://www.cs.umd.edu/users/ben/goldenrules.html) “reduce short-term memory load”). This will help users remember what they can ask, even when unprompted.
+- Be consistent with noun and verbs tenses, especially with lists.
 
-Voice input for complex queries is faster and more convenient, especially for users who are multi-tasking. And yet, the average person can read faster than they can listen. Consider whether a voice response, a [visual response](/docs/Design/tips-for-designing-visual-output), or both is appropriate. Respect your users' time; don't inconvenience them by taking too long to respond. A well-crafted response ([Golden Rule #3:](https://www.cs.umd.edu/users/ben/goldenrules.html) "offer informative feedback") will increase re-engagement.
+Here’s an example:
 
-**RETURN USER:** [Listening] "MyRunBuddy, what's my pace?"
-**MYRUNBUDDY:** [Recording Run w/pace highlighted] "You're running an 8 minute, 45 second mile pace."
+    NEW USER: [Listening] “Start a run.”
+    MYRUNBUDDY: [Recording Run] “Starting. To check your run’s progress, say ‘What’s my pace? or ‘How far have I run?‘”
 
-Consider how a user provided the input. If they used their voice, a voice response might make the most sense if the response is brief. If the user tapped a button, they might not expect to hear a response. For example, imagine if every time you hit the home button on your iPhone by accident, you heard Siri talk. That might get old quick.
+The user was read these example utterances because it’s their first time recording a run. Use your best judgement with what examples to include here. This is something worth testing with your users.
 
-## 5. Prevent & account for failure
+## Implicitly confirm speech recognition & understanding
 
-Include scenarios in your script where the user's intent isn't understood. Direct the user how to go back or abandon misheard intents ([Golden Rule #6:](https://www.cs.umd.edu/users/ben/goldenrules.html) "permit easy reversal of actions"). Recognize that intent recognition in public spaces is more challenging ([Golden Rule #5:](https://www.cs.umd.edu/users/ben/goldenrules.html) "prevent errors").
+Speech recognition can be challenging, especially in public spaces. Allow users to implicitly confirm that what they said was correctly (or incorrectly) recognized by your automatic speech recognition (ASR) engine, but don’t force them to explicitly confirm in order to continue ([golden rule #5:](https://www.cs.umd.edu/users/ben/goldenrules.html) “prevent errors”). For example, if the ASR records a background conversation on TV rather than the user’s utterance.
 
-**RETURN USER:** [Listening] "Go ahead and stop my run"
-**MYRUNBUDDY:** [Recording Run] "Your current run is still recording. Do you want start a new run?"
-**RETURN USER:** [Listening] "STOP my run"
-**MYRUNBUDDY:** [Recording Run] "Stopping…Would you like to save this run?"
+Here’s an example of an aural implicit confirmation:
 
-_In this example, the app misheard the user's 'stop' intent for 'start'. This goes back to step #2: "confirm information". The app let the user confirm an important action (in this case, ending a workout) before taking it. This prevents costly errors before they happen._
+    RETURN USER: [Listening] “MyRunBuddy, start a run.”
+    MYRUNBUDDY: [Confirmation + Recording Run] “Starting…”
 
-Don't ask a question if you won't be able to understand the answer. Even at the risk of sounding less conversational.
+Since this user has recored a run before using their voice, a follow-up confirmation isn’t required. We’ll [show you examples](https://spokestack.io/docs/Design/tips-for-designing-visual-output) of visuals you might want to include along with aural confirmations later.
 
-**RETURN USER:** [Listening] "Pause my run"
-**MYRUNBUDDY:** [Recording Run] "Pausing… Are you having a good run so far?"
-**RETURN USER:** [Listening] "It's a little rainy, but I'm feeling pretty good."
-**MYRUNBUDDY:** [Error] "Sorry, I didn't quite understand what you said. Could you repeat that?"
+#### Use sounds such as “earcons” or “liveliness indicators”
 
-_In this example, the app added a question to make the app sound more human. When the user answered the question, the app failed to respond as this question wasn't supported by a yes/no intent._
+Implicit confirmations don’t always need to be conversational, especially when a delay in output is expected. Sounds or “[earcons](https://medium.com/vui-magazine/earcons-the-audio-version-of-an-icon-59b7f0921235)” can enhance your experience by providing needed brevity and consistency. In the example above, instead of saying “starting,” you could replace this with a beep or swoosh sound. Sometimes a simple ‘mm hmm’ or what Cathy Pearl refers to in her book, [_Designing Voice User Interface_](https://www.amazon.com/Designing-Voice-User-Interfaces-Conversational/dp/1491955414)_s_, as a “liveliness indicator” is all you need to indicate that the app is still listening.
 
-Include scenarios in your script for your app failing to receive speech input at all. What if they take longer than anticipated to answer a question? Account for scenarios in which users aren't sure how to phrase their question or response. What if there's a long pause? You'll want to re-prompt the user if this occurs. For example, if Siri doesn't hear anything after awhile, you might hear "Uh huh," "I'm here," or "Yes?"
+## Reserve follow-ups for when a misunderstanding might carry a penalty
 
-## 6. Talk like a human
+Don’t follow every intent with “are you sure?” Build trust by letting users know what their next action will be as well as the stakes of that action.
 
-Human-to-human conversation is second nature. Talking to a voice assistant doesn't seem natural. And yet, it's becoming more common. Always be thinking how you would respond if a friend asked the same thing on the street. How would you respond in a quick text message ([Golden Rule #2:](https://www.cs.umd.edu/users/ben/goldenrules.html) "seek universal usability")? Proofread your responses. Pay attention to comma, period, and space placement. These have a big impact on how synthetic voices interpret responses.
+Here’s an example of aural explicit confirmation:
 
-**RETURN USER:** [Listening] "How much farther?"
-**MYRUNBUDDY:** [Recording Run + Map] "You're. 5 miles away from the 3 mile marker."
+    RETURN USER: [Listening] “Go ahead and stop my run”
+    MYRUNBUDDY: [Recording Run] “Your current run is still recording. Do you want start a new run?”
+    RETURN USER: [Listening] “STOP my run”
+    MYRUNBUDDY: [Recording Run] “Stopping…Would you like to save this run?”
 
-_In this example, the response would read as "you're [pause] five miles away…" - a big difference! A good TTS engine can handle decimals with correct period placement. To make this more conversational, change this to something like, "You're half a mile away from the 3 mile marker."_
+In this example, the app misheard the user’s `stop` intent for `start`. The app made the user explicitly confirm an important action (in this case, ending a workout) before fulfilling it, preventing a costly error from happening.
 
-## 7. Provide variety & consistency
+## Consider how a user provided input & respond in kind
 
-Users don't always want to hear the same response. This can sound monotonous, robotic, and tedious. Variety can help users pay closer attention to what's being said. Consider different ways of phrasing the same response without changing meaning.
+Voice input for complex queries is faster and more convenient, especially for users who are multitasking. And yet, the average person can read faster than they can listen. Respect your users’ time. It’s not necessary to respond with the same amount of information you would for a smart speaker skill. A well-crafted response will increase re-engagement. Consider whether a voice response, a [visual response](https://spokestack.io/docs/Design/tips-for-designing-visual-output), or both is appropriate and be consistent with which mode you use ([golden rule #1:](https://www.cs.umd.edu/users/ben/goldenrules.html) “strive for consistency”). For example, if a user used their voice, a brief voice response might make the most sense.
 
-At the same time, users rely on consistent cues, both visual and audible ([Golden Rule #1:](https://www.cs.umd.edu/users/ben/goldenrules.html) "strive for consistency"). This holds true for how your responses _sound_. Consider your app's persona. What will your app sound like? How will that sound differentiate you from competitors? If you're using Spokestack, sample voices in the [account section](/account/services/tts). Or, [contact us](mailto: hello@spokestack.io) if you're interested in a custom solution.
+Here are a few other considerations:
 
----
+- Use just enough words so users understand how to proceed without sacrificing accuracy ([quantity maxim](https://en.wikipedia.org/wiki/Cooperative_principle)).
+- Avoid long sentences and lists, overly technical words, idioms, and fillers.
+- Break up long form responses into smaller pieces. This will help make information feel less like a manual and more like an interaction they can control.
+- Include conversation landmarks or markers such as “first,” “next,” “then,” or “finally” to let the user know where they are in the conversation. This could also include acknowledgements and positive feedback like “thanks,” “got it,” or “great!”
+- Pay attention to punctuation.
 
-Need help executing? We can provide the linguistic support you need for your next project.
+Here’s an example:
 
-[Email us for more details →](mailto: hello@spokestack.io)
+    RETURN USER: [Listening] “MyRunBuddy, what’s my pace?”
+    MYRUNBUDDY: [Recording Run w/pace highlighted] “You’re running an 8 minute, 45 second mile pace.”
+
+This response is brief and provides only information the user asked for while avoiding fillers. Here’s another example:
+
+    RETURN USER: [Listening] “How much farther?”
+    MYRUNBUDDY: [Recording Run + Map] “You’re. 5 miles away from the 3 mile marker.”
+
+In this example, the response would read as “you’re [pause] five miles away…” - a big difference! A good text-to-speech (TTS) engine can handle decimals with correct period placement. To make this more conversational, change this to something like, “You’re half a mile away from the 3 mile marker.”
+
+#### Use timing to your advantage
+
+Define the length of time between speech detection and the start of a response or prompt, otherwise known as “endpoint detection.” This can differ in anticipation of the user’s utterance. If endpoint detection is too short, you’ll cut off user utterances; too long, and the elongated pause might be interpreted as an error. With system-centric conversations, we recommend shorter, 2 second pauses. Reserve longer pauses for open-ended responses.
+
+## Help users get back on track rather than blame them
+
+When something unexpected happens, “Sorry, I didn’t get that” isn’t always going to cut it. Users don’t like being reminded that they weren’t understood. This can be monotonous and frustrating. Include scenarios in your script for your app failing to understand and receive speech input at all. What if users take longer to answer a question? Account for scenarios in which users aren’t sure how to phrase their question or response. What if there’s a long pause? What if they have a [lapse in memory](http://Preventing User Errors: Avoiding Unconscious Slips) or aren’t paying full attention to the task at hand?
+
+Here are some things to consider when writing error prompts:
+
+- Even at the risk of sounding less conversational, don’t ask a question if you won’t be able to understand the answer.
+- Consider using silence. Users will often respond to silence by repeating themselves, especially for one-off commands.
+- Prompt users to either clarify or include additional information by repeating or paraphrasing all or part of their previous turn. For experienced or return users, this can be brief.
+- If after prompting your user no speech is detected, either reprompt the user or end the conversation. For example, Siri reprompts the user after 3 seconds with any number of liveliness indicators: “uh huh,” “I’m here,” “Yes?” etc.
+
+
+    RETURN USER: [Listening] “Pause my run”
+    MYRUNBUDDY: [Recording Run] “Pausing… Are you having a good run so far?”
+    RETURN USER: [Listening] “It’s a little rainy, but I’m feeling pretty good.”
+    MYRUNBUDDY: [Error] “Sorry, I didn’t quite understand what you said. Could you repeat that?”
+
+In this example, the app added a question to make the app sound more human. When the user answered the question, the app failed to respond as this question wasn’t supported by a yes/no intent.
+
+## Let users know when an action is complete
+
+Consider how you’ll end a single turn or multiple turns ([golden rule #4:](https://www.cs.umd.edu/users/ben/goldenrules.html) “design dialogs to yield closure”). In most cases, once you’ve provided the information requested, it’s best to end the session. Include natural feedback like “thank you” where appropriate. Avoid ending with an open-ended question such as “Is there anything else I can help you with?” as this forces the user to remember what your app is capable of doing ([golden rule #8:](https://www.cs.umd.edu/users/ben/goldenrules.html) “reduce short-term memory load”).

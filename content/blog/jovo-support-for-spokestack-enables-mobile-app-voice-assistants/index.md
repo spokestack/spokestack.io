@@ -11,7 +11,7 @@ draft: false
 
 This new integration helps developers build cutting edge conversational experiences for mobile apps using their Jovo interaction models and Spokestack's mobile ASR, NLU, and TTS services.
 
-Like so many in the voice community, we're big fans of the [Jovo Framework](http://www.jovo.tech)! We share their love of open-source software as well as their "write once, run everywhere" approach to conversational assistants. That's why we're so excited to announce Spokestack integration with Jovo.
+Like so many in the voice community, we're big fans of the [Jovo Framework](https://www.jovo.tech)! We share their love of open-source software as well as their "write once, run everywhere" approach to conversational assistants. That's why we're so excited to announce Spokestack integration with Jovo.
 
 ## How does the Jovo and Spokestack integration work?
 

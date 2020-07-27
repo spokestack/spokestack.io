@@ -1,9 +1,9 @@
 import * as theme from '../styles/theme'
 
 import {
-  DEFAULT_WIDTH,
   MIN_DEFAULT_MEDIA_QUERY,
-  MIN_LARGER_DISPLAY_MEDIA_QUERY
+  MIN_LARGER_DISPLAY_MEDIA_QUERY,
+  TABLET_WIDTH
 } from 'typography-breakpoint-constants'
 import { Global, css } from '@emotion/core'
 import StickyNav, { StickyNavProps } from './StickyNav'
@@ -49,7 +49,7 @@ const styles = {
       display: grid;
       grid-template-columns:
         minmax(${theme.MIN_SIDEBAR_WIDTH}, ${theme.MAX_SIDEBAR_WIDTH})
-        minmax(${theme.MAX_TEXT_WIDTH}, ${DEFAULT_WIDTH});
+        minmax(${theme.MAX_TEXT_WIDTH}, ${TABLET_WIDTH});
       grid-template-areas: 'sidenav content';
     }
   `,

@@ -22,7 +22,11 @@ export default async function synthesize(
     headers: {
       Authorization: token
     },
-    body: { voice, text, mode: isMarkdown ? 'markdown' : 'parl' }
+    body: JSON.stringify({
+      voice,
+      text,
+      mode: isMarkdown ? 'markdown' : 'parl'
+    })
   })
   if (synthError) {
     return [synthError]

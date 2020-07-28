@@ -16,3 +16,4 @@ ios/**
 android/**
 *.graphql
 app/graphql/fragmentTypes.json
+public/

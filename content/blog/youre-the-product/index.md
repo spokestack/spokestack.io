@@ -6,7 +6,7 @@ author: josh
 draft: false
 ---
 
-![](product-people.png "Doesn't look like these folks are having fun being products.")
+![Doesn't look like these folks are having fun being products.](product-people.png)
 
 "If you're not the customer, you're the product." By now, tech-savvy consumers are familiar with this warning. It's almost a trope. Usually it's a caveat about [Google's collection of personal data](https://www.wired.com/story/google-tracks-you-privacy/) or [Facebook's stewardship](https://www.wired.com/story/cambridge-analytica-facebook-privacy-awakening/) of their own data trove, but there are plenty of other applications as well. And it's true: Personal data can be dangerous in the wrong hands.
 

@@ -2,7 +2,7 @@
   "name": "spokestack-website",
   "private": true,
   "description": "Voice development platform that enables customized voice navigation for mobile and browser applications",
-  "version": "1.22.4",
+  "version": "1.22.5",
   "author": "Timmy Willison <4timmywil@gmail.com>",
   "scripts": {
     "build": "npm run clean && gatsby build",

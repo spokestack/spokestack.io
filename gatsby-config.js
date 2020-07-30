@@ -58,7 +58,7 @@ module.exports = {
         key: 'josh',
         name: 'Josh Ziegler',
         image: '/headshots/josh.png',
-        title: 'Conversation Engineer',
+        title: 'Principal Computational Linguist',
         bio:
           'Josh lives at the intersection of language and technology. An avid reader, he enjoys long runs in the woods and pedantic arguments about...well, pick a topic.',
         social: {

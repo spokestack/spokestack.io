@@ -2,6 +2,7 @@
 title: What If You're the Product?
 date: '2020-07-29'
 description: How to keep your voice presence from giving away presents
+tags: Business, Product
 author: josh
 draft: false
 ---
@@ -43,7 +44,7 @@ But stop for a moment to think about what data Amazon has about the user interac
 1. the user's "intent" (or distillation of the ASR result into an action) that you, the developer, provided Amazon with as part of creating your skill
 1. a text response to that intent, again provided by you, an actual human
 
-In other words, they'd have a pretty good pipeline for collecting training data for an end-to-end dialogue system, like [this one]() that some of their engineers experimented with last year. What could they _do_ with such a model? For starters, they could learn to answer initial user queries well enough to keep those users inside Alexa instead of delivering them to third-party apps at all. If they were so inclined, they could also aggregate data about popular queries and responses to prioritize development of new business lines for Amazon.
+In other words, they'd have a pretty good pipeline for collecting training data for an end-to-end dialogue system, like [this one](https://www.aclweb.org/anthology/N19-2007/) that some of their engineers experimented with last year. What could they _do_ with such a model? For starters, they could learn to answer initial user queries well enough to keep those users inside Alexa instead of delivering them to third-party apps at all. If they were so inclined, they could also aggregate data about popular queries and responses to prioritize development of new business lines for Amazon.
 
 I don't have any evidence to make concrete accusations about such things, but it doesn't seem outside the realm of possibility. Keep in mind that encouraging developers to let Alexa access individual app features might also encourage those developers to provide data for features that aren't a good fit for the smart speaker medium or were "too valuable to put on Alexa". In other words, a feature that deep links into apps can potentially give them access to data that they can't just mine from their Alexa Skills Store.
 

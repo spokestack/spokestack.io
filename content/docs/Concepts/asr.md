@@ -77,7 +77,8 @@ Spokestack's Cloud ASR requires requests to be signed with a Spokestack client I
 
 ##### iOS
 
-Same as the Android requirements.
+- `spokestack-id` (string): A Spokestack client ID, available in the account portal.
+- `spokestack-secret` (string): A Spokestack API secret, also available in the account portal.
 
 ---
 

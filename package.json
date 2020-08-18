@@ -9,11 +9,9 @@
     "clean": "gatsby clean",
     "commit": "git-cz",
     "deploy": "gatsby build && gh-pages -d public -b master",
-    "eslint": "eslint .",
-    "format": "prettier --write \"**/*.tsx\" \"**/*.ts\" \"**/*.js\" \"**/*.md\"",
+    "format": "eslint . --fix && prettier --write \"**/*.tsx\" \"**/*.ts\" \"**/*.js\" \"**/*.json\" \"**/*.md\"",
     "graphiql": "serve -l 5000 graphiql/",
-    "lint": "concurrently --raw \"npm run type-check\" \"npm run eslint\" \"npm run prettier\"",
-    "lint:fix": "concurrently --raw \"npm run type-check\" \"lint-staged\"",
+    "lint": "concurrently --raw \"eslint .\" \"prettier --check '**/*.md' '**/*.json'\"",
     "post": "node tasks/post.js",
     "prettier": "prettier --check \"**/*.tsx\" \"**/*.ts\" \"**/*.js\" \"**/*.md\"",
     "release": "semantic-release",
@@ -21,8 +19,8 @@
     "schema:remote": "node tasks/schema.js",
     "serve": "serve -l 8000 public/",
     "start": "npm run clean && concurrently \"gatsby develop\" \"npm run graphiql\"",
-    "test": "npm run lint",
-    "type-check": "tsc -p tsconfig.json --noEmit"
+    "test": "concurrently --raw \"npm run lint\" \"npm run typescript\"",
+    "typescript": "tsc -p tsconfig.json --noEmit"
   },
   "dependencies": {
     "@apollo/react-hooks": "^4.0.0",
@@ -115,7 +113,6 @@
     "eslint-plugin-react": "^7.20.5",
     "gatsby-plugin-remove-trailing-slashes": "^2.3.11",
     "husky": "^4.2.5",
-    "lint-staged": "^10.2.11",
     "mkdirp": "^1.0.4",
     "prettier": "^2.0.5",
     "semantic-release": "^17.1.1",
@@ -151,8 +148,54 @@
   "husky": {
     "hooks": {
       "commit-msg": "commitlint -E HUSKY_GIT_PARAMS",
-      "pre-commit": "env FORCE_COLOR=1 npm run lint:fix"
+      "pre-commit": "concurrently --raw \"npm run lint\" \"npm run typescript\""
     }
+  },
+  "eslintConfig": {
+    "parser": "@typescript-eslint/parser",
+    "plugins": ["@typescript-eslint", "react", "prettier"],
+    "extends": [
+      "plugin:@typescript-eslint/recommended",
+      "plugin:react/recommended",
+      "prettier/@typescript-eslint",
+      "prettier/react"
+    ],
+    "parserOptions": {
+      "ecmaVersion": 2018,
+      "sourceType": "module",
+      "project": "./tsconfig.json",
+      "ecmaFeatures": {
+        "jsx": true
+      }
+    },
+    "globals": {
+      "ga": "readonly"
+    },
+    "settings": {
+      "react": {
+        "version": "detect"
+      }
+    },
+    "rules": {
+      "prettier/prettier": "error",
+      "@typescript-eslint/explicit-function-return-type": 0,
+      "@typescript-eslint/explicit-module-boundary-types": 0,
+      "@typescript-eslint/no-explicit-any": 0,
+      "@typescript-eslint/no-use-before-define": 0,
+      "@typescript-eslint/no-var-requires": 0,
+      "react/prop-types": 0
+    }
+  },
+  "eslintIgnore": [
+    ".cache/",
+    "public/",
+    "src/utils/graphql.d.ts",
+    "types/"
+  ],
+  "commitlint": {
+    "extends": [
+      "@commitlint/config-conventional"
+    ]
   },
   "release": {
     "branches": [
@@ -174,14 +217,5 @@
       "@semantic-release/github"
     ],
     "tagFormat": "${version}"
-  },
-  "lint-staged": {
-    "*.{ts,tsx,js,jsx}": [
-      "prettier --write",
-      "eslint --fix ."
-    ],
-    "*.md": [
-      "prettier --write"
-    ]
   }
 }

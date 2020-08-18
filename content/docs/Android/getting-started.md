@@ -13,7 +13,7 @@ To follow along with these snippets in the context of a full project, download o
 
 ## Installation
 
-First, you'll need to declare the Spokestack dependencies in your project. Because Spokestack includes native libraries, this is slightly more involved than a normal dependency. You'll need to download the Android NDK (available from the `SDK Manager` -> `SDK Tools` tab in Android Studio or at [developer.android.com/ndk/downloads](https://developer.android.com/ndk/downloads)), add the following to your project's top-level `build.gradle`:
+First, you'll need to declare the Spokestack dependencies in your project. Because Spokestack includes native libraries, this is slightly more involved than a normal dependency. You'll need to download the Android NDK (available from the `SDK Manager` -> `SDK Tools` tab in Android Studio or at [developer.android.com/ndk/downloads](https://developer.android.com/ndk/downloads)) and add the following to your project's top-level `build.gradle`:
 
 ```groovy
 // inside the buildscript block
@@ -45,7 +45,7 @@ compileOptions {
 // in the dependencies block
 dependencies {
     // (other dependencies)
-    implementation 'io.spokestack:spokestack-android:5.6.0'
+    implementation 'io.spokestack:spokestack-android:8.0.2'
 
     // if you plan to use Google ASR, also include these
     implementation 'com.google.cloud:google-cloud-speech:1.22.2'
@@ -60,7 +60,7 @@ dependencies {
 
 // a new top-level block if you don't already have native dependencies
 native_dependencies {
-    artifact 'io.spokestack:spokestack-android:5.6.0'
+    artifact 'io.spokestack:spokestack-android:8.0.2'
 }
 ```
 
@@ -100,7 +100,13 @@ pipeline = SpeechPipeline.Builder()
     .build();
 ```
 
-There are many options for configuring the speech pipeline. This particular setup will begin capturing audio when `pipeline.start()` is called and use a Voice Activity Detection (VAD) component to send any audio determined to be speech through on-device ASR using Android's `SpeechRecognizer` API. In other words, the app is always actively listening, and no wakeword detection is performed. See [the configuration guide](/docs/Android/speech-pipeline) for more information about pipeline building options. Using a `VADTrigger*` profile is a good way to test out ASR without having to tap a button to activate it or downloading and configuring wakeword models. Consider your use-case fully before using it in production, however, since it will capture all speech it hears, not just what's directed at your app.
+There are many options for configuring the speech pipeline. This particular setup will begin capturing audio when `pipeline.start()` is called and use a Voice Activity Detection (VAD) component to send any audio determined to be speech through on-device ASR using Android's `SpeechRecognizer` API. In other words, the app is always actively listening, and no wakeword detection is performed. Using a `VADTrigger*` profile is a good way to test out ASR without having to tap a button to activate it or downloading and configuring wakeword models. Consider your use-case fully before using it in production, however, since it will capture all speech it hears, not just what's directed at your app.
+
+Some useful links:
+
+- [Speech pipeline configuration guide](/docs/Android/speech-pipeline)
+- [Available pipeline profiles](https://www.javadoc.io/static/io.spokestack/spokestack-android/5.6.0/io/spokestack/spokestack/profile/package-summary.html)
+- [ASR provider documentation](/docs/Concepts/asr)
 
 Note also the `addOnSpeechEventListener(this)` line. This is necessary to receive speech events from the pipeline, which is our next step.
 

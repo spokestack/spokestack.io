@@ -9,12 +9,13 @@ Spokestack is designed to support multiple speech recognition providers so you c
 
 ## Supported ASR providers by platform
 
-| Provider                                                                                                | Android  | iOS      |
-| ------------------------------------------------------------------------------------------------------- | -------- | -------- |
-| Android ASR (on-device)                                                                                 | &#9989;  | &#10060; |
-| Apple ASR (on-device)                                                                                   | &#10060; | &#9989;  |
-| [Azure Speech Services](https://azure.microsoft.com/en-us/services/cognitive-services/speech-services/) | &#9989;  | &#10060; |
-| [Google Cloud](https://cloud.google.com/speech-to-text)                                                 | &#9989;  | &#10060; |
+| Provider                                                                                                | Android  | iOS       |
+| ------------------------------------------------------------------------------------------------------- | -------- | --------- |
+| Android ASR (on-device)                                                                                 | &#9989;  | &#10060;  |
+| Apple ASR (on-device)                                                                                   | &#10060; | &#9989;   |
+| Spokestack Cloud ASR                                                                                    | &#9989;  | &#x1F51C; |
+| [Azure Speech Services](https://azure.microsoft.com/en-us/services/cognitive-services/speech-services/) | &#9989;  | &#10060;  |
+| [Google Cloud](https://cloud.google.com/speech-to-text)                                                 | &#9989;  | &#10060;  |
 
 ## Configuration
 
@@ -62,6 +63,22 @@ N/A
 ##### iOS
 
 None required! &#x1F389;
+
+---
+
+#### Spokestack Cloud ASR
+
+Spokestack's Cloud ASR requires requests to be signed with a Spokestack client ID and API secret. Spokestack accounts are free, and cloud-based ASR currently is as well. If you don't already have an account, you can sign up for one [here](/create); if you do, [log in](/login) to get your credentials.
+
+##### Android
+
+- `spokestack-id` (string): A Spokestack client ID, available in the account portal.
+- `spokestack-secret` (string): A Spokestack API secret, also available in the account portal.
+
+##### iOS
+
+- `spokestack-id` (string): A Spokestack client ID, available in the account portal.
+- `spokestack-secret` (string): A Spokestack API secret, also available in the account portal.
 
 ---
 

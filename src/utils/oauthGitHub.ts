@@ -31,7 +31,6 @@ export async function getAccessToken(
     })
   })
     .then((response) => {
-      console.log(response)
       if (!response.ok) {
         throw new Error(`Received response code ${response.status}.`)
       }

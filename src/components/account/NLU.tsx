@@ -1,11 +1,12 @@
 import * as theme from '../../styles/theme'
 
+import React, { useState } from 'react'
+
 import { Account } from '../../types'
 import AccountLayout from './AccountLayout'
 import Dropzone from '../Dropzone'
 import LoadingIcon from '../LoadingIcon'
 import NluModels from './NluModels'
-import React from 'react'
 import { RouteComponentProps } from '@reach/router'
 import { css } from '@emotion/core'
 import gql from 'graphql-tag'
@@ -22,6 +23,7 @@ const UPLOAD_MUTATION = gql`
 `
 
 export default function NLU({ location }: Props) {
+  const [refetch, setRefetch] = useState(false)
   const [uploadExport, { data, loading, error }] = useMutation<{
     uploadNluExport: boolean
   }>(UPLOAD_MUTATION)
@@ -31,7 +33,7 @@ export default function NLU({ location }: Props) {
       variables: {
         nluExport: file
       }
-    })
+    }).then(() => setRefetch(true))
   }
   if (error) {
     console.log(error)
@@ -65,7 +67,7 @@ export default function NLU({ location }: Props) {
         )}
       </div>
       <section css={styles.models}>
-        <NluModels />
+        <NluModels refetch={refetch} onRefetch={() => setRefetch(false)} />
       </section>
     </AccountLayout>
   )

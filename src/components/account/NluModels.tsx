@@ -1,7 +1,8 @@
+import React, { useEffect } from 'react'
+
 import LoadingIcon from '../LoadingIcon'
 import NluModel from './NluModel'
 import { NluModel as NluModelType } from '../../types'
-import React from 'react'
 import { css } from '@emotion/core'
 import gql from 'graphql-tag'
 import { useQuery } from '@apollo/react-hooks'
@@ -20,12 +21,26 @@ const LIST_NLU_MODELS = gql`
   }
 `
 
-export default function NluModels() {
+interface Props {
+  /** A callback to indicate refetch was called */
+  onRefetch: () => void
+  /** Force a refetch, like in the case of uploading a new model */
+  refetch: boolean
+}
+
+export default function NluModels({ onRefetch, refetch }: Props) {
   const result = useQuery<{ listNluModels: NluModelType[] }>(LIST_NLU_MODELS, {
     ssr: false,
-    pollInterval: 2000,
+    // Refreshes once per min
+    pollInterval: 60000,
     fetchPolicy: 'network-only'
   })
+  useEffect(() => {
+    if (refetch && result.data) {
+      result.refetch()
+      onRefetch()
+    }
+  }, [refetch])
   if (result.error) {
     console.error(result.error)
     return (

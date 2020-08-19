@@ -1,5 +1,11 @@
 import * as theme from '../styles/theme'
 
+import { Account, SynthesisResult, Voice } from '../types'
+import {
+  LIST_VOICES,
+  SYNTHESIZE_MARKDOWN,
+  SYNTHESIZE_SSML
+} from '../apollo/queries'
 import React, { PureComponent } from 'react'
 import Select, { Option } from './Select'
 
@@ -8,12 +14,12 @@ import Card from './Card'
 import { MIN_TABLET_MEDIA_QUERY } from 'typography-breakpoint-constants'
 import SVGIcon from './SVGIcon'
 import Textarea from './Textarea'
-import { Voice } from '../types'
 import { adjustFontSizeTo } from '../styles/typography'
+import client from '../apollo/client'
 import { css } from '@emotion/core'
 import debounce from 'lodash/debounce'
 import find from 'lodash/find'
-import synthesize from '../utils/synthesize'
+import sanitizeIPA from '../utils/sanitizeIPA'
 
 const defaultStrings = {
   ipa: 'Hello, welcome to {{spoʊkstæk}}. What would you like to say?',
@@ -22,51 +28,63 @@ const defaultStrings = {
 }
 
 interface Props {
+  account: Account
   allowDownload?: boolean
-  voices: Voice[]
 }
 
 interface State {
   disabled: boolean
   errorText: string
-  selected: Option
+  selected: Voice
   speechMarkdown: boolean
   submitting: boolean
   text: string
+  voices: Voice[]
 }
 
 export default class SampleVoices extends PureComponent<Props, State> {
   private audio: HTMLAudioElement
-  private options: Option[]
 
-  constructor(props: Props) {
-    super(props)
-    this.options = props.voices.map((voice) => ({
-      value: voice.model,
-      title: voice.label
-    }))
-    this.state = {
-      disabled: false,
-      errorText: null,
-      selected: this.options[0],
-      speechMarkdown: false,
-      submitting: false,
-      text: defaultStrings.ipa
-    }
+  state: State = {
+    disabled: true,
+    errorText: null,
+    selected: null,
+    speechMarkdown: false,
+    submitting: false,
+    text: defaultStrings.ipa,
+    voices: []
   }
 
   componentDidMount() {
-    this.getAudio()
+    this.getVoices().then(this.getAudio)
   }
 
-  resetState = () => {
-    this.setState({ disabled: false, submitting: false })
-  }
-
-  loadAudio(url: string) {
-    this.audio = new Audio(url)
-    this.audio.addEventListener('canplaythrough', this.resetState)
-    this.audio.load()
+  getVoices() {
+    return client
+      .query<{ listVoices: { description: string; name: string }[] }>({
+        query: LIST_VOICES,
+        fetchPolicy: 'network-only'
+      })
+      .then(({ data }) => {
+        return new Promise((resolve) => {
+          const voices = data.listVoices.sort((a, b) => {
+            if (a.name === 'Spokestack Free') {
+              return -1
+            }
+            if (a.name < b.name) {
+              return -1
+            }
+            return 1
+          })
+          this.setState(
+            {
+              selected: voices[0],
+              voices
+            },
+            resolve
+          )
+        })
+      })
   }
 
   getAudio = async () => {
@@ -78,24 +96,51 @@ export default class SampleVoices extends PureComponent<Props, State> {
       submitting: true,
       errorText: null
     })
-    const [synthError, response] = await synthesize(text, {
-      voice: selected.value,
-      isMarkdown: speechMarkdown
-    })
-    if (!synthError && response && response.url) {
-      this.loadAudio(response.url)
-    } else {
-      this.setState({
-        disabled: false,
-        submitting: false,
-        errorText:
-          (synthError && synthError.message) ||
-          'There was a problem synthesizing the text. Please try again.'
+    const query = speechMarkdown
+      ? client
+          .query<{ synthesizeMarkdown: SynthesisResult }>({
+            query: SYNTHESIZE_MARKDOWN,
+            variables: {
+              markdown: text,
+              voice: selected.name
+            }
+          })
+          .then(({ data }) => data.synthesizeMarkdown)
+      : client
+          .query<{ synthesizeSsml: SynthesisResult }>({
+            query: SYNTHESIZE_SSML,
+            variables: {
+              ssml: sanitizeIPA(text),
+              voice: selected.name
+            }
+          })
+          .then(({ data }) => data.synthesizeSsml)
+    query
+      .then(({ url }) => {
+        this.loadAudio(url)
       })
-    }
+      .catch((error) => {
+        this.setState({
+          disabled: false,
+          submitting: false,
+          errorText:
+            (error && error.message) ||
+            'There was a problem synthesizing the text. Please try again.'
+        })
+      })
   }
 
   getAudioDebounced = debounce(this.getAudio, 1000)
+
+  resetState = () => {
+    this.setState({ disabled: false, submitting: false })
+  }
+
+  loadAudio(url: string) {
+    this.audio = new Audio(url)
+    this.audio.addEventListener('canplaythrough', this.resetState)
+    this.audio.load()
+  }
 
   play = () => {
     const { disabled, submitting } = this.state
@@ -106,16 +151,20 @@ export default class SampleVoices extends PureComponent<Props, State> {
   }
 
   render() {
-    const { allowDownload, voices } = this.props
+    const { allowDownload } = this.props
     const {
       disabled,
       errorText,
       selected,
       speechMarkdown,
       submitting,
-      text
+      text,
+      voices
     } = this.state
-    const selectedVoice = find(voices, { model: selected.value })
+    const options: Option[] = voices.map((voice) => ({
+      title: voice.name,
+      value: voice.name
+    }))
 
     return (
       <Card title="Sample a Custom Voice">
@@ -139,15 +188,17 @@ export default class SampleVoices extends PureComponent<Props, State> {
             <Select
               id="sample-voices"
               disabled={disabled || submitting}
-              selected={selected}
+              selected={
+                selected ? find(options, { value: selected.name }) : undefined
+              }
               extraCss={styles.select}
               selectCss={styles.selectElem}
               iconWrapCss={styles.selectIconWrap}
-              options={this.options}
+              options={options}
               onChange={(value) => {
-                const option = find(this.options, { value })
-                if (option) {
-                  this.setState({ selected: option }, this.getAudio)
+                const voice = find(voices, { name: value })
+                if (voice) {
+                  this.setState({ selected: voice }, this.getAudio)
                 }
               }}
             />
@@ -181,7 +232,7 @@ export default class SampleVoices extends PureComponent<Props, State> {
           <Textarea
             id="sample-voice-textarea"
             extraCss={styles.textarea}
-            label={errorText || selectedVoice.description}
+            label={errorText || (selected && selected.description)}
             labelCss={errorText ? styles.labelError : null}
             loading={submitting}
             value={text}

@@ -8,6 +8,9 @@ const providerKey = 'spokestack-auth-provider-v1'
 const stateKey = 'spokestack-auth-state-v1'
 const darkModeKey = 'spokestack-auth-dark-mode-v1'
 
+/**
+ * Remove all items added to storage
+ */
 export function clearStorage() {
   localStorage.removeItem(userTokenKey)
   localStorage.removeItem(authTokenKey)
@@ -16,6 +19,10 @@ export function clearStorage() {
   localStorage.removeItem(darkModeKey)
 }
 
+/**
+ * Old Auth
+ * ---------------------------------------------
+ */
 function getUserToken() {
   return localStorage.getItem(userTokenKey)
 }
@@ -70,20 +77,28 @@ export async function login() {
   return createAnonymousUser()
 }
 
+/** --------------------------------------------- */
+
+/**
+ * New Auth
+ * ---------------------------------------------
+ */
+
 export function getAuthToken() {
   return localStorage.getItem(authTokenKey)
-}
-
-export function isLoggedIn() {
-  return typeof window !== 'undefined' && !!getAuthToken()
 }
 
 export function setAuthToken(token: string) {
   return localStorage.setItem(authTokenKey, token)
 }
 
+export function isLoggedIn() {
+  return typeof window !== 'undefined' && !!getAuthToken()
+}
+
 /**
- * Only generate once
+ * This state key is used to verify the proper URL for OAuth.
+ * Only generate once and save to storage.
  */
 export function getStateKey() {
   let state = localStorage.getItem(stateKey)
@@ -102,6 +117,10 @@ export function setProvider(provider: string) {
   return localStorage.setItem(providerKey, provider)
 }
 
+/**
+ * Dark mode setting is saved to localStorage,
+ * and cleared on logout.
+ */
 export function getDarkModePref() {
   return typeof window !== 'undefined' && !!localStorage.getItem(darkModeKey)
 }

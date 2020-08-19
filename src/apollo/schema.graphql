@@ -156,6 +156,9 @@ type RootQueryType {
   """List the Spokestack NLU models available in the current account"""
   listNluModels: [NluModel]
 
+  """List the Spokestack voices available in the current account"""
+  listVoices: [Voice]
+
   """Classify an utterance using an NLU model"""
   nluInfer(input: String!, model: String!, source: NluModelSource = ACCOUNT): NluResult
 
@@ -167,7 +170,27 @@ type RootQueryType {
   creation.
   """
   showKey(accountId: ID!, keyId: ID!): ApiKey
+  synthesizeMarkdown(markdown: String!, voice: String!): SynthesisResult
+  synthesizeSsml(ssml: String!, voice: String!): SynthesisResult
+  synthesizeText(text: String!, voice: String!): SynthesisResult
 }
 
-"""Represents an uploaded file."""
+"""
+The result of a synthesis request, consisting for
+now of just the URL where the result can be found.
+"""
+type SynthesisResult {
+  url: String
+}
+
+"""
+Represents an uploaded file.
+
+"""
 scalar Upload
+
+"""Metadata for a Spokestack voice"""
+type Voice {
+  description: String!
+  name: String!
+}

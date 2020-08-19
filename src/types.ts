@@ -37,12 +37,6 @@ export interface SharpImage {
   childImageSharp: { fixed: FixedObject }
 }
 
-export interface Voice {
-  model: string
-  label: string
-  description: string
-}
-
 /**
  * Remote types for the Spokestack API
  */
@@ -110,4 +104,13 @@ export interface NluSlot {
   key: string
   text: string | null
   value: string
+}
+
+export interface SynthesisResult {
+  url: string
+}
+
+export interface Voice {
+  name: string
+  description: string
 }

@@ -28,7 +28,10 @@ export default function Account({ location }: PageRendererProps) {
       <Router>
         <PrivateRoute path="/account/create" component={CreateAccount} />
         <RouteWithAccount path="/account/settings" component={Settings} />
-        <PrivateRoute path="/account/services/tts" component={TextToSpeech} />
+        <RouteWithAccount
+          path="/account/services/tts"
+          component={TextToSpeech}
+        />
         <PrivateRoute path="/account/services/nlu" component={NLU} />
         {process.env.NODE_ENV !== 'production' && (
           <PrivateRoute path="/account/__api" component={GraphiQL} />

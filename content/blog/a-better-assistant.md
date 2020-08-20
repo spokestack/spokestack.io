@@ -1,7 +1,7 @@
 ---
-title: How to Make a Better Assistant
+title: How to Make a Better Voice Assistant
 date: '2020-08-20'
-description: Google is always trying to improve Assistant, but can your app do better?
+description: Google is always trying to improve Google Assistant, but can your app do better?
 tags: Business, Product
 author: josh
 draft: false

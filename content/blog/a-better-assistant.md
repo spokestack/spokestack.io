@@ -7,7 +7,7 @@ author: josh
 draft: false
 ---
 
-# Training the Assistant
+## Training the Assistant
 
 The Google AI team recently released a [very interesting blog post](https://ai.googleblog.com/2020/07/grounding-natural-language-instructions.html) summarizing an [equally interesting paper](https://arxiv.org/abs/2005.03776). I recommend reading both if you're in the mood for some technical diagrams and math in the context of app accessibility, but I'm going to give a quick overview here anyway.
 
@@ -19,7 +19,7 @@ On its face, this is great. Having the Assistant do all the complicated work has
 
 At least, that's the rose-colored sales pitch.
 
-# Training Your Replacement
+## Training Your Replacement
 
 There's another way or two to look at this. One is that this is the first step toward Google taking over the user exerience from apps, teaching people to just use the Assistant (read: Google) to interact with their apps. This doesn't necessarily take anything _away_ from you as an app developer, but it does essentially give Google a copy of your user interactions, right down to the products individual users might search for. As we know, this is valuable data to an advertisement broker like Google.
 
@@ -29,7 +29,7 @@ Google's system might eventually be able to overcome this lack of training data,
 
 That may sound bleak, but this isn't a gloom-and-doom post. After all, deep voice interaction with mobile apps is wonderful! It's a huge accessibility boon, and I meant what I said earlier about unlocking an app's true potential by making complicated tasks simple for a user to perform. So how do we overcome the potential for abuse and lock-in?
 
-# Be Your Own Assistant
+## Be Your Own Assistant
 
 As it turns out, it's not as hard as it used to be to handle voice commands in your app. Our whole mission at Spokestack is to continue making it easier. A [free account](/create) gives you access to everything from in-app wakeword detection to ASR, NLU, and TTS to read your responses. Here are some of the benefits of turning your app into a purpose-built voice assistant using Spokestack libraries:
 

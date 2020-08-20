@@ -45,7 +45,7 @@ compileOptions {
 // in the dependencies block
 dependencies {
     // (other dependencies)
-    implementation 'io.spokestack:spokestack-android:8.0.2'
+    implementation 'io.spokestack:spokestack-android:8.1.0'
 
     // if you plan to use Google ASR, also include these
     implementation 'com.google.cloud:google-cloud-speech:1.22.2'
@@ -60,7 +60,7 @@ dependencies {
 
 // a new top-level block if you don't already have native dependencies
 native_dependencies {
-    artifact 'io.spokestack:spokestack-android:8.0.2'
+    artifact 'io.spokestack:spokestack-android:8.1.0'
 }
 ```
 

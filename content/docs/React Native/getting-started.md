@@ -210,7 +210,7 @@ Spokestack.initialize({
 
 ## Hearing your users
 
-We call `Spokestack.start()` to begin listening for speech. `Spokestack.stop()` will stop listening completely. If you want to manually start speech recognition, without waiting for activation from a wakeword or voice trigger, call `Spokestack.activate()` after calling `start`. Correspondingly, `Spokestack.deactivate()` will stop speech recognition, but will still keep the pipelinerunning and listening for speech.
+We call `Spokestack.start()` to begin listening for speech. `Spokestack.stop()` will stop listening completely. If you want to manually start speech recognition, without waiting for activation from a wakeword or voice trigger, call `Spokestack.activate()` after calling `start`. Correspondingly, `Spokestack.deactivate()` will stop speech recognition, but will still keep the pipeline running and listening for speech.
 
 ```javascript
 // Speech Pipeline

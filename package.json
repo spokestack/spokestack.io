@@ -18,7 +18,7 @@
     "schema": "graphql-codegen --config codegen.yml && prettier --write \"**/graphql.d.ts\"",
     "schema:remote": "node tasks/schema.js",
     "serve": "serve -l 8000 public/",
-    "start": "npm run clean && concurrently \"gatsby develop\" \"npm run graphiql\"",
+    "start": "npm run clean && concurrently \"gatsby develop -o\" \"npm run graphiql\"",
     "test": "concurrently --raw \"npm run lint\" \"npm run typescript\"",
     "typescript": "tsc -p tsconfig.json --noEmit"
   },
@@ -115,6 +115,7 @@
     "gatsby-plugin-remove-trailing-slashes": "^2.3.11",
     "husky": "^4.2.5",
     "mkdirp": "^1.0.4",
+    "open": "^7.2.0",
     "prettier": "^2.0.5",
     "semantic-release": "^17.1.1",
     "serve": "^11.3.2",
@@ -134,7 +135,6 @@
     "url": "git+ssh://git@github.com/spokestack/spokestack-website.git"
   },
   "prettier": {
-    "printWidth": 80,
     "semi": false,
     "singleQuote": true,
     "jsxBracketSameLine": true,

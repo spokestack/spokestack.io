@@ -7,6 +7,7 @@
 const path = require('path')
 const mkdirp = require('mkdirp')
 const fs = require('fs')
+const open = require('open')
 const template = require('lodash/template')
 const args = process.argv.slice(2)
 const rspaces = /[\s-]+/g
@@ -48,13 +49,14 @@ function post(author, title, description) {
           if (fsErr) {
             return reject(fsErr)
           }
-          resolve()
+          resolve(name)
         }
       )
     })
   }).then(
-    () => {
+    (name) => {
       console.log(`Created post ${title}.`)
+      return open(`http://localhost:8000/blog/${name}`)
     },
     (error) => {
       console.error(error)

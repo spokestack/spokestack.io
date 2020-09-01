@@ -61,7 +61,7 @@ target 'SpokestackTrayExample' do
   #...
 ```
 
-For the time-being, `use_frameworks!` does not work with Flipper, so we also need to disable Flipper. Remove any Flipper-related lines in your Podfile. In React Native 0.63.2, they look like this...
+For the time being, `use_frameworks!` does not work with Flipper, so we also need to disable Flipper. Remove any Flipper-related lines in your Podfile. In React Native 0.63.2, they look like this:
 
 ```ruby
   # X Remove or comment out these lines X

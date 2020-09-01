@@ -99,9 +99,9 @@ module.exports = {
         title: 'Front-End Engineer',
         bio: '',
         social: {
-          twitter: '',
+          twitter: 'https://twitter.com/timmywil',
           linkedin: '',
-          email: ''
+          email: 'timmy@spokestack.io'
         }
       },
       {
@@ -112,8 +112,8 @@ module.exports = {
         bio: '',
         social: {
           twitter: '',
-          linkedin: 'https://www.linkedin.com/in/joshziegler/',
-          email: 'mailto:josh@spokestack.io'
+          linkedin: '',
+          email: ''
         }
       }
     ],

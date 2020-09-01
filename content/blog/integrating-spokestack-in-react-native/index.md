@@ -37,7 +37,7 @@ Now that you have all of the node modules, we need to update some native files. 
 
 ### Edit Podfile
 
-Our main dependency (react-native-spokestack) makes use of relatively new APIs only available in iOS 13+. Make sure to set your deployment target to iOS 13, and set the following
+Our main dependency (react-native-spokestack) makes use of relatively new APIs only available in iOS 13+. Make sure to set your deployment target to iOS 13 at the top of your Podfile:
 
 ```ruby
 platform :ios, '13.0'
@@ -157,7 +157,7 @@ android {
 
 ## Usage
 
-The [react-native-spokestack-tray example app](https://github.com/spokestack/react-native-spokestack-tray/tree/develop/example) uses the "Spokestack" wakeword and sample Minecraft NLU models.
+The [react-native-spokestack-tray example app](https://github.com/spokestack/react-native-spokestack-tray/tree/develop/example) uses the "Spokestack" wakeword and [sample Minecraft NLU models](https://www.spokestack.io/blog/porting-the-alexa-minecraft-skill-to-ios-using-spokestack).
 
 In this example, the following code is used to add the `<SpokestackTray />` component:
 
@@ -198,7 +198,7 @@ But if the user initiated the interaction and said, "Search for bananas", the NL
 So, intents are commands for the app based on what the user said. Now that you know how you get intents, it's your responsibility to respond to those intents. There are two questions to answer for any given intent:
 
 1. What should the app say in response to the user? This is the return value of `handleIntent` and is always required.
-2. Should the app update the UI? Note that not all intents will need to make UI changes.
+1. Should the app update the UI? Note that not all intents will need to make UI changes.
 
 In the voice search example, if the user has just searched for "bananas", the answer to question #1 might be to say, "Here are your search results." The answer to question #2 would probably be to show the search results. Remember that the NLU doesn't do the search for you; it just tells you the proper search terms.
 
@@ -232,7 +232,7 @@ function handleIntent(
 }
 ```
 
-The `prompt` will then be synthesized using Spokestack's TTS service. It then gets played using the device's native audio player.
+The `prompt` will then be synthesized using Spokestack's TTS service. It then gets played using the device's native audio player (unless the tray is in `silent` mode).
 
 The `node` property is metadata to help you track conversation state, and the value is completely up to you. The only reason `SpokestackTray` needs it is to determine whether to listen again after the prompt has been said.
 

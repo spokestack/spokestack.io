@@ -101,7 +101,7 @@ Add the following to your Info.plist to enable permissions. In XCode, also ensur
 
 #### AudioSession category
 
-Set the AudioSession category, to enable microphone input and play out of the speaker by default. This also enables input and playback over bluetooth.
+Set the AudioSession category to enable microphone input and play from the speaker by default. This also enables input and playback over bluetooth.
 
 ```objc
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions

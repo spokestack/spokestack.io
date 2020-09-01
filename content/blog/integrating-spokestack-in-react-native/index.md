@@ -242,7 +242,7 @@ If the `node` is not an exit node, `SpokestackTray` will stay open and listen to
 
 ## Conclusion
 
-Hopefully, we've given you glimpse into just how powerful `react-native-spokestack-tray` can be. Add the `SpokestackTray` component to your React Native app to start building elegant conversational user experiences.
+Hopefully, we've given you a glimpse into just how powerful `react-native-spokestack-tray` can be. Add the `SpokestackTray` component to your React Native app to start building elegant conversational user experiences.
 
 For complete documentation, check out [react-native-spokestack-tray on GitHub](https://github.com/spokestack/react-native-spokestack-tray).
 

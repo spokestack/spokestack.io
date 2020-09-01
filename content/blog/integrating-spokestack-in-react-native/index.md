@@ -238,7 +238,7 @@ The `node` property is metadata to help you track conversation state, and the va
 
 If the node is specified in the [`exitNodes`](https://github.com/spokestack/react-native-spokestack-tray#optional-exitnodes) prop, the conversation will stop and `SpokestackTray` will close.
 
-If the `node` is not an exit node, `SpokestackTray` will stay open and will listen to the user again, and the process repeats.
+If the `node` is not an exit node, `SpokestackTray` will stay open and listen to the user again, and the process will repeat.
 
 ## Conclusion
 

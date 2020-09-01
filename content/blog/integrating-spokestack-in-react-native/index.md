@@ -118,7 +118,7 @@ Set the AudioSession category to enable microphone input and play from the speak
 
 #### Remove Flipper
 
-While Flipper works on fixing their pod for `use_frameworks!`, we must disable Flipper in the meantime. We already removed the Flipper dependencies from Pods above, but there remains some code in the AppDelegate.m that imports Flipper. There are two ways to fix this.
+While Flipper works on fixing their pod for `use_frameworks!`, we must disable Flipper. We already removed the Flipper dependencies from Pods above, but there remains some code in the AppDelegate.m that imports Flipper. There are two ways to fix this.
 
 1. You can disable Flipper imports without removing any code from the AppDelegate. To do this, open your xcworkspace file in XCode. Go to your target, then Build Settings, search for "C Flags", remove `-DFB_SONARKIT_ENABLED=1` from flags.
 1. Remove all Flipper-related code from your AppDelegate.m.
@@ -132,13 +132,13 @@ In our [example app](https://github.com/spokestack/react-native-spokestack-tray/
 ```xml
     <!-- For TTS -->
     <uses-permission android:name="android.permission.INTERNET" />
-    <!-- To wakeword and ASR -->
+    <!-- For wakeword and ASR -->
     <uses-permission android:name="android.permission.RECORD_AUDIO" />
 ```
 
 ### Edit app/build.gradle
 
-Add the following lines
+Add the following lines:
 
 ```java
 android {
@@ -191,7 +191,7 @@ At this point, you may be wondering what an NLU does. While Automatic Speech Rec
 
 A good example is searching with voice. If your app has just said, "What would you like to search for?" and the user says, "Bananas", you can be reasonably sure that the user means for the app to search for bananas without the help of an NLU.
 
-But if the user initiated the interaction and said, "Search for bananas", the NLU can parse that statement into an intent (e.g. "search") with variables (e.g. "bananas"). If you were only using ASR, you'd probably end up searching for the whole sentence, "search for bananas", rather than just "bananas", which may yield different results. For more information on NLUs, please check out [our guide on the concept](/docs/Concepts/nlu). If you've already built an NLU model in Alexa, Dialogflow, or Jovo, check out [our guide on exporting existing NLU models from other platforms](/docs/Concepts/export).
+But if the user initiated the interaction and said, "Search for bananas", the NLU can parse that statement into an intent (e.g. "search") with variables (e.g. "bananas"). If you were only using ASR, you'd probably end up searching for the whole sentence, "search for bananas", rather than just "bananas", which may yield different results. For more information on NLU in Spokestack, please check out [our guide](/docs/Concepts/nlu). If you've already built an NLU model in Alexa, Dialogflow, or Jovo, check out [our guide on exporting existing NLU models from other platforms](/docs/Concepts/export).
 
 ### `handleIntent`
 
@@ -200,7 +200,7 @@ So, intents are commands for the app based on what the user said. Now that you k
 1. What should the app say in response to the user? This is the return value of `handleIntent` and is always required.
 2. Should the app update the UI? Note that not all intents will need to make UI changes.
 
-In the voice search example, if the user has just searched for "bananas", the answer to question #1 might be to say, "Here are your search results." The answer to question #2 would probably be to show the search results. Remember that the NLU doesn't do the search for you, just tells you the proper search terms.
+In the voice search example, if the user has just searched for "bananas", the answer to question #1 might be to say, "Here are your search results." The answer to question #2 would probably be to show the search results. Remember that the NLU doesn't do the search for you; it just tells you the proper search terms.
 
 These answers could be written like this...
 

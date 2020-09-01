@@ -23,7 +23,7 @@ This tutorial will guide you through the process of installing `react-native-spo
 
 ## Installation
 
-First, install the dependencies. Here's a one-linear to install `react-native-spokestack-tray` and its peer dependencies.
+First, install the dependencies. Here's a one-liner to install `react-native-spokestack-tray` and its peer dependencies.
 
 ```sh
 npm install react-native-spokestack-tray react-native-spokestack @react-native-community/async-storage @react-native-community/netinfo react-native-video rn-fetch-blob react-native-haptic-feedback react-native-linear-gradient react-native-permissions

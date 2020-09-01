@@ -72,7 +72,7 @@ For the time being, `use_frameworks!` does not work with Flipper, so we also nee
   # XX
 ```
 
-Remove your existing Podfile.lock and Pods folder to ensure no conflicts, then install the pods...
+Remove your existing Podfile.lock and Pods folder to ensure no conflicts, then install the pods:
 
 ```sh
 $ npx pod-install

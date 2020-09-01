@@ -15,7 +15,7 @@ Introducing [react-native-spokestack-tray](https://github.com/spokestack/react-n
 
 ![React Native Spokestack Tray Example](./tray_example.gif)
 
-[react-native-spokestack-tray](https://github.com/spokestack/react-native-spokestack-tray) is a React Native component that is designed to work in any application, regardless of its layout or navigation. It uses multiple existing React Native plugins, including [react-native-spokestack](https://github.com/spokestack/react-native-spokestack), to add voice experiences. With **on-device** wakeword, ASR, and NLU, the tray's `silent` mode works completely offline–TTS being the only service that requires a network.
+[react-native-spokestack-tray](https://github.com/spokestack/react-native-spokestack-tray) is a React Native component that is designed to work in any application, regardless of its layout or navigation. It uses multiple existing React Native plugins, including [react-native-spokestack](https://github.com/spokestack/react-native-spokestack), to add voice experiences. With **on-device** wakeword, ASR, and NLU, the tray's `silent` mode works completely offline–TTS is the only service that requires a network.
 
 With a few required props (and [lots of optional ones](https://github.com/spokestack/react-native-spokestack-tray#spokestacktray--component-props)), you can start building a customizable voice experience without the hassle that usually comes with listening for a wakeword, working with a microphone, or playing audio in iOS and Android.
 

@@ -43,7 +43,7 @@ Our main dependency (react-native-spokestack) makes use of relatively new APIs o
 platform :ios, '13.0'
 ```
 
-We use [react-native-permissions](https://github.com/react-native-community/react-native-permissions) to check and request the Microphone permission (iOS and Android) and the Speech Recognition permission (iOS only). This library separates each permission into their own pod to avoid inflating your app with code you don't use. Add the following pods to your Podfile...
+We use [react-native-permissions](https://github.com/react-native-community/react-native-permissions) to check and request the Microphone permission (iOS and Android) and the Speech Recognition permission (iOS only). This library separates each permission into its own pod to avoid inflating your app with code you don't use. Add the following pods to your Podfile:
 
 ```ruby
 target 'SpokestackTrayExample' do

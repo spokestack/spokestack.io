@@ -127,11 +127,10 @@ Here are some things to consider when writing error prompts:
 - Prompt users to either clarify or include additional information by repeating or paraphrasing all or part of their previous turn. For experienced or return users, this can be brief.
 - If after prompting your user no speech is detected, either reprompt the user or end the conversation. For example, Siri reprompts the user after 3 seconds with any number of liveliness indicators: “uh huh,” “I’m here,” “Yes?” etc.
 
-
-    RETURN USER: [Listening] “Pause my run”
-    MYRUNBUDDY: [Recording Run] “Pausing… Are you having a good run so far?”
-    RETURN USER: [Listening] “It’s a little rainy, but I’m feeling pretty good.”
-    MYRUNBUDDY: [Error] “Sorry, I didn’t quite understand what you said. Could you repeat that?”
+  RETURN USER: [Listening] “Pause my run”
+  MYRUNBUDDY: [Recording Run] “Pausing… Are you having a good run so far?”
+  RETURN USER: [Listening] “It’s a little rainy, but I’m feeling pretty good.”
+  MYRUNBUDDY: [Error] “Sorry, I didn’t quite understand what you said. Could you repeat that?”
 
 In this example, the app added a question to make the app sound more human. When the user answered the question, the app failed to respond as this question wasn’t supported by a yes/no intent.
 

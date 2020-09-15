@@ -1,5 +1,11 @@
 [
   "Welcome",
+  "ASR"
+  "Speech Pipeline Configuration",
+  "Wakeword Models",
+  "NLU (Concepts)",
+  "Export",
+  "TTS",
   "Getting Started (iOS)",
   "Cookbook (iOS)",
   "Speech Pipeline (iOS)",
@@ -11,11 +17,6 @@
   "TTS (Android)",
   "Getting Started (react-native)",
   "Cookbook (react-native)",
-  "TTS",
-  "NLU (Concepts)",
-  "Export",
-  "Speech Pipeline Configuration",
-  "Wakeword Models",
   "Getting Started (Design)",
   "Find the Right Use Case",
   "Map Out Integration",
@@ -23,5 +24,4 @@
   "Tips for Designing Visual Output",
   "Tips for Writing Dialogue",
   "Further Learning",
-  "ASR"
 ]

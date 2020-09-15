@@ -1,11 +1,11 @@
 ---
-title: Export An Existing NLU Model
-navId: Export
-description: Convert an existing Alexa, Dialogflow, or Jovo model into Spokestack's format
+title: Migrate An Existing NLU Model
+navId: Migrate
+description: Migrate an existing Alexa, Dialogflow, or Jovo model into Spokestack's format
 draft: false
 ---
 
-This guide details the process of exporting an existing interaction model from Alexa, Dialogflow, or Jovo for use with Spokestack.
+This guide details the process of migrating an existing interaction model from Alexa, Dialogflow, or Jovo for use with Spokestack.
 
 ## Alexa
 

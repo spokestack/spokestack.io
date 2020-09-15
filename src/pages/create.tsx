@@ -7,7 +7,7 @@ export default function createPage({ location }: PageRendererProps) {
   return (
     <Login
       isCreate
-      header="Create an account, no credit card required"
+      header="Create a free account, no credit card required"
       location={location}>
       <SEO
         title="Create a Free Voice App Developer Account — Spokestack"

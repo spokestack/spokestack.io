@@ -1,6 +1,7 @@
 import Color from 'color'
 
 export const primaryColor = Color('#2f5bea')
+export const primaryDarkColor = Color('#0820D6')
 export const primaryLightColor = Color('#99caff')
 export const primaryLighterColor = Color('#cce4ff')
 export const secondaryColor = Color('#61fae9')
@@ -13,6 +14,7 @@ export const authorBackgroundColor = Color('#5b6a79')
 export const codeBackgroundColor = primaryLighterColor.fade(0.7)
 
 export const primary = primaryColor.hex()
+export const primaryDark = primaryDarkColor.hex()
 export const primaryLight = primaryLightColor.hex()
 export const primaryLighter = primaryLighterColor.hex()
 export const secondary = secondaryColor.hex()

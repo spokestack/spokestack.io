@@ -6,7 +6,7 @@ import { MIN_DEFAULT_MEDIA_QUERY } from 'typography-breakpoint-constants'
 import React from 'react'
 
 interface Props {
-  title: string
+  title?: string
   children: React.ReactNode
   extraCss?: SerializedStyles
 }
@@ -14,7 +14,7 @@ interface Props {
 export default function Card({ title, children, extraCss }: Props) {
   return (
     <div css={[styles.card, extraCss]} className="card">
-      <h4 css={styles.cardHeader}>{title}</h4>
+      {!!title && <h4 css={styles.cardHeader}>{title}</h4>}
       <div css={styles.content}>{children}</div>
     </div>
   )

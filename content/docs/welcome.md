@@ -23,6 +23,8 @@ If you're looking to integrate Spokestack in your project without using the tray
 - [Android](/docs/Android/getting-started)
 - [React Native](/docs/React%20Native/getting-started)
 
+## Tutorials
+
 Tutorials for integrating Spokestack are also available on our blog:
 
 ##### Spokestack Tray Tutorials

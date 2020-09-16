@@ -1,6 +1,6 @@
 ---
 title: Spokestack Concepts
-navId: Concepts landing page
+navId: Concepts Overview
 description: In-depth explanations of Spokestack technology
 draft: false
 ---

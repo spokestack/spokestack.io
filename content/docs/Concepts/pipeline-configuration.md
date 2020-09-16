@@ -1,6 +1,6 @@
 ---
 title: Speech Pipeline Configuration
-navId: Speech Pipeline Configuration
+navId: Speech Pipeline Configuration (Concepts)
 description: Documentation for configuring the speech pipeline
 draft: false
 ---

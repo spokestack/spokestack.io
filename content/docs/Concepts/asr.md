@@ -1,6 +1,6 @@
 ---
 title: ASR configuration
-navId: ASR
+navId: ASR (Concepts)
 description: Documentation for Spokestack's third-party ASR support
 draft: false
 ---

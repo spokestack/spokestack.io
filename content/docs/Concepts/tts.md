@@ -1,6 +1,6 @@
 ---
 title: Text-to-speech Configuration
-navId: TTS
+navId: TTS (Concepts)
 description: Documentation for Spokestack's controllable TTS system.
 draft: false
 ---

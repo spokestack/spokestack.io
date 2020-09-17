@@ -15,6 +15,18 @@ references:
         - node_modules/
       key: npm-packages-v2-{{ .Branch }}-{{ checksum "package-lock.json" }}
 
+  restore_gatsby_cache: &restore_gatsby_cache
+    restore_cache:
+      keys:
+        - gatsby-cache-v1-{{ .Branch }}
+        - gatsby-cache-v1-
+
+  save_gatsby_cache: &save_gatsby_cache
+    save_cache:
+      paths:
+        - .cache/
+      key: gatsby-cache-v1-{{ .Branch }}
+
 jobs:
   build:
     docker:
@@ -31,9 +43,11 @@ jobs:
           command: npm test
 
       # build the site
+      - *restore_gatsby_cache
       - run:
           name: Run build
           command: npm run build
+      - *save_gatsby_cache
 
       - persist_to_workspace:
           root: ~/spokestack-website

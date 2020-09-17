@@ -5,7 +5,7 @@
   "version": "1.26.0",
   "author": "Timmy Willison <4timmywil@gmail.com>",
   "scripts": {
-    "build": "npm run clean && gatsby build",
+    "build": "gatsby build",
     "clean": "gatsby clean",
     "commit": "git-cz",
     "deploy": "gatsby build && gh-pages -d public -b master",
@@ -18,7 +18,7 @@
     "schema": "graphql-codegen --config codegen.yml && prettier --write \"**/graphql.d.ts\"",
     "schema:remote": "node tasks/schema.js",
     "serve": "serve -l 8000 public/",
-    "start": "npm run clean && concurrently \"gatsby develop -o\" \"npm run graphiql\"",
+    "start": "concurrently \"gatsby develop -o\" \"npm run graphiql\"",
     "test": "concurrently --raw \"npm run lint\" \"npm run typescript\"",
     "typescript": "tsc -p tsconfig.json --noEmit"
   },

@@ -1,5 +1,5 @@
 ---
-title: Spokestack Concepts
+title: Concepts Overview
 navId: Concepts Overview
 description: In-depth explanations of Spokestack technology
 draft: false

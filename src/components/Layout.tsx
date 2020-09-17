@@ -5,9 +5,9 @@ import { MIN_DEFAULT_MEDIA_QUERY } from 'typography-breakpoint-constants'
 import Nav from './Nav'
 import React from 'react'
 import Sprite from '../svg-sprite.svg'
+import { WindowLocation } from '@reach/router'
 import globalStyles from '../styles/global.css'
 import { ieBreakpoint } from '../styles/theme'
-import { WindowLocation } from '@reach/router'
 
 interface Props {
   banner?: React.ReactNode
@@ -26,10 +26,17 @@ export default function Layout({
   location,
   navStyle
 }: Props) {
+  const style = [styles.container]
+  if (banner) {
+    style.push(css`
+      top: 40px;
+    `)
+  }
+  style.push(extraCss)
   return (
     <>
       {banner}
-      <div css={[styles.container, extraCss]}>
+      <div css={style}>
         <Global styles={globalStyles} />
         <Sprite />
         <Nav extraCss={navStyle} location={location} />

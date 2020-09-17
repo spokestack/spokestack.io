@@ -18,14 +18,15 @@ references:
   restore_gatsby_cache: &restore_gatsby_cache
     restore_cache:
       keys:
-        - gatsby-cache-v1-{{ .Branch }}
-        - gatsby-cache-v1-
+        - gatsby-cache-v2-{{ .Branch }}
+        - gatsby-cache-v2-
 
   save_gatsby_cache: &save_gatsby_cache
     save_cache:
       paths:
         - .cache/
-      key: gatsby-cache-v1-{{ .Branch }}
+        - public/
+      key: gatsby-cache-v2-{{ .Branch }}
 
 jobs:
   build:

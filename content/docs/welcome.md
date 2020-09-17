@@ -9,7 +9,7 @@ Spokestack is a powerful platform of open source libraries and robust services t
 
 If you're new to voice, check out our [overview video](https://www.youtube.com/watch?v=wbJ8fZh-iQw) and the [Concepts](/docs/Concepts) section of our docs.
 
-## Integrations
+### Integrations
 
 As a tools and services provider, we try to balance ease of integration with customization for your voice interface needs. Here are the ways you can integrate Spokestack with your mobile app:
 
@@ -23,7 +23,7 @@ If you're looking to integrate Spokestack in your project without using the tray
 - [Android](/docs/Android/getting-started)
 - [React Native](/docs/React%20Native/getting-started)
 
-## Tutorials
+### Tutorials
 
 Tutorials for integrating Spokestack are also available on our blog:
 

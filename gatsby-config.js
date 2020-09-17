@@ -95,7 +95,7 @@ module.exports = {
       {
         key: 'timmy',
         name: 'Timmy Willison',
-        image: '/headshots/timmy.jpg',
+        image: '/headshots/timmy.png',
         title: 'Front-End Engineer',
         bio: '',
         social: {

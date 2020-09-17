@@ -84,7 +84,7 @@ Refer to the [Podfile in our example](https://github.com/spokestack/react-native
 
 Add the following to your Info.plist to enable permissions. In XCode, also ensure your iOS deployment target is set to 13.0.
 
-```
+```xml
 <key>NSMicrophoneUsageDescription</key>
 <string>This app uses the microphone to hear voice commands</string>
 <key>NSSpeechRecognitionUsageDescription</key>

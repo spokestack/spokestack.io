@@ -3,7 +3,6 @@ import * as theme from '../styles/theme'
 import { Global, css } from '@emotion/core'
 import { PageRendererProps, graphql } from 'gatsby'
 
-import AuthorImage from '../components/AuthorImage'
 import BlogList from '../components/BlogList'
 import DarkModeButton from '../components/DarkModeButton'
 import { MIN_DEFAULT_MEDIA_QUERY } from 'typography-breakpoint-constants'
@@ -24,9 +23,12 @@ export default function BlogListAuthorTemplate({
   pageContext: { author, currentPage, numPages, slug, tags }
 }: Props) {
   const posts = data.allMarkdownRemark.edges
-  const { name, bio, social, title } = find(data.site.siteMetadata.team, {
-    key: author
-  })
+  const { name, bio, social, title, image } = find(
+    data.site.siteMetadata.team,
+    {
+      key: author
+    }
+  )
   return (
     <>
       <Global
@@ -48,7 +50,7 @@ export default function BlogListAuthorTemplate({
         homeUrl={slug}
         header={
           <div css={styles.author}>
-            <AuthorImage author={author} extraCss={styles.image} />
+            <img alt={name} css={styles.image} src={image} />
             <h4 css={styles.name}>{name}</h4>
             <p className="author-bio" css={styles.bio}>
               {bio || title}
@@ -117,6 +119,7 @@ const styles = {
   image: css`
     width: 136px;
     height: 136px;
+    border-radius: 50%;
     margin-bottom: 15px;
   `,
   name: css`
@@ -164,6 +167,7 @@ export const blogListQuery = graphql`
           key
           name
           title
+          image
           bio
           social {
             twitter

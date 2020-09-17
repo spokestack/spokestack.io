@@ -4,12 +4,10 @@ import {
 } from 'typography-breakpoint-constants'
 import { graphql, useStaticQuery } from 'gatsby'
 
-import Img from 'gatsby-image'
 import { Query } from '../utils/graphql'
 import React from 'react'
 import TeamMember from './TeamMember'
 import { css } from '@emotion/core'
-import findAuthorImage from '../utils/findAuthorImage'
 
 export default function Team() {
   const data = useStaticQuery<Query>(teamQuery)
@@ -24,11 +22,7 @@ export default function Team() {
           <TeamMember
             key={`team-member-${member.key}`}
             avatar={
-              <Img
-                alt={member.name}
-                fixed={findAuthorImage(data, member.key)}
-                style={styles.memberImage}
-              />
+              <img alt={member.name} css={styles.image} src={member.image} />
             }
             name={member.name}
             title={member.title}
@@ -57,10 +51,11 @@ const styles = {
       margin: 0;
     }
   `,
-  memberImage: {
-    borderRadius: '50%',
-    flexShrink: 0
-  }
+  image: css`
+    width: 186px;
+    height: 186px;
+    border-radius: 50%;
+  `
 }
 
 const teamQuery = graphql`
@@ -71,23 +66,12 @@ const teamQuery = graphql`
           key
           name
           title
+          image
           bio
           social {
             twitter
             linkedin
             email
-          }
-        }
-      }
-    }
-    allImageSharp(
-      filter: { fixed: { originalName: { regex: "/headshot/" } } }
-    ) {
-      edges {
-        node {
-          fixed(width: 186, height: 186) {
-            ...GatsbyImageSharpFixed_withWebp
-            originalName
           }
         }
       }

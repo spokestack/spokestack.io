@@ -71,7 +71,7 @@ jobs:
           command: aws configure set preview.cloudfront true
       - run:
           name: Invalidate the cdn caches
-          command: aws cloudfront create-invalidation --distribution-id E1VWEXJMB3URMJ --paths "/*"
+          command: aws cloudfront create-invalidation --distribution-id E3BUXJK1QMX4F5 --paths "/*"
 
 workflows:
   version: 2

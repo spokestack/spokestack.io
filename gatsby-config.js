@@ -1,4 +1,4 @@
-const siteUrl = new URL('https://beta.spokestack.io')
+const siteUrl = new URL('https://www.spokestack.io')
 
 module.exports = {
   siteMetadata: {

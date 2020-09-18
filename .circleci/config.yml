@@ -65,6 +65,12 @@ jobs:
       - run: npm install --no-save
       - *save_npm_cache
 
+      - run:
+          name: Set git config
+          command: |
+            git config user.email "4timmywil@gmail.com"
+            git config user.name "Timmy Willison"
+
       # Run release script
       - run:
           name: Create release tag

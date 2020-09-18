@@ -55,7 +55,7 @@ jobs:
           paths:
             - public
 
-  deploy_integration:
+  deploy:
     docker:
       - image: circleci/node:12
     working_directory: ~/spokestack-website
@@ -72,38 +72,13 @@ jobs:
           command: sudo apt-get -y -qq install awscli
       - run:
           name: Build and push static site
-          command: aws s3 sync --delete public s3://beta.spokestack.io/
+          command: npm run deploy
       - run:
           name: Enable cloudfront cli
           command: aws configure set preview.cloudfront true
       - run:
           name: Invalidate the cdn caches
           command: aws cloudfront create-invalidation --distribution-id E1VWEXJMB3URMJ --paths "/*"
-
-  deploy_production:
-    docker:
-      - image: circleci/node:12
-    working_directory: ~/spokestack-website
-    steps:
-      - checkout
-
-      # attach build already done
-      - attach_workspace:
-          at: ~/spokestack-website
-
-      # upload to S3
-      - run:
-          name: Install Tools
-          command: sudo apt-get -y -qq install awscli
-      - run:
-          name: Build and push static site
-          command: aws s3 sync --delete public s3://www.spokestack.io/
-      - run:
-          name: Enable cloudfront cli
-          command: aws configure set preview.cloudfront true
-      - run:
-          name: Invalidate the cdn caches
-          command: aws cloudfront create-invalidation --distribution-id E3BUXJK1QMX4F5 --paths "/*"
 
 workflows:
   version: 2
@@ -115,18 +90,9 @@ workflows:
             tags:
               only:
                 - /\d+\.\d+\.\d+/
-      - deploy_integration:
+      - deploy:
           filters:
             branches:
               only: develop
-          requires:
-            - build
-      - deploy_production:
-          filters:
-            branches:
-              only: production
-            tags:
-              only:
-                - /\d+\.\d+\.\d+/
           requires:
             - build

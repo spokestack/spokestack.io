@@ -1,3 +1,5 @@
+const siteUrl = new URL('https://beta.spokestack.io')
+
 module.exports = {
   siteMetadata: {
     title: 'Spokestack - Independent Voice Assistant',
@@ -8,8 +10,8 @@ module.exports = {
     },
     description:
       'Build an independent voice assistant. Spokestack features open source tools for mobile and web voice interfaces. Create an account and get started.',
-    siteUrl: 'https://www.spokestack.io/',
-    logo: 'https://www.spokestack.io/logo.png',
+    siteUrl: siteUrl.href,
+    logo: `${siteUrl.href}logo.png`,
     social: {
       forum: 'https://forum.spokestack.io',
       github: 'https://github.com/spokestack',
@@ -286,13 +288,13 @@ module.exports = {
     {
       resolve: 'gatsby-plugin-canonical-urls',
       options: {
-        siteUrl: 'https://www.spokestack.io'
+        siteUrl: siteUrl.href
       }
     },
     {
       resolve: 'gatsby-plugin-manifest',
       options: {
-        name: 'www.spokestack.io',
+        name: siteUrl.hostname,
         start_url: '/',
         background_color: '#ffffff',
         theme_color: '#2f5bea',
@@ -308,6 +310,14 @@ module.exports = {
         pathToConfigModule: 'src/styles/typography'
       }
     },
-    'gatsby-plugin-remove-trailing-slashes'
+    'gatsby-plugin-remove-trailing-slashes',
+    {
+      resolve: `gatsby-plugin-s3`,
+      options: {
+        bucketName: siteUrl.hostname,
+        protocol: siteUrl.protocol.slice(0, -1),
+        hostname: siteUrl.hostname
+      }
+    }
   ].filter(Boolean)
 }

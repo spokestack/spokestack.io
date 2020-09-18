@@ -30,6 +30,18 @@ module.exports = {
         }
       },
       {
+        key: 'cory',
+        name: 'Cory D. Wiles',
+        image: '/headshots/cory.png',
+        title: 'Spokestack Certified Developer',
+        bio: '',
+        social: {
+          twitter: 'https://twitter.com/kwylez',
+          linkedin: '',
+          email: ''
+        }
+      },
+      {
         key: 'daniel',
         name: 'Daniel Tyreus',
         image: '/headshots/daniel.png',

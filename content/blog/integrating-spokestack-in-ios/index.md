@@ -3,7 +3,7 @@ title: Integrating Spokestack in iOS
 date: '2020-09-18'
 description: This tutorial guides you through the process of adding spokestack-tray-ios to an iOS app. Turn your app into an independent voice assistant without changing your app's navigation or infrastructure.
 tags: Engineering, Tutorial
-author: noel
+author: cory
 draft: false
 ---
 

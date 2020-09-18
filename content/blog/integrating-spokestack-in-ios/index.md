@@ -1,4 +1,11 @@
-## Spokestack Tray for iOS
+---
+title: Integrating Spokestack in iOS
+date: '2020-09-18'
+description: This tutorial guides you through the process of adding spokestack-tray-ios to an iOS app. Turn your app into an independent voice assistant without changing your app's navigation or infrastructure.
+tags: Engineering, Tutorial
+author: noel
+draft: false
+---
 
 As much time, talent and treasure that Apple has put into Siri, ASR, and NLU, integrating a custom voice-enabled app experience is still challenging!
 Spokestack changes all of that. Our mission at Spokestack is to make it as easy as possible to make your apps fully voice-enabled.

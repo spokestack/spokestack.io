@@ -134,6 +134,8 @@ workflows:
     jobs:
       - build:
           filters:
+            branches:
+              ignore: production
             tags:
               only:
                 - /\d+\.\d+\.\d+/

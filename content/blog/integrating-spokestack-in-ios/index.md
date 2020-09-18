@@ -1,5 +1,5 @@
 ## Spokestack Tray for iOS
-As much time, talent and treasure that Apple has put into Siri, ASR and NLU, integrating a custom voice enabled app experience is quite the challenge and in some cases a non-starter.
+As much time, talent and treasure that Apple has put into Siri, ASR, and NLU, integrating a custom voice-enabled app experience is still challenging!
 Spokestack changes all of that. Our mission at Spokestack is to make it as easy as possible to make your apps fully voice-enabled.
 
 After building the services needed to make voice interaction work, including [Wakeword](/docs/Concepts/wakeword-models), [Speech Recognition](/docs/Concepts/asr), [Natural Language Understanding](/docs/Concepts/nlu), and [Text-to-speech](/docs/Concepts/tts), we started working on ways users could integrate these services without having to completely rewrite their applications.
@@ -12,7 +12,7 @@ Introducing [spokestack-tray-ios](https://github.com/spokestack/spokestack-tray-
 
 With a few required props (and [lots of optional ones](https://github.com/spokestack/spokestack-tray-ios/blob/master/SpokestackTray/Models/TrayConfiguration.swift)), you can start building a customizable voice experience without the hassle that usually comes with listening for a wakeword, working with a microphone, or playing audio in iOS.
 
-This tutorial will guide you through the process of installing `spokestack-tray-ios` as well as using the SpokestackTray framework to respond to user intents.
+This tutorial will guide you through the process of installing `spokestack-tray-ios` as well as using the SpokestackTray framework to respond to your users.
 
 ### Installation
 
@@ -24,7 +24,7 @@ From your terminal in the project directory run
 
 `pod install`
 
-Either in your `Podfile` or your Project / Target settings set the minimum iOS target to **iOS 13**
+Either in your `Podfile` or your Project / Target settings set the minimum iOS target to **iOS 13**.
 
 ### Edit Info.plist
 
@@ -43,7 +43,7 @@ _without these your app will crash_
 
 Spokestack is dependent on the appropriate `AVAudioSession` to be configured. For _most_ apps this can be done in the `AppDelegate.(swift|m)`
 
-```
+```swift
 do {
             let session = AVAudioSession.sharedInstance()
             try? session.setCategory(.playAndRecord, options: [.defaultToSpeaker, .allowAirPlay, .allowBluetoothA2DP, .allowBluetooth])
@@ -55,7 +55,7 @@ do {
 
 The [spokestack-tray-ios example app](https://github.com/spokestack/spokestack-tray-ios/tree/master/SpokestackTrayExample) uses the “Spokestack” wakeword and [sample Minecraft NLU models](/blog/porting-the-alexa-minecraft-skill-to-ios-using-spokestack).
 
-In this example, the following code is used to add the `SpokestackTray` framework:
+To create your own copy of the Spokestack/Minecraft Helper, add the `SpokestackTray` framework:
 
 ```swift
 import SpokestackTray
@@ -71,7 +71,7 @@ import Spokestack
         /// greeting that will be "said" to the user
 
         configuration.greeting = """
-        Welcome! This example uses models for Minecraft. Try saying, \"How do I make a castle?\"
+        Welcome! This example finds tutorials for Minecraft crafting. Try saying, \"How do I make a castle?\"
         """
         
         /// When the tray is listening or processing speech there is a animated gradient that
@@ -178,11 +178,11 @@ The `clientId` and `clientSecret` props are where you pass your API tokens gener
 
 **nluModelUrls**
 
-These URLs point to the sample Minecraft NLU models files we have hosted on a CDN, which are downloaded automatically by `SpokestackTray` the first time the app launches (and only the first time). The files are then saved to the app’s cache for future use so they only need to be downloaded once. NLU models can vary drastically in size, and we thought it better not to include them in the app bundles, but instead load them lazily.
+These URLs point to the sample Minecraft NLU model files we have hosted on a CDN, which are downloaded automatically by `SpokestackTray` the first time the app launches (and only the first time). The files are then saved to the app’s cache for future use so they only need to be downloaded once. NLU models can vary drastically in size, and it's a good idea to include them in the app bundles and instead load them lazily.
 
-At this point, you may be wondering what an NLU does. While Automatic Speech Recognition provides us with a way to process speech into text, that text is rarely enough to figure out what the user wants the app to do. Natural Language Understanding (NLU) is the next step to process the text into what voice platforms call “intents”.
+At this point, you may be wondering what an "NLU" does. While Automatic Speech Recognition provides us with a way to process speech into text, that text is rarely enough to figure out what the user wants the app to do. Natural Language Understanding (NLU) is the next step to process the text into what voice platforms call “intents”.
 
-A good example is searching with voice. If your app has just said, “What would you like to search for?” and the user says, “Bananas”, you can be reasonably sure that the user means for the app to search for bananas without the help of an NLU.
+A good example is searching with voice. If your app has just said, “What would you like to search for?” and the user says, “Bananas,” you can be reasonably sure that the user means for the app to search for bananas without the help of an NLU.
 
 But if the user initiated the interaction and said, “Search for bananas”, the NLU can parse that statement into an intent (e.g. “search”) with variables (e.g. “bananas”). If you were only using ASR, you’d probably end up searching for the whole sentence, “search for bananas”, rather than just “bananas”, which may yield different results. For more information on NLU in Spokestack, please check out [our guide](/docs/Concepts/nlu). If you’ve already built an NLU model in Alexa, Dialogflow, or Jovo, check out [our guide on exporting existing NLU models from other platforms](/docs/Concepts/export).
 
@@ -190,29 +190,29 @@ But if the user initiated the interaction and said, “Search for bananas”, th
 
 So, intents are commands for the app based on what the user said. Now that you know how you get intents, it’s your responsibility to respond to those intents. There are two questions to answer for any given intent:
 
-What should the app say in response to the user? This is the return value of `handleIntent` and is always required.
-Should the app update the UI? Note that not all intents will need to make UI changes.
+  1. What should the app say in response to the user? This is the return value of `handleIntent` and is always required.
+  2. Should the app update the UI? Note that not all intents will need to make UI changes.
 In the voice search example, if the user has just searched for “bananas”, the answer to question #1 might be to say, “Here are your search results.” The answer to question #2 would probably be to show the search results. Remember that the NLU doesn’t do the search for you; it just tells you the proper search terms.
 
 These answers could be written like this…
 
-```
- configuration.handleIntent = {intent, slots, utterance in
+```swift
+configuration.handleIntent = {intent, slots, utterance in
 
-            if intent == "search" {
-              let results = searchService.search(slots.ingrident)
-              viewModel.addSearchResults(results)
-              
-              // Return a response
-          return {
-              prompt: "Here are your search results.",
-              node: "search_results"
-          }
-            }
+    if intent == "search" {
+        let results = searchService.search(slots.ingrident)
+        viewModel.addSearchResults(results)
+        
+        // Return a response
+        return {
+            prompt: "Here are your search results.",
+            node: "search_results"
         }
+    }
+}
 ```
 
-The `prompt` will then be synthesized using Spokestack’s TTS service. It then gets played using the device’s native audio player (unless the tray is in `silent` mode).
+The `prompt` will be synthesized using Spokestack’s TTS service, and then played using the device’s native audio player (unless the tray is in `silent` mode).
 
 The `node` property is metadata to help you track conversation state, and the value is completely up to you. The only reason `SpokestackTray` needs it is to determine whether to listen again after the prompt has been said.
 

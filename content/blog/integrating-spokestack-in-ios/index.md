@@ -1,4 +1,5 @@
 ## Spokestack Tray for iOS
+
 As much time, talent and treasure that Apple has put into Siri, ASR, and NLU, integrating a custom voice-enabled app experience is still challenging!
 Spokestack changes all of that. Our mission at Spokestack is to make it as easy as possible to make your apps fully voice-enabled.
 
@@ -62,18 +63,18 @@ import SpokestackTray
 import Spokestack
 
     override func viewDidLoad() {
-        
+
         super.viewDidLoad()
 
         let configuration: TrayConfiguration = TrayConfiguration()
-        
+
         /// When the tray is opened for the first time this is the synthesized
         /// greeting that will be "said" to the user
 
         configuration.greeting = """
         Welcome! This example finds tutorials for Minecraft crafting. Try saying, \"How do I make a castle?\"
         """
-        
+
         /// When the tray is listening or processing speech there is a animated gradient that
         /// sits on top of the tray. The default values are red, white and blue
 
@@ -99,8 +100,8 @@ import Spokestack
 
         configuration.cliendId = "YOUR_CLIENT_ID"
         configuration.clientSecret = "YOUR_CLIENT_SECRET"
-        
-        /// The handleIntent callback is how the SpeechController and the TrayViewModel know if 
+
+        /// The handleIntent callback is how the SpeechController and the TrayViewModel know if
         /// NLUResult should be processed and what text should be added to the tableView.
 
         let greeting: IntentResult = IntentResult(node: InterntResultNode.greeting.rawValue, prompt: configuration.greeting)
@@ -120,51 +121,51 @@ import Spokestack
                      IntentResultAmazonType.fallback.rawValue:
                     lastNode = IntentResult(node: InterntResultNode.exit.rawValue, prompt: "Goodbye!")
                 case IntentResultAmazonType.recipe.rawValue:
-                    
+
                     if let whatToMakeSlot: Dictionary<String, Slot> = slots,
                        let slot: Slot = whatToMakeSlot["Item"],
                        let item: String = slot.value as? String {
-                    
+
                         lastNode = IntentResult(node: InterntResultNode.recipe.rawValue,
                                                 prompt: """
                                                 If I were a real app, I would show a screen now on how to make a \(item). Want to continue?
                                                 """
                                     )
                     }
-                    
+
                 case IntentResultAmazonType.help.rawValue:
                     lastNode = greeting
                 default:
                     lastNode = greeting
             }
-            
+
             return lastNode
         }
-        
+
         /// Which NLUNodes should trigger the tray to close automatically
 
         configuration.exitNodes = [
             InterntResultNode.exit.rawValue
         ]
-        
+
         /// Callback when the tray is opened. The call back is called _after_ the animation has finished
-        
+
         configuration.onOpen = {
             LogController.shared.log("isOpen")
         }
-        
+
         /// Callback when the tray is closed. The call back is called _after_ the animation has finished
-        
+
         configuration.onClose = {
             LogController.shared.log("onClose")
         }
-        
+
         /// Callback when a `TrayListenerType` has occured
-        
+
         configuration.onEvent = {event in
             LogController.shared.log("onEvent \(event)")
         }
-        
+
         let tray: SpokestackTrayViewController = SpokestackTrayViewController(self, configuration: configuration)
         tray.addToParentView()
         tray.listen()
@@ -190,9 +191,9 @@ But if the user initiated the interaction and said, “Search for bananas”, th
 
 So, intents are commands for the app based on what the user said. Now that you know how you get intents, it’s your responsibility to respond to those intents. There are two questions to answer for any given intent:
 
-  1. What should the app say in response to the user? This is the return value of `handleIntent` and is always required.
-  2. Should the app update the UI? Note that not all intents will need to make UI changes.
-In the voice search example, if the user has just searched for “bananas”, the answer to question #1 might be to say, “Here are your search results.” The answer to question #2 would probably be to show the search results. Remember that the NLU doesn’t do the search for you; it just tells you the proper search terms.
+1. What should the app say in response to the user? This is the return value of `handleIntent` and is always required.
+2. Should the app update the UI? Note that not all intents will need to make UI changes.
+   In the voice search example, if the user has just searched for “bananas”, the answer to question #1 might be to say, “Here are your search results.” The answer to question #2 would probably be to show the search results. Remember that the NLU doesn’t do the search for you; it just tells you the proper search terms.
 
 These answers could be written like this…
 
@@ -202,7 +203,7 @@ configuration.handleIntent = {intent, slots, utterance in
     if intent == "search" {
         let results = searchService.search(slots.ingrident)
         viewModel.addSearchResults(results)
-        
+
         // Return a response
         return {
             prompt: "Here are your search results.",

@@ -61,6 +61,7 @@ jobs:
     working_directory: ~/spokestack-website
     steps:
       - checkout
+      - *restore_npm_cache
 
       # attach build already done
       - attach_workspace:

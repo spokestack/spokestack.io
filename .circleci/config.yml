@@ -53,8 +53,6 @@ jobs:
   deploy_integration:
     docker:
       - image: circleci/node:12
-    environment:
-      SITE_URL: https://beta.spokestack.io/
     working_directory: ~/spokestack-website
     steps:
       - checkout
@@ -67,7 +65,7 @@ jobs:
           command: sudo apt-get -y -qq install awscli
       - run:
           name: Build and push static site
-          command: npm run deploy
+          command: SITE_URL="https://beta.spokestack.io/" npm run deploy
       - run:
           name: Enable cloudfront cli
           command: aws configure set preview.cloudfront true

@@ -208,7 +208,7 @@
       "before:init": "npm test"
     },
     "git": {
-      "commit": false,
+      "commitMessage": "chore: release ${version}",
       "requireBranch": "develop",
       "tagName": "${version}"
     },

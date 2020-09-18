@@ -62,6 +62,10 @@ jobs:
     steps:
       - checkout
 
+      # attach build already done
+      - attach_workspace:
+        at: ~/spokestack-website
+
       # Run release script
       - run:
           name: Create release tag

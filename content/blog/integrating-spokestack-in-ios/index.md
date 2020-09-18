@@ -2,7 +2,7 @@
 As much time, talent and treasure that Apple has put into Siri, ASR and NLU, integrating a custom voice enabled app experience is quite the challenge and in some cases a non-starter.
 Spokestack changes all of that. Our mission at Spokestack is to make it as easy as possible to make your apps fully voice-enabled.
 
-After building the services needed to make voice interaction work, including [Wakeword](https://www.spokestack.io/docs/Concepts/wakeword-models), [Speech Recognition](https://www.spokestack.io/docs/Concepts/asr), [Natural Language Understanding](https://www.spokestack.io/docs/Concepts/nlu), and [Text-to-speech](https://www.spokestack.io/docs/Concepts/tts), we started working on ways users could integrate these services without having to completely rewrite their applications.
+After building the services needed to make voice interaction work, including [Wakeword](/docs/Concepts/wakeword-models), [Speech Recognition](/docs/Concepts/asr), [Natural Language Understanding](/docs/Concepts/nlu), and [Text-to-speech](/docs/Concepts/tts), we started working on ways users could integrate these services without having to completely rewrite their applications.
 
 Introducing [spokestack-tray-ios](https://github.com/spokestack/spokestack-tray-ios)
 
@@ -53,7 +53,7 @@ do {
 
 ### Usage
 
-The [spokestack-tray-ios example app](https://github.com/spokestack/spokestack-tray-ios/tree/master/SpokestackTrayExample) uses the “Spokestack” wakeword and [sample Minecraft NLU models](https://www.spokestack.io/blog/porting-the-alexa-minecraft-skill-to-ios-using-spokestack).
+The [spokestack-tray-ios example app](https://github.com/spokestack/spokestack-tray-ios/tree/master/SpokestackTrayExample) uses the “Spokestack” wakeword and [sample Minecraft NLU models](/blog/porting-the-alexa-minecraft-skill-to-ios-using-spokestack).
 
 In this example, the following code is used to add the `SpokestackTray` framework:
 
@@ -174,7 +174,7 @@ import Spokestack
 
 **clientId and clientSecret**
 
-The `clientId` and `clientSecret` props are where you pass your API tokens generated in your Spokestack account. First, [create a free account](https://www.spokestack.io/account/create). Then, [generate a token](https://www.spokestack.io/account/settings#api) on the account settings page. Don’t worry, there’s no hidden subscription.
+The `clientId` and `clientSecret` props are where you pass your API tokens generated in your Spokestack account. First, [create a free account](/account/create). Then, [generate a token](/account/settings#api) on the account settings page. Don’t worry, there’s no hidden subscription.
 
 **nluModelUrls**
 
@@ -184,7 +184,7 @@ At this point, you may be wondering what an NLU does. While Automatic Speech Rec
 
 A good example is searching with voice. If your app has just said, “What would you like to search for?” and the user says, “Bananas”, you can be reasonably sure that the user means for the app to search for bananas without the help of an NLU.
 
-But if the user initiated the interaction and said, “Search for bananas”, the NLU can parse that statement into an intent (e.g. “search”) with variables (e.g. “bananas”). If you were only using ASR, you’d probably end up searching for the whole sentence, “search for bananas”, rather than just “bananas”, which may yield different results. For more information on NLU in Spokestack, please check out [our guide](https://www.spokestack.io/docs/Concepts/nlu). If you’ve already built an NLU model in Alexa, Dialogflow, or Jovo, check out [our guide on exporting existing NLU models from other platforms](https://www.spokestack.io/docs/Concepts/export).
+But if the user initiated the interaction and said, “Search for bananas”, the NLU can parse that statement into an intent (e.g. “search”) with variables (e.g. “bananas”). If you were only using ASR, you’d probably end up searching for the whole sentence, “search for bananas”, rather than just “bananas”, which may yield different results. For more information on NLU in Spokestack, please check out [our guide](/docs/Concepts/nlu). If you’ve already built an NLU model in Alexa, Dialogflow, or Jovo, check out [our guide on exporting existing NLU models from other platforms](/docs/Concepts/export).
 
 **handleIntent**
 
@@ -226,4 +226,4 @@ Hopefully, we’ve given you a glimpse into just how powerful `spokestack-tray-i
 
 For complete documentation, check out [spokestack-tray-ios on GitHub](https://github.com/spokestack/spokestack-tray-ios).
 
-For support, we [offer multiple support channels](https://www.spokestack.io/support) to help you get started.
+For support, we [offer multiple support channels](/support) to help you get started.

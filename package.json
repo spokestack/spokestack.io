@@ -210,7 +210,7 @@
     },
     "git": {
       "commitMessage": "chore: release ${version}",
-      "requireBranch": "production",
+      "requireBranch": "develop",
       "tagName": "${version}"
     },
     "npm": {

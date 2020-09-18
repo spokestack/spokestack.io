@@ -1,4 +1,6 @@
-const siteUrl = new URL('https://beta.spokestack.io')
+const siteUrl = new URL(process.env.SITE_URL || 'https://www.spokestack.io/')
+
+console.log(`Site URL in Gatsby config: ${siteUrl.href}`)
 
 module.exports = {
   siteMetadata: {

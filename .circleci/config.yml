@@ -50,9 +50,11 @@ jobs:
           command: npm run build
       - *save_gatsby_cache
 
-  deploy:
+  deploy_integration:
     docker:
       - image: circleci/node:12
+    environment:
+      SITE_URL: https://beta.spokestack.io/
     working_directory: ~/spokestack-website
     steps:
       - checkout
@@ -73,6 +75,29 @@ jobs:
           name: Invalidate the cdn caches
           command: aws cloudfront create-invalidation --distribution-id E1VWEXJMB3URMJ --paths "/*"
 
+  deploy_production:
+    docker:
+      - image: circleci/node:12
+    working_directory: ~/spokestack-website
+    steps:
+      - checkout
+      - *restore_npm_cache
+      - *restore_gatsby_cache
+
+      # upload to S3
+      - run:
+          name: Install Tools
+          command: sudo apt-get -y -qq install awscli
+      - run:
+          name: Build and push static site
+          command: npm run deploy
+      - run:
+          name: Enable cloudfront cli
+          command: aws configure set preview.cloudfront true
+      - run:
+          name: Invalidate the cdn caches
+          command: aws cloudfront create-invalidation --distribution-id E3BUXJK1QMX4F5 --paths "/*"
+
 workflows:
   version: 2
 
@@ -83,9 +108,18 @@ workflows:
             tags:
               only:
                 - /\d+\.\d+\.\d+/
-      - deploy:
+      - deploy_integration:
           filters:
             branches:
               only: develop
+          requires:
+            - build
+      - deploy_production:
+          filters:
+            branches:
+              only: production
+            tags:
+              only:
+                - /\d+\.\d+\.\d+/
           requires:
             - build

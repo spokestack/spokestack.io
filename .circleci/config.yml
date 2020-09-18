@@ -61,10 +61,9 @@ jobs:
     working_directory: ~/spokestack-website
     steps:
       - checkout
-
-      # attach build already done
-      - attach_workspace:
-          at: ~/spokestack-website
+      - *restore_npm_cache
+      - run: npm install --no-save
+      - *save_npm_cache
 
       # Run release script
       - run:
@@ -124,6 +123,13 @@ jobs:
 workflows:
   version: 2
 
+  release:
+    jobs:
+      - release_production:
+          filters:
+            branches:
+              only: production
+
   test_and_deploy:
     jobs:
       - build:
@@ -131,12 +137,6 @@ workflows:
             tags:
               only:
                 - /\d+\.\d+\.\d+/
-      - release_production:
-          filters:
-            branches:
-              only: production
-          requires:
-            - build
       - deploy_integration:
           filters:
             branches:
@@ -150,3 +150,5 @@ workflows:
             tags:
               only:
                 - /\d+\.\d+\.\d+/
+          requires:
+            - build

@@ -55,6 +55,18 @@ jobs:
           paths:
             - public
 
+  release_production:
+    docker:
+      - image: circleci/node:12
+    working_directory: ~/spokestack-website
+    steps:
+      - checkout
+
+      # Run release script
+      - run:
+          name: Create release tag
+          command: npm run release -- --ci
+
   deploy_integration:
     docker:
       - image: circleci/node:12
@@ -115,6 +127,12 @@ workflows:
             tags:
               only:
                 - /\d+\.\d+\.\d+/
+      - release_production:
+          filters:
+            branches:
+              only: production
+          requires:
+            - build
       - deploy_integration:
           filters:
             branches:
@@ -124,9 +142,7 @@ workflows:
       - deploy_production:
           filters:
             branches:
-              only: production
+              ignore: /.*/
             tags:
               only:
                 - /\d+\.\d+\.\d+/
-          requires:
-            - build

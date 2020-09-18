@@ -203,11 +203,15 @@
     ]
   },
   "release-it": {
+    "verbose": 2,
     "hooks": {
       "before:init": "npm test"
     },
     "git": {
-      "commitMessage": "chore: release ${version}",
+      "commit": false,
+      "pushRepo": "git@github.com:spokestack/spokestack.io.git",
+      "requireBranch": "production",
+      "requireUpstream": false,
       "tagName": "${version}"
     },
     "npm": {

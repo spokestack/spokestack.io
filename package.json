@@ -209,9 +209,7 @@
     },
     "git": {
       "commit": false,
-      "pushRepo": "git@github.com:spokestack/spokestack.io.git",
-      "requireBranch": "production",
-      "requireUpstream": false,
+      "requireBranch": "develop",
       "tagName": "${version}"
     },
     "npm": {

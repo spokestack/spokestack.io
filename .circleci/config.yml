@@ -55,27 +55,6 @@ jobs:
           paths:
             - public
 
-  release_production:
-    docker:
-      - image: circleci/node:12
-    working_directory: ~/spokestack-website
-    steps:
-      - checkout
-      - *restore_npm_cache
-      - run: npm install --no-save
-      - *save_npm_cache
-
-      - run:
-          name: Set git config
-          command: |
-            git config user.email "4timmywil@gmail.com"
-            git config user.name "Timmy Willison"
-
-      # Run release script
-      - run:
-          name: Create release tag
-          command: npm run release -- --ci
-
   deploy_integration:
     docker:
       - image: circleci/node:12
@@ -129,19 +108,10 @@ jobs:
 workflows:
   version: 2
 
-  release:
-    jobs:
-      - release_production:
-          filters:
-            branches:
-              only: production
-
   test_and_deploy:
     jobs:
       - build:
           filters:
-            branches:
-              ignore: production
             tags:
               only:
                 - /\d+\.\d+\.\d+/
@@ -154,7 +124,7 @@ workflows:
       - deploy_production:
           filters:
             branches:
-              ignore: /.*/
+              only: production
             tags:
               only:
                 - /\d+\.\d+\.\d+/

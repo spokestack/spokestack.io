@@ -64,7 +64,7 @@ jobs:
 
       # attach build already done
       - attach_workspace:
-        at: ~/spokestack-website
+          at: ~/spokestack-website
 
       # Run release script
       - run:

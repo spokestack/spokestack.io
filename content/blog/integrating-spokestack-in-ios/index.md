@@ -40,7 +40,7 @@ Spokestack requires access to your device's microphone and Apple's speech recogn
 
 _without these your app will crash_
 
-```
+```xml
 <key>NSMicrophoneUsageDescription</key>
 <string>For making voice requests</string>
 <key>NSSpeechRecognitionUsageDescription</key>
@@ -53,10 +53,10 @@ Spokestack is dependent on the appropriate `AVAudioSession` to be configured. Fo
 
 ```swift
 do {
-            let session = AVAudioSession.sharedInstance()
-            try? session.setCategory(.playAndRecord, options: [.defaultToSpeaker, .allowAirPlay, .allowBluetoothA2DP, .allowBluetooth])
-            try? session.setActive(true, options: [])
-        }
+    let session = AVAudioSession.sharedInstance()
+    try? session.setCategory(.playAndRecord, options: [.defaultToSpeaker, .allowAirPlay, .allowBluetoothA2DP, .allowBluetooth])
+    try? session.setActive(true, options: [])
+}
 ```
 
 ### Usage
@@ -69,115 +69,113 @@ To create your own copy of the Spokestack/Minecraft Helper, add the `SpokestackT
 import SpokestackTray
 import Spokestack
 
-    override func viewDidLoad() {
+override func viewDidLoad() {
 
-        super.viewDidLoad()
+    super.viewDidLoad()
 
-        let configuration: TrayConfiguration = TrayConfiguration()
+    let configuration: TrayConfiguration = TrayConfiguration()
 
-        /// When the tray is opened for the first time this is the synthesized
-        /// greeting that will be "said" to the user
+    /// When the tray is opened for the first time this is the synthesized
+    /// greeting that will be "said" to the user
 
-        configuration.greeting = """
-        Welcome! This example finds tutorials for Minecraft crafting. Try saying, \"How do I make a castle?\"
-        """
+    configuration.greeting = """
+    Welcome! This example finds tutorials for Minecraft crafting. Try saying, \"How do I make a castle?\"
+    """
 
-        /// When the tray is listening or processing speech there is a animated gradient that
-        /// sits on top of the tray. The default values are red, white and blue
+    /// When the tray is listening or processing speech there is a animated gradient that
+    /// sits on top of the tray. The default values are red, white and blue
 
-        configuration.gradientColors = [
-            "#61fae9".spstk_color,
-            "#2F5BEA".spstk_color,
-            UIColor.systemRed
-        ]
+    configuration.gradientColors = [
+        "#61fae9".spstk_color,
+        "#2F5BEA".spstk_color,
+        UIColor.systemRed
+    ]
 
-        /// Apart of the initialization of the tray is to download the nlu and wakeword models.
-        /// These are the default Spokestack models, but you can replace with your own
+    /// Apart of the initialization of the tray is to download the nlu and wakeword models.
+    /// These are the default Spokestack models, but you can replace with your own
 
-        configuration.nluModelURLs = [
-            NLUModelURLMetaDataKey: "https://d3dmqd7cy685il.cloudfront.net/nlu/production/shared/XtASJqxkO6UwefOzia-he2gnIMcBnR2UCF-VyaIy-OI/nlu.tflite",
-            NLUModelURLNLUKey: "https://d3dmqd7cy685il.cloudfront.net/nlu/production/shared/XtASJqxkO6UwefOzia-he2gnIMcBnR2UCF-VyaIy-OI/vocab.txt",
-            NLUModelURLVocabKey: "https://d3dmqd7cy685il.cloudfront.net/nlu/production/shared/XtASJqxkO6UwefOzia-he2gnIMcBnR2UCF-VyaIy-OI/metadata.json"
-        ]
-        configuration.wakewordModelURLs = [
-            WakeWordModelDetectKey: "https://d3dmqd7cy685il.cloudfront.net/model/wake/spokestack/detect.tflite",
-            WakeWordModelEncodeKey: "https://d3dmqd7cy685il.cloudfront.net/model/wake/spokestack/encode.tflite",
-            WakeWordModelFilterKey: "https://d3dmqd7cy685il.cloudfront.net/model/wake/spokestack/filter.tflite"
-        ]
+    configuration.nluModelURLs = [
+        NLUModelURLMetaDataKey: "https://d3dmqd7cy685il.cloudfront.net/nlu/production/shared/XtASJqxkO6UwefOzia-he2gnIMcBnR2UCF-VyaIy-OI/nlu.tflite",
+        NLUModelURLNLUKey: "https://d3dmqd7cy685il.cloudfront.net/nlu/production/shared/XtASJqxkO6UwefOzia-he2gnIMcBnR2UCF-VyaIy-OI/vocab.txt",
+        NLUModelURLVocabKey: "https://d3dmqd7cy685il.cloudfront.net/nlu/production/shared/XtASJqxkO6UwefOzia-he2gnIMcBnR2UCF-VyaIy-OI/metadata.json"
+    ]
+    configuration.wakewordModelURLs = [
+        WakeWordModelDetectKey: "https://d3dmqd7cy685il.cloudfront.net/model/wake/spokestack/detect.tflite",
+        WakeWordModelEncodeKey: "https://d3dmqd7cy685il.cloudfront.net/model/wake/spokestack/encode.tflite",
+        WakeWordModelFilterKey: "https://d3dmqd7cy685il.cloudfront.net/model/wake/spokestack/filter.tflite"
+    ]
 
-        configuration.cliendId = "YOUR_CLIENT_ID"
-        configuration.clientSecret = "YOUR_CLIENT_SECRET"
+    configuration.cliendId = "YOUR_CLIENT_ID"
+    configuration.clientSecret = "YOUR_CLIENT_SECRET"
 
-        /// The handleIntent callback is how the SpeechController and the TrayViewModel know if
-        /// NLUResult should be processed and what text should be added to the tableView.
+    /// The handleIntent callback is how the SpeechController and the TrayViewModel know if
+    /// NLUResult should be processed and what text should be added to the tableView.
 
-        let greeting: IntentResult = IntentResult(node: InterntResultNode.greeting.rawValue, prompt: configuration.greeting)
-        var lastNode: IntentResult = greeting
+    let greeting: IntentResult = IntentResult(node: InterntResultNode.greeting.rawValue, prompt: configuration.greeting)
+    var lastNode: IntentResult = greeting
 
-        configuration.handleIntent = {intent, slots, utterance in
+    configuration.handleIntent = {intent, slots, utterance in
+        switch intent {
+            case IntentResultAmazonType.repeat.rawValue:
+                return lastNode
+            case IntentResultAmazonType.yes.rawValue:
+                lastNode = IntentResult(node: InterntResultNode.search.rawValue, prompt: "I heard you say yes! What would you like to make?")
+            case IntentResultAmazonType.no.rawValue:
+                lastNode = IntentResult(node: InterntResultNode.exit.rawValue, prompt: "I heard you say no. Goodbye")
+            case IntentResultAmazonType.stop.rawValue,
+                    IntentResultAmazonType.cancel.rawValue,
+                    IntentResultAmazonType.fallback.rawValue:
+                lastNode = IntentResult(node: InterntResultNode.exit.rawValue, prompt: "Goodbye!")
+            case IntentResultAmazonType.recipe.rawValue:
 
-            switch intent {
-                case IntentResultAmazonType.repeat.rawValue:
-                    return lastNode
-                case IntentResultAmazonType.yes.rawValue:
-                    lastNode = IntentResult(node: InterntResultNode.search.rawValue, prompt: "I heard you say yes! What would you like to make?")
-                case IntentResultAmazonType.no.rawValue:
-                    lastNode = IntentResult(node: InterntResultNode.exit.rawValue, prompt: "I heard you say no. Goodbye")
-                case IntentResultAmazonType.stop.rawValue,
-                     IntentResultAmazonType.cancel.rawValue,
-                     IntentResultAmazonType.fallback.rawValue:
-                    lastNode = IntentResult(node: InterntResultNode.exit.rawValue, prompt: "Goodbye!")
-                case IntentResultAmazonType.recipe.rawValue:
+                if let whatToMakeSlot: Dictionary<String, Slot> = slots,
+                    let slot: Slot = whatToMakeSlot["Item"],
+                    let item: String = slot.value as? String {
 
-                    if let whatToMakeSlot: Dictionary<String, Slot> = slots,
-                       let slot: Slot = whatToMakeSlot["Item"],
-                       let item: String = slot.value as? String {
+                    lastNode = IntentResult(node: InterntResultNode.recipe.rawValue,
+                                            prompt: """
+                                            If I were a real app, I would show a screen now on how to make a \(item). Want to continue?
+                                            """
+                                )
+                }
 
-                        lastNode = IntentResult(node: InterntResultNode.recipe.rawValue,
-                                                prompt: """
-                                                If I were a real app, I would show a screen now on how to make a \(item). Want to continue?
-                                                """
-                                    )
-                    }
-
-                case IntentResultAmazonType.help.rawValue:
-                    lastNode = greeting
-                default:
-                    lastNode = greeting
-            }
-
-            return lastNode
+            case IntentResultAmazonType.help.rawValue:
+                lastNode = greeting
+            default:
+                lastNode = greeting
         }
 
-        /// Which NLUNodes should trigger the tray to close automatically
-
-        configuration.exitNodes = [
-            InterntResultNode.exit.rawValue
-        ]
-
-        /// Callback when the tray is opened. The call back is called _after_ the animation has finished
-
-        configuration.onOpen = {
-            LogController.shared.log("isOpen")
-        }
-
-        /// Callback when the tray is closed. The call back is called _after_ the animation has finished
-
-        configuration.onClose = {
-            LogController.shared.log("onClose")
-        }
-
-        /// Callback when a `TrayListenerType` has occured
-
-        configuration.onEvent = {event in
-            LogController.shared.log("onEvent \(event)")
-        }
-
-        let tray: SpokestackTrayViewController = SpokestackTrayViewController(self, configuration: configuration)
-        tray.addToParentView()
-        tray.listen()
+        return lastNode
     }
 
+    /// Which NLUNodes should trigger the tray to close automatically
+
+    configuration.exitNodes = [
+        InterntResultNode.exit.rawValue
+    ]
+
+    /// Callback when the tray is opened. The call back is called _after_ the animation has finished
+
+    configuration.onOpen = {
+        LogController.shared.log("isOpen")
+    }
+
+    /// Callback when the tray is closed. The call back is called _after_ the animation has finished
+
+    configuration.onClose = {
+        LogController.shared.log("onClose")
+    }
+
+    /// Callback when a `TrayListenerType` has occured
+
+    configuration.onEvent = {event in
+        LogController.shared.log("onEvent \(event)")
+    }
+
+    let tray: SpokestackTrayViewController = SpokestackTrayViewController(self, configuration: configuration)
+    tray.addToParentView()
+    tray.listen()
+}
 ```
 
 **clientId and clientSecret**

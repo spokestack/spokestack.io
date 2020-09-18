@@ -50,11 +50,6 @@ jobs:
           command: npm run build
       - *save_gatsby_cache
 
-      - persist_to_workspace:
-          root: ~/spokestack-website
-          paths:
-            - public
-
   deploy:
     docker:
       - image: circleci/node:12
@@ -62,10 +57,7 @@ jobs:
     steps:
       - checkout
       - *restore_npm_cache
-
-      # attach build already done
-      - attach_workspace:
-          at: ~/spokestack-website
+      - *restore_gatsby_cache
 
       # upload to S3
       - run:

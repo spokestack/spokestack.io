@@ -90,11 +90,25 @@ jobs:
   deploy_production:
     docker:
       - image: circleci/node:12
+    environment:
+      SITE_URL: https://www.spokestack.io/
     working_directory: ~/spokestack-website
     steps:
       - checkout
       - *restore_npm_cache
+      - run: npm install --no-save
+      - *save_npm_cache
+
+      - run:
+          name: Run tests
+          command: npm test
+
+      # build the site with www.spokestack.io
       - *restore_gatsby_cache
+      - run:
+          name: Run build
+          command: npm run build
+      - *save_gatsby_cache
 
       # upload to S3
       - run:
@@ -113,15 +127,16 @@ jobs:
 workflows:
   version: 2
 
-  test_and_deploy:
+  test:
     jobs:
       - build:
           filters:
             branches:
-              ignore: develop
-            tags:
-              only:
-                - /\d+\.\d+\.\d+/
+              ignore:
+                - develop
+                - production
+  deploy:
+    jobs:
       - deploy_integration:
           filters:
             branches:
@@ -133,5 +148,3 @@ workflows:
             tags:
               only:
                 - /\d+\.\d+\.\d+/
-          requires:
-            - build

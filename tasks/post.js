@@ -15,7 +15,7 @@ const rspaces = /[\s-]+/g
 const postTemplate = template(`---
 title: <%- title %>
 date: '<%- date %>'<% if(typeof description !== 'undefined') { %>
-description: <%- description %><% } %>
+description: '<%- description %>'<% } %>
 tags:
 author: <%- author %>
 draft: false

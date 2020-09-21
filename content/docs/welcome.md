@@ -45,9 +45,9 @@ Tutorials for integrating Spokestack are also available on our blog:
 
 <br />
 
-- [React Native](/blog/integrating-spokestack-in-react-native)
-- [iOs](/blog/porting-a-smart-speaker-voice-app-to-mobile-part-1)
-- [Android](/blog/porting-the-alexa-minecraft-skill-to-android-using-spokestack)
+- [React Native Tutorial](/blog/integrating-spokestack-in-react-native)
+- [iOS Tutorial](/blog/porting-a-smart-speaker-voice-app-to-mobile-part-1)
+- [Android Tutorial](/blog/porting-the-alexa-minecraft-skill-to-android-using-spokestack)
 
 Check our blog for all of our [Spokestack Tutorials](/blog/tag/tutorial).
 

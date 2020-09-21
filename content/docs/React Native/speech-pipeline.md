@@ -1,6 +1,6 @@
 ---
 title: SpeechPipeline in React Native
-navId: Speech Pipeline (React Native)
+navId: Speech Pipeline (react-native)
 description: Documentation for the SpeechPipeline class in React Native
 draft: false
 ---
@@ -21,7 +21,7 @@ Stage order matters in the build process; audio is processed by each stage in tu
 
 This is the speech pipeline's state machine:
 
-![](images/speech_pipeline.png 'speech pipeline')
+![speech pipeline](images/speech_pipeline.png 'speech pipeline')
 
 As you can see, once the pipeline has been built (signaled by the `onInit` event), calling `start()` puts it into a passive listening state—or it will if the pipeline has been properly configured. You _could_ have an ASR class as the only stage, in which case an ASR request would start immediately upon calling `start()`. This is almost certainly not what you want.
 
@@ -41,9 +41,9 @@ All events are optional, so apps can subscribe to whichever are of interest. All
 
 ```javascript
 {
-  "event":"recognize"
-  ,"transcript":"Hello world"
-  ,"error":""
+  "event":"recognize",
+  "transcript":"Hello world",
+  "error":""
 }
 ```
 
@@ -51,10 +51,10 @@ Events may also contain additional keys like this `trace` event used for debuggi
 
 ```javascript
 {
-  "event":"trace"
-  ,"error":""
-  ,"transcript":""
-  ,"trace":"20 TFLiteWakewordRecognizer wake: 0.9167537"
+  "event":"trace",
+  "error":"",
+  "transcript":"",
+  "trace":"20 TFLiteWakewordRecognizer wake: 0.9167537"
 }
 ```
 

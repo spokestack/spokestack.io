@@ -1,6 +1,6 @@
 ---
 title: NLU on React Native
-navId: NLU (React Native)
+navId: NLU (react-native)
 description: Understanding the React Native NLU API
 draft: false
 ---

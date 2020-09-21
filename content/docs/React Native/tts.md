@@ -1,6 +1,6 @@
 ---
 title: Text-to-speech for React Native
-navId: TTS (React Native)
+navId: TTS (react-native)
 description: Documentation for Spokestack's React Native TTS API.
 draft: false
 ---

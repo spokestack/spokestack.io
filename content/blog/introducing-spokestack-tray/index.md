@@ -47,6 +47,6 @@ After you get a demo up and running, let us know if we can build a custom wakewo
 
 ### What's next?
 
-Expect an update on design tools, the Android Tray library, and additional tutorials soon. Follow us on [Twitter](http://www.twitter.com/spokestack) for all updates. Can't wait to see how people use Tray with their mobile apps.
+Expect an update on design tools, the Android Tray library, and additional tutorials soon. Follow us on [Twitter](https://www.twitter.com/spokestack) for all updates. Can't wait to see how people use Tray with their mobile apps.
 
 Have fun talking to your customers!

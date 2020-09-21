@@ -30,12 +30,12 @@ Android: [https://play.google.com/store/apps/details?id=com.spokestack.bartender
 
 We want to make it as easy as possible for you to get started with Spokestack Tray. Here are the steps to get a prototype up quick:
 
-1. [Sign up for a Spokestack account](https://www.spokestack.io/create)
+1. [Sign up for a Spokestack account](/create)
 2. Check out the documentation for [React Native Tray](https://github.com/spokestack/react-native-spokestack-tray) or [iOS Tray](https://github.com/spokestack/spokestack-tray-ios)
-3. Follow a tutorial: [Spokestack Tray iOS Tutorial](https://www.spokestack.io/blog/integrating-spokestack-in-ios) or [Spokestack Tray React Native Tutorial](https://www.spokestack.io/blog/integrating-spokestack-in-react-native)
+3. Follow a tutorial: [Spokestack Tray iOS Tutorial](/blog/integrating-spokestack-in-ios) or [Spokestack Tray React Native Tutorial](/blog/integrating-spokestack-in-react-native)
 4. Get help in our [Spokestack Tray Help](https://forum.spokestack.io/t/spokestack-tray/56) forum
 
-For folks who are new to building voice applications, we have a [video overview of voice concepts](https://www.youtube.com/watch?v=wbJ8fZh-iQw) as well as documentation of [voice developer concepts](https://www.spokestack.io/docs/Concepts) as they relate to Spokestack.
+For folks who are new to building voice applications, we have a [video overview of voice concepts](https://www.youtube.com/watch?v=wbJ8fZh-iQw) as well as documentation of [voice developer concepts](/docs/Concepts) as they relate to Spokestack.
 
 ### Customizing Spokestack Tray
 

@@ -26,7 +26,39 @@ Spokestack.initialize({
 })
 ```
 
-The configuration properties above refer to the three required files for the Spokestack NLU model you're using.
+The configuration properties above refer to the three required files for the Spokestack NLU model you're using. If you're unfamiliar with how to pass filesystem paths using react-native (so were we at first!), here's an example that uses the nifty [`react-native-fetch-blob`](https://github.com/joltup/rn-fetch-blob) library:
+
+```javascript
+const nluModelPath = await RNFetchBlob.config({
+  fileCache: true,
+  appendExt: 'tflite'
+})
+  .fetch(
+    'GET',
+    'https://d3dmqd7cy685il.cloudfront.net/nlu/production/shared/XtASJqxkO6UwefOzia-he2gnIMcBnR2UCF-VyaIy-OI/nlu.tflite'
+  )
+  .then((res) => res.path())
+const nluMetadataPath = await RNFetchBlob.config({
+  fileCache: true,
+  appendExt: 'json'
+})
+  .fetch(
+    'GET',
+    'https://d3dmqd7cy685il.cloudfront.net/nlu/production/shared/XtASJqxkO6UwefOzia-he2gnIMcBnR2UCF-VyaIy-OI/metadata.json'
+  )
+  .then((res) => res.path())
+const nluVocabPath = await RNFetchBlob.config({
+  fileCache: true,
+  appendExt: 'txt'
+})
+  .fetch(
+    'GET',
+    'https://github.com/spokestack/spokestack-ios/raw/master/SpokestackFrameworkExample/vocab.txt'
+  )
+  .then((res) => res.path())
+```
+
+Then just pass those `const` files to the `nlu` object above!
 
 ## Usage
 
@@ -56,7 +88,7 @@ Your `onClassification` callback will receive an object with the following struc
     ,"intent":"RecipeIntent"
     ,"slots": {
       "Item":{
-        "rawValue":"tea earl grey hot"
+        "rawValue":"Tea, earl grey, hot"
         ,"value":"tea"
         ,"type":"entity"
       }

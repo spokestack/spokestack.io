@@ -27,9 +27,9 @@ Generating a URL to an audio stream of a TTS synthesized voice is just a single 
 tts.synthesize(TextToSpeechInput("Here I am, a brain the size of a planet."))
 ```
 
-This is the simplest arity of `synthesize`, which just takes a plain text string as input. The `success(TextToSpeechResult:)` delegate function will be called with the result, which has a `url` property with the audio stream.
+This is the simplest arity of `synthesize`, which takes a constructor of `TextToSpeechInput` with a plain text string as input. The `success(TextToSpeechResult:)` delegate function will be called with the result, which has a `url` property with the audio stream.
 
-`TextToSpeechInput` has additional properties that you can use for more sophisticated speech synthesis that we will detail briefly. As always, there's more detail in the [API documentation](https://spokestack.github.io/spokestack-ios/Classes/TextToSpeechInput.html)
+`TextToSpeechInput` has additional properties that you can use for more sophisticated speech synthesis. As always, there's more detail in the [API documentation](https://spokestack.github.io/spokestack-ios/Classes/TextToSpeechInput.html). Let's detail those advanced properties briefly:
 
 The `input` is simply the string you want to hear synthesized.
 

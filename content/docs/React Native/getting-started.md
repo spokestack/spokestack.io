@@ -190,7 +190,6 @@ Spokestack.initialize({
   properties: {
     locale: 'en-US',
     'agc-compression-gain-db': 15,
-    // 'google-credentials': YOUR_GOOGLE_VOICE_CREDENTIALS, // only set if using `GoogleSpeechRecognizer` stage above
     'trace-level': Spokestack.TraceLevel.DEBUG // configurable logging level
   },
   tts: {
@@ -258,7 +257,7 @@ Spokestack.onClassification = (e) => {
 }
 ```
 
-You'll note that classification results are in a map containing an intent. A intent-based classifier will regularize all sorts of related language into a single canonical intent, e.g. "let's go" and "please cease" get classified as `start` and `stop`, respectively. Slots may be thought of as parameters for your app to take action on, based on the intent. See our [NLU guide](/docs/Concepts/nlu) for more information on NLU in general and Spokestack's implementation. 
+You'll note that classification results are in a map containing an intent. A intent-based classifier will regularize all sorts of related language into a single canonical intent, e.g. "let's go" and "please cease" get classified as `start` and `stop`, respectively. Slots may be thought of as parameters for your app to take action on, based on the intent. See our [NLU guide](/docs/Concepts/nlu) for more information on NLU in general and Spokestack's implementation.
 
 ## Talking back to your users
 

@@ -93,7 +93,7 @@ Head over to `Info.plist` in your project and add a couple keys. Here are the ra
 <string>Speech recognition is used to translate user voice input into text for further processing.</string>
 ```
 
-Apple manages the various demands on an iOS devices audio system via [audio sessions](https://developer.apple.com/library/archive/documentation/Audio/Conceptual/AudioSessionProgrammingGuide/Introduction/Introduction.html). See their documentation for more details, but here's the minimum configuration you'll need in order to record user speech. A good place for it is your `AppDelegate`'s `application(_:didFinishLaunchingWithOptions)` method.
+Apple manages the various demands on an iOS device's audio system via [audio sessions](https://developer.apple.com/library/archive/documentation/Audio/Conceptual/AudioSessionProgrammingGuide/Introduction/Introduction.html). See their documentation for more details, but here's the minimum configuration you'll need in order to record user speech. A good place for it is your `AppDelegate`'s `application(_:didFinishLaunchingWithOptions)` method.
 
 Given that, and remembering to remove Flipper as discussed earlier, your `AppDelegate.m` should look similar to this:
 
@@ -164,16 +164,16 @@ Also note that [the Android emulator cannot record audio](https://developer.andr
 
 There are many options for configuring Spokestack. This example will begin capturing audio when `Spokestack.start()` is called and use a Voice Activity Detection (VAD) component to send any audio determined to be speech through an automated speech recognition system, in this case the platform's built-in speech recognizer. In other words, we're configuring this app to always actively listen, and no wakeword detection is performed. See [the configuration guide](/docs/Concepts/pipeline-configuration) for more information about pipeline building options.
 
-Then we configure a text-to-speech component using a TTS API key and secret that allow you to use Spokestack voices for free! You can also use your own api key & secret from [your Spokestack account page](https://www.spokestack.io/account/services/nlu).
+Then we configure a text-to-speech component using a TTS API key and secret that allow you to use Spokestack voices for free! You can also use your own api key & secret from [your Spokestack account page](/account/settings).
 
-Finally we configure the natural language understanding component, which uses Spokestack NLU models. To test things out, just try one of our free NLU models on [your Spokestack account page](https://www.spokestack.io/account/services/nlu), or grab this older [example NLU model](https://github.com/spokestack/spokestack-ios/blob/master/SpokestackFrameworkExample/nlu.tflite), [model metadata](https://github.com/spokestack/spokestack-ios/blob/master/SpokestackFrameworkExample/nlu.json), and [NLU vocabulary](https://d3dmqd7cy685il.cloudfront.net/nlu/vocab.txt).
+Finally we configure the natural language understanding component, which uses Spokestack NLU models. To test things out, just try one of our free NLU models on [your Spokestack account page](/account/services/nlu), or grab this older [example NLU model](https://github.com/spokestack/spokestack-ios/blob/master/SpokestackFrameworkExample/nlu.tflite), [model metadata](https://github.com/spokestack/spokestack-ios/blob/master/SpokestackFrameworkExample/nlu.json), and [NLU vocabulary](https://d3dmqd7cy685il.cloudfront.net/nlu/vocab.txt).
 
 ```javascript
 import Spokestack from 'react-native-spokestack'
 
 // initialize the Spokestack pipeline.
 //
-// Spokestack configuration h as five top-level keys: 'input', 'stages', and 'properties' for the speech pipeline, 'tts' for text to speech, and 'nlu' for natural language recognition. Keys for asr, tts, and nlu may be omitted if your app does not require them.
+// Spokestack configuration has five top-level keys: 'input', 'stages', and 'properties' for the speech pipeline, 'tts' for text to speech, and 'nlu' for natural language recognition. Keys for asr, tts, and nlu may be omitted if your app does not require them.
 // This example configures a voice-triggered speech recongnizer
 // For additional examples, see https://github.com/spokestack/spokestack-android#configuration
 Spokestack.initialize({
@@ -182,9 +182,10 @@ Spokestack.initialize({
     'io.spokestack.spokestack.webrtc.VoiceActivityDetector', // voice activity detection
     'io.spokestack.spokestack.webrtc.VoiceActivityTrigger', // voice activity detection triggers speech recognition
     'io.spokestack.spokestack.ActivationTimeout', // speech recognition times out after a configurable interval when voice is no longer detected
-    'io.spokestack.spokestack.google.AndroidpeechRecognizer' // one of the three supported speech recognition services
+    'io.spokestack.spokestack.android.AndroidSpeechRecognizer' // one of the four supported speech recognition services
     // 'io.spokestack.spokestack.microsoft.AzureSpeechRecognizer'
-    // 'io.spokestack.spokestack.android.GoogleSpeechRecognizer'
+    // 'io.spokestack.spokestack.google.GoogleSpeechRecognizer'
+    // 'io.spokestack.spokestack.asr.SpokestackCloudRecognizer'
   ],
   properties: {
     locale: 'en-US',
@@ -257,7 +258,7 @@ Spokestack.onClassification = (e) => {
 }
 ```
 
-You'll note that classification results are in a map containing an intent. A intent-based classifier will regularize all sorts of related langague into a single canonical intent, eg "let's go" or "please cease" get classified as `start` and `stop`, respectively. Slots may be thought of as parameters for your app to take action on, based on the intent.
+You'll note that classification results are in a map containing an intent. A intent-based classifier will regularize all sorts of related language into a single canonical intent, e.g. "let's go" and "please cease" get classified as `start` and `stop`, respectively. Slots may be thought of as parameters for your app to take action on, based on the intent. See our [NLU guide](/docs/Concepts/nlu) for more information on NLU in general and Spokestack's implementation. 
 
 ## Talking back to your users
 

@@ -34,7 +34,7 @@ In this example, `spokestack-id` and `spokestack-secret` are set to public value
 
 ## Generating the audio
 
-Generating a URL to a audio stream of a tts synthesized voice is just a single method in Spokestack!
+Generating a URL to an audio stream of a TTS synthesized voice is just a single method in Spokestack!
 
 ```javascript
 Spokestack.synthesize({
@@ -44,7 +44,7 @@ Spokestack.synthesize({
 })
 ```
 
-We'll break down what was included in the `synthesize` arguments here, and there's also more details on the [API documentation](https://github.com/spokestack/react-native-spokestack#methods):
+We'll break down what was included in the `synthesize` arguments here; there's even more detail in the [API documentation](https://github.com/spokestack/react-native-spokestack#methods):
 
 The `input` is simply the string you want to hear synthesized.
 

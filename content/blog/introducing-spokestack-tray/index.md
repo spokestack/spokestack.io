@@ -39,7 +39,7 @@ For folks who are new to building voice applications, we have a [video overview 
 
 ### Customizing Spokestack Tray
 
-At Spokestack, we believe flexibility and customization are keys to building successful conversational interfaces. We have a Figma template for Spokestack that we also used for Bartender, and you can use it to customize your app. We will be adding more design resources and tools over the next few weeks. Additionally, we help you further customize your app with custom wakewords, TTS, and your own cloud or on-device NLU model.
+At Spokestack, we believe flexibility and customization are keys to building successful conversational interfaces. We will be adding more design resources and tools over the next few weeks. Additionally, we help you further customize your app with custom wakewords, TTS, and your own cloud or on-device NLU model.
 
 ### Want a free wakeword, NLU training, and custom TTS?
 

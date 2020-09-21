@@ -7,12 +7,10 @@ import Layout from '../components/Layout'
 import { MIN_DEFAULT_MEDIA_QUERY } from 'typography-breakpoint-constants'
 import News from '../components/homepage/News'
 import Platforms from '../components/homepage/Platforms'
-import Problem from '../components/homepage/Problem'
-import Products from '../components/homepage/Products'
 import { Query } from '../utils/graphql'
 import React from 'react'
 import SEO from '../components/SEO'
-import Solution from '../components/homepage/Solution'
+import Tray from '../components/homepage/Tray'
 import { css } from '@emotion/core'
 
 interface Props extends PageRendererProps {
@@ -23,14 +21,15 @@ export default function Index({ data, location }: Props) {
   const siteTitle = data.site.siteMetadata.title
 
   return (
-    <Layout location={location} navStyle={styles.nav}>
+    <Layout
+      location={location}
+      extraCss={styles.container}
+      navStyle={styles.nav}>
       <SEO title={siteTitle} />
       <Header />
-      <Problem />
-      <Solution />
+      <Tray />
       <Platforms />
       <Flexible />
-      <Products />
       <News />
       <Create />
     </Layout>
@@ -38,6 +37,11 @@ export default function Index({ data, location }: Props) {
 }
 
 const styles = {
+  container: css`
+    ${MIN_DEFAULT_MEDIA_QUERY} {
+      padding-top: 80px;
+    }
+  `,
   nav: css`
     ${MIN_DEFAULT_MEDIA_QUERY} {
       padding-top: 20px;

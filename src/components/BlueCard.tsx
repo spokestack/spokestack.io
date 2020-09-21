@@ -51,7 +51,7 @@ const styles = {
     text-align: center;
     background-color: ${theme.primaryLighter};
     border-radius: 7px;
-    padding: 50px 20px;
+    padding: 75px 40px;
     margin: 0 20px;
 
     h3 {

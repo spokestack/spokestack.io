@@ -14,12 +14,12 @@ export default function Header() {
   return (
     <header css={styles.header}>
       <div className="ie-fix" css={styles.headerContent}>
-        <h1 css={styles.headerText}>Build an Independent Voice Assistant</h1>
+        <h1 css={styles.headerText}>Give your app a voice interface</h1>
         <p className="title spokestack-speakable">
-          Open source tools for mobile &amp; web voice interfaces
+          Open source tools for mobile &amp; web
         </p>
-        <a href="/create" className="btn btn-secondary btn-large">
-          Create account
+        <a href="/create" className="btn btn-secondary">
+          Get started free
           <SVGIcon icon="#arrow-forward" extraCss={styles.createAccountIcon} />
         </a>
       </div>
@@ -34,19 +34,18 @@ const styles = {
     display: flex;
     flex-direction: column;
     justify-content: center;
-    align-items: flex-start;
+    align-items: center;
     background: ${theme.mainBackground} url(/background.svg) no-repeat;
     background-position: center bottom;
     background-size: cover;
     color: ${theme.textDarkBg};
     width: 100%;
-    padding: 20px;
+    padding: 90px 20px 20px;
 
     ${MIN_DEFAULT_MEDIA_QUERY} {
       flex-direction: row;
-      align-items: center;
       padding: 0 30px;
-      height: 645px;
+      height: 860px;
     }
 
     ${MIN_LARGE_DISPLAY_MEDIA_QUERY} {
@@ -56,17 +55,23 @@ const styles = {
   headerContent: css`
     display: flex;
     flex-direction: column;
-    align-items: flex-start;
-    text-align: left;
-    max-width: 500px;
-    margin-bottom: 25px;
+    align-items: center;
+    text-align: center;
+    max-width: 700px;
+    margin-bottom: 90px;
 
     .title {
-      max-width: 350px;
+      margin-bottom: 15px;
     }
 
     ${MIN_DEFAULT_MEDIA_QUERY} {
+      align-items: flex-start;
+      text-align: left;
       margin-right: 20px;
+
+      .title {
+        margin-bottom: 25px;
+      }
     }
   `,
   headerText: css`
@@ -74,8 +79,8 @@ const styles = {
   `,
   createAccountIcon: css`
     fill: ${theme.header};
-    width: 17px;
-    height: 17px;
+    width: 20px;
+    height: 20px;
     margin-left: 5px;
   `
 }

@@ -9,41 +9,36 @@ export default function Video() {
   const videoRef = useRef<HTMLVideoElement>(null)
   const [played, setPlayed] = useState(false)
   useEffect(() => {
-    if (videoRef.current) {
-      videoRef.current.addEventListener('playing', () => {
-        setPlayed(true)
-      })
-    }
+    videoRef.current?.addEventListener('playing', () => {
+      setPlayed(true)
+    })
   }, [])
   return (
-    <div className="ie-fix" css={styles.video}>
+    <div
+      className="ie-fix"
+      css={[
+        styles.video,
+        played
+          ? css`
+              padding-top: 216.14%;
+
+              @media (min-width: 415px) {
+                padding-top: 810px !important;
+              }
+            `
+          : css`
+              padding-top: 129.79%;
+            `
+      ]}>
       <video
         aria-label="Spokestack Introduction Video"
         ref={videoRef}
         controls={played}
+        playsInline={false}
         css={styles.videoElem}
-        poster="/poster_2x.png">
-        <source
-          src="spokestack-1920x1080.mp4"
-          type="video/mp4"
-          media="(min-width: 1920px)"
-        />
-        <source
-          src="spokestack-1280x720.mp4"
-          type="video/mp4"
-          media="(min-width: 1280px)"
-        />
-        <source
-          src="spokestack-960x540.mp4"
-          type="video/mp4"
-          media="(min-width: 960px)"
-        />
-        <source
-          src="spokestack-640x360.mp4"
-          type="video/mp4"
-          media="(min-width: 640px)"
-        />
-        <source src="spokestack-426x240.mp4" type="video/mp4" />
+        poster="/poster.svg">
+        <source src="/homepage/spokestack-tray-demo.mp4" type="video/mp4" />
+        <source src="/homepage/spokestack-tray-demo.webm" type="video/webm" />
       </video>
       <a
         tabIndex={0}
@@ -64,10 +59,17 @@ const styles = {
     position: relative;
     border-radius: 10px;
     overflow: hidden;
+    width: 100%;
+    max-width: 375px;
+    height: 0;
   `,
   videoElem: css`
     width: 100%;
-    max-width: ${theme.MAX_VIDEO_WIDTH};
+    height: 100%;
+    position: absolute;
+    top: 0;
+    left: 0;
+    object-fit: fill;
   `,
   playLink: css`
     position: absolute;

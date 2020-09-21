@@ -8,8 +8,7 @@ export default function Platforms() {
       image={{
         alt: 'Cross-platform API',
         url: '/homepage/platforms.svg',
-        maxWidth: '503px',
-        left: true
+        maxWidth: '503px'
       }}
       header="Develop across platforms using one API"
       text={`Managing voice interfaces across iOS, Android, and web

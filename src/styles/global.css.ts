@@ -74,7 +74,7 @@ export default css`
     background-color: ${theme.buttonBackground};
     border: 1px solid ${theme.buttonBackground};
     border-radius: 24px;
-    padding: 0 ${rhythm(1)};
+    padding: 0 20px;
     white-space: nowrap;
     cursor: pointer;
     text-decoration: none;
@@ -177,7 +177,6 @@ export default css`
     }
     &.btn-large {
       height: 49px;
-      padding: 0 ${rhythm(1.8)};
     }
     &.btn-small {
       height: 33px;
@@ -351,17 +350,17 @@ export default css`
   }
   ${MIN_DEFAULT_MEDIA_QUERY} {
     h1 {
-      font-size: ${adjustFontSizeTo('45px').fontSize};
+      font-size: ${adjustFontSizeTo('54px').fontSize};
     }
     h2 {
-      font-size: ${adjustFontSizeTo('35px').fontSize};
+      font-size: ${adjustFontSizeTo('42px').fontSize};
     }
     h3 {
-      font-size: ${adjustFontSizeTo('30px').fontSize};
+      font-size: ${adjustFontSizeTo('32px').fontSize};
     }
     h4,
     .title {
-      font-size: ${adjustFontSizeTo('25px').fontSize};
+      font-size: ${adjustFontSizeTo('24px').fontSize};
     }
     .input-wrap {
       grid-template-columns: 180px 1fr;

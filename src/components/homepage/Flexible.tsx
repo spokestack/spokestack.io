@@ -8,7 +8,8 @@ export default function Flexible() {
       image={{
         alt: 'One framework. Lots of options.',
         url: '/homepage/flexible.svg',
-        maxWidth: '504px'
+        maxWidth: '504px',
+        left: true
       }}
       header="Maintain control &amp; flexibility"
       text={`Our framework allows full control of your voice assistant's

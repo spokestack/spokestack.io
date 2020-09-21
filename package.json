@@ -18,7 +18,7 @@
     "schema": "graphql-codegen --config codegen.yml && prettier --write \"**/graphql.d.ts\"",
     "schema:remote": "node tasks/schema.js",
     "serve": "serve -l 8000 public/",
-    "start": "concurrently \"gatsby develop -o\" \"npm run graphiql\"",
+    "start": "concurrently \"cross-env SITE_URL=http://localhost:8000 gatsby develop -o\" \"npm run graphiql\"",
     "test": "concurrently --raw \"npm run lint\" \"npm run typescript\"",
     "typescript": "tsc -p tsconfig.json --noEmit"
   },
@@ -110,6 +110,7 @@
     "babel-preset-gatsby": "^0.5.10",
     "commitizen": "^4.2.1",
     "concurrently": "^5.3.0",
+    "cross-env": "^7.0.2",
     "eslint": "^7.9.0",
     "eslint-config-prettier": "^6.11.0",
     "eslint-plugin-prettier": "^3.1.4",

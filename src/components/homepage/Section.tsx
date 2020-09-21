@@ -1,5 +1,3 @@
-import * as theme from '../../styles/theme'
-
 import { MIN_LARGE_DISPLAY_MEDIA_QUERY } from 'typography-breakpoint-constants'
 import React from 'react'
 import { css } from '@emotion/core'
@@ -30,7 +28,7 @@ export default function Section({ id, image, header, text }: Props) {
         `
       ]}>
       <div css={styles.content} className="ie-fix">
-        <h3>{header}</h3>
+        <h2>{header}</h2>
         <p className="title">{text}</p>
       </div>
       <div style={{ width: '132px' }} />
@@ -62,7 +60,9 @@ const styles = {
     display: flex;
     flex-direction: column;
     justify-content: center;
-    max-width: ${theme.MAX_TEXT_WIDTH};
+    align-items: center;
+    text-align: center;
+    max-width: 610px;
     margin-bottom: 25px;
   `,
   platformsImage: css`

@@ -57,6 +57,7 @@ const styles = {
     flex-direction: column;
     justify-content: center;
     align-items: center;
+    text-align: center;
     padding: 50px 20px;
     min-height: 638px;
 

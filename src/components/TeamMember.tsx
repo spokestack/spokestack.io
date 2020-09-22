@@ -14,7 +14,7 @@ export default function TeamMember({ avatar, name, title }: Props) {
   return (
     <div css={styles.teamMember}>
       {avatar}
-      <h3>{name}</h3>
+      <h4>{name}</h4>
       <p>{title}</p>
     </div>
   )
@@ -31,7 +31,7 @@ const styles = {
     margin: 0 auto ${rhythm(1)};
     height: 330px;
 
-    h3 {
+    h4 {
       margin-top: ${rhythm(1)};
     }
     p {

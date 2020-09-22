@@ -674,8 +674,8 @@ export enum FileFieldsEnum {
   ChildMarkdownRemarkFrontmatterTitle = 'childMarkdownRemark___frontmatter___title',
   ChildMarkdownRemarkFrontmatterDate = 'childMarkdownRemark___frontmatter___date',
   ChildMarkdownRemarkFrontmatterDescription = 'childMarkdownRemark___frontmatter___description',
-  ChildMarkdownRemarkFrontmatterAuthor = 'childMarkdownRemark___frontmatter___author',
   ChildMarkdownRemarkFrontmatterTags = 'childMarkdownRemark___frontmatter___tags',
+  ChildMarkdownRemarkFrontmatterAuthor = 'childMarkdownRemark___frontmatter___author',
   ChildMarkdownRemarkFrontmatterDraft = 'childMarkdownRemark___frontmatter___draft',
   ChildMarkdownRemarkFrontmatterNavId = 'childMarkdownRemark___frontmatter___navId',
   ChildMarkdownRemarkExcerpt = 'childMarkdownRemark___excerpt',
@@ -1466,8 +1466,8 @@ export enum MarkdownRemarkFieldsEnum {
   FrontmatterTitle = 'frontmatter___title',
   FrontmatterDate = 'frontmatter___date',
   FrontmatterDescription = 'frontmatter___description',
-  FrontmatterAuthor = 'frontmatter___author',
   FrontmatterTags = 'frontmatter___tags',
+  FrontmatterAuthor = 'frontmatter___author',
   FrontmatterDraft = 'frontmatter___draft',
   FrontmatterNavId = 'frontmatter___navId',
   Excerpt = 'excerpt',
@@ -1607,8 +1607,8 @@ export type MarkdownRemarkFrontmatter = {
   title?: Maybe<Scalars['String']>
   date?: Maybe<Scalars['Date']>
   description?: Maybe<Scalars['String']>
-  author?: Maybe<Scalars['String']>
   tags?: Maybe<Scalars['String']>
+  author?: Maybe<Scalars['String']>
   draft?: Maybe<Scalars['Boolean']>
   navId?: Maybe<Scalars['String']>
 }
@@ -1624,8 +1624,8 @@ export type MarkdownRemarkFrontmatterFilterInput = {
   title?: Maybe<StringQueryOperatorInput>
   date?: Maybe<DateQueryOperatorInput>
   description?: Maybe<StringQueryOperatorInput>
-  author?: Maybe<StringQueryOperatorInput>
   tags?: Maybe<StringQueryOperatorInput>
+  author?: Maybe<StringQueryOperatorInput>
   draft?: Maybe<BooleanQueryOperatorInput>
   navId?: Maybe<StringQueryOperatorInput>
 }
@@ -2177,6 +2177,7 @@ export enum SiteFieldsEnum {
   SiteMetadataTeamImage = 'siteMetadata___team___image',
   SiteMetadataTeamTitle = 'siteMetadata___team___title',
   SiteMetadataTeamBio = 'siteMetadata___team___bio',
+  SiteMetadataTeamExternal = 'siteMetadata___team___external',
   SiteMetadataTeamSocialTwitter = 'siteMetadata___team___social___twitter',
   SiteMetadataTeamSocialLinkedin = 'siteMetadata___team___social___linkedin',
   SiteMetadataTeamSocialEmail = 'siteMetadata___team___social___email',
@@ -2594,8 +2595,8 @@ export enum SitePageFieldsEnum {
   PluginCreatorPluginOptionsTrackingId = 'pluginCreator___pluginOptions___trackingId',
   PluginCreatorPluginOptionsAnonymize = 'pluginCreator___pluginOptions___anonymize',
   PluginCreatorPluginOptionsRespectDnt = 'pluginCreator___pluginOptions___respectDNT',
-  PluginCreatorPluginOptionsMaxWidth = 'pluginCreator___pluginOptions___maxWidth',
   PluginCreatorPluginOptionsWrapperStyle = 'pluginCreator___pluginOptions___wrapperStyle',
+  PluginCreatorPluginOptionsMaxWidth = 'pluginCreator___pluginOptions___maxWidth',
   PluginCreatorPluginOptionsNoInlineHighlight = 'pluginCreator___pluginOptions___noInlineHighlight',
   PluginCreatorPluginOptionsQuery = 'pluginCreator___pluginOptions___query',
   PluginCreatorPluginOptionsFeeds = 'pluginCreator___pluginOptions___feeds',
@@ -2616,7 +2617,11 @@ export enum SitePageFieldsEnum {
   PluginCreatorPluginOptionsLegacy = 'pluginCreator___pluginOptions___legacy',
   PluginCreatorPluginOptionsThemeColorInHead = 'pluginCreator___pluginOptions___theme_color_in_head',
   PluginCreatorPluginOptionsCacheDigest = 'pluginCreator___pluginOptions___cacheDigest',
+  PluginCreatorPluginOptionsWorkboxConfigRuntimeCaching = 'pluginCreator___pluginOptions___workboxConfig___runtimeCaching',
   PluginCreatorPluginOptionsPathToConfigModule = 'pluginCreator___pluginOptions___pathToConfigModule',
+  PluginCreatorPluginOptionsBucketName = 'pluginCreator___pluginOptions___bucketName',
+  PluginCreatorPluginOptionsProtocol = 'pluginCreator___pluginOptions___protocol',
+  PluginCreatorPluginOptionsHostname = 'pluginCreator___pluginOptions___hostname',
   PluginCreatorPluginOptionsPathCheck = 'pluginCreator___pluginOptions___pathCheck',
   PluginCreatorNodeApIs = 'pluginCreator___nodeAPIs',
   PluginCreatorBrowserApIs = 'pluginCreator___browserAPIs',
@@ -2812,9 +2817,9 @@ export enum SitePluginFieldsEnum {
   PluginOptionsPluginsId = 'pluginOptions___plugins___id',
   PluginOptionsPluginsName = 'pluginOptions___plugins___name',
   PluginOptionsPluginsVersion = 'pluginOptions___plugins___version',
+  PluginOptionsPluginsPluginOptionsWrapperStyle = 'pluginOptions___plugins___pluginOptions___wrapperStyle',
   PluginOptionsPluginsPluginOptionsMaxWidth = 'pluginOptions___plugins___pluginOptions___maxWidth',
   PluginOptionsPluginsPluginOptionsBackgroundColor = 'pluginOptions___plugins___pluginOptions___backgroundColor',
-  PluginOptionsPluginsPluginOptionsWrapperStyle = 'pluginOptions___plugins___pluginOptions___wrapperStyle',
   PluginOptionsPluginsPluginOptionsNoInlineHighlight = 'pluginOptions___plugins___pluginOptions___noInlineHighlight',
   PluginOptionsPluginsBrowserApIs = 'pluginOptions___plugins___browserAPIs',
   PluginOptionsPluginsSsrApIs = 'pluginOptions___plugins___ssrAPIs',
@@ -2824,9 +2829,9 @@ export enum SitePluginFieldsEnum {
   PluginOptionsTrackingId = 'pluginOptions___trackingId',
   PluginOptionsAnonymize = 'pluginOptions___anonymize',
   PluginOptionsRespectDnt = 'pluginOptions___respectDNT',
+  PluginOptionsWrapperStyle = 'pluginOptions___wrapperStyle',
   PluginOptionsMaxWidth = 'pluginOptions___maxWidth',
   PluginOptionsBackgroundColor = 'pluginOptions___backgroundColor',
-  PluginOptionsWrapperStyle = 'pluginOptions___wrapperStyle',
   PluginOptionsNoInlineHighlight = 'pluginOptions___noInlineHighlight',
   PluginOptionsQuery = 'pluginOptions___query',
   PluginOptionsFeeds = 'pluginOptions___feeds',
@@ -2846,7 +2851,12 @@ export enum SitePluginFieldsEnum {
   PluginOptionsLegacy = 'pluginOptions___legacy',
   PluginOptionsThemeColorInHead = 'pluginOptions___theme_color_in_head',
   PluginOptionsCacheDigest = 'pluginOptions___cacheDigest',
+  PluginOptionsWorkboxConfigRuntimeCaching = 'pluginOptions___workboxConfig___runtimeCaching',
+  PluginOptionsWorkboxConfigRuntimeCachingHandler = 'pluginOptions___workboxConfig___runtimeCaching___handler',
   PluginOptionsPathToConfigModule = 'pluginOptions___pathToConfigModule',
+  PluginOptionsBucketName = 'pluginOptions___bucketName',
+  PluginOptionsProtocol = 'pluginOptions___protocol',
+  PluginOptionsHostname = 'pluginOptions___hostname',
   PluginOptionsPathCheck = 'pluginOptions___pathCheck',
   NodeApIs = 'nodeAPIs',
   BrowserApIs = 'browserAPIs',
@@ -2973,9 +2983,9 @@ export type SitePluginPluginOptions = {
   trackingId?: Maybe<Scalars['String']>
   anonymize?: Maybe<Scalars['Boolean']>
   respectDNT?: Maybe<Scalars['Boolean']>
+  wrapperStyle?: Maybe<Scalars['String']>
   maxWidth?: Maybe<Scalars['Int']>
   backgroundColor?: Maybe<Scalars['String']>
-  wrapperStyle?: Maybe<Scalars['String']>
   noInlineHighlight?: Maybe<Scalars['Boolean']>
   query?: Maybe<Scalars['String']>
   feeds?: Maybe<Array<Maybe<SitePluginPluginOptionsFeeds>>>
@@ -2993,7 +3003,11 @@ export type SitePluginPluginOptions = {
   legacy?: Maybe<Scalars['Boolean']>
   theme_color_in_head?: Maybe<Scalars['Boolean']>
   cacheDigest?: Maybe<Scalars['String']>
+  workboxConfig?: Maybe<SitePluginPluginOptionsWorkboxConfig>
   pathToConfigModule?: Maybe<Scalars['String']>
+  bucketName?: Maybe<Scalars['String']>
+  protocol?: Maybe<Scalars['String']>
+  hostname?: Maybe<Scalars['String']>
   pathCheck?: Maybe<Scalars['Boolean']>
 }
 
@@ -3021,9 +3035,9 @@ export type SitePluginPluginOptionsFilterInput = {
   trackingId?: Maybe<StringQueryOperatorInput>
   anonymize?: Maybe<BooleanQueryOperatorInput>
   respectDNT?: Maybe<BooleanQueryOperatorInput>
+  wrapperStyle?: Maybe<StringQueryOperatorInput>
   maxWidth?: Maybe<IntQueryOperatorInput>
   backgroundColor?: Maybe<StringQueryOperatorInput>
-  wrapperStyle?: Maybe<StringQueryOperatorInput>
   noInlineHighlight?: Maybe<BooleanQueryOperatorInput>
   query?: Maybe<StringQueryOperatorInput>
   feeds?: Maybe<SitePluginPluginOptionsFeedsFilterListInput>
@@ -3041,7 +3055,11 @@ export type SitePluginPluginOptionsFilterInput = {
   legacy?: Maybe<BooleanQueryOperatorInput>
   theme_color_in_head?: Maybe<BooleanQueryOperatorInput>
   cacheDigest?: Maybe<StringQueryOperatorInput>
+  workboxConfig?: Maybe<SitePluginPluginOptionsWorkboxConfigFilterInput>
   pathToConfigModule?: Maybe<StringQueryOperatorInput>
+  bucketName?: Maybe<StringQueryOperatorInput>
+  protocol?: Maybe<StringQueryOperatorInput>
+  hostname?: Maybe<StringQueryOperatorInput>
   pathCheck?: Maybe<BooleanQueryOperatorInput>
 }
 
@@ -3074,17 +3092,45 @@ export type SitePluginPluginOptionsPluginsFilterListInput = {
 
 export type SitePluginPluginOptionsPluginsPluginOptions = {
   __typename?: 'SitePluginPluginOptionsPluginsPluginOptions'
+  wrapperStyle?: Maybe<Scalars['String']>
   maxWidth?: Maybe<Scalars['Int']>
   backgroundColor?: Maybe<Scalars['String']>
-  wrapperStyle?: Maybe<Scalars['String']>
   noInlineHighlight?: Maybe<Scalars['Boolean']>
 }
 
 export type SitePluginPluginOptionsPluginsPluginOptionsFilterInput = {
+  wrapperStyle?: Maybe<StringQueryOperatorInput>
   maxWidth?: Maybe<IntQueryOperatorInput>
   backgroundColor?: Maybe<StringQueryOperatorInput>
-  wrapperStyle?: Maybe<StringQueryOperatorInput>
   noInlineHighlight?: Maybe<BooleanQueryOperatorInput>
+}
+
+export type SitePluginPluginOptionsWorkboxConfig = {
+  __typename?: 'SitePluginPluginOptionsWorkboxConfig'
+  runtimeCaching?: Maybe<
+    Array<Maybe<SitePluginPluginOptionsWorkboxConfigRuntimeCaching>>
+  >
+}
+
+export type SitePluginPluginOptionsWorkboxConfigFilterInput = {
+  runtimeCaching?: Maybe<
+    SitePluginPluginOptionsWorkboxConfigRuntimeCachingFilterListInput
+  >
+}
+
+export type SitePluginPluginOptionsWorkboxConfigRuntimeCaching = {
+  __typename?: 'SitePluginPluginOptionsWorkboxConfigRuntimeCaching'
+  handler?: Maybe<Scalars['String']>
+}
+
+export type SitePluginPluginOptionsWorkboxConfigRuntimeCachingFilterInput = {
+  handler?: Maybe<StringQueryOperatorInput>
+}
+
+export type SitePluginPluginOptionsWorkboxConfigRuntimeCachingFilterListInput = {
+  elemMatch?: Maybe<
+    SitePluginPluginOptionsWorkboxConfigRuntimeCachingFilterInput
+  >
 }
 
 export type SitePluginSortInput = {
@@ -3177,6 +3223,7 @@ export type SiteSiteMetadataTeam = {
   image?: Maybe<Scalars['String']>
   title?: Maybe<Scalars['String']>
   bio?: Maybe<Scalars['String']>
+  external?: Maybe<Scalars['Boolean']>
   social?: Maybe<SiteSiteMetadataTeamSocial>
 }
 
@@ -3186,6 +3233,7 @@ export type SiteSiteMetadataTeamFilterInput = {
   image?: Maybe<StringQueryOperatorInput>
   title?: Maybe<StringQueryOperatorInput>
   bio?: Maybe<StringQueryOperatorInput>
+  external?: Maybe<BooleanQueryOperatorInput>
   social?: Maybe<SiteSiteMetadataTeamSocialFilterInput>
 }
 

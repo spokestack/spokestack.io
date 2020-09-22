@@ -13,10 +13,10 @@ type Props = PageRendererProps & {
 export default function BlogListTagTemplate({
   data,
   location,
-  pageContext: { currentPage, numPages, slug, tag, tags }
+  pageContext: { currentPage, numPages, slug, tag, tags, total }
 }: Props) {
   const posts = data.allMarkdownRemark.edges
-  const longTitle = `${posts.length} articles tagged with "${tag}"`
+  const longTitle = `${total} articles tagged with "${tag}"`
   return (
     <BlogList
       currentPage={currentPage}

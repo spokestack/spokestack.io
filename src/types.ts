@@ -15,6 +15,7 @@ export interface PageContext {
   slug: string
   tag: string
   tags: string[]
+  total: number
 }
 
 export interface RelatedLink {

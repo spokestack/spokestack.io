@@ -75,11 +75,11 @@ export default function DocsPage({ location, post, selectFirst }: Props) {
       <StickyNavLayout links={orderedLinks} location={location}>
         <header className="docs-header">
           {selectFirst ? (
-            <h1>
+            <h2>
               <a href={post.fields.slug}>{post.frontmatter.title}</a>
-            </h1>
+            </h2>
           ) : (
-            <h1>{post.frontmatter.title}</h1>
+            <h2>{post.frontmatter.title}</h2>
           )}
           <DarkModeButton />
         </header>

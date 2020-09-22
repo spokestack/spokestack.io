@@ -46,7 +46,7 @@ export default function BlogPost({ location, post, related }: Props) {
         </section>
         <section className="main-content" css={styles.content}>
           <header className="docs-header">
-            <h1>{post.frontmatter.title}</h1>
+            <h2>{post.frontmatter.title}</h2>
             <DarkModeButton />
           </header>
           <p>{post.frontmatter.date}</p>

@@ -74,7 +74,7 @@ export default function BlogList({
               header
             ) : (
               <header className="docs-header" css={styles.header}>
-                <h1>{title}</h1>
+                <h2>{title}</h2>
                 <DarkModeButton />
               </header>
             )}

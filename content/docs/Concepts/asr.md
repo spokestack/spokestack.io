@@ -9,13 +9,13 @@ Spokestack is designed to support multiple speech recognition providers so you c
 
 ## Supported ASR providers by platform
 
-| Provider                                                                                                | Android  | iOS       |
-| ------------------------------------------------------------------------------------------------------- | -------- | --------- |
-| Android ASR (on-device)                                                                                 | &#9989;  | &#10060;  |
-| Apple ASR (on-device)                                                                                   | &#10060; | &#9989;   |
-| Spokestack Cloud ASR                                                                                    | &#9989;  | &#x1F51C; |
-| [Azure Speech Services](https://azure.microsoft.com/en-us/services/cognitive-services/speech-services/) | &#9989;  | &#10060;  |
-| [Google Cloud](https://cloud.google.com/speech-to-text)                                                 | &#9989;  | &#10060;  |
+| Provider                                                                                                | Android  | iOS      |
+| ------------------------------------------------------------------------------------------------------- | -------- | -------- |
+| Android ASR (on-device)                                                                                 | &#9989;  | &#10060; |
+| Apple ASR (on-device)                                                                                   | &#10060; | &#9989;  |
+| Spokestack Cloud ASR                                                                                    | &#9989;  | &#9989;  |
+| [Azure Speech Services](https://azure.microsoft.com/en-us/services/cognitive-services/speech-services/) | &#9989;  | &#10060; |
+| [Google Cloud](https://cloud.google.com/speech-to-text)                                                 | &#9989;  | &#10060; |
 
 ## Configuration
 

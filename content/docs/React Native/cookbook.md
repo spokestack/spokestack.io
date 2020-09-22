@@ -35,7 +35,7 @@ onTalkButtonPressed () {
 
 ### Wakeword Activation
 
-To use the demo "Spokestack" wakeword, you'll need the demo TensorFlow Lite models: [detect](https://d3dmqd7cy685il.cloudfront.net/model/wake/spokestack/detect.lite) | [encode](https://d3dmqd7cy685il.cloudfront.net/model/wake/spokestack/encode.lite) | [filter](https://d3dmqd7cy685il.cloudfront.net/model/wake/spokestack/filter.lite)
+To use the demo "Spokestack" wakeword, you'll need the demo TensorFlow Lite models: [detect](https://d3dmqd7cy685il.cloudfront.net/model/wake/spokestack/detect.tflite) | [encode](https://d3dmqd7cy685il.cloudfront.net/model/wake/spokestack/encode.tflite) | [filter](https://d3dmqd7cy685il.cloudfront.net/model/wake/spokestack/filter.tflite)
 
 ```javascript
 Spokestack.initialize({
@@ -58,7 +58,7 @@ Spokestack.initialize({
     'agc-compression-gain-db': 15,
     'vad-mode': 'very-aggressive',
     'vad-fall-delay': 800,
-    'wake-threshold': 0.9,
+    'wake-threshold': 0.8,
     'pre-emphasis': 0.97,
     'trace-level': Spokestack.TraceLevel.DEBUG
   }

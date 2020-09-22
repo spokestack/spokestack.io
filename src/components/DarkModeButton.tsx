@@ -78,6 +78,7 @@ const styles = {
     padding: 0;
     width: 30px;
     flex-shrink: 0;
+    margin-bottom: 15px;
   `,
   track: css`
     position: absolute;

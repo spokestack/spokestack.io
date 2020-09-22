@@ -254,7 +254,7 @@ export default css`
     align-items: flex-end;
     margin-bottom: ${rhythm(1)};
 
-    h1 {
+    h2 {
       margin: 0;
       padding-right: 20px;
     }

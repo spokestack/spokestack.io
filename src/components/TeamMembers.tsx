@@ -15,7 +15,7 @@ export default function Team() {
   return (
     <div css={styles.teamMembers}>
       {team.map((member) => {
-        if (member.key === 'daniel') {
+        if (member.external) {
           return null
         }
         return (
@@ -68,6 +68,7 @@ const teamQuery = graphql`
           title
           image
           bio
+          external
           social {
             twitter
             linkedin

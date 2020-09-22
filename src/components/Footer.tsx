@@ -106,11 +106,11 @@ export default function Footer() {
         </div>
         <div css={styles.column}>
           <h5>About</h5>
-          <a css={styles.footerLink} href="/about/team">
-            Team
-          </a>
           <a css={styles.footerLink} href="/about/story">
             Story
+          </a>
+          <a css={styles.footerLink} href="/about/team">
+            Team
           </a>
         </div>
         <div css={styles.bottom}>

@@ -101,12 +101,13 @@ async function createAuthorPages({ author, tags, actions, graphql, template }) {
       component: template,
       context: {
         author,
-        tags,
-        slug: url,
+        currentPage: i + 1,
         limit: postsPerPage,
-        skip: i * postsPerPage,
         numPages,
-        currentPage: i + 1
+        skip: i * postsPerPage,
+        slug: url,
+        tags,
+        total: posts.length
       }
     })
   })
@@ -148,13 +149,14 @@ async function createTagPages({ tag, tags, actions, graphql, template }) {
       path: i === 0 ? url : `${url}/${i + 1}`,
       component: template,
       context: {
+        currentPage: i + 1,
+        limit: postsPerPage,
+        numPages,
+        skip: i * postsPerPage,
+        slug: url,
         tag,
         tags,
-        slug: url,
-        limit: postsPerPage,
-        skip: i * postsPerPage,
-        numPages,
-        currentPage: i + 1
+        total: posts.length
       }
     })
   })
@@ -291,12 +293,13 @@ exports.createPages = async ({ graphql, actions, reporter }) => {
       path: i === 0 ? url : `/blog/${i + 1}`,
       component: path.resolve('./src/templates/blog-list.tsx'),
       context: {
-        tags,
-        slug: url,
+        currentPage: i + 1,
         limit: postsPerPage,
-        skip: i * postsPerPage,
         numPages,
-        currentPage: i + 1
+        skip: i * postsPerPage,
+        slug: url,
+        tags,
+        total: posts.length
       }
     })
   })

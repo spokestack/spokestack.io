@@ -27,6 +27,7 @@ module.exports = {
         image: '/headshots/brent.png',
         title: 'CTO',
         bio: '',
+        external: false,
         social: {
           twitter: '',
           linkedin: '',
@@ -39,6 +40,7 @@ module.exports = {
         image: '/headshots/cory.png',
         title: 'Spokestack Certified Developer',
         bio: '',
+        external: true,
         social: {
           twitter: 'https://twitter.com/kwylez',
           linkedin: '',
@@ -51,6 +53,7 @@ module.exports = {
         image: '/headshots/daniel.png',
         title: 'Spokestack Certified Developer',
         bio: '',
+        external: true,
         social: {
           twitter: '',
           linkedin: '',
@@ -64,6 +67,7 @@ module.exports = {
         title: 'UX & Product Design',
         bio:
           'Elizabeth designs multimodal experiences with language and visuals in mind. A classically trained violinist, she enjoys bluegrass fiddle and spicy food of all kinds.',
+        external: false,
         social: {
           twitter: 'https://twitter.com/roppem9',
           linkedin: 'https://www.linkedin.com/in/elizabethropp/',
@@ -77,6 +81,7 @@ module.exports = {
         title: 'Principal Computational Linguist',
         bio:
           'Josh lives at the intersection of language and technology. An avid reader, he enjoys long runs in the woods and pedantic arguments about...well, pick a topic.',
+        external: false,
         social: {
           twitter: '',
           linkedin: 'https://www.linkedin.com/in/joshziegler/',
@@ -90,6 +95,7 @@ module.exports = {
         title: 'CEO',
         bio:
           'Mike is the CEO of Spokestack. He loves making late-night purchases on Discogs and using new technologies to create better user experiences and products.',
+        external: false,
         social: {
           twitter: 'https://twitter.com/miketatum',
           linkedin: 'https://www.linkedin.com/in/miketatum/',
@@ -102,6 +108,7 @@ module.exports = {
         image: '/headshots/noel.png',
         title: 'Principal Engineer',
         bio: '',
+        external: false,
         social: {
           twitter: '',
           linkedin: '',
@@ -114,6 +121,7 @@ module.exports = {
         image: '/headshots/timmy.png',
         title: 'Front-End Engineer',
         bio: '',
+        external: false,
         social: {
           twitter: 'https://twitter.com/timmywil',
           linkedin: '',
@@ -126,6 +134,7 @@ module.exports = {
         image: '/headshots/will.png',
         title: 'Data Science Engineer',
         bio: '',
+        external: false,
         social: {
           twitter: '',
           linkedin: '',

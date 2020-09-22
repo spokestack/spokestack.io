@@ -12,6 +12,7 @@ import { adjustFontSizeTo } from '../styles/typography'
 import hashToId from '../utils/hashToId'
 
 interface Props {
+  startOpen?: boolean
   headerText: string
   links: StickyLink[]
   location: WindowLocation
@@ -20,6 +21,7 @@ interface Props {
 }
 
 export default function StickyNavSection({
+  startOpen = false,
   headerText,
   links,
   location,
@@ -28,15 +30,20 @@ export default function StickyNavSection({
 }: Props) {
   const storageKey = `sticky-nav-section-${headerText}`
   const [open, setOpen] = useState(
-    typeof window !== 'undefined'
-      ? localStorage.getItem(storageKey) !== 'false'
-      : true
+    !headerText ||
+      (typeof window !== 'undefined' &&
+        localStorage.getItem(storageKey) === 'true')
   )
+  useEffect(() => {
+    if (startOpen) {
+      setOpen(true)
+    }
+  }, [startOpen])
   useEffect(() => {
     if (headerText) {
       localStorage.setItem(storageKey, JSON.stringify(open))
     }
-  }, [open])
+  }, [headerText, open])
 
   return (
     <div css={styles.stickyNavSection}>

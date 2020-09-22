@@ -3,12 +3,11 @@ import * as theme from '../styles/theme'
 import { Global, css } from '@emotion/core'
 import { graphql, useStaticQuery } from 'gatsby'
 
-import AuthorImage from './AuthorImage'
 import Callout from './Callout'
 import { Query } from '../utils/graphql'
 import React from 'react'
-import { rhythm } from '../styles/typography'
 import find from 'lodash/find'
+import { rhythm } from '../styles/typography'
 
 interface Props {
   author: string
@@ -19,7 +18,9 @@ export default function Author({ author }: Props) {
   if (!author || !data.site) {
     return null
   }
-  const { name, title } = find(data.site.siteMetadata.team, { key: author })
+  const { name, title, image } = find(data.site.siteMetadata.team, {
+    key: author
+  })
   return (
     <Callout to={`/blog/author/${author}`} extraCss={styles.author}>
       <Global
@@ -31,7 +32,7 @@ export default function Author({ author }: Props) {
           }
         `}
       />
-      <AuthorImage author={author} extraCss={styles.image} />
+      <img alt={name} css={styles.image} src={image} />
       <p css={styles.about}>About the Author</p>
       <h4 css={styles.name}>{name}</h4>
       <p className="author-bio" css={styles.bio}>
@@ -46,8 +47,10 @@ const styles = {
     margin-top: 5px;
   `,
   image: css`
+    width: 95px;
+    height: 95px;
+    border-radius: 50%;
     margin: 0 0 ${rhythm(1)};
-    min-width: 95px;
   `,
   about: css`
     font-size: 16px;
@@ -81,6 +84,7 @@ const authorQuery = graphql`
           key
           name
           title
+          image
         }
       }
     }

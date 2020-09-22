@@ -18,7 +18,7 @@ import NavLinkDropdown from './NavLinkDropdown'
 import { WindowLocation } from '@reach/router'
 
 interface Props {
-  extraCss?: SerializedStyles
+  extraCss?: SerializedStyles | SerializedStyles[]
   location: WindowLocation
 }
 
@@ -29,7 +29,7 @@ export default function Nav({ extraCss, location }: Props) {
     contentStyles.push(styles.navContentOpen)
   }
   return (
-    <nav css={[styles.nav, extraCss]}>
+    <nav css={[styles.nav].concat(extraCss)}>
       <Global
         styles={css`
           ${MIN_DEFAULT_MEDIA_QUERY} {
@@ -191,11 +191,13 @@ const styles = {
       position: absolute;
       flex-direction: row;
       justify-content: space-between;
-      padding: 0 30px;
+      padding-left: 30px;
+      padding-right: 30px;
     }
 
     ${MIN_LARGE_DISPLAY_MEDIA_QUERY} {
-      padding: 0 100px;
+      padding-left: 100px;
+      padding-right: 100px;
     }
   `,
   header: css`

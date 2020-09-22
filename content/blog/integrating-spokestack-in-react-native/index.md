@@ -25,7 +25,7 @@ This tutorial will guide you through the process of installing `react-native-spo
 
 First, install the dependencies. Here's a one-liner to install `react-native-spokestack-tray` and its peer dependencies.
 
-```sh
+```bash
 npm install react-native-spokestack-tray react-native-spokestack @react-native-community/async-storage @react-native-community/netinfo react-native-video rn-fetch-blob react-native-haptic-feedback react-native-linear-gradient react-native-permissions
 ```
 
@@ -74,7 +74,7 @@ For the time being, `use_frameworks!` does not work with Flipper, so we also nee
 
 Remove your existing Podfile.lock and Pods folder to ensure no conflicts, then install the pods:
 
-```sh
+```bash
 $ npx pod-install
 ```
 
@@ -84,7 +84,7 @@ Refer to the [Podfile in our example](https://github.com/spokestack/react-native
 
 Add the following to your Info.plist to enable permissions. In XCode, also ensure your iOS deployment target is set to 13.0.
 
-```
+```xml
 <key>NSMicrophoneUsageDescription</key>
 <string>This app uses the microphone to hear voice commands</string>
 <key>NSSpeechRecognitionUsageDescription</key>

@@ -9,13 +9,23 @@ Spokestack is a powerful platform of open source libraries and robust services t
 
 If you're new to voice, check out our [overview video](https://www.youtube.com/watch?v=wbJ8fZh-iQw) and the [Concepts](/docs/Concepts) section of our docs.
 
-## Integrations
+### Integrations
 
 As a tools and services provider, we try to balance ease of integration with customization for your voice interface needs. Here are the ways you can integrate Spokestack with your mobile app:
 
-1. **Spokestack Tray**: Spokestack Tray is a library that provides a voice interface overlay designed to work in any mobile app. Spokestack Tray is opinionated and follows a specific use pattern, but can be customized to meet your own branding requirements. This path is suitable for mobile developers of all experience levels, but it assumes some experience with the underlying platform (React Native, iOS, or Android). Check out our "Get the Bartender" app on [iOS](https://apps.apple.com/us/app/get-the-bartender/id1530425843) and [Android](https://play.google.com/store/apps/details?id=com.spokestack.bartender) for examples of how Tray might work with an existing app.
+#### Spokestack Tray
 
-1. **Custom Integration**: A custom integration gives the app developer full control over voice integration. This path is more suitable for _intermediate_ and _advanced_ mobile developers as it requires building familiarity with individual Spokestack subsystems. Check out the Spokestack Studio app on [iOS](https://apps.apple.com/us/app/spokestack-studio/id1508393980) or the control room sample app on [Android](https://github.com/spokestack/android-control-room) for examples of all of our services and how they work.
+Spokestack Tray is a library that provides a voice interface overlay designed to work in any mobile app. Spokestack Tray is opinionated and follows a specific use pattern, but can be customized to meet your own branding requirements. This path is suitable for mobile developers of all experience levels, but it assumes some experience with the underlying platform (React Native, iOS, or Android). Check out our "Get the Bartender" app on [iOS](https://apps.apple.com/us/app/get-the-bartender/id1530425843) and [Android](https://play.google.com/store/apps/details?id=com.spokestack.bartender) for examples of how Tray might work with an existing app.
+
+You can find the Spokestack Tray libraries and documentation here:
+
+- [React Native](https://github.com/spokestack/react-native-spokestack-tray)
+- [iOS](https://github.com/spokestack/spokestack-tray-ios)
+- _Android coming soon_ Follow us on [Twitter](https://twitter.com/spokestack) for updates.
+
+#### Custom Integration
+
+A custom integration gives the app developer full control over voice integration. This path is more suitable for _intermediate_ and _advanced_ mobile developers as it requires building familiarity with individual Spokestack subsystems. Check out the Spokestack Studio app on [iOS](https://apps.apple.com/us/app/spokestack-studio/id1508393980) or the control room sample app on [Android](https://github.com/spokestack/android-control-room) for examples of all of our services and how they work.
 
 If you're looking to integrate Spokestack in your project without using the tray, our **quickstart** guides for each platform can be found here:
 
@@ -23,23 +33,25 @@ If you're looking to integrate Spokestack in your project without using the tray
 - [Android](/docs/Android/getting-started)
 - [React Native](/docs/React%20Native/getting-started)
 
+### Tutorials
+
 Tutorials for integrating Spokestack are also available on our blog:
 
 ##### Spokestack Tray Tutorials
 
 <br />
 
-- [React Native](/blog/integrating-spokestack-in-react-native)
-- _iOS coming soon_
+- [React Native Tray Tutorial](/blog/integrating-spokestack-in-react-native)
+- [iOS Tray Tutorial](/blog/integrating-spokestack-in-ios)
 - _Android coming soon_
 
 ##### Custom Integration Tutorials
 
 <br />
 
-- [React Native](/blog/integrating-spokestack-in-react-native)
-- [iOs](/blog/porting-a-smart-speaker-voice-app-to-mobile-part-1)
-- [Android](/blog/porting-the-alexa-minecraft-skill-to-android-using-spokestack)
+- [React Native Tutorial](/blog/integrating-spokestack-in-react-native)
+- [iOS Tutorial](/blog/porting-a-smart-speaker-voice-app-to-mobile-part-1)
+- [Android Tutorial](/blog/porting-the-alexa-minecraft-skill-to-android-using-spokestack)
 
 Check our blog for all of our [Spokestack Tutorials](/blog/tag/tutorial).
 

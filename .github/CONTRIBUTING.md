@@ -69,6 +69,12 @@ $ npm run build
 $ npm run serve
 ```
 
+If you run into any problems with the build, first try cleaning the cache:
+
+```bash
+$ npm run clean
+```
+
 ## Testing the Spokestack API
 
 This site is equipped with a [GraphiQL IDE](https://github.com/graphql/graphiql) for the Spokestack API. This is only available in **development** mode.

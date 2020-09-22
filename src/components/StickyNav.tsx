@@ -148,6 +148,7 @@ export default function StickyNav({
       {sections.map((section) => (
         <StickyNavSection
           key={`sticky-nav-section-${section}`}
+          startOpen={selectedLink && selectedLink.section === section}
           headerText={isSection(section) ? section : null}
           links={groupedLinks[section]}
           location={location}

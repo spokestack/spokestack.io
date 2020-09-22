@@ -4,7 +4,6 @@ import { Global, css } from '@emotion/core'
 import { Link, graphql, useStaticQuery } from 'gatsby'
 import { MarkdownRemark, Query } from '../utils/graphql'
 
-import AuthorImage from './AuthorImage'
 import Color from 'color'
 import React from 'react'
 import find from 'lodash/find'
@@ -19,7 +18,9 @@ export default function BlogListItem({ post }: Props) {
   if (!author || !data || !data.site) {
     return null
   }
-  const { name, title } = find(data.site.siteMetadata.team, { key: author })
+  const { name, title, image } = find(data.site.siteMetadata.team, {
+    key: author
+  })
   return (
     <Link
       to={post.fields.slug}
@@ -49,7 +50,7 @@ export default function BlogListItem({ post }: Props) {
         `}
       />
       <div css={styles.author}>
-        <AuthorImage author={author} extraCss={styles.image} />
+        <img alt={name} css={styles.image} src={image} />
         <p>
           <span>
             {name}, {title}
@@ -108,8 +109,9 @@ const styles = {
     margin: 0 5px;
   `,
   image: css`
-    max-width: 34px;
-    max-height: 34px;
+    display: block;
+    width: 34px;
+    border-radius: 50%;
     margin-right: 10px;
   `,
   date: css`
@@ -128,6 +130,7 @@ const blogListItemQuery = graphql`
           key
           name
           title
+          image
         }
       }
     }

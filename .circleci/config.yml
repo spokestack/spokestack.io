@@ -15,11 +15,23 @@ references:
         - node_modules/
       key: npm-packages-v2-{{ .Branch }}-{{ checksum "package-lock.json" }}
 
+  restore_gatsby_cache: &restore_gatsby_cache
+    restore_cache:
+      keys:
+        - gatsby-cache-v3-{{ .Branch }}
+        - gatsby-cache-v3-
+
+  save_gatsby_cache: &save_gatsby_cache
+    save_cache:
+      paths:
+        - .cache/
+        - public/
+      key: gatsby-cache-v3-{{ .Branch }}
+
 jobs:
   build:
     docker:
       - image: circleci/node:12
-    resource_class: large
     working_directory: ~/spokestack-website
     steps:
       - checkout
@@ -32,25 +44,34 @@ jobs:
           command: npm test
 
       # build the site
+      - *restore_gatsby_cache
       - run:
           name: Run build
           command: npm run build
-
-      - persist_to_workspace:
-          root: ~/spokestack-website
-          paths:
-            - public
+      - *save_gatsby_cache
 
   deploy_integration:
     docker:
       - image: circleci/node:12
+    environment:
+      SITE_URL: https://beta.spokestack.io/
     working_directory: ~/spokestack-website
     steps:
       - checkout
+      - *restore_npm_cache
+      - run: npm install --no-save
+      - *save_npm_cache
 
-      # attach build already done
-      - attach_workspace:
-          at: ~/spokestack-website
+      - run:
+          name: Run tests
+          command: npm test
+
+      # build the site with beta.spokestack.io
+      - *restore_gatsby_cache
+      - run:
+          name: Run build
+          command: npm run build
+      - *save_gatsby_cache
 
       # upload to S3
       - run:
@@ -58,7 +79,7 @@ jobs:
           command: sudo apt-get -y -qq install awscli
       - run:
           name: Build and push static site
-          command: aws s3 sync --delete public s3://beta.spokestack.io/
+          command: npm run deploy
       - run:
           name: Enable cloudfront cli
           command: aws configure set preview.cloudfront true
@@ -69,13 +90,25 @@ jobs:
   deploy_production:
     docker:
       - image: circleci/node:12
+    environment:
+      SITE_URL: https://www.spokestack.io/
     working_directory: ~/spokestack-website
     steps:
       - checkout
+      - *restore_npm_cache
+      - run: npm install --no-save
+      - *save_npm_cache
 
-      # attach build already done
-      - attach_workspace:
-          at: ~/spokestack-website
+      - run:
+          name: Run tests
+          command: npm test
+
+      # build the site with www.spokestack.io
+      - *restore_gatsby_cache
+      - run:
+          name: Run build
+          command: npm run build
+      - *save_gatsby_cache
 
       # upload to S3
       - run:
@@ -83,7 +116,7 @@ jobs:
           command: sudo apt-get -y -qq install awscli
       - run:
           name: Build and push static site
-          command: aws s3 sync --delete public s3://www.spokestack.io/
+          command: npm run deploy
       - run:
           name: Enable cloudfront cli
           command: aws configure set preview.cloudfront true
@@ -94,19 +127,20 @@ jobs:
 workflows:
   version: 2
 
-  test_and_deploy:
+  test:
     jobs:
       - build:
           filters:
-            tags:
-              only:
-                - /\d+\.\d+\.\d+/
+            branches:
+              ignore:
+                - develop
+                - production
+  deploy:
+    jobs:
       - deploy_integration:
           filters:
             branches:
               only: develop
-          requires:
-            - build
       - deploy_production:
           filters:
             branches:
@@ -114,5 +148,3 @@ workflows:
             tags:
               only:
                 - /\d+\.\d+\.\d+/
-          requires:
-            - build

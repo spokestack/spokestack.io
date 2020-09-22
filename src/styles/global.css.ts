@@ -18,6 +18,9 @@ export default css`
     transition: color 0.1s ${theme.transitionEasing},
       text-decoration-color 0.1s ${theme.transitionEasing};
   }
+  img {
+    margin: 0;
+  }
   blockquote {
     color: hsl(0, 0%, 40%);
   }

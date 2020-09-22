@@ -66,7 +66,7 @@ export default function DocsPage({ location, post, selectFirst }: Props) {
       <SEO
         title="Voice App Development Documentation | Spokestack"
         description={
-          'Explore our Developer Docs to learn about Spokestack’s TTS technology and configuration options. All of our documentation is also available on GitHub.' +
+          'Explore our Developer Docs to learn about Spokestack’s services, including TTS and on-device ASR, Wakeword, and NLU. All of our documentation is also available on GitHub.' +
           post.frontmatter.description
             ? ` ${post.frontmatter.description}`
             : ''

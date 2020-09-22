@@ -2,23 +2,23 @@
   "name": "spokestack-website",
   "private": true,
   "description": "Voice development platform that enables customized voice navigation for mobile and browser applications",
-  "version": "1.25.1",
+  "version": "1.28.0",
   "author": "Timmy Willison <4timmywil@gmail.com>",
   "scripts": {
-    "build": "npm run clean && gatsby build",
+    "build": "gatsby build",
     "clean": "gatsby clean",
     "commit": "git-cz",
-    "deploy": "gatsby build && gh-pages -d public -b master",
+    "deploy": "gatsby-plugin-s3 deploy --yes",
     "format": "eslint . --fix && prettier --write \"**/*.tsx\" \"**/*.ts\" \"**/*.js\" \"**/*.json\" \"**/*.md\"",
     "graphiql": "serve -l 5000 graphiql/",
     "lint": "concurrently --raw \"eslint .\" \"npm run prettier\"",
     "post": "node tasks/post.js",
     "prettier": "prettier --check \"**/*.json\" \"**/*.md\"",
-    "release": "semantic-release",
+    "release": "release-it",
     "schema": "graphql-codegen --config codegen.yml && prettier --write \"**/graphql.d.ts\"",
     "schema:remote": "node tasks/schema.js",
     "serve": "serve -l 8000 public/",
-    "start": "npm run clean && concurrently \"gatsby develop -o\" \"npm run graphiql\"",
+    "start": "concurrently \"cross-env SITE_URL=http://localhost:8000 gatsby develop -o\" \"npm run graphiql\"",
     "test": "concurrently --raw \"npm run lint\" \"npm run typescript\"",
     "typescript": "tsc -p tsconfig.json --noEmit"
   },
@@ -27,6 +27,7 @@
     "@emotion/core": "^10.0.35",
     "@loadable/component": "^5.13.2",
     "@reach/router": "^1.3.4",
+    "@release-it/conventional-changelog": "^2.0.0",
     "apollo-cache-inmemory": "^1.6.6",
     "apollo-client": "^2.6.10",
     "apollo-link": "^1.2.14",
@@ -34,7 +35,7 @@
     "apollo-link-http": "^1.5.17",
     "apollo-link-http-common": "^0.2.16",
     "color": "^3.1.2",
-    "gatsby": "^2.24.62",
+    "gatsby": "^2.24.63",
     "gatsby-image": "^2.4.19",
     "gatsby-link": "^2.4.14",
     "gatsby-plugin-canonical-urls": "^2.3.11",
@@ -47,6 +48,7 @@
     "gatsby-plugin-optimize-svgs": "^1.0.3",
     "gatsby-plugin-react-helmet": "^3.3.11",
     "gatsby-plugin-react-svg": "^3.0.0",
+    "gatsby-plugin-s3": "^0.3.5",
     "gatsby-plugin-sharp": "^2.6.36",
     "gatsby-plugin-sitemap": "^2.4.13",
     "gatsby-plugin-twitter": "^2.3.11",
@@ -55,6 +57,7 @@
     "gatsby-react-router-scroll": "^3.0.13",
     "gatsby-remark-autolink-headers": "^2.3.13",
     "gatsby-remark-copy-linked-files": "^2.3.15",
+    "gatsby-remark-embed-video": "^3.0.10",
     "gatsby-remark-embedder": "^3.0.0",
     "gatsby-remark-images": "^3.3.30",
     "gatsby-remark-prismjs": "^3.5.13",
@@ -74,9 +77,10 @@
     "react-dom": "^16.13.1",
     "react-helmet": "^6.1.0",
     "react-typography": "^0.16.19",
+    "release-it": "^14.0.3",
     "spokestack": "^0.3.0",
     "title-case": "^3.0.2",
-    "typescript": "^4.0.2",
+    "typescript": "^4.0.3",
     "typography": "^0.16.19",
     "typography-breakpoint-constants": "^0.16.19",
     "uuid": "^8.3.0",
@@ -89,7 +93,6 @@
     "@graphql-codegen/cli": "^1.17.8",
     "@graphql-codegen/typescript": "^1.17.9",
     "@graphql-inspector/cli": "^2.2.0",
-    "@semantic-release/git": "^9.0.0",
     "@types/color": "^3.0.0",
     "@types/loadable__component": "^5.13.0",
     "@types/lodash": "^4.14.161",
@@ -99,8 +102,8 @@
     "@types/typography": "^0.16.2",
     "@types/uuid": "^8.3.0",
     "@types/wav-encoder": "^1.3.0",
-    "@typescript-eslint/eslint-plugin": "^4.1.1",
-    "@typescript-eslint/parser": "^4.1.1",
+    "@typescript-eslint/eslint-plugin": "^4.2.0",
+    "@typescript-eslint/parser": "^4.2.0",
     "babel-plugin-graphql-tag": "^3.1.0",
     "babel-plugin-inline-import": "^3.0.0",
     "babel-plugin-transform-inline-environment-variables": "^0.4.3",
@@ -108,6 +111,7 @@
     "babel-preset-gatsby": "^0.5.10",
     "commitizen": "^4.2.1",
     "concurrently": "^5.3.0",
+    "cross-env": "^7.0.2",
     "eslint": "^7.9.0",
     "eslint-config-prettier": "^6.11.0",
     "eslint-plugin-prettier": "^3.1.4",
@@ -117,7 +121,6 @@
     "mkdirp": "^1.0.4",
     "open": "^7.2.1",
     "prettier": "^2.1.2",
-    "semantic-release": "^17.1.1",
     "serve": "^11.3.2",
     "shelljs": "^0.8.4"
   },
@@ -202,25 +205,27 @@
       "@commitlint/config-conventional"
     ]
   },
-  "release": {
-    "branches": [
-      "develop"
-    ],
-    "ci": false,
-    "npmPublish": false,
-    "pre-commit": "npm run lint:fix",
-    "plugins": [
-      "@semantic-release/commit-analyzer",
-      "@semantic-release/release-notes-generator",
-      "@semantic-release/npm",
-      [
-        "@semantic-release/git",
-        {
-          "message": "chore(release): ${nextRelease.version} \n\n${nextRelease.notes}"
-        }
-      ],
-      "@semantic-release/github"
-    ],
-    "tagFormat": "${version}"
+  "release-it": {
+    "verbose": 2,
+    "hooks": {
+      "before:init": "npm test"
+    },
+    "git": {
+      "commitMessage": "chore: release ${version}",
+      "requireBranch": "develop",
+      "tagName": "${version}"
+    },
+    "npm": {
+      "publish": false
+    },
+    "github": {
+      "release": true,
+      "tokenRef": "SPOKESTACK_WEBSITE_GITHUB_TOKEN"
+    },
+    "plugins": {
+      "@release-it/conventional-changelog": {
+        "preset": "angular"
+      }
+    }
   }
 }

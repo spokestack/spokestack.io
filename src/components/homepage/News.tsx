@@ -16,19 +16,12 @@ function sortPosts(posts: Query['allMarkdownRemark']['edges']) {
 }
 
 type QueryType = Query & {
-  latest: Query['allMarkdownRemark']
-  danielArticle: Query['allMarkdownRemark']
-  elizabethArticle: Query['allMarkdownRemark']
-  mikeArticle: Query['allMarkdownRemark']
+  articles: Query['allMarkdownRemark']
 }
 
 export default function News() {
   const data = useStaticQuery<QueryType>(newsQuery)
-  const posts = data.latest.edges.concat(
-    data.danielArticle.edges.concat(
-      data.elizabethArticle.edges.concat(data.mikeArticle.edges)
-    )
-  )
+  const posts = data.articles.edges
   return (
     <div id="news" className="ie-fix" css={styles.container}>
       <h2>News &amp; Tutorials</h2>
@@ -47,7 +40,9 @@ export default function News() {
               date={post.frontmatter.date}
               header={post.frontmatter.title}
               to={post.fields.slug}
-              type={author === 'daniel' ? 'Tutorial' : 'Blog'}
+              type={
+                post.frontmatter.tags.includes('Tutorial') ? 'Tutorial' : 'Blog'
+              }
             />
           )
         })}
@@ -92,57 +87,13 @@ const styles = {
 
 const newsQuery = graphql`
   query newsQuery {
-    latest: allMarkdownRemark(
+    articles: allMarkdownRemark(
       filter: {
         fileAbsolutePath: { regex: "/blog/" }
         frontmatter: { draft: { ne: true } }
       }
-      sort: { fields: [frontmatter___date], order: ASC }
-      limit: 1
-    ) {
-      edges {
-        node {
-          id
-          fields {
-            slug
-          }
-          frontmatter {
-            author
-            date(formatString: "MMM DD, YYYY")
-            title
-          }
-        }
-      }
-    }
-    danielArticle: allMarkdownRemark(
-      filter: {
-        fileAbsolutePath: { regex: "/blog/" }
-        frontmatter: { draft: { ne: true }, author: { eq: "daniel" } }
-      }
-      sort: { fields: [frontmatter___date], order: ASC }
-      limit: 1
-    ) {
-      edges {
-        node {
-          id
-          fields {
-            slug
-          }
-          frontmatter {
-            author
-            date(formatString: "MMM DD, YYYY")
-            title
-          }
-        }
-      }
-    }
-    elizabethArticle: allMarkdownRemark(
-      filter: {
-        fileAbsolutePath: { regex: "/blog/" }
-        frontmatter: { draft: { ne: true }, author: { eq: "elizabeth" } }
-      }
       sort: { fields: [frontmatter___date], order: DESC }
-      limit: 1
+      limit: 4
     ) {
       edges {
         node {
@@ -153,28 +104,7 @@ const newsQuery = graphql`
           frontmatter {
             author
             date(formatString: "MMM DD, YYYY")
-            title
-          }
-        }
-      }
-    }
-    mikeArticle: allMarkdownRemark(
-      filter: {
-        fileAbsolutePath: { regex: "/blog/" }
-        frontmatter: { draft: { ne: true }, author: { eq: "mike" } }
-      }
-      sort: { fields: [frontmatter___date], order: DESC }
-      limit: 1
-    ) {
-      edges {
-        node {
-          id
-          fields {
-            slug
-          }
-          frontmatter {
-            author
-            date(formatString: "MMM DD, YYYY")
+            tags
             title
           }
         }

@@ -1,20 +1,16 @@
 import * as theme from '../styles/theme'
 
-import React, { useEffect, useState } from 'react'
+import React from 'react'
 
 import { DEFAULT_MEDIA_QUERY } from 'typography-breakpoint-constants'
 import { css } from '@emotion/core'
 
 interface Props {
-  selectedId: string
+  selected: HTMLElement
 }
 
-export default function NavSelectedBackground({ selectedId }: Props) {
-  const [selected, setSelected] = useState<HTMLElement>(null)
-  useEffect(() => {
-    setSelected(document.getElementById(selectedId))
-  }, [selectedId])
-  return selected ? (
+export default function NavSelectedBackground({ selected }: Props) {
+  return (
     <div
       className="nav-selected-bg"
       css={styles.container}
@@ -23,7 +19,7 @@ export default function NavSelectedBackground({ selectedId }: Props) {
         height: selected.getBoundingClientRect().height
       }}
     />
-  ) : null
+  )
 }
 
 const styles = {

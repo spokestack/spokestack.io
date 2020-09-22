@@ -18,6 +18,7 @@ export interface StickyNavProps {
   hideSelect?: boolean
   links: StickyLink[]
   location: WindowLocation
+  startOpen?: boolean
 }
 
 function isSection(section: string) {
@@ -44,7 +45,8 @@ let navigating = true
 export default function StickyNav({
   hideSelect,
   links = [],
-  location
+  location,
+  startOpen
 }: StickyNavProps) {
   if (!links.length) {
     return null
@@ -52,6 +54,7 @@ export default function StickyNav({
   const navRef = useRef<HTMLElement>(null)
   const [selectedLink, setSelectedLink] = useState<StickyLink>(null)
   const [selectedId, setSelectedId] = useState<string>(null)
+  const [selectedElemVisible, setSelectedElemVisible] = useState<boolean>(null)
   useEffect(() => {
     const locs: { [key: number]: HTMLElement } = {}
     const linksWithHash: StickyLink[] = []
@@ -110,6 +113,14 @@ export default function StickyNav({
   }, [selectedLink])
   const groupedLinks = groupBy(links, 'section')
   const sections = Object.keys(groupedLinks)
+  const selectedElem =
+    !selectedLink && selectedId && document.getElementById(selectedId)
+  function updateSelectedElemVisible() {
+    if (selectedElem) {
+      setSelectedElemVisible(selectedElem.getClientRects().length > 0)
+    }
+  }
+  useEffect(updateSelectedElemVisible, [selectedElem])
 
   return (
     <nav ref={navRef} css={styles.stickyNav}>
@@ -148,10 +159,18 @@ export default function StickyNav({
       {sections.map((section) => (
         <StickyNavSection
           key={`sticky-nav-section-${section}`}
-          startOpen={selectedLink && selectedLink.section === section}
+          startOpen={
+            startOpen ||
+            (selectedLink && selectedLink.section === section) ||
+            (selectedId &&
+              groupedLinks[section].some(
+                (link) => `${hashToId(link.href)}-link` === selectedId
+              ))
+          }
           headerText={isSection(section) ? section : null}
           links={groupedLinks[section]}
           location={location}
+          onOpenChange={updateSelectedElemVisible}
           onSelect={(id) => {
             navigating = true
             setSelectedId(id)
@@ -162,7 +181,10 @@ export default function StickyNav({
           selectedId={!selectedLink && selectedId}
         />
       ))}
-      {!selectedLink && <NavSelectedBackground selectedId={selectedId} />}
+      {/* Check if the selected element is visible */}
+      {selectedElem && selectedElemVisible && (
+        <NavSelectedBackground selected={selectedElem} />
+      )}
     </nav>
   )
 }

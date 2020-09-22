@@ -16,27 +16,32 @@ interface Props {
   headerText: string
   links: StickyLink[]
   location: WindowLocation
+  onOpenChange?: (open: boolean) => void
   onSelect?: (id: string) => void
   selectedId?: string
 }
 
 export default function StickyNavSection({
-  startOpen = false,
   headerText,
   links,
   location,
+  onOpenChange,
   onSelect,
-  selectedId
+  selectedId,
+  startOpen = false
 }: Props) {
   const storageKey = `sticky-nav-section-${headerText}`
+  const openStorageValue =
+    typeof window !== 'undefined' && localStorage.getItem(storageKey)
   const [open, setOpen] = useState(
     !headerText ||
-      (typeof window !== 'undefined' &&
-        localStorage.getItem(storageKey) === 'true')
+      (openStorageValue !== null && openStorageValue === 'true') ||
+      startOpen
   )
   useEffect(() => {
     if (startOpen) {
       setOpen(true)
+      requestAnimationFrame(() => onOpenChange(true))
     }
   }, [startOpen])
   useEffect(() => {
@@ -79,7 +84,12 @@ export default function StickyNavSection({
         `}
       />
       {headerText && (
-        <h3 css={styles.stickyNavHeader} onClick={() => setOpen(!open)}>
+        <h3
+          css={styles.stickyNavHeader}
+          onClick={() => {
+            setOpen(!open)
+            requestAnimationFrame(() => onOpenChange(!open))
+          }}>
           <a>
             {headerText}
             <SVGIcon

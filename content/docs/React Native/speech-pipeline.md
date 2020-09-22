@@ -31,7 +31,7 @@ The pipeline can also be activated by calling its `activate` method. This is wha
 
 For a complete set of available methods that can be called for the speech pipeline, please refer to [the API documentation](https://github.com/spokestack/react-native-spokestack#methods).
 
-When active, audio frames are sent through an ASR service (selectably on-device or cloud-based) to be transcribed (if an ASR component is registered in the pipeline; these components have names that end in `SpeechRecognizer`). These ASR requests end when a pre-set timeout is reached or when the pipeline is manually set to inactive. At that point, the ASR service's best effort at a transcription is delivered via a speech event to any registered listeners.
+When active, audio frames are sent through an ASR service (on-device or cloud-based) to be transcribed (if an ASR component is registered in the pipeline; these components have names that end in `SpeechRecognizer`). These ASR requests end when a pre-set timeout is reached or when the pipeline is manually set to inactive. At that point, the ASR service's best effort at a transcription is delivered via a speech event to any registered listeners.
 
 ## The Main Event
 

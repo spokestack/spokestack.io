@@ -7,38 +7,30 @@ import { css } from '@emotion/core'
 
 export default function Video() {
   const videoRef = useRef<HTMLVideoElement>(null)
-  const [played, setPlayed] = useState(false)
+  const [isFullscreen, setIsFullscreen] = useState(false)
   useEffect(() => {
-    videoRef.current?.addEventListener('playing', () => {
-      setPlayed(true)
+    videoRef.current?.addEventListener('fullscreenchange', () => {
+      if (document.fullscreenElement) {
+        setIsFullscreen(true)
+        videoRef.current?.play()
+      } else {
+        setIsFullscreen(false)
+        videoRef.current?.pause()
+      }
     })
   }, [])
   return (
-    <div
-      className="ie-fix"
-      css={[
-        styles.video,
-        played
-          ? css`
-              padding-top: 216.14%;
-
-              @media (min-width: 415px) {
-                padding-top: 810px !important;
-              }
-            `
-          : css`
-              padding-top: 129.79%;
-            `
-      ]}>
+    <div css={styles.video}>
       <video
-        aria-label="Spokestack Introduction Video"
+        aria-label="Spokestack Tray Introduction Video"
         ref={videoRef}
-        controls={played}
+        controls
         css={styles.videoElem}
-        poster="/poster.svg">
+        style={{ display: isFullscreen ? 'block' : 'none' }}>
         <source src="/homepage/spokestack-tray-demo.mp4" type="video/mp4" />
         <source src="/homepage/spokestack-tray-demo.webm" type="video/webm" />
       </video>
+      <img alt="Spokestack Tray Introduction Video Poster" src="/poster.svg" />
       <a
         tabIndex={0}
         title="Play video"
@@ -46,8 +38,7 @@ export default function Video() {
         onClick={() => {
           videoRef.current.play()
           videoRef.current.requestFullscreen()
-        }}
-        style={played ? { display: 'none' } : null}>
+        }}>
         <div className="play-icon">
           <SVGIcon icon="#play" extraCss={styles.playIcon} />
         </div>
@@ -63,14 +54,12 @@ const styles = {
     overflow: hidden;
     width: 100%;
     max-width: 375px;
-    height: 0;
+    line-height: 0;
+    margin-top: 20px;
   `,
   videoElem: css`
-    width: 100%;
-    height: 100%;
-    position: absolute;
-    top: 0;
-    left: 0;
+    display: none;
+    line-height: 0;
     object-fit: contain;
   `,
   playLink: css`

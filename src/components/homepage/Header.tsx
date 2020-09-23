@@ -44,8 +44,9 @@ const styles = {
 
     ${MIN_DEFAULT_MEDIA_QUERY} {
       flex-direction: row;
+      align-items: flex-start;
       padding: 0 30px;
-      height: 860px;
+      height: 566px;
     }
 
     ${MIN_LARGE_DISPLAY_MEDIA_QUERY} {
@@ -53,8 +54,10 @@ const styles = {
     }
   `,
   headerContent: css`
+    height: 100%;
     display: flex;
     flex-direction: column;
+    justify-content: center;
     align-items: center;
     text-align: center;
     max-width: 700px;
@@ -68,6 +71,7 @@ const styles = {
       align-items: flex-start;
       text-align: left;
       margin-right: 20px;
+      margin-bottom: 0;
 
       .title {
         margin-bottom: 25px;

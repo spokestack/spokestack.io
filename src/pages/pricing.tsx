@@ -30,14 +30,14 @@ export default function Pricing({ data, location }: Props) {
 
   function hover(e: React.PointerEvent<HTMLDivElement>) {
     let elem = e.target as HTMLDivElement
-    if (!elem || !elem.className) {
+    if (!elem || typeof elem.className !== 'string') {
       return
     }
     if (elem.className.indexOf('row-background') > -1) {
       setShowRowBg(!!rowBgY)
       return
     }
-    elem = elem && elem.closest('.category-feature')
+    elem = elem.closest('.category-feature')
     if (elem) {
       const y =
         elem.getBoundingClientRect().top +

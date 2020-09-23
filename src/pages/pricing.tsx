@@ -149,8 +149,9 @@ export default function Pricing({ data, location }: Props) {
           ]}
         />
         <Plan
+          cta="Email us"
+          slug={`mailto:${contact.email}`}
           background={theme.primaryLighter}
-          cta="Coming soon"
           extraHeader={
             <Switch
               yearly={yearly}
@@ -273,8 +274,8 @@ export default function Pricing({ data, location }: Props) {
         />
         <Plan
           background={theme.primaryLight}
-          cta="Contact us"
           name="Enterprise"
+          cta="Email us"
           slug={`mailto:${contact.email}`}
           price="Custom"
           categories={[

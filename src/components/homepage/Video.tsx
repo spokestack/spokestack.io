@@ -34,7 +34,6 @@ export default function Video() {
         aria-label="Spokestack Introduction Video"
         ref={videoRef}
         controls={played}
-        playsInline={false}
         css={styles.videoElem}
         poster="/poster.svg">
         <source src="/homepage/spokestack-tray-demo.mp4" type="video/mp4" />
@@ -44,7 +43,10 @@ export default function Video() {
         tabIndex={0}
         title="Play video"
         css={styles.playLink}
-        onClick={() => videoRef.current.play()}
+        onClick={() => {
+          videoRef.current.play()
+          videoRef.current.requestFullscreen()
+        }}
         style={played ? { display: 'none' } : null}>
         <div className="play-icon">
           <SVGIcon icon="#play" extraCss={styles.playIcon} />
@@ -69,7 +71,7 @@ const styles = {
     position: absolute;
     top: 0;
     left: 0;
-    object-fit: fill;
+    object-fit: contain;
   `,
   playLink: css`
     position: absolute;

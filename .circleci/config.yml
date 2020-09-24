@@ -32,7 +32,7 @@ jobs:
   build:
     docker:
       - image: circleci/node:12
-    working_directory: ~/spokestack-website
+    working_directory: ~/spokestack.io
     steps:
       - checkout
       - *restore_npm_cache
@@ -55,7 +55,7 @@ jobs:
       - image: circleci/node:12
     environment:
       SITE_URL: https://beta.spokestack.io/
-    working_directory: ~/spokestack-website
+    working_directory: ~/spokestack.io
     steps:
       - checkout
       - *restore_npm_cache
@@ -92,7 +92,7 @@ jobs:
       - image: circleci/node:12
     environment:
       SITE_URL: https://www.spokestack.io/
-    working_directory: ~/spokestack-website
+    working_directory: ~/spokestack.io
     steps:
       - checkout
       - *restore_npm_cache

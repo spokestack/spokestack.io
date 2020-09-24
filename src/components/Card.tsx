@@ -8,12 +8,12 @@ import React from 'react'
 interface Props {
   title?: string
   children: React.ReactNode
-  extraCss?: SerializedStyles
+  extraCss?: SerializedStyles | SerializedStyles[]
 }
 
 export default function Card({ title, children, extraCss }: Props) {
   return (
-    <div css={[styles.card, extraCss]} className="card">
+    <div css={[styles.card].concat(extraCss)} className="card">
       {!!title && <h4 css={styles.cardHeader}>{title}</h4>}
       <div css={styles.content}>{children}</div>
     </div>

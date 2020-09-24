@@ -8,15 +8,15 @@ import { MIN_DEFAULT_MEDIA_QUERY } from 'typography-breakpoint-constants'
 import SVGIcon from './SVGIcon'
 import { createLink as createGitHubLink } from '../utils/oauthGitHub'
 import { createLink as createGoogleLink } from '../utils/oauthGoogle'
-import { css } from '@emotion/core'
-import { rhythm } from '../styles/typography'
+import { css, SerializedStyles } from '@emotion/core'
 
 interface Props {
+  extraCss?: SerializedStyles | SerializedStyles[]
   header?: string
-  isCreate: boolean
+  isCreate?: boolean
 }
 
-export default function SignInForm({ header, isCreate }: Props) {
+export default function SignInForm({ extraCss, header, isCreate }: Props) {
   const [gitHubLink, setGitHubLink] = useState<string>(null)
   const [googleLink, setGoogleLink] = useState<string>(null)
   useEffect(() => {
@@ -25,7 +25,7 @@ export default function SignInForm({ header, isCreate }: Props) {
   }, [])
 
   return (
-    <Card extraCss={styles.container}>
+    <Card extraCss={[styles.container].concat(extraCss)}>
       {!!header && <h4 css={styles.header}>{header}</h4>}
       <a href={gitHubLink} className="btn btn-large" css={styles.button}>
         <div css={styles.iconWrap}>
@@ -55,7 +55,6 @@ export default function SignInForm({ header, isCreate }: Props) {
 const styles = {
   container: css`
     width: 100%;
-    margin-bottom: ${rhythm(2)};
 
     ${MIN_DEFAULT_MEDIA_QUERY} {
       max-width: 610px;

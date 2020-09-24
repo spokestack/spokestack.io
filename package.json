@@ -1,5 +1,5 @@
 {
-  "name": "spokestack-website",
+  "name": "spokestack.io",
   "private": true,
   "description": "Voice development platform that enables customized voice navigation for mobile and browser applications",
   "version": "1.29.1",
@@ -125,9 +125,9 @@
     "shelljs": "^0.8.4"
   },
   "bugs": {
-    "url": "https://github.com/spokestack/spokestack-website/issues"
+    "url": "https://github.com/spokestack/spokestack.io/issues"
   },
-  "homepage": "https://github.com/spokestack/spokestack-website#readme",
+  "homepage": "https://github.com/spokestack/spokestack.io#readme",
   "keywords": [
     "gatsby"
   ],
@@ -135,7 +135,7 @@
   "main": "n/a",
   "repository": {
     "type": "git",
-    "url": "git+ssh://git@github.com/spokestack/spokestack-website.git"
+    "url": "git+ssh://git@github.com/spokestack/spokestack.io.git"
   },
   "prettier": {
     "semi": false,

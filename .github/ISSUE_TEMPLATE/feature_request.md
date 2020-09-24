@@ -6,7 +6,7 @@ labels: feature
 assignees: ''
 ---
 
-Before submitting a feature request, please check [existing feature requests](https://github.com/spokestack/spokestack-website/issues?q=label%3A%22votes+needed%22+sort%3Areactions-%2B1-desc) and add your :+1: reaction if your feature exists.
+Before submitting a feature request, please check [existing feature requests](https://github.com/spokestack/spokestack.io/issues?q=label%3A%22votes+needed%22+sort%3Areactions-%2B1-desc) and add your :+1: reaction if your feature exists.
 
 **What problem does this feature solve?**
 

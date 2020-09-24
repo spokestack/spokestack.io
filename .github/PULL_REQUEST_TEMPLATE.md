@@ -12,4 +12,4 @@ Please review the [guidelines for contributing](CONTRIBUTING.md) to this reposit
 
 **Fixes**: #
 
-<!--List the issue this PR is fixing. If one does not exist, please [create one](https://github.com/spokestack/spokestack-website/issues).-->
+<!--List the issue this PR is fixing. If one does not exist, please [create one](https://github.com/spokestack/spokestack.io/issues).-->

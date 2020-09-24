@@ -4,7 +4,7 @@ const { createFilePath } = require('gatsby-source-filesystem')
 const isProd = process.env.NODE_ENV === 'production'
 const rdocs = /\/docs\//
 const rspaces = /\s+/g
-const rspokestackWebsite = /.*?spokestack-website\//
+const rspokestackWebsite = /.*?spokestack.io\//
 const postsPerPage = 5
 
 function throwInProd(message) {
@@ -350,7 +350,7 @@ exports.onCreateNode = ({ node, actions, getNode }) => {
       createNodeField({
         name: 'githubLink',
         node,
-        value: `https://github.com/spokestack/spokestack-website/tree/develop/${path}`
+        value: `https://github.com/spokestack/spokestack.io/tree/develop/${path}`
       })
     }
   }

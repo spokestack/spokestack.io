@@ -18,7 +18,8 @@ references:
   restore_gatsby_cache: &restore_gatsby_cache
     restore_cache:
       keys:
-        - gatsby-cache-v3-{{ .Branch }}
+        - gatsby-cache-v3-{{ .Branch }}-{{ checksum "package-lock.json" }}
+        - gatsby-cache-v3-{{ .Branch }}-
         - gatsby-cache-v3-
 
   save_gatsby_cache: &save_gatsby_cache
@@ -26,7 +27,7 @@ references:
       paths:
         - .cache/
         - public/
-      key: gatsby-cache-v3-{{ .Branch }}
+      key: gatsby-cache-v3-{{ .Branch }}-{{ checksum "package-lock.json" }}
 
 jobs:
   build:

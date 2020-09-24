@@ -5,7 +5,7 @@ import {
   MIN_DEFAULT_MEDIA_QUERY,
   MIN_LARGE_DISPLAY_MEDIA_QUERY
 } from 'typography-breakpoint-constants'
-import { Global, css } from '@emotion/core'
+import { Global, css, SerializedStyles } from '@emotion/core'
 import React, { useState } from 'react'
 
 import NavLink from './NavLink'
@@ -13,10 +13,11 @@ import SVGIcon from './SVGIcon'
 
 interface Props {
   children: React.ReactNode
+  menuCss?: SerializedStyles | SerializedStyles[]
   title: string
 }
 
-export default function NavDropdown({ children, title }: Props) {
+export default function NavDropdown({ children, menuCss, title }: Props) {
   const [open, setOpen] = useState(false)
 
   const menuStyles = [styles.dropdownMenu]
@@ -57,7 +58,7 @@ export default function NavDropdown({ children, title }: Props) {
           extraCss={styles.dropdownIcon}
         />
       </NavLink>
-      <div className="dropdown-menu" css={menuStyles}>
+      <div className="dropdown-menu" css={menuStyles.concat(menuCss)}>
         <div className="dropdown-content" css={styles.dropdownContent}>
           <NavLink
             mobileOnly

@@ -159,6 +159,7 @@ export default function Nav({ extraCss, location }: Props) {
       <LoginButtons
         btnClassName="btn-secondary btn-transparent"
         extraCss={styles.desktopOnly}
+        loginDropdown
       />
     </nav>
   )
@@ -334,9 +335,9 @@ const styles = {
     }
   `,
   mobileLogin: css`
+    position: relative;
     height: 94px;
     background-color: white;
-    position: relative;
 
     &:after {
       ${borderTopStyle};

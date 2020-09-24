@@ -93,9 +93,11 @@ const styles = {
     }
   `,
   details: css`
+    margin-top: ${rhythm(2)};
+
     ${MIN_DEFAULT_MEDIA_QUERY} {
       padding: 0 40px;
-      margin-right: 20px;
+      margin: 0 20px 0 0;
     }
   `,
   feature: css`

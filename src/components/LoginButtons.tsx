@@ -6,20 +6,24 @@ import { isLoggedIn, logout } from '../utils/auth'
 import { Link } from 'gatsby'
 import { MIN_DEFAULT_MEDIA_QUERY } from 'typography-breakpoint-constants'
 import React from 'react'
+import NavDropdown from './NavDropdown'
+import SignInForm from './SignInForm'
 
 interface Props {
   btnClassName?: string
   className?: string
-  extraCss?: SerializedStyles
+  extraCss?: SerializedStyles | SerializedStyles[]
+  loginDropdown?: boolean
 }
 
 export default function LoginButtons({
   btnClassName,
   className,
-  extraCss
+  extraCss,
+  loginDropdown
 }: Props) {
   return (
-    <div className={className} css={[styles.loginButtons, extraCss]}>
+    <div className={className} css={[styles.loginButtons].concat(extraCss)}>
       {isLoggedIn() ? (
         <>
           <Link
@@ -29,20 +33,26 @@ export default function LoginButtons({
             activeStyle={{ display: 'none' }}>
             Account
           </Link>
-          <a className={`btn ${btnClassName}`} onClick={() => logout()}>
+          <a className={`btn ${btnClassName || ''}`} onClick={() => logout()}>
             Log out
           </a>
         </>
       ) : (
         <>
+          {loginDropdown ? (
+            <NavDropdown title="Sign in" menuCss={styles.dropdown}>
+              <SignInForm extraCss={styles.loginForm} />
+            </NavDropdown>
+          ) : (
+            <Link
+              to="/login"
+              css={styles.loginLink}
+              activeStyle={{ display: 'none' }}>
+              Sign in
+            </Link>
+          )}
           <Link
-            to="/login"
-            css={styles.loginLink}
-            activeStyle={{ display: 'none' }}>
-            Log in
-          </Link>
-          <Link
-            className={`btn ${btnClassName}`}
+            className={`btn ${btnClassName || ''}`}
             to="/create"
             activeStyle={{ display: 'none' }}>
             Sign up free
@@ -77,5 +87,16 @@ const styles = {
         color: ${theme.linkSecondaryActive};
       }
     }
+  `,
+  dropdown: css`
+    width: 100% !important;
+    max-width: 610px !important;
+    left: auto !important;
+    right: 20px !important;
+    transform: none !important;
+  `,
+  loginForm: css`
+    border: none;
+    padding: 20px !important;
   `
 }

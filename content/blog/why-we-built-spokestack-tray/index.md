@@ -22,4 +22,4 @@ With Spokestack Tray, we've created a ready-made "voice kit" that still allows f
 
 `vimeo: [Spokestack Tray Demo](459905947)`
 
-So please, check out [Spokestack Tray](https://www.spokestack.io/blog/introducing-spokestack-tray) and tell us what you think. If you have any questions or feedback, email us at [hello@spokestack.io](mailto:hello@spokestack.io), and let's talk conversational interfaces!
+Please check out [Spokestack Tray](https://www.spokestack.io/blog/introducing-spokestack-tray) and tell us what you think. If you have any questions or feedback, email us at [hello@spokestack.io](mailto:hello@spokestack.io), and let's talk conversational interfaces!

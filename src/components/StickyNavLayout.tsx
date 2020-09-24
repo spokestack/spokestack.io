@@ -3,6 +3,7 @@ import * as theme from '../styles/theme'
 import {
   MIN_DEFAULT_MEDIA_QUERY,
   MIN_LARGER_DISPLAY_MEDIA_QUERY,
+  MIN_LARGE_DISPLAY_MEDIA_QUERY,
   TABLET_WIDTH
 } from 'typography-breakpoint-constants'
 import { Global, css } from '@emotion/core'
@@ -62,7 +63,10 @@ const styles = {
     background-color: ${theme.stickyNavBackground};
     ${MIN_DEFAULT_MEDIA_QUERY} {
       grid-area: sidenav;
-      padding: 0 0 25px 50px;
+      padding: 0 0 25px 25px;
+    }
+    ${MIN_LARGE_DISPLAY_MEDIA_QUERY} {
+      padding-left: 50px;
     }
     ${ieBreakpointMinDefault} {
       padding-bottom: 50px;

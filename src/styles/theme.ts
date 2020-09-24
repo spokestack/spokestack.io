@@ -70,7 +70,7 @@ export const ieBreakpoint =
 export const ieBreakpointMinDefault =
   '@media all and (-ms-high-contrast: none) and (min-width:980px), (-ms-high-contrast: active) and (min-width:980px)'
 
-export const MIN_SIDEBAR_WIDTH = '250px'
+export const MIN_SIDEBAR_WIDTH = '300px'
 export const MAX_SIDEBAR_WIDTH = '365px'
 export const MIN_TEXT_WIDTH = '608px'
 export const MAX_TEXT_WIDTH = '708px'

@@ -4,20 +4,27 @@ import React, { useEffect, useRef, useState } from 'react'
 
 import SVGIcon from '../SVGIcon'
 import { css } from '@emotion/core'
+import { fullscreenElement, requestFullscreen } from '../../utils/video'
 
 export default function Video() {
   const videoRef = useRef<HTMLVideoElement>(null)
-  const [isFullscreen, setIsFullscreen] = useState(false)
+  const [fullscreen, setFullscreen] = useState(false)
   useEffect(() => {
-    videoRef.current?.addEventListener('fullscreenchange', () => {
-      if (document.fullscreenElement) {
-        setIsFullscreen(true)
+    function onFSChange() {
+      const video = videoRef.current
+      if (!video) {
+        return
+      }
+      if (fullscreenElement() === videoRef.current) {
+        setFullscreen(true)
         videoRef.current?.play()
       } else {
-        setIsFullscreen(false)
+        setFullscreen(false)
         videoRef.current?.pause()
       }
-    })
+    }
+    document.addEventListener('fullscreenchange', onFSChange)
+    document.addEventListener('MSFullscreenChange', onFSChange)
   }, [])
   return (
     <div css={styles.video}>
@@ -26,7 +33,7 @@ export default function Video() {
         ref={videoRef}
         controls
         css={styles.videoElem}
-        style={{ display: isFullscreen ? 'block' : 'none' }}>
+        style={{ display: fullscreen ? 'block' : 'none' }}>
         <source src="/homepage/spokestack-tray-demo.mp4" type="video/mp4" />
         <source src="/homepage/spokestack-tray-demo.webm" type="video/webm" />
       </video>
@@ -35,9 +42,10 @@ export default function Video() {
         tabIndex={0}
         title="Play video"
         css={styles.playLink}
-        onClick={() => {
-          videoRef.current.play()
-          videoRef.current.requestFullscreen()
+        onClick={async () => {
+          try {
+            await requestFullscreen(videoRef.current)
+          } catch (e) {}
         }}>
         <div className="play-icon">
           <SVGIcon icon="#play" extraCss={styles.playIcon} />

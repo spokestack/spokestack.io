@@ -155,6 +155,7 @@ const styles = {
     flex-direction: column;
     justify-content: flex-start;
     align-items: center;
+    text-align: center;
     padding: 25px 0;
 
     h5 {
@@ -165,6 +166,7 @@ const styles = {
 
     ${MIN_DEFAULT_MEDIA_QUERY} {
       align-items: flex-start;
+      text-align: left;
 
       & + & {
         margin-left: 40px;

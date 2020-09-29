@@ -18,7 +18,7 @@
     "schema": "graphql-codegen --config codegen.yml && prettier --write \"**/graphql.d.ts\"",
     "schema:remote": "node tasks/schema.js",
     "serve": "serve -l 8000 public/",
-    "start": "concurrently \"cross-env SITE_URL=http://localhost:8000 gatsby develop -o\" \"npm run graphiql\"",
+    "start": "concurrently \"cross-env SITE_URL=http://localhost:8000 gatsby develop\" \"npm run graphiql\"",
     "test": "concurrently --raw \"npm run lint\" \"npm run typescript\"",
     "typescript": "tsc -p tsconfig.json --noEmit"
   },

@@ -75,8 +75,8 @@ Speech Markdown is a convenience wrapper around SSML syntax, so Spokestack's sup
 
 Here are the above SSML examples translated into Speech Markdown:
 
-```text
-See all our products at (www)[characters] dot my company dot com.
-Today's stock price [500ms] fell three percent.
-I don't care what you say; it's pronounced (gif)[/gɪf/], not (gif)[/dʒɪf/]!
-```
+`See all our products at (www)[characters] dot my company dot com.`
+
+`Today's stock price [500ms] fell three percent.`
+
+`I don't care what you say; it's pronounced (gif)[/gɪf/], not (gif)[/dʒɪf/]!`

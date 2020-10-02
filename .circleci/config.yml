@@ -1,5 +1,12 @@
 version: 2
 
+executors:
+  node:
+    docker:
+      - image: circleci/node:12
+    working_directory: ~/spokestack.io
+    resource_class: large
+
 references:
   restore_npm_cache: &restore_npm_cache
     restore_cache:
@@ -31,9 +38,7 @@ references:
 
 jobs:
   build:
-    docker:
-      - image: circleci/node:12
-    working_directory: ~/spokestack.io
+    executor: node
     steps:
       - checkout
       - *restore_npm_cache
@@ -52,11 +57,9 @@ jobs:
       - *save_gatsby_cache
 
   deploy_integration:
-    docker:
-      - image: circleci/node:12
+    executor: node
     environment:
       SITE_URL: https://beta.spokestack.io/
-    working_directory: ~/spokestack.io
     steps:
       - checkout
       - *restore_npm_cache
@@ -89,11 +92,9 @@ jobs:
           command: aws cloudfront create-invalidation --distribution-id E1VWEXJMB3URMJ --paths "/*"
 
   deploy_production:
-    docker:
-      - image: circleci/node:12
+    executor: node
     environment:
       SITE_URL: https://www.spokestack.io/
-    working_directory: ~/spokestack.io
     steps:
       - checkout
       - *restore_npm_cache

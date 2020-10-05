@@ -1,11 +1,10 @@
 ---
-title: Minecraft Skill Python Tutorial
+title: Porting the Alexa Minecraft Skill to Python Using Spokestack
 date: '2020-10-05'
-description: Spokestack makes it easy to convert a smart speaker voice app from major 
-platforms to an app that you control. Follow our process in Python.
+description: Spokestack makes it easy to convert a smart speaker voice app from major platforms to an app that you control.
 author: will
 tags: Engineering, Tutorial
-draft: true
+draft: false
 ---
 
 # Introduction

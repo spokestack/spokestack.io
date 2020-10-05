@@ -1,0 +1,324 @@
+---
+title: Minecraft Skill Python Tutorial
+date: '2020-10-05'
+description: Spokestack makes it easy to convert a smart speaker voice app from major 
+platforms to an app that you control. Follow our process in Python.
+author: will
+tags: Engineering, Tutorial
+draft: true
+---
+
+# Introduction
+
+Similar to our other [libraries](https://www.spokestack.io/docs) we will start with a tutorial on how to port a simple Minecraft recipe skill to Spokestack. However, for the python version we will not have any GUI components which will be closer an experience on a smart speaker. We will discuss the concepts for each part briefly, but if you would like to get a full description check out our concepts [documentation](https://www.spokestack.io/docs/Concepts). One last thing, before we get into the programming we will need to get our api keys from our Spokestack account.
+
+# Signing Up for a Spokestack Account
+
+1. Navigate to our [website](http://spokestack.io).
+2. Click "Sign up free" at the top right corner.
+3. Sign up with your method of choice.
+4. In the account dashboard, click "API Credentials" and then add a token.
+
+# Setting up the Project
+
+First let's make a directory to hold the project.
+
+```bash
+git clone https://github.com/spokestack/minecraft-skill-python
+cd minecraft-skill-python
+```
+
+Now let's set up the python virtual environment. We use `pyenv` to manage virtual environments, but any virtual environment will work.
+
+```bash
+pyenv install 3.7.6
+pyenv virtualenv 3.7.6 minecraft
+pyenv local minecraft
+```
+
+Then the dependencies.
+
+```bash
+pip install -r requirements.txt
+```
+
+### TFLite Runtime
+
+In addition to the Python dependencies, you will need to install the TFLite Interpreter. You can install it for your platform by following the instructions at [TFLite Interpreter](https://www.tensorflow.org/lite/guide/python#install_just_the_tensorflow_lite_interpreter). Note: this is not the full [Tensorflow](https://www.tensorflow.org/) package.
+
+Before we begin if you would like to try out the working version you can run it with:
+
+```bash
+python app.py
+```
+
+If you would like to follow along we recommend making a new python file titled `myapp.py` that way you will still be able to compare it to the original `app.py`
+
+# Using the Speech Pipeline
+
+An essential piece to any voice interface is the ability to detect when the user is speaking, then convert the spoken phrase into a text transcript. Spokestack has an [easy to use speech pipeline](https://www.spokestack.io/docs/Concepts/pipeline-configuration) that will handle this for us. The speech pipeline consists of three major components: a voice detection module, a wake word trigger, and then a model that converts speech to text.
+
+## Microphone Input
+
+Accepting audio input is always the first step in the pipeline. For this demo, we will use the included [input class](https://github.com/spokestack/spokestack-python/blob/4009a9d8b61cd4375886c66ca0d4a87d99e12153/spokestack/io/pyaudio.py#L8) that leverages [PyAudio](http://people.csail.mit.edu/hubert/pyaudio/) to stream microphone input to the pipeline. The class is initialized like this:
+
+```python
+from spokestack.io.pyaudio import PyaudioMicrophoneInput
+
+mic = PyaudioMicrophoneInput()
+```
+
+## Voice Activity Detection
+
+The second component we are adding to the pipeline is the [VoiceActivityDetector](https://github.com/spokestack/spokestack-python/blob/4009a9d8b61cd4375886c66ca0d4a87d99e12153/spokestack/vad/webrtc.py#L18). This module hears a single frame of audio to determine if speech is present. This will be the component that allows audio to flow through the rest of the pipeline. For simplicity, we will use the default settings which are configured to allow easy setup of the pipeline. The voice activity component can be initialized with the following:
+
+```python
+from spokestack.vad.webrtc import VoiceActivityDetector
+
+vad = VoiceActivityDetector()
+```
+
+Now that we have a way to determine if the audio contains speech, let's move on to the next component that wakes the pipeline when it hears a specific phrase.
+
+## Wakeword Activation
+
+The [wakeword](https://www.spokestack.io/docs/Concepts/wakeword-models) component of the pipeline is looking for a specific phrase in the audio input. This is should feel familiar as most voice assistants use this type of interaction. For our purposes, we will be using "Spokestack" phrase. As with most voice assistants, "Hey Spokestack" will work as well. The process to initialize this component mirrors the way we set up voice activity detection.
+
+```python
+from spokestack.wakeword.tflite import WakewordTrigger
+
+wakeword = WakewordTrigger(model_dir="tflite")
+```
+
+Once the skill is actively listening for user speech, all we have to do is transcribe what the user says into a text utterance.
+
+## Automatic Speech Recognition (ASR)
+
+This [component](https://www.spokestack.io/docs/Concepts/asr) is the most critical piece of the speech pipeline, because it produces the transcript that is used later to turn what the user said into actions. However, critical components do not have to be difficult to add. The following initializes the [ASR component](https://github.com/spokestack/spokestack-python/blob/4009a9d8b61cd4375886c66ca0d4a87d99e12153/spokestack/asr/speech_recognizer.py#L12).
+
+**Note:** this is where you will need your api keys from the account console.
+
+```python
+from spokestack.asr.speech_recognizer import CloudSpeechRecognizer
+
+recognizer = CloudSpeechRecognizer(
+    base_url="wss://api.spokestack.io",
+    spokestack_id="your_spokestack_key",
+    spokestack_secret="your_secret_key",
+)
+```
+
+## Activation Timeout (Optional)
+
+A common issue that you may run into is that the amount of time the pipeline is open is not enough or too much. As a solution to this problem, one can add `ActivationTimeout` to the pipeline with a minimum and maximum value. This component can be initialized with the following:
+
+```python
+from spokestack.activation_timeout import ActivationTimeout
+
+timeout = ActivationTimeout(min_active=100, max_active=5000)
+```
+
+## Speech Pipeline
+
+Now, we can put it all together in the [pipeline](https://github.com/spokestack/spokestack-python/blob/4009a9d8b61cd4375886c66ca0d4a87d99e12153/spokestack/pipeline.py#L9). After this step, you will be able to wake the assistant by saying "Spokestack" and then produce a text transcript based on what is after "Spokestack". For the Minecraft skill you would say something like "Spokestack, what is the recipe for a snow golem".
+
+```python
+from spokestack.pipeline import SpeechPipeline
+
+# without timeout
+pipeline = SpeechPipeline(input_source=mic, stages=[vad, wakeword, recognizer])
+
+# with timeout
+pipeline = SpeechPipeline(
+    input_source=mic, stages=[vad, wakeword, recognizer, timeout]
+)
+```
+
+## Events
+
+We know that the goal of the pipeline is to produce a transcript of the user's speech. However, we haven't discussed how to access the speech transcript. The pipeline is designed to run continuously, but we can use event handlers to access the transcript without stopping the pipeline. For this tutorial, we want to look at how to access the transcript once it is completed to allow it to be passed to a module that allows us to understand what the user has said. In order to accomplish this we can register an event handler with the pipeline. The following event handler will access the transcript.
+
+```python
+@pipeline.event
+def on_speech(context):
+    transcript = context.transcript
+		print(transcript)
+```
+
+In the application, we most likely don't want to print the transcript, but initially we've added that so you can see the results if you have been following along. In the subsequent sections, we will discuss a couple new components and also flesh out this event handler to allow the Minecraft skill to understand the user's request and then select an appropriate response.
+
+## Natural Language Understanding (NLU)
+
+The [NLU](https://www.spokestack.io/docs/Concepts/nlu) component is what takes the text transcript from what a user has spoken and turns it into a form that can be used to accomplish tasks. The paradigm used in most systems is the intent and slot model. Essentially, an intent is the function the user intends to invoke and the slots are the arguments the intent needs to accomplish it's action. For example, a user may say `What is the recipe for a dark prismarine?`. In this case, the intent is `RecipeSearch` and the slot is `dark prismarine` . The initialization of the [TFLiteNLU](https://github.com/spokestack/spokestack-python/blob/4009a9d8b61cd4375886c66ca0d4a87d99e12153/spokestack/nlu/tflite.py#L18) should start to look familiar at this point.
+
+```python
+from spokestack.nlu.tflite import TFLiteNLU
+
+nlu = TFLiteNLUModel(model_dir="tflite")
+```
+
+Also, now is a good time to add this logic to our `on_speech` event handler.
+
+```python
+@pipeline.event
+def on_speech(context):
+    transcript = context.transcript
+    results = nlu(transcript)
+```
+
+Now that we know what recipe the user is looking for, you may be wondering how do we turn this into a response. The following Dialogue Management section will explain just that.
+
+## Dialogue Management
+
+The Minecraft dialogue manager is fairly simple. The basic components necessary are a way to look up the recipes, and the rest is just string interpolation. Luckily, to resolve the recipes we can implement it as a simple dictionary in python. Below is a snippet of the recipe database.
+
+```python
+DB: Dict[str, str] = {
+    "snow golem": "A snow golem can be created by placing a pumpkin on top of  two "
+    "snow blocks on the ground.",
+    "pillar quartz block": "A pillar of quartz can be obtained by placing a block of "
+    "quartz on top of a block of quartz in mine craft.",
+}
+```
+
+This makes looking up a recipe very concise: `DB.get("snow golem")`. There can be an issue with using the dictionary lookup alone though. Let's say that due to an ASR error the parsed slot isn't a full match for `snow golem` , but it is something like `sow golem`. A simple dictionary lookup will not be able to resolve those slots. However, there is a method that we can add to deal with small errors like that. This method is called [fuzzy matching](<https://en.wikipedia.org/wiki/Fuzzy_matching_(computer-assisted_translation)#:~:text=Fuzzy%20matching%20is%20a%20technique,a%20database%20of%20previous%20translations.>) and based on similarity between `snow golem` and `sow golem` we can make sure that the latter resolves to the actual entity. In this tutorial, we will use the python library `fuzzywuzzy` to make these matches. Below is the way it is used in the tutorial repository.
+
+```python
+from fuzzywuzzy import process
+
+matched, score = process.extractOne(slot["raw_value"], self._names)
+
+if score > self._threshold:
+    recipe = self._recipes.get(matched)
+```
+
+We are simply overwriting the parsed entity with the one that is the closest match from the set of possible entities. The full dialogue manager can be seen below:
+
+```python
+from fuzzywuzzy import process  # type: ignore
+
+from minecraft import recipes
+from minecraft.responses import Response
+
+class DialogueManager:
+    """Simple dialogue manager
+
+    Args:
+        threshold (float): fuzzy match threshold
+    """
+
+    def __init__(self, threshold=0.5) -> None:
+        self._recipes = recipes.DB
+        self._names = list(self._recipes.keys())
+        self._threshold = threshold
+
+    def __call__(self, results):
+        """ Maps nlu result to a dialogue response.
+
+        Args:
+            results (dict): classification results from nlu
+
+        Returns: a string response to be synthesized by tts
+
+        """
+
+        intent = results["intent"]
+        if intent == "RecipeIntent":
+            slots = results.get("slots")
+
+            if slots:
+                for key in slots:
+                    slot = slots[key]
+                    if slot["name"] == "Item":
+
+                        matched, score = process.extractOne(
+                            slot["raw_value"], self._names
+                        )
+
+                        if score > self._threshold:
+                            recipe = self._recipes.get(matched)
+                            return recipe
+                        return Response.RECIPE_NOT_FOUND_WITH_ITEM_NAME.format(
+                            slot["raw_value"]
+                        )
+            else:
+                return Response.RECIPE_NOT_FOUND_WITHOUT_ITEM_NAME.value
+
+        elif intent == "AMAZON.HelpIntent":
+            return Response.HELP_MESSAGE.value
+
+        elif intent == "AMAZON.StopIntent":
+            return "Goodbye!"
+
+        else:
+            return Response.ERROR.value
+```
+
+Now we can add the dialogue manager to the event handler.
+
+```python
+@pipeline.event
+def on_speech(context):
+    transcript = context.transcript
+    results = nlu(transcript)
+		response = dialogue_manager(results)
+```
+
+Ok that was a lot to go over, but we are almost to the finish line. In the next section, we will learn how to convert the text responses into speech.
+
+## Text to Speech (TTS)
+
+Much like the name suggests, [TTS](https://www.spokestack.io/docs/Concepts/tts) translates a written text into it’s spoken form with a synthetic voice. This tutorial assumes you are using our default voice, but if you have a paid plan you can replace `demo-male` with the name of your custom voice. To initialize the [TTSClient](https://github.com/spokestack/spokestack-python/blob/4009a9d8b61cd4375886c66ca0d4a87d99e12153/spokestack/tts/clients/spokestack.py#L20) you simply do the following:
+
+**Note:** this is another part where you will need your Spokestack api keys. However, notice the url for TTS is slightly different than the ASR one.
+
+```python
+from spokestack.tts.clients.spokestack import TextToSpeechClient
+
+client = TextToSpeechClient("your_key", "your_secret_key", "https://api.spokestack.io/v1")
+```
+
+Another important aspect of this section is playback. We have a [PyAudio based output class](https://github.com/spokestack/spokestack-python/blob/4009a9d8b61cd4375886c66ca0d4a87d99e12153/spokestack/io/pyaudio.py#L76) that will play through your device’s default playback option. As a convenient way to manage speech synthesis and playback we have the [TTSManager.](https://github.com/spokestack/spokestack-python/blob/4009a9d8b61cd4375886c66ca0d4a87d99e12153/spokestack/tts/manager.py#L9) Look below to see how to initialize that along with an output source.
+
+```python
+from spokestack.io.pyaudio import PyAudioOutput
+from spokestack.tts.manager import TextToSpeechManager
+
+output = PyAudioOutput()
+
+manager = TextToSpeechManager(client, output)
+```
+
+Now we can update our event handler to read the response.
+
+```python
+@pipeline.event
+def on_speech(context):
+    transcript = context.transcript
+    results = nlu(transcript)
+		response = dialogue_manager(results)
+    manager.synthesize(response, "text", "demo-male")
+```
+
+## Let's Run it!
+
+By now we should have a fully working example minus two last commands. We have to start and run the pipeline!
+
+```python
+pipeline.start()
+pipeline.run()
+```
+
+Then you can start the skill by running this command in the terminal. The skill will remain running until you say "stop".
+
+```bash
+python myapp.py
+```
+
+Now you should be able ask your skill about how to craft things in Minecraft. If you get a chance, I recommend trying it out in game, despite its simplicity it is actually very useful.
+
+At this point you may have already cloned the repository, but if you have not, check out the full example on [GitHub](https://github.com/spokestack/minecraft-skill-python).
+
+## Contact Us
+
+If you have any questions while getting this setup we have a [forum](https://forum.spokestack.io/) or you can open an issue on [GitHub](https://github.com/spokestack/spokestack-python/issues). In addition, I am more than happy to help if you want to reach out to me personally via [email](mailto:will@spokestack.io) or [Twitter](https://twitter.com/_Will_Rice).

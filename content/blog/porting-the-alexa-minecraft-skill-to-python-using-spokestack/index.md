@@ -50,7 +50,7 @@ If you would like to try out the final version of the Minecraft app, you can now
 python app.py
 ```
 
-If you would like to follow along we recommend making a new python file titled `myapp.py` that way you will still be able to compare it to the original `app.py`
+To follow along with the tutorial, we recommend making a new python file titled `myapp.py` or similar so you can compare it to the original `app.py`.
 
 # Using the Speech Pipeline
 

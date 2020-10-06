@@ -9,7 +9,7 @@ draft: false
 
 # Introduction
 
-Similar to our other [libraries](https://www.spokestack.io/docs) we will start with a tutorial on how to port a simple Minecraft recipe skill to Spokestack. However, for the python version we will not have any GUI components which will be closer an experience on a smart speaker. We will discuss the concepts for each part briefly, but if you would like to get a full description check out our concepts [documentation](https://www.spokestack.io/docs/Concepts). One last thing, before we get into the programming we will need to get our api keys from our Spokestack account.
+This is a tutorial on how to port a simple [Minecraft recipe skill](https://github.com/alexa/skill-sample-python-howto) to Spokestack using the [spokestack-python](https://github.com/spokestack/spokestack-python) library. It is similar to [our mobile tutorial series](/blog/porting-a-smart-speaker-voice-app-to-mobile-part-1), but the Python version not have any GUI components. This makes the experience closer to that of a smart speaker. We will discuss the concepts for each part of the user interaction briefly, but for a full description check out our [documentation](/docs/Concepts). Before we get into the programming, we will need to get API keys from our Spokestack account.
 
 # Signing Up for a Spokestack Account
 

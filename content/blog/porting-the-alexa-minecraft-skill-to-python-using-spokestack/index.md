@@ -44,7 +44,7 @@ pip install -r requirements.txt
 
 In addition to the Python dependencies, you will need to install the TFLite Interpreter. You can install it for your platform by following the instructions at [TFLite Interpreter](https://www.tensorflow.org/lite/guide/python#install_just_the_tensorflow_lite_interpreter). Note: this is not the full [Tensorflow](https://www.tensorflow.org/) package.
 
-Before we begin if you would like to try out the working version you can run it with:
+If you would like to try out the final version of the Minecraft app, you can now run it with:
 
 ```bash
 python app.py

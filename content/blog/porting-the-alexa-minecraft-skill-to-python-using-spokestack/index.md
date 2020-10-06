@@ -300,7 +300,7 @@ def on_speech(context):
 
 ## Let's Run it!
 
-By now we should have a fully working example minus two last commands. We have to start and run the pipeline!
+We now have a fully working example except for two final commands. We have to start and run the pipeline!
 
 ```python
 pipeline.start()

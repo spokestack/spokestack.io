@@ -276,7 +276,7 @@ from spokestack.tts.clients.spokestack import TextToSpeechClient
 client = TextToSpeechClient("your_key", "your_secret_key", "https://api.spokestack.io/v1")
 ```
 
-Another important aspect of this section is playback. We have a [PyAudio based output class](https://github.com/spokestack/spokestack-python/blob/4009a9d8b61cd4375886c66ca0d4a87d99e12153/spokestack/io/pyaudio.py#L76) that will play through your device’s default playback option. As a convenient way to manage speech synthesis and playback we have the [TTSManager.](https://github.com/spokestack/spokestack-python/blob/4009a9d8b61cd4375886c66ca0d4a87d99e12153/spokestack/tts/manager.py#L9) Look below to see how to initialize that along with an output source.
+Another important aspect of this section is playback. We have a [PyAudio-based output class](https://github.com/spokestack/spokestack-python/blob/4009a9d8b61cd4375886c66ca0d4a87d99e12153/spokestack/io/pyaudio.py#L76) that will play through your system's default playback device. As a convenient way to manage speech synthesis and playback, we have the [TTSManager](https://github.com/spokestack/spokestack-python/blob/4009a9d8b61cd4375886c66ca0d4a87d99e12153/spokestack/tts/manager.py#L9). Look below to see how to initialize that with an output source.
 
 ```python
 from spokestack.io.pyaudio import PyAudioOutput

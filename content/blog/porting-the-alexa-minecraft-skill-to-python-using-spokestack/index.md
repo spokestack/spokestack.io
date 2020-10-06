@@ -27,7 +27,7 @@ git clone https://github.com/spokestack/minecraft-skill-python
 cd minecraft-skill-python
 ```
 
-Now let's set up the python virtual environment. We use `pyenv` to manage virtual environments, but any virtual environment will work.
+Now let's set up the python virtual environment. We use [`pyenv`](https://github.com/pyenv/pyenv) and [`pyenv-virtualenv`](https://github.com/pyenv/pyenv-virtualenv) to manage virtual environments, but any virtual environment will work.
 
 ```bash
 pyenv install 3.7.6

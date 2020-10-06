@@ -76,7 +76,7 @@ from spokestack.vad.webrtc import VoiceActivityDetector
 vad = VoiceActivityDetector()
 ```
 
-Now that we have a way to determine if the audio contains speech, let's move on to the next component that wakes the pipeline when it hears a specific phrase.
+Now that we have a way to determine if the audio contains speech, let's move on to the component that activates the pipeline when it hears a specific phrase.
 
 ## Wakeword Activation
 

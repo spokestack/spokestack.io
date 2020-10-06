@@ -56,7 +56,7 @@ To follow along with the tutorial, we recommend making a new python file titled 
 
 An essential piece to any voice interface is the ability to detect when the user is speaking, then convert the spoken phrase into a text transcript. Spokestack has an [easy-to-use speech pipeline](/docs/Concepts/pipeline-configuration) that will handle this for us. The speech pipeline consists of three major components: a voice detection module, a wakeword trigger, and a speech recognizer.
 
-## Microphone Input
+### Microphone Input
 
 Accepting audio input is always the first step in the pipeline. For this demo, we will use the included [input class](https://github.com/spokestack/spokestack-python/blob/4009a9d8b61cd4375886c66ca0d4a87d99e12153/spokestack/io/pyaudio.py#L8) that leverages [PyAudio](http://people.csail.mit.edu/hubert/pyaudio/) to stream microphone input to the pipeline. The class is initialized like this:
 
@@ -66,7 +66,7 @@ from spokestack.io.pyaudio import PyaudioMicrophoneInput
 mic = PyaudioMicrophoneInput()
 ```
 
-## Voice Activity Detection
+### Voice Activity Detection
 
 The second component we are adding to the pipeline is the [VoiceActivityDetector](https://github.com/spokestack/spokestack-python/blob/4009a9d8b61cd4375886c66ca0d4a87d99e12153/spokestack/vad/webrtc.py#L18). This module analyzes a single frame of audio to determine if speech is present. This will be the component that allows audio to flow through the rest of the pipeline. For simplicity, we will use the the default voice activity detection settings. The voice activity component can be initialized with the following:
 
@@ -78,7 +78,7 @@ vad = VoiceActivityDetector()
 
 Now that we have a way to determine if the audio contains speech, let's move on to the component that activates the pipeline when it hears a specific phrase.
 
-## Wakeword Activation
+### Wakeword Activation
 
 The [wakeword](/docs/Concepts/wakeword-models) component of the pipeline looks for a specific phrase in the audio input and signals the pipeline to activate ASR when it is recognized. For our purposes, we will be using "Spokestack" as the wakeword. As with most voice assistants, "Hey Spokestack" will work as well. The process to initialize this component mirrors the way we set up voice activity detection. The directory passed to `model_dir` should contain three `.tflite` files: `encode.tflite`, `detect.tflite`, and `filter.tflite`. These can be found inside the `tflite` directory of the project GitHub repository.
 
@@ -90,7 +90,7 @@ wakeword = WakewordTrigger(model_dir="tflite")
 
 Once the skill is actively listening for user speech, all we have to do is transcribe what the user says.
 
-## Automatic Speech Recognition (ASR)
+### Automatic Speech Recognition (ASR)
 
 [ASR](/docs/Concepts/asr) is the most critical piece of the speech pipeline, because it produces the transcript that is used to turn speech into actions. However, critical components do not have to be difficult to add. The following initializes the [ASR component](https://github.com/spokestack/spokestack-python/blob/4009a9d8b61cd4375886c66ca0d4a87d99e12153/spokestack/asr/speech_recognizer.py#L12).
 
@@ -105,7 +105,7 @@ recognizer = CloudSpeechRecognizer(
 )
 ```
 
-## Activation Timeout (Optional)
+### Activation Timeout (Optional)
 
 An issue you may run into is the ASR not being activated long enough or being active for too long. To configure this for your use case, you can add the `ActivationTimeout` component to the pipeline with a minimum and maximum value in milliseconds. This component can be initialized with the following:
 
@@ -115,7 +115,7 @@ from spokestack.activation_timeout import ActivationTimeout
 timeout = ActivationTimeout(min_active=100, max_active=5000)
 ```
 
-## Speech Pipeline
+### Speech Pipeline
 
 Now, we can put it all together in the [pipeline](https://github.com/spokestack/spokestack-python/blob/4009a9d8b61cd4375886c66ca0d4a87d99e12153/spokestack/pipeline.py#L9). After this step, you will be able to wake the assistant by saying "Spokestack" and produce a text transcript of what is said next. For the Minecraft skill you would say something like, "Spokestack, what is the recipe for a snow golem?".
 

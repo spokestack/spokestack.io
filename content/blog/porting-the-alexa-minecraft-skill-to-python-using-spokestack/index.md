@@ -88,7 +88,7 @@ from spokestack.wakeword.tflite import WakewordTrigger
 wakeword = WakewordTrigger(model_dir="tflite")
 ```
 
-Once the skill is actively listening for user speech, all we have to do is transcribe what the user says into a text utterance.
+Once the skill is actively listening for user speech, all we have to do is transcribe what the user says.
 
 ## Automatic Speech Recognition (ASR)
 

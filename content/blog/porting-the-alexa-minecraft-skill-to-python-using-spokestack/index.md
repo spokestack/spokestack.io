@@ -68,7 +68,7 @@ mic = PyaudioMicrophoneInput()
 
 ## Voice Activity Detection
 
-The second component we are adding to the pipeline is the [VoiceActivityDetector](https://github.com/spokestack/spokestack-python/blob/4009a9d8b61cd4375886c66ca0d4a87d99e12153/spokestack/vad/webrtc.py#L18). This module hears a single frame of audio to determine if speech is present. This will be the component that allows audio to flow through the rest of the pipeline. For simplicity, we will use the default settings which are configured to allow easy setup of the pipeline. The voice activity component can be initialized with the following:
+The second component we are adding to the pipeline is the [VoiceActivityDetector](https://github.com/spokestack/spokestack-python/blob/4009a9d8b61cd4375886c66ca0d4a87d99e12153/spokestack/vad/webrtc.py#L18). This module analyzes a single frame of audio to determine if speech is present. This will be the component that allows audio to flow through the rest of the pipeline. For simplicity, we will use the the default voice activity detection settings. The voice activity component can be initialized with the following:
 
 ```python
 from spokestack.vad.webrtc import VoiceActivityDetector

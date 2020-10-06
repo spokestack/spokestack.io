@@ -11,9 +11,10 @@ Spokestack's tagline, "Give your app a voice interface," has mainly focused on m
 
 Just as they do with our [iOS](https://github.com/spokestack/spokestack-ios), [Android](https://github.com/spokestack/spokestack-android), and [React Native voice libraries](https://github.com/spokestack/react-native-spokestack), developers can use Spokestack as a complete speech pipeline solution to talk to their customers. All you need to do to get started is [create a Spokestack account](/create) and get your API credentials. The same API that powers our mobile libraries also powers Spokestack Python. We want developers to be able to write once, talk everywhere using Spokestack.
 
-![speech_pipeline.png](./speech_pipeline.png)
-
-You have everything you need to add a voice interface to any project.
+<figure>
+<img alt="Spokestack pipeline" src="./speech_pipeline.png" style="width:100%" />
+<figcaption>You have everything you need to add a voice interface to any project.</figcaption>
+</figure>
 
 As with all of our libraries, developers can create a [custom wakeword](/blog/wakewords-for-mobile-apps) and a text-to-speech voice that is unique to their brand and application. With the Spokestack Python library, the voice interface is less tied to a platform, opening up a number of application opportunities.
 

@@ -54,7 +54,7 @@ To follow along with the tutorial, we recommend making a new python file titled 
 
 # Using the Speech Pipeline
 
-An essential piece to any voice interface is the ability to detect when the user is speaking, then convert the spoken phrase into a text transcript. Spokestack has an [easy to use speech pipeline](https://www.spokestack.io/docs/Concepts/pipeline-configuration) that will handle this for us. The speech pipeline consists of three major components: a voice detection module, a wake word trigger, and then a model that converts speech to text.
+An essential piece to any voice interface is the ability to detect when the user is speaking, then convert the spoken phrase into a text transcript. Spokestack has an [easy-to-use speech pipeline](/docs/Concepts/pipeline-configuration) that will handle this for us. The speech pipeline consists of three major components: a voice detection module, a wakeword trigger, and a speech recognizer.
 
 ## Microphone Input
 

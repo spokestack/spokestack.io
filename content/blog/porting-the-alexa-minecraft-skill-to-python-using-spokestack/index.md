@@ -294,7 +294,7 @@ Now we can update our event handler to read the response.
 def on_speech(context):
     transcript = context.transcript
     results = nlu(transcript)
-		response = dialogue_manager(results)
+    response = dialogue_manager(results)
     manager.synthesize(response, "text", "demo-male")
 ```
 

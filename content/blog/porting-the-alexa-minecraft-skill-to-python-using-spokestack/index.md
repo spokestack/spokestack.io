@@ -13,10 +13,9 @@ This is a tutorial on how to port a simple [Minecraft recipe skill](https://gith
 
 # Signing Up for a Spokestack Account
 
-1. Navigate to our [website](http://spokestack.io).
-2. Click "Sign up free" at the top right corner.
-3. Sign up with your method of choice.
-4. In the account dashboard, click "API Credentials" and then add a token.
+1. [Create](/create) a Spokestack account.
+1. In the [settings dashboard](/account/settings/), click "API Credentials" and add a token.
+1. Copy the secret key when it is displayed; you'll need it later.
 
 # Setting up the Project
 

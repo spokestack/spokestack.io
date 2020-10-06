@@ -98,3 +98,7 @@ class MyActivity : AppCompatActivity() {
     }
 }
 ```
+
+## Handing back the mic
+
+For multi-turn conversations or system prompts that ask the user to respond, you'll want to reactivate ASR when the TTS audio is done playing. If you're using Spokestack's automatic playback, the best way to do this is by calling `activate()` on your [speech pipeline](speech-pipeline) instance when your TTS listener receives the `PLAYBACK_COMPLETE` event.

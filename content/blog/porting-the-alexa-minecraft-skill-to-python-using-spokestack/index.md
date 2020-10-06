@@ -80,7 +80,7 @@ Now that we have a way to determine if the audio contains speech, let's move on 
 
 ## Wakeword Activation
 
-The [wakeword](https://www.spokestack.io/docs/Concepts/wakeword-models) component of the pipeline is looking for a specific phrase in the audio input. This is should feel familiar as most voice assistants use this type of interaction. For our purposes, we will be using "Spokestack" phrase. As with most voice assistants, "Hey Spokestack" will work as well. The process to initialize this component mirrors the way we set up voice activity detection.
+The [wakeword](/docs/Concepts/wakeword-models) component of the pipeline looks for a specific phrase in the audio input and signals the pipeline to activate ASR when it is recognized. For our purposes, we will be using "Spokestack" as the wakeword. As with most voice assistants, "Hey Spokestack" will work as well. The process to initialize this component mirrors the way we set up voice activity detection.
 
 ```python
 from spokestack.wakeword.tflite import WakewordTrigger

@@ -92,7 +92,7 @@ Once the skill is actively listening for user speech, all we have to do is trans
 
 ## Automatic Speech Recognition (ASR)
 
-This [component](https://www.spokestack.io/docs/Concepts/asr) is the most critical piece of the speech pipeline, because it produces the transcript that is used later to turn what the user said into actions. However, critical components do not have to be difficult to add. The following initializes the [ASR component](https://github.com/spokestack/spokestack-python/blob/4009a9d8b61cd4375886c66ca0d4a87d99e12153/spokestack/asr/speech_recognizer.py#L12).
+[ASR](/docs/Concepts/asr) is the most critical piece of the speech pipeline, because it produces the transcript that is used to turn speech into actions. However, critical components do not have to be difficult to add. The following initializes the [ASR component](https://github.com/spokestack/spokestack-python/blob/4009a9d8b61cd4375886c66ca0d4a87d99e12153/spokestack/asr/speech_recognizer.py#L12).
 
 **Note:** this is where you will need your api keys from the account console.
 

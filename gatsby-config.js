@@ -8,7 +8,7 @@ module.exports = {
     author: 'Spokestack',
     contact: {
       email: 'hello@spokestack.io',
-      phone: '(423) 425-0071'
+      phone: '(415) 425-0071'
     },
     description:
       'Build an independent voice assistant. Spokestack features open source tools for mobile and web voice interfaces. Create an account and get started.',
@@ -132,7 +132,7 @@ module.exports = {
         key: 'will',
         name: 'Will Rice',
         image: '/headshots/will.png',
-        title: 'Data Science Engineer',
+        title: 'ML Engineer',
         bio: '',
         external: false,
         social: {

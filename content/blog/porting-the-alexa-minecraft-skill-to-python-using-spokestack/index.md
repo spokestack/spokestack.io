@@ -313,7 +313,7 @@ Then you can start the skill by running this command in the terminal. The skill 
 python myapp.py
 ```
 
-Now you should be able ask your skill about how to craft things in Minecraft. If you get a chance, I recommend trying it out in game, despite its simplicity it is actually very useful.
+Now you should be able ask your skill about how to craft things in Minecraft. If you get a chance, I recommend trying it out in-game; despite its simplicity, it is actually very useful.
 
 At this point you may have already cloned the repository, but if you have not, check out the full example on [GitHub](https://github.com/spokestack/minecraft-skill-python).
 

@@ -7,17 +7,17 @@ tags: Engineering, Tutorial
 draft: false
 ---
 
-# Introduction
+## Introduction
 
 This is a tutorial on how to port a simple [Minecraft recipe skill](https://github.com/alexa/skill-sample-python-howto) to Spokestack using the [spokestack-python](https://github.com/spokestack/spokestack-python) library. It is similar to [our mobile tutorial series](/blog/porting-a-smart-speaker-voice-app-to-mobile-part-1), but the Python version not have any GUI components. This makes the experience closer to that of a smart speaker. We will discuss the concepts for each part of the user interaction briefly, but for a full description check out our [documentation](/docs/Concepts). Before we get into the programming, we will need to get API keys from our Spokestack account.
 
-# Signing Up for a Spokestack Account
+## Signing Up for a Spokestack Account
 
 1. [Create](/create) a Spokestack account.
 1. In the [settings dashboard](/account/settings/), click "API Credentials" and add a token.
 1. Copy the secret key when it is displayed; you'll need it later.
 
-# Setting up the Project
+## Setting up the Project
 
 First let's make a directory to hold the project.
 
@@ -52,7 +52,7 @@ python app.py
 
 To follow along with the tutorial, we recommend making a new python file titled `myapp.py` or similar so you can compare it to the original `app.py`.
 
-# Using the Speech Pipeline
+## Using the Speech Pipeline
 
 An essential piece to any voice interface is the ability to detect when the user is speaking, then convert the spoken phrase into a text transcript. Spokestack has an [easy-to-use speech pipeline](/docs/Concepts/pipeline-configuration) that will handle this for us. The speech pipeline consists of three major components: a voice detection module, a wakeword trigger, and a speech recognizer.
 

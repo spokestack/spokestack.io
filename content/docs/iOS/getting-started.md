@@ -77,7 +77,7 @@ func application(_ application: UIApplication, didFinishLaunchingWithOptions lau
 
 ### 3. Your free Spokestack Account
 
-Go to [spokestack.io](/account/) to set up your own account (it's free!). Once you've got that, go [grab one of our free NLUs](/account/services/nlu). We'll use the `Highlow` one in this example, but you can choose another, or [create your own](/docs/Concepts/export) if you already have something on DialogFlow or Alexa!
+Go to [spokestack.io](/account/) to set up your own account (it's free!). Once you've got that, go [grab one of our free NLU models](/account/services/nlu). We'll use the `Highlow` one in this example, but you can choose another, or [create your own](/docs/Concepts/export) if you already have something on DialogFlow or Alexa!
 
 Once you've downloaded your NLU, unzip `nlu.tar.gz` and add the three files inside (`metadata.json`, `nlu.tflite`, `vocab.txt`) to your XCode project. See, that wasn't painful at all!
 
@@ -207,7 +207,7 @@ If you want more fine-grained control over how the TTS response is played back, 
 
 ## To wake or not to wake
 
-When we first configured Spokestack, we used voice-activity activated speech recognition, but that's not the only way you can start classifying your users speech!
+When we first configured Spokestack, we used voice activity-activated speech recognition, but that's not the only way you can start transcribing your users' speech!
 
 ### I want the user to tap a button before talking
 

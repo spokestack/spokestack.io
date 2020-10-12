@@ -107,6 +107,8 @@ spokestack = Spokestack.Builder()
 
 This is a complete example and uses wakeword activation, on-device [ASR](/docs/Concepts/asr), [NLU](/docs/Concepts/nlu), and [TTS](/docs/Concepts/tts), hence the properties that point Spokestack to [TensorFlow Lite](https://www.tensorflow.org/lite) model files. We've assumed that these files are stored in the app's cache directory for convenience, but they can be kept wherever it makes sense for your app.
 
+See [the `Spokestack` guide](turnkey-configuration) for more information on downloading wakeword and NLU models.
+
 Once a `Spokestack` instance has been built, it begins processing audio when `start()` is called. If the wakeword component is enabled (as it is by default), this processing is entirely on-device until the wakeword is recognized. After wakeword recognition, Spokestack begins "actively" listening, sending audio through ASR for transcription. Depending on which ASR provider is used, this may also be done on-device (the default Android ASR currently processes on-device).
 
 There are many options for configuring Spokestack beyond what we've described here. For example, to spin up a quick demo that just uses ASR and TTS, you can avoid downloading/storing neural models and set up Spokestack like this:

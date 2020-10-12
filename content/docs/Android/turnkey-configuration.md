@@ -47,7 +47,7 @@ val spokestack = Spokestack.Builder()
     .build()
 ```
 
-Once configured, all ASR transcripts will automatically be sent through NLU; see [Receiving events](receiving-events) below for information on how to see the results.
+Once configured, all ASR transcripts will automatically be sent through NLU; see [Receiving events](#receiving-events) below for information on how to see the results.
 
 For certain domains, though, relying completely on ASR can be problematic. Sometimes the most likely transcription of a given sound isn't the most likely transcription _for your app_. We experienced this ourselves during development of our [Bartender app](https://play.google.com/store/apps/details?id=com.spokestack.bartender), where ASR consistently misheard "gin" as "Jen".
 

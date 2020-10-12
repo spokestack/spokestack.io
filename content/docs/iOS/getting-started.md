@@ -77,7 +77,7 @@ func application(_ application: UIApplication, didFinishLaunchingWithOptions lau
 
 ### 3. Your free Spokestack Account
 
-Go to [spokestack.io](/account/) to set up your own account (it's free!). Once you've got that, go [grab one of our free NLUs](/account/services/nlu). We'll use the `Minecraft` one in this example, but you can choose another, or [create your own](/docs/Concepts/export) if you already have something on DialogFlow or Alexa!
+Go to [spokestack.io](/account/) to set up your own account (it's free!). Once you've got that, go [grab one of our free NLUs](/account/services/nlu). We'll use the `Highlow` one in this example, but you can choose another, or [create your own](/docs/Concepts/export) if you already have something on DialogFlow or Alexa!
 
 Once you've downloaded your NLU, unzip `nlu.tar.gz` and add the three files inside (`metadata.json`, `nlu.tflite`, `vocab.txt`) to your XCode project. See, that wasn't painful at all!
 
@@ -123,25 +123,26 @@ This will allow Spokestack modules to communicate back to us if something goes w
     }
 ```
 
-Next, you may not have noticed, but when we built `Spokestack`, we took advantage of a neat feature where Spokestack will automatically classify what the ASR hears. Translating what your user says into an action in your app is the job of an NLU, or natural language understanding, module. So let's see what it comes up with!
+Next, you may not have noticed, but when we built `Spokestack`, we took advantage of a neat feature where Spokestack will automatically classify what the ASR hears. Classifying what your user says into an action in your app is the job of an NLU, or natural language understanding, module. Earlier we configured Spokestack to classify what your user says in terms of guessing a number. Let's wire that up so that we can see what it comes up with!
 
 ```swift
     func classification(result: NLUResult) {
         let intent = result.intent
         let slots = result.slots
         switch result.intent {
-        // using the example of a timer
-        case "start":
-            // start the timer and change the UI accordingly
+        // your app picks a number. the user guess a number.
+        case "NumberGuessIntent":
+            let guess = result.slots!["number"]!.value as! Int
+            // if the guess is higher, lower, or equal to the pick, respond accordingly
             return
-        case "stop":
-            // stop the timer and change the UI accordingly
+        case "AMAZON.HelpIntent":
+            // if the user asks for help, respond with the rules of the game
             return
-        case "reset":
-            // reset the timer and change the UI accordingly
+        case "AMAZON.StopIntent":
+            // If the user wants to stop playing, then pick another number
             return
         case default:
-            // for when the model doesn't match the intent
+            // what your user said doesn't make sense in terms of a high/low guessing game, so give them a nudge along the right direction
             return
         }
     }
@@ -206,17 +207,17 @@ If you want more fine-grained control over how the TTS response is played back, 
 
 ## To wake or not to wake
 
-Now that you _have_ Spokestack all set up, how do you _use_ it? It's easy, but the answer depends on your app's needs:
+When we first configured Spokestack, we used voice-activity activated speech recognition, but that's not the only way you can start classifying your users speech!
 
-#### I want the user to tap a button before talking
+### I want the user to tap a button before talking
 
-We've already configured the speech pipeline to use a tap-to-talk option! After the pipeline is started, call `pipeline.activate()` in the action of whatever button you want to activate the microphone. This skips the wakeword step of the pipeline and starts the Automatic Speech Recognition (ASR) component directly. ASR will stop automatically after the user is silent for a few seconds (how _many_ seconds is one of the configuration parameters we hinted at earlier) or after a preconfigured timeout is reached, but if you need to stop listening immediately for any reason, call `pipeline.deactivate()`. You can then call `pipeline.activate()` to start ASR again or `pipeline.stop()` to shut the pipeline down completely.
+After the pipeline is started, call `pipeline.activate()` in the action of whatever button you want to activate the microphone. This skips the wakeword step of the pipeline and starts the Automatic Speech Recognition (ASR) component directly. ASR will stop automatically after the user is silent for a few seconds (how _many_ seconds is one of the configuration parameters we hinted at earlier) or after a preconfigured timeout is reached, but if you need to stop listening immediately for any reason, call `pipeline.deactivate()`. You can then call `pipeline.activate()` to start ASR again or `pipeline.stop()` to shut the pipeline down completely.
 
 Note that, as we mentioned earlier, the very first time you start a speech pipeline, the microphone is activated, so your user will be presented with permissions modals for the microphone and speech recognition; you may want to plan for this in your designs.
 
-#### I want to use a wakeword
+### I want to use a wakeword
 
-If you want your app to be controllable purely by voice, you need a wakeword — a word (or short phrase) that tells your app "the next thing the user says is meant for you". Spokestack comes with a default wakeword ("Spokestack", believe it or not), and that's enabled just by changing the pipeline profile enum in the `SpeechPipeline` we just set up. Try changing `.vadTriggerAppleSpeech` to `.appleWakewordAppleSpeech` in that first code example. Then, to begin listening for it, just call `pipeline.start()`.
+If you want your app to be controllable purely by voice, you need a wakeword — a word (or short phrase) that tells your app "the next thing the user says is meant for you". Spokestack comes with a default wakeword ("Spokestack", believe it or not), and that's enabled just by changing the pipeline profile enum in the `SpeechPipeline` we just set up. Try changing `.vadTriggerAppleSpeech` to `.appleWakewordAppleSpeech` in that Spokestack configuration example. Then, to begin listening for the default wakeword "Spokestack", just call `pipeline.start()`.
 
 ## Understanding your users
 

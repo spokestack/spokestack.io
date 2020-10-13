@@ -11,7 +11,7 @@ One caveat before we start, though: _This is not a collection of best practices_
 
 ## Prerequisites
 
-Your app needs to target iOS 11 or higher in order to use speech recognition and natural language understanding, and iOS 13 or higher in order to use text to speech.
+Your app needs to target iOS 13 or higher for most Spokestack features. A limited feature set of speech recognition and natural language understanding is available for iOS 11 & 12.
 
 ## Installation
 
@@ -32,12 +32,13 @@ in your terminal.
 
 ## Integration
 
-In order for your app to accept voice input via Spokestack, it needs four things:
+In order for your app to use the various Spokestack features, it needs five things:
 
 1. The proper iOS permissions
-2. An active `AVAudioSession`
-3. An instance of Spokestack's `SpeechPipeline`
-4. Delegates to receive system events from `SpeechPipeline`
+1. An active `AVAudioSession`
+1. A free Spokestack account, with your very own API key and NLU.
+1. An instance of `Spokestack`
+1. An implementation of the `SpokestackDelegate` protocol
 
 ### 1. Permissions
 
@@ -74,120 +75,100 @@ func application(_ application: UIApplication, didFinishLaunchingWithOptions lau
 }
 ```
 
-### 3. Speech Pipeline and Controllers
+### 3. Your free Spokestack Account
 
-With the proper permissions in place, it's time to decide where you'd like to receive and process speech input and output. In a single-view app, the easiest place for this is going to be your main view controller. `import Spokestack` at the top of the file, and add `SpeechPipeline`, `TensorflowNLU`, and `TextToSpeech` class members:
+Go to [spokestack.io](/account/) to set up your own account (it's free!). Once you've got that, go [grab one of our free NLU models](/account/services/nlu). We'll use the `Highlow` one in this example, but you can choose another, or [create your own](/docs/Concepts/export) if you already have something on DialogFlow or Alexa!
+
+Once you've downloaded your NLU, unzip `nlu.tar.gz` and add the three files inside (`metadata.json`, `nlu.tflite`, `vocab.txt`) to your XCode project. See, that wasn't painful at all!
+
+### 4. Setting up Spokestack
+
+With the proper permissions in place, and your NLU all ready to go, it's time to decide where you'd like to receive and process speech input and output. In a single-view app, the easiest place for this is going to be your main view controller. We don't know what you've named it, but here we'll call it `MyViewController`. At the top, `import Spokestack`, and at the class level, add the `Spokestack` controller:
 
 ```swift
-public let pipeline = SpeechPipelineBuilder()
-    .setListener(self)
-    .useProfile(.vadTriggerAppleSpeech)
+public let spokestack = SpokestackBuilder()
+    .addDelegate(self)
+    .usePipelineProfile(.vadTriggerAppleSpeech)
+    // Note: the following `path`s depend on how you added the NLU files eariler in step 3!
+    .setProperty("nluVocabularyPath", Bundle(for: type(of: self)).path(forResource: "vocab", ofType: "txt")
+    .setProperty("nluModelMetadataPath", Bundle(for: type(of: self)).path(forResource: "metadata", ofType: "json")
+    .setProperty("nluModelPath", Bundle(for: type(of: self)).path(forResource: "nlu", ofType: "tflite")
     .build()
-public let tts = TextToSpeech(self, configuration: pipeline.configuration)
-public let nlu = try! NLUTensorflow(self, configuration: pipeline.configuration)
 ```
 
-Note that these components must persist outside the scope of the calling function, so don't declare it inside a function call that will get garbage collected! If this is confusing, please consult the [fuller discussion of the pipeline](speech-pipeline). Then, after things are loaded:
+Note that `spokestack` must persist outside the scope of the calling function, so don't declare it inside a function call that will get garbage collected! If this is confusing, please consult the [fuller discussion of the pipeline](speech-pipeline).
+
+There are many options for configuring the speech pipeline. This particular setup will begin capturing audio when `spokestack.pipeline.start()` is called and use a Voice Activity Detection (VAD) component to send any audio determined to be speech through on-device ASR using Apple's `SFSpeech` API. In other words, the app is always actively listening, and no wakeword detection is performed. See [the configuration guide](/docs/iOS/speech-pipeline) for more information about pipeline building options. Using a `vadTriggerAppleSpeech` profile is a good way to test out ASR without having to tap a button to activate it or downloading and configuring wakeword models. Consider your use-case fully before using it in production, however, since it will capture all speech it hears, not just what's directed at your app.
+
+The `self` in this example means that `MyViewController` also implements `SpokestackDelegate`, which, conveniently enough, is the next step.
+
+### 5. Implementing SpokestackDelegate
+
+Now that we have an instance of `Spokestack`, we'll use the [delegate pattern](https://en.wikipedia.org/wiki/Delegation_pattern) so that the ASR, NLU, and TTS features can send events to you. We'll do that in the same class we used in the previous step. All `SpokestackDelegate` functions are optional except for `failure(error:)`, so you will opt in to each one explictly, but for now we just need to use two of them. First, `failure(error:)`:
 
 ```swift
-pipeline.start()
+
+    func failure(error: Error) {
+        print("failure \(String(describing: error))")
+    }
+
 ```
 
-There are many options for configuring the speech pipeline. This particular setup will begin capturing audio when `pipeline.start()` is called and use a Voice Activity Detection (VAD) component to send any audio determined to be speech through on-device ASR using Apple's `SFSpeech` API. In other words, the app is always actively listening, and no wakeword detection is performed. See [the configuration guide](/docs/iOS/speech-pipeline) for more information about pipeline building options. Using a `vadTriggerAppleSpeech` profile is a good way to test out ASR without having to tap a button to activate it or downloading and configuring wakeword models. Consider your use-case fully before using it in production, however, since it will capture all speech it hears, not just what's directed at your app.
-
-The `self` in this example means that the class containing this pipeline also adopts `PipelineDelegate`, `SpeechEventListener`, `NLUDelegate`, and `TextToSpeechDelegate` which, conveniently enough, are the next steps.
-
-### 4. Implementing Delegates
-
-Now that we have a pipeline for speech and controllers for NLU and TTS, we need to provide implementations for the delegates so that they can send events to you. We'll do that in the same class we used in the previous step.
-
-If you want to disable any buttons or show a special "listening" indicator while recording, put those things in the `PipelineDelegate`'s `didStart` and `didStop` methods; otherwise, the main methods you'll want to implement are `SpeechEventListener`'s' `didActivate`, `didDeactivate`, and `didRecognize`. The basic layout for the first two would be:
+This will allow Spokestack modules to communicate back to us if something goes wrong. You may also want to listen for `onInit`, which will tell you when Spokestack is ready to start:
 
 ```swift
-// assumes `self` is the class from before; it
-// has a `SpeechPipeline` member
-func didActivate() {
-    self.pipeline.activate()
-}
-
-func didDeactivate() {
-    self.pipeline.deactivate()
-}
-```
-
-All we're doing here is reflecting system events back to the main pipeline. See [the `SpeechPipeline` guide](speech-pipeline) for more discussion.
-
-## To wake or not to wake
-
-Now that you _have_ the pipeline all set up, how do you _use_ it? It's easy, but the answer depends on your app's needs:
-
-#### I want the user to tap a button before talking
-
-We've already configured the speech pipeline to use a tap-to-talk option! After the pipeline is started, call `pipeline.activate()` in the action of whatever button you want to activate the microphone. This skips the wakeword step of the pipeline and starts the Automatic Speech Recognition (ASR) component directly. ASR will stop automatically after the user is silent for a few seconds (how _many_ seconds is one of the configuration parameters we hinted at earlier) or after a preconfigured timeout is reached, but if you need to stop listening immediately for any reason, call `pipeline.deactivate()`. You can then call `pipeline.activate()` to start ASR again or `pipeline.stop()` to shut the pipeline down completely.
-
-Note that, as we mentioned earlier, the very first time you start a speech pipeline, the microphone is activated, so your user will be presented with permissions modals for the microphone and speech recognition; you may want to plan for this in your designs.
-
-#### I want to use a wakeword
-
-If you want your app to be controllable purely by voice, you need a wakeword — a word (or short phrase) that tells your app "the next thing the user says is meant for you". Spokestack comes with a default wakeword ("Spokestack", believe it or not), and that's enabled just by changing the pipeline profile enum in the `SpeechPipeline` we just set up. Try changing `.vadTriggerAppleSpeech` to `.appleWakewordAppleSpeech` in that first code example. Then, to begin listening for it, just call `pipeline.start()`.
-
-## Understanding your users
-
-Inside `SpeechEventListener`'s' `didRecognize` delegate function, the `result.transcript` will give you the raw text of what the user just said. Translating that raw text into an action in your app is the job of an NLU, or natural language understanding, component. Spokestack leaves the choice of NLU up to you, but we do offer our own full-featured NLU component for Spokestack based on years of research and lessons learned from working with other services. Our NLU runs directly on your user's device, instead of calling back to the cloud. If you're a fan of the cloud, though, you might want to check out [DialogFlow](https://dialogflow.com/), [LUIS](https://www.luis.ai/home), or [wit.ai](https://wit.ai/). And if your app is simple enough, you can make your own NLU with string matching or regular expressions (see the [cookbook](cookbook) for an example of this).
-
-Let's run through a quick usage of Spokestack's `TensorflowNLU`. In `SpeechEventListener`'s' `didRecognize`, ask the NLU to classify what the ASR has recognized:
-
-```swift
-class MyViewController: UIViewController, SpeechEventListener, NLUDelegate {
-
-    // ...other SpeechEventListener functions...
-
-    func didRecognize(_ result: SpeechContext) {
-        let userText = result.transcript
-        let classification = self.nlu.classify(utterance: userText)
+    func onInit() {
+        // ready! time to start listening
+        spokestack.pipeline.start()
     }
 ```
 
-Earlier, if you recall, we claimed that `MyViewController` already implemented the `NLUDelegate` protocol. The `nlu.classify` call above will return the classification results to a function in that delegate.
+Next, you may not have noticed, but when we built `Spokestack`, we took advantage of a neat feature where Spokestack will automatically classify what the ASR hears. Classifying what your user says into an action in your app is the job of an NLU, or natural language understanding, module. Earlier we configured Spokestack to classify what your user says in terms of guessing a number. Let's wire that up so that we can see what it comes up with!
 
 ```swift
-    // ...other delegate functions...
-
     func classification(result: NLUResult) {
         let intent = result.intent
         let slots = result.slots
         switch result.intent {
-        // using the example of a timer
-        case "start":
-            // start the timer and change the UI accordingly
+        // your app picks a number. the user guess a number.
+        case "NumberGuessIntent":
+            let guess = result.slots!["number"]!.value as! Int
+            // if the guess is higher, lower, or equal to the pick, respond accordingly
             return
-        case "stop":
-            // stop the timer and change the UI accordingly
+        case "AMAZON.HelpIntent":
+            // if the user asks for help, respond with the rules of the game
             return
-        case "reset":
-            // reset the timer and change the UI accordingly
+        case "AMAZON.StopIntent":
+            // If the user wants to stop playing, then pick another number
             return
         case default:
-            // for when the model doesn't match the intent
+            // what your user said doesn't make sense in terms of a high/low guessing game, so give them a nudge along the right direction
             return
         }
     }
+
+    // ...other delegate functions...
+
+    func didTrace(_ trace: String) {
+        // Get Spokestack module tracing messages that provide additional debugging information. Note that tracing verbosity of each is determined by the SpeechConfiguration.tracing setting!
+    }
+
 ```
 
 You'll note that the intents are just a single string. A intent-based classifier will regularize all sorts of related langague into a single canonical intent, eg "let's go" or "please cease" get classified as `start` and `stop`, respectively.
 
+That's it, you've added a voice interface to your app! Now that we've done all the hard work, let's discuss a few ways you can use Spokestack.
+
 ## Talking back to your users
 
 If you want full hands-free and eyes-free interaction, you'll want to deliver responses via voice as well. This requires a text-to-speech (TTS) component, and Spokestack has one of these too!
-
-It's completely separate from the `SpeechPipeline`, so you can even use it to talk to a user at any point. First, you'll need to adopt the `TextToSpeechDelegate` protocol somewhere—say, your view controller:
 
 ```swift
 import AVFoundation
 
 ...
 
-class MyViewController: UIViewController, SpeechEventListener, TextToSpeechDelegate {
+class MyViewController: UIViewController, SpokestackDelegate {
 
     func didBeginSpeaking() {
         // handle the response playback beginning if desired
@@ -199,14 +180,6 @@ class MyViewController: UIViewController, SpeechEventListener, TextToSpeechDeleg
 
     func success(result: TextToSpeechResult) {
         // handle the result if desired
-    }
-
-    func failure(error: Error) {
-        // handle error
-    }
-
-    func didTrace(_ trace: String) {
-        // log trace. Note that tracing verbosity of each component is determined by the SpeechConfiguration.tracing setting!
     }
 ```
 
@@ -231,6 +204,24 @@ The `speak` function will call your delegate's `didBeginSpeaking` and `didFinish
 In this example, `SpeechConfiguration.apiId` and `SpeechConfiguration.apiSecret` are set to sample values that let you try Spokestack TTS with a demo voice, without creating an account. You can [get your own free API credentials](/create). For more TTS input configuration options, see [the TTS guide](/docs/Concepts/tts).
 
 If you want more fine-grained control over how the TTS response is played back, you're free to feed the `TextToSpeechResult.url` in the `success` handler into your own audio player. See the [cookbook](cookbook) for a quick version of that recipe.
+
+## To wake or not to wake
+
+When we first configured Spokestack, we used voice activity-activated speech recognition, but that's not the only way you can start transcribing your users' speech!
+
+### I want the user to tap a button before talking
+
+After the pipeline is started, call `pipeline.activate()` in the action of whatever button you want to activate the microphone. This skips the wakeword step of the pipeline and starts the Automatic Speech Recognition (ASR) component directly. ASR will stop automatically after the user is silent for a few seconds (how _many_ seconds is one of the configuration parameters we hinted at earlier) or after a preconfigured timeout is reached, but if you need to stop listening immediately for any reason, call `pipeline.deactivate()`. You can then call `pipeline.activate()` to start ASR again or `pipeline.stop()` to shut the pipeline down completely.
+
+Note that, as we mentioned earlier, the very first time you start a speech pipeline, the microphone is activated, so your user will be presented with permissions modals for the microphone and speech recognition; you may want to plan for this in your designs.
+
+### I want to use a wakeword
+
+If you want your app to be controllable purely by voice, you need a wakeword — a word (or short phrase) that tells your app "the next thing the user says is meant for you". Spokestack comes with a default wakeword ("Spokestack", believe it or not), and that's enabled just by changing the pipeline profile enum in the `SpeechPipeline` we just set up. Try changing `.vadTriggerAppleSpeech` to `.appleWakewordAppleSpeech` in that Spokestack configuration example. Then, to begin listening for the default wakeword "Spokestack", just call `pipeline.start()`.
+
+## Understanding your users
+
+Spokestack leaves the choice of NLU up to you, but we do offer our own full-featured NLU component for Spokestack based on years of research and lessons learned from working with other services. Our NLU runs directly on your user's device, instead of calling back to the cloud. If you're a fan of the cloud, though, you might want to check out [DialogFlow](https://dialogflow.com/), [LUIS](https://www.luis.ai/home), or [wit.ai](https://wit.ai/). And if your app is simple enough, you can make your own NLU with string matching or regular expressions (see the [cookbook](cookbook) for an example of this).
 
 ## Conclusion
 

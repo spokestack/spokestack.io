@@ -30,7 +30,9 @@ Give your user a clear label. Be descriptive. Specify whether your user is new o
 
 Here’s an example:
 
-    RETURN USER: [Listening] “MyRunBuddy, how fast am I running?”
+```none
+RETURN USER: [Listening] “MyRunBuddy, how fast am I running?”
+```
 
 #### 3. Write a response
 
@@ -42,9 +44,11 @@ Focus on the conversational aspect of your response for now. Again, make note of
 
 Write using an informal tone to avoid sounding stilted. Always be thinking how you would respond if a friend asked you the same thing on the street. If your app is instructional or task-based, break up information into separate responses. Refer to [best practices](tips-for-writing-dialog) if you get stuck. Label each turn or group of turns with a corresponding intent. Note any assumptions and remaining questions you have below each turn.
 
-    Pace
-    RETURN USER: [Listening] “MyRunBuddy, how fast am I running?”
-    MYRUNBUDDY: [Pace] “You’re running a 9-minute mile pace.”
+```none
+Pace
+RETURN USER: [Listening] “MyRunBuddy, how fast am I running?”
+MYRUNBUDDY: [Pace] “You’re running a 9-minute mile pace.”
+```
 
 #### 4. Continue through your experience map
 

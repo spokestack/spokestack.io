@@ -190,7 +190,7 @@ DB: Dict[str, str] = {
 }
 ```
 
-This makes looking up a recipe very concise: `DB.get("snow golem")`. There can be an issue with using the dictionary lookup alone though. Let's say that due to an ASR error the parsed slot isn't a full match for `snow golem`, but it is something like `sow golem`. A simple dictionary lookup will not be able to resolve those slots. However, there is a method that we can add to deal with small errors like that. This method is called [fuzzy matching](<https://en.wikipedia.org/wiki/Fuzzy_matching_(computer-assisted_translation)#:~:text=Fuzzy%20matching%20is%20a%20technique,a%20database%20of%20previous%20translations.>), and based on the similarity between `snow golem` and `sow golem` we can make sure that the latter resolves to the actual entity. In this tutorial, we will use the python library `fuzzywuzzy` to make these matches. Below is the way it is used in the tutorial repository.
+This makes looking up a recipe very concise: `DB.get("snow golem")`. There can be an issue with using the dictionary lookup alone though. Let's say that due to an ASR error the parsed slot isn't a full match for `snow golem`, but it is something like `sow golem`. A simple dictionary lookup will not be able to resolve those slots. However, there is a method that we can add to deal with small errors like that. This method is called [fuzzy matching](<https://en.wikipedia.org/wiki/Fuzzy_matching_(computer-assisted_translation)>), and based on the similarity between `snow golem` and `sow golem` we can make sure that the latter resolves to the actual entity. In this tutorial, we will use the python library `fuzzywuzzy` to make these matches. Below is the way it is used in the tutorial repository.
 
 ```python
 from fuzzywuzzy import process

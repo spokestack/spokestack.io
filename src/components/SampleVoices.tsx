@@ -60,7 +60,7 @@ export default class SampleVoices extends PureComponent<Props, State> {
   }
 
   getVoices() {
-    return client
+    const query = client
       .query<{ listVoices: { description: string; name: string }[] }>({
         query: LIST_VOICES,
         fetchPolicy: 'network-only'
@@ -85,6 +85,7 @@ export default class SampleVoices extends PureComponent<Props, State> {
           )
         })
       })
+    return query
   }
 
   getAudio = async () => {

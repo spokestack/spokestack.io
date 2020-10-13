@@ -8,6 +8,7 @@ import {
 
 import AccountCard from './AccountCard'
 import Color from 'color'
+import { CopyInputWithButton } from '../EditButtons'
 import React from 'react'
 import SVGIcon from '../SVGIcon'
 import { adjustFontSizeTo } from '../../styles/typography'
@@ -19,9 +20,12 @@ interface Props {
   model: NluModelType
 }
 
+const rurlFilename = /\/[^/]+?$/
+
 export default function NluModel({ model }: Props) {
   const isShared = model.source === NluModelSource.SHARED
   const isPending = model.state === NluModelState.PENDING
+  const modelUrl = model.modelUrl.replace(rurlFilename, '')
   return (
     <AccountCard
       title={titleCase(model.name)}
@@ -36,6 +40,24 @@ export default function NluModel({ model }: Props) {
           ? 'shared. It is available to all Spokestack accounts.'
           : 'only available to your account.'}
       </p>
+      <CopyInputWithButton
+        id={`vocab-${model.id}`}
+        extraCss={styles.copyInput}
+        title="vocab.txt CDN URL"
+        value={`${modelUrl}/vocab.txt`}
+      />
+      <CopyInputWithButton
+        id={`nlu-${model.id}`}
+        extraCss={styles.copyInput}
+        title="nlu.tflite CDN URL"
+        value={`${modelUrl}/nlu.tflite`}
+      />
+      <CopyInputWithButton
+        id={`metadata-${model.id}`}
+        extraCss={styles.copyInput}
+        title="metadata.json CDN URL"
+        value={`${modelUrl}/metadata.json`}
+      />
       <div css={styles.buttons}>
         <a
           className="btn btn-transparent"
@@ -46,7 +68,7 @@ export default function NluModel({ model }: Props) {
             className="icon"
             extraCss={styles.downloadIcon}
           />
-          Download
+          Download All
         </a>
       </div>
       {isPending && (
@@ -63,6 +85,9 @@ const styles = {
   date: css`
     margin: 0;
     font-size: ${adjustFontSizeTo('16px').fontSize};
+  `,
+  copyInput: css`
+    margin-bottom: 20px;
   `,
   buttons: css`
     display: flex;

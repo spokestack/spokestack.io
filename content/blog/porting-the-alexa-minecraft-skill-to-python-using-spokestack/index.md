@@ -24,6 +24,20 @@ git clone https://github.com/spokestack/minecraft-skill-python
 cd minecraft-skill-python
 ```
 
+Then there are some system dependencies.
+
+### macOS
+
+```bash
+brew install lame portaudio
+```
+
+### Debian/Ubuntu
+
+```bash
+sudo apt-get install portaudio19-dev libmp3lame-dev
+```
+
 Now let's set up the python virtual environment. We use [`pyenv`](https://github.com/pyenv/pyenv) and [`pyenv-virtualenv`](https://github.com/pyenv/pyenv-virtualenv) to manage virtual environments, but any virtual environment will work.
 
 ```bash
@@ -32,7 +46,7 @@ pyenv virtualenv 3.7.6 minecraft
 pyenv local minecraft
 ```
 
-Then the dependencies.
+Then the python dependencies.
 
 ```bash
 pip install -r requirements.txt
@@ -137,7 +151,7 @@ We know that the goal of the pipeline is to produce a transcript of the user's s
 @pipeline.event
 def on_speech(context):
     transcript = context.transcript
-        print(transcript)
+    print(transcript)
 ```
 
 In the application, we don't want to print the transcript, but we've added that so you can see the results if you've been running the code as you follow along. In the subsequent sections, we will discuss a couple new components and also flesh out this event handler to allow the Minecraft skill to understand the user's request and select an appropriate response.
@@ -202,51 +216,62 @@ class DialogueManager:
         threshold (float): fuzzy match threshold
     """
 
-    def __init__(self, threshold=0.5) -> None:
+    def __init__(self, threshold=0.5):
         self._recipes = recipes.DB
         self._names = list(self._recipes.keys())
         self._threshold = threshold
+        self._response = Response
 
     def __call__(self, results):
         """ Maps nlu result to a dialogue response.
 
         Args:
-            results (dict): classification results from nlu
+            results (Result): classification results from nlu
 
         Returns: a string response to be synthesized by tts
 
         """
 
-        intent = results["intent"]
+        intent = results.intent
         if intent == "RecipeIntent":
-            slots = results.get("slots")
-
-            if slots:
-                for key in slots:
-                    slot = slots[key]
-                    if slot["name"] == "Item":
-
-                        matched, score = process.extractOne(
-                            slot["raw_value"], self._names
-                        )
-
-                        if score > self._threshold:
-                            recipe = self._recipes.get(matched)
-                            return recipe
-                        return Response.RECIPE_NOT_FOUND_WITH_ITEM_NAME.format(
-                            slot["raw_value"]
-                        )
-            else:
-                return Response.RECIPE_NOT_FOUND_WITHOUT_ITEM_NAME.value
-
+            return self._recipe(results)
         elif intent == "AMAZON.HelpIntent":
-            return Response.HELP_MESSAGE.value
-
+            return self._help()
         elif intent == "AMAZON.StopIntent":
-            return "Goodbye!"
-
+            return self._stop()
         else:
-            return Response.ERROR.value
+            return self._error()
+
+    def _recipe(self, results):
+        slots = results.slots
+        if slots:
+            for key in slots:
+                slot = slots[key]
+                if slot["name"] == "Item":
+                    return self._fuzzy_lookup(slot["raw_value"])
+                return self._not_found(slot["raw_value"])
+        else:
+            return self._response.RECIPE_NOT_FOUND_WITHOUT_ITEM_NAME.value
+
+    def _help(self):
+        return self._response.HELP_MESSAGE.value
+
+    def _stop(self):
+        return self._response.STOP.value
+
+    def _error(self):
+        return self._response.ERROR.value
+
+    def _fuzzy_lookup(self, raw_value):
+        matched, score = process.extractOne(raw_value, self._names)
+
+        if score > self._threshold:
+            recipe = self._recipes.get(matched)
+            return recipe
+        return raw_value
+
+    def _not_found(self, raw_value):
+        return self._response.RECIPE_NOT_FOUND_WITH_ITEM_NAME.format(raw_value)
 ```
 
 Now we can add the dialogue manager to the event handler.
@@ -256,7 +281,7 @@ Now we can add the dialogue manager to the event handler.
 def on_speech(context):
     transcript = context.transcript
     results = nlu(transcript)
-        response = dialogue_manager(results)
+    response = dialogue_manager(results)
 ```
 
 OK, that was a lot to cover, but we are almost to the finish line. In the next section, we will learn how to convert the app's text responses into speech.

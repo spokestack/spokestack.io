@@ -26,8 +26,10 @@ It’s important to craft prompts that are brief, clear, and transparent. Here a
 
 Here’s an example. As a thought example, imagine you’re working on a fitness tracking app, MyRunBuddy. Information contained in [square brackets] communicates corresponding [visuals](https://spokestack.io/docs/Design/tips-for-designing-visual-output):
 
-    NEW USER: “Hey Siri, open MyRunBuddy.”
-    MYRUNBUDDY: [Create account] “Welcome to MyRunBuddy! Start by creating an account.”
+```none
+NEW USER: “Hey Siri, open MyRunBuddy.”
+MYRUNBUDDY: [Create account] “Welcome to MyRunBuddy! Start by creating an account.”
+```
 
 Since this user is new to MyRunBuddy, we started with a direct instruction that was limited to one idea. This can be brief when paired with a visual. In this case, the instruction was paired with a screen for account creation. Users won’t want to input private account information using their voice.
 
@@ -37,8 +39,10 @@ Provide enough context to let users know they’re interfacing with the same app
 
 Here’s an example:
 
-    RETURN USER: “Hey Siri, open MyRunBuddy.”
-    MYRUNBUDDY: [Home] “Welcome back! To record a run, say ‘start my run’.”
+```none
+RETURN USER: “Hey Siri, open MyRunBuddy.”
+MYRUNBUDDY: [Home] “Welcome back! To record a run, say ‘start my run’.”
+```
 
 Again, we started with a direct instruction that was limited to one idea. However, in this example, we provided the user an example utterance as part of instruction. Users will be able to adapt this example utterance to meet their own needs. For example, they might say “start my walk.”
 
@@ -55,8 +59,10 @@ When educating new and return users of what they can say, continue to remain bri
 
 Here’s an example:
 
-    NEW USER: [Listening] “Start a run.”
-    MYRUNBUDDY: [Recording Run] “Starting. To check your run’s progress, say ‘What’s my pace? or ‘How far have I run?‘”
+```none
+NEW USER: [Listening] “Start a run.”
+MYRUNBUDDY: [Recording Run] “Starting. To check your run’s progress, say ‘What’s my pace? or ‘How far have I run?‘”
+```
 
 The user was read these example utterances because it’s their first time recording a run. Use your best judgement with what examples to include here. This is something worth testing with your users.
 
@@ -66,8 +72,10 @@ Speech recognition can be challenging, especially in public spaces. Allow users 
 
 Here’s an example of an aural implicit confirmation:
 
-    RETURN USER: [Listening] “MyRunBuddy, start a run.”
-    MYRUNBUDDY: [Confirmation + Recording Run] “Starting…”
+```none
+RETURN USER: [Listening] “MyRunBuddy, start a run.”
+MYRUNBUDDY: [Confirmation + Recording Run] “Starting…”
+```
 
 Since this user has recored a run before using their voice, a follow-up confirmation isn’t required. We’ll [show you examples](https://spokestack.io/docs/Design/tips-for-designing-visual-output) of visuals you might want to include along with aural confirmations later.
 
@@ -81,10 +89,12 @@ Don’t follow every intent with “are you sure?” Build trust by letting user
 
 Here’s an example of aural explicit confirmation:
 
-    RETURN USER: [Listening] “Go ahead and stop my run”
-    MYRUNBUDDY: [Recording Run] “Your current run is still recording. Do you want start a new run?”
-    RETURN USER: [Listening] “STOP my run”
-    MYRUNBUDDY: [Recording Run] “Stopping…Would you like to save this run?”
+```none
+RETURN USER: [Listening] “Go ahead and stop my run”
+MYRUNBUDDY: [Recording Run] “Your current run is still recording. Do you want start a new run?”
+RETURN USER: [Listening] “STOP my run”
+MYRUNBUDDY: [Recording Run] “Stopping…Would you like to save this run?”
+```
 
 In this example, the app misheard the user’s `stop` intent for `start`. The app made the user explicitly confirm an important action (in this case, ending a workout) before fulfilling it, preventing a costly error from happening.
 
@@ -102,13 +112,17 @@ Here are a few other considerations:
 
 Here’s an example:
 
-    RETURN USER: [Listening] “MyRunBuddy, what’s my pace?”
-    MYRUNBUDDY: [Recording Run w/pace highlighted] “You’re running an 8 minute, 45 second mile pace.”
+```none
+RETURN USER: [Listening] “MyRunBuddy, what’s my pace?”
+MYRUNBUDDY: [Recording Run w/pace highlighted] “You’re running an 8 minute, 45 second mile pace.”
+```
 
 This response is brief and provides only information the user asked for while avoiding fillers. Here’s another example:
 
-    RETURN USER: [Listening] “How much farther?”
-    MYRUNBUDDY: [Recording Run + Map] “You’re. 5 miles away from the 3 mile marker.”
+```none
+RETURN USER: [Listening] “How much farther?”
+MYRUNBUDDY: [Recording Run + Map] “You’re. 5 miles away from the 3 mile marker.”
+```
 
 In this example, the response would read as “you’re [pause] five miles away…” - a big difference! A good text-to-speech (TTS) engine can handle decimals with correct period placement. To make this more conversational, change this to something like, “You’re half a mile away from the 3 mile marker.”
 
@@ -127,10 +141,12 @@ Here are some things to consider when writing error prompts:
 - Prompt users to either clarify or include additional information by repeating or paraphrasing all or part of their previous turn. For experienced or return users, this can be brief.
 - If after prompting your user no speech is detected, either reprompt the user or end the conversation. For example, Siri reprompts the user after 3 seconds with any number of liveliness indicators: “uh huh,” “I’m here,” “Yes?” etc.
 
-  RETURN USER: [Listening] “Pause my run”
-  MYRUNBUDDY: [Recording Run] “Pausing… Are you having a good run so far?”
-  RETURN USER: [Listening] “It’s a little rainy, but I’m feeling pretty good.”
-  MYRUNBUDDY: [Error] “Sorry, I didn’t quite understand what you said. Could you repeat that?”
+```none
+RETURN USER: [Listening] “Pause my run”
+MYRUNBUDDY: [Recording Run] “Pausing… Are you having a good run so far?”
+RETURN USER: [Listening] “It’s a little rainy, but I’m feeling pretty good.”
+MYRUNBUDDY: [Error] “Sorry, I didn’t quite understand what you said. Could you repeat that?”
+```
 
 In this example, the app added a question to make the app sound more human. When the user answered the question, the app failed to respond as this question wasn’t supported by a yes/no intent.
 

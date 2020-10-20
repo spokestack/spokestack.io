@@ -62,7 +62,7 @@ async function getRelated({ tags, slug, graphql }) {
   }
 }
 
-async function createAuthorPages({ author, tags, actions, graphql, template }) {
+async function createAuthorPages({ author, tags, actions, graphql }) {
   const { createPage } = actions
   const result = await graphql(`
     {
@@ -98,7 +98,7 @@ async function createAuthorPages({ author, tags, actions, graphql, template }) {
   Array.from({ length: numPages }).forEach((_, i) => {
     createPage({
       path: i === 0 ? url : `${url}/${i + 1}`,
-      component: template,
+      component: path.resolve('./src/templates/blog-list-author.tsx'),
       context: {
         author,
         currentPage: i + 1,
@@ -113,7 +113,7 @@ async function createAuthorPages({ author, tags, actions, graphql, template }) {
   })
 }
 
-async function createTagPages({ tag, tags, actions, graphql, template }) {
+async function createTagPages({ tag, tags, actions, graphql }) {
   const { createPage } = actions
   const result = await graphql(`
     {
@@ -147,7 +147,7 @@ async function createTagPages({ tag, tags, actions, graphql, template }) {
   Array.from({ length: numPages }).forEach((_, i) => {
     createPage({
       path: i === 0 ? url : `${url}/${i + 1}`,
-      component: template,
+      component: path.resolve('./src/templates/blog-list-tag.tsx'),
       context: {
         currentPage: i + 1,
         limit: postsPerPage,
@@ -266,8 +266,7 @@ exports.createPages = async ({ graphql, actions, reporter }) => {
       tag,
       tags,
       actions,
-      graphql,
-      template: path.resolve('./src/templates/blog-list-tag.tsx')
+      graphql
     })
   })
 
@@ -278,8 +277,7 @@ exports.createPages = async ({ graphql, actions, reporter }) => {
       author,
       tags,
       actions,
-      graphql,
-      template: path.resolve('./src/templates/blog-list-author.tsx')
+      graphql
     })
   })
 

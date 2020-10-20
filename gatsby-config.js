@@ -198,6 +198,14 @@ module.exports = {
       resolve: 'gatsby-transformer-remark',
       options: {
         plugins: [
+          {
+            resolve: 'gatsby-remark-find-replace',
+            options: {
+              replacements: {
+                VERSION: '1.0.0'
+              }
+            }
+          },
           'gatsby-remark-embed-video',
           {
             resolve: 'gatsby-remark-responsive-iframe',

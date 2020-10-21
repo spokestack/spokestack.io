@@ -70,10 +70,10 @@ const styles = {
   button: css`
     padding-left: 0 !important;
     padding-right: 20px !important;
-    margin-bottom: 20px;
-    flex-direction: column;
-    align-items: flex-start;
-    flex-wrap: wrap;
+    margin-bottom: 20px !important;
+    flex-direction: column !important;
+    align-items: flex-start !important;
+    flex-wrap: wrap !important;
   `,
   iconWrap: css`
     display: flex;

@@ -5,6 +5,10 @@ description: Understanding the Android NLU API
 draft: false
 ---
 
+**Note**: As of version 9.0.0, NLU is included in the turnkey `Spokestack` object. This guide is still valid as an in-depth introduction to the NLU module itself, but see [the configuration guide](turnkey-configuration) for more information about how it's integrated in newer versions of Spokestack.
+
+---
+
 This is a companion to the [NLU concept guide](/docs/Concepts/nlu), which discusses the NLU subsystem holistically. Here we'll talk about usage issues specific to the Android client library.
 
 ## Usage
@@ -13,11 +17,11 @@ As mentioned in the [Getting Started](getting-started) guide, initializing the S
 
 ```kotlin
 val nlu = TensorflowNLU.Builder()
-    .setProperty("nlu-model-path", "$cacheDir/nlu.tflite")
-    .setProperty("nlu-metadata-path", "$cacheDir/metadata.json")
-    .setProperty("wordpiece-vocab-path", "$cacheDir/vocab.txt")
-    .addTraceListener(this)
-    .build()
+  .setProperty("nlu-model-path", "$cacheDir/nlu.tflite")
+  .setProperty("nlu-metadata-path", "$cacheDir/metadata.json")
+  .setProperty("wordpiece-vocab-path", "$cacheDir/vocab.txt")
+  .addTraceListener(this)
+  .build()
 ```
 
 The configuration properties above refer to the three required files for the Spokestack NLU model you're using. They're stored at the root of the app's cache directory here for convenience.
@@ -30,17 +34,17 @@ An `AsyncResult` can be used in a synchronous context by calling its `get()` met
 
 ```kotlin
 GlobalScope.launch(Dispatchers.Default) {
-    // other background tasks
+  // other background tasks
 
-    nlu?.let {
-        val nluResult = it.classify(utterance).get()
+  nlu?.let {
+    val nluResult = it.classify(utterance).get()
 
-        // go back to the main context to update the UI
-        withContext(Dispatchers.Main) {
-            // nluResult.intent contains the user's intent
-            // nluResult.slots contains slots detected in the utterance
-        }
+    // go back to the main context to update the UI
+    withContext(Dispatchers.Main) {
+      // nluResult.intent contains the user's intent
+      // nluResult.slots contains slots detected in the utterance
     }
+  }
 }
 ```
 
@@ -51,14 +55,14 @@ Where `AsyncResult` differs from a vanilla `Future` is in its ability to notify 
 ```kotlin
 val asyncResult = nlu?.classify(utterance)
 asyncResult?.registerCallback(object : Callback<NLUResult> {
-    override fun call(nluResult: NLUResult?) {
-        runOnUiThread {
-            // update UI with nluResult
-        }
+  override fun call(nluResult: NLUResult?) {
+    runOnUiThread {
+      // update UI with nluResult
     }
+  }
 
-    override fun onError(err: Throwable?) {
-        // handle error
-    }
+  override fun onError(err: Throwable?) {
+    // handle error
+  }
 })
 ```

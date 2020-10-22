@@ -1,11 +1,11 @@
 import * as theme from '../styles/theme'
 
+import React, { useEffect, useState } from 'react'
 import { SerializedStyles, css } from '@emotion/core'
 import { isLoggedIn, logout } from '../utils/auth'
 
 import { Link } from 'gatsby'
 import { MIN_DEFAULT_MEDIA_QUERY } from 'typography-breakpoint-constants'
-import React from 'react'
 import NavDropdown from './NavDropdown'
 import SignInForm from './SignInForm'
 
@@ -22,53 +22,79 @@ export default function LoginButtons({
   extraCss,
   loginDropdown
 }: Props) {
+  const [loggedIn, setLoggedIn] = useState(false)
+  const style = [styles.loginButtons].concat(extraCss)
+  const classes = [className]
+  useEffect(() => {
+    setTimeout(() => {
+      setLoggedIn(isLoggedIn())
+    })
+  }, [])
+  if (loggedIn) {
+    classes.push('logged-in')
+  }
   return (
-    <div className={className} css={[styles.loginButtons].concat(extraCss)}>
-      {isLoggedIn() ? (
-        <>
+    <div className={classes.join(' ')} css={style}>
+      <div className="login-buttons--login">
+        {loginDropdown ? (
+          <NavDropdown title="Sign in" menuCss={styles.dropdown}>
+            <SignInForm extraCss={styles.loginForm} />
+          </NavDropdown>
+        ) : (
           <Link
-            to="/account"
+            to="/login"
             css={styles.loginLink}
-            partiallyActive
             activeStyle={{ display: 'none' }}>
-            Account
+            Sign in
           </Link>
-          <a className={`btn ${btnClassName || ''}`} onClick={() => logout()}>
-            Log out
-          </a>
-        </>
-      ) : (
-        <>
-          {loginDropdown ? (
-            <NavDropdown title="Sign in" menuCss={styles.dropdown}>
-              <SignInForm extraCss={styles.loginForm} />
-            </NavDropdown>
-          ) : (
-            <Link
-              to="/login"
-              css={styles.loginLink}
-              activeStyle={{ display: 'none' }}>
-              Sign in
-            </Link>
-          )}
-          <Link
-            className={`btn ${btnClassName || ''}`}
-            to="/create"
-            activeStyle={{ display: 'none' }}>
-            Sign up free
-          </Link>
-        </>
-      )}
+        )}
+        <Link
+          className={`btn ${btnClassName || ''}`}
+          to="/create"
+          activeStyle={{ display: 'none' }}>
+          Sign up free
+        </Link>
+      </div>
+      <div className="login-buttons--account">
+        <Link
+          to="/account"
+          partiallyActive
+          css={styles.loginLink}
+          activeStyle={{ display: 'none' }}>
+          Account
+        </Link>
+        <a className={`btn ${btnClassName || ''}`} onClick={() => logout()}>
+          Log out
+        </a>
+      </div>
     </div>
   )
 }
 
 const styles = {
   loginButtons: css`
-    display: flex;
-    flex-direction: row;
-    justify-content: center;
-    align-items: center;
+    .login-buttons--login,
+    .login-buttons--account {
+      flex-direction: row;
+      justify-content: center;
+      align-items: center;
+    }
+
+    .login-buttons--login {
+      display: flex;
+    }
+    .login-buttons--account {
+      display: none;
+    }
+
+    &.logged-in {
+      .login-buttons--login {
+        display: none;
+      }
+      .login-buttons--account {
+        display: flex;
+      }
+    }
   `,
   loginLink: css`
     font-weight: 400;

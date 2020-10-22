@@ -1,12 +1,12 @@
 import * as theme from '../../styles/theme'
 
 import { Account, ApiKey } from '../../types'
-import React, { useRef, useState } from 'react'
+import React, { useState } from 'react'
 
 import AccountCard from './AccountCard'
 import AccountLayout from './AccountLayout'
 import AddTokenForm from '../AddTokenForm'
-import { CopyButton } from '../EditButtons'
+import { CopyInputWithButton } from '../EditButtons'
 import { RouteComponentProps } from '@reach/router'
 import SVGIcon from '../SVGIcon'
 import Token from './Token'
@@ -48,7 +48,6 @@ interface RemoveKeyMutation {
 }
 
 export default function Settings({ account, location }: Props) {
-  const idRef = useRef<HTMLInputElement>(null)
   const [tokens, setTokens] = useState((account || {}).apiKeys || [])
   const [showForm, setShowForm] = useState(false)
   const [addToken, { loading: addTokenLoading }] = useMutation<
@@ -65,18 +64,9 @@ export default function Settings({ account, location }: Props) {
     <AccountLayout location={location}>
       <h2>Settings</h2>
       <AccountCard title="General" id="general">
-        <div css={styles.row}>
-          <label className="label" htmlFor={`account-${accountId}`}>
-            Project ID
-          </label>
-          <CopyButton title="Copy Account ID" inputRef={idRef} />
-        </div>
-        <input
-          ref={idRef}
-          readOnly
+        <CopyInputWithButton
           id={`account-${accountId}`}
-          type="text"
-          className="input"
+          title="Account ID"
           value={accountId}
         />
       </AccountCard>
@@ -136,12 +126,6 @@ export default function Settings({ account, location }: Props) {
 }
 
 const styles = {
-  row: css`
-    display: flex;
-    flex-direction: row;
-    justify-content: space-between;
-    align-items: center;
-  `,
   addLink: css`
     display: flex;
     flex-direction: row;

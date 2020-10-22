@@ -1,9 +1,9 @@
 import * as theme from '../styles/theme'
 
-import React, { useState } from 'react'
+import React, { useRef, useState } from 'react'
+import { SerializedStyles, css } from '@emotion/core'
 
 import SVGIcon from './SVGIcon'
-import { css } from '@emotion/core'
 
 interface CopyProps {
   inputRef: React.MutableRefObject<HTMLInputElement | HTMLTextAreaElement>
@@ -26,6 +26,41 @@ export function CopyButton({ inputRef, title }: CopyProps) {
     <a title={title} onClick={copy} css={styles.editButton}>
       <SVGIcon icon={copied ? '#checkmark' : '#copy'} extraCss={styles.icon} />
     </a>
+  )
+}
+
+interface CopyInputProps {
+  extraCss?: SerializedStyles | SerializedStyles[]
+  id: string
+  title: string
+  value: string
+}
+
+export function CopyInputWithButton({
+  extraCss,
+  id,
+  title,
+  value
+}: CopyInputProps) {
+  const inputRef = useRef<HTMLInputElement>(null)
+  return (
+    <div css={[styles.copyInput].concat(extraCss)}>
+      <div css={styles.row}>
+        <label className="label" htmlFor={id}>
+          {title}
+        </label>
+        <CopyButton title={`Copy ${title}`} inputRef={inputRef} />
+      </div>
+      <input
+        ref={inputRef}
+        readOnly
+        id={id}
+        type="text"
+        className="input"
+        onFocus={() => inputRef.current.select()}
+        value={value}
+      />
+    </div>
   )
 }
 
@@ -72,5 +107,15 @@ const styles = {
     fill: ${theme.primary};
     width: 20px;
     height: 20px;
+  `,
+  copyInput: css`
+    display: flex;
+    flex-direction: column;
+  `,
+  row: css`
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
   `
 }

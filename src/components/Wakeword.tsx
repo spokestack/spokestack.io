@@ -5,7 +5,7 @@ import { getWakeword, uploadWakeword } from '../utils/wakeword'
 
 import Button from './Button'
 import Card from './Card'
-import { CopyButton } from './EditButtons'
+import { CopyInputWithButton } from './EditButtons'
 import { MIN_DEFAULT_MEDIA_QUERY } from 'typography-breakpoint-constants'
 import SVGIcon from './SVGIcon'
 import WakewordCheckmark from './WakewordCheckmark'
@@ -35,7 +35,6 @@ interface State {
 }
 
 export default class Wakeword extends PureComponent<Props, State> {
-  private tokenRef = React.createRef<HTMLInputElement>()
   wakeword: string
 
   static defaultProps = {
@@ -165,19 +164,9 @@ export default class Wakeword extends PureComponent<Props, State> {
             {recorded >= numRecordings && token ? (
               <div css={styles.token}>
                 <p>The following token is proof of your recordings.</p>
-                <div css={styles.row}>
-                  <label className="label" htmlFor="wakeword-token">
-                    Response token
-                  </label>
-                  <CopyButton title="Copy Token" inputRef={this.tokenRef} />
-                </div>
-                <input
-                  ref={this.tokenRef}
-                  readOnly
+                <CopyInputWithButton
                   id="wakeword-token"
-                  type="text"
-                  className="input"
-                  onFocus={() => this.tokenRef.current.select()}
+                  title="Response token"
                   value={token}
                 />
               </div>
@@ -234,12 +223,6 @@ const styles = {
     width: 100%;
     display: flex;
     flex-direction: column;
-  `,
-  row: css`
-    display: flex;
-    flex-direction: row;
-    justify-content: space-between;
-    align-items: center;
   `,
   goAgainButton: css`
     margin-top: 20px;

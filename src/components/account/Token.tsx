@@ -1,6 +1,6 @@
 import * as theme from '../../styles/theme'
 
-import { CopyButton, DeleteButton } from '../EditButtons'
+import { CopyButton, CopyInputWithButton, DeleteButton } from '../EditButtons'
 import {
   MIN_DEFAULT_MEDIA_QUERY,
   MIN_MOBILE_MEDIA_QUERY,
@@ -18,7 +18,6 @@ interface Props {
 }
 
 export default function Token({ token, onDelete }: Props) {
-  const idRef = useRef<HTMLInputElement>(null)
   const secretRef = useRef<HTMLTextAreaElement>(null)
 
   return (
@@ -36,19 +35,10 @@ export default function Token({ token, onDelete }: Props) {
           </div>
           <DeleteButton title="Revoke key" onPress={() => onDelete(token)} />
         </div>
-        <div css={styles.row}>
-          <label className="label" htmlFor={`token-${token.id}`}>
-            Identity
-          </label>
-          <CopyButton title="Copy identity" inputRef={idRef} />
-        </div>
-        <input
-          ref={idRef}
-          readOnly
+        <CopyInputWithButton
           id={`token-${token.id}`}
-          type="text"
-          className="input"
           value={token.id}
+          title="Identity"
         />
       </div>
       <div css={styles.row}>

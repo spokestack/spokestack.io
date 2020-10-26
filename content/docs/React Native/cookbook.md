@@ -9,14 +9,12 @@ This is a collection of code snippets and brief descriptions designed to help yo
 
 ### Tap to talk
 
-When configuring Spokestack, ensure that you have settings that make sense for a button-activated ASR activation. A wakeword or VAD trigger, for example, would not make much sense since you'll be triggering ASR from a button.
+When configuring Spokestack, just use a Push to Talk profile, prefixed with `PTT`:
 
 ```javascript
-stages: [
-  'io.spokestack.spokestack.webrtc.VoiceActivityDetector', // voice activity detection
-  'io.spokestack.spokestack.ActivationTimeout', // speech recognition times out after a configurable interval when voice is no longer detected
-  'io.spokestack.spokestack.google.GoogleSpeechRecognizer'
-]
+  pipeline: {
+    'profile': Spokestack.PipelineProfile.PTT_NATIVE_ASR
+  }
 ```
 
 Then it's just a matter of calling `activate()` when a button is pushed!
@@ -39,28 +37,14 @@ To use the demo "Spokestack" wakeword, you'll need the demo TensorFlow Lite mode
 
 ```javascript
 Spokestack.initialize({
-  // provides audio input into the pipeline
-  input: 'io.spokestack.spokestack.android.MicrophoneInput',
-  stages: [
-    // voice activity detection
-    'io.spokestack.spokestack.webrtc.VoiceActivityDetector',
-    // speech recognition times out after a configurable interval when voice is no longer detected
-    'io.spokestack.spokestack.ActivationTimeout',
-    // wakeword activtation trigger
-    'io.spokestack.spokestack.wakeword.WakewordTrigger'
-  ],
-  properties: {
+  // omitting nlu and tts configuration for this example
+  pipeline: {
+    //'google-credentials': JSON.stringify(GoogleCredentials),
+    //'wakewords': 'marvin',
+    profile: Spokestack.PipelineProfile.TFLITE_WAKEWORD_NATIVE_ASR,
     'wake-filter-path': filterModelPath,
     'wake-detect-path': detectModelPath,
-    'wake-encode-path': encodeModelPath,
-    'ans-policy': 'aggressive',
-    'agc-target-level-dbfs': 3,
-    'agc-compression-gain-db': 15,
-    'vad-mode': 'very-aggressive',
-    'vad-fall-delay': 800,
-    'wake-threshold': 0.8,
-    'pre-emphasis': 0.97,
-    'trace-level': Spokestack.TraceLevel.DEBUG
+    'wake-encode-path': encodeModelPath
   }
 })
 

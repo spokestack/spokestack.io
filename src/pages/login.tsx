@@ -7,7 +7,7 @@ export default function createPage({ location }: PageRendererProps) {
   return (
     <Login header="Sign in using GitHub or Google" location={location}>
       <SEO
-        title="Sign In — Spokestack"
+        title="Sign In | Spokestack"
         description="Log in to Spokestack to access our voice assistant developer API, access our on-device NLU engine, see our library of TTS voices, get support, and more."
       />
     </Login>

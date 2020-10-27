@@ -11,7 +11,6 @@ import DarkModeButton from '../components/DarkModeButton'
 import Layout from '../components/Layout'
 import { MarkdownRemarkEdge } from '../utils/graphql'
 import React from 'react'
-import SEO from './SEO'
 import SVGIcon from '../components/SVGIcon'
 import Tags from '../components/Tags'
 import { WindowLocation } from '@reach/router'
@@ -59,15 +58,13 @@ export default function BlogList({
           }
         `}
       />
-      <SEO
-        title="Voice App Developer Blog — Spokestack"
-        description="The Spokestack blog shares articles for voice assistant and app creators and enthusiasts. See product updates and tips to build better voice experiences."
-      />
       <div className="blog-list ie-fix" css={[styles.container, extraCss]}>
         <div className="bg-banner" css={styles.bgBanner} />
         <section css={styles.blogContent}>
           <div className="sidenav" css={styles.sidenav}>
-            <Tags allUrl="/blog" header="Tags" tags={tags} />
+            {tags && !!tags.length && (
+              <Tags allUrl="/blog" header="Tags" tags={tags} />
+            )}
           </div>
           <div css={styles.content}>
             {header ? (

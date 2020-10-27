@@ -9,6 +9,7 @@ import { MIN_DEFAULT_MEDIA_QUERY } from 'typography-breakpoint-constants'
 import { PageContext } from '../types'
 import { Query } from '../utils/graphql'
 import React from 'react'
+import SEO from '../components/SEO'
 import SocialLink from '../components/SocialLink'
 import find from 'lodash/find'
 
@@ -39,6 +40,10 @@ export default function BlogListAuthorTemplate({
             }
           }
         `}
+      />
+      <SEO
+        title="Voice App Developer Blog | Spokestack"
+        description="The Spokestack blog shares articles for voice assistant and app creators and enthusiasts. See product updates and tips to build better voice experiences."
       />
       <BlogList
         currentPage={currentPage}

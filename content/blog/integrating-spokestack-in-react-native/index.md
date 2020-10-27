@@ -157,7 +157,7 @@ android {
 
 ## Usage
 
-The [react-native-spokestack-tray example app](https://github.com/spokestack/react-native-spokestack-tray/tree/develop/example) uses the "Spokestack" wakeword and [sample Minecraft NLU models](https://www.spokestack.io/blog/porting-the-alexa-minecraft-skill-to-ios-using-spokestack).
+The [react-native-spokestack-tray example app](https://github.com/spokestack/react-native-spokestack-tray/tree/develop/example) uses the "Spokestack" wakeword and [sample Minecraft NLU models](/blog/porting-the-alexa-minecraft-skill-to-ios-using-spokestack).
 
 In this example, the following code is used to add the `<SpokestackTray />` component:
 

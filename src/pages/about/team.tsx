@@ -10,7 +10,7 @@ export default function Team({ location }: PageRendererProps) {
   return (
     <AboutLayout location={location}>
       <SEO
-        title="Team — Spokestack"
+        title="Team | Spokestack"
         description="From our CEO and CTO to Engineering to UX &amp; Product Design, we've built a robust and experienced text to speech development team at Spokestack. Meet us."
       />
       <h1 css={styles.header}>Team</h1>

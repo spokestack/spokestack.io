@@ -4,10 +4,18 @@ import BlogList from '../components/BlogList'
 import { PageContext } from '../types'
 import { Query } from '../utils/graphql'
 import React from 'react'
+import SEO from '../components/SEO'
 
 type Props = PageRendererProps & {
   data: Query
   pageContext: PageContext
+}
+
+const descriptions = {
+  tags:
+    'The Spokestack blog shares articles for voice assistant and app creators and enthusiasts. See product updates and tips to build better voice experiences.',
+  tutorials:
+    'Learn from Spokestack developers, app creators, and enthusiasts and build your own independent voice assistant.'
 }
 
 export default function BlogListTagTemplate({
@@ -15,18 +23,29 @@ export default function BlogListTagTemplate({
   location,
   pageContext: { currentPage, numPages, slug, tag, tags, total }
 }: Props) {
+  const isTutorial = tag === 'Tutorial'
   const posts = data.allMarkdownRemark.edges
-  const longTitle = `${total} articles tagged with "${tag}"`
+  const longTitle = isTutorial
+    ? 'Tutorials'
+    : `${total} articles tagged with "${tag}"`
   return (
-    <BlogList
-      currentPage={currentPage}
-      homeUrl={slug}
-      location={location}
-      numPages={numPages}
-      posts={posts}
-      tags={tags}
-      title={longTitle}
-    />
+    <>
+      <SEO
+        title={`Voice App Developer ${
+          isTutorial ? 'Tutorials' : 'Blog'
+        } | Spokestack`}
+        description={isTutorial ? descriptions.tutorials : descriptions.tags}
+      />
+      <BlogList
+        currentPage={currentPage}
+        homeUrl={slug}
+        location={location}
+        numPages={numPages}
+        posts={posts}
+        tags={tags}
+        title={longTitle}
+      />
+    </>
   )
 }
 

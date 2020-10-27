@@ -19,7 +19,7 @@ export default function Support({ data, location }: Props) {
   return (
     <Layout location={location}>
       <SEO
-        title="Text to Speech Voice Integration Support — Spokestack"
+        title="Text to Speech Voice Integration Support | Spokestack"
         description="We offer multiple support channels that best suit your text to speech topic or voice product. Choose from GitHub, Twitter, Stack Overflow, or our Forum."
       />
       <div css={styles.container}>

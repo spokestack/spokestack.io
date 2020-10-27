@@ -7,7 +7,7 @@ author: elizabeth
 draft: false
 ---
 
-At Spokestack, we use [experience mapping](https://spokestack.io/docs/Design/map-out-integration) as a tool to formulate multimodal flows for our products based on [researched observations and ideas](https://spokestack.io/blog/user-research-for-voice-experiences). It’s a great way to get everyone on the same page before designing or building anything. Plus, it forces us to consider _what_ exactly we want users to ask and _how_ we’ll respond, both conversationally and visually. When our team committed to being 100% distributed over two years ago, I wanted to recreate this exercise digitally. What I came up with follows many of the same steps outlined in our [design docs](https://spokestack.io/docs/Design/getting-started). However, the tools and set-up are a bit different. Here are a few considerations to keep in mind when adopting this exercise.
+At Spokestack, we use [experience mapping](/docs/Design/map-out-integration) as a tool to formulate multimodal flows for our products based on [researched observations and ideas](/blog/user-research-for-voice-experiences). It’s a great way to get everyone on the same page before designing or building anything. Plus, it forces us to consider _what_ exactly we want users to ask and _how_ we’ll respond, both conversationally and visually. When our team committed to being 100% distributed over two years ago, I wanted to recreate this exercise digitally. What I came up with follows many of the same steps outlined in our [design docs](/docs/Design/getting-started). However, the tools and set-up are a bit different. Here are a few considerations to keep in mind when adopting this exercise.
 
 ## Tools We Use
 
@@ -37,4 +37,4 @@ These are equally great if not more so for complex maps that capture lots of act
 
 > Not sure where to start? Here’s a [template](https://docs.google.com/spreadsheets/d/1epKA1i_2Cbb8sCEnV_D1mHl4VHfdJhY7-EXZGIrPjbM/edit?usp=sharing) using Google Sheets to get you started. Make sure to duplicate this document before making any changes.
 
-For more tips on designing multimodal voice experiences, visit the [design](https://spokestack.io/docs/Design/getting-started) section of our documentation.
+For more tips on designing multimodal voice experiences, visit the [design](/docs/Design/getting-started) section of our documentation.

@@ -5,7 +5,7 @@ import { getDarkModePref } from './src/utils/auth'
 
 export { default as wrapRootElement } from './src/apollo/wrapRootElement'
 
-const rdark = /^\/(?:docs|blog)/
+const rdark = /^\/(?:docs|blog|tutorials)/
 
 export const onClientEntry = () => {
   // IntersectionObserver polyfill for gatsby-background-image (Safari, IE)

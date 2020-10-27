@@ -17,12 +17,12 @@ Like so many in the voice community, we're big fans of the [Jovo Framework](http
 
 Starting today, Jovo developers can take the following steps to begin building mobile voice experiences based on their Jovo interaction model with Spokestack:
 
-- Create a Spokestack account to gain access to a Spokestack API key: [https://spokestack.io/create](https://spokestack.io/create).
+- Create a Spokestack account to gain access to a Spokestack API key: [https://spokestack.io/create](/create).
 - Add your Spokestack API key and secret to your Jovo project's configuration file.
 - Run the `jovo build` command to create a `platforms/spokestack` directory.
 - Run the `jovo deploy` command to upload your model to Spokestack.
-- Spokestack will then train the imported model for use with Spokestack's [embedded NLU solutions for iOS, Android, and React Native](https://spokestack.io/docs).
-- From there, developers can either follow our [port a smart speaker app to mobile tutorials](https://spokestack.io/blog/tag/tutorial) or build whatever mobile voice experience they have in their heads!
+- Spokestack will then train the imported model for use with Spokestack's [embedded NLU solutions for iOS, Android, and React Native](/docs).
+- From there, developers can either follow our [port a smart speaker app to mobile tutorials](/tutorials) or build whatever mobile voice experience they have in their heads!
 
 ## Why would I import my Jovo model to Spokestack?
 
@@ -34,9 +34,9 @@ We take the interaction model that powers your conversation on smart speakers an
 
 We realize that the barrier to building conversations on mobile is lacking the skills to build apps that work on iOS and Android. Sometimes it's thinking through how voice would work on mobile. We've tried to address both issues.
 
-On iOS, we have [Spokestack Studio](https://apps.apple.com/us/app/spokestack-studio/id1508393980), which was built to show developers exactly how wakewords, speech recognition, text-to-speech, and intent classification work on mobile. It even includes a port of the [Alexa Minecraft Helper](https://spokestack.io/blog/porting-the-alexa-minecraft-skill-to-ios-using-spokestack) skill to iOS.
+On iOS, we have [Spokestack Studio](https://apps.apple.com/us/app/spokestack-studio/id1508393980), which was built to show developers exactly how wakewords, speech recognition, text-to-speech, and intent classification work on mobile. It even includes a port of the [Alexa Minecraft Helper](/blog/porting-the-alexa-minecraft-skill-to-ios-using-spokestack) skill to iOS.
 
-Spokestack Studio isn't available for Android yet, but Spokestack does work on Android. We have another tutorial for [porting an Alexa Skill to Android](https://spokestack.io/blog/porting-the-alexa-minecraft-skill-to-android-using-spokestack) that walks you step-by-step from Alexa skill to Android app. After going through our tutorial, you should be able to port your smart speaker skill to the mobile platform of your choice.
+Spokestack Studio isn't available for Android yet, but Spokestack does work on Android. We have another tutorial for [porting an Alexa Skill to Android](/blog/porting-the-alexa-minecraft-skill-to-android-using-spokestack) that walks you step-by-step from Alexa skill to Android app. After going through our tutorial, you should be able to port your smart speaker skill to the mobile platform of your choice.
 
 ## The future with Jovo
 

@@ -288,7 +288,7 @@ OK, that was a lot to cover, but we are almost to the finish line. In the next s
 
 ## Text to Speech (TTS)
 
-Much like the name suggests, [TTS](https://www.spokestack.io/docs/Concepts/tts) translates written text into its spoken form with a synthetic voice. This tutorial assumes you are using our default voice, but if you have a paid plan you can replace `demo-male` with the name of a custom voice. To initialize the [TTSClient](https://github.com/spokestack/spokestack-python/blob/4009a9d8b61cd4375886c66ca0d4a87d99e12153/spokestack/tts/clients/spokestack.py#L20), you simply do the following:
+Much like the name suggests, [TTS](/docs/Concepts/tts) translates written text into its spoken form with a synthetic voice. This tutorial assumes you are using our default voice, but if you have a paid plan you can replace `demo-male` with the name of a custom voice. To initialize the [TTSClient](https://github.com/spokestack/spokestack-python/blob/4009a9d8b61cd4375886c66ca0d4a87d99e12153/spokestack/tts/clients/spokestack.py#L20), you simply do the following:
 
 **Note:** This is another part where you will need your Spokestack API keys. However, notice that the URL for TTS is slightly different than for ASR.
 

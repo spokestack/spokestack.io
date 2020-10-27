@@ -7,7 +7,7 @@ draft: false
 
 Human-to-human conversation is second nature. Talking to a voice assistant on the other hand doesn’t seem natural, yet is becoming more common. At Spokestack, we support user-initiated, call and response exchanges (often referred to as [system-centric](https://books.google.com/books?id=sxidDwAAQBAJ&pg=PA288&lpg=PA288&dq=system-centric+interaction+conversational+ux&source=bl&ots=GpWt-8ZIjQ&sig=ACfU3U37Qow3LDDcUTf92htxoFYb0pQt7A&hl=en&sa=X&ved=2ahUKEwi_hqvCsovpAhUHWN8KHR0CCDwQ6AEwBnoECAsQAQ#v=onepage&q=system-centric%20interaction%20conversational%20ux&f=false) interactions). These are conducive to voice control and information retrieval.
 
-Below are some ground rules to keep in mind while [writing](https://spokestack.io/docs/Design/script-storyboard-responses) system-centric dialog. These draw from industry standards found in user experience (UX) design, conversational user experience (CUX) design, and conversational analysis (CA) as well as from our own professional experiences. You might recognize some of these from Ben Schneiderman’s [_The Eight Golden Rules of Interface Design_](https://www.cs.umd.edu/users/ben/goldenrules.html) and Paul Grice’s [_Cooperative Principle_](https://en.wikipedia.org/wiki/Cooperative_principle).
+Below are some ground rules to keep in mind while [writing](/docs/Design/script-storyboard-responses) system-centric dialog. These draw from industry standards found in user experience (UX) design, conversational user experience (CUX) design, and conversational analysis (CA) as well as from our own professional experiences. You might recognize some of these from Ben Schneiderman’s [_The Eight Golden Rules of Interface Design_](https://www.cs.umd.edu/users/ben/goldenrules.html) and Paul Grice’s [_Cooperative Principle_](https://en.wikipedia.org/wiki/Cooperative_principle).
 
 ## Start with a greeting
 
@@ -24,7 +24,7 @@ It’s important to craft prompts that are brief, clear, and transparent. Here a
 - Be direct and avoid leading with with an open-ended prompt \*\*\*\*unless the type of feedback you’re looking for warrants it.
 - Provide an example utterance in your instructions. Revealing how to phrase one intent might clue users in on how to say other similar intents.
 
-Here’s an example. As a thought example, imagine you’re working on a fitness tracking app, MyRunBuddy. Information contained in [square brackets] communicates corresponding [visuals](https://spokestack.io/docs/Design/tips-for-designing-visual-output):
+Here’s an example. As a thought example, imagine you’re working on a fitness tracking app, MyRunBuddy. Information contained in [square brackets] communicates corresponding [visuals](/docs/Design/tips-for-designing-visual-output):
 
 ```none
 NEW USER: “Hey Siri, open MyRunBuddy.”
@@ -53,7 +53,7 @@ If designed correctly, users shouldn’t have to to learn how to speak to your a
 When educating new and return users of what they can say, continue to remain brief, clear, and transparent. To do this, consider the following:
 
 - Don’t introduce more than three intents at a time. Providing too many options can impede understanding.
-- Avoid reading long lists such as menu options and [display these items visually](https://spokestack.io/docs/Design/tips-for-designing-visual-output) instead.
+- Avoid reading long lists such as menu options and [display these items visually](/docs/Design/tips-for-designing-visual-output) instead.
 - Say the most important intent (your call to action) either first or last ([golden rule #8:](https://www.cs.umd.edu/users/ben/goldenrules.html) “reduce short-term memory load”). This will help users remember what they can ask, even when unprompted.
 - Be consistent with noun and verbs tenses, especially with lists.
 
@@ -77,7 +77,7 @@ RETURN USER: [Listening] “MyRunBuddy, start a run.”
 MYRUNBUDDY: [Confirmation + Recording Run] “Starting…”
 ```
 
-Since this user has recored a run before using their voice, a follow-up confirmation isn’t required. We’ll [show you examples](https://spokestack.io/docs/Design/tips-for-designing-visual-output) of visuals you might want to include along with aural confirmations later.
+Since this user has recored a run before using their voice, a follow-up confirmation isn’t required. We’ll [show you examples](/docs/Design/tips-for-designing-visual-output) of visuals you might want to include along with aural confirmations later.
 
 #### Use sounds such as “earcons” or “liveliness indicators”
 
@@ -100,7 +100,7 @@ In this example, the app misheard the user’s `stop` intent for `start`. The ap
 
 ## Consider how a user provided input & respond in kind
 
-Voice input for complex queries is faster and more convenient, especially for users who are multitasking. And yet, the average person can read faster than they can listen. Respect your users’ time. It’s not necessary to respond with the same amount of information you would for a smart speaker skill. A well-crafted response will increase re-engagement. Consider whether a voice response, a [visual response](https://spokestack.io/docs/Design/tips-for-designing-visual-output), or both is appropriate and be consistent with which mode you use ([golden rule #1:](https://www.cs.umd.edu/users/ben/goldenrules.html) “strive for consistency”). For example, if a user used their voice, a brief voice response might make the most sense.
+Voice input for complex queries is faster and more convenient, especially for users who are multitasking. And yet, the average person can read faster than they can listen. Respect your users’ time. It’s not necessary to respond with the same amount of information you would for a smart speaker skill. A well-crafted response will increase re-engagement. Consider whether a voice response, a [visual response](/docs/Design/tips-for-designing-visual-output), or both is appropriate and be consistent with which mode you use ([golden rule #1:](https://www.cs.umd.edu/users/ben/goldenrules.html) “strive for consistency”). For example, if a user used their voice, a brief voice response might make the most sense.
 
 Here are a few other considerations:
 

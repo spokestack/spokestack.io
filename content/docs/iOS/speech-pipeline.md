@@ -44,7 +44,7 @@ When active, audio frames are not processed on-device but are instead sent to an
 Spokestack offers several pre-built "profiles" that bundle stage classes and in some cases configuration properties tuned to support different app configurations. See the [API reference](https://spokestack.github.io/spokestack-ios/Classes/SpeechPipeline.html) for for a complete listing, but here's a brief summary:
 
 - Profiles whose names begin with `vadTrigger` send any detected speech straight to the chosen speech recognizer.
-- `Wakeword` profiles use either [TensorFlow Lite](https://www.tensorflow.org/lite) or an ASR-filtered wakeword triggered pipeline activation. [See an explainer](https://spokestack.io/blog/choosing-the-right-ios-wakeword-service) for how to choose between wakeword profiles.
+- `Wakeword` profiles use either [TensorFlow Lite](https://www.tensorflow.org/lite) or an ASR-filtered wakeword triggered pipeline activation. [See an explainer](/blog/choosing-the-right-ios-wakeword-service) for how to choose between wakeword profiles.
 - `pushToTalk` profiles have no automatic triggering; the pipeline's `activate` method must be called to perform speech recognition.
 
 Profiles take care of all configuration that can be managed in a one-size-fits-all fashion. For example, note the paths to the wakeword models in the example above. Some components require additional configuration, such as third-party API keys, paths to TensorFlow models, or the `DispatchQueue` for sending events that are received on the UI thread.

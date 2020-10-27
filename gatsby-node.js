@@ -143,7 +143,10 @@ async function createTagPages({ tag, tags, actions, graphql }) {
   }
   const posts = result.data.allMarkdownRemark.edges
   const numPages = Math.ceil(posts.length / postsPerPage)
-  const url = `/blog/tag/${tag.toLowerCase().replace(rspaces, '-')}`
+  const url =
+    tag === 'Tutorial'
+      ? '/tutorials'
+      : `/blog/tag/${tag.toLowerCase().replace(rspaces, '-')}`
   Array.from({ length: numPages }).forEach((_, i) => {
     createPage({
       path: i === 0 ? url : `${url}/${i + 1}`,
@@ -155,7 +158,7 @@ async function createTagPages({ tag, tags, actions, graphql }) {
         skip: i * postsPerPage,
         slug: url,
         tag,
-        tags,
+        tags: tag === 'Tutorial' ? [] : tags,
         total: posts.length
       }
     })

@@ -11,7 +11,7 @@ Over the last three years, I’ve worked on designing voice and chat conversatio
 
 ## "What can I help you with?"
 
-If you’ve ever said “Hey Siri” to an iOS device, you're likely familiar with the assistant’s opening screen. “What can I help you with?” can be intimidating. You might not be sure what or how Siri can help you, if at all. Siri serves a broad audience (every iPhone user in the world) and an even broader domain of knowledge similar to a search query, which can be overwhelming. [Independent Voice Assistants](https://spokestack.io/blog/what-is-an-independent-voice-assistant) (IVA) serve a more limited domain of knowledge. The actions a user can take, or “intents,” focus on specific tasks in your app like buying movie tickets, recording a run, or finding a cocktail recipe.
+If you’ve ever said “Hey Siri” to an iOS device, you're likely familiar with the assistant’s opening screen. “What can I help you with?” can be intimidating. You might not be sure what or how Siri can help you, if at all. Siri serves a broad audience (every iPhone user in the world) and an even broader domain of knowledge similar to a search query, which can be overwhelming. [Independent Voice Assistants](/blog/what-is-an-independent-voice-assistant) (IVA) serve a more limited domain of knowledge. The actions a user can take, or “intents,” focus on specific tasks in your app like buying movie tickets, recording a run, or finding a cocktail recipe.
 
 With fewer intents, your assistant can provide a better experience without having to know how to respond if a user asks something unrelated like “How many miles to the moon?” But, what intents _do_ \*\*your users care about? To answer that question, you need to start by understanding who you’re building for. Even if you already have an idea of who your target audience is, adding a voice assistant to your mobile app may shift your product’s reach.
 
@@ -70,4 +70,4 @@ After the interview, I like to use recording to document takeaways by doing the 
 
 Don’t forget to re-visit this discussion as needed throughout the design process, especially when testing a product’s usability, to determine if what you’re building remains relevant to your intended audience. In further posts, I will show you how to take this research and turn it into a great voice user experience.
 
-For more help designing independent voice assistants, visit the [design](https://spokestack.io/docs/Design/getting-started) section of our documentation.
+For more help designing independent voice assistants, visit the [design](/docs/Design/getting-started) section of our documentation.

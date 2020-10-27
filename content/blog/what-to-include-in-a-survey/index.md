@@ -7,7 +7,7 @@ author: elizabeth
 draft: false
 ---
 
-Recruiting folks to test your Voice User Interface (VUI) or [give insights on a concept](https://spokestack.io/blog/user-research-for-voice-experiences) is no easy task. Finding candidates in your target demographic takes time and prowess. You need to know where your users are in order to reach them in the first place. Relying on your network is a great way to quickly get feedback. However, even with old acquaintances, I’ve found myself (maybe not wanting to, but) needing a tool to capture basic demographic information. For this, I recommend using a survey.
+Recruiting folks to test your Voice User Interface (VUI) or [give insights on a concept](/blog/user-research-for-voice-experiences) is no easy task. Finding candidates in your target demographic takes time and prowess. You need to know where your users are in order to reach them in the first place. Relying on your network is a great way to quickly get feedback. However, even with old acquaintances, I’ve found myself (maybe not wanting to, but) needing a tool to capture basic demographic information. For this, I recommend using a survey.
 
 ## Really…you want me to use a survey?
 
@@ -30,4 +30,4 @@ Decide what information is most critical to your research. Understand how your a
 
 Limit open-ended feedback. You’ll be able to further probe for detail when conducting user interviews. Draft your survey and get feedback from those you trust. Here’s a [sample survey](https://docs.google.com/forms/d/1faU7-M5zxTLjpTrweklUl1AELeaKsPMzcY7ipENxL60/edit) I created to get you started.
 
-For more help designing independent voice assistants, visit the [design](https://spokestack.io/docs/Design/getting-started) section of our design documentation.
+For more help designing independent voice assistants, visit the [design](/docs/Design/getting-started) section of our design documentation.

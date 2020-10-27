@@ -13,7 +13,7 @@ This guide details the process of exporting an existing interaction model from A
 
 2. Copy the contents of your [Interaction Model](https://developer.amazon.com/en-US/docs/alexa/custom-skills/create-the-interaction-model-for-your-skill.html) from the JSON Editor into a file named `{skill_name}.json`.
 
-3. Upload `{skill_name}.json` to the [Spokestack Console](https://spokestack.io/account/services/nlu)
+3. Upload `{skill_name}.json` to the [Spokestack Console](/account/services/nlu)
 
 ## Dialogflow
 
@@ -27,7 +27,7 @@ This guide details the process of exporting an existing interaction model from A
 
 5. Select `Export as zip` and save the `.zip` file.
 
-6. Upload the `.zip` file to the [Spokestack Console](https://spokestack.io/account/services/nlu)
+6. Upload the `.zip` file to the [Spokestack Console](/account/services/nlu)
 
 ## Jovo
 

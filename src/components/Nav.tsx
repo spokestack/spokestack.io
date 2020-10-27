@@ -22,7 +22,7 @@ interface Props {
   location: WindowLocation
 }
 
-export default function Nav({ extraCss, location }: Props) {
+export default function Nav({ extraCss }: Props) {
   const [mobileOpen, setMobileOpen] = useState(false)
   const contentStyles = [styles.navContent]
   if (mobileOpen) {
@@ -97,7 +97,7 @@ export default function Nav({ extraCss, location }: Props) {
                   />
                   <NavLinkDropdown
                     extraCss={styles.navLinkDropdown}
-                    href="/blog/tag/tutorial"
+                    href="/tutorials"
                     title="Tutorials"
                     imageUrl="/navigation/tutorials.svg"
                     text="Step-by-step instructions to build real-world products"
@@ -105,11 +105,10 @@ export default function Nav({ extraCss, location }: Props) {
                   <NavLinkDropdown
                     extraCss={styles.navLinkDropdown}
                     href="/blog"
-                    partiallyActive={location.pathname !== '/blog/tag/tutorial'}
+                    partiallyActive
                     title="Blog"
                     imageUrl="/navigation/blog.svg"
-                    text="How-to articles on creating voice assistants from our
-                    team"
+                    text="How-to articles on creating voice assistants from our team"
                   />
                 </div>
                 <div css={styles.dropdownColumn}>
@@ -117,8 +116,7 @@ export default function Nav({ extraCss, location }: Props) {
                     extraCss={styles.navLinkDropdown}
                     title="Libraries"
                     imageUrl="/navigation/libraries.svg"
-                    text="Build a voice-enabled app using one of our open source
-                    libraries:">
+                    text="Build a voice-enabled app using one of our open source libraries:">
                     <Libraries />
                   </NavLinkDropdown>
                 </div>

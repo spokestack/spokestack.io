@@ -41,7 +41,7 @@ Export to Independence is a community contest to see who can best port a smart s
 
 ### Support
 
-- [Tutorials](/blog/tag/tutorial)
+- [Tutorials](/tutorials)
 - [Documentation](/docs)
 - [Community Forum](https://forum.spokestack.io/)
 - Live Video Workshops: Dates to be announced

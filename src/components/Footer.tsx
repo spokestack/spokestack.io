@@ -64,9 +64,9 @@ export default function Footer() {
           <Link css={styles.footerLink} to="/docs">
             Developer Docs
           </Link>
-          {/* <a css={styles.footerLink} href="/blog/tag/tutorial">
+          <a css={styles.footerLink} href="/tutorials">
             Tutorials
-          </a> */}
+          </a>
           <Link css={styles.footerLink} to="/blog">
             Blog
           </Link>

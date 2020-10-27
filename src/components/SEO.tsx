@@ -48,11 +48,7 @@ export default function SEO({
         lang
       }}
       title={title}
-      titleTemplate={
-        site.siteMetadata.title === title
-          ? `%s`
-          : `${site.siteMetadata.title} | %s`
-      }
+      titleTemplate="%s"
       meta={[
         {
           name: 'description',

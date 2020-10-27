@@ -19,11 +19,11 @@ By default, the `Spokestack` class uses the `TFWakewordAndroidASR` profile, whic
 
 ```kotlin
 val spokestack = Spokestack.Builder()
-    .setProperty("wake-detect-path", "path-to-detect.tflite")
-    .setProperty("wake-encode-path", "path-to-encode.tflite")
-    .setProperty("wake-filter-path", "path-to-filter.tflite")
-    // ...
-    .build()
+  .setProperty("wake-detect-path", "path-to-detect.tflite")
+  .setProperty("wake-encode-path", "path-to-encode.tflite")
+  .setProperty("wake-filter-path", "path-to-filter.tflite")
+  // ...
+  .build()
 ```
 
 Wakeword models that respond to the "Spokestack" wakeword can be found here: [detect](https://d3dmqd7cy685il.cloudfront.net/model/wake/spokestack/detect.tflite) | [encode](https://d3dmqd7cy685il.cloudfront.net/model/wake/spokestack/encode.tflite) | [filter](https://d3dmqd7cy685il.cloudfront.net/model/wake/spokestack/filter.tflite)
@@ -40,11 +40,11 @@ Once a user's speech has been transcribed, it's useful to know what to _do_ with
 
 ```kotlin
 val spokestack = Spokestack.Builder()
-    .setProperty("nlu-model-path", "path-to-nlu.tflite")
-    .setProperty("nlu-metadata-path", "path-to-metadata.json")
-    .setProperty("wordpiece-vocab-path", "path-to-vocab.txt")
-    // ...
-    .build()
+  .setProperty("nlu-model-path", "path-to-nlu.tflite")
+  .setProperty("nlu-metadata-path", "path-to-metadata.json")
+  .setProperty("wordpiece-vocab-path", "path-to-vocab.txt")
+  // ...
+  .build()
 ```
 
 Once configured, all ASR transcripts will automatically be sent through NLU; see [Receiving events](#receiving-events) below for information on how to see the results.
@@ -55,9 +55,9 @@ Errors like this can cause cascading problems in processing user requests, so `S
 
 ```kotlin
 val spokestack = Spokestack.Builder()
-    .withTranscriptEditor(myEditor)
-    // ...
-    .build()
+  .withTranscriptEditor(myEditor)
+  // ...
+  .build()
 ```
 
 With that in place, every final ASR transcript will be sent through `myEditor.edit()` before being sent to NLU. Any listeners receiving speech events can access the unedited transcript via `RECOGNIZE` events, but NLU results will contain the edited version in the `utterance` field.
@@ -75,15 +75,12 @@ Once your app has processed the user's request, you'll likely want to respond vi
 
 ```kotlin
 val spokestack = Spokestack.Builder()
-    .setProperty("spokestack-id", "f0bc990c-e9db-4a0c-a2b1-6a6395a3d97e")
-    .setProperty(
-        "spokestack-secret",
-        "5BD5483F573D691A15CFA493C1782F451D4BD666E39A9E7B2EBE287E6A72C6B6"
-    )
-    .withAndroidContext(applicationContext)
-    .withLifecycle(lifecycle)
-    // ...
-    .build()
+  .setProperty("spokestack-id", "your-client-id")
+  .setProperty("spokestack-secret", "your-secret-key")
+  .withAndroidContext(applicationContext)
+  .withLifecycle(lifecycle)
+  // ...
+  .build()
 ```
 
 With TTS enabled, you can use `Spokestack`'s `synthesize()` method to respond to your users. Spokestack uses [ExoPlayer](https://exoplayer.dev/) to play back synthesized audio. If you'd rather manage playback yourself, call `withoutAutoPlayback()` on the builder and see the next section for information on handling TTS events.

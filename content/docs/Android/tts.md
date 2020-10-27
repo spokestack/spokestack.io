@@ -5,6 +5,10 @@ description: Documentation for Spokestack's Android TTS subsystem.
 draft: false
 ---
 
+**Note**: As of version 9.0.0, TTS is included in the turnkey `Spokestack` object. This guide is still valid as an in-depth introduction to the TTS module itself, but see [the configuration guide](turnkey-configuration) for more information about how it's integrated in newer versions of Spokestack.
+
+---
+
 Text-to-speech is a broad topic, but as far as Spokestack is concerned, there are two things your app has to handle: sending text or SSML to be synthesized, and playing the resulting audio for your users. This guide will cover both.
 
 ## Generating the audio
@@ -19,12 +23,11 @@ private var tts: TTSManager? = null
 // ...
 
 tts = TTSManager.Builder()
-    .setTTSServiceClass("io.spokestack.spokestack.tts.SpokestackTTSService")
-    .setProperty("spokestack-id", "f0bc990c-e9db-4a0c-a2b1-6a6395a3d97e")
-    .setProperty("spokestack-secret",
-                 "5BD5483F573D691A15CFA493C1782F451D4BD666E39A9E7B2EBE287E6A72C6B6")
-    .addTTSListener(this)
-    .build()
+  .setTTSServiceClass("io.spokestack.spokestack.tts.SpokestackTTSService")
+  .setProperty("spokestack-id", "your-client-id")
+  .setProperty("spokestack-secret", "your-secret-key")
+  .addTTSListener(this)
+  .build()
 ```
 
 In this example, `spokestack-id` and `spokestack-secret` are set to sample values that let you try Spokestack TTS without creating an account. [Create an account](/create) or [sign in](/login) to get your own free API credentials.
@@ -78,11 +81,11 @@ To use the built-in audio player to manage TTS responses, add the following to y
 
 ```kotlin
 tts = TTSManager.Builder()
-    // ...
-    .setOutputClass("io.spokestack.spokestack.tts.SpokestackTTSOutput")
-    .setAndroidContext(applicationContext)
-    .setLifecycle(lifecycle)
-    .build()
+  // ...
+  .setOutputClass("io.spokestack.spokestack.tts.SpokestackTTSOutput")
+  .setAndroidContext(applicationContext)
+  .setLifecycle(lifecycle)
+  .build()
 ```
 
 `SpokestackTTSOutput` is [lifecycle-aware](https://developer.android.com/topic/libraries/architecture/lifecycle.html), so it deals with releasing system resources automatically based on lifecycle events such as screen rotations, activity transitions, etc.
@@ -92,10 +95,10 @@ Handling the media player is _most_ of the work, but as you may have guessed, th
 ```kotlin
 class MyActivity : AppCompatActivity() {
 
-    // tts is a TTSManager established elsewhere
-    override fun onResume(){
-        tts.registerLifecycle(lifecycle)
-    }
+  // tts is a TTSManager established elsewhere
+  override fun onResume(){
+    tts.registerLifecycle(lifecycle)
+  }
 }
 ```
 

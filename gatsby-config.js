@@ -202,7 +202,7 @@ module.exports = {
             resolve: 'gatsby-remark-find-replace',
             options: {
               replacements: {
-                VERSION: '1.0.0'
+                ANDROID_VERSION: '9.1.0'
               }
             }
           },

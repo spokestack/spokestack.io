@@ -5,6 +5,10 @@ description: Documentation for the SpeechPipeline class in Android
 draft: false
 ---
 
+**Note**: As of version 9.0.0, the speech pipeline is included in the turnkey `Spokestack` object. This guide is still valid as an in-depth introduction to the pipeline module itself, but see [the configuration guide](turnkey-configuration) for more information about how it's integrated in newer versions of Spokestack.
+
+---
+
 If you've read any of our other documentation, you know that the speech pipeline is the main way you interact with Spokestack's speech recognition and wakeword. This guide is here to explain in a little more detail how the Android version of Spokestack uses this architecture to recognize wakewords and user speech.
 
 ## What _is_ it?

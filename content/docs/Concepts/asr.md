@@ -19,7 +19,7 @@ Spokestack is designed to support multiple speech recognition providers so you c
 
 ## Configuration
 
-ASR providers require various configuration, usually in the form of API keys, but sometimes runtime components. This configuration takes place when you first build a Spokestack `SpeechPipeline`; below is a list of configuration needed for each platform and some usage notes.
+ASR providers require various configuration, usually in the form of API keys, but sometimes runtime components. This configuration takes place when you first build a Spokestack `SpeechPipeline` (or, in newer versions, `Spokestack` object). Below is a list of configuration needed for each platform and some usage notes.
 
 For Android, primitive configuration properties are set via a call to `setProperty(propertyName, value)` on the speech pipeline's builder (or a `SpeechConfig` object supplied to it); in iOS, they're set as fields of a `SpeechConfiguration` object.
 
@@ -89,6 +89,21 @@ Spokestack's Cloud ASR requires requests to be signed with a Spokestack client I
 - `azure-api-key` (string): An API key valid for Azure Cognitive Services. See [Microsoft's documentation](https://azure.microsoft.com/en-us/try/cognitive-services/?api=speech-services) for more information.
 - `azure-region` (string): A region identifier for Azure Speech Services. See [Microsoft's list](https://docs.microsoft.com/en-us/azure/cognitive-services/speech-service/regions).
 
+You'll also need the following dependency in your app's `build:gradle`:
+
+```groovy
+  implementation 'com.microsoft.cognitiveservices.speech:client-sdk:1.9.0'
+```
+
+This will require you to add Microsoft's Maven repository to your top-level `build.gradle`, which implies acceptance of their license terms:
+
+```groovy
+repositories {
+  // ...
+  maven { url 'https://csspeechstorage.blob.core.windows.net/maven/' }
+}
+```
+
 ##### iOS
 
 N/A (for now)
@@ -101,6 +116,13 @@ N/A (for now)
 
 - `google-credentials` (string): A JSON-serialized string containing Google account credentials. See [Google's documentation](https://cloud.google.com/docs/authentication/getting-started#creating_a_service_account) for more information.
 - `locale` (string): A BCP-47 language identifier to identify the language that should be used for speech recognition (example: "en-US"). See [Google's documentation](https://cloud.google.com/speech-to-text/docs/languages) for a list of supported codes.
+
+You'll also need the following dependencies in your app's `build:gradle`:
+
+```groovy
+  implementation 'com.google.cloud:google-cloud-speech:1.22.2'
+  implementation 'io.grpc:grpc-okhttp:1.28.0'
+```
 
 ##### iOS
 

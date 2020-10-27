@@ -1,6 +1,6 @@
 import * as theme from '../styles/theme'
 
-import { SerializedStyles, css } from '@emotion/core'
+import { Global, SerializedStyles, css } from '@emotion/core'
 
 import { MIN_DEFAULT_MEDIA_QUERY } from 'typography-breakpoint-constants'
 import React from 'react'
@@ -14,6 +14,13 @@ interface Props {
 export default function Card({ title, children, extraCss }: Props) {
   return (
     <div css={[styles.card].concat(extraCss)} className="card">
+      <Global
+        styles={css`
+          html.dark-mode .card {
+            background-color: ${theme.mainBackgroundDark};
+          }
+        `}
+      />
       {!!title && <h4 css={styles.cardHeader}>{title}</h4>}
       <div css={styles.content}>{children}</div>
     </div>

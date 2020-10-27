@@ -338,6 +338,10 @@ const styles = {
     position: relative;
     height: 94px;
     background-color: white;
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
 
     &:after {
       ${borderTopStyle};

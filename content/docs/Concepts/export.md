@@ -7,6 +7,8 @@ draft: false
 
 This guide details the process of exporting an existing interaction model from Alexa, Dialogflow, or Jovo for use with Spokestack.
 
+See also the documentation on [our training format](/docs/Concepts/Training-Data/nlu) for a way to create a model from scratch.
+
 ## Alexa
 
 1. Go to the [Alexa Developer Console](https://developer.amazon.com/en-US/docs/alexa/devconsole/about-the-developer-console.html).

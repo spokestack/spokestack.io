@@ -45,9 +45,10 @@ export default function NLU({ location }: Props) {
         Spokestack Natural Language Understanding (NLU) models use cutting edge
         machine learning techniques to help your app understand speech. Use one
         of our pre-built models for a variety of common use cases, import a
-        model that&apos;s been [exported](/docs/Concepts/export) from another
-        system, or use [our training data
-        format](/docs/Concepts/Training-Data/nlu) to create your own.
+        model that&apos;s been <a href="/docs/concepts/export">exported</a> from
+        another system, or use{' '}
+        <a href="/docs/concepts/nlu-training-data">our training data</a> to
+        create your own.
       </p>
       {data ? (
         <p css={styles.message} style={{ color: theme.primary }}>

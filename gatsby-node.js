@@ -183,8 +183,6 @@ async function createPages({ actions, graphql, posts, template }) {
     // If the old slug does not equal the new,
     // add a static page to redirect to the new slug
     if (oldSlug !== slug) {
-      console.log(oldSlug)
-      console.log(slug)
       await createPage({
         path: oldSlug,
         component: path.resolve('./src/templates/redirect-only.tsx'),

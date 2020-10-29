@@ -25,12 +25,13 @@ const rurlFilename = /\/[^/]+?$/
 export default function NluModel({ model }: Props) {
   const isShared = model.source === NluModelSource.SHARED
   const isPending = model.state === NluModelState.PENDING
-  const modelUrl = model.modelUrl.replace(rurlFilename, '')
+  const modelFolder = model.modelUrl?.replace(rurlFilename, '')
   return (
     <AccountCard
       title={titleCase(model.name)}
       rightContent={
-        !isShared && (
+        !isShared &&
+        !!model.insertedAt && (
           <p css={styles.date}>{`Imported ${formatDate(model.insertedAt)}`}</p>
         )
       }>
@@ -40,37 +41,41 @@ export default function NluModel({ model }: Props) {
           ? 'shared. It is available to all Spokestack accounts.'
           : 'only available to your account.'}
       </p>
-      <CopyInputWithButton
-        id={`vocab-${model.id}`}
-        extraCss={styles.copyInput}
-        title="vocab.txt CDN URL"
-        value={`${modelUrl}/vocab.txt`}
-      />
-      <CopyInputWithButton
-        id={`nlu-${model.id}`}
-        extraCss={styles.copyInput}
-        title="nlu.tflite CDN URL"
-        value={`${modelUrl}/nlu.tflite`}
-      />
-      <CopyInputWithButton
-        id={`metadata-${model.id}`}
-        extraCss={styles.copyInput}
-        title="metadata.json CDN URL"
-        value={`${modelUrl}/metadata.json`}
-      />
-      <div css={styles.buttons}>
-        <a
-          className="btn btn-transparent"
-          download="download"
-          href={isPending ? null : model.modelUrl}>
-          <SVGIcon
-            icon="#download"
-            className="icon"
-            extraCss={styles.downloadIcon}
+      {!!modelFolder && (
+        <>
+          <CopyInputWithButton
+            id={`vocab-${model.id}`}
+            extraCss={styles.copyInput}
+            title="vocab.txt CDN URL"
+            value={`${modelFolder}/vocab.txt`}
           />
-          Download All
-        </a>
-      </div>
+          <CopyInputWithButton
+            id={`nlu-${model.id}`}
+            extraCss={styles.copyInput}
+            title="nlu.tflite CDN URL"
+            value={`${modelFolder}/nlu.tflite`}
+          />
+          <CopyInputWithButton
+            id={`metadata-${model.id}`}
+            extraCss={styles.copyInput}
+            title="metadata.json CDN URL"
+            value={`${modelFolder}/metadata.json`}
+          />
+          <div css={styles.buttons}>
+            <a
+              className="btn btn-transparent"
+              download="download"
+              href={model.modelUrl}>
+              <SVGIcon
+                icon="#download"
+                className="icon"
+                extraCss={styles.downloadIcon}
+              />
+              Download All
+            </a>
+          </div>
+        </>
+      )}
       {isPending && (
         <div css={styles.pending}>
           <SVGIcon icon="#time" css={styles.timeIcon} />

@@ -77,7 +77,7 @@ export enum KeyType {
 export interface NluModel {
   id: string
   insertedAt: number
-  modelUrl: string
+  modelUrl?: string
   name: string
   source: NluModelSource
   state: NluModelState

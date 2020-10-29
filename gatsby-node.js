@@ -7,6 +7,10 @@ const rspaces = /\s+/g
 const rspokestackWebsite = /.*?spokestack.io\//
 const postsPerPage = 5
 
+function toUrl(url) {
+  return url.toLowerCase().replace(rspaces, '-')
+}
+
 function throwInProd(message) {
   if (process.env.NODE_ENV !== 'production') {
     console.warn(`${message} Some things may not work properly.`)
@@ -143,10 +147,7 @@ async function createTagPages({ tag, tags, actions, graphql }) {
   }
   const posts = result.data.allMarkdownRemark.edges
   const numPages = Math.ceil(posts.length / postsPerPage)
-  const url =
-    tag === 'Tutorial'
-      ? '/tutorials'
-      : `/blog/tag/${tag.toLowerCase().replace(rspaces, '-')}`
+  const url = tag === 'Tutorial' ? '/tutorials' : `/blog/tag/${toUrl(tag)}`
   Array.from({ length: numPages }).forEach((_, i) => {
     createPage({
       path: i === 0 ? url : `${url}/${i + 1}`,
@@ -325,7 +326,13 @@ exports.onCreateNode = ({ node, actions, getNode }) => {
   const { createNodeField } = actions
 
   if (node.internal.type === 'MarkdownRemark') {
-    const value = createFilePath({ node, getNode, trailingSlash: false })
+    const value = toUrl(
+      createFilePath({
+        node,
+        getNode,
+        trailingSlash: false
+      })
+    )
     const isDocsPage = rdocs.test(node.fileAbsolutePath)
     const folder = path.basename(path.dirname(node.fileAbsolutePath))
     createNodeField({

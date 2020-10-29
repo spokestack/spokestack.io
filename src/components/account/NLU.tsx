@@ -56,7 +56,8 @@ export default function NLU({ location }: Props) {
         </p>
       ) : error ? (
         <p css={styles.message} className="error">
-          There was a problem uploading the file. Please try again.
+          There was a problem uploading the file. Please{' '}
+          <a href="/account/services/nlu">refresh</a> and try again.
         </p>
       ) : (
         <p css={styles.message}>&nbsp;</p>

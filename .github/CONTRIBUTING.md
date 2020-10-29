@@ -129,14 +129,6 @@ Commit messages should follow [Conventional Commits Specification](https://www.c
 
 This is also enforced on commit using a commit message hook.
 
-spokestack.io includes a helpful prompt for committing to guide you in the process of writing a valid commit message.
-
-Run the following after staging files:
-
-```bash
-$ npm run commit
-```
-
 ## Updating GraphQL query types
 
 The TypeScript types are generated from the schema using [GraphQL Code Generator](https://github.com/dotansimha/graphql-code-generator#readme).

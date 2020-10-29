@@ -174,11 +174,25 @@ async function createPages({ actions, graphql, posts, template }) {
     const next = index === 0 ? null : posts[index - 1].node
     const fields = post.node.fields
     const slug = fields.slug
+    const oldSlug = fields.oldSlug
     const context = {
       next,
       previous,
       slug
     }
+    // If the old slug does not equal the new,
+    // add a static page to redirect to the new slug
+    if (oldSlug !== slug) {
+      console.log(oldSlug)
+      console.log(slug)
+      await createPage({
+        path: oldSlug,
+        component: path.resolve('./src/templates/redirect-only.tsx'),
+        context
+      })
+    }
+
+    // Add related tags (applicable to blog posts, but not docs)
     const related = await getRelated({ tags: fields.tags, slug, graphql })
     if (related) {
       context.related = related
@@ -213,6 +227,7 @@ exports.createPages = async ({ graphql, actions, reporter }) => {
           node {
             fields {
               slug
+              oldSlug
               tags
             }
           }
@@ -228,6 +243,7 @@ exports.createPages = async ({ graphql, actions, reporter }) => {
           node {
             fields {
               slug
+              oldSlug
             }
           }
         }
@@ -326,19 +342,20 @@ exports.onCreateNode = ({ node, actions, getNode }) => {
   const { createNodeField } = actions
 
   if (node.internal.type === 'MarkdownRemark') {
-    const value = toUrl(
-      createFilePath({
-        node,
-        getNode,
-        trailingSlash: false
-      })
-    )
     const isDocsPage = rdocs.test(node.fileAbsolutePath)
     const folder = path.basename(path.dirname(node.fileAbsolutePath))
+    const filepath = createFilePath({ node, getNode, trailingSlash: false })
+    const oldSlug = `/${isDocsPage ? 'docs' : 'blog'}${filepath}`
+    const slug = `/${isDocsPage ? 'docs' : 'blog'}${toUrl(filepath)}`
     createNodeField({
       name: 'slug',
       node,
-      value: `/${isDocsPage ? 'docs' : 'blog'}${value}`
+      value: slug
+    })
+    createNodeField({
+      name: 'oldSlug',
+      node,
+      value: oldSlug
     })
     createNodeField({
       name: 'folder',

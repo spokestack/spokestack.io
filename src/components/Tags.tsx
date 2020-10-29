@@ -4,6 +4,7 @@ import { Global, css } from '@emotion/core'
 
 import { Link } from 'gatsby'
 import React from 'react'
+import toUrl from '../utils/toUrl'
 
 interface Props {
   // Url that represents showing all tags
@@ -11,8 +12,6 @@ interface Props {
   header: string
   tags: string[]
 }
-
-const rspaces = /\s+/g
 
 export default function Tags({ header, allUrl, tags }: Props) {
   if (!tags || !tags.length) {
@@ -43,7 +42,7 @@ export default function Tags({ header, allUrl, tags }: Props) {
           <Link
             key={`tag-${i}`}
             partiallyActive
-            to={`/blog/tag/${tag.toLowerCase().replace(rspaces, '-')}`}
+            to={`/blog/tag/${toUrl(tag)}`}
             activeClassName="tag-active"
             className="btn btn-transparent btn-small">
             {tag}

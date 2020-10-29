@@ -63,6 +63,9 @@ export default css`
   h3 code {
     ${adjustFontSizeTo('30px')};
   }
+  tr:nth-child(2n) {
+    background-color: ${theme.codeBackground};
+  }
   .btn {
     position: relative;
     height: 44px;
@@ -350,6 +353,9 @@ export default css`
     td,
     th {
       border-bottom-color: ${theme.mainBorderDark};
+    }
+    tr:nth-child(2n) {
+      background-color: ${theme.navFullColumnDark};
     }
   }
   ${MIN_DEFAULT_MEDIA_QUERY} {

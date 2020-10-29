@@ -88,6 +88,10 @@ const options: TypographyOptions = {
       margin: '0 auto',
       textAlign: 'center'
     },
+    'td, th, th:first-child, td:first-child, th:last-child, td:last-child': {
+      paddingLeft: '10px',
+      paddingRight: '10px'
+    },
     blockquote: {
       ...scale(1 / 5),
       paddingLeft: rhythm(1),

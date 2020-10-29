@@ -64,7 +64,7 @@ values = [
 
 The data generator will take the phrases listed in `utterances` and expand their placeholders to produce examples like the following:
 
-```text
+```none
 i want a neck exercise
 find me a calves workout
 search for a biceps movement

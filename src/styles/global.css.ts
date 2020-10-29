@@ -347,6 +347,10 @@ export default css`
       background-color: ${theme.stickyNavBackgroundDark};
       color: ${theme.textDarkBg};
     }
+    td,
+    th {
+      border-bottom-color: ${theme.mainBorderDark};
+    }
   }
   ${MIN_DEFAULT_MEDIA_QUERY} {
     h1 {

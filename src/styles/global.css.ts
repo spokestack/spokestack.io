@@ -63,7 +63,7 @@ export default css`
   h3 code {
     ${adjustFontSizeTo('30px')};
   }
-  tr:nth-child(2n) {
+  tr:nth-of-type(2n) {
     background-color: ${theme.codeBackground};
   }
   .btn {
@@ -354,7 +354,7 @@ export default css`
     th {
       border-bottom-color: ${theme.mainBorderDark};
     }
-    tr:nth-child(2n) {
+    tr:nth-of-type(2n) {
       background-color: ${theme.navFullColumnDark};
     }
   }

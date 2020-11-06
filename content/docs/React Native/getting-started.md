@@ -19,7 +19,7 @@ iOS 13+, [CocoaPods](https://guides.cocoapods.org/using/using-cocoapods.html#add
 
 ### Android
 
-Android SDK 24+, Android NDK (available from the `SDK Manager` -> `SDK Tools` tab in Android Studio or at [developer.android.com/ndk/downloads](https://developer.android.com/ndk/downloads)).
+Android SDK 24+.
 
 ## Installation
 

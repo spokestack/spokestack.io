@@ -9,15 +9,17 @@ This is a collection of code snippets and brief descriptions designed to help yo
 
 ### Tap to talk
 
-When configuring Spokestack, just use a Push to Talk profile, prefixed with `PTT`:
+When configuring Spokestack, use a Push to Talk profile, prefixed with `PTT`:
 
 ```javascript
+Spokestack.initialize({
   pipeline: {
-    'profile': Spokestack.PipelineProfile.PTT_NATIVE_ASR
+    profile: Spokestack.PipelineProfile.PTT_NATIVE_ASR
   }
+})
 ```
 
-Then it's just a matter of calling `activate()` when a button is pushed!
+Once Spokestack is initialized, call `activate()` to start listening.
 
 ```javascript
 onTalkButtonPressed () {
@@ -33,7 +35,7 @@ onTalkButtonPressed () {
 
 ### Wakeword Activation
 
-To use the demo "Spokestack" wakeword, you'll need the demo TensorFlow Lite models: [detect](https://d3dmqd7cy685il.cloudfront.net/model/wake/spokestack/detect.tflite) | [encode](https://d3dmqd7cy685il.cloudfront.net/model/wake/spokestack/encode.tflite) | [filter](https://d3dmqd7cy685il.cloudfront.net/model/wake/spokestack/filter.tflite). The pipeline uses a defaults to a wakeword-activated profile (`TFLITE_WAKEWORD_NATIVE_ASR`), so we don't need to specify it.
+To use the demo "Spokestack" wakeword, you'll need the demo TensorFlow Lite models: [detect](https://d3dmqd7cy685il.cloudfront.net/model/wake/spokestack/detect.tflite) | [encode](https://d3dmqd7cy685il.cloudfront.net/model/wake/spokestack/encode.tflite) | [filter](https://d3dmqd7cy685il.cloudfront.net/model/wake/spokestack/filter.tflite). The pipeline defaults to a wakeword-activated profile (`TFLITE_WAKEWORD_NATIVE_ASR`), so we don't need to specify it.
 
 ```javascript
 Spokestack.initialize({

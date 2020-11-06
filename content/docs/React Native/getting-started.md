@@ -173,7 +173,7 @@ import Spokestack from 'react-native-spokestack'
 
 // initialize the Spokestack pipeline.
 //
-// Spokestack configuration has four top-level keys: 'properties' for general Spokestack usage, 'pipeline' for the speech pipeline, 'tts' for text to speech, and 'nlu' for natural language recognition. Keys for asr, tts, and nlu may be omitted if your app does not require them.
+// Spokestack configuration has four top-level keys: 'properties' for general Spokestack usage, 'pipeline' for the speech pipeline, 'tts' for text to speech, and 'nlu' for natural language understanding. Keys for asr, tts, and nlu may be omitted if your app does not require them.
 // This example configures a voice-triggered speech recongnizer
 // For additional examples, see https://github.com/spokestack/spokestack-android#configuration
 Spokestack.initialize({

@@ -162,7 +162,8 @@ Also note that [the Android emulator cannot record audio](https://developer.andr
 
 ## Configuring Spokestack
 
-There are many options for configuring Spokestack. This example will begin capturing audio when `Spokestack.start()` is called and use a Voice Activity Detection (VAD) component to send any audio determined to be speech through an automated speech recognition system, in this case the platform's built-in speech recognizer. In other words, we're configuring this app to always actively listen, and no wakeword detection is performed. See [the configuration guide](/docs/Concepts/pipeline-configuration) for more information about pipeline building options.
+There are many options for configuring Spokestack. This example will begin capturing audio when `Spokestack.start()` is called and use a Voice Activity Detection (VAD) component to send any audio determined to be speech through an automated speech recognition system, in this case the platform's built-in speech recognizer. In other words, we're configuring this app to always actively listen, and no wakeword detection is performed. See [the configuration guide](/docs/Concepts/pipeline-configuration) for more information about pipeline building options. Beginning in version 4.0.0, it's incredibly simple to use different pipeline configurations by changing the `profile` property.
+
 
 Then we configure a text-to-speech component using a TTS API key and secret that allow you to use Spokestack voices for free! You can get your own API key & secret from [your Spokestack account page](/account/settings).
 

@@ -33,15 +33,12 @@ onTalkButtonPressed () {
 
 ### Wakeword Activation
 
-To use the demo "Spokestack" wakeword, you'll need the demo TensorFlow Lite models: [detect](https://d3dmqd7cy685il.cloudfront.net/model/wake/spokestack/detect.tflite) | [encode](https://d3dmqd7cy685il.cloudfront.net/model/wake/spokestack/encode.tflite) | [filter](https://d3dmqd7cy685il.cloudfront.net/model/wake/spokestack/filter.tflite)
+To use the demo "Spokestack" wakeword, you'll need the demo TensorFlow Lite models: [detect](https://d3dmqd7cy685il.cloudfront.net/model/wake/spokestack/detect.tflite) | [encode](https://d3dmqd7cy685il.cloudfront.net/model/wake/spokestack/encode.tflite) | [filter](https://d3dmqd7cy685il.cloudfront.net/model/wake/spokestack/filter.tflite). The pipeline uses a defaults to a wakeword-activated profile (`TFLITE_WAKEWORD_NATIVE_ASR`), so we don't need to specify it.
 
 ```javascript
 Spokestack.initialize({
   // omitting nlu and tts configuration for this example
   pipeline: {
-    //'google-credentials': JSON.stringify(GoogleCredentials),
-    //'wakewords': 'marvin',
-    profile: Spokestack.PipelineProfile.TFLITE_WAKEWORD_NATIVE_ASR,
     'wake-filter-path': filterModelPath,
     'wake-detect-path': detectModelPath,
     'wake-encode-path': encodeModelPath

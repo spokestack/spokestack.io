@@ -9,7 +9,9 @@ This is a collection of code snippets and brief descriptions designed to help yo
 
 ### Tap to talk
 
-When configuring Spokestack, use a Push to Talk profile, prefixed with `PTT`:
+Beginning in version 4.0.0, using tap to talk is incredibly simple!
+
+When configuring Spokestack use a Push to Talk profile, prefixed with `PTT`:
 
 ```javascript
 Spokestack.initialize({

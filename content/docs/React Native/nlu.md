@@ -13,11 +13,7 @@ As mentioned in the [Getting Started](getting-started) guide, initializing the S
 
 ```javascript
 Spokestack.initialize({
-  // omitting speech pipelineline and tts configuration
-  input: '',
-  stages: [],
-  tts: {},
-  properties: {},
+  // omitting pipeline and tts configuration
   nlu: {
     'nlu-model-path': YOUR_NLU_MODEL_PATH, // string filesystem path to nlu model
     'nlu-metadata-path': YOUR_NLU_METADATA_PATH, // string filesystem path to nlu metadata

@@ -9,17 +9,19 @@ This is a collection of code snippets and brief descriptions designed to help yo
 
 ### Tap to talk
 
-When configuring Spokestack, ensure that you have settings that make sense for a button-activated ASR activation. A wakeword or VAD trigger, for example, would not make much sense since you'll be triggering ASR from a button.
+Beginning in version 4.0.0, the configuration for tap-to-talk has been greatly simplified.
+
+When configuring Spokestack use a Push to Talk profile, prefixed with `PTT`:
 
 ```javascript
-stages: [
-  'io.spokestack.spokestack.webrtc.VoiceActivityDetector', // voice activity detection
-  'io.spokestack.spokestack.ActivationTimeout', // speech recognition times out after a configurable interval when voice is no longer detected
-  'io.spokestack.spokestack.google.GoogleSpeechRecognizer'
-]
+Spokestack.initialize({
+  pipeline: {
+    profile: Spokestack.PipelineProfile.PTT_NATIVE_ASR
+  }
+})
 ```
 
-Then it's just a matter of calling `activate()` when a button is pushed!
+Once Spokestack is initialized, call `activate()` to start listening.
 
 ```javascript
 onTalkButtonPressed () {
@@ -35,32 +37,15 @@ onTalkButtonPressed () {
 
 ### Wakeword Activation
 
-To use the demo "Spokestack" wakeword, you'll need the demo TensorFlow Lite models: [detect](https://d3dmqd7cy685il.cloudfront.net/model/wake/spokestack/detect.tflite) | [encode](https://d3dmqd7cy685il.cloudfront.net/model/wake/spokestack/encode.tflite) | [filter](https://d3dmqd7cy685il.cloudfront.net/model/wake/spokestack/filter.tflite)
+To use the demo "Spokestack" wakeword, you'll need the demo TensorFlow Lite models: [detect](https://d3dmqd7cy685il.cloudfront.net/model/wake/spokestack/detect.tflite) | [encode](https://d3dmqd7cy685il.cloudfront.net/model/wake/spokestack/encode.tflite) | [filter](https://d3dmqd7cy685il.cloudfront.net/model/wake/spokestack/filter.tflite). The pipeline defaults to a wakeword-activated profile (`TFLITE_WAKEWORD_NATIVE_ASR`), so we don't need to specify it.
 
 ```javascript
 Spokestack.initialize({
-  // provides audio input into the pipeline
-  input: 'io.spokestack.spokestack.android.MicrophoneInput',
-  stages: [
-    // voice activity detection
-    'io.spokestack.spokestack.webrtc.VoiceActivityDetector',
-    // speech recognition times out after a configurable interval when voice is no longer detected
-    'io.spokestack.spokestack.ActivationTimeout',
-    // wakeword activtation trigger
-    'io.spokestack.spokestack.wakeword.WakewordTrigger'
-  ],
-  properties: {
+  // omitting nlu and tts configuration for this example
+  pipeline: {
     'wake-filter-path': filterModelPath,
     'wake-detect-path': detectModelPath,
-    'wake-encode-path': encodeModelPath,
-    'ans-policy': 'aggressive',
-    'agc-target-level-dbfs': 3,
-    'agc-compression-gain-db': 15,
-    'vad-mode': 'very-aggressive',
-    'vad-fall-delay': 800,
-    'wake-threshold': 0.8,
-    'pre-emphasis': 0.97,
-    'trace-level': Spokestack.TraceLevel.DEBUG
+    'wake-encode-path': encodeModelPath
   }
 })
 

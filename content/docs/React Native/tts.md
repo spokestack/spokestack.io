@@ -15,13 +15,8 @@ Here's how to initialize the TTS API as part of the unified Spokestack initializ
 
 ```javascript
 Spokestack.initialize({
-  // omitting speech pipelineline and nlu configuration
-  input: '',
-  stages: [],
-  properties: {},
-  nlu: {},
-  tts: {
-    ttsServiceClass: 'io.spokestack.spokestack.tts.SpokestackTTSService',
+  // omitting pipeline and nlu configuration; using tts defaults
+  properties: {
     // Spokestack account information
     'spokestack-id': 'f0bc990c-e9db-4a0c-a2b1-6a6395a3d97e', // your Spokestack API ID
     'spokestack-secret':

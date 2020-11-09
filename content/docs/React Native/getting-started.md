@@ -19,7 +19,7 @@ iOS 13+, [CocoaPods](https://guides.cocoapods.org/using/using-cocoapods.html#add
 
 ### Android
 
-Android SDK 26+, Android NDK (available from the `SDK Manager` -> `SDK Tools` tab in Android Studio or at [developer.android.com/ndk/downloads](https://developer.android.com/ndk/downloads)).
+Android SDK 24+.
 
 ## Installation
 
@@ -162,9 +162,9 @@ Also note that [the Android emulator cannot record audio](https://developer.andr
 
 ## Configuring Spokestack
 
-There are many options for configuring Spokestack. This example will begin capturing audio when `Spokestack.start()` is called and use a Voice Activity Detection (VAD) component to send any audio determined to be speech through an automated speech recognition system, in this case the platform's built-in speech recognizer. In other words, we're configuring this app to always actively listen, and no wakeword detection is performed. See [the configuration guide](/docs/Concepts/pipeline-configuration) for more information about pipeline building options.
+There are many options for configuring Spokestack. This example will begin capturing audio when `Spokestack.start()` is called and use a Voice Activity Detection (VAD) component to send any audio determined to be speech through an automated speech recognition system, in this case the platform's built-in speech recognizer. In other words, we're configuring this app to always actively listen, and no wakeword detection is performed. See [the configuration guide](/docs/Concepts/pipeline-configuration) for more information about pipeline building options. Beginning in version 4.0.0, it's incredibly simple to use different pipeline configurations by changing the `profile` property.
 
-Then we configure a text-to-speech component using a TTS API key and secret that allow you to use Spokestack voices for free! You can also use your own api key & secret from [your Spokestack account page](/account/settings).
+Then we configure a text-to-speech component using a TTS API key and secret that allow you to use Spokestack voices for free! You can get your own API key & secret from [your Spokestack account page](/account/settings).
 
 Finally we configure the natural language understanding component, which uses Spokestack NLU models. To test things out, just try one of our free NLU models on [your Spokestack account page](/account/services/nlu), or grab this older [example NLU model](https://github.com/spokestack/spokestack-ios/blob/master/SpokestackFrameworkExample/nlu.tflite), [model metadata](https://github.com/spokestack/spokestack-ios/blob/master/SpokestackFrameworkExample/nlu.json), and [NLU vocabulary](https://d3dmqd7cy685il.cloudfront.net/nlu/vocab.txt).
 
@@ -173,31 +173,18 @@ import Spokestack from 'react-native-spokestack'
 
 // initialize the Spokestack pipeline.
 //
-// Spokestack configuration has five top-level keys: 'input', 'stages', and 'properties' for the speech pipeline, 'tts' for text to speech, and 'nlu' for natural language recognition. Keys for asr, tts, and nlu may be omitted if your app does not require them.
+// Spokestack configuration has four top-level keys: 'properties' for general Spokestack usage, 'pipeline' for the speech pipeline, 'tts' for text to speech, and 'nlu' for natural language understanding. Keys for asr, tts, and nlu may be omitted if your app does not require them.
 // This example configures a voice-triggered speech recongnizer
 // For additional examples, see https://github.com/spokestack/spokestack-android#configuration
 Spokestack.initialize({
-  input: 'io.spokestack.spokestack.android.MicrophoneInput', // provides audio input into the pipeline
-  stages: [
-    'io.spokestack.spokestack.webrtc.VoiceActivityDetector', // voice activity detection
-    'io.spokestack.spokestack.webrtc.VoiceActivityTrigger', // voice activity detection triggers speech recognition
-    'io.spokestack.spokestack.ActivationTimeout', // speech recognition times out after a configurable interval when voice is no longer detected
-    'io.spokestack.spokestack.android.AndroidSpeechRecognizer' // one of the four supported speech recognition services
-    // 'io.spokestack.spokestack.microsoft.AzureSpeechRecognizer'
-    // 'io.spokestack.spokestack.google.GoogleSpeechRecognizer'
-    // 'io.spokestack.spokestack.asr.SpokestackCloudRecognizer'
-  ],
   properties: {
-    locale: 'en-US',
-    'agc-compression-gain-db': 15,
-    'trace-level': Spokestack.TraceLevel.DEBUG // configurable logging level
-  },
-  tts: {
-    ttsServiceClass: 'io.spokestack.spokestack.tts.SpokestackTTSService',
-    // TTS API account properties. Only set these if you have a Spokestack account.
     'spokestack-id': 'f0bc990c-e9db-4a0c-a2b1-6a6395a3d97e', // your Spokestack API ID
     'spokestack-secret':
       '5BD5483F573D691A15CFA493C1782F451D4BD666E39A9E7B2EBE287E6A72C6B6' // your Spokestack API secret
+    'trace-level': Spokestack.TraceLevel.DEBUG // configurable logging level
+  },
+  pipeline: {
+    'profile': Spokestack.PipelineProfile.VAD_NATIVE_ASR
   },
   nlu: {
     // NLU settings. Only set these if you are calling `Spokestack.classify`.

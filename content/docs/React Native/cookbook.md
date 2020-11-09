@@ -9,7 +9,7 @@ This is a collection of code snippets and brief descriptions designed to help yo
 
 ### Tap to talk
 
-Beginning in version 4.0.0, using tap to talk is incredibly simple!
+Beginning in version 4.0.0, the configuration for tap-to-talk has been greatly simplified.
 
 When configuring Spokestack use a Push to Talk profile, prefixed with `PTT`:
 

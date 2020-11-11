@@ -1,9 +1,9 @@
 import { getStateKey, setAuthToken, setProvider } from './auth'
 
 const clientIds: { [key: string]: string } = {
-  'https://www.spokestack.io': process.env.SS_GITHUB_CLIENT_ID,
-  'https://beta.spokestack.io': process.env.SS_BETA_GITHUB_CLIENT_ID,
-  'http://localhost:8000': process.env.SS_LOCAL_GITHUB_CLIENT_ID
+  'https://www.spokestack.io/': process.env.SS_GITHUB_CLIENT_ID,
+  'https://beta.spokestack.io/': process.env.SS_BETA_GITHUB_CLIENT_ID,
+  'http://localhost:8000/': process.env.SS_LOCAL_GITHUB_CLIENT_ID
 }
 const apiUrl = process.env.SS_API_URL
 

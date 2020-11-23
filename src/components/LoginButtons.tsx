@@ -25,9 +25,13 @@ export default function LoginButtons({
   const style = [styles.loginButtons].concat(extraCss)
   const classes = [className]
   useEffect(() => {
-    setTimeout(() => {
+    const timeout = setTimeout(() => {
       setLoggedIn(isLoggedIn())
     })
+
+    return () => {
+      clearTimeout(timeout)
+    }
   }, [])
   if (loggedIn) {
     classes.push('logged-in')

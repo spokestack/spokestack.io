@@ -1,24 +1,22 @@
-import { PageRendererProps, navigate } from 'gatsby'
+import React, { useEffect } from 'react'
 
 import CreateAccount from '../components/account/CreateAccount'
 import Loadable from '@loadable/component'
 import NLU from '../components/account/NLU'
 import PrivateRoute from '../components/PrivateRoute'
-import React from 'react'
 import RouteWithAccount from '../components/account/RouteWithAccount'
 import { Router } from '@reach/router'
 import SEO from '../components/SEO'
 import Settings from '../components/account/Settings'
 import TextToSpeech from '../components/account/TextToSpeech'
+import { navigate } from 'gatsby'
 
-const raccount = /^\/account\/?$/
 const GraphiQL = Loadable(() => import('../components/GraphiQL'))
 
-export default function Account({ location }: PageRendererProps) {
-  if (typeof window !== 'undefined' && raccount.test(location.pathname)) {
-    navigate('/account/settings')
-  }
-
+export default function Account() {
+  useEffect(() => {
+    navigate('/account/settings', { replace: true })
+  }, [])
   return (
     <>
       <SEO

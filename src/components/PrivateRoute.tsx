@@ -1,7 +1,6 @@
 import React from 'react'
 import { RouteComponentProps } from '@reach/router'
-import { isLoggedIn } from '../utils/auth'
-import { navigate } from 'gatsby'
+import { isLoggedIn, logout } from '../utils/auth'
 
 const rlogin = /^\/login\/?$/
 
@@ -16,7 +15,7 @@ export default function PrivateRoute({
 }: Props) {
   if (!isLoggedIn() && !rlogin.test(props.location.pathname)) {
     if (typeof window !== 'undefined') {
-      navigate('/login')
+      logout()
     }
     return null
   }

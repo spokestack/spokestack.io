@@ -111,10 +111,10 @@ export default css`
   }
   td,
   th,
-  th:first-child,
-  td:first-child,
-  th:last-child,
-  td:last-child {
+  th:first-of-tyoe,
+  td:first-of-tyoe,
+  th:last-of-type,
+  td:last-of-type {
     padding-left: 10px;
     padding-right: 10px;
   }

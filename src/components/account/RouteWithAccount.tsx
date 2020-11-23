@@ -1,5 +1,5 @@
 import { Account, AccountSummary } from '../../types'
-import { clearStorage, isLoggedIn } from '../../utils/auth'
+import { clearStorage, isLoggedIn, logout } from '../../utils/auth'
 import { useLazyQuery, useQuery } from '@apollo/react-hooks'
 
 import LoadingPage from '../LoadingPage'
@@ -51,7 +51,7 @@ export default function RouteWithAccount({
 }: Props) {
   if (!isLoggedIn()) {
     if (typeof window !== 'undefined') {
-      navigate('/login')
+      logout()
     }
     return null
   }
@@ -75,8 +75,7 @@ export default function RouteWithAccount({
   const account = getAccountResult.data && getAccountResult.data.getAccount
 
   if (error) {
-    clearStorage()
-    navigate('/login')
+    logout()
     return null
   }
   if (loading) {
@@ -89,6 +88,7 @@ export default function RouteWithAccount({
     }
   } else {
     if (typeof window !== 'undefined') {
+      clearStorage()
       navigate('/account/create')
     }
     return null

@@ -5,6 +5,7 @@ import Layout from '../components/Layout'
 import { css } from '@emotion/core'
 import { navigate } from 'gatsby'
 import { WindowLocation } from '@reach/router'
+import { clearStorage } from '../utils/auth'
 
 interface Props {
   checkAuth: () => Promise<string | null>
@@ -16,6 +17,7 @@ export default function OAuth({ checkAuth, location }: Props) {
   async function check() {
     const error = await checkAuth()
     if (error) {
+      clearStorage()
       setStatus(error)
     } else {
       navigate('/account/settings/')

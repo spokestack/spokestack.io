@@ -85,24 +85,14 @@ The `PyAudioInput` class will use the system default audio input device. Most pe
 
 ### 3. `SpeechPipeline` Instance
 
-The `SpeechPipeline` [guide](speech-pipeline) has a detailed explanation of how to set up the pipeline, so we will just show an example here.
+The `SpeechPipeline` [guide](speech-pipeline) has a detailed explanation of how to set up the pipeline, so we will show the quickest way here using a profile.
 
 ```python
-from spokestack.pipeline import SpeechPipeline
-from spokestack.io.pyaudio import PyAudioInput
-from spokestack.vad.webrtc import VoiceActivityDetector
-from spokestack.wakeword.tflite import WakewordTrigger
-from spokestack.asr.spokestack.speech_recognizer import SpeechRecognizer
+from spokestack.profile.wakeword_asr import WakewordSpokestackASR
 
-pipeline = SpeechPipeline(
-    PyAudioInput(),
-    [
-        VoiceActivityDetector(),
-        WakewordTrigger("path_to_tflite_model"),
-        SpeechRecognizer("spokestack_id", "spokestack_secret"),
-    ],
+pipeline = WakewordSpokestackASR.create(
+    "spokestack_id", "spokestack_secret", model_dir="path_to_tflite_model_dir"
 )
-
 pipeline.start()
 ```
 

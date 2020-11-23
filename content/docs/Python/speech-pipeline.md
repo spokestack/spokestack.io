@@ -17,6 +17,19 @@ When the pipeline is passively listening, a single frame of audio flows through 
 
 ## How do I set it up?
 
+The best way to start working with Spokestack is through pipeline profiles. Profiles are preset configurations for the `SpeechPipeline` that bundle input and stage classes into an easy-to-use wrapper. All profiles are designed to be initialized with only one line.
+
+```python
+from spokestack.profile.wakeword_asr import WakewordSpokestackASR
+
+pipeline = WakewordSpokestackASR.create(
+    "spokestack_id", "spokestack_secret", model_dir="path_to_tflite_model_dir"
+)
+pipeline.start()
+```
+
+If you wish to build your own components, or have enhanced control over our components, you can initialize the pipeline with individual components. Keep in mind that you will always need an audio input source and at least one component.
+
 ```python
 from spokestack.pipeline import SpeechPipeline
 from spokestack.io.pyaudio import PyAudioInput
@@ -58,18 +71,6 @@ There are several speech events available:
 - `activate`: occurs when `SpeechContext` is activated.
 - `deactivate`: occurs when `SpeechContext` is deactivated.
 - `step`: occurs when a single frame is processed by the pipeline.
-
-### Use a Profile (Optional)
-
-Profiles are preset configurations for the `SpeechPipeline` that bundle input and stage classes into an easy-to-use wrapper. All profiles are designed to be initialized with only one line.
-
-```python
-from spokestack.profile.wakeword_asr import WakewordSpokestackASR
-
-pipeline = WakewordSpokestackASR.create(
-    "spokestack_id", "spokestack_secret", model_dir="path_to_tflite_model_dir"
-)
-```
 
 ## Other methods
 

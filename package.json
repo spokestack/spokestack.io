@@ -211,7 +211,7 @@
     },
     "github": {
       "release": true,
-      "tokenRef": "SPOKESTACK_WEBSITE_GITHUB_TOKEN"
+      "tokenRef": "SPOKESTACK_GITHUB_TOKEN"
     },
     "plugins": {
       "@release-it/conventional-changelog": {

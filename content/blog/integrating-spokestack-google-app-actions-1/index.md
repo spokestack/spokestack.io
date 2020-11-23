@@ -1,6 +1,6 @@
 ---
 title: Integrating Spokestack with Google App Actions, Part 1
-date: '2020-11-18'
+date: '2020-11-23'
 description: Take your app's voice integration to the next level by having Google Assistant hand off the conversation to an in-app voice assistant.
 author: josh
 tags: Android, Engineering, Tutorial

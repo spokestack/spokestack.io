@@ -1,10 +1,10 @@
 ---
 title: Integrating Spokestack with Google App Actions, Part 2
-date: '2020-11-19'
+date: '2020-11-30'
 description: Take your app's voice integration to the next level by having Google Assistant hand off the conversation to an in-app voice assistant.
 author: josh
 tags: Android, Engineering, Tutorial
-draft: false
+draft: true
 ---
 
 In [the first part](/blog/integrating-spokestack-google-app-actions-1) of our tutorial, we talked about how to make an [Android app's](https://github.com/spokestack/app-actions-example) features available via Google App Actions. In this part, we'll take it to the next level and show how to continue the user interaction via voice once Google Assistant has dropped the user off inside the app.

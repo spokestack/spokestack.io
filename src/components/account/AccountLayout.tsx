@@ -39,7 +39,7 @@ const links: StickyLink[] = [
 
 if (process.env.NODE_ENV !== 'production') {
   links.push({
-    href: '/account/__api',
+    href: '/account/graphql',
     title: 'Spokestack API GraphiQL',
     section: 'Developers'
   })

@@ -1,5 +1,5 @@
 import AboutLayout from '../../components/AboutLayout'
-import { MIN_DEFAULT_MEDIA_QUERY } from 'typography-breakpoint-constants'
+import { MIN_DEFAULT_MEDIA_QUERY } from '../../styles/theme'
 import { PageRendererProps } from 'gatsby'
 import React from 'react'
 import SEO from '../../components/SEO'

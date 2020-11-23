@@ -1,12 +1,6 @@
 import * as theme from '../styles/theme'
 
-import {
-  MIN_DEFAULT_MEDIA_QUERY,
-  MIN_LARGE_DISPLAY_MEDIA_QUERY
-} from 'typography-breakpoint-constants'
-
 import React from 'react'
-import { adjustFontSizeTo } from '../styles/typography'
 import { css } from '@emotion/core'
 import { Link } from 'gatsby'
 
@@ -45,7 +39,7 @@ const styles = {
     text-decoration: none;
     background-color: ${theme.header};
     box-shadow: 0 2px 16px rgba(0, 0, 0, 0.5);
-    font-size: ${adjustFontSizeTo('13px').fontSize};
+    font-size: 13px;
     padding-bottom: 1px;
     z-index: 99999;
 
@@ -67,9 +61,9 @@ const styles = {
       margin: 0;
     }
 
-    ${MIN_DEFAULT_MEDIA_QUERY} {
+    ${theme.MIN_DEFAULT_MEDIA_QUERY} {
       position: absolute;
-      font-size: ${adjustFontSizeTo('16px').fontSize};
+      font-size: 16px;
     }
   `,
   bannerImage: css`
@@ -80,7 +74,7 @@ const styles = {
     line-height: 0;
     display: none;
 
-    ${MIN_LARGE_DISPLAY_MEDIA_QUERY} {
+    ${theme.MIN_LARGE_DISPLAY_MEDIA_QUERY} {
       display: block;
     }
   `,

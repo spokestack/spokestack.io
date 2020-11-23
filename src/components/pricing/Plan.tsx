@@ -4,7 +4,6 @@ import Category, { CategoryProps } from './Category'
 import Header, { HeaderProps } from './Header'
 
 import Button from '../Button'
-import { MIN_DEFAULT_MEDIA_QUERY } from 'typography-breakpoint-constants'
 import React from 'react'
 import { css } from '@emotion/core'
 
@@ -77,7 +76,7 @@ const styles = {
     padding: 70px 0 50px;
     margin-bottom: 25px;
 
-    ${MIN_DEFAULT_MEDIA_QUERY} {
+    ${theme.MIN_DEFAULT_MEDIA_QUERY} {
       height: calc(100% - 44px - 25px - 75px);
     }
   `

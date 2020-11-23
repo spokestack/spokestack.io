@@ -8,7 +8,6 @@ import { RouteComponentProps } from '@reach/router'
 import { css } from '@emotion/core'
 import gql from 'graphql-tag'
 import { navigate } from 'gatsby'
-import { rhythm } from '../../styles/typography'
 import { useMutation } from '@apollo/react-hooks'
 
 const CREATE_ACCOUNT = gql`
@@ -83,7 +82,7 @@ const styles = {
     display: flex;
     flex-direction: column;
     align-items: center;
-    padding: ${rhythm(1)} 20px;
+    padding: 15px 20px;
   `,
   form: css`
     display: flex;

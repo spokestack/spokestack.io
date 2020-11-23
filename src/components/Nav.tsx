@@ -1,10 +1,5 @@
 import * as theme from '../styles/theme'
 
-import {
-  DEFAULT_MEDIA_QUERY,
-  MIN_DEFAULT_MEDIA_QUERY,
-  MIN_LARGE_DISPLAY_MEDIA_QUERY
-} from 'typography-breakpoint-constants'
 import { Global, SerializedStyles, css } from '@emotion/core'
 import React, { useState } from 'react'
 
@@ -32,7 +27,7 @@ export default function Nav({ extraCss }: Props) {
     <nav css={[styles.nav].concat(extraCss)}>
       <Global
         styles={css`
-          ${MIN_DEFAULT_MEDIA_QUERY} {
+          ${theme.MIN_DEFAULT_MEDIA_QUERY} {
             .nav-link-active {
               color: ${theme.secondary} !important;
               font-weight: 700;
@@ -55,7 +50,7 @@ export default function Nav({ extraCss }: Props) {
                 color: ${theme.text};
               }
             }
-            ${DEFAULT_MEDIA_QUERY} {
+            ${theme.DEFAULT_MEDIA_QUERY} {
               .nav-content,
               .mobile-login-buttons {
                 background-color: ${theme.authorBackground};
@@ -186,7 +181,7 @@ const styles = {
     justify-content: center;
     z-index: 9997;
 
-    ${MIN_DEFAULT_MEDIA_QUERY} {
+    ${theme.MIN_DEFAULT_MEDIA_QUERY} {
       position: absolute;
       flex-direction: row;
       justify-content: space-between;
@@ -194,7 +189,7 @@ const styles = {
       padding-right: 30px;
     }
 
-    ${MIN_LARGE_DISPLAY_MEDIA_QUERY} {
+    ${theme.MIN_LARGE_DISPLAY_MEDIA_QUERY} {
       padding-left: 100px;
       padding-right: 100px;
     }
@@ -211,7 +206,7 @@ const styles = {
     flex-shrink: 0;
     z-index: 9999;
 
-    ${MIN_DEFAULT_MEDIA_QUERY} {
+    ${theme.MIN_DEFAULT_MEDIA_QUERY} {
       justify-content: flex-start;
       background: none;
     }
@@ -222,7 +217,7 @@ const styles = {
     transform: translateY(-50%);
     left: 5px;
 
-    ${MIN_DEFAULT_MEDIA_QUERY} {
+    ${theme.MIN_DEFAULT_MEDIA_QUERY} {
       display: none;
     }
   `,
@@ -241,7 +236,7 @@ const styles = {
     background-color: white;
     z-index: 9998;
 
-    ${MIN_DEFAULT_MEDIA_QUERY} {
+    ${theme.MIN_DEFAULT_MEDIA_QUERY} {
       position: static;
       display: flex;
       flex-direction: row;
@@ -254,7 +249,7 @@ const styles = {
     }
   `,
   navContentOpen: css`
-    ${DEFAULT_MEDIA_QUERY} {
+    ${theme.DEFAULT_MEDIA_QUERY} {
       transform: translateY(0);
     }
   `,
@@ -269,7 +264,7 @@ const styles = {
     height: 100%;
     overflow-y: auto;
 
-    ${MIN_DEFAULT_MEDIA_QUERY} {
+    ${theme.MIN_DEFAULT_MEDIA_QUERY} {
       flex-direction: row;
       justify-content: flex-start;
       overflow: hidden;
@@ -279,7 +274,7 @@ const styles = {
     width: 100%;
     margin: 0;
 
-    ${DEFAULT_MEDIA_QUERY} {
+    ${theme.DEFAULT_MEDIA_QUERY} {
       position: relative;
       & + & > .nav-link:after,
       & + & > .nav-dropdown > .nav-link:after {
@@ -287,7 +282,7 @@ const styles = {
       }
     }
 
-    ${MIN_DEFAULT_MEDIA_QUERY} {
+    ${theme.MIN_DEFAULT_MEDIA_QUERY} {
       width: auto;
     }
   `,
@@ -301,7 +296,7 @@ const styles = {
     display: flex;
     flex-direction: column;
 
-    ${MIN_DEFAULT_MEDIA_QUERY} {
+    ${theme.MIN_DEFAULT_MEDIA_QUERY} {
       padding: 20px 0 20px 20px;
     }
 
@@ -316,16 +311,16 @@ const styles = {
     text-align: center;
     background-color: ${theme.primaryLighter};
 
-    ${MIN_DEFAULT_MEDIA_QUERY} {
+    ${theme.MIN_DEFAULT_MEDIA_QUERY} {
       padding: 50px;
     }
 
-    ${MIN_LARGE_DISPLAY_MEDIA_QUERY} {
+    ${theme.MIN_LARGE_DISPLAY_MEDIA_QUERY} {
       grid-column: auto;
     }
   `,
   navLinkDropdown: css`
-    ${DEFAULT_MEDIA_QUERY} {
+    ${theme.DEFAULT_MEDIA_QUERY} {
       position: relative;
       &:after {
         ${borderTopStyle};
@@ -345,14 +340,14 @@ const styles = {
       ${borderTopStyle};
     }
 
-    ${MIN_DEFAULT_MEDIA_QUERY} {
+    ${theme.MIN_DEFAULT_MEDIA_QUERY} {
       display: none;
     }
   `,
   desktopOnly: css`
     display: none;
 
-    ${MIN_DEFAULT_MEDIA_QUERY} {
+    ${theme.MIN_DEFAULT_MEDIA_QUERY} {
       display: flex;
     }
   `

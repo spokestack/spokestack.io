@@ -1,4 +1,4 @@
-import { MIN_LARGE_DISPLAY_MEDIA_QUERY } from 'typography-breakpoint-constants'
+import { MIN_LARGE_DISPLAY_MEDIA_QUERY } from '../../styles/theme'
 import React from 'react'
 import { css } from '@emotion/core'
 

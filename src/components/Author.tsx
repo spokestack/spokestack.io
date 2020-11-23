@@ -7,7 +7,6 @@ import Callout from './Callout'
 import { Query } from '../utils/graphql'
 import React from 'react'
 import find from 'lodash/find'
-import { rhythm } from '../styles/typography'
 
 interface Props {
   author: string
@@ -50,7 +49,7 @@ const styles = {
     width: 95px;
     height: 95px;
     border-radius: 50%;
-    margin: 0 0 ${rhythm(1)};
+    margin: 0 0 15px;
   `,
   about: css`
     font-size: 16px;

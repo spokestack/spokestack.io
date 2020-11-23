@@ -1,16 +1,10 @@
 import * as theme from '../styles/theme'
 
-import {
-  LARGE_DISPLAY_WIDTH,
-  MIN_DEFAULT_MEDIA_QUERY
-} from 'typography-breakpoint-constants'
-
 import Layout from '../components/Layout'
 import React from 'react'
 import SignInForm from './SignInForm'
 import { WindowLocation } from '@reach/router'
 import { css } from '@emotion/core'
-import { rhythm } from '../styles/typography'
 
 interface Props {
   children?: React.ReactNode
@@ -71,16 +65,16 @@ export default function Login({ children, header, isCreate, location }: Props) {
 const styles = {
   container: css`
     padding: 20px;
-    max-width: ${LARGE_DISPLAY_WIDTH};
+    max-width: ${theme.LARGE_DISPLAY_WIDTH};
     margin: 0 auto;
 
-    ${MIN_DEFAULT_MEDIA_QUERY} {
-      padding: ${rhythm(4)} 30px;
+    ${theme.MIN_DEFAULT_MEDIA_QUERY} {
+      padding: 70px 30px;
     }
   `,
   header: css`
     text-align: center;
-    margin-bottom: ${rhythm(1.5)};
+    margin-bottom: 25px;
   `,
   content: css`
     display: flex;
@@ -88,14 +82,14 @@ const styles = {
     justify-content: flex-start;
     align-items: center;
 
-    ${MIN_DEFAULT_MEDIA_QUERY} {
+    ${theme.MIN_DEFAULT_MEDIA_QUERY} {
       flex-direction: row-reverse;
     }
   `,
   details: css`
-    margin-top: ${rhythm(2)};
+    margin-top: 30px;
 
-    ${MIN_DEFAULT_MEDIA_QUERY} {
+    ${theme.MIN_DEFAULT_MEDIA_QUERY} {
       padding: 0 40px;
       margin: 0 20px 0 0;
     }
@@ -104,7 +98,7 @@ const styles = {
     display: flex;
     flex-direction: row;
     align-items: center;
-    margin-bottom: ${rhythm(1)};
+    margin-bottom: 15px;
   `,
   featureImage: css`
     display: block;

@@ -355,9 +355,11 @@ module.exports = {
     },
     'gatsby-plugin-react-helmet',
     {
-      resolve: 'gatsby-plugin-typography',
+      resolve: 'gatsby-plugin-web-font-loader',
       options: {
-        pathToConfigModule: 'src/styles/typography'
+        google: {
+          families: ['Roboto:300,400,700']
+        }
       }
     },
     'gatsby-plugin-remove-trailing-slashes',

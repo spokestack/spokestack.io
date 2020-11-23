@@ -5,7 +5,6 @@ import { graphql, useStaticQuery } from 'gatsby'
 import Callout from '../Callout'
 import { Query } from '../../utils/graphql'
 import React from 'react'
-import { adjustFontSizeTo } from '../../styles/typography'
 import { css } from '@emotion/core'
 import find from 'lodash/find'
 
@@ -95,7 +94,7 @@ const styles = {
     flex-direction: row;
     justify-content: flex-start;
     align-items: center;
-    font-size: ${adjustFontSizeTo('14px').fontSize};
+    font-size: 14px;
     white-space: nowrap;
   `,
   authorLink: css`

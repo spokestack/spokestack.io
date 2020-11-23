@@ -1,9 +1,5 @@
 import * as theme from '../styles/theme'
 
-import {
-  MIN_DEFAULT_MEDIA_QUERY,
-  MIN_LARGE_DISPLAY_MEDIA_QUERY
-} from 'typography-breakpoint-constants'
 import { PageRendererProps, graphql } from 'gatsby'
 import React, { useRef, useState } from 'react'
 
@@ -14,7 +10,6 @@ import { Query } from '../utils/graphql'
 import SEO from '../components/SEO'
 import SVGIcon from '../components/SVGIcon'
 import Switch from '../components/pricing/Switch'
-import { adjustFontSizeTo } from '../styles/typography'
 import { css } from '@emotion/core'
 
 interface Props extends PageRendererProps {
@@ -385,7 +380,7 @@ const styles = {
     justify-content: stretch;
     padding: 0 20px 75px;
 
-    ${MIN_DEFAULT_MEDIA_QUERY} {
+    ${theme.MIN_DEFAULT_MEDIA_QUERY} {
       flex-direction: row;
       justify-content: center;
 
@@ -394,7 +389,7 @@ const styles = {
       grid-gap: 25px;
     }
 
-    ${MIN_LARGE_DISPLAY_MEDIA_QUERY} {
+    ${theme.MIN_LARGE_DISPLAY_MEDIA_QUERY} {
       grid-template-columns: 186px 186px 186px;
     }
   `,
@@ -411,7 +406,7 @@ const styles = {
     transition: opacity 0.2s ${theme.transitionEasing};
 
     strong {
-      font-size: ${adjustFontSizeTo('11px').fontSize};
+      font-size: 11px;
       position: relative;
       color: ${theme.header};
     }

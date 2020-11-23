@@ -2,7 +2,6 @@ import { SerializedStyles, css } from '@emotion/core'
 
 import Callout from './Callout'
 import React from 'react'
-import { adjustFontSizeTo } from '../styles/typography'
 import { ieBreakpoint } from '../styles/theme'
 
 interface Props {
@@ -49,7 +48,7 @@ const styles = {
     margin-bottom: 10px;
   `,
   text: css`
-    font-size: ${adjustFontSizeTo('16px').fontSize};
+    font-size: 16px;
     margin: 0;
   `
 }

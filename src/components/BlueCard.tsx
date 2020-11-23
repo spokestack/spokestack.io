@@ -2,7 +2,6 @@ import * as theme from '../styles/theme'
 
 import { Global, css } from '@emotion/core'
 
-import { MIN_DEFAULT_MEDIA_QUERY } from 'typography-breakpoint-constants'
 import React from 'react'
 
 export interface BlueCardProps {
@@ -63,7 +62,7 @@ const styles = {
       margin: 0 auto 30px;
     }
 
-    ${MIN_DEFAULT_MEDIA_QUERY} {
+    ${theme.MIN_DEFAULT_MEDIA_QUERY} {
       min-height: 400px;
       margin: 0 50px;
     }
@@ -73,7 +72,7 @@ const styles = {
     }
   `,
   smallCard: css`
-    ${MIN_DEFAULT_MEDIA_QUERY} {
+    ${theme.MIN_DEFAULT_MEDIA_QUERY} {
       width: 100%;
       max-width: 808px;
       margin: 0 auto;

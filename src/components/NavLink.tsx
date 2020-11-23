@@ -4,8 +4,6 @@ import React, { AnchorHTMLAttributes } from 'react'
 import { SerializedStyles, css } from '@emotion/core'
 
 import { Link } from 'gatsby'
-import { MIN_DEFAULT_MEDIA_QUERY } from 'typography-breakpoint-constants'
-import { adjustFontSizeTo } from '../styles/typography'
 
 interface Props extends AnchorHTMLAttributes<HTMLAnchorElement> {
   extraCss?: SerializedStyles | SerializedStyles[]
@@ -57,7 +55,7 @@ const styles = {
     align-items: center;
     width: 100%;
     height: 60px;
-    font-size: ${adjustFontSizeTo('18px').fontSize};
+    font-size: 18px;
     line-height: 1.1;
     transition: background-color 0.2s ${theme.transitionEasing},
       color 0.2s ${theme.transitionEasing};
@@ -85,7 +83,7 @@ const styles = {
     }
   `,
   navLinkDesktop: css`
-    ${MIN_DEFAULT_MEDIA_QUERY} {
+    ${theme.MIN_DEFAULT_MEDIA_QUERY} {
       width: auto;
       margin: 0;
       padding: 0 15px;

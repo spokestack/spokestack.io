@@ -3,12 +3,10 @@ import {
   MAX_TEXT_WIDTH,
   MIN_SIDEBAR_WIDTH,
   MIN_TEXT_WIDTH,
+  MIN_DEFAULT_MEDIA_QUERY,
+  MIN_LARGE_DISPLAY_MEDIA_QUERY,
   ieBreakpoint
 } from '../styles/theme'
-import {
-  MIN_DEFAULT_MEDIA_QUERY,
-  MIN_LARGE_DISPLAY_MEDIA_QUERY
-} from 'typography-breakpoint-constants'
 
 import Author from './Author'
 import Create from './homepage/Create'
@@ -24,7 +22,6 @@ import { WindowLocation } from '@reach/router'
 import { css } from '@emotion/core'
 import findImage from '../utils/findImage'
 import { isLoggedIn } from '../utils/auth'
-import { rhythm } from '../styles/typography'
 
 interface Props {
   location: WindowLocation
@@ -85,7 +82,7 @@ const styles = {
   container: css`
     display: flex;
     flex-direction: column;
-    padding: 20px 20px ${rhythm(2)};
+    padding: 20px 20px 30px;
 
     ${MIN_DEFAULT_MEDIA_QUERY} {
       flex-direction: row;
@@ -100,7 +97,7 @@ const styles = {
       grid-template-areas:
         'author  content'
         'related content';
-      padding: ${rhythm(2)} 40px;
+      padding: 30px 40px;
       max-width: calc(
         ${MAX_SIDEBAR_WIDTH} + ${MAX_TEXT_WIDTH} + ${MAX_SIDEBAR_WIDTH}
       );

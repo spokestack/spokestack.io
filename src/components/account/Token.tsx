@@ -1,11 +1,6 @@
 import * as theme from '../../styles/theme'
 
 import { CopyButton, CopyInputWithButton, DeleteButton } from '../EditButtons'
-import {
-  MIN_DEFAULT_MEDIA_QUERY,
-  MIN_MOBILE_MEDIA_QUERY,
-  MIN_TABLET_MEDIA_QUERY
-} from 'typography-breakpoint-constants'
 import React, { useRef } from 'react'
 
 import { ApiKey } from '../../types'
@@ -78,7 +73,7 @@ const styles = {
       margin-right: 10px;
     }
 
-    ${MIN_DEFAULT_MEDIA_QUERY} {
+    ${theme.MIN_DEFAULT_MEDIA_QUERY} {
       padding: 10px 20px;
     }
   `,
@@ -103,7 +98,7 @@ const styles = {
     display: flex;
     flex-direction: column;
 
-    ${MIN_TABLET_MEDIA_QUERY} {
+    ${theme.MIN_TABLET_MEDIA_QUERY} {
       flex-direction: row;
       align-items: center;
     }
@@ -124,7 +119,7 @@ const styles = {
     resize: none;
     min-height: 100px;
 
-    ${MIN_MOBILE_MEDIA_QUERY} {
+    ${theme.MIN_MOBILE_MEDIA_QUERY} {
       min-height: auto;
     }
   `

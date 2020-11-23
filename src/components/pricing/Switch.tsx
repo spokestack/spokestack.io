@@ -3,8 +3,6 @@ import * as theme from '../../styles/theme'
 import React, { PureComponent } from 'react'
 import { SerializedStyles, css } from '@emotion/core'
 
-import { adjustFontSizeTo } from '../../styles/typography'
-
 interface Props {
   yearly: boolean
   onChange: (yearly: boolean) => void
@@ -232,6 +230,6 @@ const styles = {
   `,
   text: css`
     color: ${theme.header};
-    font-size: ${adjustFontSizeTo('11px').fontSize};
+    font-size: 11px;
   `
 }

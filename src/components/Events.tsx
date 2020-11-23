@@ -1,10 +1,5 @@
 import * as theme from '../styles/theme'
 
-import {
-  DEFAULT_WIDTH,
-  MIN_DEFAULT_MEDIA_QUERY
-} from 'typography-breakpoint-constants'
-import { adjustFontSizeTo, rhythm } from '../styles/typography'
 import { graphql, useStaticQuery } from 'gatsby'
 
 import { Query } from '../utils/graphql'
@@ -57,7 +52,7 @@ const styles = {
     flex-direction: column;
     justify-content: center;
     align-items: center;
-    max-width: ${DEFAULT_WIDTH};
+    max-width: ${theme.DEFAULT_WIDTH};
     margin: 0 auto;
 
     .event + .event {
@@ -70,9 +65,9 @@ const styles = {
     flex-direction: column;
     justify-content: flex-start;
     align-items: center;
-    padding: ${rhythm(2)} 0;
+    padding: 30px 0;
 
-    ${MIN_DEFAULT_MEDIA_QUERY} {
+    ${theme.MIN_DEFAULT_MEDIA_QUERY} {
       flex-direction: row-reverse;
       justify-content: space-between;
       align-items: flex-start;
@@ -84,7 +79,7 @@ const styles = {
     align-items: center;
     width: 100%;
     max-width: 600px;
-    margin-bottom: ${rhythm(2)};
+    margin-bottom: 30px;
 
     p {
       margin: 0;
@@ -95,7 +90,7 @@ const styles = {
       width: 100%;
     }
 
-    ${MIN_DEFAULT_MEDIA_QUERY} {
+    ${theme.MIN_DEFAULT_MEDIA_QUERY} {
       width: auto;
       align-items: flex-start;
       margin-bottom: 0;
@@ -129,11 +124,11 @@ const styles = {
     white-space: nowrap;
   `,
   month: css`
-    ${adjustFontSizeTo('32px')};
+    font-size: 32px;
     line-height: 1.4;
   `,
   day: css`
-    ${adjustFontSizeTo('50px')};
+    font-size: 50px;
     line-height: 1;
   `,
   location: css`
@@ -141,7 +136,7 @@ const styles = {
     flex-direction: column;
   `,
   time: css`
-    ${adjustFontSizeTo('25px')};
+    font-size: 25px;
     font-weight: 700;
     white-space: nowrap;
   `

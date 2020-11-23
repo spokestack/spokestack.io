@@ -3,12 +3,10 @@ import * as theme from '../styles/theme'
 import { Global, css } from '@emotion/core'
 import React, { useEffect, useState } from 'react'
 
-import { DEFAULT_MEDIA_QUERY } from 'typography-breakpoint-constants'
 import { Link } from 'gatsby'
 import SVGIcon from './SVGIcon'
 import { StickyLink } from '../types'
 import { WindowLocation } from '@reach/router'
-import { adjustFontSizeTo } from '../styles/typography'
 import hashToId from '../utils/hashToId'
 
 interface Props {
@@ -152,14 +150,14 @@ const styles = {
     flex-direction: column;
     margin-bottom: 10px;
 
-    ${DEFAULT_MEDIA_QUERY} {
+    ${theme.DEFAULT_MEDIA_QUERY} {
       display: none;
     }
   `,
   stickyNavHeader: css`
     margin: 0 0 10px;
     padding: 0 15px 0 40px;
-    ${adjustFontSizeTo('16px')};
+    font-size: 16px;
 
     a {
       display: flex;
@@ -189,7 +187,7 @@ const styles = {
     }
   `,
   stickyNavLink: css`
-    font-size: ${adjustFontSizeTo('16px').fontSize};
+    font-size: 16px;
     line-height: 1.2;
     padding: 10px 45px;
     text-decoration: none;

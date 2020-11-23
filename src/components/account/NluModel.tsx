@@ -11,7 +11,6 @@ import Color from 'color'
 import { CopyInputWithButton } from '../EditButtons'
 import React from 'react'
 import SVGIcon from '../SVGIcon'
-import { adjustFontSizeTo } from '../../styles/typography'
 import { css } from '@emotion/core'
 import { formatDate } from '../../utils/formatDate'
 import { titleCase } from 'title-case'
@@ -89,7 +88,7 @@ export default function NluModel({ model }: Props) {
 const styles = {
   date: css`
     margin: 0;
-    font-size: ${adjustFontSizeTo('16px').fontSize};
+    font-size: 16px;
   `,
   copyInput: css`
     margin-bottom: 20px;

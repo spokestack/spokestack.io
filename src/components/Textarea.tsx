@@ -4,7 +4,6 @@ import React, { TextareaHTMLAttributes } from 'react'
 import { SerializedStyles, css } from '@emotion/core'
 
 import LoadingIcon from './LoadingIcon'
-import { MIN_TABLET_MEDIA_QUERY } from 'typography-breakpoint-constants'
 
 interface Props
   extends Omit<TextareaHTMLAttributes<HTMLTextAreaElement>, 'onChange'> {
@@ -59,7 +58,7 @@ const styles = {
     border-radius: 7px 7px 0 0;
     resize: vertical;
 
-    ${MIN_TABLET_MEDIA_QUERY} {
+    ${theme.MIN_TABLET_MEDIA_QUERY} {
       min-height: 120px;
     }
   `,

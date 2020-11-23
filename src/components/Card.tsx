@@ -2,7 +2,6 @@ import * as theme from '../styles/theme'
 
 import { Global, SerializedStyles, css } from '@emotion/core'
 
-import { MIN_DEFAULT_MEDIA_QUERY } from 'typography-breakpoint-constants'
 import React from 'react'
 
 interface Props {
@@ -35,7 +34,7 @@ const styles = {
     border: 1px solid ${theme.mainBorder};
     border-radius: 7px;
     overflow: hidden;
-    ${MIN_DEFAULT_MEDIA_QUERY} {
+    ${theme.MIN_DEFAULT_MEDIA_QUERY} {
       max-width: 700px;
     }
   `,

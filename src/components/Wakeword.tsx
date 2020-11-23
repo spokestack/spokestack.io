@@ -6,7 +6,6 @@ import { getWakeword, uploadWakeword } from '../utils/wakeword'
 import Button from './Button'
 import Card from './Card'
 import { CopyInputWithButton } from './EditButtons'
-import { MIN_DEFAULT_MEDIA_QUERY } from 'typography-breakpoint-constants'
 import SVGIcon from './SVGIcon'
 import WakewordCheckmark from './WakewordCheckmark'
 import { capitalize } from 'lodash'
@@ -205,7 +204,7 @@ const styles = {
     width: 100%;
     align-items: stretch;
 
-    ${MIN_DEFAULT_MEDIA_QUERY} {
+    ${theme.MIN_DEFAULT_MEDIA_QUERY} {
       max-width: 600px;
     }
   `,

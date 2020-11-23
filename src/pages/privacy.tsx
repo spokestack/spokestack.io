@@ -1,12 +1,11 @@
 import { PageRendererProps, graphql } from 'gatsby'
 
-import { DEFAULT_WIDTH } from 'typography-breakpoint-constants'
+import { DEFAULT_WIDTH } from '../styles/theme'
 import Layout from '../components/Layout'
 import { Query } from '../utils/graphql'
 import React from 'react'
 import SEO from '../components/SEO'
 import { css } from '@emotion/core'
-import { rhythm } from '../styles/typography'
 
 interface Props extends PageRendererProps {
   data: Query
@@ -520,7 +519,7 @@ export default function Privacy({ data, location }: Props) {
 
 const styles = {
   container: css`
-    padding: ${rhythm(1)};
+    padding: 20px;
     max-width: ${DEFAULT_WIDTH};
     margin: 0 auto;
   `

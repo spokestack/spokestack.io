@@ -2,11 +2,6 @@ import * as theme from '../styles/theme'
 
 import { Global, css } from '@emotion/core'
 import { Link, graphql, useStaticQuery } from 'gatsby'
-import {
-  MIN_DEFAULT_MEDIA_QUERY,
-  MIN_LARGE_DISPLAY_MEDIA_QUERY,
-  MIN_TABLET_MEDIA_QUERY
-} from 'typography-breakpoint-constants'
 
 import Logo from './Logo'
 import Newsletter from './Newsletter'
@@ -133,7 +128,7 @@ const styles = {
     flex-direction: column;
     padding: 0 20px 40px;
 
-    ${MIN_DEFAULT_MEDIA_QUERY} {
+    ${theme.MIN_DEFAULT_MEDIA_QUERY} {
       padding-left: 100px;
       padding-right: 100px;
     }
@@ -145,7 +140,7 @@ const styles = {
     padding: 25px 0 50px;
     margin: 0 auto;
 
-    ${MIN_DEFAULT_MEDIA_QUERY} {
+    ${theme.MIN_DEFAULT_MEDIA_QUERY} {
       flex-direction: row;
       justify-content: center;
     }
@@ -164,7 +159,7 @@ const styles = {
       margin-bottom: 25px;
     }
 
-    ${MIN_DEFAULT_MEDIA_QUERY} {
+    ${theme.MIN_DEFAULT_MEDIA_QUERY} {
       align-items: flex-start;
       text-align: left;
 
@@ -173,7 +168,7 @@ const styles = {
       }
     }
 
-    ${MIN_LARGE_DISPLAY_MEDIA_QUERY} {
+    ${theme.MIN_LARGE_DISPLAY_MEDIA_QUERY} {
       &:not(:first-of-type) + & {
         margin-left: 80px;
       }
@@ -212,7 +207,7 @@ const styles = {
     align-items: center;
     white-space: nowrap;
 
-    ${MIN_TABLET_MEDIA_QUERY} {
+    ${theme.MIN_TABLET_MEDIA_QUERY} {
       flex-direction: row;
       justify-content: flex-start;
     }
@@ -224,7 +219,7 @@ const styles = {
     margin: 0 20px;
     display: none;
 
-    ${MIN_TABLET_MEDIA_QUERY} {
+    ${theme.MIN_TABLET_MEDIA_QUERY} {
       display: block;
     }
   `,

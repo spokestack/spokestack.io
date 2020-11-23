@@ -4,7 +4,6 @@ import React, { useEffect, useState } from 'react'
 
 import Card from './Card'
 import { Link } from 'gatsby'
-import { MIN_DEFAULT_MEDIA_QUERY } from 'typography-breakpoint-constants'
 import SVGIcon from './SVGIcon'
 import { createLink as createGitHubLink } from '../utils/oauthGitHub'
 import { createLink as createGoogleLink } from '../utils/oauthGoogle'
@@ -56,7 +55,7 @@ const styles = {
   container: css`
     width: 100%;
 
-    ${MIN_DEFAULT_MEDIA_QUERY} {
+    ${theme.MIN_DEFAULT_MEDIA_QUERY} {
       max-width: 610px;
       padding: 100px 40px;
     }

@@ -1,13 +1,12 @@
 import { Global, SerializedStyles, css } from '@emotion/core'
 
 import Footer from './Footer'
-import { MIN_DEFAULT_MEDIA_QUERY } from 'typography-breakpoint-constants'
 import Nav from './Nav'
 import React from 'react'
 import Sprite from '../svg-sprite.svg'
 import { WindowLocation } from '@reach/router'
 import globalStyles from '../styles/global.css'
-import { ieBreakpoint } from '../styles/theme'
+import { MIN_DEFAULT_MEDIA_QUERY, ieBreakpoint } from '../styles/theme'
 
 interface Props {
   banner?: React.ReactNode

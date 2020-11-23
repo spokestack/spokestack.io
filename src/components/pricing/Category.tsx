@@ -1,6 +1,5 @@
-import { MIN_LARGE_DISPLAY_MEDIA_QUERY } from 'typography-breakpoint-constants'
+import { MIN_LARGE_DISPLAY_MEDIA_QUERY } from '../../styles/theme'
 import React from 'react'
-import { adjustFontSizeTo } from '../../styles/typography'
 import { css } from '@emotion/core'
 
 interface Feature {
@@ -79,7 +78,7 @@ const styles = {
     margin-top: 40px;
 
     h4 {
-      font-size: ${adjustFontSizeTo('14px').fontSize};
+      font-size: 14px;
       margin-bottom: 10px;
       padding: 0 20px;
     }
@@ -132,7 +131,7 @@ const styles = {
     flex-direction: row;
     align-items: center;
     padding: 5px 20px;
-    font-size: ${adjustFontSizeTo('14px').fontSize};
+    font-size: 14px;
 
     &:not(.feature-enabled):not(.show-disabled) {
       display: none;

@@ -8,7 +8,7 @@
  * `npm start` will run both the gatsby develop server and
  * the introspection server for the Spokestack API.
  *
- * Introspection is available at http://localhost:8000/account/__api
+ * Introspection is available at http://localhost:8000/account/graphql
  */
 import { Global, css } from '@emotion/core'
 import { getAuthToken, getProvider } from '../utils/auth'
@@ -21,6 +21,9 @@ export default function GraphiQLPage() {
     <>
       <Global
         styles={css`
+          body {
+            margin: 0;
+          }
           html,
           html * {
             width: 100%;

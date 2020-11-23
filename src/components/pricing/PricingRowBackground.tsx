@@ -1,6 +1,5 @@
 import * as theme from '../../styles/theme'
 
-import { MIN_LARGE_DISPLAY_MEDIA_QUERY } from 'typography-breakpoint-constants'
 import React from 'react'
 import { css } from '@emotion/core'
 
@@ -31,7 +30,7 @@ const styles = {
     z-index: 999;
     transition: opacity 0.2s ${theme.transitionEasing};
 
-    ${MIN_LARGE_DISPLAY_MEDIA_QUERY} {
+    ${theme.MIN_LARGE_DISPLAY_MEDIA_QUERY} {
       display: block;
     }
   `

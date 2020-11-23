@@ -1,10 +1,6 @@
 import * as theme from '../styles/theme'
 
 import { Global, css } from '@emotion/core'
-import {
-  MIN_DEFAULT_MEDIA_QUERY,
-  MIN_TABLET_MEDIA_QUERY
-} from 'typography-breakpoint-constants'
 import React, { FormEvent, useRef, useState } from 'react'
 
 import Button from './Button'
@@ -81,7 +77,7 @@ const styles = {
       margin-bottom: 25px;
     }
 
-    ${MIN_DEFAULT_MEDIA_QUERY} {
+    ${theme.MIN_DEFAULT_MEDIA_QUERY} {
       flex-direction: row;
 
       p {
@@ -104,7 +100,7 @@ const styles = {
       height: 50px;
     }
 
-    ${MIN_TABLET_MEDIA_QUERY} {
+    ${theme.MIN_TABLET_MEDIA_QUERY} {
       flex-direction: row;
       margin: 0 0 0 25px;
 

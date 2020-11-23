@@ -1,10 +1,5 @@
 import * as theme from '../styles/theme'
 
-import {
-  DEFAULT_MEDIA_QUERY,
-  MIN_DEFAULT_MEDIA_QUERY,
-  MIN_LARGE_DISPLAY_MEDIA_QUERY
-} from 'typography-breakpoint-constants'
 import { Global, css, SerializedStyles } from '@emotion/core'
 import React, { useState } from 'react'
 
@@ -84,7 +79,7 @@ export default function NavDropdown({ children, menuCss, title }: Props) {
 
 const styles = {
   dropdown: css`
-    ${MIN_DEFAULT_MEDIA_QUERY} {
+    ${theme.MIN_DEFAULT_MEDIA_QUERY} {
       &:hover .nav-link:after {
         left: 0;
         height: 4px;
@@ -113,7 +108,7 @@ const styles = {
     transform: rotateZ(270deg);
     transition: transform 0.2s ${theme.transitionEasing};
 
-    ${MIN_DEFAULT_MEDIA_QUERY} {
+    ${theme.MIN_DEFAULT_MEDIA_QUERY} {
       transform: none;
       fill: ${theme.textDarkBg};
     }
@@ -137,7 +132,7 @@ const styles = {
     will-change: transform, opacity;
     z-index: 9999;
 
-    ${MIN_DEFAULT_MEDIA_QUERY} {
+    ${theme.MIN_DEFAULT_MEDIA_QUERY} {
       position: absolute;
       top: 100%;
       left: 50%;
@@ -149,12 +144,12 @@ const styles = {
       perspective: 2000px;
     }
 
-    ${MIN_LARGE_DISPLAY_MEDIA_QUERY} {
+    ${theme.MIN_LARGE_DISPLAY_MEDIA_QUERY} {
       width: calc(100% - 200px);
     }
   `,
   dropdownMenuOpen: css`
-    ${DEFAULT_MEDIA_QUERY} {
+    ${theme.DEFAULT_MEDIA_QUERY} {
       opacity: 1;
       transform: none;
       visibility: visible;
@@ -169,7 +164,7 @@ const styles = {
     height: 100%;
     overflow-y: auto;
 
-    ${MIN_DEFAULT_MEDIA_QUERY} {
+    ${theme.MIN_DEFAULT_MEDIA_QUERY} {
       border: 1px solid ${theme.mainBorder};
       border-radius: 7px;
       transform-origin: 50% -60px;
@@ -179,7 +174,7 @@ const styles = {
   dropdownBack: css`
     font-weight: 700;
 
-    ${MIN_DEFAULT_MEDIA_QUERY} {
+    ${theme.MIN_DEFAULT_MEDIA_QUERY} {
       display: none;
     }
   `

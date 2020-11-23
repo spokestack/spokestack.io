@@ -1,10 +1,6 @@
 import * as theme from '../styles/theme'
 
 import { Global, SerializedStyles, css } from '@emotion/core'
-import {
-  MIN_DEFAULT_MEDIA_QUERY,
-  MIN_LARGE_DISPLAY_MEDIA_QUERY
-} from 'typography-breakpoint-constants'
 
 import BlogListItem from '../components/BlogListItem'
 import DarkModeButton from '../components/DarkModeButton'
@@ -14,7 +10,6 @@ import React from 'react'
 import SVGIcon from '../components/SVGIcon'
 import Tags from '../components/Tags'
 import { WindowLocation } from '@reach/router'
-import { rhythm } from '../styles/typography'
 
 interface Props {
   currentPage: number
@@ -125,21 +120,21 @@ export default function BlogList({
 const styles = {
   container: css`
     position: relative;
-    padding: 20px 20px ${rhythm(2)};
+    padding: 20px 20px 30px;
 
-    ${MIN_DEFAULT_MEDIA_QUERY} {
+    ${theme.MIN_DEFAULT_MEDIA_QUERY} {
       padding-top: 215px;
       padding-left: 40px;
       padding-right: 40px;
     }
 
-    ${MIN_LARGE_DISPLAY_MEDIA_QUERY} {
+    ${theme.MIN_LARGE_DISPLAY_MEDIA_QUERY} {
       padding-left: 100px;
       padding-right: 100px;
     }
   `,
   bgBanner: css`
-    ${MIN_DEFAULT_MEDIA_QUERY} {
+    ${theme.MIN_DEFAULT_MEDIA_QUERY} {
       position: absolute;
       top: 0;
       left: 0;
@@ -164,7 +159,7 @@ const styles = {
     display: flex;
     flex-direction: column;
 
-    ${MIN_DEFAULT_MEDIA_QUERY} {
+    ${theme.MIN_DEFAULT_MEDIA_QUERY} {
       flex-direction: row;
       display: grid;
       grid-template-columns:
@@ -187,7 +182,7 @@ const styles = {
     padding-right: 20px;
     margin-bottom: 40px;
 
-    ${MIN_DEFAULT_MEDIA_QUERY} {
+    ${theme.MIN_DEFAULT_MEDIA_QUERY} {
       padding-top: 50px;
     }
 
@@ -202,7 +197,7 @@ const styles = {
     grid-area: content;
   `,
   header: css`
-    ${MIN_DEFAULT_MEDIA_QUERY} {
+    ${theme.MIN_DEFAULT_MEDIA_QUERY} {
       position: absolute;
       left: 0;
       right: 0;

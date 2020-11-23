@@ -3,7 +3,6 @@ import * as theme from '../styles/theme'
 import React, { FormEvent, useState } from 'react'
 
 import Button from './Button'
-import { MIN_DEFAULT_MEDIA_QUERY } from 'typography-breakpoint-constants'
 import { css } from '@emotion/core'
 
 interface Props {
@@ -61,7 +60,7 @@ const styles = {
       margin-top: 20px;
     }
 
-    ${MIN_DEFAULT_MEDIA_QUERY} {
+    ${theme.MIN_DEFAULT_MEDIA_QUERY} {
       flex-direction: row;
 
       .input-wrap {

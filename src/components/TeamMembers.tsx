@@ -1,7 +1,7 @@
 import {
   MIN_DEFAULT_MEDIA_QUERY,
   MIN_TABLET_MEDIA_QUERY
-} from 'typography-breakpoint-constants'
+} from '../styles/theme'
 import { graphql, useStaticQuery } from 'gatsby'
 
 import { Query } from '../utils/graphql'

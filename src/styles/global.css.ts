@@ -1,31 +1,143 @@
 import * as theme from './theme'
 
-import { adjustFontSizeTo, rhythm } from './typography'
-
-import { MIN_DEFAULT_MEDIA_QUERY } from 'typography-breakpoint-constants'
 import { css } from '@emotion/core'
 
 export default css`
   html {
     height: 100%;
     min-width: 300px;
+    box-sizing: border-box;
+    overflow-y: scroll;
     background-color: ${theme.mainBackground};
+    -moz-osx-font-smoothing: grayscale;
+    -webkit-font-smoothing: antialiased;
+  }
+  * {
+    box-sizing: inherit;
+  }
+  body {
+    font: 400 18px/1.45 Roboto, Georgia, sans-serif;
+    color: ${theme.text};
+    letter-spacing: 0.03em;
+    margin: 0;
+  }
+  p {
+    margin-top: 0;
+  }
+  button,
+  input,
+  optgroup,
+  select,
+  textarea {
+    font: inherit;
+    margin: 0;
+  }
+  button,
+  select {
+    text-transform: none;
+  }
+  button,
+  input {
+    overflow: visible;
+  }
+  h1,
+  h2,
+  h3,
+  h4,
+  h5,
+  h6 {
+    margin-top: 0;
+    color: ${theme.header};
+    font-weight: 700;
+  }
+  h1 {
+    font-size: 42px;
+    margin-bottom: 15px;
+  }
+  h2 {
+    font-size: 28px;
+    line-height: 1.45;
+    margin-bottom: 15px;
+  }
+  h3 {
+    font-size: 26px;
+    line-height: 1.45;
+    margin-bottom: 15px;
+  }
+  h4 {
+    font-size: 24px;
+    line-height: 1.45;
+    margin-bottom: 15px;
+  }
+  h5 {
+    font-size: 1rem;
+    margin: 0;
+  }
+  h6 {
+    font-size: 0.8rem;
+    font-weight: 400;
+    font-style: italic;
+    margin: 15px 0 1px;
+  }
+  a {
+    color: ${theme.link};
+    font-weight: 700;
+    text-decoration: underline;
+    text-decoration-color: ${theme.link};
+    text-decoration-thickness: 0.1em;
+    text-underline-offset: 2px;
+    transition: color 0.1s ${theme.transitionEasing},
+      text-decoration-color 0.1s ${theme.transitionEasing};
+
+    &:visited {
+      color: ${theme.linkVisited};
+      text-decoration-color: ${theme.linkVisited};
+    }
+    &:hover {
+      color: ${theme.linkHover};
+      text-decoration-color: ${theme.linkHover};
+    }
+    &:active {
+      color: ${theme.linkActive};
+      text-decoration-color: ${theme.linkActive};
+    }
   }
   h1 a {
     color: ${theme.text};
   }
-  a {
-    transition: color 0.1s ${theme.transitionEasing},
-      text-decoration-color 0.1s ${theme.transitionEasing};
-  }
-  img {
+  img,
+  form {
     margin: 0;
+  }
+  td,
+  th,
+  th:first-child,
+  td:first-child,
+  th:last-child,
+  td:last-child {
+    padding-left: 10px;
+    padding-right: 10px;
+  }
+  figcaption {
+    font-size: 0.9rem;
+    font-style: italic;
+    padding-left: 5px;
+    padding-right: 5px;
+    margin: 0 auto;
+    text-align: center;
   }
   blockquote {
     color: hsl(0, 0%, 40%);
+    border-left: 6px solid ${theme.primaryLight};
+    font-style: italic;
+    margin-left: -15px;
+    padding: 5px 10px;
+  }
+  blockquote * {
+    margin: 0;
   }
   .title {
-    font-size: ${adjustFontSizeTo('20px').fontSize};
+    font-size: 20px;
   }
   .blue {
     color: ${theme.primary} !important;
@@ -51,17 +163,24 @@ export default css`
     text-decoration: none;
   }
   pre[class*='language-'] {
-    margin: 0 0 ${rhythm(1)};
+    margin: 0 0 15px;
   }
   code {
     background-color: ${theme.codeBackground};
-    padding: ${rhythm(0.1)} ${rhythm(0.2)};
+    padding: 2px 3px;
   }
   pre code {
     padding: 0;
   }
+  ul {
+    padding: 0;
+    margin: 0;
+  }
+  li *:last-child {
+    margin-bottom: 0;
+  }
   h3 code {
-    ${adjustFontSizeTo('30px')};
+    font-size: 30px;
   }
   tr:nth-of-type(2n) {
     background-color: ${theme.codeBackground};
@@ -78,10 +197,10 @@ export default css`
     border: 1px solid ${theme.buttonBackground};
     border-radius: 24px;
     padding: 0 20px;
+    font-weight: 400;
     white-space: nowrap;
     cursor: pointer;
     text-decoration: none;
-    font-weight: 300;
     user-select: none;
     transition: background-color 0.1s ${theme.transitionEasing},
       border-color 0.1s ${theme.transitionEasing},
@@ -184,7 +303,7 @@ export default css`
     &.btn-small {
       height: 33px;
       padding: 1px 15px 0;
-      ${adjustFontSizeTo('14px')};
+      font-size: 14px;
       font-weight: 600;
     }
   }
@@ -228,7 +347,7 @@ export default css`
     font-size: 0.8rem;
     font-weight: 700;
 
-    ${MIN_DEFAULT_MEDIA_QUERY} {
+    ${theme.MIN_DEFAULT_MEDIA_QUERY} {
       font-size: 1rem;
     }
   }
@@ -236,7 +355,7 @@ export default css`
     text-decoration: none;
 
     svg {
-      margin-left: ${rhythm(0.2)};
+      margin-left: 3px;
       margin-bottom: -2px;
     }
   }
@@ -255,7 +374,7 @@ export default css`
     flex-direction: row;
     justify-content: space-between;
     align-items: flex-end;
-    margin-bottom: ${rhythm(1)};
+    margin-bottom: 15px;
 
     h2 {
       margin: 0;
@@ -327,6 +446,8 @@ export default css`
     blockquote {
       color: hsl(0, 0%, 80%);
       border-left-color: hsl(0, 0%, 80%);
+      padding-left: 20px;
+      margin-left: 0;
     }
     .main-content a,
     a.content-link,
@@ -358,19 +479,19 @@ export default css`
       background-color: ${theme.navFullColumnDark};
     }
   }
-  ${MIN_DEFAULT_MEDIA_QUERY} {
+  ${theme.MIN_DEFAULT_MEDIA_QUERY} {
     h1 {
-      font-size: ${adjustFontSizeTo('54px').fontSize};
+      font-size: 54px;
     }
     h2 {
-      font-size: ${adjustFontSizeTo('42px').fontSize};
+      font-size: 42px;
     }
     h3 {
-      font-size: ${adjustFontSizeTo('32px').fontSize};
+      font-size: 32px;
     }
     h4,
     .title {
-      font-size: ${adjustFontSizeTo('24px').fontSize};
+      font-size: 24px;
     }
     .input-wrap {
       grid-template-columns: 180px 1fr;

@@ -10,7 +10,6 @@ import { CopyInputWithButton } from '../EditButtons'
 import { RouteComponentProps } from '@reach/router'
 import SVGIcon from '../SVGIcon'
 import Token from './Token'
-import { adjustFontSizeTo } from '../../styles/typography'
 import { css } from '@emotion/core'
 import gql from 'graphql-tag'
 import { useMutation } from '@apollo/react-hooks'
@@ -130,7 +129,7 @@ const styles = {
     display: flex;
     flex-direction: row;
     align-items: center;
-    ${adjustFontSizeTo('16px')};
+    font-size: 16px;
     text-decoration: none;
     cursor: pointer;
 

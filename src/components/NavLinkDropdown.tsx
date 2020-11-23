@@ -2,7 +2,6 @@ import * as theme from '../styles/theme'
 
 import { Global, SerializedStyles, css } from '@emotion/core'
 
-import { MIN_DEFAULT_MEDIA_QUERY } from 'typography-breakpoint-constants'
 import NavLink from './NavLink'
 import React from 'react'
 
@@ -71,7 +70,7 @@ const styles = {
       color: ${theme.text} !important;
     }
 
-    ${MIN_DEFAULT_MEDIA_QUERY} {
+    ${theme.MIN_DEFAULT_MEDIA_QUERY} {
       padding: 10px 20px;
       border-radius: 7px;
     }

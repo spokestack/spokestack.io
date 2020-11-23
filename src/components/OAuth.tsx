@@ -1,10 +1,9 @@
 import React, { useEffect, useState } from 'react'
 
-import { DEFAULT_WIDTH } from 'typography-breakpoint-constants'
+import { DEFAULT_WIDTH } from '../styles/theme'
 import Layout from '../components/Layout'
 import { css } from '@emotion/core'
 import { navigate } from 'gatsby'
-import { rhythm } from '../styles/typography'
 import { WindowLocation } from '@reach/router'
 
 interface Props {
@@ -41,7 +40,7 @@ export default function OAuth({ checkAuth, location }: Props) {
 
 const styles = {
   container: css`
-    padding: ${rhythm(1)};
+    padding: 15px;
     max-width: ${DEFAULT_WIDTH};
     margin: 0 auto;
   `

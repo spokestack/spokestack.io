@@ -5,7 +5,6 @@ import { SerializedStyles, css } from '@emotion/core'
 import { isLoggedIn, logout } from '../utils/auth'
 
 import { Link } from 'gatsby'
-import { MIN_DEFAULT_MEDIA_QUERY } from 'typography-breakpoint-constants'
 import NavDropdown from './NavDropdown'
 import SignInForm from './SignInForm'
 
@@ -101,7 +100,7 @@ const styles = {
     margin-right: 20px;
     text-decoration: none;
 
-    ${MIN_DEFAULT_MEDIA_QUERY} {
+    ${theme.MIN_DEFAULT_MEDIA_QUERY} {
       &,
       &:visited {
         color: ${theme.textDarkBg};

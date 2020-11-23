@@ -11,10 +11,8 @@ import Select, { Option } from './Select'
 
 import Button from './Button'
 import Card from './Card'
-import { MIN_TABLET_MEDIA_QUERY } from 'typography-breakpoint-constants'
 import SVGIcon from './SVGIcon'
 import Textarea from './Textarea'
-import { adjustFontSizeTo } from '../styles/typography'
 import client from '../apollo/client'
 import { css } from '@emotion/core'
 import debounce from 'lodash/debounce'
@@ -284,7 +282,7 @@ export default class SampleVoices extends PureComponent<Props, State> {
 
 const styles = {
   lightText: css`
-    ${adjustFontSizeTo('16px')};
+    font-size: 16px;
     color: ${theme.textLight};
     text-align: center;
     margin-bottom: 20px;
@@ -301,7 +299,7 @@ const styles = {
     border: 1px solid ${theme.mainBorder};
     border-bottom: none;
 
-    ${MIN_TABLET_MEDIA_QUERY} {
+    ${theme.MIN_TABLET_MEDIA_QUERY} {
       flex-direction: row;
       align-items: center;
     }
@@ -321,10 +319,10 @@ const styles = {
       fill: ${theme.text};
     }
     p {
-      font-size: ${adjustFontSizeTo('16px').fontSize};
+      font-size: 16px;
     }
 
-    ${MIN_TABLET_MEDIA_QUERY} {
+    ${theme.MIN_TABLET_MEDIA_QUERY} {
       width: 250px;
       border-right: 1px solid ${theme.mainBorder};
 
@@ -372,7 +370,7 @@ const styles = {
     display: flex;
     flex-direction: row;
     align-items: center;
-    font-size: ${adjustFontSizeTo('16px').fontSize};
+    font-size: 16px;
     margin-left: 10px;
     user-select: none;
   `,
@@ -384,7 +382,7 @@ const styles = {
     grid-template-columns: 1fr;
     grid-gap: 20px;
 
-    ${MIN_TABLET_MEDIA_QUERY} {
+    ${theme.MIN_TABLET_MEDIA_QUERY} {
       width: 100%;
       display: flex;
       flex-direction: row;
@@ -395,7 +393,7 @@ const styles = {
     }
   `,
   playButton: css`
-    ${MIN_TABLET_MEDIA_QUERY} {
+    ${theme.MIN_TABLET_MEDIA_QUERY} {
       margin-left: 20px;
     }
   `,

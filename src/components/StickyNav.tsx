@@ -2,13 +2,11 @@ import * as theme from '../styles/theme'
 
 import React, { useEffect, useRef, useState } from 'react'
 
-import { MIN_DEFAULT_MEDIA_QUERY } from 'typography-breakpoint-constants'
 import NavSelectedBackground from './NavSelectedBackground'
 import Select from './Select'
 import { StickyLink } from '../types'
 import StickyNavSection from './StickyNavSection'
 import { WindowLocation } from '@reach/router'
-import { adjustFontSizeTo } from '../styles/typography'
 import { css } from '@emotion/core'
 import groupBy from 'lodash/groupBy'
 import hashToId from '../utils/hashToId'
@@ -192,7 +190,7 @@ export default function StickyNav({
 const styles = {
   stickyNav: css`
     position: relative;
-    ${MIN_DEFAULT_MEDIA_QUERY} {
+    ${theme.MIN_DEFAULT_MEDIA_QUERY} {
       position: sticky;
       top: 0;
       bottom: 0;
@@ -204,7 +202,7 @@ const styles = {
   `,
   mobileNav: css`
     height: 64px;
-    ${MIN_DEFAULT_MEDIA_QUERY} {
+    ${theme.MIN_DEFAULT_MEDIA_QUERY} {
       display: none;
     }
   `,
@@ -217,7 +215,7 @@ const styles = {
     border-radius: 0;
 
     p {
-      font-size: ${adjustFontSizeTo('20px').fontSize};
+      font-size: 20px;
       font-weight: 700;
     }
   `,

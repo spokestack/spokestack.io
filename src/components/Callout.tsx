@@ -5,7 +5,6 @@ import { Global, SerializedStyles, css } from '@emotion/core'
 import Color from 'color'
 import { Link } from 'gatsby'
 import React from 'react'
-import { adjustFontSizeTo } from '../styles/typography'
 
 interface Props {
   children: React.ReactNode
@@ -91,7 +90,7 @@ const styles = {
     }
 
     h5 {
-      font-size: ${adjustFontSizeTo('14px').fontSize};
+      font-size: 14px;
       color: ${theme.primary};
       text-transform: uppercase;
     }

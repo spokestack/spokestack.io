@@ -1,17 +1,16 @@
 import * as theme from '../styles/theme'
 
+import { Global, css } from '@emotion/core'
+import StickyNav, { StickyNavProps } from './StickyNav'
 import {
   MIN_DEFAULT_MEDIA_QUERY,
   MIN_LARGER_DISPLAY_MEDIA_QUERY,
   MIN_LARGE_DISPLAY_MEDIA_QUERY,
-  TABLET_WIDTH
-} from 'typography-breakpoint-constants'
-import { Global, css } from '@emotion/core'
-import StickyNav, { StickyNavProps } from './StickyNav'
-import { ieBreakpointMinDefault } from '../styles/theme'
+  TABLET_WIDTH,
+  ieBreakpointMinDefault
+} from '../styles/theme'
 
 import React from 'react'
-import { rhythm } from '../styles/typography'
 
 interface Props extends StickyNavProps {
   children: React.ReactNode
@@ -73,15 +72,15 @@ const styles = {
     }
   `,
   content: css`
-    padding: ${rhythm(2)} 20px;
+    padding: 30px 20px;
 
     ${MIN_DEFAULT_MEDIA_QUERY} {
       grid-area: content;
-      padding-left: ${rhythm(3)};
-      padding-right: ${rhythm(2)};
+      padding-left: 50px;
+      padding-right: 30px;
     }
     ${MIN_LARGER_DISPLAY_MEDIA_QUERY} {
-      padding-left: ${rhythm(4)};
+      padding-left: 70px;
     }
   `
 }

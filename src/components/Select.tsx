@@ -3,7 +3,6 @@ import * as theme from '../styles/theme'
 import React, { SelectHTMLAttributes, useState } from 'react'
 import { SerializedStyles, css } from '@emotion/core'
 
-import { MIN_DEFAULT_MEDIA_QUERY } from 'typography-breakpoint-constants'
 import SVGIcon from './SVGIcon'
 
 export interface Option {
@@ -189,7 +188,7 @@ const styles = {
       color: ${theme.text};
     }
 
-    ${MIN_DEFAULT_MEDIA_QUERY} {
+    ${theme.MIN_DEFAULT_MEDIA_QUERY} {
       display: none;
     }
 

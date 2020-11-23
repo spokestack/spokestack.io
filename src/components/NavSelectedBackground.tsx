@@ -2,7 +2,6 @@ import * as theme from '../styles/theme'
 
 import React from 'react'
 
-import { DEFAULT_MEDIA_QUERY } from 'typography-breakpoint-constants'
 import { css } from '@emotion/core'
 
 interface Props {
@@ -33,7 +32,7 @@ const styles = {
       height 0.2s ${theme.transitionEasing};
     z-index: 0;
 
-    ${DEFAULT_MEDIA_QUERY} {
+    ${theme.DEFAULT_MEDIA_QUERY} {
       display: none;
     }
   `

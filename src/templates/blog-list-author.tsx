@@ -5,7 +5,6 @@ import { PageRendererProps, graphql } from 'gatsby'
 
 import BlogList from '../components/BlogList'
 import DarkModeButton from '../components/DarkModeButton'
-import { MIN_DEFAULT_MEDIA_QUERY } from 'typography-breakpoint-constants'
 import { PageContext } from '../types'
 import { Query } from '../utils/graphql'
 import React from 'react'
@@ -102,7 +101,7 @@ export default function BlogListAuthorTemplate({
 const styles = {
   bloglist: css`
     flex-direction: column-reverse;
-    ${MIN_DEFAULT_MEDIA_QUERY} {
+    ${theme.MIN_DEFAULT_MEDIA_QUERY} {
       padding-top: 60px;
       .bg-banner {
         height: 500px;

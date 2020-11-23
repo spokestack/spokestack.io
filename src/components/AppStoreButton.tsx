@@ -1,6 +1,5 @@
 import React from 'react'
 import SVGIcon from './SVGIcon'
-import { adjustFontSizeTo } from '../styles/typography'
 import { css } from '@emotion/core'
 
 interface Props {
@@ -34,7 +33,7 @@ const styles = {
     flex-direction: column;
   `,
   downloadText: css`
-    font-size: ${adjustFontSizeTo('10px').fontSize};
+    font-size: 10px;
     margin-bottom: -5px;
   `
 }

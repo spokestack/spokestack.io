@@ -80,7 +80,7 @@ $ npm run clean
 This site is equipped with a [GraphiQL IDE](https://github.com/graphql/graphiql) for the Spokestack API. This is only available in **development** mode.
 
 1. Start the site with `npm start`.
-1. Log into the site as normal, then navigate to http://localhost:8000/account/__api.
+1. Log into the site as normal, then navigate to http://localhost:8000/account/graphql.
 
 ## Coding Guidelines
 

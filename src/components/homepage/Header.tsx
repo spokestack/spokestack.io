@@ -1,10 +1,5 @@
 import * as theme from '../../styles/theme'
 
-import {
-  MIN_DEFAULT_MEDIA_QUERY,
-  MIN_LARGE_DISPLAY_MEDIA_QUERY
-} from 'typography-breakpoint-constants'
-
 import React from 'react'
 import SVGIcon from '../SVGIcon'
 import Video from './Video'
@@ -42,14 +37,14 @@ const styles = {
     width: 100%;
     padding: 90px 20px 20px;
 
-    ${MIN_DEFAULT_MEDIA_QUERY} {
+    ${theme.MIN_DEFAULT_MEDIA_QUERY} {
       flex-direction: row;
       align-items: flex-start;
       padding: 0 30px;
       height: 566px;
     }
 
-    ${MIN_LARGE_DISPLAY_MEDIA_QUERY} {
+    ${theme.MIN_LARGE_DISPLAY_MEDIA_QUERY} {
       padding: 0 100px;
     }
   `,
@@ -67,7 +62,7 @@ const styles = {
       margin-bottom: 15px;
     }
 
-    ${MIN_DEFAULT_MEDIA_QUERY} {
+    ${theme.MIN_DEFAULT_MEDIA_QUERY} {
       align-items: flex-start;
       text-align: left;
       margin-right: 20px;

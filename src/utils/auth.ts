@@ -6,17 +6,16 @@ const userTokenKey = 'spokestack-user-token-v1'
 const authTokenKey = 'spokestack-auth-token-v1'
 const providerKey = 'spokestack-auth-provider-v1'
 const stateKey = 'spokestack-auth-state-v1'
-const darkModeKey = 'spokestack-auth-dark-mode-v1'
 
 /**
- * Remove all items added to storage
+ * Remove all auth-related tokens,
+ * aside from state which should stay constant
+ * for OAuth requests.
  */
 export function clearStorage() {
   localStorage.removeItem(userTokenKey)
   localStorage.removeItem(authTokenKey)
   localStorage.removeItem(providerKey)
-  localStorage.removeItem(stateKey)
-  localStorage.removeItem(darkModeKey)
 }
 
 /**
@@ -115,22 +114,6 @@ export function getProvider() {
 
 export function setProvider(provider: string) {
   return localStorage.setItem(providerKey, provider)
-}
-
-/**
- * Dark mode setting is saved to localStorage,
- * and cleared on logout.
- */
-export function getDarkModePref() {
-  return typeof window !== 'undefined' && !!localStorage.getItem(darkModeKey)
-}
-
-export function setDarkModePref(dark: boolean) {
-  if (dark) {
-    localStorage.setItem(darkModeKey, 'true')
-  } else {
-    localStorage.removeItem(darkModeKey)
-  }
 }
 
 export function logout() {

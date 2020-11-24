@@ -1,7 +1,7 @@
 import 'prismjs/themes/prism-tomorrow.css'
 import './src/utils/closest-polyfill.js'
 
-import { getDarkModePref } from './src/utils/auth'
+import { getDarkModePref } from './src/utils/darkMode'
 
 export { default as wrapRootElement } from './src/apollo/wrapRootElement'
 

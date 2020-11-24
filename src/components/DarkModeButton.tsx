@@ -2,7 +2,7 @@ import * as theme from '../styles/theme'
 
 import { Global, css } from '@emotion/core'
 import React, { useState } from 'react'
-import { getDarkModePref, setDarkModePref } from '../utils/auth'
+import { getDarkModePref, setDarkModePref } from '../utils/darkMode'
 
 export default function DarkModeButton() {
   const [dark, setDark] = useState(getDarkModePref())

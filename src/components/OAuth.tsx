@@ -2,10 +2,10 @@ import React, { useEffect, useState } from 'react'
 
 import { DEFAULT_WIDTH } from '../styles/theme'
 import Layout from '../components/Layout'
-import { css } from '@emotion/core'
-import { navigate } from 'gatsby'
 import { WindowLocation } from '@reach/router'
 import { clearStorage } from '../utils/auth'
+import { css } from '@emotion/core'
+import { navigate } from 'gatsby'
 
 interface Props {
   checkAuth: () => Promise<string | null>

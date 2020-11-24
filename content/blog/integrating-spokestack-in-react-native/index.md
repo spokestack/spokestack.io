@@ -179,7 +179,7 @@ In this example, the following code is used to add the `<SpokestackTray />` comp
 
 ### `clientId` and `clientSecret`
 
-The `clientId` and `clientSecret` props are where you pass your API tokens generated in your Spokestack account. First, [create a free account](/account/create). Then, [generate a token](/account/settings#api) on the account settings page. Don't worry, there's no hidden subscription.
+The `clientId` and `clientSecret` props are where you pass your API tokens generated in your Spokestack account. First, [create a free account](/create). Then, [generate a token](/account/settings#api) on the account settings page. Don't worry, there's no hidden subscription.
 
 Rather than hardcoding these values, we recommend saving them in your environment on your local machine and in CI for deployments. Once they're saved, run the React Native packager in a new terminal and start the app using `npm run ios` or `npm run android -- --device` (note that Android requires [a real device](https://reactnative.dev/docs/running-on-device) for ASR to work).
 

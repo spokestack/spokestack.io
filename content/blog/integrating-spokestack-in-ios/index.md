@@ -180,7 +180,7 @@ override func viewDidLoad() {
 
 **clientId and clientSecret**
 
-The `clientId` and `clientSecret` props are where you pass your API tokens generated in your Spokestack account. First, [create a free account](/account/create). Then, [generate a token](/account/settings#api) on the account settings page. Don’t worry, there’s no hidden subscription.
+The `clientId` and `clientSecret` props are where you pass your API tokens generated in your Spokestack account. First, [create a free account](/create). Then, [generate a token](/account/settings#api) on the account settings page. Don’t worry, there’s no hidden subscription.
 
 **nluModelUrls**
 

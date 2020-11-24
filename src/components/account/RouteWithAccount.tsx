@@ -1,5 +1,5 @@
 import { Account, AccountSummary } from '../../types'
-import { clearStorage, isLoggedIn, logout } from '../../utils/auth'
+import { isLoggedIn, logout } from '../../utils/auth'
 import { useLazyQuery, useQuery } from '@apollo/react-hooks'
 
 import LoadingPage from '../LoadingPage'
@@ -87,8 +87,8 @@ export default function RouteWithAccount({
       getAccount({ variables: { id: accounts[0].id } })
     }
   } else {
+    // Redirect if the user does not yet have an "account"
     if (typeof window !== 'undefined') {
-      clearStorage()
       navigate('/account/create')
     }
     return null

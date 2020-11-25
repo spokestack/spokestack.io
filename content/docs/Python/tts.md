@@ -21,7 +21,6 @@ from spokestack.io.pyaudio import PyAudioOutput
 manager = TextToSpeechManager(
     TextToSpeechClient("spokestack_id", "spokestack_secret"), PyAudioOutput()
 )
-
 ```
 
 There are three different modes for TTS: `text`, `ssml`, `markdown`. We will go over each mode briefly here. However, if you would like a more detailed view check out the [TTS concept guide](docs/concepts/tts).
@@ -39,7 +38,9 @@ manager.synthesize(utterance="welcome to spokestack", mode="text", voice="demo-m
 [SSML](https://www.w3.org/TR/speech-synthesis11/) is based on XML and gives you enhanced control over pronunciation. Check out the [guide](docs/concepts/tts) for more details. You can synthesize speech from SSML like this:
 
 ```python
-manager.synthesize(utterance="<speak>welcome to spokestack</speak>", mode="text", voice="demo-male")
+manager.synthesize(
+    utterance="<speak>welcome to spokestack</speak>", mode="text", voice="demo-male"
+)
 ```
 
 ### Speech Markdown
@@ -47,7 +48,11 @@ manager.synthesize(utterance="<speak>welcome to spokestack</speak>", mode="text"
 Speech Markdown is a wrapper around SSML syntax that gives some additional features as explained in the [guide](docs/concepts/tts). An example of Speech Markdown looks like this:
 
 ```python
-manager.synthesize(utterance="See all our products at (www)[characters] dot my company dot com.", mode="text", voice="demo-male")
+manager.synthesize(
+    utterance="See all our products at (www)[characters] dot my company dot com.",
+    mode="text",
+    voice="demo-male",
+)
 ```
 
 ## Additional Synthesis Options

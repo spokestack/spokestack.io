@@ -56,6 +56,7 @@ manager.synthesize(
 ```
 
 ## Additional Synthesis Options
+
 If automatic playback is **not** what you are looking for we offer another option. An instance of
 `TextToSpeechClient` can synthesize separately from the `TextToSpeechManager` and produce a URL that points to the audio file. This allows you to download the entire audio clip. This is especially useful in a [Jupyter](https://jupyter.org/) notebook where you may not have direct audio output access. Using the `TextToSpeechClient` to retrieve the audio URL is as simple as this:
 
@@ -66,4 +67,3 @@ tts = TextToSpeechClient("spokestack_id" "spokestack_secret")
 
 audio_location = tts.synthesize_url("welcome to spokestack")
 ```
-

@@ -59,7 +59,7 @@ def on_recognize(context):
     print(context.transcript)
 
 
-@pipeline.event(name="get_transcript")
+@pipeline.event(name="recognize")
 def get_transcript(context):
     print(context.transcript)
 ```

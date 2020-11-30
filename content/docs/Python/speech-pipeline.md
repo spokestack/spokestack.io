@@ -51,7 +51,7 @@ pipeline.start()
 
 ### Speech Event Handlers
 
-The `SpeechPipeline` offers the ability to execute code based on events that occur within the pipeline. These handlers are registered with the `@pipeline.event` [decorator](https://www.python.org/dev/peps/pep-0318/). Handlers can follow the naming convention of `on_{event}` or pass the `name` argument to the decorator. A basic handler that prints the ASR transcript to console, for both conventions, is given below.
+The `SpeechPipeline` offers the ability to execute code based on events that occur within the pipeline. These handlers are registered with the `@pipeline.event` [decorator](https://www.python.org/dev/peps/pep-0318/). Handlers can follow the naming convention of `on_{event}` or pass the `name` argument to the decorator, using the name of a pipeline event as its value. A basic handler that prints the ASR transcript to console, for both conventions, is given below.
 
 ```python
 @pipeline.event
@@ -68,8 +68,8 @@ There are several speech events available:
 
 - `recognize`: occurs when the ASR completes recognition.
 - `partial_recognize`: occurs during ASR recognition when partial transcripts are received.
-- `activate`: occurs when `SpeechContext` is activated.
-- `deactivate`: occurs when `SpeechContext` is deactivated.
+- `activate`: occurs when the pipeline's `SpeechContext` is activated (when ASR transcription begins).
+- `deactivate`: occurs when the pipeline's `SpeechContext` is deactivated (when transcription stops).
 - `step`: occurs when a single frame is processed by the pipeline.
 
 ## Other methods
@@ -86,7 +86,7 @@ pipeline.stop()
 
 ### Start
 
-The `start` methods initializes the pipeline and must always be called first before audio can be read into the pipeline.
+The `start` method initializes the pipeline and must be called before audio can be read into the pipeline.
 
 ```python
 pipeline.start()

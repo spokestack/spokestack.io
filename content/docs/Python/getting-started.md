@@ -45,7 +45,7 @@ pip install spokestack
 
 ### Setup
 
-We use `pyenv` for virtual environments.
+We use [`pyenv`](https://github.com/pyenv/pyenv) for virtual environments.
 
 ```shell
 pyenv install 3.8.6
@@ -85,7 +85,7 @@ The `PyAudioInput` class will use the system default audio input device. Most pe
 
 ### 3. `SpeechPipeline` Instance
 
-The `SpeechPipeline` [guide](speech-pipeline) has a detailed explanation of how to set up the pipeline, so we will show the quickest way here using a profile.
+Spokestack's speech pipeline handles collecting audio from the input device and transcribing speech directed at your app. The [`SpeechPipeline` guide](speech-pipeline) has a detailed explanation of how to set up the pipeline, so we will show the quickest way here using a profile, which configures the pipeline's components for a specific use case. The profile we use here includes wakeword activation and speech transcription using Spokestack's cloud ASR.
 
 ```python
 from spokestack.profile.wakeword_asr import WakewordSpokestackASR
@@ -107,7 +107,7 @@ from spokestack.nlu.tflite import TFLiteNLU
 nlu = TFLiteNLU("path_to_tflite_model_dir")
 ```
 
-Input to the NLU model is the ASR transcript. The transcript can be accessed as a property of `SpeechContext`. Below is a sample Event Handler for running inference on the speech transcript.
+Input to the NLU model is the ASR transcript. The transcript can be accessed as a property of `SpeechContext`. Below is a sample event handler for running inference on the speech transcript.
 
 ```python
 @pipeline.event
@@ -123,7 +123,7 @@ Some useful links for configuring Spokestack's NLU:
 
 ## Talking back to your users
 
-If you want the full smart speaker experience, you will need to give your application a voice. This can be achieved with text-to-speech (TTS). For more information on TTS, see the [TTS concept guide](/docs/concepts/tts). TTS playback uses `PyAudioOutput` class, which plays audio with the default speaker for the device. Like NLU, TTS can be used in an Event Handler. Take a look at the example below, which simply speaks what the ASR heard.
+If you want the full smart speaker experience, you will need to give your application a voice. This can be achieved with text-to-speech (TTS). For more information on TTS, see the [TTS concept guide](/docs/concepts/tts). TTS playback uses the `PyAudioOutput` class, which plays audio with the default speaker for the device. Like NLU, TTS can be used in an event handler. Take a look at the example below, which simply speaks what the ASR heard.
 
 ```python
 @pipeline.event

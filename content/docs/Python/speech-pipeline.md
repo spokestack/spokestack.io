@@ -71,6 +71,7 @@ There are several speech events available:
 - `activate`: occurs when the pipeline's `SpeechContext` is activated (when ASR transcription begins).
 - `deactivate`: occurs when the pipeline's `SpeechContext` is deactivated (when transcription stops).
 - `step`: occurs when a single frame is processed by the pipeline.
+- `timeout`: occurs when audio recognition encounters a timeout.
 
 ## Other methods
 

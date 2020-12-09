@@ -1,6 +1,6 @@
 import * as theme from '../../styles/theme'
 
-import { SerializedStyles, css } from '@emotion/core'
+import { SerializedStyles, css } from '@emotion/react'
 
 import React from 'react'
 

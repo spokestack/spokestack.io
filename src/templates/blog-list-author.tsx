@@ -1,13 +1,13 @@
 import * as theme from '../styles/theme'
 
-import { Global, css } from '@emotion/core'
+import { Global, css } from '@emotion/react'
 import { PageRendererProps, graphql } from 'gatsby'
+import React, { Fragment } from 'react'
 
 import BlogList from '../components/BlogList'
 import DarkModeButton from '../components/DarkModeButton'
 import { PageContext } from '../types'
 import { Query } from '../utils/graphql'
-import React from 'react'
 import SEO from '../components/SEO'
 import SocialLink from '../components/SocialLink'
 import find from 'lodash/find'
@@ -30,7 +30,7 @@ export default function BlogListAuthorTemplate({
     }
   )
   return (
-    <>
+    <Fragment>
       <Global
         styles={css`
           html.dark-mode {
@@ -94,7 +94,7 @@ export default function BlogListAuthorTemplate({
           </div>
         }
       />
-    </>
+    </Fragment>
   )
 }
 

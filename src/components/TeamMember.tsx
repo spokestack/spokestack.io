@@ -1,6 +1,7 @@
+import { MIN_TABLET_MEDIA_QUERY, ieBreakpoint } from '../styles/theme'
+
 import React from 'react'
-import { css } from '@emotion/core'
-import { ieBreakpoint, MIN_TABLET_MEDIA_QUERY } from '../styles/theme'
+import { css } from '@emotion/react'
 
 interface Props {
   avatar: React.ReactNode

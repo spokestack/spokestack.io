@@ -1,6 +1,6 @@
 import * as theme from './theme'
 
-import { css } from '@emotion/core'
+import { css } from '@emotion/react'
 
 export default css`
   html {

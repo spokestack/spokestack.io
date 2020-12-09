@@ -7,7 +7,7 @@ import { Query } from '../utils/graphql'
 import React from 'react'
 import SEO from '../components/SEO'
 import SupportCallout from '../components/SupportCallout'
-import { css } from '@emotion/core'
+import { css } from '@emotion/react'
 
 interface Props extends PageRendererProps {
   data: Query

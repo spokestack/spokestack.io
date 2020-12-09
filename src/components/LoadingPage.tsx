@@ -1,8 +1,8 @@
 import Layout from './Layout'
 import LoadingIcon from './LoadingIcon'
 import React from 'react'
-import { css } from '@emotion/core'
 import { WindowLocation } from '@reach/router'
+import { css } from '@emotion/react'
 
 interface Props {
   location: WindowLocation

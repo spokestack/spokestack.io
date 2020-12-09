@@ -8,7 +8,7 @@ import Dropzone from '../Dropzone'
 import LoadingIcon from '../LoadingIcon'
 import NluModels from './NluModels'
 import { RouteComponentProps } from '@reach/router'
-import { css } from '@emotion/core'
+import { css } from '@emotion/react'
 import gql from 'graphql-tag'
 import { useMutation } from '@apollo/react-hooks'
 

@@ -1,7 +1,7 @@
 import * as theme from '../../styles/theme'
 
 import React, { PureComponent } from 'react'
-import { SerializedStyles, css } from '@emotion/core'
+import { SerializedStyles, css } from '@emotion/react'
 
 interface Props {
   yearly: boolean

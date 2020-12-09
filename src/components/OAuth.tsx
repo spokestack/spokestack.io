@@ -4,7 +4,7 @@ import { DEFAULT_WIDTH } from '../styles/theme'
 import Layout from '../components/Layout'
 import { WindowLocation } from '@reach/router'
 import { clearStorage } from '../utils/auth'
-import { css } from '@emotion/core'
+import { css } from '@emotion/react'
 import { navigate } from 'gatsby'
 
 interface Props {

@@ -1,7 +1,6 @@
 import * as theme from '../styles/theme'
 
-import { Global, css } from '@emotion/core'
-import StickyNav, { StickyNavProps } from './StickyNav'
+import { Global, css } from '@emotion/react'
 import {
   MIN_DEFAULT_MEDIA_QUERY,
   MIN_LARGER_DISPLAY_MEDIA_QUERY,
@@ -9,6 +8,7 @@ import {
   TABLET_WIDTH,
   ieBreakpointMinDefault
 } from '../styles/theme'
+import StickyNav, { StickyNavProps } from './StickyNav'
 
 import React from 'react'
 

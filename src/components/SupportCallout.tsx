@@ -1,4 +1,4 @@
-import { SerializedStyles, css } from '@emotion/core'
+import { SerializedStyles, css } from '@emotion/react'
 
 import Callout from './Callout'
 import React from 'react'

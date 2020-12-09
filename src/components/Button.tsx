@@ -1,7 +1,7 @@
 import * as theme from '../styles/theme'
 
 import React, { ButtonHTMLAttributes } from 'react'
-import { SerializedStyles, css } from '@emotion/core'
+import { SerializedStyles, css } from '@emotion/react'
 
 import LoadingIcon from './LoadingIcon'
 

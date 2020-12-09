@@ -5,7 +5,7 @@ import { graphql, useStaticQuery } from 'gatsby'
 import NewsItem from './NewsItem'
 import { Query } from '../../utils/graphql'
 import React from 'react'
-import { css } from '@emotion/core'
+import { css } from '@emotion/react'
 
 function sortPosts(posts: Query['allMarkdownRemark']['edges']) {
   return posts.sort((a, b) => {

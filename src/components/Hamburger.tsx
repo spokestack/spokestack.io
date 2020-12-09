@@ -1,5 +1,5 @@
 import React, { AnchorHTMLAttributes } from 'react'
-import { SerializedStyles, css } from '@emotion/core'
+import { SerializedStyles, css } from '@emotion/react'
 
 import { transitionEasing } from '../styles/theme'
 

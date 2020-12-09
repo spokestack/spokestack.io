@@ -7,7 +7,7 @@ import { graphql, useStaticQuery } from 'gatsby'
 import { Query } from '../utils/graphql'
 import React from 'react'
 import TeamMember from './TeamMember'
-import { css } from '@emotion/core'
+import { css } from '@emotion/react'
 
 export default function Team() {
   const data = useStaticQuery<Query>(teamQuery)

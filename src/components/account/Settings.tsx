@@ -10,7 +10,7 @@ import { CopyInputWithButton } from '../EditButtons'
 import { RouteComponentProps } from '@reach/router'
 import SVGIcon from '../SVGIcon'
 import Token from './Token'
-import { css } from '@emotion/core'
+import { css } from '@emotion/react'
 import gql from 'graphql-tag'
 import { useMutation } from '@apollo/react-hooks'
 
@@ -49,9 +49,10 @@ interface RemoveKeyMutation {
 export default function Settings({ account, location }: Props) {
   const [tokens, setTokens] = useState((account || {}).apiKeys || [])
   const [showForm, setShowForm] = useState(false)
-  const [addToken, { loading: addTokenLoading }] = useMutation<
-    CreateKeyMutation
-  >(ADD_TOKEN, {
+  const [
+    addToken,
+    { loading: addTokenLoading }
+  ] = useMutation<CreateKeyMutation>(ADD_TOKEN, {
     onCompleted: ({ createKey: token }) => {
       setTokens(tokens.concat(token))
       setShowForm(false)

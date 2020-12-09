@@ -1,7 +1,7 @@
 import * as theme from '../styles/theme'
 
 import { PageRendererProps, graphql } from 'gatsby'
-import React, { useRef, useState } from 'react'
+import React, { Fragment, useRef, useState } from 'react'
 
 import Layout from '../components/Layout'
 import Plan from '../components/pricing/Plan'
@@ -10,7 +10,7 @@ import { Query } from '../utils/graphql'
 import SEO from '../components/SEO'
 import SVGIcon from '../components/SVGIcon'
 import Switch from '../components/pricing/Switch'
-import { css } from '@emotion/core'
+import { css } from '@emotion/react'
 
 interface Props extends PageRendererProps {
   data: Query
@@ -155,13 +155,13 @@ export default function Pricing({ data, location }: Props) {
             />
           }
           name={
-            <>
+            <Fragment>
               <div css={styles.saveBadge} style={{ opacity: yearly ? 1 : 0 }}>
                 <SVGIcon icon="#star" extraCss={styles.starIcon} />
                 <strong>-15%</strong>
               </div>
               <span>Pro</span>
-            </>
+            </Fragment>
           }
           price={yearly ? '$84/mo' : '$99/mo'}
           categories={[

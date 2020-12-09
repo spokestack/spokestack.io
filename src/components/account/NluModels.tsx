@@ -3,7 +3,7 @@ import React, { useEffect } from 'react'
 import LoadingIcon from '../LoadingIcon'
 import NluModel from './NluModel'
 import { NluModel as NluModelType } from '../../types'
-import { css } from '@emotion/core'
+import { css } from '@emotion/react'
 import gql from 'graphql-tag'
 import { useQuery } from '@apollo/react-hooks'
 

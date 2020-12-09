@@ -1,9 +1,9 @@
 import { PageRendererProps, graphql } from 'gatsby'
+import React, { Fragment } from 'react'
 
 import BlogList from '../components/BlogList'
 import { PageContext } from '../types'
 import { Query } from '../utils/graphql'
-import React from 'react'
 import SEO from '../components/SEO'
 
 type Props = PageRendererProps & {
@@ -29,7 +29,7 @@ export default function BlogListTagTemplate({
     ? 'Tutorials'
     : `${total} articles tagged with "${tag}"`
   return (
-    <>
+    <Fragment>
       <SEO
         title={`Voice App Developer ${
           isTutorial ? 'Tutorials' : 'Blog'
@@ -45,7 +45,7 @@ export default function BlogListTagTemplate({
         tags={tags}
         title={longTitle}
       />
-    </>
+    </Fragment>
   )
 }
 

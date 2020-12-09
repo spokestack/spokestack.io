@@ -1,6 +1,6 @@
 import * as theme from '../styles/theme'
 
-import { Global, css } from '@emotion/core'
+import { Global, css } from '@emotion/react'
 import { Link, graphql, useStaticQuery } from 'gatsby'
 
 import Logo from './Logo'

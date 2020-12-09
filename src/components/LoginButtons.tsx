@@ -1,7 +1,7 @@
 import * as theme from '../styles/theme'
 
 import React, { useEffect, useState } from 'react'
-import { SerializedStyles, css } from '@emotion/core'
+import { SerializedStyles, css } from '@emotion/react'
 import { isLoggedIn, logout } from '../utils/auth'
 
 import { Link } from 'gatsby'

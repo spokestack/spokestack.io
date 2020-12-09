@@ -1,10 +1,10 @@
 import * as theme from '../styles/theme'
 
-import { Global, SerializedStyles, css } from '@emotion/core'
+import { Global, SerializedStyles, css } from '@emotion/react'
+import React, { Fragment } from 'react'
 
 import Color from 'color'
 import { Link } from 'gatsby'
-import React from 'react'
 
 interface Props {
   children: React.ReactNode
@@ -16,7 +16,7 @@ interface Props {
 export default function Callout({ children, extraCss, href, to }: Props) {
   const style = [styles.callout].concat(extraCss)
   return (
-    <>
+    <Fragment>
       <Global
         styles={css`
           html.dark-mode {
@@ -55,7 +55,7 @@ export default function Callout({ children, extraCss, href, to }: Props) {
           {children}
         </div>
       )}
-    </>
+    </Fragment>
   )
 }
 

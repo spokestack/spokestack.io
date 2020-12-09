@@ -1,6 +1,6 @@
 import * as theme from '../styles/theme'
 
-import { Global, SerializedStyles, css } from '@emotion/core'
+import { Global, SerializedStyles, css } from '@emotion/react'
 
 import BlogListItem from '../components/BlogListItem'
 import DarkModeButton from '../components/DarkModeButton'

@@ -1,6 +1,6 @@
 import * as theme from '../styles/theme'
 
-import { Global, SerializedStyles, css } from '@emotion/core'
+import { Global, SerializedStyles, css } from '@emotion/react'
 import React, { useState } from 'react'
 
 import Hamburger from './Hamburger'
@@ -32,11 +32,12 @@ export default function Nav({ extraCss }: Props) {
               color: ${theme.secondary} !important;
               font-weight: 700;
               cursor: default !important;
-            }
-            .nav-link-active:after {
-              width: 100% !important;
-              height: 4px !important;
-              left: 0 !important;
+
+              &:after {
+                width: 100% !important;
+                height: 4px !important;
+                left: 0 !important;
+              }
             }
           }
           html.dark-mode {

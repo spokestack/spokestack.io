@@ -5,7 +5,7 @@ import AccountCard from './AccountCard'
 import Button from '../Button'
 import Layout from '../Layout'
 import { RouteComponentProps } from '@reach/router'
-import { css } from '@emotion/core'
+import { css } from '@emotion/react'
 import gql from 'graphql-tag'
 import { navigate } from 'gatsby'
 import { useMutation } from '@apollo/react-hooks'
@@ -25,9 +25,10 @@ interface CreateAccountMutation {
 export default function CreateAccount({ location }: RouteComponentProps) {
   const [accountName, setAccountName] = useState('')
   const [invalid, setInvalid] = useState(false)
-  const [createAccount, { error, loading }] = useMutation<
-    CreateAccountMutation
-  >(CREATE_ACCOUNT, {
+  const [
+    createAccount,
+    { error, loading }
+  ] = useMutation<CreateAccountMutation>(CREATE_ACCOUNT, {
     onCompleted: () => {
       navigate('/account/settings/')
     }

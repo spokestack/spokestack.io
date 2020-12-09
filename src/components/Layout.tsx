@@ -1,12 +1,12 @@
-import { Global, SerializedStyles, css } from '@emotion/core'
+import { Global, SerializedStyles, css } from '@emotion/react'
+import { MIN_DEFAULT_MEDIA_QUERY, ieBreakpoint } from '../styles/theme'
+import React, { Fragment } from 'react'
 
 import Footer from './Footer'
 import Nav from './Nav'
-import React from 'react'
 import Sprite from '../svg-sprite.svg'
 import { WindowLocation } from '@reach/router'
 import globalStyles from '../styles/global.css'
-import { MIN_DEFAULT_MEDIA_QUERY, ieBreakpoint } from '../styles/theme'
 
 interface Props {
   banner?: React.ReactNode
@@ -33,7 +33,7 @@ export default function Layout({
   }
   style.push(extraCss)
   return (
-    <>
+    <Fragment>
       {banner}
       <div css={style}>
         <Global styles={globalStyles} />
@@ -42,7 +42,7 @@ export default function Layout({
         <main css={[styles.content, contentStyle]}>{children}</main>
         <Footer />
       </div>
-    </>
+    </Fragment>
   )
 }
 

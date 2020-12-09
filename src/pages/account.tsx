@@ -1,9 +1,10 @@
+import React, { Fragment } from 'react'
+
 import CreateAccount from '../components/account/CreateAccount'
 import Index from '../components/account/Index'
 import Loadable from '@loadable/component'
 import NLU from '../components/account/NLU'
 import PrivateRoute from '../components/PrivateRoute'
-import React from 'react'
 import RouteWithAccount from '../components/account/RouteWithAccount'
 import { Router } from '@reach/router'
 import SEO from '../components/SEO'
@@ -14,7 +15,7 @@ const GraphiQL = Loadable(() => import('../components/GraphiQL'))
 
 export default function Account() {
   return (
-    <>
+    <Fragment>
       <SEO
         title="Account"
         description="Your Spokestack account settings and billing"
@@ -29,6 +30,6 @@ export default function Account() {
           <PrivateRoute path="/graphql" component={GraphiQL} />
         )}
       </Router>
-    </>
+    </Fragment>
   )
 }

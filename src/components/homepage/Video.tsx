@@ -1,10 +1,10 @@
 import * as theme from '../../styles/theme'
 
 import React, { useEffect, useRef, useState } from 'react'
+import { fullscreenElement, requestFullscreen } from '../../utils/video'
 
 import SVGIcon from '../SVGIcon'
-import { css } from '@emotion/core'
-import { fullscreenElement, requestFullscreen } from '../../utils/video'
+import { css } from '@emotion/react'
 
 export default function Video() {
   const videoRef = useRef<HTMLVideoElement>(null)

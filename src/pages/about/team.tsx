@@ -4,7 +4,7 @@ import { PageRendererProps } from 'gatsby'
 import React from 'react'
 import SEO from '../../components/SEO'
 import TeamMembers from '../../components/TeamMembers'
-import { css } from '@emotion/core'
+import { css } from '@emotion/react'
 
 export default function Team({ location }: PageRendererProps) {
   return (

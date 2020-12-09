@@ -5,13 +5,13 @@ import {
   NluModelState,
   NluModel as NluModelType
 } from '../../types'
+import React, { Fragment } from 'react'
 
 import AccountCard from './AccountCard'
 import Color from 'color'
 import { CopyInputWithButton } from '../EditButtons'
-import React from 'react'
 import SVGIcon from '../SVGIcon'
-import { css } from '@emotion/core'
+import { css } from '@emotion/react'
 import { formatDate } from '../../utils/formatDate'
 import { titleCase } from 'title-case'
 
@@ -41,7 +41,7 @@ export default function NluModel({ model }: Props) {
           : 'only available to your account.'}
       </p>
       {!!modelFolder && (
-        <>
+        <Fragment>
           <CopyInputWithButton
             id={`vocab-${model.id}`}
             extraCss={styles.copyInput}
@@ -73,7 +73,7 @@ export default function NluModel({ model }: Props) {
               Download All
             </a>
           </div>
-        </>
+        </Fragment>
       )}
       {isPending && (
         <div css={styles.pending}>

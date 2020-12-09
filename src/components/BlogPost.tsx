@@ -1,12 +1,13 @@
 import {
   MAX_SIDEBAR_WIDTH,
   MAX_TEXT_WIDTH,
-  MIN_SIDEBAR_WIDTH,
-  MIN_TEXT_WIDTH,
   MIN_DEFAULT_MEDIA_QUERY,
   MIN_LARGE_DISPLAY_MEDIA_QUERY,
+  MIN_SIDEBAR_WIDTH,
+  MIN_TEXT_WIDTH,
   ieBreakpoint
 } from '../styles/theme'
+import React, { Fragment } from 'react'
 
 import Author from './Author'
 import Create from './homepage/Create'
@@ -14,12 +15,11 @@ import DarkModeButton from './DarkModeButton'
 import Layout from '../components/Layout'
 import { Link } from 'gatsby'
 import { MarkdownRemark } from '../utils/graphql'
-import React from 'react'
 import { RelatedLink } from '../types'
 import SEO from '../components/SEO'
 import Tags from './Tags'
 import { WindowLocation } from '@reach/router'
-import { css } from '@emotion/core'
+import { css } from '@emotion/react'
 import findImage from '../utils/findImage'
 import { isLoggedIn } from '../utils/auth'
 
@@ -53,7 +53,7 @@ export default function BlogPost({ location, post, related }: Props) {
           <section css={styles.related}>
             <Tags tags={post.fields.tags} header="Related Tags" />
             {related && !!related.length && (
-              <>
+              <Fragment>
                 <h6>Related Articles</h6>
                 <div css={styles.relatedLinks}>
                   {related.map((link, i) => (
@@ -65,7 +65,7 @@ export default function BlogPost({ location, post, related }: Props) {
                     </Link>
                   ))}
                 </div>
-              </>
+              </Fragment>
             )}
           </section>
         )}

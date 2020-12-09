@@ -1,9 +1,9 @@
 import { PageRendererProps, graphql } from 'gatsby'
+import React, { Fragment } from 'react'
 
 import BlogList from '../components/BlogList'
 import { PageContext } from '../types'
 import { Query } from '../utils/graphql'
-import React from 'react'
 import SEO from '../components/SEO'
 
 type Props = PageRendererProps & {
@@ -18,7 +18,7 @@ export default function BlogListTemplate({
   pageContext: { numPages, currentPage, slug, tags }
 }: Props) {
   return (
-    <>
+    <Fragment>
       <SEO
         title="Voice App Developer Blog | Spokestack"
         description="The Spokestack blog shares articles for voice assistant and app creators and enthusiasts. See product updates and tips to build better voice experiences."
@@ -32,7 +32,7 @@ export default function BlogListTemplate({
         tags={tags}
         title="Blog"
       />
-    </>
+    </Fragment>
   )
 }
 

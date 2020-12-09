@@ -10,15 +10,14 @@
  *
  * Introspection is available at http://localhost:8000/account/graphql
  */
-import { Global, css } from '@emotion/core'
+import { Global, css } from '@emotion/react'
+import React, { Fragment } from 'react'
 import { getAuthToken, getProvider } from '../utils/auth'
-
-import React from 'react'
 
 export default function GraphiQLPage() {
   const userToken = `${getProvider()} ${getAuthToken()}`
   return (
-    <>
+    <Fragment>
       <Global
         styles={css`
           body {
@@ -41,6 +40,6 @@ export default function GraphiQLPage() {
           process.env.SS_API_URL
         )}&token=${encodeURIComponent(userToken)}`}
       />
-    </>
+    </Fragment>
   )
 }

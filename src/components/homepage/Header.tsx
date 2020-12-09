@@ -3,7 +3,7 @@ import * as theme from '../../styles/theme'
 import React from 'react'
 import SVGIcon from '../SVGIcon'
 import Video from './Video'
-import { css } from '@emotion/core'
+import { css } from '@emotion/react'
 
 export default function Header() {
   return (

@@ -1,7 +1,7 @@
 import Layout from '../components/Layout'
 import React from 'react'
 import SEO from '../components/SEO'
-import { css } from '@emotion/core'
+import { css } from '@emotion/react'
 import { WindowLocation } from '@reach/router'
 
 interface Props {

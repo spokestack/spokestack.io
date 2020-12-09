@@ -4,7 +4,7 @@ import React, { Component } from 'react'
 
 import Button from './Button'
 import SVGIcon from './SVGIcon'
-import { css } from '@emotion/core'
+import { css } from '@emotion/react'
 
 interface Props {
   disabled?: boolean

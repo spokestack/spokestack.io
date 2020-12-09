@@ -1,13 +1,13 @@
 import * as theme from '../styles/theme'
 
 import React, { useEffect, useState } from 'react'
+import { SerializedStyles, css } from '@emotion/react'
 
 import Card from './Card'
 import { Link } from 'gatsby'
 import SVGIcon from './SVGIcon'
 import { createLink as createGitHubLink } from '../utils/oauthGitHub'
 import { createLink as createGoogleLink } from '../utils/oauthGoogle'
-import { css, SerializedStyles } from '@emotion/core'
 
 interface Props {
   extraCss?: SerializedStyles | SerializedStyles[]

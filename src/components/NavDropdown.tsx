@@ -1,6 +1,6 @@
 import * as theme from '../styles/theme'
 
-import { Global, css, SerializedStyles } from '@emotion/core'
+import { Global, SerializedStyles, css } from '@emotion/react'
 import React, { useState } from 'react'
 
 import NavLink from './NavLink'

@@ -1,11 +1,11 @@
 import * as theme from '../../styles/theme'
 
+import React, { Fragment } from 'react'
 import { graphql, useStaticQuery } from 'gatsby'
 
 import Callout from '../Callout'
 import { Query } from '../../utils/graphql'
-import React from 'react'
-import { css } from '@emotion/core'
+import { css } from '@emotion/react'
 import find from 'lodash/find'
 
 interface Props {
@@ -61,10 +61,10 @@ export default function NewsItem({
           {name}
         </div>
         {date && (
-          <>
+          <Fragment>
             <div css={styles.separator}>•</div>
             <div>{date}</div>
-          </>
+          </Fragment>
         )}
       </div>
     </Callout>

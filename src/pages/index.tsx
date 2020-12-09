@@ -11,7 +11,7 @@ import { Query } from '../utils/graphql'
 import React from 'react'
 import SEO from '../components/SEO'
 import Tray from '../components/homepage/Tray'
-import { css } from '@emotion/core'
+import { css } from '@emotion/react'
 
 interface Props extends PageRendererProps {
   data: Query

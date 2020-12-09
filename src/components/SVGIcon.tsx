@@ -1,5 +1,5 @@
 import React, { SVGAttributes } from 'react'
-import { SerializedStyles, css } from '@emotion/core'
+import { SerializedStyles, css } from '@emotion/react'
 
 interface Props extends SVGAttributes<SVGElement> {
   icon: string

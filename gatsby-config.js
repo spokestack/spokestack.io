@@ -180,7 +180,6 @@ module.exports = {
       }
     },
     'gatsby-plugin-typescript',
-    'gatsby-plugin-emotion',
     {
       resolve: 'gatsby-plugin-google-analytics',
       options: {
@@ -362,6 +361,7 @@ module.exports = {
         }
       }
     },
+    'gatsby-plugin-emotion',
     'gatsby-plugin-remove-trailing-slashes',
     {
       resolve: `gatsby-plugin-s3`,

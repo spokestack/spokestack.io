@@ -1,8 +1,9 @@
-import { SerializedStyles, css } from '@emotion/core'
+import * as theme from '../styles/theme'
+
+import { SerializedStyles, css } from '@emotion/react'
 
 import React from 'react'
 import SVGIcon from './SVGIcon'
-import * as theme from '../styles/theme'
 
 interface Props {
   href: string

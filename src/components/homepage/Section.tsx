@@ -1,6 +1,6 @@
 import { MIN_LARGE_DISPLAY_MEDIA_QUERY } from '../../styles/theme'
 import React from 'react'
-import { css } from '@emotion/core'
+import { css } from '@emotion/react'
 
 interface Props {
   header: string

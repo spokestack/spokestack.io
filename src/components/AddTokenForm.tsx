@@ -3,7 +3,7 @@ import * as theme from '../styles/theme'
 import React, { FormEvent, useState } from 'react'
 
 import Button from './Button'
-import { css } from '@emotion/core'
+import { css } from '@emotion/react'
 
 interface Props {
   submitting: boolean

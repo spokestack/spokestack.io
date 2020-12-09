@@ -2,7 +2,7 @@ import * as theme from '../../styles/theme'
 
 import React from 'react'
 import SVGIcon from '../SVGIcon'
-import { css } from '@emotion/core'
+import { css } from '@emotion/react'
 
 export interface HeaderProps {
   cta: string

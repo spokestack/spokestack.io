@@ -4,7 +4,7 @@ import Layout from '../components/Layout'
 import React from 'react'
 import SignInForm from './SignInForm'
 import { WindowLocation } from '@reach/router'
-import { css } from '@emotion/core'
+import { css } from '@emotion/react'
 
 interface Props {
   children?: React.ReactNode

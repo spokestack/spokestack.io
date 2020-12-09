@@ -14,7 +14,7 @@ import Card from './Card'
 import SVGIcon from './SVGIcon'
 import Textarea from './Textarea'
 import client from '../apollo/client'
-import { css } from '@emotion/core'
+import { css } from '@emotion/react'
 import debounce from 'lodash/debounce'
 import find from 'lodash/find'
 import sanitizeIPA from '../utils/sanitizeIPA'
@@ -64,7 +64,7 @@ export default class SampleVoices extends PureComponent<Props, State> {
         fetchPolicy: 'network-only'
       })
       .then(({ data }) => {
-        return new Promise((resolve) => {
+        return new Promise<void>((resolve) => {
           const voices = data.listVoices.sort((a, b) => {
             if (a.name === 'Spokestack Free') {
               return -1
@@ -79,7 +79,7 @@ export default class SampleVoices extends PureComponent<Props, State> {
               selected: voices[0],
               voices
             },
-            resolve
+            () => resolve()
           )
         })
       })

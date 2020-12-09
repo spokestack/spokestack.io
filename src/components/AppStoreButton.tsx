@@ -1,6 +1,6 @@
 import React from 'react'
 import SVGIcon from './SVGIcon'
-import { css } from '@emotion/core'
+import { css } from '@emotion/react'
 
 interface Props {
   slug: string

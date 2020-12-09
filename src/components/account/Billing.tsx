@@ -3,7 +3,7 @@ import AccountCard from './AccountCard'
 import AccountLayout from './AccountLayout'
 import React from 'react'
 import { RouteComponentProps } from '@reach/router'
-import { css } from '@emotion/core'
+import { css } from '@emotion/react'
 
 interface Props extends RouteComponentProps {
   account: Account

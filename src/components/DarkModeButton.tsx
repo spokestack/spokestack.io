@@ -1,6 +1,6 @@
 import * as theme from '../styles/theme'
 
-import { Global, css } from '@emotion/core'
+import { Global, css } from '@emotion/react'
 import React, { useState } from 'react'
 import { getDarkModePref, setDarkModePref } from '../utils/darkMode'
 

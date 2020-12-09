@@ -1,9 +1,9 @@
 import * as theme from '../styles/theme'
 
-import { Global, css } from '@emotion/core'
+import { Global, css } from '@emotion/react'
+import React, { Fragment } from 'react'
 
 import { Link } from 'gatsby'
-import React from 'react'
 import toUrl from '../utils/toUrl'
 
 interface Props {
@@ -18,7 +18,7 @@ export default function Tags({ header, allUrl, tags }: Props) {
     return null
   }
   return (
-    <>
+    <Fragment>
       <Global
         styles={css`
           html.dark-mode .tag-active {
@@ -49,7 +49,7 @@ export default function Tags({ header, allUrl, tags }: Props) {
           </Link>
         ))}
       </div>
-    </>
+    </Fragment>
   )
 }
 

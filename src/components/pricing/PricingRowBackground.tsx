@@ -1,7 +1,7 @@
 import * as theme from '../../styles/theme'
 
 import React from 'react'
-import { css } from '@emotion/core'
+import { css } from '@emotion/react'
 
 interface Props {
   show: boolean

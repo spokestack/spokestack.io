@@ -1,4 +1,4 @@
-import { SerializedStyles, css, keyframes } from '@emotion/core'
+import { SerializedStyles, css, keyframes } from '@emotion/react'
 import { primary, transitionEasing } from '../styles/theme'
 
 import React from 'react'

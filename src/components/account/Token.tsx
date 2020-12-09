@@ -1,11 +1,11 @@
 import * as theme from '../../styles/theme'
 
 import { CopyButton, CopyInputWithButton, DeleteButton } from '../EditButtons'
-import React, { useRef } from 'react'
+import React, { Fragment, useRef } from 'react'
 
 import { ApiKey } from '../../types'
 import SVGIcon from '../SVGIcon'
-import { css } from '@emotion/core'
+import { css } from '@emotion/react'
 
 interface Props {
   token: Partial<ApiKey>
@@ -43,7 +43,7 @@ export default function Token({ token, onDelete }: Props) {
         {!!token.key && <CopyButton title="Copy key" inputRef={secretRef} />}
       </div>
       {token.key ? (
-        <>
+        <Fragment>
           <p css={styles.save}>
             Save this token somewhere safe. It can only be viewed once.
           </p>
@@ -55,7 +55,7 @@ export default function Token({ token, onDelete }: Props) {
             css={styles.textarea}
             value={token.key}
           />
-        </>
+        </Fragment>
       ) : (
         <div css={styles.row}>••••••••••••••••••••••••••••••</div>
       )}

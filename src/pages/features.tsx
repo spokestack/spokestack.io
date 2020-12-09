@@ -5,7 +5,7 @@ import Layout from '../components/Layout'
 import { MIN_DEFAULT_MEDIA_QUERY, MIN_TEXT_WIDTH } from '../styles/theme'
 import React from 'react'
 import SEO from '../components/SEO'
-import { css } from '@emotion/core'
+import { css } from '@emotion/react'
 import { PageRendererProps } from 'gatsby'
 
 export default function Features({ location }: PageRendererProps) {

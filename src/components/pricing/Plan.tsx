@@ -5,7 +5,7 @@ import Header, { HeaderProps } from './Header'
 
 import Button from '../Button'
 import React from 'react'
-import { css } from '@emotion/core'
+import { css } from '@emotion/react'
 
 interface Props extends HeaderProps {
   background?: string

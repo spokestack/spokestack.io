@@ -9,7 +9,7 @@ import { CopyInputWithButton } from './EditButtons'
 import SVGIcon from './SVGIcon'
 import WakewordCheckmark from './WakewordCheckmark'
 import { capitalize } from 'lodash'
-import { css } from '@emotion/core'
+import { css } from '@emotion/react'
 import { record } from 'spokestack/client'
 
 // The uploader will not allow anything longer than 3 seconds.

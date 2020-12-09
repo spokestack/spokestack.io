@@ -362,9 +362,8 @@ module.exports = {
       }
     },
     'gatsby-plugin-emotion',
-    'gatsby-plugin-remove-trailing-slashes',
     {
-      resolve: `gatsby-plugin-s3`,
+      resolve: 'gatsby-plugin-s3',
       options: {
         bucketName: siteUrl.hostname,
         protocol: siteUrl.protocol.slice(0, -1),

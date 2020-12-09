@@ -368,7 +368,8 @@ module.exports = {
       options: {
         bucketName: siteUrl.hostname,
         protocol: siteUrl.protocol.slice(0, -1),
-        hostname: siteUrl.hostname
+        hostname: siteUrl.hostname,
+        generateMatchPathRewrites: false
       }
     }
   ].filter(Boolean)

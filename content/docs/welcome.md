@@ -21,7 +21,9 @@ You can find the Spokestack Tray libraries and documentation here:
 
 - [React Native](https://github.com/spokestack/react-native-spokestack-tray)
 - [iOS](https://github.com/spokestack/spokestack-tray-ios)
-- _Android coming soon_ Follow us on [Twitter](https://twitter.com/spokestack) for updates.
+- [Android](https://github.com/spokestack/spokestack-tray-android)
+
+<br />
 
 #### Custom Integration
 
@@ -29,9 +31,11 @@ A custom integration gives the app developer full control over voice integration
 
 If you're looking to integrate Spokestack in your project without using the tray, our **quickstart** guides for each platform can be found here:
 
+- [React Native](/docs/React%20Native/getting-started)
 - [iOS](/docs/iOS/getting-started)
 - [Android](/docs/Android/getting-started)
-- [React Native](/docs/React%20Native/getting-started)
+
+<br />
 
 ### Tutorials
 
@@ -52,6 +56,8 @@ Tutorials for integrating Spokestack are also available on our blog:
 - [React Native Tutorial](/blog/integrating-spokestack-in-react-native)
 - [iOS Tutorial](/blog/porting-a-smart-speaker-voice-app-to-mobile-part-1)
 - [Android Tutorial](/blog/porting-the-alexa-minecraft-skill-to-android-using-spokestack)
+
+<br />
 
 Check our blog for all of our [Spokestack Tutorials](/tutorials).
 

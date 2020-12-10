@@ -7,6 +7,14 @@ tags: Android, Engineering, Tutorial
 draft: false
 ---
 
+_This tutorial is part of a series:_
+
+- **Part 1** (_You are here!_): Working with Google App Actions
+- [Part 2](/blog/integrating-spokestack-google-app-actions-2): Adding your own voice experience with Spokestack
+- [Part 3](/blog/integrating-spokestack-google-app-actions-3): Using Spokestack Tray to add a voice UI
+
+---
+
 The terms "smart speaker" and "voice assistant" are now full members of our cultural vocabulary. Talking to a voice assistant has become so common that voice interaction has grown from an exciting new feature into an expectation. Consumers are habituated to the tech and [would like to use it in mobile apps](https://voicebot.ai/2020/11/09/national-consumer-survey-reveals-that-a-lot-of-consumers-want-voice-assistants-in-mobile-apps/) — if only the apps supported it.
 
 Making that last part a reality is what Spokestack's all about. In this tutorial, we're going to solve one of the problems mentioned in the article linked above:

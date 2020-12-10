@@ -179,7 +179,17 @@ module.exports = {
         name: 'assets'
       }
     },
+    'gatsby-plugin-react-helmet',
+    {
+      resolve: 'gatsby-plugin-web-font-loader',
+      options: {
+        google: {
+          families: ['Roboto:300,400,700']
+        }
+      }
+    },
     'gatsby-plugin-typescript',
+    'gatsby-plugin-emotion',
     {
       resolve: 'gatsby-plugin-google-analytics',
       options: {
@@ -298,13 +308,6 @@ module.exports = {
       }
     },
     {
-      resolve: 'gatsby-plugin-sitemap',
-      options: {
-        output: '/sitemap.xml',
-        exclude: ['/account/*', '/oauth/*']
-      }
-    },
-    {
       resolve: 'gatsby-plugin-canonical-urls',
       options: {
         siteUrl: siteUrl.href
@@ -352,17 +355,14 @@ module.exports = {
         }
       }
     },
-    'gatsby-plugin-react-helmet',
+    'gatsby-plugin-remove-trailing-slashes',
     {
-      resolve: 'gatsby-plugin-web-font-loader',
+      resolve: 'gatsby-plugin-sitemap',
       options: {
-        google: {
-          families: ['Roboto:300,400,700']
-        }
+        output: '/sitemap.xml',
+        exclude: ['/account/*', '/oauth/*']
       }
     },
-    'gatsby-plugin-emotion',
-    'gatsby-plugin-remove-trailing-slashes',
     {
       resolve: `gatsby-plugin-s3`,
       options: {

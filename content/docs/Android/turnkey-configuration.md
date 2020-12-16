@@ -78,7 +78,6 @@ val spokestack = Spokestack.Builder()
   .setProperty("spokestack-id", "your-client-id")
   .setProperty("spokestack-secret", "your-secret-key")
   .withAndroidContext(applicationContext)
-  .withLifecycle(lifecycle)
   // ...
   .build()
 ```

@@ -55,7 +55,7 @@ If your app makes heavy use of media already, you likely have a preferred media 
 
 ### 2. What's a `MediaPlayer`?
 
-If, on the other hand, your voice interaction will be the _only_ audio your app uses, you likely don't want the hassle of managing a media player's lifecycle and the resources it controls. If that's the case, Spokestack can handle playback internally so you don't have to become an Android audio expert.
+If, on the other hand, your voice interaction will be the _only_ audio your app uses, you likely don't want the hassle of managing a media player. If that's the case, Spokestack can handle playback internally so you don't have to become an Android audio expert.
 
 Note that this method provides your app with a headless media player; there are no UI elements to manage, but that also means that the user won't have a way to pause your app's voice. We'll consider adding a managed UI option based on demand, so if this is something you need, [join the discussion](https://github.com/spokestack/spokestack-android) on GitHub.
 
@@ -69,7 +69,6 @@ You'll also need to add the following dependencies to your app's `build.gradle`:
 dependencies {
   // ...
 
-  implementation 'androidx.lifecycle:lifecycle-common-java8:2.1.0'
   implementation 'androidx.media:media:1.1.0'
   implementation 'com.google.android.exoplayer:exoplayer-core:2.11.0'
 }
@@ -84,22 +83,7 @@ tts = TTSManager.Builder()
   // ...
   .setOutputClass("io.spokestack.spokestack.tts.SpokestackTTSOutput")
   .setAndroidContext(applicationContext)
-  .setLifecycle(lifecycle)
   .build()
-```
-
-`SpokestackTTSOutput` is [lifecycle-aware](https://developer.android.com/topic/libraries/architecture/lifecycle.html), so it deals with releasing system resources automatically based on lifecycle events such as screen rotations, activity transitions, etc.
-
-Handling the media player is _most_ of the work, but as you may have guessed, there are no totally free rides in mobile development. In order to track the lifecycle properly, you still have to tell Spokestack which component's lifecycle to track. Notice the `this` in the previous snippet—we're assuming that the component creating the `TTSManager` is what Android calls a `LifecycleOwner`. This doesn't _have_ to be the case; the class creating the manager might just hold a reference to a `LifecycleOwner`, in which case you'd pass the manager the lifecycle accessible from that reference instead. When the `Activity` in focus changes, simply register its lifecycle with the TTS subsystem:
-
-```kotlin
-class MyActivity : AppCompatActivity() {
-
-  // tts is a TTSManager established elsewhere
-  override fun onResume(){
-    tts.registerLifecycle(lifecycle)
-  }
-}
 ```
 
 ## Handing back the mic

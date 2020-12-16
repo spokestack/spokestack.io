@@ -71,8 +71,7 @@ public class MainActivity extends AppCompatActivity {
     private void buildSpokestack() {
         // extract the models from the asset bundle if we need to
         checkForModels();
-        this.spokestack = new Spokestack(getApplicationContext(),
-              getLifecycle(), this);
+        this.spokestack = new Spokestack(getApplicationContext(), this);
         try {
             // start the speech pipeline
             this.spokestack.start();
@@ -293,7 +292,6 @@ private void buildTTS() throws Exception {
               .setProperty("spokestack-secret", "YOUR-SECRET-HERE")
               .addTTSListener(this)
               .setAndroidContext(this.appContext)
-              .setLifecycle(appLifecycle)
               .build();
     }
 }

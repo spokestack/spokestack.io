@@ -101,8 +101,6 @@ return if (item != null) {
 }
 ```
 
-These changes can be summarized in an important tip: If you're using voice commands to transition to a new activity, it's a good idea to **return `null` from `onClassification`**. Send any data needed for the response to the new activity, and let it generate and add the response with `say`. This can smooth the audio experience a bit, preventing the Android lifecycle from interfering with playback. We'll be working on a way to handle this automatically in future versions of Spokestack.
-
 ## Conclusion
 
 Just like that, we've gone from a cool-but-confusing "headless" voice experience to a UI-supported voice interface that puts the user in control and removes code from our codebase. It's a win-win. A quick checklist for integrating Spokestack Tray in your app:

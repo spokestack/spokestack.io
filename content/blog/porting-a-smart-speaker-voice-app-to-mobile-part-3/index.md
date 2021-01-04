@@ -25,7 +25,7 @@ To get started with a free NLU model that’s compatible with Spokestack, [creat
 
 1.  Log into the Amazon developer console, find your skill, click the "Build" tab at the top, and look for "JSON Editor" listed under your intents and slots on the left side (at the time of this writing).
 1.  Copy the entire contents of the JSON editor and paste them into a new file on your computer. Save it as `<YOUR-MODEL-NAME-HERE>.json`.
-1.  Log in to your Spokestack account, click on "Language Understanding" on the left, and upload your JSON file using the "Import" button.
+1.  Log in to your Spokestack account, click on "Language Understanding" in the navigation, and upload your JSON file using the "Import" button.
 1.  Watch the email address you used to sign up for the account; we'll email you when your files are ready, and you can download them from your account page.
 
 ## Next Steps: Tutorials

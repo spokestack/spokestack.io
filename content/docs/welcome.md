@@ -47,7 +47,7 @@ Tutorials for integrating Spokestack are also available on our blog:
 
 - [React Native Tray Tutorial](/blog/integrating-spokestack-in-react-native)
 - [iOS Tray Tutorial](/blog/integrating-spokestack-in-ios)
-- _Android coming soon_
+- [Android Tray Tutorial](/blog/integrating-spokestack-in-android)
 
 ##### Custom Integration Tutorials
 

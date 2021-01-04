@@ -1,6 +1,6 @@
 ---
 title: Including model files in your app bundle
-navId: require-models
+navId: Local models (react-native)
 description: Documentation for including local Spokestack model files in React Native app bundles.
 draft: false
 ---

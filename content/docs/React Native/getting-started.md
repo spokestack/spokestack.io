@@ -25,13 +25,13 @@ Android SDK 21+.
 
 Using npm:
 
-```sh
+```shell
 npm install --save react-native-spokestack
 ```
 
 or using yarn:
 
-```sh
+```shell
 yarn add react-native-spokestack
 ```
 
@@ -75,7 +75,7 @@ For the time being, `use_frameworks!` does not work with Flipper, so we also nee
 
 Remove your existing Podfile.lock and Pods folder to ensure no conflicts, then install the pods:
 
-```sh
+```shell
 $ npx pod-install
 ```
 

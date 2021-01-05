@@ -48,7 +48,7 @@ First, set your iOS deployment target in XCode to 13.0.
 
 Before running `pod install`, make sure to make the following edits.
 
-react-native-spokestack makes use of relatively new APIs only available in iOS 13+. Make sure to set your deployment target to iOS 13 at the top of your Podfile:
+react-native-spokestack makes use of relatively new APIs only available in iOS 13+. Set your deployment target to iOS 13 at the top of your Podfile:
 
 ```ruby
 platform :ios, '13.0'
@@ -62,7 +62,7 @@ target 'SpokestackExample' do
   #...
 ```
 
-For the time being, `use_frameworks!` does not work with Flipper, so we also need to disable Flipper. Remove any Flipper-related lines in your Podfile. In React Native 0.63.2, they look like this:
+For now, `use_frameworks!` does not work with Flipper, so we also need to disable Flipper. Remove any Flipper-related lines in your Podfile. In React Native 0.63.2, they look like this:
 
 ```ruby
   # X Remove or comment out these lines X

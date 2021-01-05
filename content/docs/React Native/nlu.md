@@ -17,7 +17,6 @@ Spokestack.initialize(
   process.env.SPOKESTACK_CLIENT_SECRET,
   {
     nlu: {
-      // These are only required if using Spokestack.classify
       model: require('./nlu.tflite'),
       metadata: require('./metadata.json'),
       vocab: require('./vocab.txt')

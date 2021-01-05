@@ -40,10 +40,10 @@ const url = await Spokestack.synthesize(
 
 The default voice is Spokestack's free "demo-male" voice. Custom voices are available! [Contact us to find out more](mailto:hello@spokestack.io).
 
-Documentation for this `Spokestack.synthesize()` and its arguments can be found in [react-native-spokestack's README](https://github.com/spokestack/react-native-spokestack#synthesize).
+Documentation for `Spokestack.synthesize()` and its arguments can be found in [react-native-spokestack's README](https://github.com/spokestack/react-native-spokestack#synthesize).
 
 ## Using the generated audio
 
 What you do with the synthesis result (or failure) is up to you! The streaming URL is valid for 60 seconds, so you can save it for later or play it back immediately.
 
-For simple and immediate playback, we also provide `Spokestack.speak()`, which takes the same arguments as `Spokestack.synthesize` but plays the audio as soon as the speech is processed using the devices default playback options. For more complicated playback, we defer to other libraries dedicated to that feature. We're fond of [react-native-video](https://github.com/react-native-community/react-native-video), and have also used [react-native-track-player](https://github.com/react-native-kit/react-native-track-player). For either one, pass the URL directly as the source.
+For simple and immediate playback, we also provide `Spokestack.speak()`, which takes the same arguments as `Spokestack.synthesize()` but plays the audio as soon as the speech is processed using the device's current playback settings. For more complicated playback, we defer to other libraries dedicated to that feature. We're fond of [react-native-video](https://github.com/react-native-community/react-native-video), and have also used [react-native-track-player](https://github.com/react-native-kit/react-native-track-player). For either one, pass the URL directly as the source.

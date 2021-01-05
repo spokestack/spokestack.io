@@ -87,23 +87,30 @@ before you'll be able to recognize a wakeword again.
 
 If speech is being processed when `deactivate` is called, it may still trigger the `onRecognize` event when processing is complete.
 
-### Extracting an intent slot value from `classify()`
+### Extracting a slot value from `classify()`
 
-Let's say you're creating a voice-controlled timer and wish to perform simplistic natural language processing to respond to a handful of commands: `start, stop, reset, start over`. Here's how to extract a slot value from a `classify()` result. Note that the intent and slot names are pre-determined by the NLU model metadata.
+Let's say you're creating a voice-controlled timer and wish to perform natural language processing to respond to a handful of commands: `timer, stop, reset`. Here's how to extract a slot value from a `classify()` result. Note that the intent and slot names are pre-determined by the NLU model metadata.
 
 ```ts
 const { intent, slots } = await Spokestack.classify(utterance).catch(
   handleError
 )
 switch (intent) {
-  case 'start':
+  case 'timer':
     // the "start" intent can have slots named "duration" and "units"
-    var duration = slots.duration?.value
-    var units = slots.units?.value
+    const duration = slots.duration?.value // 60
+    const units = slots.units?.value // "seconds"
     // start a timer for `duration` `units` (eg 60 seconds) and change the UI accordingly
     break
-  default:
+  case 'stop':
+    // stop the timer
+    break
+  case 'reset':
+    const duration = 0
+    // reset the timer
+    break
   // handle an unexpected intent
+  default:
 }
 ```
 

@@ -41,12 +41,14 @@ This is not required. You can also pass remote URLs to the same config options a
 ```js
 await Spokestack.initialize(clientId, clientSecret, {
   wakeword: {
-    filter:
-      'https://d3dmqd7cy685il.cloudfront.net/model/wake/spokestack/filter.tflite',
-    detect:
-      'https://d3dmqd7cy685il.cloudfront.net/model/wake/spokestack/detect.tflite',
-    encode:
-      'https://d3dmqd7cy685il.cloudfront.net/model/wake/spokestack/encode.tflite'
+    filter: 'https://s.spokestack.io/u/hgmYb/filter.tflite',
+    detect: 'https://s.spokestack.io/u/hgmYb/detect.tflite',
+    encode: 'https://s.spokestack.io/u/hgmYb/encode.tflite'
+  },
+  nlu: {
+    model: 'https://s.spokestack.io/u/7fYxV/nlu.tflite',
+    metadata: 'https://s.spokestack.io/u/7fYxV/metadata.json',
+    vocab: 'https://s.spokestack.io/u/7fYxV/vocab.txt'
   }
 })
 ```

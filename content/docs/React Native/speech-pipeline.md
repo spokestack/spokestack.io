@@ -13,9 +13,22 @@ The speech pipeline is a collection of distinct modular components that work tog
 
 ## How do I set it up?
 
-Configuration available at build time includes a list of pipeline stages and various properties, which are all listed in [react-native-spokestack's README](https://github.com/spokestack/react-native-spokestack#spokestackconfig).
+Configuration available at build time includes a pipeline profile and various properties, which are all listed in [react-native-spokestack's README](https://github.com/spokestack/react-native-spokestack#spokestackconfig).
 
-Stage order matters in the build process; audio is processed by each stage in turn, according to the order in which it's declared at build time. For example, a stage that activates ASR based on the presence of the wakeword needs to be placed before the ASR stage, and any stages that process audio to make the wakeword detector's job easier (for example, gain control) must be declared before the wakeword detection stage. The order of configuration properties, on the other hand, does not matter, and their declarations can be placed before or after those of processing stages.
+Set a different profile with the profile property:
+
+```js
+Spokestack.initialize(
+  process.env.SPOKESTACK_CLIENT_ID,
+  process.env.SPOKESTACK_CLIENT_SECRET,
+  {
+    pipeline: {
+      // The default is PTT_NATIVE_ASR
+      profile: Spokestack.PipelineProfile.VAD_NATIVE_ASR
+    }
+  }
+)
+```
 
 ## How does it work?
 
@@ -27,7 +40,7 @@ As you can see, once the pipeline has been built, calling `start()` puts it into
 
 While the pipeline is listening passively, it sends audio through its stages a frame at a time (a "frame" defaults to 20 ms of audio, but [it's configurable](/docs/Concepts/pipeline-configuration#runtime-tunable-parameters)). That audio is not leaving the device, though; it's waiting for a stage to recognize a trigger word or phrase and set the pipeline to active. The classes that do this in Spokestack typically have names that end in `Trigger`; see `WakewordTrigger` and `VoiceActivityTrigger` for examples.
 
-The pipeline can also be activated by calling its `activate` method. This is what you'd do to implement push-to-talk. Once activated, it can be deactivated by calling `deactivate`, or it will remain active until a pre-set timeout is triggered (see `wake-active-min` and `wake-active-max` in the [configuration documentation](/docs/Concepts/pipeline-configuration#runtime-tunable-parameters)).
+The pipeline can also be activated by calling its `activate` method. This is what you'd do to implement push-to-talk. Once activated, it can be deactivated by calling `deactivate`, or it will remain active until a pre-set timeout is triggered (see `activeMin` and `activeMax` in the [wakeword configuration](https://github.com/spokestack/react-native-spokestack#wakewordconfig)).
 
 For a complete set of available methods that can be called for the speech pipeline, please refer to [the API documentation](https://github.com/spokestack/react-native-spokestack#api-documentation).
 
@@ -35,7 +48,7 @@ When active, audio frames are sent through an ASR service (on-device or cloud-ba
 
 ## Events
 
-All pipeline activity, including activations, deactivations, ASR timeouts, receipt of ASR transcriptions, and tracing messages/errors are delivered asynchronously to event subscribers.
+All pipeline activity, including activations, deactivations, ASR timeouts, receipt of ASR transcripts, and tracing messages/errors are delivered asynchronously to event subscribers.
 
 All events are optional, so apps can subscribe to whichever are of interest.
 

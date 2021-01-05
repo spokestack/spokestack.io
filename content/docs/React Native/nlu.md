@@ -34,19 +34,19 @@ When it comes time to classify an utterance, Spokestack's NLU does all the heavy
 Call `classify` with the text you want to classify.
 
 ```javascript
-const result = await Spokestack.classify('Tea, earl grey, hot').catch(
+const result = await Spokestack.classify('How do I make a castle?').catch(
   handleError
 )
 ```
 
-Your `onClassification` callback will receive an object with the following structure:
+The result will be an object with the following structure:
 
 ```javascript
 {
   "intent": "RecipeIntent",
   "confidence": "0.9999006",
   "slots": [{
-    "value":"tea",
+    "value":"castle",
     "type":"entity"
   }]
 }

@@ -97,7 +97,7 @@ const { intent, slots } = await Spokestack.classify(utterance).catch(
 )
 switch (intent) {
   case 'timer':
-    // the "start" intent can have slots named "duration" and "units"
+    // the "timer" intent can have slots named "duration" and "units": "set a timer for {duration} {units}"
     const duration = slots.duration?.value // 60
     const units = slots.units?.value // "seconds"
     // start a timer for `duration` `units` (eg 60 seconds) and change the UI accordingly

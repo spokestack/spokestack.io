@@ -7,11 +7,9 @@ draft: false
 
 This guide will get you up and running with Spokestack for React Native, and you'll be hearing and responding to your users in no time.
 
-One caveat before we start, though: _This is not a collection of best practices_. We're going to be trading thoughtful organization for convenience here, so please consider how best to organize your Spokestack use for your application architecture.
-
 ## Prerequisites
 
-We assume that you already have a working react-native 0.60+ project (with `npm` and `cocoapods` already installed), and are adding Spokestack to that project. If you're starting from scratch, please refer to the [react-native getting started guide](https://reactnative.dev/docs/getting-started) and then come back here!
+We assume that you have a working react-native 0.60+ project (with `npm` and `cocoapods` already installed), and are adding Spokestack to that project. If you're starting from scratch, please refer to the [react-native getting started guide](https://reactnative.dev/docs/getting-started) and then come back here!
 
 ### iOS
 
@@ -19,249 +17,278 @@ iOS 13+, [CocoaPods](https://guides.cocoapods.org/using/using-cocoapods.html#add
 
 ### Android
 
-Android SDK 24+.
+Android SDK 21+.
 
 ## Installation
 
-```bash
-$ npm install --save react-native-spokestack
-$ cd ios
-$ pod install
+[![](https://img.shields.io/npm/v/react-native-spokestack.svg)](https://www.npmjs.com/package/react-native-spokestack)
+
+Using npm:
+
+```shell
+npm install --save react-native-spokestack
 ```
 
-### iOS
+or using yarn:
 
-#### `Podfile`
-
-Edit your `Podfile` to include `use_native_modules!` and `use_frameworks!`, to use `platform :ios, '13.0'` or higher, and to remove all `Flipper` references and dependencies (Spokestack is a static library and must `use_frameworks!`, which breaks compatibility with `Flipper`).
-
-#### XCode Project
-
-1. In your XCode Project settings, select your app target (eg `MinecraftSkill`) > Build Settings > Library Search Paths : Remove the search path `"$(TOOLCHAIN_DIR)/usr/lib/swift-5.0/$(PLATFORM_NAME)"`.
-1. If your project does not already have an Objective-C - Swift bridging header, please create one: File > New File > Swift File > “Dummy.swift”, your app target > Create Bridging Header.
-
-### Android
-
-### `/android/gradle.properties`
-
-Due to the number of libraries React Native uses on Android, it's best to give the JVM extra memory while during compliation: `org.gradle.jvmargs=-Xmx2048m -XX:MaxPermSize=512m -XX:+HeapDumpOnOutOfMemoryError -Dfile.encoding=UTF-8`
-
-### `android/build.gradle`
-
-Spokestack has dependencies that require a slightly higher minimum SDK version that React Native requires by default:
-
-```java
-buildscript {
-    ext {
-        buildToolsVersion = "28.0.3"
-        minSdkVersion = 21
-        //...
-    }
-    repositories {
-        google()
-        maven { url 'https://csspeechstorage.blob.core.windows.net/maven/' }
-        //...
-    }
-}
-
-//...
-
-allprojects{
-    repositories {
-        google()
-        maven { url 'https://csspeechstorage.blob.core.windows.net/maven/' }
-        //...
-    }
-}
+```shell
+yarn add react-native-spokestack
 ```
 
-## Integration
+Then follow the instructions for each platform to link react-native-spokestack to your project:
 
-### iOS
+## iOS installation
 
-In order for your app to accept voice input via Spokestack, it needs two things:
+<details>
+  <summary>iOS details</summary>
 
-1. The proper iOS permissions
-1. An active `AVAudioSession`
+First, set your iOS deployment target in XCode to 13.0.
 
-Head over to `Info.plist` in your project and add a couple keys. Here are the raw values you'll need (the keys, at least; feel free to substitute your own values):
+### Edit Podfile
+
+Before running `pod install`, make sure to make the following edits.
+
+react-native-spokestack makes use of relatively new APIs only available in iOS 13+. Set your deployment target to iOS 13 at the top of your Podfile:
+
+```ruby
+platform :ios, '13.0'
+```
+
+We also need to use `use_frameworks!` in our Podfile in order to support dependencies written in Swift.
+
+```ruby
+target 'SpokestackExample' do
+  use_frameworks!
+  #...
+```
+
+For now, `use_frameworks!` does not work with Flipper, so we also need to disable Flipper. Remove any Flipper-related lines in your Podfile. In React Native 0.63.2, they look like this:
+
+```ruby
+  # X Remove or comment out these lines X
+  use_flipper!
+  post_install do |installer|
+    flipper_post_install(installer)
+  end
+  # XX
+```
+
+Remove your existing Podfile.lock and Pods folder to ensure no conflicts, then install the pods:
+
+```shell
+$ npx pod-install
+```
+
+### Edit Info.plist
+
+Add the following to your Info.plist to enable permissions.
 
 ```xml
 <key>NSMicrophoneUsageDescription</key>
-<string>The microphone is used to receive user commands via voice.</string>
+<string>This app uses the microphone to hear voice commands</string>
 <key>NSSpeechRecognitionUsageDescription</key>
-<string>Speech recognition is used to translate user voice input into text for further processing.</string>
+<string>This app uses speech recognition to process voice commands</string>
 ```
 
-Apple manages the various demands on an iOS device's audio system via [audio sessions](https://developer.apple.com/library/archive/documentation/Audio/Conceptual/AudioSessionProgrammingGuide/Introduction/Introduction.html). See their documentation for more details, but here's the minimum configuration you'll need in order to record user speech. A good place for it is your `AppDelegate`'s `application(_:didFinishLaunchingWithOptions)` method.
+#### Remove Flipper
 
-Given that, and remembering to remove Flipper as discussed earlier, your `AppDelegate.m` should look similar to this:
+While Flipper works on fixing their pod for `use_frameworks!`, we must disable Flipper. We already removed the Flipper dependencies from Pods above, but there remains some code in the AppDelegate.m that imports Flipper. There are two ways to fix this.
 
-```objectivec
-#import "AppDelegate.h"
+1. You can disable Flipper imports without removing any code from the AppDelegate. To do this, open your xcworkspace file in XCode. Go to your target, then Build Settings, search for "C Flags", remove `-DFB_SONARKIT_ENABLED=1` from flags.
+1. Remove all Flipper-related code from your AppDelegate.m.
+
+In our example app, we've done option 1 and left in the Flipper code in case they get it working in the future and we can add it back.
+
+### Edit AppDelegate.m
+
+#### Add AVFoundation to imports
+
+```objc
 #import <AVFoundation/AVFoundation.h>
+```
 
-#import <React/RCTBridge.h>
-#import <React/RCTBundleURLProvider.h>
-#import <React/RCTRootView.h>
+#### AudioSession category
 
-@implementation AppDelegate
+Set the AudioSession category. There are several configurations that work.
 
+The following is a suggestion that should fit most use cases:
+
+```objc
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions
 {
+  AVAudioSession *session = [AVAudioSession sharedInstance];
+  [session setCategory:AVAudioSessionCategoryPlayAndRecord
+     mode:AVAudioSessionModeDefault
+  options:AVAudioSessionCategoryOptionDefaultToSpeaker | AVAudioSessionCategoryOptionAllowAirPlay | AVAudioSessionCategoryOptionAllowBluetoothA2DP | AVAudioSessionCategoryOptionAllowBluetooth
+    error:nil];
+  [session setActive:YES error:nil];
 
-  # set the AVSession to a category compatible with both recording and playback
-  [[AVAudioSession sharedInstance] setCategory:AVAudioSessionCategoryPlayAndRecord mode:AVAudioSessionModeDefault options:AVAudioSessionCategoryOptionDefaultToSpeaker  error:nil];
-  [[AVAudioSession sharedInstance] setActive:YES error:nil];
-
-  RCTBridge *bridge = [[RCTBridge alloc] initWithDelegate:self launchOptions:launchOptions];
-  RCTRootView *rootView = [[RCTRootView alloc] initWithBridge:bridge
-                                                   moduleName:@"YOUR APP NAME"
-                                            initialProperties:nil];
-
-  rootView.backgroundColor = [[UIColor alloc] initWithRed:1.0f green:1.0f blue:1.0f alpha:1];
-
-  self.window = [[UIWindow alloc] initWithFrame:[UIScreen mainScreen].bounds];
-  UIViewController *rootViewController = [UIViewController new];
-  rootViewController.view = rootView;
-  self.window.rootViewController = rootViewController;
-  [self.window makeKeyAndVisible];
-  return YES;
-}
-
-- (NSURL *)sourceURLForBridge:(RCTBridge *)bridge
-{
-#if DEBUG
-  return [[RCTBundleURLProvider sharedSettings] jsBundleURLForBundleRoot:@"index" fallbackResource:nil];
-#else
-  return [[NSBundle mainBundle] URLForResource:@"main" withExtension:@"jsbundle"];
-#endif
-}
-
-@end
+  // ...
 ```
 
-### Android
+For a list of all categories, modes, and options, see [Apple's AudioSession documentation](https://developer.apple.com/documentation/avfoundation/avaudiosession/1771734-setcategory).
 
-To accept voice input, you need _at least_ the `RECORD_AUDIO` permission, and to perform speech recognition and TTS, you'll need to network access. These permissions are added automatically by the manifest included with the Spokestack library as of version 5.0.0, so you shouldn't need to add them explicitly.
+</details>
 
-Starting with Android 6.0, however, the `RECORD_AUDIO` permission requires you to request it from the user at runtime. Please see the [Android developer documentation](https://developer.android.com/training/permissions/requesting.html) for more information on how to do this. You'll also have to deal with the user potentially denying these permissions (or granting them at first and removing them later), but that's outside the scope of this guide.
+## Android installation
 
-Note that sending audio over the network can use a considerable amount of data, so you may also want to look into WiFi-related permissions and allow the user to disable voice control when using cellular data.
+<details>
+  <summary>Android details</summary>
 
-Also note that [the Android emulator cannot record audio](https://developer.android.com/guide/topics/media/mediarecorder). You'll need to test the voice input parts of your app on a real device.
+### ASR Support
 
-#### `android/app/src/main/AndroidManifest.xml`
+The example usage uses the system-provided ASRs (`AndroidSpeechRecognizer` and `AppleSpeechRecognizer`). However, `AndroidSpeechRecognizer` is not available on 100% of devices. If your app supports a device that doesn't have built-in speech recognition, use Spokestack ASR instead by setting the `profile` to a Spokestack profile using the `profile` prop.
+
+See our [ASR documentation](/docs/concepts/asr) for more information.
+
+### Edit root build.gradle (_not_ app/build.gradle)
+
+```groovy
+// ...
+  ext {
+    // Minimum SDK is 21
+    minSdkVersion = 21
+// ...
+  dependencies {
+    // Minimium gradle is 3.0.1+
+    // The latest React Native already has this
+    classpath("com.android.tools.build:gradle:3.5.3")
+```
+
+### Edit AndroidManifest.xml
+
+Add the necessary permissions to your `AndroidManifest.xml`. The first permission is often there already. The second is needed for using the microphone.
 
 ```xml
-<!-- for wakeword & ASR -->
-<uses-permission android:name="android.permission.RECORD_AUDIO" />
-<!-- for TTS -->
-<uses-permission android:name="android.permission.INTERNET" />
+    <!-- For TTS -->
+    <uses-permission android:name="android.permission.INTERNET" />
+    <!-- For wakeword and ASR -->
+    <uses-permission android:name="android.permission.RECORD_AUDIO" />
+    <!-- For ensuring no downloads happen over cellular, unless forced -->
+    <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
 ```
 
-## Configuring Spokestack
+### Request RECORD_AUDIO permission
 
-There are many options for configuring Spokestack. This example will begin capturing audio when `Spokestack.start()` is called and use a Voice Activity Detection (VAD) component to send any audio determined to be speech through an automated speech recognition system, in this case the platform's built-in speech recognizer. In other words, we're configuring this app to always actively listen, and no wakeword detection is performed. See [the configuration guide](/docs/Concepts/pipeline-configuration) for more information about pipeline building options. Beginning in version 4.0.0, it's incredibly simple to use different pipeline configurations by changing the `profile` property.
+The RECORD_AUDIO permission is special in that it must be both listed in the `AndroidManifest.xml` as well as requested at runtime. There are a couple ways to handle this (react-native-spokestack does not do this for you):
 
-Then we configure a text-to-speech component using a TTS API key and secret that allow you to use Spokestack voices for free! You can get your own API key & secret from [your Spokestack account page](/account/settings).
+1. **Recommended** Add a screen to your onboarding that explains the need for the permissions used on each platform (RECORD_AUDIO on Android and Speech Recognition on iOS). Have a look at [react-native-permissions](https://github.com/zoontek/react-native-permissions) to handle permissions in a more robust way.
+2. Request the permissions only when needed, such as when a user taps on a "listen" button. Avoid asking for permission with no context or without explaining why it is needed. In other words, we do not recommend asking for permission on app launch.
 
-Finally we configure the natural language understanding component, which uses Spokestack NLU models. To test things out, just try one of our free NLU models on [your Spokestack account page](/account/services/nlu), or grab this older [example NLU model](https://github.com/spokestack/spokestack-ios/blob/master/SpokestackFrameworkExample/nlu.tflite), [model metadata](https://github.com/spokestack/spokestack-ios/blob/master/SpokestackFrameworkExample/nlu.json), and [NLU vocabulary](https://d3dmqd7cy685il.cloudfront.net/nlu/vocab.txt).
+While iOS will bring up permissions dialogs automatically for any permissions needed, you must do this manually in Android.
+
+React Native already provides a module for this. See [React Native's PermissionsAndroid](https://reactnative.dev/docs/permissionsandroid) for more info.
+
+</details>
+
+## Configuration
+
+There are many options for configuring Spokestack. This example begins capturing audio when `Spokestack.start()` is called and uses a Voice Activity Detection (VAD) component to detect speech and send it through an automated speech recognition system, in this case the platform's built-in speech recognizer. In other words, we're configuring this app to always actively listen, and no wakeword detection is performed. See [the configuration guide](/docs/concepts/pipeline-configuration) for more information about pipeline building options. Beginning in version 4.0.0, it's easy to change the pipeline configuration through the use of the `profile` property.
+
+We'll configure the NLU (Natural Language Understanding) component, which uses Spokestack models. To test things out, try one of our free NLU models on [your Spokestack account page](/account/services/nlu), such as our [example Minecraft NLU model](https://s.spokestack.io/u/7fYxV/nlu.tflite), [model metadata](https://s.spokestack.io/u/7fYxV/metadata.json), and [NLU vocabulary](https://s.spokestack.io/u/7fYxV/vocab.txt).
+
+First, we'll need a Spokestack API key and secret, available for free once you've [created an account](/create). Create a key in the [account section](/account/settings/#api).
 
 ```javascript
 import Spokestack from 'react-native-spokestack'
 
-// initialize the Spokestack pipeline.
-//
-// Spokestack configuration has four top-level keys: 'properties' for general Spokestack usage, 'pipeline' for the speech pipeline, 'tts' for text to speech, and 'nlu' for natural language understanding. Keys for asr, tts, and nlu may be omitted if your app does not require them.
-// This example configures a voice-triggered speech recongnizer
-// For additional examples, see https://github.com/spokestack/spokestack-android#configuration
-Spokestack.initialize({
-  properties: {
-    'spokestack-id': 'f0bc990c-e9db-4a0c-a2b1-6a6395a3d97e', // your Spokestack API ID
-    'spokestack-secret':
-      '5BD5483F573D691A15CFA493C1782F451D4BD666E39A9E7B2EBE287E6A72C6B6' // your Spokestack API secret
-    'trace-level': Spokestack.TraceLevel.DEBUG // configurable logging level
-  },
-  pipeline: {
-    'profile': Spokestack.PipelineProfile.VAD_NATIVE_ASR
-  },
-  nlu: {
-    // NLU settings. Only set these if you are calling `Spokestack.classify`.
-    'nlu-model-path': YOUR_NLU_MODEL_PATH, // string filesystem path to nlu model
-    'nlu-metadata-path': YOUR_NLU_METADATA_PATH, // string filesystem path to nlu metadata
-    'wordpiece-vocab-path': YOUR_NLU_VOCABULARY_PATH // string filesystem path to nlu vocab
+/**
+ * Initialize the Spokestack speech pipeline.
+ *
+ * This example configures a voice-triggered speech recongnizer
+ * For all configuration options, see https://github.com/spokestack/react-native-spokestack
+ * For more examples of speech recognizer configuration, see https://github.com/spokestack/spokestack-android#configuration
+ *
+ * The first 2 arguments are your Spokestack credentials
+ * available for free from https://spokestack.io.
+ * Avoid hardcoding these in your app.
+ * There are several ways to include
+ * environment variables in your code.
+ *
+ * Using process.env:
+ * https://babeljs.io/docs/en/babel-plugin-transform-inline-environment-variables/
+ *
+ * Using a local .env file ignored by git:
+ * https://github.com/goatandsheep/react-native-dotenv
+ * https://github.com/luggit/react-native-config
+ */
+Spokestack.initialize(
+  process.env.SPOKESTACK_CLIENT_ID,
+  process.env.SPOKESTACK_CLIENT_SECRET,
+  {
+    pipeline: {
+      // The default is PTT_NATIVE_ASR
+      profile: Spokestack.PipelineProfile.VAD_NATIVE_ASR
+    },
+    nlu: {
+      // These are only required if using Spokestack.classify
+      model: require('./nlu.tflite'),
+      metadata: require('./metadata.json'),
+      vocab: require('./vocab.txt')
+    }
   }
-})
+)
 ```
+
+Including model files in your app bundle requires a small change to your React Native bundler config. See [this guide](/docs/react-native/require-models) for more info.
 
 ## Hearing your users
 
-We call `Spokestack.start()` to begin listening for speech. `Spokestack.stop()` will stop listening completely. If you want to manually start speech recognition, without waiting for activation from a wakeword or voice trigger, call `Spokestack.activate()` after calling `start`. Correspondingly, `Spokestack.deactivate()` will stop speech recognition, but will still keep the pipeline running and listening for speech.
+Call `Spokestack.start()` to begin listening for speech. `Spokestack.stop()` will stop listening completely.
+
+To manually start speech recognition, without waiting for activation from a wakeword or voice trigger, call `Spokestack.activate()` after calling `Spokestack.start()`.
+
+Call `Spokestack.deactivate()` to stop speech recognition. The speech pipeline will continue listening for a wakeword or voice trigger, if applicable.
 
 ```javascript
-// Speech Pipeline
-
 // Start and stop the speech pipeline. All methods can be called repeatedly.
-Spokestack.start() // start speech pipeline. can only start after initialize is called.
-Spokestack.stop() // stop speech pipeline
-Spokestack.activate() // manually activate the speech pipeline. The speech pipeline is now actively listening for speech to recognize.
-Spokestack.deactivate() // manually deactivate the speech pipeline. The speech pipeline is now passively waiting for an activation trigger.
+await Spokestack.start() // start speech pipeline. can only start after initialize is called.
+await Spokestack.stop() // stop speech pipeline
+await Spokestack.activate() // manually activate the speech pipeline. The speech pipeline is now actively listening for speech to recognize.
+await Spokestack.deactivate() // manually deactivate the speech pipeline. The speech pipeline is now passively waiting for an activation trigger.
 ```
 
-We need to provide implementations for the speech events, so that you can receive the speech recognition results, be informed of errors and debugging events, or get notified when the pipeline activates or deactivates (for example, you may want to disable any buttons or show a special "listening" indicator while recording).
+Listen to speech events to receive the speech recognition results, be informed of errors and debugging events, or get notified when the pipeline activates or deactivates. For example, you may want to disable any buttons or show a special "listening" indicator while recording.
 
 ```javascript
-// Binding to speech pipeline events
-const logEvent = (e) => console.log(e)
-Spokestack.onActivate = logEvent
-Spokestack.onDeactivate = logEvent
-Spokestack.onError = (e) => {
-  Spokestack.stop()
-  logEvent(e)
+componentDidMount() {
+  Spokestack.addListener('recognize', ({ transcript }) => console.log(transcript))
+  Spokestack.addListener('activate', () => console.log('activated'))
+  Spokestack.addListener('deactivate', () => console.log('deactivated'))
+  Spokestack.addListener('error', ({ error }) => console.error(error))
+  Spokestack.addListener('trace', ({ message }) => console.error(message)) // For debugging
 }
-Spokestack.onTrace = (e) => {
-  // subscribe to tracing events according to the trace-level property
-  logEvent(e.message)
-}
-Spokestack.onRecognize = (e) => {
-  logEvent(e.transcript) // "Hello Spokestack"
+
+// Remember to remove listeners when they are no longer needed
+componentWillUnmount() {
+  Spokestack.removeAllListeners()
 }
 ```
 
 ## Understanding your users
 
-Inside the `onRecognize` event, `e.transcript` will give you the raw text of what the user just said. Translating that utterance into an action in your app is the job of an NLU, or natural language understanding, component. Spokestack leaves the choice of NLU up to you, but we do offer our own full-featured NLU component for Spokestack based on years of research and lessons learned from working with other services. Our NLU runs directly on your user's device, instead of calling back to the cloud. Using it is incredibly simple, since we've already configured it (in the first part of this guide):
+The `"recognize"` event will give you the raw text of what the user just said via the `transcript` property. Translating that utterance into an action in your app is the job of an NLU component. Spokestack leaves the choice of NLU up to you, but we do offer our own full-featured NLU component for Spokestack based on years of research and lessons learned from working with other services. Our NLU runs directly on your user's device, instead of calling back to the cloud. Call `Spokestack.classify()` to use your NLU.
 
 ```javascript
-// Classify the intent and slot of an utterance
-Spokestack.classify(utterance, {})
-
-// Receive the transcript classifcation result
-Spokestack.onClassification = (e) => {
-  logEvent(JSON.stringify(e))
-  //  {"event":"classification","result":{"confidence":"0.9999888","intent":"request.lights.activate","slots":{"location":{"value":"room","type":"selset"}}},"error":""}
-}
+const result = await Spokestack.classify(utterance)
+console.log(result)
+// { "intent": "request.lights.activate", "slots": [{ "location": { "value": "room", "type": "selset" } }], "confidence":" 0.9999888" }
 ```
 
-You'll note that classification results are in a map containing an intent. A intent-based classifier will regularize all sorts of related language into a single canonical intent, e.g. "let's go" and "please cease" get classified as `start` and `stop`, respectively. Slots may be thought of as parameters for your app to take action on, based on the intent. See our [NLU guide](/docs/Concepts/nlu) for more information on NLU in general and Spokestack's implementation.
+Classification results are in a map containing an intent. An intent-based classifier will regularize all sorts of related language into a single canonical intent, e.g. "let's go" and "please cease" get classified as `start` and `stop`, respectively. The slots are the data, or parameters on which your app can take action. See our [NLU guide](/docs/concepts/nlu) for information on NLU in general and Spokestack's implementation.
 
 ## Talking back to your users
 
-If you want full hands-free and eyes-free interaction, you'll want to deliver responses via voice as well. This requires a text-to-speech (TTS) component, and Spokestack has one of these too! Simply call it with the text you want to synthesize, and it will send you an event with an audio file containing the synthesized voice speaking your text utterance.
+If you want full hands-free and eyes-free interaction, you'll also want to deliver responses via voice. This requires a text-to-speech (TTS) component, and Spokestack has one of these too! Call it with the text you want to synthesize, and it will send you an event with an audio file containing the synthesized voice speaking your text utterance.
 
 ```javascript
-// Get a URL to a real-time synthesize of an utterance
-Spokestack.synthesize({'input': utterance, 'format': Spokestack.TTSFormat.TEXT, 'voice': 'demo-male'})
-};
-
-// Receive the real-time synthesis result
-Spokestack.onSuccess = e => {
-  logEvent(JSON.stringify(e)) // { url: https://api.spokestack.io/stream/g2dkABVnYXRld2F5QDE3Mi4yNy4xMi4yNDQAACeUAAAAAgE }
+// Get a URL to a mp3 audio file of the processed speech
+const url = await Spokestack.synthesize(utterance)
+audioPlayer.play(url)
 ```
 
-The API credentials in this example set you up to use the demo voice available for free with Spokestack; for more configuration options and details about controlling pronunciation, see [the TTS concept guide](/docs/Concepts/tts).
+Spokestack includes one free voice. An upgraded account is needed for custom voices. For more information on TTS and details about controlling pronunciation, see [the TTS concept guide](/docs/concepts/tts).
 
 ## Conclusion
 
-That's all there is to it! Your app is now configured to accept and respond to voice commands. Obviously there's more we could tell you, and you can have much more control over the speech recognition process (including, but not limited to, configuring the pipeline's sensitivity and adding your own custom wakeword models). If you're interested in these advanced topics, check out our other Concepts and Design guides. We'll be adding more React Native guides soon.
+That's all there is to it! Your app is now configured to accept and respond to voice commands. Hopefully, this guide gives you an idea of the power of Spokestack. Spokestack has everything you need to start building rich voice experiences in your apps in an elegant way. If you're interested in advanced topics (such as configuring the pipeline's sensitivity or adding your own custom wakeword), check out our other Concepts and Design guides.

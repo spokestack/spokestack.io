@@ -5,18 +5,25 @@ description: Code snippets and tips for React Native
 draft: false
 ---
 
-This is a collection of code snippets and brief descriptions designed to help you be as productive as possible as quickly as possible. Check out the Concepts section on the left for more detailed discussions about the techniques mentioned here.
+This is a collection of code snippets and brief descriptions designed to help you be as productive as possible as quickly as possible. Check out the Concepts section for more detailed discussions about the techniques mentioned here.
 
-### Tap to talk
+### Push-to-talk
 
-Beginning in version 4.0.0, the configuration for tap-to-talk has been greatly simplified.
+Beginning in version 4, react-native-spokestack provides profiles with common configurations for the speech pipeline.
 
-When configuring Spokestack use a Push to Talk profile, prefixed with `PTT`:
+The default profile in is `PTT_NATIVE_ASR` (if no wakeword models are specified), which is a push-to-talk profile using native (iOS and Android) speech recognition.
 
 ```javascript
-Spokestack.initialize({
+// Uses the default profile
+Spokestack.initialize(clientID, clientSecret)
+```
+
+There's another push-to-talk profile available that uses Spokestack ASR instead: `PTT_SPOKESTACK_ASR`. Set a different profile than the default using the `pipeline.profile` property:
+
+```javascript
+Spokestack.initialize(clientID, clientSecret, {
   pipeline: {
-    profile: Spokestack.PipelineProfile.PTT_NATIVE_ASR
+    profile: Spokestack.PipelineProfile.PTT_SPOKESTACK_ASR
   }
 })
 ```
@@ -24,34 +31,36 @@ Spokestack.initialize({
 Once Spokestack is initialized, call `activate()` to start listening.
 
 ```javascript
-onTalkButtonPressed () {
-  // if the pipeline has been started elsewhere, you
+async onTalkButtonPressed () {
+  // Start the speech pipeline
+  // If the pipeline has been started elsewhere, you
   // don't need this line
-  Spokestack.start()
+  // If the pipeline is already started, this is a noop
+  await Spokestack.start()
 
-  // skips the wakeword activation and sends the pipeline
-  // straight to ASR
-  Spokestack.activate()
+  // Activate ASR and start listening
+  await Spokestack.activate()
 }
 ```
 
 ### Wakeword Activation
 
-To use the demo "Spokestack" wakeword, you'll need the demo TensorFlow Lite models: [detect](https://d3dmqd7cy685il.cloudfront.net/model/wake/spokestack/detect.tflite) | [encode](https://d3dmqd7cy685il.cloudfront.net/model/wake/spokestack/encode.tflite) | [filter](https://d3dmqd7cy685il.cloudfront.net/model/wake/spokestack/filter.tflite). The pipeline defaults to a wakeword-activated profile (`TFLITE_WAKEWORD_NATIVE_ASR`), so we don't need to specify it.
+To use the demo "Spokestack" wakeword, you'll need the demo TensorFlow Lite models: [detect](https://d3dmqd7cy685il.cloudfront.net/model/wake/spokestack/detect.tflite) | [encode](https://d3dmqd7cy685il.cloudfront.net/model/wake/spokestack/encode.tflite) | [filter](https://d3dmqd7cy685il.cloudfront.net/model/wake/spokestack/filter.tflite).
+
+The pipeline will default to the native wakeword-activated profile (`TFLITE_WAKEWORD_NATIVE_ASR`) if these configuration properties are specified, so we don't need to set it here.
 
 ```javascript
-Spokestack.initialize({
-  // omitting nlu and tts configuration for this example
-  pipeline: {
-    'wake-filter-path': filterModelPath,
-    'wake-detect-path': detectModelPath,
-    'wake-encode-path': encodeModelPath
+await Spokestack.initialize(clientId, clientSecret, {
+  wakeword: {
+    filter: filterModelPath,
+    detect: detectModelPath,
+    encode: encodeModelPath
   }
 })
 
 // Only call start after initialize is called.
 // Begins listening for the configured wakeword.
-Spokestack.start()
+await Spokestack.start()
 ```
 
 ### Cancel ASR (before the timeout is reached)
@@ -78,38 +87,38 @@ before you'll be able to recognize a wakeword again.
 
 If speech is being processed when `deactivate` is called, it may still trigger the `onRecognize` event when processing is complete.
 
-### Extracting an intent slot value from `onClassification`
+### Extracting a slot value from `classify()`
 
-Let's say you're creating a voice-controlled timer and wish to perform simplistic natural language processing to respond to a handful of commands: `start, stop, reset, start over`. Here's how to extract a slot value from an `onClassification` event. Note that the intent and slot names are pre-determined by the NLU model metadata.
+Let's say you're trying out one of our example models, specifically the one for Minecraft.
 
-```javascript
-onClassification (e) {
-  var result = e.result
-  var intent = result.intent
-  var intentSlots = intent.slots
-  switch (intent) {
-    case "start":
-      // the "start" intent can have slots named "duration" and "units"
-      var duration = intentSlots["duration"].value
-      var units = intentSlots["units"].value
-      // start a timer for `duration` `units` (eg 60 seconds) and change the UI accordingly
-      break
-    default:
-      // handle an unexpected intent
-  }
+Here's how to extract a slot value from a `classify()` result. Note that the intent and slot names are pre-determined by the NLU model metadata.
+
+```ts
+const { intent, slots } = await Spokestack.classify(
+  'How do I make a castle?'
+).catch(handleError)
+
+switch (intent) {
+  case 'RecipeIntent':
+    // A RecipeIntent will have an "entity" slot with the Minecraft recipe name
+    // The app would then know to show the recipe for a castle
+    const slot = slots[0]
+    if (slot) {
+      const recipeName = slot.value // castle
+      console.log(slot.type) // => "entity"
+    }
+    break
+  // ... other intents
 }
 ```
 
-### Synthesis speech formatted with [SpeechMarkdown](https://www.speechmarkdown.org/)
+### Synthesize speech formatted with [SpeechMarkdown](https://www.speechmarkdown.org/)
 
 When creating a synthesis request, the request takes a dictionary with specific keys. The `id` field is for your convenience, and `voice` may be changed by creating a [Spokestack account](/account). The `input` is where the SpeechMarkdown-formatted text will be placed.
 
 ```javascript
-Spokestack.synthesize({
-  id: '1234567890',
-  input:
-    'Yet right now the average age of this (50)[number] second Parliament is (49)[number] years old, [1s] OK.',
-  format: Spokestack.TTSFormat.SPEECHMARKDOWN,
-  voice: 'demo-male'
-})
+const url = await Spokestack.synthesize(
+  'Yet right now the average age of this (50)[number] second Parliament is (49)[number] years old, [1s] OK.',
+  Spokestack.TTSFormat.SPEECHMARKDOWN
+)
 ```

@@ -67,24 +67,24 @@ import Spokestack
 
 ### Recognize Wakewords On-Device
 
-To use the demo "Spokestack" wakeword, download the TensorFlow Lite models: [detect](https://d3dmqd7cy685il.cloudfront.net/model/wake/spokestack/detect.lite) | [encode](https://d3dmqd7cy685il.cloudfront.net/model/wake/spokestack/encode.lite) | [filter](https://d3dmqd7cy685il.cloudfront.net/model/wake/spokestack/filter.lite)
+To use the demo "Spokestack" wakeword, download the TensorFlow Lite models: [detect](https://s.spokestack.io/u/hgmYb/detect.tflite) | [encode](https://s.spokestack.io/u/hgmYb/encode.tflite) | [filter](https://s.spokestack.io/u/hgmYb/filter.tflite)
 
 ```swift
 import Spokestack
 
-...
+// ...
 
 // `self` adopts the `SpeechEventListener`  protocol
 // `*Path` variables are string paths to the models downloaded above
 lazy public var pipeline = SpeechPipelineBuilder()
-            .setListener(self)
-            .setDelegateDispatchQueue(DispatchQueue.main)
-            .useProfile(.tfLiteWakewordAppleSpeech)
-            .setProperty("tracing", ".PERF")
-            .setProperty("detectModelPath", detectPath)
-            .setProperty("encodeModelPath", encodePath)
-            .setProperty("filterModelPath", filterPath)
-            .build()
+    .setListener(self)
+    .setDelegateDispatchQueue(DispatchQueue.main)
+    .useProfile(.tfLiteWakewordAppleSpeech)
+    .setProperty("tracing", ".PERF")
+    .setProperty("detectModelPath", detectPath)
+    .setProperty("encodeModelPath", encodePath)
+    .setProperty("filterModelPath", filterPath)
+    .build()
 )
 ```
 

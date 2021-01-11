@@ -45,7 +45,7 @@ async onTalkButtonPressed () {
 
 ### Wakeword Activation
 
-To use the demo "Spokestack" wakeword, you'll need the demo TensorFlow Lite models: [detect](https://d3dmqd7cy685il.cloudfront.net/model/wake/spokestack/detect.tflite) | [encode](https://d3dmqd7cy685il.cloudfront.net/model/wake/spokestack/encode.tflite) | [filter](https://d3dmqd7cy685il.cloudfront.net/model/wake/spokestack/filter.tflite).
+To use the demo "Spokestack" wakeword, you'll need the demo TensorFlow Lite models: [detect](https://s.spokestack.io/u/hgmYb/detect.tflite) | [encode](https://s.spokestack.io/u/hgmYb/encode.tflite) | [filter](https://s.spokestack.io/u/hgmYb/filter.tflite).
 
 The pipeline will default to the native wakeword-activated profile (`TFLITE_WAKEWORD_NATIVE_ASR`) if these configuration properties are specified, so we don't need to set it here.
 

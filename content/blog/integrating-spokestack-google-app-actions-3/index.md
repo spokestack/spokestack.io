@@ -28,7 +28,7 @@ As we've seen in other tutorials, you can add voice control to your app using ju
 Let's walk through the process of dropping it into our project, starting with the changes to `build.gradle`. Since the Tray exists to mediate your users' interaction with Spokestack, it bundles the dependencies necessary for that. That means we can replace all our Spokestack-related dependencies with the following:
 
 ```groovy
-    implementation 'io.spokestack:tray:0.3.0'
+    implementation 'io.spokestack:tray:%ANDROID_TRAY_VERSION'
 ```
 
 Continuing with the declarative parts of the project, Tray is implemented as a `Fragemnt`, so each `Activity` that wants to include it will want to add a few lines to its layout XML:

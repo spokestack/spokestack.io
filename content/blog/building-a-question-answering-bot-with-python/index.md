@@ -7,7 +7,15 @@ tags: Engineering, Tutorial
 draft: false
 ---
 
-The ability to find information is a fundamental feature of the internet. Often, the goal for this information is to find the answer to a question. When it comes to answering a question about a specific entity, Wikipedia is a useful, accessible, resource for answers. This tutorial is an introduction to how you can use Spokestack and [Huggingface's Transformers](https://huggingface.co/transformers/index.html) library to build a voice interface for a question answering service using data from Wikipedia.
+The ability to find information is a fundamental feature of the internet. Often, the information sought is the answer to a question. When it comes to answering a question about a specific entity, Wikipedia is a useful, accessible, resource. This tutorial will teach you how to use Spokestack and [Huggingface's Transformers](https://huggingface.co/transformers/index.html) library to build a voice interface for a question answering service using data from Wikipedia.
+
+## Learning Objectives
+
+By the end of this tutorial, you receive the following:
+
+- The ability to give your app a voice with [Spokestack](https://www.spokestack.io/).
+- A basic understanding of how to incorporate [Huggingface's Transformers](https://huggingface.co/transformers/index.html) with Spokestack.
+- An interactive voice interface that allows you to answer questions from [Wikipedia](https://www.wikipedia.org/).
 
 ## Setting up the Project
 
@@ -34,7 +42,7 @@ pip install -r requirements.txt
 
 ### TensorFlow
 
-For this tutorial, we are using the full [tensorflow](http://tensorflow.org) package for a little more functionality than is included with the [TFLite Interpreter](https://www.tensorflow.org/lite/guide/python#install_just_the_tensorflow_lite_interpreter). If this is the first time you are installing `tensorflow` you may need to visit the link [here](https://www.tensorflow.org/lite/guide/python#install_just_the_tensorflow_lite_interpreter) for system-specific installation. For those who already have the ability to install via [pypi](https://pypi.org/) the following will install the library to your environment.
+For this tutorial, we are using the full [tensorflow](http://tensorflow.org) package for a little more functionality than is included with the [TFLite Interpreter](https://www.tensorflow.org/lite/guide/python#install_just_the_tensorflow_lite_interpreter). If this is the first time you are installing `tensorflow` you should follow the [system-specific installation](https://www.tensorflow.org/install). For those who already have the ability to install via [pypi](https://pypi.org/) the following will install the library to your environment.
 
 ```bash
 pip install tensorflow
@@ -50,13 +58,13 @@ pip install transformers
 
 ## Speech Pipeline with Profiles
 
-Profiles are preset configurations for our [Speech Pipeline](/docs/Python/speech-pipeline). For this tutorial, we will use the Spokestack wakeword and ASR profile. This is everything you need to be able to speak to your app. Simple right?
+Profiles are preset configurations for our [Speech Pipeline](/docs/Python/speech-pipeline). For this tutorial, we will use the Spokestack wakeword and ASR profile. Now, you will need to get your API credentials. If you already have a free account, [login](/login), if you do not, you will need to [create](/create) one. The credentials can be found in your [account settings](/account/settings). This is everything you need to speak to your app.
 
 ```python
 from spokestack.profile.wakeword_asr import WakewordSpokestackASR
 
 pipeline = WakewordSpokestackASR.create(
-    "spokestack_id", "spokestack_secret", model_dir="path_to_tflite_model_dir"
+    KEY_ID, KEY_SECRET, model_dir="path_to_tflite_model_dir"
 )
 pipeline.start()
 ```
@@ -66,38 +74,42 @@ pipeline.start()
 Natural Language Understanding (NLU) is how we transform what the user says into action. For more explanation on the NLU see our [docs](/docs/Concepts/nlu). The NLU model for this project is already included in the GitHub repository. However, we will briefly discuss the model configuration in the next section.
 
 ```python
-from spokestack.nlu.tflite TFLiteNLU
+from spokestack.nlu.tflite import TFLiteNLU
 
 nlu = TFLiteNLU("tflite")
 ```
 
 ### Model Configuration
 
-For this model, we will use a basic NLU template which includes intents like `greet`, `accept`, `help`. In addition, we need a way to identify an entity in the user utterance to perform a Wikipedia search (more on this later). The name of this intent is `ask.question` and the templates are simple ways to ask a question. For more details on our NLU data format, you can go to the following link[\]. Naturally, these templates could be more complex and cover a wider variety of utterances, but for the purpose of this tutorial these will be enough.
+We've included a pre-trained model, so you can follow along with this tutorial, but if you want to create your own, here's a quick introduction to writing NLU training data. See our [documentation](/docs/Concepts/nlu-training-data) for more information on our data format and how to train your own model. We are using a basic NLU template which includes intents like `greet`, `accept`, and `help`. In addition, we need a way to identify an entity in the user utterance to perform a Wikipedia search (more on this later). The name of this intent is `ask.question`, and the utterance templates are simple ways to ask a question. Naturally, these templates could be more complex and cover a wider variety of utterances, but for the purpose of this tutorial these will be enough.
 
 ```
-[slots.entity]
+[slots.subject]
 type = "entity"
+
+[generators.adjective]
+type = "list"
+values = ["long", "tall", "wide", "far"]
 
 [utterances]
 values = [
-    "who is {entity}?",
-    "who is a {entity}?",
-    "who is an {entity}?",
-    "what is {entity}?",
-    "what is a {entity}?",
-    "what is an {entity}?",
-    "{entity}"
+    "who is {subject}?",
+    "what is {subject}?",
+    "what is a {subject}?",
+    "what is an {subject}?",
+    "{subject}",
+    "how {adjective} is the {subject}?,
+    "how {adjective} is {subject}?
 ]
 ```
 
 ## Question Answering (QA)
 
-For the QA model, we are using a [SQUAD](https://arxiv.org/abs/1606.05250) style span detection method. The problem is framed as “given this question and this context that contains the possible answer, identify the text span that contains the answer”. At this point, you most likely are thinking "where do we get the context from". We will answer that in the next section.
+For the QA model, we are using a [SQUAD](https://arxiv.org/abs/1606.05250)-style span detection method. The problem is framed as, “given this question and this context that contains the possible answer, identify the text span that contains the answer”. At this point, you most likely are thinking, "where do we get the context?". We will answer that in the next section.
 
 ### Context Retrieval
 
-Earlier, we mentioned that we wanted to be able to identify entities in the user's utterance for a Wikipedia search. Context retrieval is the reason for this. Our QA model needs a context from which to draw the answer. Therefore, we will follow the assumption that the question is about a specific entity. For example, "What year was Elon Musk born?". From this utterance, we pull out the entity "Elon Musk" and do a search to retrieve his Wikipedia page. Then, we feed the entire Wikipedia page into the model as context for our question.
+Earlier, we mentioned that we wanted to be able to identify entities in the user's utterance for a Wikipedia search. Context retrieval is the reason for this. Our QA model needs a context from which to draw the answer. Therefore, we will follow the assumption that the question is about a specific entity. For example, "What year was Ada Lovelace born?". From this utterance, we pull out the entity "Ada Lovelace" and do a search to retrieve the Wikipedia page. Then, we feed the entire Wikipedia page into the model as context for our question.
 
 ### Setting Up The Model
 
@@ -107,12 +119,14 @@ We are using a pre-trained [DistilBERT](https://huggingface.co/transformers/mode
 from transformers import AutoTokenizer, TFAutoModelForQuestionAnswering
 
 tokenizer = AutoTokenizer.from_pretrained("distilbert-base-cased-distilled-squad")
-model = TFAutoModelForQuestionAnswering.from_pretrained("distilbert-base-cased-distilled-squad")
+model = TFAutoModelForQuestionAnswering.from_pretrained(
+    "distilbert-base-cased-distilled-squad"
+)
 ```
 
 ## Dialogue Manager
 
-The dialogue manager for this project is a smart-speaker style interaction. A user asks a question, and the bot speaks the answer. The full example can be seen below. The process starts with retrieving the entity (person/place/thing) found in what the user said. Then, we take that entity and look up its page on Wikipedia. Furthermore, we take the full text of the Wikipedia page and feed it, along with the question, to the QA model. The model gives us the location of the answer, which we use, to grab the answer from the full text. Then, we return the answer in the form of a response. This set up is pretty simple and just meant to get you started. Definitely, expand on this dialogue manager and conform it to your needs.
+The dialogue manager for this project is a smart speaker-style interaction. A user asks a question, and the bot speaks the answer. The full example can be seen below. The process starts with retrieving the entity (person/place/thing) found in what the user said. Then, we take that entity and look up its page on Wikipedia. Next, we take the full text of the Wikipedia page and feed it, along with the question, to the QA model. The model gives us the location of the answer, which we use to grab the answer from the full text. Then, we return the answer in the form of a response. This setup is pretty simple and just meant to get you started. Definitely expand on this dialogue manager and conform it to your needs.
 
 ```python
 """
@@ -131,12 +145,12 @@ class DialogueManager:
 
     def __init__(self, log_path: str, base_model: str) -> None:
         self._wiki = MediaWiki()
-        self._entity_recognizer = TFLiteNLU(log_path)
+        self._nlu = TFLiteNLU(log_path)
         self._tokenizer = AutoTokenizer.from_pretrained(base_model)
         self._answerer = TFAutoModelForQuestionAnswering.from_pretrained(base_model)
 
     def __call__(self, utterance: str) -> str:
-        result = self._entity_recognizer(utterance)
+        result = self._nlu(utterance)
         if result.intent == "ask.question":
             return self._answer(result)
         elif result.intent == "greet":
@@ -200,12 +214,10 @@ OK, now we have our response from the dialogue manager. The next question on you
 
 ## Text to Speech (TTS)
 
-Now, let's give the app a voice. Similar to the profile section, you will need your Spokestack API keys. We off a `TextToSpeechManager` class with accepts a TTS client and an output source. For most of you, the `PyAudioOuput` class should work. It uses the default system speaker.
+Now, let's give the app a voice. Similar to the profile section, you will need your Spokestack API keys. We offer a `TextToSpeechManager` class which requires a TTS client and an output source. In most cases, the `PyAudioOuput` class should work. It uses the default system speaker.
 
 ```python
-manager = TextToSpeechManager(
-        TextToSpeechClient(KEY_ID, KEY_SECRET), PyAudioOutput()
-)
+manager = TextToSpeechManager(TextToSpeechClient(KEY_ID, KEY_SECRET), PyAudioOutput())
 manager.synthesize("hello, world", "text", "demo-male")
 ```
 
@@ -213,14 +225,10 @@ Now that we have given our bot a voice, we can put everything together. At this 
 
 ## Putting it All Together
 
-We have all the modules set up, now we need to add the logic that will respond to events in the conversation.
-For this, we use our [Pipeline Events](/docs/Python/speech-pipeline). To set these up, you want to decorate functions with an event decorator. Pipeline Events are simply events that occur while the pipeline is running. Most applications will want an event that does something when speech is recognized. For ours, we want to process the question and play the response. This is defined in `on_recognize`. The functions we are using for this example can be seen below. For more information on the included events take a look [here](/docs/Python/speech-pipeline).
+We have all the modules set up. Now we need to add the logic that will respond to events in the conversation.
+For this, we use our [Pipeline Events](/docs/Python/speech-pipeline). Pipeline Events are simply events that occur while the pipeline is running. To use them, you decorate functions with an event decorator. Most applications will want an event handler that does something when speech is recognized. For ours, we want to process the question and play the response. This is defined in the `on_recognize` handler. The function we are using for this example can be seen below. For more information on the included events take a look [here](/docs/Python/speech-pipeline#speech-event-handlers).
 
 ```python
-@pipeline.event
-def on_activate(context):
-    print(context.is_active)
-
 @pipeline.event
 def on_recognize(context):
     pipeline.pause()
@@ -228,9 +236,6 @@ def on_recognize(context):
     manager.synthesize(answer, "text", "demo-male")
     pipeline.resume()
 
-@pipeline.event
-def on_deactivate(context):
-    print(context.is_active)
 
 manager.synthesize(dialogue_manager.greet(), "text", "demo-male")
 pipeline.start()

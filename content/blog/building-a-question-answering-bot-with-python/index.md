@@ -58,13 +58,13 @@ pip install transformers
 
 ## Speech Pipeline with Profiles
 
-Profiles are preset configurations for our [Speech Pipeline](/docs/Python/speech-pipeline). For this tutorial, we will use the Spokestack wakeword and ASR profile. Now, you will need to get your API credentials. If you already have a free account, [login](/login), if you do not, you will need to [create](/create) one. The credentials can be found in your [account settings](/account/settings). This is everything you need to speak to your app.
+Profiles are preset configurations for our [Speech Pipeline](/docs/Python/speech-pipeline). For this tutorial, we will use the Spokestack wakeword and ASR profile. The wakeword model runs on device, and can be activated by saying "Hey, Spokestack". ASR is in the cloud though, so you will need to get your API credentials to use it. If you already have a free account, [log in](/login). If you do not, you will need to [create](/create) one. The credentials can be found in your [account settings](/account/settings). This is everything you need to speak to your app.
 
 ```python
 from spokestack.profile.wakeword_asr import WakewordSpokestackASR
 
 pipeline = WakewordSpokestackASR.create(
-    KEY_ID, KEY_SECRET, model_dir="path_to_tflite_model_dir"
+    KEY_ID, KEY_SECRET, model_dir="tflite"
 )
 pipeline.start()
 ```

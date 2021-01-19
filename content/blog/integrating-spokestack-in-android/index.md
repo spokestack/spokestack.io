@@ -25,7 +25,7 @@ First, add the dependency to your app's `build.gradle`:
 ```groovy
 dependencies {
   // ...
-  implementation 'io.spokestack:tray:0.3.0'
+  implementation 'io.spokestack:tray:%ANDROID_TRAY_VERSION'
 }
 ```
 

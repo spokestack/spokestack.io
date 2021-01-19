@@ -38,9 +38,8 @@ Google has some [prerequisites](https://developers.google.com/assistant/app/get-
 OK, with that out of the way, let's get our dependencies sorted. Check the `app/build.gradle` file in the sample project — these are the important bits:
 
 ```groovy
-implementation 'io.spokestack:spokestack-android:10.0.0'
+implementation 'io.spokestack:spokestack-android:11.0.0'
 implementation 'org.tensorflow:tensorflow-lite:2.3.0'
-implementation 'androidx.lifecycle:lifecycle-common-java8:2.2.0'
 implementation 'androidx.media:media:1.2.0'
 implementation 'com.google.android.exoplayer:exoplayer-core:2.11.7'
 ```

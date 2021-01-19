@@ -23,7 +23,6 @@ val builder = Spokestack.Builder()
     .setProperty("spokestack-id", "your-client-id")
     .setProperty("spokestack-secret", "your-secret")
     .withAndroidContext(applicationContext)
-    .withLifecycle(lifecycle)
     .addListener(adapter)
 
 builder

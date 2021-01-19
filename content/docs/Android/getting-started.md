@@ -39,9 +39,8 @@ dependencies {
   implementation 'org.tensorflow:tensorflow-lite:2.3.0'
 
   // for automatic playback of TTS audio
-  implementation 'androidx.lifecycle:lifecycle-common-java8:2.1.0'
-  implementation 'androidx.media:media:1.1.0'
-  implementation 'com.google.android.exoplayer:exoplayer-core:2.11.0'
+  implementation 'androidx.media:media:1.2.1'
+  implementation 'com.google.android.exoplayer:exoplayer-core:2.11.7'
 
   // if you plan to use Google ASR, include these
   implementation 'com.google.cloud:google-cloud-speech:1.22.2'
@@ -94,9 +93,8 @@ spokestack = Spokestack.Builder()
   .setProperty("trace-level", EventTracer.Level.DEBUG.value())
   .setProperty("spokestack-id", "your-client-id")
   .setProperty("spokestack-secret", "your-secret-key")
-  // `applicationContext` and `lifecycle` are available inside all `Activity`s
+  // `applicationContext` is available inside all `Activity`s
   .withAndroidContext(applicationContext)
-  .withLifecycle(lifecycle)
   // see the next section; `listener` here inherits from `SpokestackAdapter`
   .addListener(listener)
   .build()
@@ -118,7 +116,6 @@ spokestack = Spokestack.Builder()
   .setProperty("spokestack-id", "your-client-id")
   .setProperty("spokestack-secret", "your-secret-key")
   .withAndroidContext(applicationContext)
-  .withLifecycle(lifecycle)
   .addListener(listener)
   .build()
 ```
@@ -206,9 +203,9 @@ override fun ttsEvent(event: TTSEvent) {
     // example, as a response to a question from the app), you'd call pipeline?.activate()
     // here
     TTSEvent.Type.PLAYBACK_COMPLETE -> println("TTS playback complete")
-    null -> {
-      // do nothing
-    }
+    // If you want your UI to respond to playing audio
+    TTSEvent.Type.PLAYBACK_STARTED -> println("TTS playback started")
+    TTSEvent.Type.PLAYBACK_STOPPED -> println("TTS playback stopped")
   }
 }
 ```

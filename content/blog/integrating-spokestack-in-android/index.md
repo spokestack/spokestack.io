@@ -1,5 +1,5 @@
 ---
-title: Spokestack Tray
+title: Integrating Spokestack in Android
 date: '2020-12-17'
 navId: Spokestack Tray (Android)
 description: Instructions on integrating and using the Spokestack Tray UI component in Android.

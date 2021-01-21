@@ -40,4 +40,6 @@ As it turns out, it's not as hard as it used to be to handle voice commands in y
 - Let users know you're on top of the latest technology and leveraging it to make your app useful in as many situations as possible.
 - Establish a unique voice for your brand, or bring an established voice into your mobile experience.
 
+<iframe width="560" height="315" src="https://www.youtube-nocookie.com/embed/1x4MdTKEy3E" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+
 Sound good? We think so—if you have any questions, don't hesitate to reach out! Check out the links below for all the places you can find us. Join us in our goal of using voice tech to make all mobile apps more delightful.

@@ -35,7 +35,9 @@ We want to make it as easy as possible for you to get started with Spokestack Tr
 3. Follow a tutorial: [Spokestack Tray iOS Tutorial](/blog/integrating-spokestack-in-ios) or [Spokestack Tray React Native Tutorial](/blog/integrating-spokestack-in-react-native)
 4. Get help in our [Spokestack Tray Help](https://forum.spokestack.io/t/spokestack-tray/56) forum
 
-For folks who are new to building voice applications, we have a [video overview of voice concepts](https://www.youtube.com/watch?v=wbJ8fZh-iQw) as well as documentation of [voice developer concepts](/docs/Concepts) as they relate to Spokestack.
+If you're new to voice, we've put together an introduction to how Spokestack thinks about voice. For more on how to design the voice experience, walk through the [Design](/docs/Design) section of our docs.
+
+<iframe width="560" height="315" src="https://www.youtube-nocookie.com/embed/wbJ8fZh-iQw" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
 
 ### Customizing Spokestack Tray
 

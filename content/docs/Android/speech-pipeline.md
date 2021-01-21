@@ -37,6 +37,8 @@ Input classes, processing stages, and profiles are all loaded dynamically via th
 
 ## How does it work?
 
+<iframe width="560" height="315" src="https://www.youtube-nocookie.com/embed/AvhQ6-9nCrQ" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+
 This is the speech pipeline's state machine:
 
 ![](images/speech_pipeline_android.png 'Android speech pipeline')

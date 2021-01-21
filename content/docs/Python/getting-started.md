@@ -96,6 +96,8 @@ pipeline = WakewordSpokestackASR.create(
 pipeline.start()
 ```
 
+<iframe width="560" height="315" src="https://www.youtube-nocookie.com/embed/AvhQ6-9nCrQ" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+
 ## From text to meaning
 
 Translating the text into an action is the job of the [Natural Language Understanding (NLU)](/docs/concepts/nlu) component. A great thing about Spokestack NLU models is that they run entirely on device. The NLU can be initialized like this:

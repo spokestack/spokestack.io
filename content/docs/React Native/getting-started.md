@@ -234,6 +234,8 @@ Including model files in your app bundle requires a small change to your React N
 
 ## Hearing your users
 
+<iframe width="560" height="315" src="https://www.youtube-nocookie.com/embed/AvhQ6-9nCrQ" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+
 Call `Spokestack.start()` to begin listening for speech. `Spokestack.stop()` will stop listening completely.
 
 To manually start speech recognition, without waiting for activation from a wakeword or voice trigger, call `Spokestack.activate()` after calling `Spokestack.start()`.

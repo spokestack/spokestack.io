@@ -104,6 +104,8 @@ The `self` in this example means that `MyViewController` also implements `Spokes
 
 ### 5. Implementing SpokestackDelegate
 
+<iframe width="560" height="315" src="https://www.youtube.com/embed/AvhQ6-9nCrQ" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+
 Now that we have an instance of `Spokestack`, we'll use the [delegate pattern](https://en.wikipedia.org/wiki/Delegation_pattern) so that the ASR, NLU, and TTS features can send events to you. We'll do that in the same class we used in the previous step. All `SpokestackDelegate` functions are optional except for `failure(error:)`, so you will opt in to each one explictly, but for now we just need to use two of them. First, `failure(error:)`:
 
 ```swift

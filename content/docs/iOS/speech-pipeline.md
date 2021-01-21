@@ -13,6 +13,8 @@ As the name implies, `SpeechPipeline` is a collection of distinct modular compon
 
 ## How does it work?
 
+<iframe width="560" height="315" src="https://www.youtube.com/embed/AvhQ6-9nCrQ" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+
 This is the speech pipeline's state machine:
 
 ![](images/speech_pipeline_ios.png 'iOS speech pipeline')
@@ -38,6 +40,8 @@ When active, audio frames are not processed on-device but are instead sent to an
          .build()
      pipeline.start()
 ```
+
+<iframe width="560" height="315" src="https://www.youtube.com/embed/3qKJMrkbZA8" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
 
 ### 1. `useProfile`
 

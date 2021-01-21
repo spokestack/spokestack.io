@@ -157,6 +157,8 @@ android {
 
 ## Usage
 
+<iframe width="560" height="315" src="https://www.youtube-nocookie.com/embed/AvhQ6-9nCrQ" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+
 The [react-native-spokestack-tray example app](https://github.com/spokestack/react-native-spokestack-tray/tree/develop/example) uses the "Spokestack" wakeword and [sample Minecraft NLU models](/blog/porting-the-alexa-minecraft-skill-to-ios-using-spokestack).
 
 In this example, the following code is used to add the `<SpokestackTray />` component:

@@ -58,7 +58,7 @@ Instead, I suggest instead that you think carefully about the data you're provid
 
 "But what if the user wants or needs a voice-only experience?" you might ask. That's a fair question—smart speakers have a distinct accessibility advantage, and some requests are just easier to speak than to tap. Finally, I have some good news for you: It's getting easier to put voice interactions _inside_ your app and stop relying on the ASR and other components provided by giant companies.
 
-<iframe width="560" height="315" src="https://www.youtube-nocookie.com/embed/wbJ8fZh-iQw" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+`youtube: [Voice is just another interface](https://www.youtube.com/watch?v=wbJ8fZh-iQw)`
 
 This is Spokestack's mission: We exist to enable businesses to take back their voice presence. Voice is our business, not advertising or retail. We provide native mobile libraries that bring a full suite of ASR and natural language tools directly to your app. This, in turn, helps you keep your customer interactions private and prevents your thoughtful responses to user queries from being turned into training data that can be used against you.
 

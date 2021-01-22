@@ -37,7 +37,7 @@ Input classes, processing stages, and profiles are all loaded dynamically via th
 
 ## How does it work?
 
-<iframe width="560" height="315" src="https://www.youtube-nocookie.com/embed/AvhQ6-9nCrQ" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+`youtube: [Build your own voice interface to talk directly to your customers](https://www.youtube.com/watch?v=AvhQ6-9nCrQ)`
 
 This is the speech pipeline's state machine:
 

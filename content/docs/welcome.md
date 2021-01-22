@@ -9,7 +9,7 @@ Spokestack is a powerful platform of open source libraries and robust services t
 
 If you're new to voice, we've put together an introduction to how Spokestack thinks about voice. For more on how to design the voice experience, walk through the [Design](/docs/Design) section of our docs.
 
-<iframe width="560" height="315" src="https://www.youtube-nocookie.com/embed/wbJ8fZh-iQw" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+`youtube: [Voice is just another interface](https://www.youtube.com/watch?v=wbJ8fZh-iQw)`
 
 ### Integrations
 

@@ -11,7 +11,9 @@ draft: false
 
 If you search "[what is a voice assistant?](https://www.google.com/search?q=what+is+a+voice+assistant)" on Google, the definition above appears as the first result. This definition works because it lists the technologies required to provide human-to-computer voice interactions, a.k.a. a “voice interface”. Voice recognition, speech synthesis, and natural language processing technologies together create a [software stack](https://en.wikipedia.org/wiki/Solution_stack) that enables voice assistants to operate (a “Spokestack” you might say).
 
-<iframe width="560" height="315" src="https://www.youtube-nocookie.com/embed/wbJ8fZh-iQw" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+`youtube: [Voice is just another interface](https://www.youtube.com/watch?v=wbJ8fZh-iQw)`
+
+`youtube: [Voice is just another interface](https://www.youtube.com/watch?v=wbJ8fZh-iQw)`
 
 So does providing a voice interface to a company’s digital services make it a voice assistant?
 

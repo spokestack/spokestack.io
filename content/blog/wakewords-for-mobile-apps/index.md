@@ -39,7 +39,7 @@ For example, did you know you can open any app on your phone by asking for it? T
 
 That's convenient and definitely faster than scrolling through pages of apps to get to the service or content you need. So the next step is adding voice to your app so you can talk with your customer, just like Alexa is going to do.
 
-<iframe width="560" height="315" src="https://www.youtube-nocookie.com/embed/1x4MdTKEy3E" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+`youtube: [The Basic Elements of Voice Interfaces](https://www.youtube.com/watch?v=1x4MdTKEy3E)`
 
 To be fair, Alexa isn't the first mobile app to add a voice interface or wakeword. Spotify, Home Depot, Sephora, Pandora, and Snapchat have all added voice to their apps with varying degrees of interaction. Most focus on initiating a product search, which makes sense. It's just that the interactions, sans the ones built by Houndify, are not that robust.
 

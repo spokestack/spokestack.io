@@ -7,7 +7,7 @@ draft: false
 
 After [identifying the right use cases](find-the-right-use-case) for multimodality, map how you’ll integrate them into your app. Think about who/what you’re solving for and what users need in order to accomplish their goals. A useful technique for this is to create a customer journey or experience map.
 
-<iframe width="560" height="315" src="https://www.youtube-nocookie.com/embed/1x4MdTKEy3E" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+`youtube: [The Basic Elements of Voice Interfaces](https://www.youtube.com/watch?v=1x4MdTKEy3E)`
 
 ## What _is_ an experience map?
 

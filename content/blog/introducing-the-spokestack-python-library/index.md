@@ -18,7 +18,7 @@ Just as they do with our [iOS](https://github.com/spokestack/spokestack-ios), [A
 
 As with all of our libraries, developers can create a [custom wakeword](/blog/wakewords-for-mobile-apps) and a text-to-speech voice that is unique to their brand and application. With the Spokestack Python library, the voice interface is less tied to a platform, opening up a number of application opportunities.
 
-<iframe width="560" height="315" src="https://www.youtube-nocookie.com/embed/AvhQ6-9nCrQ" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+`youtube: [Build your own voice interface to talk directly to your customers](https://www.youtube.com/watch?v=AvhQ6-9nCrQ)`
 
 Got an Alexa or Google Assistant app you want to set up as a kiosk? Now you can build one on a low-energy, small-form device such as a Raspberry Pi or [Tinker Board](https://www.asus.com/us/Single-Board-Computer/Tinker-Board/). Maybe you want to set up something on an old PC with a mic and a speaker. Simply [export your NLU model](/docs/Concepts/export), and you can do it!
 

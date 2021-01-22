@@ -15,7 +15,7 @@ The answer, of course, is up to you! Spokestack always gives you options, becaus
 
 Indeed! If you want your app to be controllable purely by voice, you need a wakeword — a word (or short phrase) that tells your app “the next thing the user says is meant for you”. The wakeword detection component in Spokestack is responsible for detecting any of a user-defined set of keyword phrases in [soft real time](https://en.wikipedia.org/wiki/Real-time_computing#Criteria_for_real-time_computing). Once detected, the Spokestack pipeline activates, providing you with an activation event and triggering the configured speech recognition service. The accuracy, speed, and flexibility of wakeword detection depends on which service you configure.
 
-<iframe width="560" height="315" src="https://www.youtube.com/embed/3qKJMrkbZA8" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+`youtube: [Wakewords for iOS apps](https://www.youtube.com/watch?v=3qKJMrkbZA8)`
 
 ## Ok, so which one should I use?
 

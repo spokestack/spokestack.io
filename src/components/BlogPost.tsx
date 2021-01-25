@@ -5,6 +5,7 @@ import {
   MIN_LARGE_DISPLAY_MEDIA_QUERY,
   MIN_SIDEBAR_WIDTH,
   MIN_TEXT_WIDTH,
+  mainBorder,
   ieBreakpoint
 } from '../styles/theme'
 import React, { Fragment } from 'react'
@@ -46,8 +47,10 @@ export default function BlogPost({ location, post, related }: Props) {
             <h2>{post.frontmatter.title}</h2>
             <DarkModeButton />
           </header>
-          <p>{post.frontmatter.date}</p>
           <div dangerouslySetInnerHTML={{ __html: post.html }} />
+          <div className="main-footer" css={styles.footer}>
+            <h6>Originally posted {post.frontmatter.date}</h6>
+          </div>
         </section>
         {post.fields && (
           <section css={styles.related}>
@@ -127,6 +130,16 @@ const styles = {
       margin-left: 50px;
     }
 
+    ${ieBreakpoint} {
+      width: 100%;
+      min-width: 500px;
+    }
+  `,
+  footer: css`
+    grid-area: content;
+    border-top: 1px solid ${mainBorder};
+    border-bottom: 1px solid ${mainBorder};
+    padding-bottom: 15px;
     ${ieBreakpoint} {
       width: 100%;
       min-width: 500px;

@@ -9,7 +9,7 @@ export default function Create(props: Partial<BlueCardProps>) {
     <BlueCard
       button={
         <a href="/create" className="btn btn-primary">
-          Get started
+          Free account
           <SVGIcon
             icon="#arrow-forward"
             className="icon"
@@ -19,8 +19,7 @@ export default function Create(props: Partial<BlueCardProps>) {
       }
       id="create"
       title="Create a free Spokestack account"
-      text={`Access our hosted services for model import,
-        natural language processing, text-to-speech, and wakeword.`}
+      text={`Access our collection of synthetic voices and private speech recognition, download offline wakewords, create your own NLU, and more!`}
       {...props}
     />
   )

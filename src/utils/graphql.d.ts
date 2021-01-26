@@ -3113,9 +3113,7 @@ export type SitePluginPluginOptionsWorkboxConfig = {
 }
 
 export type SitePluginPluginOptionsWorkboxConfigFilterInput = {
-  runtimeCaching?: Maybe<
-    SitePluginPluginOptionsWorkboxConfigRuntimeCachingFilterListInput
-  >
+  runtimeCaching?: Maybe<SitePluginPluginOptionsWorkboxConfigRuntimeCachingFilterListInput>
 }
 
 export type SitePluginPluginOptionsWorkboxConfigRuntimeCaching = {
@@ -3128,9 +3126,7 @@ export type SitePluginPluginOptionsWorkboxConfigRuntimeCachingFilterInput = {
 }
 
 export type SitePluginPluginOptionsWorkboxConfigRuntimeCachingFilterListInput = {
-  elemMatch?: Maybe<
-    SitePluginPluginOptionsWorkboxConfigRuntimeCachingFilterInput
-  >
+  elemMatch?: Maybe<SitePluginPluginOptionsWorkboxConfigRuntimeCachingFilterInput>
 }
 
 export type SitePluginSortInput = {

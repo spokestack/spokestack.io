@@ -7,6 +7,8 @@ author: mike
 draft: false
 ---
 
+![Why We Built Spokestack Tray](blog.png)
+
 We started Spokestack to give developers the freedom to build the conversational experiences they wanted to build _without_ limitations. So we created [iOS, Android, and React Native voice libraries](https://github.com/spokestack) that give mobile developers complete flexibility for adding voice interfaces to their mobile apps. We made it possible for a mobile developer to design and deploy a voice interface any way they felt like it.
 
 But sometimes a blank slate is daunting. Asking someone with no background in linguistics to build a conversational experience from scratch was like asking someone who hasn't skied before to pull off a ski jump.

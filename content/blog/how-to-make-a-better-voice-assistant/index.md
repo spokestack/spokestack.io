@@ -7,6 +7,8 @@ author: josh
 draft: false
 ---
 
+![How to Make a Better Voice Assistant](blog.png)
+
 ## Training the Assistant
 
 The Google AI team recently released a [very interesting blog post](https://ai.googleblog.com/2020/07/grounding-natural-language-instructions.html) summarizing an [equally interesting paper](https://arxiv.org/abs/2005.03776). I recommend reading both if you're in the mood for some technical diagrams and math in the context of app accessibility, but I'm going to give a quick overview here anyway.

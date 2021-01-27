@@ -7,6 +7,8 @@ author: daniel
 draft: false
 ---
 
+![Porting a Smart Speaker Voice App to Mobile - Part 3](../porting-a-smart-speaker-voice-app-to-mobile-part-1/blog.png)
+
 ## Import an Alexa or Dialogflow Interaction Model
 
 In [Part 1](/blog/porting-a-smart-speaker-voice-app-to-mobile-part-1) and [Part 2](/blog/porting-a-smart-speaker-voice-app-to-mobile-part-2) of this series we covered what smart speaker voice apps are and how you can port them to mobile using Spokestack. This post describes how you can easily bring your voice app's natural language understanding over to a smartphone.

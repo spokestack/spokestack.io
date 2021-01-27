@@ -7,7 +7,7 @@ author: daniel
 draft: false
 ---
 
-![Porting a Smart Speaker Voice App to Mobile - Part 1](blog.png)
+![Porting a Smart Speaker Voice App to Mobile - Part 2](../porting-a-smart-speaker-voice-app-to-mobile-part-1/blog.png)
 
 ## Voice Apps on Smart Speakers
 

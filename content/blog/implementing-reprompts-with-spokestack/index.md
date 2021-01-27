@@ -7,6 +7,8 @@ tags: Tutorial
 draft: false
 ---
 
+![Implementing Reprompts with Spokestack](blog.png)
+
 Reprompts are a convenient feature provided by most smart speaker platforms. In plain English, a reprompt is a special message given to the user under the following circumstances:
 
 1. The app requests information from the user, leaving the mic open to listen for the answer

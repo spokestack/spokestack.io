@@ -7,7 +7,7 @@ author: josh
 draft: false
 ---
 
-![How to Make a Better Voice Assistant](email.png)
+![How to Make a Better Voice Assistant](blog.png)
 
 ## Training the Assistant
 

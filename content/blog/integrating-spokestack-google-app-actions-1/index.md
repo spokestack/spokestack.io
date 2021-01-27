@@ -7,6 +7,8 @@ tags: Android, Engineering, Tutorial
 draft: false
 ---
 
+![Integrating Spokestack Google App Actions-1](blog.png)
+
 _This tutorial is part of a series:_
 
 - **Part 1** (_You are here!_): Working with Google App Actions

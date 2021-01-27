@@ -10,26 +10,38 @@ import validateEmail from '../utils/validateEmail'
 export default function Newsletter() {
   const formRef = useRef<HTMLFormElement>(null)
   const [invalid, setInvalid] = useState(false)
+  const [success, setSuccess] = useState(false)
   function submit(e: FormEvent<HTMLFormElement>) {
+    e.preventDefault()
     const form = formRef.current
     if (!form) {
       return
     }
     const email = form.email.value
     if (!email || !validateEmail(email)) {
-      e.preventDefault()
       setInvalid(true)
       return
     }
-    setInvalid(false)
+    fetch('https://api.convertkit.com/v3/forms/1861787/subscribe', {
+      method: 'POST',
+      headers: {
+        Accept: 'application/json',
+        'Content-Type': 'application/json'
+      },
+      body: JSON.stringify({
+        api_key: 'lO21-69YyNQfTK-CUC69Lw',
+        email: email
+      })
+    }).then((response) => {
+      if (!response.ok) {
+        setInvalid(true)
+      }
+      setSuccess(true)
+      setInvalid(false)
+    })
   }
   return (
-    <form
-      ref={formRef}
-      action="https://spokestack.substack.com/api/v1/free?nojs=true"
-      method="post"
-      onSubmit={submit}
-      css={styles.form}>
+    <form ref={formRef} onSubmit={submit} css={styles.form}>
       <Global
         styles={css`
           html.dark-mode .input {
@@ -44,17 +56,29 @@ export default function Newsletter() {
           aria-label="Email address"
           type="email"
           name="email"
+          readOnly={success ? true : false}
           className={`input${invalid ? ' error' : ''}`}
           placeholder="Enter email"
         />
-        <Button type="submit" transparent extraCss={styles.button}>
-          Subscribe
-          <SVGIcon
-            className="icon"
-            icon="#arrow-forward"
-            extraCss={styles.icon}
-          />
-        </Button>
+        {success ? (
+          <Button type="submit" transparent extraCss={styles.button}>
+            Subscribed!
+            <SVGIcon
+              className="icon"
+              icon="#checkmark"
+              extraCss={styles.icon}
+            />
+          </Button>
+        ) : (
+          <Button type="submit" transparent extraCss={styles.button}>
+            Subscribe
+            <SVGIcon
+              className="icon"
+              icon="#arrow-forward"
+              extraCss={styles.icon}
+            />
+          </Button>
+        )}
       </div>
     </form>
   )

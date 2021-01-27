@@ -7,6 +7,8 @@ author: daniel
 draft: false
 ---
 
+![Porting the Alexa Minecraft Skill to iOS using Spokestack](blog.png)
+
 _This tutorial is part of the [Porting a Smart Speaker Voice App to Mobile](/blog/porting-a-smart-speaker-voice-app-to-mobile-part-1) series._
 
 Spokestack makes it easy to convert a smart speaker voice app like a Google Action or Alexa Skill to a mobile app. In this tutorial, we’ll go through the entire process of converting a sample Alexa skill into an iOS app using SwiftUI.

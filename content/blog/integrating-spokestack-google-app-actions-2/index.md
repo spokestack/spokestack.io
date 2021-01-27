@@ -6,6 +6,7 @@ author: josh
 tags: Android, Engineering, Tutorial
 draft: false
 ---
+![Integrating Spokestack Google App Actions 2](../integrating-spokestack-google-app-actions-1/blog.png)
 
 _This tutorial is part of a series:_
 

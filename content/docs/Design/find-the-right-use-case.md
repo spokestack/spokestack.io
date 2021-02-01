@@ -1,5 +1,5 @@
 ---
-title: 2 - Find the Right Use Case
+title: Find the Right Use Case
 navId: Find the Right Use Case
 description: Find the right use case for your design
 draft: false

@@ -7,6 +7,8 @@ tags: Engineering, Tutorial
 draft: false
 ---
 
+![Building a Question Answering Bot with Python](blog.png)
+
 The ability to find information is a fundamental feature of the internet. Often, the information sought is the answer to a question. When it comes to answering a question about a specific entity, Wikipedia is a useful, accessible, resource. This tutorial will teach you how to use Spokestack and [Huggingface's Transformers](https://huggingface.co/transformers/index.html) library to build a voice interface for a question answering service using data from Wikipedia.
 
 ## Learning Objectives

@@ -7,6 +7,8 @@ author: daniel
 draft: false
 ---
 
+![Porting a Smart Speaker Voice App to Mobile - Part 2](../porting-a-smart-speaker-voice-app-to-mobile-part-1/blog.png)
+
 ## Voice Apps on Smart Speakers
 
 Over the last several years, intelligent virtual assistants such as Siri, Alexa, and Google Assistant have become increasingly more important in our everyday lives. Smart speakers like Amazon Echo and Google Home brought convenient, hands-free access to assistants into our homes. One way independent developers have improved these assistants is by creating add-ons collectively known as voice apps. Users access these voice apps through virtual assistant platforms on smart speakers.

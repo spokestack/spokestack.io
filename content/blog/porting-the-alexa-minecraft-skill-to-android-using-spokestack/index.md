@@ -21,7 +21,7 @@ This post is part of the _Porting a Smart Speaker Voice App to Mobile_ series, w
 
 ---
 
-This tutorial will walk you through the details of porting an Alexa skill to Android. To be specific, we'll be recreating a skill that lets the user ask for a recipe in [Minecraft](https://www.minecraft.net/en-us/). The full code for our finished app is [here](https://github.com:spokestack/minecraft-skill-android); feel free to download it for reference as you follow along. We'll go through it step by step in the tutorial for sake of discussion.
+This tutorial will walk you through the details of porting an Alexa skill to Android. To be specific, we'll be recreating a skill that lets the user ask for a recipe in [Minecraft](https://www.minecraft.net/en-us/). The full code for our finished app is [here](https://github.com/spokestack/minecraft-skill-android); feel free to download it for reference as you follow along. We'll go through it step by step in the tutorial for sake of discussion.
 
 First, a quick note on language choice. Android development has been moving toward Kotlin as its preferred language. Our other Android guides are written with that in mind, but we're going to switch gears for this one. Amazon provides a [Java SDK](https://developer.amazon.com/en-US/docs/alexa/alexa-skills-kit-sdk-for-java/overview.html) for Alexa development, so in order to ease friction between the two ecosystems, we'll port the skill to Java instead of Kotlin. The example code here shouldn't be too complex to translate into Kotlin if you're familiar with it.
 

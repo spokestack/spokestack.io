@@ -136,13 +136,14 @@ workflows:
             branches:
               ignore:
                 - develop
+                - feature/account
                 - production
   deploy:
     jobs:
       - deploy_integration:
           filters:
             branches:
-              only: develop
+              only: feature/account
       - deploy_production:
           filters:
             branches:

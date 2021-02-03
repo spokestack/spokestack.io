@@ -2,7 +2,7 @@
 title: What If You're the Product?
 date: '2020-07-29'
 description: How to keep your voice presence from giving away presents
-tags: Business, Product
+tags: Concepts, Privacy, Smart Speakers, Voice Assistants
 author: josh
 draft: false
 ---
@@ -17,6 +17,8 @@ It's not true _only_ for consumers, though; it's also true for your business. Fo
 
 If you're browsing this site, it's probably safe to say you're familiar with voice technology and its meteoric rise over the past several years. Smart speakers are in people's homes, voice assistants are on consumers' phones, and voice is being touted as the next great way for businesses to engage their customers. To do that, you just set up a "skill" or "action" on these platforms—you just configure some text input and output, and the smart speaker/voice assistant platforms will do all the heavy lifting of "understanding" your users' verbal requests and turning your text responses into audio to read to them. You give them the data, and they give you . . . [exposure](https://www.bbc.com/worklife/article/20180411-dealing-with-clients-who-expect-you-to-work-for-free).
 
+`youtube: [The Basic Elements of Voice Interfaces](https://www.youtube.com/watch?v=1x4MdTKEy3E&t=2s)`
+
 This might seem like a reasonable trade—after all, you can't build automatic speech recognition (ASR), natural language understanding (NLU), and text-to-speech (TTS) systems—that's a ton of work and maintenance for an uncertain payoff, and systems like that aren't anywhere near the scope of your business. So you sign up for a free developer account and make sure you have a presence on the platform. It's not like you gave Google or Amazon credentials to your database, so what are you _actually_ giving up in the process?
 
 To answer that question, we have to talk a bit about how the voice systems work. By now it won't surprise you to learn that they're built on massive troves of data, some of it public, but much of it "proprietary". You don't have to know how to [flow a tensor](https://www.tensorflow.org/) to know that machine learning, much of it in the form of neural networks, powers some of today's most impressive software, voice tech systems among them.
@@ -28,6 +30,8 @@ Next in the process, NLU models learn to turn natural language (transcripts from
 So there you have it: The data you provide in order to set up a voice app on one of the big platforms, combined with the interactions users have with your app, is all the vendors need to continuously improve their systems. That's not so bad, though, right? After all, you _want_ their voice tech to be as good as it can be so that your users have good experiences with your app.
 
 Keep the cautionary tales from Amazon in mind as we go further down the rabbit hole.
+
+`youtube: [How Did We Get Here?](https://www.youtube.com/watch?v=B-TIVeN2Kho&t=3s)`
 
 A current research area in the NLU field is the so-called "end-to-end" dialogue system. It's another neural model, but instead of translating audio into text or text into "meaning", this one takes text input (a user request) and directly returns a text response. A quick Google search will turn up a wealth of papers on [creating the models themselves](https://arxiv.org/abs/1604.04562) and [using automated systems and crowdsourcing](https://www.aclweb.org/anthology/N18-3006) to generate or augment training data for such systems.
 
@@ -66,6 +70,8 @@ In fact, we go a couple steps further than what the major voice platforms curren
 
 1. Give your app its own wakeword (so a user can _start_ a voice-only interaction from within the app, as if they'd said "Hey Google/Siri" to their phone).
 1. Create your own voice to use for responses, so users can differentiate your brand from a generic AI voice.
+
+`youtube: [Spokestack Overview](https://www.youtube.com/watch?v=MW2cYSQhbZE)`
 
 That's all well and good for the mobile use case, but what about the smart speakers themselves, where voice is the _only_ medium? You _have_ to give detailed data in those responses, right? Maybe, but this is where your brand's custom voice comes into play. You don't have to provide text responses that can be immediately appropriated by the smart speaker platform; you can use a separate TTS service to synthesize your response and just provide the smart speaker with audio. If they _still_ want to take your data, they could of course run this through their own ASR systems, but that injects more error and cost into the process for them. You can do something similar with the NLU systems provided by the smart speakers too, but that's a topic for another post.
 

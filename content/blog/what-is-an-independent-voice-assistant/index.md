@@ -13,8 +13,6 @@ If you search "[what is a voice assistant?](https://www.google.com/search?q=what
 
 `youtube: [Voice is just another interface](https://www.youtube.com/watch?v=wbJ8fZh-iQw)`
 
-`youtube: [Voice is just another interface](https://www.youtube.com/watch?v=wbJ8fZh-iQw)`
-
 So does providing a voice interface to a company’s digital services make it a voice assistant?
 
 The answer is yes. Now let’s discuss the difference between a smart speaker (e.g. Alexa) smart speaker apps (e.g. [The Jeopardy Skill](https://www.amazon.com/gp/product/B019G0M2WS)), and independent voice assistants.
@@ -39,6 +37,8 @@ Voice assistants can be integrated with existing mobile apps and/or websites. Th
 
 Independent voice assistants can also co-exist with third party voice platforms (e.g. Siri, Google, Alexa). Currently, iOS and Android prefer using deep links ([Siri Shortcuts](https://support.apple.com/en-us/HT209055) for iOS; [App Actions](https://developers.google.com/assistant/app/overview) for Android) to interface with Siri and Google Assistant. Deep links require developers to link to parts of their application based on what the user says to Siri and Google Assistant. Developers who add voice to their app can have deep links resolve to a listening screen that asks the user “How may I help you?” and take over the conversation.
 
+![screen capture of Google Assistant handing voice control to an app](../integrating-spokestack-google-app-actions-3/images/app-actions-demo.gif)
+
 There is another scenario where companies can retain more control of the conversation on smart speakers by Alexa, but that’s a bit more complicated. We’ll save that for another post.
 
 ## Different Types of Voice Assistants
@@ -54,6 +54,8 @@ _Examples_: Siri, Alexa, Google Assistant, Bixby, [Mycroft](https://mycroft.ai/)
 _Examples_: Jeopardy! Skill, [Pizza Hut Action](https://assistant.google.com/services/a/uid/000000eab80a7f99), [iTranslate Capsule](https://www.itranslate.com/bixby)
 
 **Independent Assistants** are voice assistants independent of platforms meaning that customer conversations are controlled by companies and developers without help from a platform assistant. This means companies are able to control natural language processing, speech synthesis, and wake word(s). These assistants can be integrated within existing products such as mobile apps, websites, and/or proprietary hardware.
+
+`youtube: [Spokestack Overview](https://www.youtube.com/watch?v=MW2cYSQhbZE)`
 
 _Examples:_ [Spotify](https://support.spotify.com/us/listen_everywhere/voice_assistants/spotify-voice/) (voice search), [Home Depot](https://corporate.homedepot.com/newsroom/5-technologies-changing-how-we-shop) (powered by Google’s Dialogflow for voice search), [Pandora](https://blog.soundhound.com/pandora-launches-voice-mode-in-mobile-app-powered-by-houndify-7d9091c66817) (powered by Soundhound).
 

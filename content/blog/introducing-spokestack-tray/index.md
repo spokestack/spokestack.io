@@ -11,7 +11,7 @@ Today we are excited to announce our latest developer feature: Spokestack Tray, 
 
 Here’s a video of Spokestack Tray working in our demo Bartender app:
 
-`vimeo: [Spokestack Tray Demo](459905947)`
+`youtube: [Spokestack Tray Demo](https://www.youtube.com/watch?v=0RBITe8RNco)`
 
 Download the Bartender app and try Spokestack Tray on your own phone:
 

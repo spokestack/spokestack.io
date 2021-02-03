@@ -7,6 +7,8 @@ tags: Android, Engineering, Tutorial
 draft: false
 ---
 
+![Integrating Spokestack Google App Actions 3](../integrating-spokestack-google-app-actions-1/blog.png)
+
 _This tutorial is part of a series:_
 
 - [Part 1](/blog/integrating-spokestack-google-app-actions-1): Working with Google App Actions
@@ -17,7 +19,7 @@ _This tutorial is part of a series:_
 
 Now that we know what we need to get started with voice control, both on Google's end and in our app, we'll polish our user experience a bit by adding visual elements to give the user more feedback about what the app is hearing and saying. With the changes we'll make in this tutorial, an interaction with Google Assistant will look like this:
 
-![screen capture of Google Assistant handing voice control to an app](./images/app-actions-demo.gif)
+![screen capture of Google Assistant handing voice control to an app](app-actions-demo.gif)
 
 To follow along, run `git checkout spokestack-tray` in your copy of the [sample repository](https://github.com/spokestack/app-actions-example). Since this tutorial involves changes to the activities we've already introduced, we've made them on a separate branch for easy comparison to the "headless" version of Spokestack.
 

@@ -1,5 +1,5 @@
 ---
-title: 1 - Getting Started
+title: Getting Started
 navId: Getting Started (Design)
 description: Getting started with designing your app to work with Spokestack
 draft: false

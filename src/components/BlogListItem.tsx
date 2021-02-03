@@ -1,4 +1,5 @@
 import * as theme from '../styles/theme'
+import Tags from './Tags'
 
 import { Global, css } from '@emotion/react'
 import { Link, graphql, useStaticQuery } from 'gatsby'
@@ -55,12 +56,13 @@ export default function BlogListItem({ post }: Props) {
           <span>
             {name}, {title}
           </span>
-          <span css={styles.dot}>•</span>
-          <span css={styles.date}>{post.frontmatter.date}</span>
         </p>
       </div>
       <h4>{post.frontmatter.title}</h4>
       <p css={styles.excerpt}>{post.excerpt}</p>
+      <div css={styles.tags}>
+        <Tags tags={post.fields.tags} header="" />
+      </div>
     </Link>
   )
 }
@@ -105,17 +107,17 @@ const styles = {
       margin: 0;
     }
   `,
-  dot: css`
-    margin: 0 5px;
+  tags: css`
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    margin-top: 15px;
   `,
   image: css`
     display: block;
     width: 34px;
     border-radius: 50%;
     margin-right: 10px;
-  `,
-  date: css`
-    font-style: italic;
   `,
   excerpt: css`
     margin-bottom: 10px;

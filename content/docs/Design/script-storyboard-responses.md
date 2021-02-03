@@ -1,5 +1,5 @@
 ---
-title: 4 - Script Responses
+title: Script Responses
 navId: Script Responses
 description: Script responses to the user.
 draft: false

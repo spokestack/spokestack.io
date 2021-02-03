@@ -1,5 +1,5 @@
 ---
-title: 3 - Map Out Integration
+title: Map Out Integration
 navId: Map Out Integration
 description: Consider what users want to ask and how you will respond.
 draft: false

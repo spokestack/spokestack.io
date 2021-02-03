@@ -7,6 +7,8 @@ author: mike
 draft: false
 ---
 
+![Introducing Spokestack Tray](blog.png)
+
 Today we are excited to announce our latest developer feature: Spokestack Tray, a mobile library that lets developers easily add a voice interface to their existing app through a UI component that opens inside the application. Spokestack Tray incorporates our voice services, such as a wakeword, speech recognition, natural language processing, and custom text-to-speech voices, into one easy-to-add package along with any existing mobile application. We've built a demo, the Bartender mobile app, that uses Spokestack Tray.
 
 Here’s a video of Spokestack Tray working in our demo Bartender app:

@@ -1,5 +1,5 @@
 ---
-title: Spokestack Tray
+title: Integrating Spokestack in Android
 date: '2020-12-17'
 navId: Spokestack Tray (Android)
 description: Instructions on integrating and using the Spokestack Tray UI component in Android.
@@ -7,6 +7,8 @@ tags: Android, Engineering, Tutorial
 author: josh
 draft: false
 ---
+
+![How to Integrate Spokestack in Android](blog.png)
 
 Using voice as an interface can be a daunting proposition. First, you have to be able to actually _process_ voice as input. Then, you have to decide what to _do_ with that input. You probably want to deliver responses via voice too. After all that, you still have to decide how to integrate the voice interface with your touch interface.
 

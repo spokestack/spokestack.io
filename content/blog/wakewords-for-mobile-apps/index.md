@@ -7,6 +7,8 @@ author: mike
 draft: false
 ---
 
+![Wakewords for Mobile Apps](blog.png)
+
 Amazon added the "Hey Alexa" wakeword to its mobile app. This is going to change user perceptions of mobile voice apps.
 
 One of the main hurdles I've encountered when explaining mobile voice apps to people is that they don't seem to understand how to start talking to mobile apps. For some reason, it's difficult for people to get their heads around the idea that a mobile app is the same as a smart speaker such as an [Alexa Skill](https://www.amazon.com/alexa-skills/) or a [Google Assistant Action](https://assistant.google.com/explore).

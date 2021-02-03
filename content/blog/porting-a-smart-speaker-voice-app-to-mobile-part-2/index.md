@@ -7,6 +7,8 @@ author: daniel
 draft: false
 ---
 
+![Porting a Smart Speaker Voice App to Mobile - Part 2](../blog.png)
+
 ## Voice Apps on Mobile
 
 In [Part 1](/blog/porting-a-smart-speaker-voice-app-to-mobile-part-1) of this series we covered covered what smart speaker voice apps are and some of their limitation. Part 2 describes what we need to do to port a smart speaker voice app to a smartphone.

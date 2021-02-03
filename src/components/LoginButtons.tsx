@@ -2,7 +2,7 @@ import * as theme from '../styles/theme'
 
 import React, { useEffect, useState } from 'react'
 import { SerializedStyles, css } from '@emotion/react'
-import { isLoggedIn, logout } from '../utils/auth'
+import { isLoggedIn } from '../utils/auth'
 
 import { Link } from 'gatsby'
 import NavDropdown from './NavDropdown'
@@ -66,7 +66,7 @@ export default function LoginButtons({
           activeStyle={{ display: 'none' }}>
           Account
         </Link>
-        <a className={`btn ${btnClassName || ''}`} onClick={() => logout()}>
+        <a className={`btn ${btnClassName || ''}`} href="/api/auth/logout">
           Log out
         </a>
       </div>

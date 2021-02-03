@@ -1,5 +1,4 @@
 import React from 'react'
-export { default as wrapRootElement } from './src/apollo/wrapRootElement'
 
 export const onRenderBody = ({ setPostBodyComponents }) => {
   setPostBodyComponents([

@@ -3,8 +3,6 @@ import './src/utils/closest-polyfill.js'
 
 import { getDarkModePref } from './src/utils/darkMode'
 
-export { default as wrapRootElement } from './src/apollo/wrapRootElement'
-
 const rdark = /^\/(?:docs|blog|tutorials)/
 
 export const onClientEntry = () => {

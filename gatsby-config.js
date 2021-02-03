@@ -155,6 +155,18 @@ module.exports = {
         url:
           'https://www.eventbrite.com/e/how-to-add-voice-to-mobile-workshop-tickets-91159870627'
       }
+    ],
+    redirects: [
+      {
+        from: '/create',
+        to: '/account/create',
+        permanent: true
+      },
+      {
+        from: '/login',
+        to: '/account/login',
+        permanent: true
+      }
     ]
   },
   plugins: [

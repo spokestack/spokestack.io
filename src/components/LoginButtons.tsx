@@ -5,8 +5,6 @@ import { SerializedStyles, css } from '@emotion/react'
 import { isLoggedIn } from '../utils/auth'
 
 import { Link } from 'gatsby'
-import NavDropdown from './NavDropdown'
-import SignInForm from './SignInForm'
 
 interface Props {
   btnClassName?: string
@@ -18,8 +16,7 @@ interface Props {
 export default function LoginButtons({
   btnClassName,
   className,
-  extraCss,
-  loginDropdown
+  extraCss
 }: Props) {
   const [loggedIn, setLoggedIn] = useState(false)
   const style = [styles.loginButtons].concat(extraCss)
@@ -39,18 +36,9 @@ export default function LoginButtons({
   return (
     <div className={classes.join(' ')} css={style}>
       <div className="login-buttons--login">
-        {loginDropdown ? (
-          <NavDropdown title="Sign in" menuCss={styles.dropdown}>
-            <SignInForm extraCss={styles.loginForm} />
-          </NavDropdown>
-        ) : (
-          <Link
-            to="/login"
-            css={styles.loginLink}
-            activeStyle={{ display: 'none' }}>
-            Sign in
-          </Link>
-        )}
+        <Link to="/account" css={styles.loginLink}>
+          Account
+        </Link>
         <Link
           className={`btn ${btnClassName || ''}`}
           to="/create"
@@ -116,16 +104,5 @@ const styles = {
         color: ${theme.linkSecondaryActive};
       }
     }
-  `,
-  dropdown: css`
-    width: 100% !important;
-    max-width: 610px !important;
-    left: auto !important;
-    right: 20px !important;
-    transform: none !important;
-  `,
-  loginForm: css`
-    border: none;
-    padding: 20px !important;
   `
 }

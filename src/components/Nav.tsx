@@ -153,7 +153,6 @@ export default function Nav({ extraCss }: Props) {
       <LoginButtons
         btnClassName="btn-secondary btn-transparent"
         extraCss={styles.desktopOnly}
-        loginDropdown
       />
     </nav>
   )

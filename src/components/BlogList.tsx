@@ -10,6 +10,8 @@ import React from 'react'
 import SVGIcon from '../components/SVGIcon'
 import Tags from '../components/Tags'
 import { WindowLocation } from '@reach/router'
+import Create from './homepage/Create'
+import { isLoggedIn } from '../utils/auth'
 
 interface Props {
   currentPage: number
@@ -113,6 +115,7 @@ export default function BlogList({
           </div>
         </section>
       </div>
+      {!isLoggedIn() && <Create small />}
     </Layout>
   )
 }

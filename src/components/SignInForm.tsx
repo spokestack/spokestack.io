@@ -44,7 +44,7 @@ export default function SignInForm({ extraCss, header, isCreate }: Props) {
         </p>
       ) : (
         <p css={styles.footerText}>
-          New to Spokestack? <Link to="/create">Sign up free</Link>
+          New to Spokestack? <Link to="/create">Create free account</Link>
         </p>
       )}
     </Card>

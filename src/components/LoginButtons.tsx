@@ -55,7 +55,7 @@ export default function LoginButtons({
           className={`btn ${btnClassName || ''}`}
           to="/create"
           activeStyle={{ display: 'none' }}>
-          Sign up free
+          Create free account
         </Link>
       </div>
       <div className="login-buttons--account">

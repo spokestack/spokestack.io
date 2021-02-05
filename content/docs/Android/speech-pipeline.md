@@ -37,6 +37,8 @@ Input classes, processing stages, and profiles are all loaded dynamically via th
 
 ## How does it work?
 
+`youtube: [Build your own voice interface to talk directly to your customers](https://www.youtube.com/watch?v=AvhQ6-9nCrQ)`
+
 This is the speech pipeline's state machine:
 
 ![](images/speech_pipeline_android.png 'Android speech pipeline')

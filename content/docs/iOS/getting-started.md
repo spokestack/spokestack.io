@@ -104,6 +104,8 @@ The `self` in this example means that `MyViewController` also implements `Spokes
 
 ### 5. Implementing SpokestackDelegate
 
+`youtube: [Build your own voice interface to talk directly to your customers](https://www.youtube.com/watch?v=AvhQ6-9nCrQ)`
+
 Now that we have an instance of `Spokestack`, we'll use the [delegate pattern](https://en.wikipedia.org/wiki/Delegation_pattern) so that the ASR, NLU, and TTS features can send events to you. We'll do that in the same class we used in the previous step. All `SpokestackDelegate` functions are optional except for `failure(error:)`, so you will opt in to each one explictly, but for now we just need to use two of them. First, `failure(error:)`:
 
 ```swift

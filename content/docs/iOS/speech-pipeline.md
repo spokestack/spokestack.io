@@ -13,6 +13,8 @@ As the name implies, `SpeechPipeline` is a collection of distinct modular compon
 
 ## How does it work?
 
+`youtube: [Build your own voice interface to talk directly to your customers](https://www.youtube.com/watch?v=AvhQ6-9nCrQ)`
+
 This is the speech pipeline's state machine:
 
 ![](images/speech_pipeline_ios.png 'iOS speech pipeline')
@@ -38,6 +40,8 @@ When active, audio frames are not processed on-device but are instead sent to an
          .build()
      pipeline.start()
 ```
+
+`youtube: [Wakewords for iOS apps](https://www.youtube.com/watch?v=3qKJMrkbZA8)`
 
 ### 1. `useProfile`
 

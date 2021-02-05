@@ -31,6 +31,8 @@ Google's system might eventually be able to overcome this lack of training data,
 
 That may sound bleak, but this isn't a gloom-and-doom post. After all, deep voice interaction with mobile apps is wonderful! It's a huge accessibility boon, and I meant what I said earlier about unlocking an app's true potential by making complicated tasks simple for a user to perform. So how do we overcome the potential for abuse and lock-in?
 
+`youtube: [Spokestack Overview](https://www.youtube.com/watch?v=MW2cYSQhbZE)`
+
 ## Be Your Own Assistant
 
 As it turns out, it's not as hard as it used to be to handle voice commands in your app. Our whole mission at Spokestack is to continue making it easier. A [free account](/create) gives you access to everything from in-app wakeword detection to ASR, NLU, and TTS to read your responses. Here are some of the benefits of turning your app into a purpose-built voice assistant using Spokestack libraries:
@@ -41,5 +43,7 @@ As it turns out, it's not as hard as it used to be to handle voice commands in y
 - Gain insight into what your users _want to do_ with your app rather than the way they interact with the features they can see at any given time.
 - Let users know you're on top of the latest technology and leveraging it to make your app useful in as many situations as possible.
 - Establish a unique voice for your brand, or bring an established voice into your mobile experience.
+
+`youtube: [The Basic Elements of Voice Interfaces](https://www.youtube.com/watch?v=1x4MdTKEy3E)`
 
 Sound good? We think so—if you have any questions, don't hesitate to reach out! Check out the links below for all the places you can find us. Join us in our goal of using voice tech to make all mobile apps more delightful.

@@ -37,6 +37,8 @@ Moving voice apps off of smart speakers and into an app on a smartphone resets t
 
 Smart speakers and virtual assistants provide key components that are used to build voice apps. In order to move a voice app to a smartphone, you have to make sure you still have all the ingredients. Let's take a look at the ingredients needed to make a general voice app, regardless of platform.
 
+`youtube: [Spokestack Overview](https://www.youtube.com/watch?v=MW2cYSQhbZE)`
+
 ### Universal Voice App Ingredients
 
 1. A device with a microphone and speaker

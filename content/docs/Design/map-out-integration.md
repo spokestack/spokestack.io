@@ -7,6 +7,8 @@ draft: false
 
 After [identifying the right use cases](find-the-right-use-case) for multimodality, map how you’ll integrate them into your app. Think about who/what you’re solving for and what users need in order to accomplish their goals. A useful technique for this is to create a customer journey or experience map.
 
+`youtube: [The Basic Elements of Voice Interfaces](https://www.youtube.com/watch?v=1x4MdTKEy3E)`
+
 ## What _is_ an experience map?
 
 An experience map is a list of inputs from left to right with simultaneous outputs below. Multimodal maps include inputs (verbal intents and nonverbal gestures) and outputs as well as needed contextual & supporting information. This prevents designing verbal language and nonverbal visuals in isolation. A complete map is not meant to be exhaustive, but should represent your app’s primary flow. It should also provide a better sense of scope and a more cohesive end product.

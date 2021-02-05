@@ -32,6 +32,8 @@ Spokestack.initialize(
 
 ## How does it work?
 
+`youtube: [Build your own voice interface to talk directly to your customers](https://www.youtube.com/watch?v=AvhQ6-9nCrQ)`
+
 This is the speech pipeline's state machine:
 
 ![speech pipeline](images/speech_pipeline.png 'speech pipeline')

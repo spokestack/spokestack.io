@@ -17,6 +17,8 @@ When the pipeline is passively listening, a single frame of audio flows through 
 
 ## How do I set it up?
 
+`youtube: [Build your own voice interface to talk directly to your customers](https://www.youtube.com/watch?v=AvhQ6-9nCrQ)`
+
 The best way to start working with Spokestack is through pipeline profiles. Profiles are preset configurations for the `SpeechPipeline` that bundle input and stage classes into an easy-to-use wrapper. All profiles are designed to be initialized with only one line.
 
 ```python

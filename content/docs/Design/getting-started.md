@@ -38,6 +38,8 @@ Yet, voice-only interactions often fail to provide appropriate output. This is e
 
 There are many reasons voice output can be inferior to text or visuals. Active listening requires effort. It’s hard to rewind content that wasn’t caught the first time through. Reading allows users to understand at their own speed, usually at a faster rate. The average human reads [250-300 words per minute](https://en.wikipedia.org/wiki/Words_per_minute) while the average audiobook dictates [150-160 words per minute](https://en.wikipedia.org/wiki/Words_per_minute).
 
+`youtube: [How Did We Get Here?](https://www.youtube.com/watch?v=B-TIVeN2Kho)`
+
 Here are some benefits of pairing visual and audio responses in a mobile app:
 
 1. **Faster input** - Simple voice dictation is quicker than typing. Complex voice requests can be more efficient than navigating multiple visual menus. For example, “Book me a hotel room at the Marriott in downtown Austin on February third” could be much faster than going through an equal number of visual forms.

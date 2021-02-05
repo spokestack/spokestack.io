@@ -22,6 +22,6 @@ As it turns out, few mobile developers understand how to [design conversational 
 
 With Spokestack Tray, we've created a ready-made "voice kit" that still allows for customization without having to design a voice interface from scratch. Will you still need to build a conversation? Yes, but you don't have to think about how the user will interact with the conversation. Spokestack Tray makes it much easier to begin experimenting with adding a voice interface to your app and conversing with your customers.
 
-`vimeo: [Spokestack Tray Demo](459905947)`
+`youtube: [Spokestack Tray Demo](https://www.youtube.com/watch?v=0RBITe8RNco)`
 
 Please check out [Spokestack Tray](/blog/introducing-spokestack-tray) and tell us what you think. If you have any questions or feedback, email us at [hello@spokestack.io](mailto:hello@spokestack.io), and let's talk conversational interfaces!

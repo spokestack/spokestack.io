@@ -7,7 +7,9 @@ draft: false
 
 Spokestack is a powerful platform of open source libraries and robust services to make your app fully voice-enabled.
 
-If you're new to voice, check out our [overview video](https://www.youtube.com/watch?v=wbJ8fZh-iQw) and the [Concepts](/docs/Concepts) section of our docs.
+If you're new to voice, we've put together an introduction to how Spokestack thinks about voice. For more on how to design the voice experience, walk through the [Design](/docs/Design) section of our docs.
+
+`youtube: [Voice is just another interface](https://www.youtube.com/watch?v=wbJ8fZh-iQw)`
 
 ### Integrations
 
@@ -16,6 +18,8 @@ As a tools and services provider, we try to balance ease of integration with cus
 #### Spokestack Tray
 
 Spokestack Tray is a library that provides a voice interface overlay designed to work in any mobile app. Spokestack Tray is opinionated and follows a specific use pattern, but can be customized to meet your own branding requirements. This path is suitable for mobile developers of all experience levels, but it assumes some experience with the underlying platform (React Native, iOS, or Android). Check out our "Get the Bartender" app on [iOS](https://apps.apple.com/us/app/get-the-bartender/id1530425843) and [Android](https://play.google.com/store/apps/details?id=com.spokestack.bartender) for examples of how Tray might work with an existing app.
+
+`youtube: [Spokestack Tray Demo](https://www.youtube.com/watch?v=0RBITe8RNco)`
 
 You can find the Spokestack Tray libraries and documentation here:
 

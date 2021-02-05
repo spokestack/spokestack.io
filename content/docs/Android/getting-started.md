@@ -74,6 +74,8 @@ Also note that [the Android emulator cannot record audio](https://developer.andr
 
 ### 2. `Spokestack`
 
+`youtube: [Build your own voice interface to talk directly to your customers](https://www.youtube.com/watch?v=AvhQ6-9nCrQ)`
+
 With the proper permissions in place, it's time to decide where you'd like to receive and process speech input. In a single-activity app, the easiest place for this is going to be your main activity. `import io.spokestack.spokestack.Spokestack` at the top of the file, and add a `Spokestack` member:
 
 ```kotlin

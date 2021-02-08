@@ -1,13 +1,8 @@
 import * as theme from '../styles/theme'
-
-import React, { useEffect, useState } from 'react'
+import React from 'react'
 import { SerializedStyles, css } from '@emotion/react'
-
 import Card from './Card'
-import { Link } from 'gatsby'
 import SVGIcon from './SVGIcon'
-import { createLink as createGitHubLink } from '../utils/oauthGitHub'
-import { createLink as createGoogleLink } from '../utils/oauthGoogle'
 
 interface Props {
   extraCss?: SerializedStyles | SerializedStyles[]
@@ -16,23 +11,16 @@ interface Props {
 }
 
 export default function SignInForm({ extraCss, header, isCreate }: Props) {
-  const [gitHubLink, setGitHubLink] = useState<string>(null)
-  const [googleLink, setGoogleLink] = useState<string>(null)
-  useEffect(() => {
-    setGitHubLink(createGitHubLink)
-    setGoogleLink(createGoogleLink)
-  }, [])
-
   return (
     <Card extraCss={[styles.container].concat(extraCss)}>
       {!!header && <h4 css={styles.header}>{header}</h4>}
-      <a href={gitHubLink} className="btn btn-large" css={styles.button}>
+      <a href="/api/auth/github" className="btn btn-large" css={styles.button}>
         <div css={styles.iconWrap}>
           <SVGIcon icon="#github" css={styles.linkIcon} />
         </div>
         {isCreate ? 'Sign up' : 'Sign in'} with GitHub
       </a>
-      <a href={googleLink} className="btn btn-large" css={styles.button}>
+      <a href="/api/auth/google" className="btn btn-large" css={styles.button}>
         <div css={styles.iconWrap}>
           <SVGIcon icon="#google" css={styles.linkIcon} />
         </div>
@@ -40,11 +28,11 @@ export default function SignInForm({ extraCss, header, isCreate }: Props) {
       </a>
       {isCreate ? (
         <p css={styles.footerText}>
-          Already have an account? <Link to="/login">Sign in</Link>
+          Already have an account? <a href="/account/login">Sign in</a>
         </p>
       ) : (
         <p css={styles.footerText}>
-          New to Spokestack? <Link to="/create">Create free account</Link>
+          New to Spokestack? <a href="/account/create">Create free account</a>
         </p>
       )}
     </Card>

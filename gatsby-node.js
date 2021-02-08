@@ -212,6 +212,10 @@ exports.createPages = async ({ graphql, actions, reporter }) => {
           team {
             key
           }
+          redirects {
+            from
+            to
+          }
         }
       }
       blog: allMarkdownRemark(
@@ -334,6 +338,19 @@ exports.createPages = async ({ graphql, actions, reporter }) => {
     posts: result.data.docs.edges,
     template: path.resolve('./src/templates/docs-page.tsx')
   })
+
+  const redirects = result.data.site.siteMetadata.redirects
+  return Promise.all(
+    redirects.map((redirect) =>
+      createPage({
+        path: redirect.from,
+        component: path.resolve('./src/templates/redirect-only.tsx'),
+        context: {
+          slug: redirect.to
+        }
+      })
+    )
+  )
 }
 
 exports.onCreateNode = ({ node, actions, getNode }) => {

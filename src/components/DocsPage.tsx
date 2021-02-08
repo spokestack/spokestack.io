@@ -1,6 +1,7 @@
 import { MarkdownRemark, Query } from '../utils/graphql'
 import { graphql, useStaticQuery } from 'gatsby'
 
+import { mainBorder, ieBreakpoint } from '../styles/theme'
 import DarkModeButton from '../components/DarkModeButton'
 import Layout from '../components/Layout'
 import React from 'react'
@@ -12,6 +13,9 @@ import difference from 'lodash/difference'
 import order from '../../content/docs/nav.json'
 import sortBy from 'lodash/sortBy'
 import uniqBy from 'lodash/uniqBy'
+import { css } from '@emotion/react'
+import Create from './homepage/Create'
+import { isLoggedIn } from '../utils/auth'
 
 interface Props {
   location: WindowLocation
@@ -83,18 +87,36 @@ export default function DocsPage({ location, post, selectFirst }: Props) {
           )}
           <DarkModeButton />
         </header>
-        <p>
-          <a
-            href={post.fields.githubLink}
-            rel="noopener noreferrer"
-            target="_blank">
-            Edit on GitHub
-          </a>
-        </p>
         <div dangerouslySetInnerHTML={{ __html: post.html }} />
+        <div className="main-footer" css={styles.footer}>
+          <h6>
+            Spot a typo? Find a bug? Have an improvement? &nbsp;
+            <a
+              href={post.fields.githubLink}
+              rel="noopener noreferrer"
+              target="_blank">
+              Edit this doc directly in GitHub and help everyone!
+            </a>
+          </h6>
+          <h6>Published {post.frontmatter.date}</h6>
+        </div>
       </StickyNavLayout>
+      {!isLoggedIn() && <Create small />}
     </Layout>
   )
+}
+
+const styles = {
+  footer: css`
+    grid-area: content;
+    border-top: 1px solid ${mainBorder};
+    border-bottom: 1px solid ${mainBorder};
+    padding-bottom: 15px;
+    ${ieBreakpoint} {
+      width: 100%;
+      min-width: 500px;
+    }
+  `
 }
 
 export const docsPageQuery = graphql`

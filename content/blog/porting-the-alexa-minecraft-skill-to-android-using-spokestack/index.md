@@ -3,7 +3,7 @@ title: Porting the Alexa Minecraft Skill to Android Using Spokestack
 date: '2020-06-09'
 description: Make a voice-based app for smart speakers. Spokestack makes it easy to convert a smart speaker voice app to a mobile app. Follow our process.
 author: josh
-tags: Engineering, Tutorial
+tags: Engineering, Tutorial, 3rd Party Integration, NLU, Android, App
 draft: false
 ---
 

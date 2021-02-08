@@ -2,7 +2,7 @@
 title: Announcing the Export to Independence Contest
 date: '2020-06-15'
 description: Export to Independence is a community contest to see who can best port a smart speak voice app to a mobile voice assistant using Spokestack. The contest includes prizes totaling $5000. $5000 will also be given to charity.
-tags: Product
+tags: Apps, News
 author: mike
 draft: false
 ---

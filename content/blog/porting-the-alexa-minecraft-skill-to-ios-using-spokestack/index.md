@@ -2,7 +2,7 @@
 title: Porting the Alexa Minecraft Skill to iOS Using Spokestack
 date: '2020-06-08T00:00:04.000Z'
 description: Make a voice-based app for smart speakers. Spokestack makes it easy to convert a smart speaker voice app to a mobile app. Follow our process.
-tags: Engineering, Tutorial
+tags: Engineering, Tutorial, 3rd Party Integration, NLU, iOS, App
 author: daniel
 draft: false
 ---

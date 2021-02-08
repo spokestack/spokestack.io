@@ -2,7 +2,7 @@
 title: Jovo Support for Spokestack Enables Mobile App Voice Assistants
 date: '2020-07-15'
 description: It's now easier than ever to build your own Independent Voice Assistant. This new integration helps developers build cutting edge conversational experiences in mobile apps.
-tags: Product
+tags: Integration, News, NLU, Dialogue Management
 author: mike
 draft: false
 ---

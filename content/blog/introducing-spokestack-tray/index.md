@@ -2,7 +2,7 @@
 title: Introducing Spokestack Tray – a Turnkey Voice Interface for Mobile Apps
 date: '2020-09-21'
 description: 'Today we announce Spokestack Tray: a UI component for iOS, Android, and React Native making it easy to add Spokestack to any mobile app. Create your own Independent Voice Assistant!'
-tags: Engineering, Product
+tags: Engineering, News, Voice Assistant, iOS, Android, React Native, UI
 author: mike
 draft: false
 ---

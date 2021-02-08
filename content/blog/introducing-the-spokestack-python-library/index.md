@@ -2,7 +2,7 @@
 title: Spokestack Python Library
 date: '2020-10-06'
 description: Launching the Spokestack Python library that brings the Spokestack speech pipeline to Raspberry Pi, Tinker Board, and PCs.
-tags: Engineering
+tags: Engineering, News, Python
 author: mike
 draft: false
 ---

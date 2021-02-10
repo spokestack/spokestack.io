@@ -2,7 +2,7 @@
 title: Porting a Smart Speaker Voice App - Part 2
 date: '2020-06-08T00:00:01.000Z'
 description: Spokestack introduces a new way to build and access voice apps independent from major virtual assistant platforms. Take your smart speaker app mobile.
-tags: Engineering, Voice Assistant, 3rd Party Integration, NLU, ASR, Dialogue Management, TTS, Wakeword
+tags: Engineering, Voice Assistant, 3rd Party Integration
 author: daniel
 draft: false
 ---

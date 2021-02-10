@@ -2,7 +2,7 @@
 title: Why We Built Spokestack Tray
 date: '2020-09-24'
 description: 'Spokestack Tray makes it much easier to begin experimenting with adding a voice interface to your app and conversing with your customers. Get started building your own independent voice assistant.'
-tags: Engineering, UI, Doctrine
+tags: Engineering, UI, Principles
 author: mike
 draft: false
 ---

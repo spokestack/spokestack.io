@@ -2,7 +2,7 @@
 title: Integrating Spokestack in React Native
 date: '2020-09-01'
 description: This tutorial guides you through the process of adding react-native-spokestack-tray into an existing React Native app. Turn your app into an independent voice assistant without changing your app's navigation or infrastructure.
-tags: Engineering, Tutorial
+tags: Engineering, Tutorial, React Native
 author: timmy
 draft: false
 ---

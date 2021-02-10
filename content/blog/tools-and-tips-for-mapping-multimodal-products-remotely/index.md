@@ -2,7 +2,7 @@
 title: Tools and Tips for Mapping Multimodal Products Remotely
 date: '2020-05-19'
 description: Spokestack uses experience mapping tools to formulate multimodal flows for our products based on researched observations and ideas. Explore our toolset.
-tags: Design, Product
+tags: Conversation Design
 author: elizabeth
 draft: false
 ---

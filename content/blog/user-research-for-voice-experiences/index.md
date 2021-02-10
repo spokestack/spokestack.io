@@ -2,7 +2,7 @@
 title: User Research for Voice Experiences
 date: '2020-05-15'
 description: Design for verbal input is a specific UX problem if designing voice chat conversations in mobile UIs. Learn more about designing voice user interfaces.
-tags: Design, Product
+tags: Conversation Design
 author: elizabeth
 draft: false
 ---

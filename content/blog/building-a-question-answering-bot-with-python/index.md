@@ -3,7 +3,7 @@ title: Question Answering With Spokestack and Transformers
 date: '2021-01-13'
 description: This tutorial leverages HuggingFace's Transformer library to make a voice question answering bot with Spokestack.
 author: will
-tags: Engineering, Tutorial
+tags: Engineering, Tutorial, Python, Machine Learning
 draft: false
 ---
 

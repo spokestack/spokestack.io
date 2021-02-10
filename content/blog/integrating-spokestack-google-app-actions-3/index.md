@@ -3,7 +3,7 @@ title: Integrating Spokestack with Google App Actions, Part 3
 date: '2020-12-15'
 description: Add a UI to your app's voice features using Spokestack Tray
 author: josh
-tags: Android, Engineering, Tutorial
+tags: Android, Engineering, Tutorial, 3rd Party Integration
 draft: false
 ---
 

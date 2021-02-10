@@ -2,7 +2,7 @@
 title: Wakewords for Mobile Apps
 date: '2020-07-09'
 description: Amazon added the "Hey Alexa" wakeword to its mobile app. This is going to change user perceptions of mobile voice apps. Start building your Independent Voice Assistant with Spokestack.
-tags: Product
+tags: Wakeword, Voice Assistant, Principles
 author: mike
 draft: false
 ---

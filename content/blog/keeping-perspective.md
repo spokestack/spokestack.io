@@ -3,7 +3,7 @@ title: Keeping Perspective
 date: '2020-03-20'
 description: Learn more about perspective while developing new voice products. Marshall McLuhan reminds us, "We shape our tools, and thereafter our tools shape us."
 author: mike
-tags: Business
+tags: Principles, News
 draft: false
 ---
 

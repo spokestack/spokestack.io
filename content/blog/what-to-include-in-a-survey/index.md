@@ -2,7 +2,7 @@
 title: What to Include in a Survey
 date: '2020-05-29'
 description: Ask the right questions up front and save time later. Get examples of new voice UI product survey questions and see our sample TTS product survey.
-tags: Design,Product
+tags: Conversation Design
 author: elizabeth
 draft: false
 ---

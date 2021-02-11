@@ -1,6 +1,6 @@
 import {
   MAX_SIDEBAR_WIDTH,
-  MAX_TEXT_WIDTH,
+  MAX_BLOG_TEXT_WIDTH,
   MIN_DEFAULT_MEDIA_QUERY,
   MIN_LARGE_DISPLAY_MEDIA_QUERY,
   MIN_SIDEBAR_WIDTH,
@@ -93,7 +93,7 @@ const styles = {
       grid-template-columns:
         minmax(${MIN_SIDEBAR_WIDTH}, ${MAX_SIDEBAR_WIDTH}) minmax(
           ${MIN_TEXT_WIDTH},
-          ${MAX_TEXT_WIDTH}
+          ${MAX_BLOG_TEXT_WIDTH}
         )
         minmax(${MIN_SIDEBAR_WIDTH}, ${MAX_SIDEBAR_WIDTH});
       grid-template-rows: auto 1fr;
@@ -102,7 +102,7 @@ const styles = {
         'related content';
       padding: 30px 40px;
       max-width: calc(
-        ${MAX_SIDEBAR_WIDTH} + ${MAX_TEXT_WIDTH} + ${MAX_SIDEBAR_WIDTH}
+        100vm - ${MAX_SIDEBAR_WIDTH}
       );
       margin: 0 auto;
     }

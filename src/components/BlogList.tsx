@@ -67,11 +67,11 @@ export default function BlogList({
             {header ? (
               header
             ) : (
-              <header className="docs-header" css={styles.header}>
-                <h2>{title}</h2>
-                <DarkModeButton />
-              </header>
-            )}
+                <header className="docs-header" css={styles.header}>
+                  <h2>{title}</h2>
+                  <DarkModeButton />
+                </header>
+              )}
             {posts.map(({ node }) => (
               <BlogListItem key={node.fields.slug} post={node} />
             ))}
@@ -96,8 +96,8 @@ export default function BlogList({
                     Previous
                   </a>
                 ) : (
-                  <div />
-                )}
+                    <div />
+                  )}
                 {hasNext && (
                   <a
                     href={`${homeUrl}/${currentPage + 1}`}
@@ -168,14 +168,14 @@ const styles = {
       grid-template-columns:
         minmax(${theme.MIN_SIDEBAR_WIDTH}, ${theme.MAX_SIDEBAR_WIDTH}) minmax(
           ${theme.MIN_TEXT_WIDTH},
-          ${theme.MAX_TEXT_WIDTH}
+          ${theme.MAX_BLOG_TEXT_WIDTH}
         )
         minmax(${theme.MIN_SIDEBAR_WIDTH}, ${theme.MAX_SIDEBAR_WIDTH});
       grid-template-rows: auto 1fr;
       grid-template-areas: 'sidenav content';
       margin: 0 auto;
       max-width: calc(
-        ${theme.MAX_SIDEBAR_WIDTH} + ${theme.MAX_TEXT_WIDTH} +
+        ${theme.MAX_SIDEBAR_WIDTH} + ${theme.MAX_BLOG_TEXT_WIDTH} +
           ${theme.MAX_SIDEBAR_WIDTH}
       );
     }

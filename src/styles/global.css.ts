@@ -57,32 +57,32 @@ export default css`
   h2 {
     font-size: 28px;
     line-height: 1.45;
-    margin-bottom: 15px;
+    margin: 15px 0;
   }
   h3 {
     font-size: 26px;
     line-height: 1.45;
-    margin-bottom: 15px;
+    margin: 15px 0;
   }
   h4 {
     font-size: 24px;
     line-height: 1.45;
-    margin-bottom: 15px;
+    margin: 15px 0;
   }
   h5 {
     font-size: 1rem;
-    margin: 0;
+    margin: 15px 0;
   }
   h6 {
     font-size: 0.8rem;
     font-weight: 400;
     font-style: italic;
-    margin: 15px 0 1px;
+    margin: 15px 0;
   }
   a {
     color: ${theme.link};
     font-weight: 700;
-    text-decoration: underline;
+    text-decoration: none;
     text-decoration-color: ${theme.link};
     text-decoration-thickness: 0.1em;
     text-underline-offset: 2px;
@@ -173,8 +173,8 @@ export default css`
     padding: 0;
   }
   ul {
-    padding: 0;
     margin: 0;
+
   }
   li *:last-child {
     margin-bottom: 0;

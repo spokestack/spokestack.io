@@ -5,6 +5,7 @@ description: 'Today we announce Spokestack Tray: a UI component for iOS, Android
 tags: Engineering, Product
 author: mike
 draft: false
+hero: blog.png
 ---
 
 ![Introducing Spokestack Tray](blog.png)

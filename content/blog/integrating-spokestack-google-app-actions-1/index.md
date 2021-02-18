@@ -5,6 +5,7 @@ description: Take your app's voice integration to the next level by having Googl
 author: josh
 tags: Android, Engineering, Tutorial
 draft: false
+hero: blog.png
 ---
 
 ![Integrating Spokestack Google App Actions-1](blog.png)

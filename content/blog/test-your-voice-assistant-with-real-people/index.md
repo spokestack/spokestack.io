@@ -5,6 +5,7 @@ description: Testing your voice assistant with actual users is a worthwhile inve
 tags: Design,Product
 author: elizabeth
 draft: false
+hero: features.png
 ---
 
 Setting aside time to test your voice assistant(s) with actual users is a worthwhile investment in usability. At Spokestack, I've conducted tests using prototypes and fully-realized voice user interfaces (VUI). How I test products is similar in execution to user interviews with a few exceptions. Your goal should be to gauge whether users are able to complete tasks using their voice. Refer to my [previous article](/blog/user-research-for-voice-experiences) on how to find candidates within your network. What will change is what you ask and look for. Here’s how I test voice assistants throughout the development process.

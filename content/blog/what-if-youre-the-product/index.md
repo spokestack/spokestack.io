@@ -5,6 +5,7 @@ description: How to keep your voice presence from giving away presents
 tags: Concepts, Privacy, Smart Speakers, Voice Assistants
 author: josh
 draft: false
+hero: product-people.png
 ---
 
 ![Doesn't look like these folks are having fun being products](product-people.png)

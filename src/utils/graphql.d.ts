@@ -2,6 +2,10 @@ export type Maybe<T> = T | null
 export type Exact<T extends { [key: string]: unknown }> = {
   [K in keyof T]: T[K]
 }
+export type MakeOptional<T, K extends keyof T> = Omit<T, K> &
+  { [SubKey in K]?: Maybe<T[SubKey]> }
+export type MakeMaybe<T, K extends keyof T> = Omit<T, K> &
+  { [SubKey in K]: Maybe<T[SubKey]> }
 /** All built-in and custom scalars, mapped to their actual values */
 export type Scalars = {
   ID: string
@@ -13,6 +17,16 @@ export type Scalars = {
   Date: any
   /** The `JSON` scalar type represents JSON values as specified by [ECMA-404](http://www.ecma-international.org/publications/files/ECMA-ST/ECMA-404.pdf). */
   JSON: any
+}
+
+export type BlurredOptions = {
+  /** Width of the generated low-res preview. Default is 20px */
+  width?: Maybe<Scalars['Int']>
+  /**
+   * Force the output format for the low-res preview. Default is to use the same
+   * format as the input. You should rarely need to change this
+   */
+  toFormat?: Maybe<ImageFormat>
 }
 
 export type BooleanQueryOperatorInput = {
@@ -537,6 +551,7 @@ export enum FileFieldsEnum {
   ChildImageSharpSizesOriginalName = 'childImageSharp___sizes___originalName',
   ChildImageSharpSizesPresentationWidth = 'childImageSharp___sizes___presentationWidth',
   ChildImageSharpSizesPresentationHeight = 'childImageSharp___sizes___presentationHeight',
+  ChildImageSharpGatsbyImageData = 'childImageSharp___gatsbyImageData',
   ChildImageSharpOriginalWidth = 'childImageSharp___original___width',
   ChildImageSharpOriginalHeight = 'childImageSharp___original___height',
   ChildImageSharpOriginalSrc = 'childImageSharp___original___src',
@@ -674,14 +689,51 @@ export enum FileFieldsEnum {
   ChildMarkdownRemarkFrontmatterTitle = 'childMarkdownRemark___frontmatter___title',
   ChildMarkdownRemarkFrontmatterDate = 'childMarkdownRemark___frontmatter___date',
   ChildMarkdownRemarkFrontmatterDescription = 'childMarkdownRemark___frontmatter___description',
-  ChildMarkdownRemarkFrontmatterTags = 'childMarkdownRemark___frontmatter___tags',
   ChildMarkdownRemarkFrontmatterAuthor = 'childMarkdownRemark___frontmatter___author',
+  ChildMarkdownRemarkFrontmatterTags = 'childMarkdownRemark___frontmatter___tags',
   ChildMarkdownRemarkFrontmatterDraft = 'childMarkdownRemark___frontmatter___draft',
   ChildMarkdownRemarkFrontmatterNavId = 'childMarkdownRemark___frontmatter___navId',
+  ChildMarkdownRemarkFrontmatterHeroSourceInstanceName = 'childMarkdownRemark___frontmatter___hero___sourceInstanceName',
+  ChildMarkdownRemarkFrontmatterHeroAbsolutePath = 'childMarkdownRemark___frontmatter___hero___absolutePath',
+  ChildMarkdownRemarkFrontmatterHeroRelativePath = 'childMarkdownRemark___frontmatter___hero___relativePath',
+  ChildMarkdownRemarkFrontmatterHeroExtension = 'childMarkdownRemark___frontmatter___hero___extension',
+  ChildMarkdownRemarkFrontmatterHeroSize = 'childMarkdownRemark___frontmatter___hero___size',
+  ChildMarkdownRemarkFrontmatterHeroPrettySize = 'childMarkdownRemark___frontmatter___hero___prettySize',
+  ChildMarkdownRemarkFrontmatterHeroModifiedTime = 'childMarkdownRemark___frontmatter___hero___modifiedTime',
+  ChildMarkdownRemarkFrontmatterHeroAccessTime = 'childMarkdownRemark___frontmatter___hero___accessTime',
+  ChildMarkdownRemarkFrontmatterHeroChangeTime = 'childMarkdownRemark___frontmatter___hero___changeTime',
+  ChildMarkdownRemarkFrontmatterHeroBirthTime = 'childMarkdownRemark___frontmatter___hero___birthTime',
+  ChildMarkdownRemarkFrontmatterHeroRoot = 'childMarkdownRemark___frontmatter___hero___root',
+  ChildMarkdownRemarkFrontmatterHeroDir = 'childMarkdownRemark___frontmatter___hero___dir',
+  ChildMarkdownRemarkFrontmatterHeroBase = 'childMarkdownRemark___frontmatter___hero___base',
+  ChildMarkdownRemarkFrontmatterHeroExt = 'childMarkdownRemark___frontmatter___hero___ext',
+  ChildMarkdownRemarkFrontmatterHeroName = 'childMarkdownRemark___frontmatter___hero___name',
+  ChildMarkdownRemarkFrontmatterHeroRelativeDirectory = 'childMarkdownRemark___frontmatter___hero___relativeDirectory',
+  ChildMarkdownRemarkFrontmatterHeroDev = 'childMarkdownRemark___frontmatter___hero___dev',
+  ChildMarkdownRemarkFrontmatterHeroMode = 'childMarkdownRemark___frontmatter___hero___mode',
+  ChildMarkdownRemarkFrontmatterHeroNlink = 'childMarkdownRemark___frontmatter___hero___nlink',
+  ChildMarkdownRemarkFrontmatterHeroUid = 'childMarkdownRemark___frontmatter___hero___uid',
+  ChildMarkdownRemarkFrontmatterHeroGid = 'childMarkdownRemark___frontmatter___hero___gid',
+  ChildMarkdownRemarkFrontmatterHeroRdev = 'childMarkdownRemark___frontmatter___hero___rdev',
+  ChildMarkdownRemarkFrontmatterHeroIno = 'childMarkdownRemark___frontmatter___hero___ino',
+  ChildMarkdownRemarkFrontmatterHeroAtimeMs = 'childMarkdownRemark___frontmatter___hero___atimeMs',
+  ChildMarkdownRemarkFrontmatterHeroMtimeMs = 'childMarkdownRemark___frontmatter___hero___mtimeMs',
+  ChildMarkdownRemarkFrontmatterHeroCtimeMs = 'childMarkdownRemark___frontmatter___hero___ctimeMs',
+  ChildMarkdownRemarkFrontmatterHeroAtime = 'childMarkdownRemark___frontmatter___hero___atime',
+  ChildMarkdownRemarkFrontmatterHeroMtime = 'childMarkdownRemark___frontmatter___hero___mtime',
+  ChildMarkdownRemarkFrontmatterHeroCtime = 'childMarkdownRemark___frontmatter___hero___ctime',
+  ChildMarkdownRemarkFrontmatterHeroBirthtime = 'childMarkdownRemark___frontmatter___hero___birthtime',
+  ChildMarkdownRemarkFrontmatterHeroBirthtimeMs = 'childMarkdownRemark___frontmatter___hero___birthtimeMs',
+  ChildMarkdownRemarkFrontmatterHeroBlksize = 'childMarkdownRemark___frontmatter___hero___blksize',
+  ChildMarkdownRemarkFrontmatterHeroBlocks = 'childMarkdownRemark___frontmatter___hero___blocks',
+  ChildMarkdownRemarkFrontmatterHeroPublicUrl = 'childMarkdownRemark___frontmatter___hero___publicURL',
+  ChildMarkdownRemarkFrontmatterHeroId = 'childMarkdownRemark___frontmatter___hero___id',
+  ChildMarkdownRemarkFrontmatterHeroChildren = 'childMarkdownRemark___frontmatter___hero___children',
   ChildMarkdownRemarkExcerpt = 'childMarkdownRemark___excerpt',
   ChildMarkdownRemarkRawMarkdownBody = 'childMarkdownRemark___rawMarkdownBody',
   ChildMarkdownRemarkFileAbsolutePath = 'childMarkdownRemark___fileAbsolutePath',
   ChildMarkdownRemarkFieldsSlug = 'childMarkdownRemark___fields___slug',
+  ChildMarkdownRemarkFieldsOldSlug = 'childMarkdownRemark___fields___oldSlug',
   ChildMarkdownRemarkFieldsFolder = 'childMarkdownRemark___fields___folder',
   ChildMarkdownRemarkFieldsTags = 'childMarkdownRemark___fields___tags',
   ChildMarkdownRemarkFieldsGithubLink = 'childMarkdownRemark___fields___githubLink',
@@ -829,9 +881,23 @@ export enum ImageFit {
 
 export enum ImageFormat {
   NoChange = 'NO_CHANGE',
+  Auto = 'AUTO',
   Jpg = 'JPG',
   Png = 'PNG',
   Webp = 'WEBP'
+}
+
+export enum ImageLayout {
+  Fixed = 'FIXED',
+  Fluid = 'FLUID',
+  Constrained = 'CONSTRAINED'
+}
+
+export enum ImagePlaceholder {
+  DominantColor = 'DOMINANT_COLOR',
+  TracedSvg = 'TRACED_SVG',
+  Blurred = 'BLURRED',
+  None = 'NONE'
 }
 
 export type ImageSharp = Node & {
@@ -842,6 +908,7 @@ export type ImageSharp = Node & {
   fluid?: Maybe<ImageSharpFluid>
   /** @deprecated Sizes was deprecated in Gatsby v2. It's been renamed to "fluid" https://example.com/write-docs-and-fix-this-example-link */
   sizes?: Maybe<ImageSharpSizes>
+  gatsbyImageData: Scalars['JSON']
   original?: Maybe<ImageSharpOriginal>
   resize?: Maybe<ImageSharpResize>
   id: Scalars['ID']
@@ -942,6 +1009,26 @@ export type ImageSharpSizesArgs = {
   srcSetBreakpoints?: Maybe<Array<Maybe<Scalars['Int']>>>
 }
 
+export type ImageSharpGatsbyImageDataArgs = {
+  layout?: Maybe<ImageLayout>
+  maxWidth?: Maybe<Scalars['Int']>
+  maxHeight?: Maybe<Scalars['Int']>
+  width?: Maybe<Scalars['Int']>
+  height?: Maybe<Scalars['Int']>
+  placeholder?: Maybe<ImagePlaceholder>
+  blurredOptions?: Maybe<BlurredOptions>
+  tracedSVGOptions?: Maybe<Potrace>
+  formats?: Maybe<Array<Maybe<ImageFormat>>>
+  outputPixelDensities?: Maybe<Array<Maybe<Scalars['Float']>>>
+  sizes?: Maybe<Scalars['String']>
+  quality?: Maybe<Scalars['Int']>
+  jpgOptions?: Maybe<JpgOptions>
+  pngOptions?: Maybe<PngOptions>
+  webpOptions?: Maybe<WebPOptions>
+  transformOptions?: Maybe<TransformOptions>
+  background?: Maybe<Scalars['String']>
+}
+
 export type ImageSharpResizeArgs = {
   width?: Maybe<Scalars['Int']>
   height?: Maybe<Scalars['Int']>
@@ -1036,6 +1123,7 @@ export enum ImageSharpFieldsEnum {
   SizesOriginalName = 'sizes___originalName',
   SizesPresentationWidth = 'sizes___presentationWidth',
   SizesPresentationHeight = 'sizes___presentationHeight',
+  GatsbyImageData = 'gatsbyImageData',
   OriginalWidth = 'original___width',
   OriginalHeight = 'original___height',
   OriginalSrc = 'original___src',
@@ -1138,6 +1226,7 @@ export type ImageSharpFilterInput = {
   resolutions?: Maybe<ImageSharpResolutionsFilterInput>
   fluid?: Maybe<ImageSharpFluidFilterInput>
   sizes?: Maybe<ImageSharpSizesFilterInput>
+  gatsbyImageData?: Maybe<JsonQueryOperatorInput>
   original?: Maybe<ImageSharpOriginalFilterInput>
   resize?: Maybe<ImageSharpResizeFilterInput>
   id?: Maybe<StringQueryOperatorInput>
@@ -1343,6 +1432,11 @@ export type IntQueryOperatorInput = {
   nin?: Maybe<Array<Maybe<Scalars['Int']>>>
 }
 
+export type JpgOptions = {
+  quality?: Maybe<Scalars['Int']>
+  progressive?: Maybe<Scalars['Boolean']>
+}
+
 export type JsonQueryOperatorInput = {
   eq?: Maybe<Scalars['JSON']>
   ne?: Maybe<Scalars['JSON']>
@@ -1456,6 +1550,7 @@ export type MarkdownRemarkEdge = {
 export type MarkdownRemarkFields = {
   __typename?: 'MarkdownRemarkFields'
   slug?: Maybe<Scalars['String']>
+  oldSlug?: Maybe<Scalars['String']>
   folder?: Maybe<Scalars['String']>
   tags?: Maybe<Array<Maybe<Scalars['String']>>>
   githubLink?: Maybe<Scalars['String']>
@@ -1466,14 +1561,77 @@ export enum MarkdownRemarkFieldsEnum {
   FrontmatterTitle = 'frontmatter___title',
   FrontmatterDate = 'frontmatter___date',
   FrontmatterDescription = 'frontmatter___description',
-  FrontmatterTags = 'frontmatter___tags',
   FrontmatterAuthor = 'frontmatter___author',
+  FrontmatterTags = 'frontmatter___tags',
   FrontmatterDraft = 'frontmatter___draft',
   FrontmatterNavId = 'frontmatter___navId',
+  FrontmatterHeroSourceInstanceName = 'frontmatter___hero___sourceInstanceName',
+  FrontmatterHeroAbsolutePath = 'frontmatter___hero___absolutePath',
+  FrontmatterHeroRelativePath = 'frontmatter___hero___relativePath',
+  FrontmatterHeroExtension = 'frontmatter___hero___extension',
+  FrontmatterHeroSize = 'frontmatter___hero___size',
+  FrontmatterHeroPrettySize = 'frontmatter___hero___prettySize',
+  FrontmatterHeroModifiedTime = 'frontmatter___hero___modifiedTime',
+  FrontmatterHeroAccessTime = 'frontmatter___hero___accessTime',
+  FrontmatterHeroChangeTime = 'frontmatter___hero___changeTime',
+  FrontmatterHeroBirthTime = 'frontmatter___hero___birthTime',
+  FrontmatterHeroRoot = 'frontmatter___hero___root',
+  FrontmatterHeroDir = 'frontmatter___hero___dir',
+  FrontmatterHeroBase = 'frontmatter___hero___base',
+  FrontmatterHeroExt = 'frontmatter___hero___ext',
+  FrontmatterHeroName = 'frontmatter___hero___name',
+  FrontmatterHeroRelativeDirectory = 'frontmatter___hero___relativeDirectory',
+  FrontmatterHeroDev = 'frontmatter___hero___dev',
+  FrontmatterHeroMode = 'frontmatter___hero___mode',
+  FrontmatterHeroNlink = 'frontmatter___hero___nlink',
+  FrontmatterHeroUid = 'frontmatter___hero___uid',
+  FrontmatterHeroGid = 'frontmatter___hero___gid',
+  FrontmatterHeroRdev = 'frontmatter___hero___rdev',
+  FrontmatterHeroIno = 'frontmatter___hero___ino',
+  FrontmatterHeroAtimeMs = 'frontmatter___hero___atimeMs',
+  FrontmatterHeroMtimeMs = 'frontmatter___hero___mtimeMs',
+  FrontmatterHeroCtimeMs = 'frontmatter___hero___ctimeMs',
+  FrontmatterHeroAtime = 'frontmatter___hero___atime',
+  FrontmatterHeroMtime = 'frontmatter___hero___mtime',
+  FrontmatterHeroCtime = 'frontmatter___hero___ctime',
+  FrontmatterHeroBirthtime = 'frontmatter___hero___birthtime',
+  FrontmatterHeroBirthtimeMs = 'frontmatter___hero___birthtimeMs',
+  FrontmatterHeroBlksize = 'frontmatter___hero___blksize',
+  FrontmatterHeroBlocks = 'frontmatter___hero___blocks',
+  FrontmatterHeroPublicUrl = 'frontmatter___hero___publicURL',
+  FrontmatterHeroChildImageSharpGatsbyImageData = 'frontmatter___hero___childImageSharp___gatsbyImageData',
+  FrontmatterHeroChildImageSharpId = 'frontmatter___hero___childImageSharp___id',
+  FrontmatterHeroChildImageSharpChildren = 'frontmatter___hero___childImageSharp___children',
+  FrontmatterHeroId = 'frontmatter___hero___id',
+  FrontmatterHeroParentId = 'frontmatter___hero___parent___id',
+  FrontmatterHeroParentChildren = 'frontmatter___hero___parent___children',
+  FrontmatterHeroChildren = 'frontmatter___hero___children',
+  FrontmatterHeroChildrenId = 'frontmatter___hero___children___id',
+  FrontmatterHeroChildrenChildren = 'frontmatter___hero___children___children',
+  FrontmatterHeroInternalContent = 'frontmatter___hero___internal___content',
+  FrontmatterHeroInternalContentDigest = 'frontmatter___hero___internal___contentDigest',
+  FrontmatterHeroInternalDescription = 'frontmatter___hero___internal___description',
+  FrontmatterHeroInternalFieldOwners = 'frontmatter___hero___internal___fieldOwners',
+  FrontmatterHeroInternalIgnoreType = 'frontmatter___hero___internal___ignoreType',
+  FrontmatterHeroInternalMediaType = 'frontmatter___hero___internal___mediaType',
+  FrontmatterHeroInternalOwner = 'frontmatter___hero___internal___owner',
+  FrontmatterHeroInternalType = 'frontmatter___hero___internal___type',
+  FrontmatterHeroChildMarkdownRemarkId = 'frontmatter___hero___childMarkdownRemark___id',
+  FrontmatterHeroChildMarkdownRemarkExcerpt = 'frontmatter___hero___childMarkdownRemark___excerpt',
+  FrontmatterHeroChildMarkdownRemarkRawMarkdownBody = 'frontmatter___hero___childMarkdownRemark___rawMarkdownBody',
+  FrontmatterHeroChildMarkdownRemarkFileAbsolutePath = 'frontmatter___hero___childMarkdownRemark___fileAbsolutePath',
+  FrontmatterHeroChildMarkdownRemarkHtml = 'frontmatter___hero___childMarkdownRemark___html',
+  FrontmatterHeroChildMarkdownRemarkHtmlAst = 'frontmatter___hero___childMarkdownRemark___htmlAst',
+  FrontmatterHeroChildMarkdownRemarkExcerptAst = 'frontmatter___hero___childMarkdownRemark___excerptAst',
+  FrontmatterHeroChildMarkdownRemarkHeadings = 'frontmatter___hero___childMarkdownRemark___headings',
+  FrontmatterHeroChildMarkdownRemarkTimeToRead = 'frontmatter___hero___childMarkdownRemark___timeToRead',
+  FrontmatterHeroChildMarkdownRemarkTableOfContents = 'frontmatter___hero___childMarkdownRemark___tableOfContents',
+  FrontmatterHeroChildMarkdownRemarkChildren = 'frontmatter___hero___childMarkdownRemark___children',
   Excerpt = 'excerpt',
   RawMarkdownBody = 'rawMarkdownBody',
   FileAbsolutePath = 'fileAbsolutePath',
   FieldsSlug = 'fields___slug',
+  FieldsOldSlug = 'fields___oldSlug',
   FieldsFolder = 'fields___folder',
   FieldsTags = 'fields___tags',
   FieldsGithubLink = 'fields___githubLink',
@@ -1578,6 +1736,7 @@ export enum MarkdownRemarkFieldsEnum {
 
 export type MarkdownRemarkFieldsFilterInput = {
   slug?: Maybe<StringQueryOperatorInput>
+  oldSlug?: Maybe<StringQueryOperatorInput>
   folder?: Maybe<StringQueryOperatorInput>
   tags?: Maybe<StringQueryOperatorInput>
   githubLink?: Maybe<StringQueryOperatorInput>
@@ -1607,10 +1766,11 @@ export type MarkdownRemarkFrontmatter = {
   title?: Maybe<Scalars['String']>
   date?: Maybe<Scalars['Date']>
   description?: Maybe<Scalars['String']>
-  tags?: Maybe<Scalars['String']>
   author?: Maybe<Scalars['String']>
+  tags?: Maybe<Scalars['String']>
   draft?: Maybe<Scalars['Boolean']>
   navId?: Maybe<Scalars['String']>
+  hero?: Maybe<File>
 }
 
 export type MarkdownRemarkFrontmatterDateArgs = {
@@ -1624,10 +1784,11 @@ export type MarkdownRemarkFrontmatterFilterInput = {
   title?: Maybe<StringQueryOperatorInput>
   date?: Maybe<DateQueryOperatorInput>
   description?: Maybe<StringQueryOperatorInput>
-  tags?: Maybe<StringQueryOperatorInput>
   author?: Maybe<StringQueryOperatorInput>
+  tags?: Maybe<StringQueryOperatorInput>
   draft?: Maybe<BooleanQueryOperatorInput>
   navId?: Maybe<StringQueryOperatorInput>
+  hero?: Maybe<FileFilterInput>
 }
 
 export type MarkdownRemarkGroupConnection = {
@@ -1686,6 +1847,11 @@ export type PageInfo = {
   pageCount: Scalars['Int']
   perPage?: Maybe<Scalars['Int']>
   totalCount: Scalars['Int']
+}
+
+export type PngOptions = {
+  quality?: Maybe<Scalars['Int']>
+  compressionSpeed?: Maybe<Scalars['Int']>
 }
 
 export type Potrace = {
@@ -1875,6 +2041,7 @@ export type QueryImageSharpArgs = {
   resolutions?: Maybe<ImageSharpResolutionsFilterInput>
   fluid?: Maybe<ImageSharpFluidFilterInput>
   sizes?: Maybe<ImageSharpSizesFilterInput>
+  gatsbyImageData?: Maybe<JsonQueryOperatorInput>
   original?: Maybe<ImageSharpOriginalFilterInput>
   resize?: Maybe<ImageSharpResizeFilterInput>
   id?: Maybe<StringQueryOperatorInput>
@@ -2345,12 +2512,13 @@ export type SitePageConnectionGroupArgs = {
 
 export type SitePageContext = {
   __typename?: 'SitePageContext'
-  tags?: Maybe<Array<Maybe<Scalars['String']>>>
-  slug?: Maybe<Scalars['String']>
-  limit?: Maybe<Scalars['Int']>
-  skip?: Maybe<Scalars['Int']>
-  numPages?: Maybe<Scalars['Int']>
   currentPage?: Maybe<Scalars['Int']>
+  limit?: Maybe<Scalars['Int']>
+  numPages?: Maybe<Scalars['Int']>
+  skip?: Maybe<Scalars['Int']>
+  slug?: Maybe<Scalars['String']>
+  tags?: Maybe<Array<Maybe<Scalars['String']>>>
+  total?: Maybe<Scalars['Int']>
   next?: Maybe<SitePageContextNext>
   previous?: Maybe<SitePageContextPrevious>
   related?: Maybe<Array<Maybe<SitePageContextRelated>>>
@@ -2359,12 +2527,13 @@ export type SitePageContext = {
 }
 
 export type SitePageContextFilterInput = {
-  tags?: Maybe<StringQueryOperatorInput>
-  slug?: Maybe<StringQueryOperatorInput>
-  limit?: Maybe<IntQueryOperatorInput>
-  skip?: Maybe<IntQueryOperatorInput>
-  numPages?: Maybe<IntQueryOperatorInput>
   currentPage?: Maybe<IntQueryOperatorInput>
+  limit?: Maybe<IntQueryOperatorInput>
+  numPages?: Maybe<IntQueryOperatorInput>
+  skip?: Maybe<IntQueryOperatorInput>
+  slug?: Maybe<StringQueryOperatorInput>
+  tags?: Maybe<StringQueryOperatorInput>
+  total?: Maybe<IntQueryOperatorInput>
   next?: Maybe<SitePageContextNextFilterInput>
   previous?: Maybe<SitePageContextPreviousFilterInput>
   related?: Maybe<SitePageContextRelatedFilterListInput>
@@ -2380,11 +2549,13 @@ export type SitePageContextNext = {
 export type SitePageContextNextFields = {
   __typename?: 'SitePageContextNextFields'
   slug?: Maybe<Scalars['String']>
+  oldSlug?: Maybe<Scalars['String']>
   tags?: Maybe<Array<Maybe<Scalars['String']>>>
 }
 
 export type SitePageContextNextFieldsFilterInput = {
   slug?: Maybe<StringQueryOperatorInput>
+  oldSlug?: Maybe<StringQueryOperatorInput>
   tags?: Maybe<StringQueryOperatorInput>
 }
 
@@ -2400,11 +2571,13 @@ export type SitePageContextPrevious = {
 export type SitePageContextPreviousFields = {
   __typename?: 'SitePageContextPreviousFields'
   slug?: Maybe<Scalars['String']>
+  oldSlug?: Maybe<Scalars['String']>
   tags?: Maybe<Array<Maybe<Scalars['String']>>>
 }
 
 export type SitePageContextPreviousFieldsFilterInput = {
   slug?: Maybe<StringQueryOperatorInput>
+  oldSlug?: Maybe<StringQueryOperatorInput>
   tags?: Maybe<StringQueryOperatorInput>
 }
 
@@ -2527,21 +2700,25 @@ export enum SitePageFieldsEnum {
   InternalOwner = 'internal___owner',
   InternalType = 'internal___type',
   IsCreatedByStatefulCreatePages = 'isCreatedByStatefulCreatePages',
-  ContextTags = 'context___tags',
-  ContextSlug = 'context___slug',
-  ContextLimit = 'context___limit',
-  ContextSkip = 'context___skip',
-  ContextNumPages = 'context___numPages',
   ContextCurrentPage = 'context___currentPage',
+  ContextLimit = 'context___limit',
+  ContextNumPages = 'context___numPages',
+  ContextSkip = 'context___skip',
+  ContextSlug = 'context___slug',
+  ContextTags = 'context___tags',
+  ContextTotal = 'context___total',
   ContextNextFieldsSlug = 'context___next___fields___slug',
+  ContextNextFieldsOldSlug = 'context___next___fields___oldSlug',
   ContextNextFieldsTags = 'context___next___fields___tags',
   ContextPreviousFieldsSlug = 'context___previous___fields___slug',
+  ContextPreviousFieldsOldSlug = 'context___previous___fields___oldSlug',
   ContextPreviousFieldsTags = 'context___previous___fields___tags',
   ContextRelated = 'context___related',
   ContextRelatedTitle = 'context___related___title',
   ContextRelatedHref = 'context___related___href',
   ContextTag = 'context___tag',
   ContextAuthor = 'context___author',
+  PluginCreatorId = 'pluginCreator___id',
   PluginCreatorParentId = 'pluginCreator___parent___id',
   PluginCreatorParentParentId = 'pluginCreator___parent___parent___id',
   PluginCreatorParentParentChildren = 'pluginCreator___parent___parent___children',
@@ -2587,16 +2764,47 @@ export enum SitePageFieldsEnum {
   PluginCreatorPluginOptionsPluginsId = 'pluginCreator___pluginOptions___plugins___id',
   PluginCreatorPluginOptionsPluginsName = 'pluginCreator___pluginOptions___plugins___name',
   PluginCreatorPluginOptionsPluginsVersion = 'pluginCreator___pluginOptions___plugins___version',
+  PluginCreatorPluginOptionsPluginsNodeApIs = 'pluginCreator___pluginOptions___plugins___nodeAPIs',
   PluginCreatorPluginOptionsPluginsBrowserApIs = 'pluginCreator___pluginOptions___plugins___browserAPIs',
   PluginCreatorPluginOptionsPluginsSsrApIs = 'pluginCreator___pluginOptions___plugins___ssrAPIs',
   PluginCreatorPluginOptionsPluginsPluginFilepath = 'pluginCreator___pluginOptions___plugins___pluginFilepath',
   PluginCreatorPluginOptionsPath = 'pluginCreator___pluginOptions___path',
   PluginCreatorPluginOptionsName = 'pluginCreator___pluginOptions___name',
+  PluginCreatorPluginOptionsGoogleFamilies = 'pluginCreator___pluginOptions___google___families',
+  PluginCreatorPluginOptionsIsTsx = 'pluginCreator___pluginOptions___isTSX',
+  PluginCreatorPluginOptionsJsxPragma = 'pluginCreator___pluginOptions___jsxPragma',
+  PluginCreatorPluginOptionsAllExtensions = 'pluginCreator___pluginOptions___allExtensions',
+  PluginCreatorPluginOptionsSourceMap = 'pluginCreator___pluginOptions___sourceMap',
+  PluginCreatorPluginOptionsAutoLabel = 'pluginCreator___pluginOptions___autoLabel',
+  PluginCreatorPluginOptionsLabelFormat = 'pluginCreator___pluginOptions___labelFormat',
+  PluginCreatorPluginOptionsCssPropOptimization = 'pluginCreator___pluginOptions___cssPropOptimization',
   PluginCreatorPluginOptionsTrackingId = 'pluginCreator___pluginOptions___trackingId',
   PluginCreatorPluginOptionsAnonymize = 'pluginCreator___pluginOptions___anonymize',
   PluginCreatorPluginOptionsRespectDnt = 'pluginCreator___pluginOptions___respectDNT',
+  PluginCreatorPluginOptionsHead = 'pluginCreator___pluginOptions___head',
+  PluginCreatorPluginOptionsExclude = 'pluginCreator___pluginOptions___exclude',
+  PluginCreatorPluginOptionsPageTransitionDelay = 'pluginCreator___pluginOptions___pageTransitionDelay',
+  PluginCreatorPluginOptionsBase64Width = 'pluginCreator___pluginOptions___base64Width',
+  PluginCreatorPluginOptionsStripMetadata = 'pluginCreator___pluginOptions___stripMetadata',
+  PluginCreatorPluginOptionsDefaultQuality = 'pluginCreator___pluginOptions___defaultQuality',
+  PluginCreatorPluginOptionsFailOnError = 'pluginCreator___pluginOptions___failOnError',
+  PluginCreatorPluginOptionsReplacementsAndroidVersion = 'pluginCreator___pluginOptions___replacements___ANDROID_VERSION',
+  PluginCreatorPluginOptionsReplacementsAndroidTrayVersion = 'pluginCreator___pluginOptions___replacements___ANDROID_TRAY_VERSION',
   PluginCreatorPluginOptionsWrapperStyle = 'pluginCreator___pluginOptions___wrapperStyle',
   PluginCreatorPluginOptionsMaxWidth = 'pluginCreator___pluginOptions___maxWidth',
+  PluginCreatorPluginOptionsBackgroundColor = 'pluginCreator___pluginOptions___backgroundColor',
+  PluginCreatorPluginOptionsLinkImagesToOriginal = 'pluginCreator___pluginOptions___linkImagesToOriginal',
+  PluginCreatorPluginOptionsShowCaptions = 'pluginCreator___pluginOptions___showCaptions',
+  PluginCreatorPluginOptionsMarkdownCaptions = 'pluginCreator___pluginOptions___markdownCaptions',
+  PluginCreatorPluginOptionsSizeByPixelDensity = 'pluginCreator___pluginOptions___sizeByPixelDensity',
+  PluginCreatorPluginOptionsQuality = 'pluginCreator___pluginOptions___quality',
+  PluginCreatorPluginOptionsWithWebp = 'pluginCreator___pluginOptions___withWebp',
+  PluginCreatorPluginOptionsTracedSvg = 'pluginCreator___pluginOptions___tracedSVG',
+  PluginCreatorPluginOptionsLoading = 'pluginCreator___pluginOptions___loading',
+  PluginCreatorPluginOptionsDisableBgImageOnAlpha = 'pluginCreator___pluginOptions___disableBgImageOnAlpha',
+  PluginCreatorPluginOptionsDisableBgImage = 'pluginCreator___pluginOptions___disableBgImage',
+  PluginCreatorPluginOptionsOffsetY = 'pluginCreator___pluginOptions___offsetY',
+  PluginCreatorPluginOptionsClassName = 'pluginCreator___pluginOptions___className',
   PluginCreatorPluginOptionsNoInlineHighlight = 'pluginCreator___pluginOptions___noInlineHighlight',
   PluginCreatorPluginOptionsQuery = 'pluginCreator___pluginOptions___query',
   PluginCreatorPluginOptionsFeeds = 'pluginCreator___pluginOptions___feeds',
@@ -2604,24 +2812,24 @@ export enum SitePageFieldsEnum {
   PluginCreatorPluginOptionsFeedsOutput = 'pluginCreator___pluginOptions___feeds___output',
   PluginCreatorPluginOptionsFeedsTitle = 'pluginCreator___pluginOptions___feeds___title',
   PluginCreatorPluginOptionsPrefixes = 'pluginCreator___pluginOptions___prefixes',
-  PluginCreatorPluginOptionsOutput = 'pluginCreator___pluginOptions___output',
-  PluginCreatorPluginOptionsExclude = 'pluginCreator___pluginOptions___exclude',
   PluginCreatorPluginOptionsSiteUrl = 'pluginCreator___pluginOptions___siteUrl',
   PluginCreatorPluginOptionsStartUrl = 'pluginCreator___pluginOptions___start_url',
-  PluginCreatorPluginOptionsBackgroundColor = 'pluginCreator___pluginOptions___background_color',
   PluginCreatorPluginOptionsThemeColor = 'pluginCreator___pluginOptions___theme_color',
   PluginCreatorPluginOptionsDisplay = 'pluginCreator___pluginOptions___display',
   PluginCreatorPluginOptionsIcon = 'pluginCreator___pluginOptions___icon',
-  PluginCreatorPluginOptionsCacheBustingMode = 'pluginCreator___pluginOptions___cache_busting_mode',
-  PluginCreatorPluginOptionsIncludeFavicon = 'pluginCreator___pluginOptions___include_favicon',
   PluginCreatorPluginOptionsLegacy = 'pluginCreator___pluginOptions___legacy',
   PluginCreatorPluginOptionsThemeColorInHead = 'pluginCreator___pluginOptions___theme_color_in_head',
+  PluginCreatorPluginOptionsCacheBustingMode = 'pluginCreator___pluginOptions___cache_busting_mode',
+  PluginCreatorPluginOptionsCrossOrigin = 'pluginCreator___pluginOptions___crossOrigin',
+  PluginCreatorPluginOptionsIncludeFavicon = 'pluginCreator___pluginOptions___include_favicon',
   PluginCreatorPluginOptionsCacheDigest = 'pluginCreator___pluginOptions___cacheDigest',
   PluginCreatorPluginOptionsWorkboxConfigRuntimeCaching = 'pluginCreator___pluginOptions___workboxConfig___runtimeCaching',
-  PluginCreatorPluginOptionsPathToConfigModule = 'pluginCreator___pluginOptions___pathToConfigModule',
+  PluginCreatorPluginOptionsOutput = 'pluginCreator___pluginOptions___output',
+  PluginCreatorPluginOptionsCreateLinkInHead = 'pluginCreator___pluginOptions___createLinkInHead',
   PluginCreatorPluginOptionsBucketName = 'pluginCreator___pluginOptions___bucketName',
   PluginCreatorPluginOptionsProtocol = 'pluginCreator___pluginOptions___protocol',
   PluginCreatorPluginOptionsHostname = 'pluginCreator___pluginOptions___hostname',
+  PluginCreatorPluginOptionsGenerateMatchPathRewrites = 'pluginCreator___pluginOptions___generateMatchPathRewrites',
   PluginCreatorPluginOptionsPathCheck = 'pluginCreator___pluginOptions___pathCheck',
   PluginCreatorNodeApIs = 'pluginCreator___nodeAPIs',
   PluginCreatorBrowserApIs = 'pluginCreator___browserAPIs',
@@ -2642,7 +2850,6 @@ export enum SitePageFieldsEnum {
   PluginCreatorPackageJsonPeerDependenciesName = 'pluginCreator___packageJson___peerDependencies___name',
   PluginCreatorPackageJsonPeerDependenciesVersion = 'pluginCreator___packageJson___peerDependencies___version',
   PluginCreatorPackageJsonKeywords = 'pluginCreator___packageJson___keywords',
-  PluginCreatorId = 'pluginCreatorId',
   ComponentPath = 'componentPath'
 }
 
@@ -2820,18 +3027,60 @@ export enum SitePluginFieldsEnum {
   PluginOptionsPluginsPluginOptionsWrapperStyle = 'pluginOptions___plugins___pluginOptions___wrapperStyle',
   PluginOptionsPluginsPluginOptionsMaxWidth = 'pluginOptions___plugins___pluginOptions___maxWidth',
   PluginOptionsPluginsPluginOptionsBackgroundColor = 'pluginOptions___plugins___pluginOptions___backgroundColor',
+  PluginOptionsPluginsPluginOptionsLinkImagesToOriginal = 'pluginOptions___plugins___pluginOptions___linkImagesToOriginal',
+  PluginOptionsPluginsPluginOptionsShowCaptions = 'pluginOptions___plugins___pluginOptions___showCaptions',
+  PluginOptionsPluginsPluginOptionsMarkdownCaptions = 'pluginOptions___plugins___pluginOptions___markdownCaptions',
+  PluginOptionsPluginsPluginOptionsSizeByPixelDensity = 'pluginOptions___plugins___pluginOptions___sizeByPixelDensity',
+  PluginOptionsPluginsPluginOptionsQuality = 'pluginOptions___plugins___pluginOptions___quality',
+  PluginOptionsPluginsPluginOptionsWithWebp = 'pluginOptions___plugins___pluginOptions___withWebp',
+  PluginOptionsPluginsPluginOptionsTracedSvg = 'pluginOptions___plugins___pluginOptions___tracedSVG',
+  PluginOptionsPluginsPluginOptionsLoading = 'pluginOptions___plugins___pluginOptions___loading',
+  PluginOptionsPluginsPluginOptionsDisableBgImageOnAlpha = 'pluginOptions___plugins___pluginOptions___disableBgImageOnAlpha',
+  PluginOptionsPluginsPluginOptionsDisableBgImage = 'pluginOptions___plugins___pluginOptions___disableBgImage',
+  PluginOptionsPluginsPluginOptionsOffsetY = 'pluginOptions___plugins___pluginOptions___offsetY',
+  PluginOptionsPluginsPluginOptionsClassName = 'pluginOptions___plugins___pluginOptions___className',
   PluginOptionsPluginsPluginOptionsNoInlineHighlight = 'pluginOptions___plugins___pluginOptions___noInlineHighlight',
+  PluginOptionsPluginsNodeApIs = 'pluginOptions___plugins___nodeAPIs',
   PluginOptionsPluginsBrowserApIs = 'pluginOptions___plugins___browserAPIs',
   PluginOptionsPluginsSsrApIs = 'pluginOptions___plugins___ssrAPIs',
   PluginOptionsPluginsPluginFilepath = 'pluginOptions___plugins___pluginFilepath',
   PluginOptionsPath = 'pluginOptions___path',
   PluginOptionsName = 'pluginOptions___name',
+  PluginOptionsGoogleFamilies = 'pluginOptions___google___families',
+  PluginOptionsIsTsx = 'pluginOptions___isTSX',
+  PluginOptionsJsxPragma = 'pluginOptions___jsxPragma',
+  PluginOptionsAllExtensions = 'pluginOptions___allExtensions',
+  PluginOptionsSourceMap = 'pluginOptions___sourceMap',
+  PluginOptionsAutoLabel = 'pluginOptions___autoLabel',
+  PluginOptionsLabelFormat = 'pluginOptions___labelFormat',
+  PluginOptionsCssPropOptimization = 'pluginOptions___cssPropOptimization',
   PluginOptionsTrackingId = 'pluginOptions___trackingId',
   PluginOptionsAnonymize = 'pluginOptions___anonymize',
   PluginOptionsRespectDnt = 'pluginOptions___respectDNT',
+  PluginOptionsHead = 'pluginOptions___head',
+  PluginOptionsExclude = 'pluginOptions___exclude',
+  PluginOptionsPageTransitionDelay = 'pluginOptions___pageTransitionDelay',
+  PluginOptionsBase64Width = 'pluginOptions___base64Width',
+  PluginOptionsStripMetadata = 'pluginOptions___stripMetadata',
+  PluginOptionsDefaultQuality = 'pluginOptions___defaultQuality',
+  PluginOptionsFailOnError = 'pluginOptions___failOnError',
+  PluginOptionsReplacementsAndroidVersion = 'pluginOptions___replacements___ANDROID_VERSION',
+  PluginOptionsReplacementsAndroidTrayVersion = 'pluginOptions___replacements___ANDROID_TRAY_VERSION',
   PluginOptionsWrapperStyle = 'pluginOptions___wrapperStyle',
   PluginOptionsMaxWidth = 'pluginOptions___maxWidth',
   PluginOptionsBackgroundColor = 'pluginOptions___backgroundColor',
+  PluginOptionsLinkImagesToOriginal = 'pluginOptions___linkImagesToOriginal',
+  PluginOptionsShowCaptions = 'pluginOptions___showCaptions',
+  PluginOptionsMarkdownCaptions = 'pluginOptions___markdownCaptions',
+  PluginOptionsSizeByPixelDensity = 'pluginOptions___sizeByPixelDensity',
+  PluginOptionsQuality = 'pluginOptions___quality',
+  PluginOptionsWithWebp = 'pluginOptions___withWebp',
+  PluginOptionsTracedSvg = 'pluginOptions___tracedSVG',
+  PluginOptionsLoading = 'pluginOptions___loading',
+  PluginOptionsDisableBgImageOnAlpha = 'pluginOptions___disableBgImageOnAlpha',
+  PluginOptionsDisableBgImage = 'pluginOptions___disableBgImage',
+  PluginOptionsOffsetY = 'pluginOptions___offsetY',
+  PluginOptionsClassName = 'pluginOptions___className',
   PluginOptionsNoInlineHighlight = 'pluginOptions___noInlineHighlight',
   PluginOptionsQuery = 'pluginOptions___query',
   PluginOptionsFeeds = 'pluginOptions___feeds',
@@ -2839,24 +3088,25 @@ export enum SitePluginFieldsEnum {
   PluginOptionsFeedsOutput = 'pluginOptions___feeds___output',
   PluginOptionsFeedsTitle = 'pluginOptions___feeds___title',
   PluginOptionsPrefixes = 'pluginOptions___prefixes',
-  PluginOptionsOutput = 'pluginOptions___output',
-  PluginOptionsExclude = 'pluginOptions___exclude',
   PluginOptionsSiteUrl = 'pluginOptions___siteUrl',
   PluginOptionsStartUrl = 'pluginOptions___start_url',
   PluginOptionsThemeColor = 'pluginOptions___theme_color',
   PluginOptionsDisplay = 'pluginOptions___display',
   PluginOptionsIcon = 'pluginOptions___icon',
-  PluginOptionsCacheBustingMode = 'pluginOptions___cache_busting_mode',
-  PluginOptionsIncludeFavicon = 'pluginOptions___include_favicon',
   PluginOptionsLegacy = 'pluginOptions___legacy',
   PluginOptionsThemeColorInHead = 'pluginOptions___theme_color_in_head',
+  PluginOptionsCacheBustingMode = 'pluginOptions___cache_busting_mode',
+  PluginOptionsCrossOrigin = 'pluginOptions___crossOrigin',
+  PluginOptionsIncludeFavicon = 'pluginOptions___include_favicon',
   PluginOptionsCacheDigest = 'pluginOptions___cacheDigest',
   PluginOptionsWorkboxConfigRuntimeCaching = 'pluginOptions___workboxConfig___runtimeCaching',
   PluginOptionsWorkboxConfigRuntimeCachingHandler = 'pluginOptions___workboxConfig___runtimeCaching___handler',
-  PluginOptionsPathToConfigModule = 'pluginOptions___pathToConfigModule',
+  PluginOptionsOutput = 'pluginOptions___output',
+  PluginOptionsCreateLinkInHead = 'pluginOptions___createLinkInHead',
   PluginOptionsBucketName = 'pluginOptions___bucketName',
   PluginOptionsProtocol = 'pluginOptions___protocol',
   PluginOptionsHostname = 'pluginOptions___hostname',
+  PluginOptionsGenerateMatchPathRewrites = 'pluginOptions___generateMatchPathRewrites',
   PluginOptionsPathCheck = 'pluginOptions___pathCheck',
   NodeApIs = 'nodeAPIs',
   BrowserApIs = 'browserAPIs',
@@ -2980,34 +3230,63 @@ export type SitePluginPluginOptions = {
   plugins?: Maybe<Array<Maybe<SitePluginPluginOptionsPlugins>>>
   path?: Maybe<Scalars['String']>
   name?: Maybe<Scalars['String']>
+  google?: Maybe<SitePluginPluginOptionsGoogle>
+  isTSX?: Maybe<Scalars['Boolean']>
+  jsxPragma?: Maybe<Scalars['String']>
+  allExtensions?: Maybe<Scalars['Boolean']>
+  sourceMap?: Maybe<Scalars['Boolean']>
+  autoLabel?: Maybe<Scalars['String']>
+  labelFormat?: Maybe<Scalars['String']>
+  cssPropOptimization?: Maybe<Scalars['Boolean']>
   trackingId?: Maybe<Scalars['String']>
   anonymize?: Maybe<Scalars['Boolean']>
   respectDNT?: Maybe<Scalars['Boolean']>
+  head?: Maybe<Scalars['Boolean']>
+  exclude?: Maybe<Array<Maybe<Scalars['String']>>>
+  pageTransitionDelay?: Maybe<Scalars['Int']>
+  base64Width?: Maybe<Scalars['Int']>
+  stripMetadata?: Maybe<Scalars['Boolean']>
+  defaultQuality?: Maybe<Scalars['Int']>
+  failOnError?: Maybe<Scalars['Boolean']>
+  replacements?: Maybe<SitePluginPluginOptionsReplacements>
   wrapperStyle?: Maybe<Scalars['String']>
   maxWidth?: Maybe<Scalars['Int']>
   backgroundColor?: Maybe<Scalars['String']>
+  linkImagesToOriginal?: Maybe<Scalars['Boolean']>
+  showCaptions?: Maybe<Scalars['Boolean']>
+  markdownCaptions?: Maybe<Scalars['Boolean']>
+  sizeByPixelDensity?: Maybe<Scalars['Boolean']>
+  quality?: Maybe<Scalars['Int']>
+  withWebp?: Maybe<Scalars['Boolean']>
+  tracedSVG?: Maybe<Scalars['Boolean']>
+  loading?: Maybe<Scalars['String']>
+  disableBgImageOnAlpha?: Maybe<Scalars['Boolean']>
+  disableBgImage?: Maybe<Scalars['Boolean']>
+  offsetY?: Maybe<Scalars['Int']>
+  className?: Maybe<Scalars['String']>
   noInlineHighlight?: Maybe<Scalars['Boolean']>
   query?: Maybe<Scalars['String']>
   feeds?: Maybe<Array<Maybe<SitePluginPluginOptionsFeeds>>>
   prefixes?: Maybe<Array<Maybe<Scalars['String']>>>
-  output?: Maybe<Scalars['String']>
-  exclude?: Maybe<Array<Maybe<Scalars['String']>>>
   siteUrl?: Maybe<Scalars['String']>
   start_url?: Maybe<Scalars['String']>
   background_color?: Maybe<Scalars['String']>
   theme_color?: Maybe<Scalars['String']>
   display?: Maybe<Scalars['String']>
   icon?: Maybe<Scalars['String']>
-  cache_busting_mode?: Maybe<Scalars['String']>
-  include_favicon?: Maybe<Scalars['Boolean']>
   legacy?: Maybe<Scalars['Boolean']>
   theme_color_in_head?: Maybe<Scalars['Boolean']>
+  cache_busting_mode?: Maybe<Scalars['String']>
+  crossOrigin?: Maybe<Scalars['String']>
+  include_favicon?: Maybe<Scalars['Boolean']>
   cacheDigest?: Maybe<Scalars['String']>
   workboxConfig?: Maybe<SitePluginPluginOptionsWorkboxConfig>
-  pathToConfigModule?: Maybe<Scalars['String']>
+  output?: Maybe<Scalars['String']>
+  createLinkInHead?: Maybe<Scalars['Boolean']>
   bucketName?: Maybe<Scalars['String']>
   protocol?: Maybe<Scalars['String']>
   hostname?: Maybe<Scalars['String']>
+  generateMatchPathRewrites?: Maybe<Scalars['Boolean']>
   pathCheck?: Maybe<Scalars['Boolean']>
 }
 
@@ -3032,35 +3311,73 @@ export type SitePluginPluginOptionsFilterInput = {
   plugins?: Maybe<SitePluginPluginOptionsPluginsFilterListInput>
   path?: Maybe<StringQueryOperatorInput>
   name?: Maybe<StringQueryOperatorInput>
+  google?: Maybe<SitePluginPluginOptionsGoogleFilterInput>
+  isTSX?: Maybe<BooleanQueryOperatorInput>
+  jsxPragma?: Maybe<StringQueryOperatorInput>
+  allExtensions?: Maybe<BooleanQueryOperatorInput>
+  sourceMap?: Maybe<BooleanQueryOperatorInput>
+  autoLabel?: Maybe<StringQueryOperatorInput>
+  labelFormat?: Maybe<StringQueryOperatorInput>
+  cssPropOptimization?: Maybe<BooleanQueryOperatorInput>
   trackingId?: Maybe<StringQueryOperatorInput>
   anonymize?: Maybe<BooleanQueryOperatorInput>
   respectDNT?: Maybe<BooleanQueryOperatorInput>
+  head?: Maybe<BooleanQueryOperatorInput>
+  exclude?: Maybe<StringQueryOperatorInput>
+  pageTransitionDelay?: Maybe<IntQueryOperatorInput>
+  base64Width?: Maybe<IntQueryOperatorInput>
+  stripMetadata?: Maybe<BooleanQueryOperatorInput>
+  defaultQuality?: Maybe<IntQueryOperatorInput>
+  failOnError?: Maybe<BooleanQueryOperatorInput>
+  replacements?: Maybe<SitePluginPluginOptionsReplacementsFilterInput>
   wrapperStyle?: Maybe<StringQueryOperatorInput>
   maxWidth?: Maybe<IntQueryOperatorInput>
   backgroundColor?: Maybe<StringQueryOperatorInput>
+  linkImagesToOriginal?: Maybe<BooleanQueryOperatorInput>
+  showCaptions?: Maybe<BooleanQueryOperatorInput>
+  markdownCaptions?: Maybe<BooleanQueryOperatorInput>
+  sizeByPixelDensity?: Maybe<BooleanQueryOperatorInput>
+  quality?: Maybe<IntQueryOperatorInput>
+  withWebp?: Maybe<BooleanQueryOperatorInput>
+  tracedSVG?: Maybe<BooleanQueryOperatorInput>
+  loading?: Maybe<StringQueryOperatorInput>
+  disableBgImageOnAlpha?: Maybe<BooleanQueryOperatorInput>
+  disableBgImage?: Maybe<BooleanQueryOperatorInput>
+  offsetY?: Maybe<IntQueryOperatorInput>
+  className?: Maybe<StringQueryOperatorInput>
   noInlineHighlight?: Maybe<BooleanQueryOperatorInput>
   query?: Maybe<StringQueryOperatorInput>
   feeds?: Maybe<SitePluginPluginOptionsFeedsFilterListInput>
   prefixes?: Maybe<StringQueryOperatorInput>
-  output?: Maybe<StringQueryOperatorInput>
-  exclude?: Maybe<StringQueryOperatorInput>
   siteUrl?: Maybe<StringQueryOperatorInput>
   start_url?: Maybe<StringQueryOperatorInput>
   background_color?: Maybe<StringQueryOperatorInput>
   theme_color?: Maybe<StringQueryOperatorInput>
   display?: Maybe<StringQueryOperatorInput>
   icon?: Maybe<StringQueryOperatorInput>
-  cache_busting_mode?: Maybe<StringQueryOperatorInput>
-  include_favicon?: Maybe<BooleanQueryOperatorInput>
   legacy?: Maybe<BooleanQueryOperatorInput>
   theme_color_in_head?: Maybe<BooleanQueryOperatorInput>
+  cache_busting_mode?: Maybe<StringQueryOperatorInput>
+  crossOrigin?: Maybe<StringQueryOperatorInput>
+  include_favicon?: Maybe<BooleanQueryOperatorInput>
   cacheDigest?: Maybe<StringQueryOperatorInput>
   workboxConfig?: Maybe<SitePluginPluginOptionsWorkboxConfigFilterInput>
-  pathToConfigModule?: Maybe<StringQueryOperatorInput>
+  output?: Maybe<StringQueryOperatorInput>
+  createLinkInHead?: Maybe<BooleanQueryOperatorInput>
   bucketName?: Maybe<StringQueryOperatorInput>
   protocol?: Maybe<StringQueryOperatorInput>
   hostname?: Maybe<StringQueryOperatorInput>
+  generateMatchPathRewrites?: Maybe<BooleanQueryOperatorInput>
   pathCheck?: Maybe<BooleanQueryOperatorInput>
+}
+
+export type SitePluginPluginOptionsGoogle = {
+  __typename?: 'SitePluginPluginOptionsGoogle'
+  families?: Maybe<Array<Maybe<Scalars['String']>>>
+}
+
+export type SitePluginPluginOptionsGoogleFilterInput = {
+  families?: Maybe<StringQueryOperatorInput>
 }
 
 export type SitePluginPluginOptionsPlugins = {
@@ -3070,6 +3387,7 @@ export type SitePluginPluginOptionsPlugins = {
   name?: Maybe<Scalars['String']>
   version?: Maybe<Scalars['String']>
   pluginOptions?: Maybe<SitePluginPluginOptionsPluginsPluginOptions>
+  nodeAPIs?: Maybe<Array<Maybe<Scalars['String']>>>
   browserAPIs?: Maybe<Array<Maybe<Scalars['String']>>>
   ssrAPIs?: Maybe<Array<Maybe<Scalars['String']>>>
   pluginFilepath?: Maybe<Scalars['String']>
@@ -3081,6 +3399,7 @@ export type SitePluginPluginOptionsPluginsFilterInput = {
   name?: Maybe<StringQueryOperatorInput>
   version?: Maybe<StringQueryOperatorInput>
   pluginOptions?: Maybe<SitePluginPluginOptionsPluginsPluginOptionsFilterInput>
+  nodeAPIs?: Maybe<StringQueryOperatorInput>
   browserAPIs?: Maybe<StringQueryOperatorInput>
   ssrAPIs?: Maybe<StringQueryOperatorInput>
   pluginFilepath?: Maybe<StringQueryOperatorInput>
@@ -3092,17 +3411,65 @@ export type SitePluginPluginOptionsPluginsFilterListInput = {
 
 export type SitePluginPluginOptionsPluginsPluginOptions = {
   __typename?: 'SitePluginPluginOptionsPluginsPluginOptions'
+  replacements?: Maybe<SitePluginPluginOptionsPluginsPluginOptionsReplacements>
   wrapperStyle?: Maybe<Scalars['String']>
   maxWidth?: Maybe<Scalars['Int']>
   backgroundColor?: Maybe<Scalars['String']>
+  linkImagesToOriginal?: Maybe<Scalars['Boolean']>
+  showCaptions?: Maybe<Scalars['Boolean']>
+  markdownCaptions?: Maybe<Scalars['Boolean']>
+  sizeByPixelDensity?: Maybe<Scalars['Boolean']>
+  quality?: Maybe<Scalars['Int']>
+  withWebp?: Maybe<Scalars['Boolean']>
+  tracedSVG?: Maybe<Scalars['Boolean']>
+  loading?: Maybe<Scalars['String']>
+  disableBgImageOnAlpha?: Maybe<Scalars['Boolean']>
+  disableBgImage?: Maybe<Scalars['Boolean']>
+  offsetY?: Maybe<Scalars['Int']>
+  className?: Maybe<Scalars['String']>
   noInlineHighlight?: Maybe<Scalars['Boolean']>
 }
 
 export type SitePluginPluginOptionsPluginsPluginOptionsFilterInput = {
+  replacements?: Maybe<SitePluginPluginOptionsPluginsPluginOptionsReplacementsFilterInput>
   wrapperStyle?: Maybe<StringQueryOperatorInput>
   maxWidth?: Maybe<IntQueryOperatorInput>
   backgroundColor?: Maybe<StringQueryOperatorInput>
+  linkImagesToOriginal?: Maybe<BooleanQueryOperatorInput>
+  showCaptions?: Maybe<BooleanQueryOperatorInput>
+  markdownCaptions?: Maybe<BooleanQueryOperatorInput>
+  sizeByPixelDensity?: Maybe<BooleanQueryOperatorInput>
+  quality?: Maybe<IntQueryOperatorInput>
+  withWebp?: Maybe<BooleanQueryOperatorInput>
+  tracedSVG?: Maybe<BooleanQueryOperatorInput>
+  loading?: Maybe<StringQueryOperatorInput>
+  disableBgImageOnAlpha?: Maybe<BooleanQueryOperatorInput>
+  disableBgImage?: Maybe<BooleanQueryOperatorInput>
+  offsetY?: Maybe<IntQueryOperatorInput>
+  className?: Maybe<StringQueryOperatorInput>
   noInlineHighlight?: Maybe<BooleanQueryOperatorInput>
+}
+
+export type SitePluginPluginOptionsPluginsPluginOptionsReplacements = {
+  __typename?: 'SitePluginPluginOptionsPluginsPluginOptionsReplacements'
+  ANDROID_VERSION?: Maybe<Scalars['String']>
+  ANDROID_TRAY_VERSION?: Maybe<Scalars['String']>
+}
+
+export type SitePluginPluginOptionsPluginsPluginOptionsReplacementsFilterInput = {
+  ANDROID_VERSION?: Maybe<StringQueryOperatorInput>
+  ANDROID_TRAY_VERSION?: Maybe<StringQueryOperatorInput>
+}
+
+export type SitePluginPluginOptionsReplacements = {
+  __typename?: 'SitePluginPluginOptionsReplacements'
+  ANDROID_VERSION?: Maybe<Scalars['String']>
+  ANDROID_TRAY_VERSION?: Maybe<Scalars['String']>
+}
+
+export type SitePluginPluginOptionsReplacementsFilterInput = {
+  ANDROID_VERSION?: Maybe<StringQueryOperatorInput>
+  ANDROID_TRAY_VERSION?: Maybe<StringQueryOperatorInput>
 }
 
 export type SitePluginPluginOptionsWorkboxConfig = {
@@ -3267,4 +3634,17 @@ export type StringQueryOperatorInput = {
   nin?: Maybe<Array<Maybe<Scalars['String']>>>
   regex?: Maybe<Scalars['String']>
   glob?: Maybe<Scalars['String']>
+}
+
+export type TransformOptions = {
+  grayscale?: Maybe<Scalars['Boolean']>
+  duotone?: Maybe<DuotoneGradient>
+  rotate?: Maybe<Scalars['Int']>
+  trim?: Maybe<Scalars['Float']>
+  cropFocus?: Maybe<ImageCropFocus>
+  fit?: Maybe<ImageFit>
+}
+
+export type WebPOptions = {
+  quality?: Maybe<Scalars['Int']>
 }

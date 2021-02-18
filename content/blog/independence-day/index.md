@@ -5,6 +5,7 @@ description: With Spokestack, your voice app can declare independence!
 author: noel
 tags: Engineering
 draft: false
+hero: bastille.jpg
 ---
 
 ![Today we celebrate our Independence Day!](./independence.gif)

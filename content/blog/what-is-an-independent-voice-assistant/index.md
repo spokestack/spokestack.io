@@ -5,6 +5,7 @@ description: A voice assistant is a digital assistant using voice recognition, s
 tags: Product
 author: mike
 draft: false
+hero: image2.png
 ---
 
 > &ldquo;A voice assistant is a digital assistant that uses voice recognition, speech synthesis, and natural language processing (NLP) to provide a service through a particular application.&rdquo;

@@ -5,6 +5,7 @@ description: Spokestack introduces a new way to build and access voice apps inde
 tags: Engineering, Product
 author: daniel
 draft: false
+hero: blog.png
 ---
 
 ![Porting a Smart Speaker Voice App to Mobile - Part 2](../porting-a-smart-speaker-voice-app-to-mobile-part-1/blog.png)

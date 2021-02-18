@@ -5,6 +5,7 @@ description: This tutorial guides you through the process of adding react-native
 tags: Engineering, Tutorial
 author: timmy
 draft: false
+hero: blog.png
 ---
 
 ![How to Integrate Spokestack in React Native](blog.png)

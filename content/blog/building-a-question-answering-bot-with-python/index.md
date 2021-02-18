@@ -5,6 +5,7 @@ description: This tutorial leverages HuggingFace's Transformer library to make a
 author: will
 tags: Engineering, Tutorial
 draft: false
+hero: blog.png
 ---
 
 ![Building a Question Answering Bot with Python](blog.png)

@@ -5,6 +5,7 @@ description: Make a voice-based app for smart speakers. Spokestack makes it easy
 tags: Engineering, Tutorial
 author: daniel
 draft: false
+hero: blog.png
 ---
 
 ![Porting the Alexa Minecraft Skill to iOS using Spokestack](blog.png)

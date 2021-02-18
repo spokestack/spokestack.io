@@ -5,6 +5,7 @@ description: Spokestack makes it easy to convert a smart speaker voice app from 
 author: will
 tags: Engineering, Tutorial
 draft: false
+hero: blog.png
 ---
 
 ![Porting the Alexa Minecraft Skill to Python using Spokestack](blog.png)

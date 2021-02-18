@@ -5,6 +5,7 @@ description: It's now easier than ever to build your own Independent Voice Assis
 tags: Product
 author: mike
 draft: false
+hero: jovo.png
 ---
 
 ![Spokestack and Jovo Collaboration](./jovo.png)

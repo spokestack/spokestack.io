@@ -5,6 +5,7 @@ description: Export to Independence is a community contest to see who can best p
 tags: Product
 author: mike
 draft: false
+hero: export_to_independence.png
 ---
 
 [REGISTER HERE](https://docs.google.com/forms/d/e/1FAIpQLSfXBFTLuyK8BWIFThCRNxMZwjgWBhVtE5EsCuQkvtaDaVvRqw/viewform?usp=sf_link)

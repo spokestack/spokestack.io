@@ -5,6 +5,7 @@ description: With Spokestack, you can make a mobile app work like a smart speake
 tags: Engineering, Tutorial
 author: daniel
 draft: false
+hero: blog.png
 ---
 
 ![Create an Alexa-Compatible Dialog Manager in Swift](blog.png)

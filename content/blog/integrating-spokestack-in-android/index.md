@@ -6,6 +6,7 @@ description: Instructions on integrating and using the Spokestack Tray UI compon
 tags: Android, Engineering, Tutorial
 author: josh
 draft: false
+hero: blog.png
 ---
 
 ![How to Integrate Spokestack in Android](blog.png)

@@ -5,6 +5,7 @@ description: 'Spokestack Tray makes it much easier to begin experimenting with a
 tags: Engineering, UI, Principles
 author: mike
 draft: false
+hero: blog.png
 ---
 
 ![Why We Built Spokestack Tray](blog.png)

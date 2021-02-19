@@ -5,6 +5,7 @@ description: A tutorial for reprompting a user after a period of inactivity
 author: josh
 tags: Tutorial, Android, iOS, React Native, App, Dialogue Management
 draft: false
+hero: blog.png
 ---
 
 ![Implementing Reprompts with Spokestack](blog.png)

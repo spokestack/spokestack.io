@@ -58,10 +58,19 @@ export default function BlogListItem({ post }: Props) {
           </span>
         </p>
       </div>
-      <h4>{post.frontmatter.title}</h4>
-      <p css={styles.excerpt}>{post.excerpt}</p>
-      <div css={styles.tags}>
-        <Tags tags={post.fields.tags} header="" />
+      <div>
+        {post.frontmatter.hero ? (
+          <img
+            alt={post.frontmatter.description}
+            css={styles.hero}
+            src={post.frontmatter.hero.publicURL}
+          />
+        ) : null}
+        <h4>{post.frontmatter.title}</h4>
+        <p css={styles.excerpt}>{post.excerpt}</p>
+        <div css={styles.tags}>
+          <Tags tags={post.fields.tags} header="" />
+        </div>
       </div>
     </Link>
   )
@@ -118,6 +127,12 @@ const styles = {
     width: 34px;
     border-radius: 50%;
     margin-right: 10px;
+  `,
+  hero: css`
+    float: right;
+    width: 150px;
+    border-radius: 7px;
+    margin-left: 10px;
   `,
   excerpt: css`
     margin-bottom: 10px;

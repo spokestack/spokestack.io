@@ -5,6 +5,7 @@ description: Amazon added the "Hey Alexa" wakeword to its mobile app. This is go
 tags: Wakeword, Voice Assistant, Principles
 author: mike
 draft: false
+hero: blog.png
 ---
 
 ![Wakewords for Mobile Apps](blog.png)

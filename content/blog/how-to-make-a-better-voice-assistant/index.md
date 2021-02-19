@@ -5,6 +5,7 @@ description: Google is always trying to improve Google Assistant, but can your a
 tags: Voice Assistant, Privacy, Principles
 author: josh
 draft: false
+hero: blog.png
 ---
 
 ![How to Make a Better Voice Assistant](blog.png)

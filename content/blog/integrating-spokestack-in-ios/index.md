@@ -5,6 +5,7 @@ description: This tutorial guides you through the process of adding spokestack-t
 tags: Engineering, Tutorial, iOS
 author: cory
 draft: false
+hero: blog.png
 ---
 
 ![How to Integrate Spokestack in iOS](blog.png)

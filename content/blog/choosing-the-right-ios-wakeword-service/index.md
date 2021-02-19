@@ -5,6 +5,7 @@ description: Spokestack offers two wakeword services in iOS, `appleWakeword` and
 author: noel
 tags: Engineering, iOS, Wakeword
 draft: false
+hero: blog.png
 ---
 
 ![Choosing the Right iOS Wakeword Service](blog.png)

@@ -5,6 +5,7 @@ description: How to keep your voice presence from giving away presents
 tags: Voice Assistant, Principles, NLU, ASR, Privacy
 author: josh
 draft: false
+hero: product-people.png
 ---
 
 ![Doesn't look like these folks are having fun being products](product-people.png)

@@ -56,6 +56,12 @@ $ npm run test:watch # Watches files and runs the unit tests on file save
 
 To run the site, first make sure dependencies are installed (`npm i`) and run the following:
 
+```
+$ cp .env.example .env
+```
+
+Then run:
+
 ```bash
 $ npm start
 ```

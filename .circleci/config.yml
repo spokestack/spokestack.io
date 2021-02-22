@@ -8,6 +8,19 @@ executors:
     resource_class: large
 
 references:
+  # To generate the required env var, run:
+  # cat .env | base64 | pbcopy
+  # and then paste that to Circle CI
+  create_env: &create_env
+    run:
+      name: Create .env file for production environment
+      command: echo $ENV | base64 -d > .env
+
+  create_env_beta: &create_env_beta
+    run:
+      name: Create .env file for beta environment
+      command: echo $ENV_BETA | base64 -d > .env
+
   restore_npm_cache: &restore_npm_cache
     restore_cache:
       keys:
@@ -41,6 +54,7 @@ jobs:
     executor: node
     steps:
       - checkout
+      - *create_env_beta
       - *restore_npm_cache
       - run: npm install --no-save
       - *save_npm_cache
@@ -58,10 +72,9 @@ jobs:
 
   deploy_integration:
     executor: node
-    environment:
-      SITE_URL: https://beta.spokestack.io/
     steps:
       - checkout
+      - *create_env_beta
       - *restore_npm_cache
       - run: npm install --no-save
       - *save_npm_cache
@@ -93,10 +106,9 @@ jobs:
 
   deploy_production:
     executor: node
-    environment:
-      SITE_URL: https://www.spokestack.io/
     steps:
       - checkout
+      - *create_env
       - *restore_npm_cache
       - run: npm install --no-save
       - *save_npm_cache

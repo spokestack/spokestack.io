@@ -11,26 +11,6 @@ function toUrl(url) {
   return url.toLowerCase().replace(rspaces, '-')
 }
 
-function throwInProd(message) {
-  if (process.env.NODE_ENV !== 'production') {
-    console.warn(`${message} Some things may not work properly.`)
-  } else {
-    throw new Error(message)
-  }
-}
-
-if (!process.env.SS_API_URL) {
-  throwInProd('SS_API_URL is not set in the environment.')
-}
-
-if (!process.env.SS_GITHUB_CLIENT_ID) {
-  throwInProd('SS_GITHUB_CLIENT_ID is not set in the environment.')
-}
-
-if (!process.env.SS_GOOGLE_CLIENT_ID) {
-  throwInProd('SS_GOOGLE_CLIENT_ID is not set in the environment.')
-}
-
 async function getRelated({ tags, slug, graphql }) {
   if (tags) {
     const result = await graphql(`

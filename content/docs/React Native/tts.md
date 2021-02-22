@@ -24,7 +24,7 @@ await Spokestack.initialize(
 
 In this example, the credentials are set to public values that allow you to try Spokestack TTS without creating an account.
 
-[Create an account](/create) or [sign in](/login) to get your own free API credentials and access to additional features!
+[Create an account](/account/create) or [sign in](/account/login) to get your own free API credentials and access to additional features!
 
 ## Generating the audio
 

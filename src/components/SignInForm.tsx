@@ -1,8 +1,11 @@
 import * as theme from '../styles/theme'
-import React from 'react'
+
+import React, { useEffect } from 'react'
 import { SerializedStyles, css } from '@emotion/react'
+
 import Card from './Card'
 import SVGIcon from './SVGIcon'
+import { checkState } from '../utils/auth'
 
 interface Props {
   extraCss?: SerializedStyles | SerializedStyles[]
@@ -11,6 +14,9 @@ interface Props {
 }
 
 export default function SignInForm({ extraCss, header, isCreate }: Props) {
+  useEffect(() => {
+    checkState()
+  }, [])
   return (
     <Card extraCss={[styles.container].concat(extraCss)}>
       {!!header && <h4 css={styles.header}>{header}</h4>}

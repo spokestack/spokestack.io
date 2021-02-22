@@ -9,7 +9,7 @@ Text-to-speech is a broad topic, but as far as Spokestack is concerned, there ar
 
 ## Generating Audio
 
-The best way to synthesize speech in Spokestack is to use the `TextToSpeechManager` module. This module combines `TextToSpeechClient` with an audio output target. Keep in mind that this module operates independently of the `SpeechPipeline`. If you haven't already, you will need to [create an account](/create) or [sign in](/login) to get your API credentials.
+The best way to synthesize speech in Spokestack is to use the `TextToSpeechManager` module. This module combines `TextToSpeechClient` with an audio output target. Keep in mind that this module operates independently of the `SpeechPipeline`. If you haven't already, you will need to [create an account](/account/create) or [sign in](/account/login) to get your API credentials.
 
 `TextToSpeechManager` is initialized as follows:
 

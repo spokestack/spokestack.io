@@ -17,7 +17,7 @@ let tts = TextToSpeech(self, configuration: configuration)
 
 In this example, `self` implements the `TextToSpeechDelegate` protocol, which utilizes the delegate pattern to forward TTS events to your app.
 
-We also use the default credentials for `SpeechConfiguration.apiId` and `SpeechConfiguration.apiSecret`, which are set to public values that let you try Spokestack TTS without creating an account. [Create an account](/create) or [sign in](/login) to get your own free API credentials and access to additional features!
+We also use the default credentials for `SpeechConfiguration.apiId` and `SpeechConfiguration.apiSecret`, which are set to public values that let you try Spokestack TTS without creating an account. [Create an account](/account/create) or [sign in](/account/login) to get your own free API credentials and access to additional features!
 
 ## Generating the audio
 

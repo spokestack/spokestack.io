@@ -1,4 +1,5 @@
-const siteUrl = new URL(process.env.SITE_URL || 'https://www.spokestack.io/')
+require('dotenv').config()
+const siteUrl = new URL(process.env.SITE_URL)
 
 console.log(`Site URL in Gatsby config: ${siteUrl.href}`)
 

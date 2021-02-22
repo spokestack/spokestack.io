@@ -61,7 +61,7 @@ pip install transformers
 
 ## Speech Pipeline with Profiles
 
-Profiles are preset configurations for our [Speech Pipeline](/docs/Python/speech-pipeline). For this tutorial, we will use the Spokestack wakeword and ASR profile. The wakeword model runs on device, and can be activated by saying "Hey, Spokestack". ASR is in the cloud though, so you will need to get your API credentials to use it. If you already have a free account, [log in](/login). If you do not, you will need to [create](/create) one. The credentials can be found in your [account settings](/account/settings). This is everything you need to speak to your app.
+Profiles are preset configurations for our [Speech Pipeline](/docs/Python/speech-pipeline). For this tutorial, we will use the Spokestack wakeword and ASR profile. The wakeword model runs on device, and can be activated by saying "Hey, Spokestack". ASR is in the cloud though, so you will need to get your API credentials to use it. If you already have a free account, [log in](/account/login). If you do not, you will need to [create](/create) one. The credentials can be found in your [account settings](/account/settings). This is everything you need to speak to your app.
 
 ```python
 from spokestack.profile.wakeword_asr import WakewordSpokestackASR
@@ -86,7 +86,7 @@ nlu = TFLiteNLU("tflite")
 
 We've included a pre-trained model, so you can follow along with this tutorial, but if you want to create your own, here's a quick introduction to writing NLU training data. See our [documentation](/docs/Concepts/nlu-training-data) for more information on our data format and how to train your own model. We are using a basic NLU template which includes intents like `greet`, `accept`, and `help`. In addition, we need a way to identify an entity in the user utterance to perform a Wikipedia search (more on this later). The name of this intent is `ask.question`, and the utterance templates are simple ways to ask a question. Naturally, these templates could be more complex and cover a wider variety of utterances, but for the purpose of this tutorial these will be enough.
 
-```
+```python
 [slots.subject]
 type = "entity"
 

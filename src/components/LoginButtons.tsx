@@ -2,11 +2,11 @@ import * as theme from '../styles/theme'
 
 import React, { useEffect, useState } from 'react'
 import { SerializedStyles, css } from '@emotion/react'
-import { isLoggedIn } from '../utils/auth'
 
 import { Link } from 'gatsby'
 import NavDropdown from './NavDropdown'
 import SignInForm from './SignInForm'
+import { isLoggedIn } from '../utils/auth'
 
 interface Props {
   btnClassName?: string
@@ -45,7 +45,7 @@ export default function LoginButtons({
           </NavDropdown>
         ) : (
           <Link
-            to="/login"
+            to="/account/login"
             css={styles.loginLink}
             activeStyle={{ display: 'none' }}>
             Sign in
@@ -53,7 +53,7 @@ export default function LoginButtons({
         )}
         <Link
           className={`btn ${btnClassName || ''}`}
-          to="/create"
+          to="/account/create"
           activeStyle={{ display: 'none' }}>
           Create free account
         </Link>

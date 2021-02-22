@@ -68,7 +68,7 @@ None required! &#x1F389;
 
 #### Spokestack Cloud ASR
 
-Spokestack's Cloud ASR requires requests to be signed with a Spokestack client ID and API secret. Spokestack accounts are free, and cloud-based ASR currently is as well. If you don't already have an account, you can sign up for one [here](/create); if you do, [log in](/login) to get your credentials.
+Spokestack's Cloud ASR requires requests to be signed with a Spokestack client ID and API secret. Spokestack accounts are free, and cloud-based ASR currently is as well. If you don't already have an account, you can sign up for one [here](/account/create); if you do, [log in](/account/login) to get your credentials.
 
 ##### Android
 

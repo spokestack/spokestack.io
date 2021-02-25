@@ -12,38 +12,69 @@ function toUrl(url) {
 }
 
 async function getRelated({ tags, slug, graphql }) {
-  if (tags) {
-    const result = await graphql(`
-      {
-        allMarkdownRemark(
-          sort: { fields: [frontmatter___date], order: DESC },
-          filter: {
-            fields: {
-              slug: { ne: "${slug}" }
-              tags: { in: ${JSON.stringify(tags)} }
-            }
-            frontmatter: {
-              ${isProd ? 'draft: { ne: true },' : ''}
-            }
+  if (!tags) {
+    return
+  }
+  const result = await graphql(`
+    {
+      exact: allMarkdownRemark(
+        sort: { fields: [frontmatter___date], order: DESC }
+        filter: {
+          fileAbsolutePath: { regex: "/blog/" }
+          fields: {
+            slug: { ne: "${slug}" }
           }
-          limit: 3
-        ) {
-          nodes {
-            frontmatter {
-              title
-            }
-            fields {
-              slug
-            }
+          frontmatter: {
+            tags: { eq: "${tags.join(', ')}" }
+            ${isProd ? 'draft: { ne: true }' : ''}
+          }
+        }
+        limit: 3
+      ) {
+        nodes {
+          frontmatter {
+            title
+          }
+          fields {
+            slug
           }
         }
       }
-    `)
-    return result.data.allMarkdownRemark.nodes.map((node) => ({
-      title: node.frontmatter.title,
-      href: node.fields.slug
-    }))
+      within: allMarkdownRemark(
+        sort: { fields: [frontmatter___date], order: DESC }
+        filter: {
+          fields: {
+            slug: { ne: "${slug}" }
+            tags: { in: ${JSON.stringify(tags)} }
+          }
+          frontmatter: {
+            tags: { ne: "${tags.join(', ')}" }
+            ${isProd ? 'draft: { ne: true },' : ''}
+          }
+        }
+        limit: 3
+      ) {
+        nodes {
+          frontmatter {
+            title
+          }
+          fields {
+            slug
+          }
+        }
+      }
+    }
+  `)
+  if (result.error) {
+    throw result.error
   }
+  const related = result.data.exact.nodes
+    .concat(result.data.within.nodes)
+    .slice(0, 3)
+  return related.map((node) => ({
+    title: node.frontmatter.title,
+    href: node.fields.slug
+  }))
 }
 
 async function createAuthorPages({ author, tags, actions, graphql }) {
@@ -171,7 +202,11 @@ async function createPages({ actions, graphql, posts, template }) {
     }
 
     // Add related tags (applicable to blog posts, but not docs)
-    const related = await getRelated({ tags: fields.tags, slug, graphql })
+    const related = await getRelated({
+      tags: fields.tags,
+      slug,
+      graphql
+    })
     if (related) {
       context.related = related
     }
@@ -257,7 +292,7 @@ exports.createPages = async ({ graphql, actions, reporter }) => {
   // Create tag filter pages
   const tags = result.data.tags.edges.reduce((acc, current) => {
     current.node.fields.tags.forEach((tag) => {
-      if (acc.indexOf(tag) === -1) {
+      if (tag && acc.indexOf(tag) === -1) {
         acc.push(tag)
       }
     })

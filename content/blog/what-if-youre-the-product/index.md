@@ -2,7 +2,7 @@
 title: What If You're the Product?
 date: '2020-07-29'
 description: How to keep your voice presence from giving away presents
-tags: Voice Assistant, Principles, NLU, ASR, Privacy
+tags: ASR, NLU, Principles, Privacy, Voice Assistant
 author: josh
 draft: false
 hero: product-people.png

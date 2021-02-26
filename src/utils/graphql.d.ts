@@ -692,7 +692,6 @@ export enum FileFieldsEnum {
   ChildMarkdownRemarkFrontmatterAuthor = 'childMarkdownRemark___frontmatter___author',
   ChildMarkdownRemarkFrontmatterTags = 'childMarkdownRemark___frontmatter___tags',
   ChildMarkdownRemarkFrontmatterDraft = 'childMarkdownRemark___frontmatter___draft',
-  ChildMarkdownRemarkFrontmatterNavId = 'childMarkdownRemark___frontmatter___navId',
   ChildMarkdownRemarkFrontmatterHeroSourceInstanceName = 'childMarkdownRemark___frontmatter___hero___sourceInstanceName',
   ChildMarkdownRemarkFrontmatterHeroAbsolutePath = 'childMarkdownRemark___frontmatter___hero___absolutePath',
   ChildMarkdownRemarkFrontmatterHeroRelativePath = 'childMarkdownRemark___frontmatter___hero___relativePath',
@@ -729,6 +728,7 @@ export enum FileFieldsEnum {
   ChildMarkdownRemarkFrontmatterHeroPublicUrl = 'childMarkdownRemark___frontmatter___hero___publicURL',
   ChildMarkdownRemarkFrontmatterHeroId = 'childMarkdownRemark___frontmatter___hero___id',
   ChildMarkdownRemarkFrontmatterHeroChildren = 'childMarkdownRemark___frontmatter___hero___children',
+  ChildMarkdownRemarkFrontmatterNavId = 'childMarkdownRemark___frontmatter___navId',
   ChildMarkdownRemarkExcerpt = 'childMarkdownRemark___excerpt',
   ChildMarkdownRemarkRawMarkdownBody = 'childMarkdownRemark___rawMarkdownBody',
   ChildMarkdownRemarkFileAbsolutePath = 'childMarkdownRemark___fileAbsolutePath',
@@ -1564,7 +1564,6 @@ export enum MarkdownRemarkFieldsEnum {
   FrontmatterAuthor = 'frontmatter___author',
   FrontmatterTags = 'frontmatter___tags',
   FrontmatterDraft = 'frontmatter___draft',
-  FrontmatterNavId = 'frontmatter___navId',
   FrontmatterHeroSourceInstanceName = 'frontmatter___hero___sourceInstanceName',
   FrontmatterHeroAbsolutePath = 'frontmatter___hero___absolutePath',
   FrontmatterHeroRelativePath = 'frontmatter___hero___relativePath',
@@ -1627,6 +1626,7 @@ export enum MarkdownRemarkFieldsEnum {
   FrontmatterHeroChildMarkdownRemarkTimeToRead = 'frontmatter___hero___childMarkdownRemark___timeToRead',
   FrontmatterHeroChildMarkdownRemarkTableOfContents = 'frontmatter___hero___childMarkdownRemark___tableOfContents',
   FrontmatterHeroChildMarkdownRemarkChildren = 'frontmatter___hero___childMarkdownRemark___children',
+  FrontmatterNavId = 'frontmatter___navId',
   Excerpt = 'excerpt',
   RawMarkdownBody = 'rawMarkdownBody',
   FileAbsolutePath = 'fileAbsolutePath',
@@ -1769,8 +1769,8 @@ export type MarkdownRemarkFrontmatter = {
   author?: Maybe<Scalars['String']>
   tags?: Maybe<Scalars['String']>
   draft?: Maybe<Scalars['Boolean']>
-  navId?: Maybe<Scalars['String']>
   hero?: Maybe<File>
+  navId?: Maybe<Scalars['String']>
 }
 
 export type MarkdownRemarkFrontmatterDateArgs = {
@@ -1787,8 +1787,8 @@ export type MarkdownRemarkFrontmatterFilterInput = {
   author?: Maybe<StringQueryOperatorInput>
   tags?: Maybe<StringQueryOperatorInput>
   draft?: Maybe<BooleanQueryOperatorInput>
-  navId?: Maybe<StringQueryOperatorInput>
   hero?: Maybe<FileFilterInput>
+  navId?: Maybe<StringQueryOperatorInput>
 }
 
 export type MarkdownRemarkGroupConnection = {
@@ -2796,7 +2796,6 @@ export enum SitePageFieldsEnum {
   PluginCreatorPluginOptionsReplacementsAndroidTrayVersion = 'pluginCreator___pluginOptions___replacements___ANDROID_TRAY_VERSION',
   PluginCreatorPluginOptionsWrapperStyle = 'pluginCreator___pluginOptions___wrapperStyle',
   PluginCreatorPluginOptionsMaxWidth = 'pluginCreator___pluginOptions___maxWidth',
-  PluginCreatorPluginOptionsBackgroundColor = 'pluginCreator___pluginOptions___backgroundColor',
   PluginCreatorPluginOptionsLinkImagesToOriginal = 'pluginCreator___pluginOptions___linkImagesToOriginal',
   PluginCreatorPluginOptionsShowCaptions = 'pluginCreator___pluginOptions___showCaptions',
   PluginCreatorPluginOptionsMarkdownCaptions = 'pluginCreator___pluginOptions___markdownCaptions',
@@ -2818,6 +2817,7 @@ export enum SitePageFieldsEnum {
   PluginCreatorPluginOptionsPrefixes = 'pluginCreator___pluginOptions___prefixes',
   PluginCreatorPluginOptionsSiteUrl = 'pluginCreator___pluginOptions___siteUrl',
   PluginCreatorPluginOptionsStartUrl = 'pluginCreator___pluginOptions___start_url',
+  PluginCreatorPluginOptionsBackgroundColor = 'pluginCreator___pluginOptions___background_color',
   PluginCreatorPluginOptionsThemeColor = 'pluginCreator___pluginOptions___theme_color',
   PluginCreatorPluginOptionsDisplay = 'pluginCreator___pluginOptions___display',
   PluginCreatorPluginOptionsIcon = 'pluginCreator___pluginOptions___icon',

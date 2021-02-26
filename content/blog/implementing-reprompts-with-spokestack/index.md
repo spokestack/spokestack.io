@@ -3,7 +3,7 @@ title: Implementing reprompts with Spokestack
 date: '2020-06-09T05:00:00.000Z'
 description: A tutorial for reprompting a user after a period of inactivity
 author: josh
-tags: Tutorial, Android, iOS, React Native, App, Dialogue Management
+tags: Android, Apps, Dialogue Management, React Native, Tutorial, iOS
 draft: false
 hero: blog.png
 ---

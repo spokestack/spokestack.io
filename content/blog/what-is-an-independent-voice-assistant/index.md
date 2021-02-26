@@ -2,7 +2,7 @@
 title: What Is an Independent Voice Assistant?
 date: '2020-05-12'
 description: A voice assistant is a digital assistant using voice recognition, speech synthesis, and natural language processing (NLP) for service via an app.
-tags: Voice Assistant, Principles
+tags: Privacy, Voice Assistant
 author: mike
 draft: false
 hero: image2.png

@@ -2,7 +2,7 @@
 title: Create an Alexa-Compatible Dialog Manager In Swift
 date: '2020-06-08T00:00:03.000Z'
 description: With Spokestack, you can make a mobile app work like a smart speaker. Convert Alexa skills to mobile by creating a Swift version of the RequestHandler.
-tags: Engineering, Tutorial, iOS, Dialogue Management
+tags: Dialogue Management, Engineering, Tutorial, iOS
 author: daniel
 draft: false
 hero: blog.png

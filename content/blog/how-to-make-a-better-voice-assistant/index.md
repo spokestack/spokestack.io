@@ -2,7 +2,7 @@
 title: How to Make a Better Voice Assistant
 date: '2020-08-20'
 description: Google is always trying to improve Google Assistant, but can your app do better?
-tags: Voice Assistant, Privacy, Principles
+tags: Principles, Privacy, Voice Assistant
 author: josh
 draft: false
 hero: blog.png

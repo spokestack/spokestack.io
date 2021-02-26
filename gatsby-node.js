@@ -41,7 +41,7 @@ async function getRelated({ tags, slug, graphql }) {
         }
       }
       within: allMarkdownRemark(
-        sort: { fields: [frontmatter___date], order: DESC }
+        sort: { fields: [frontmatter___tags], order: ASC }
         filter: {
           fields: {
             slug: { ne: "${slug}" }

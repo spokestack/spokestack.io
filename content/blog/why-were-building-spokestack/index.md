@@ -3,7 +3,7 @@ title: Why We’re Building Spokestack
 date: '2019-12-10'
 description: At Spokestack, we build tools and services that make your app fully voice-enabled. 58% of Americans already use their smartphone as a voice assistant.
 author: mike
-tags: Principles, News
+tags: News, Principles
 draft: false
 ---
 

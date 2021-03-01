@@ -101,9 +101,7 @@ const styles = {
         'author  content'
         'related content';
       padding: 30px 40px;
-      max-width: calc(
-        100vm - ${MAX_SIDEBAR_WIDTH}
-      );
+      max-width: calc(100vm - ${MAX_SIDEBAR_WIDTH});
       margin: 0 auto;
     }
     ${MIN_LARGE_DISPLAY_MEDIA_QUERY} {

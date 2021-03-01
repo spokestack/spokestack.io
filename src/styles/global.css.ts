@@ -174,7 +174,6 @@ export default css`
   }
   ul {
     margin: 0;
-
   }
   li *:last-child {
     margin-bottom: 0;

@@ -67,11 +67,11 @@ export default function BlogList({
             {header ? (
               header
             ) : (
-                <header className="docs-header" css={styles.header}>
-                  <h2>{title}</h2>
-                  <DarkModeButton />
-                </header>
-              )}
+              <header className="docs-header" css={styles.header}>
+                <h2>{title}</h2>
+                <DarkModeButton />
+              </header>
+            )}
             {posts.map(({ node }) => (
               <BlogListItem key={node.fields.slug} post={node} />
             ))}
@@ -96,8 +96,8 @@ export default function BlogList({
                     Previous
                   </a>
                 ) : (
-                    <div />
-                  )}
+                  <div />
+                )}
                 {hasNext && (
                   <a
                     href={`${homeUrl}/${currentPage + 1}`}

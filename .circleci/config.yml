@@ -3,7 +3,7 @@ version: 2.1
 executors:
   node:
     docker:
-      - image: circleci/node:12
+      - image: circleci/node:14
     working_directory: ~/spokestack.io
     resource_class: large
 

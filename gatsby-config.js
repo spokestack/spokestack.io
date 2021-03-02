@@ -212,9 +212,9 @@ module.exports = {
       }
     },
     'gatsby-plugin-optimize-svgs',
-    'gatsby-transformer-sharp',
+    'gatsby-plugin-image',
     'gatsby-plugin-sharp',
-    'gatsby-image',
+    'gatsby-transformer-sharp',
     'gatsby-plugin-react-svg',
     {
       resolve: 'gatsby-transformer-remark',

@@ -1,4 +1,3 @@
-import { FixedObject } from 'gatsby-image'
 import { MarkdownRemark } from './utils/graphql'
 import { MutableRefObject } from 'react'
 
@@ -32,10 +31,6 @@ export interface StickyLink {
   refSelector?: string
   section?: string
   title: string
-}
-
-export interface SharpImage {
-  childImageSharp: { fixed: FixedObject }
 }
 
 /**

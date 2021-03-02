@@ -1,13 +1,5 @@
-import {
-  MAX_SIDEBAR_WIDTH,
-  MAX_TEXT_WIDTH,
-  MIN_DEFAULT_MEDIA_QUERY,
-  MIN_LARGE_DISPLAY_MEDIA_QUERY,
-  MIN_SIDEBAR_WIDTH,
-  MIN_TEXT_WIDTH,
-  mainBorder,
-  ieBreakpoint
-} from '../styles/theme'
+import * as theme from '../styles/theme'
+
 import React, { Fragment } from 'react'
 
 import Author from './Author'
@@ -48,9 +40,7 @@ export default function BlogPost({ location, post, related }: Props) {
             <DarkModeButton />
           </header>
           <div dangerouslySetInnerHTML={{ __html: post.html }} />
-          <div className="main-footer" css={styles.footer}>
-            <h6>Originally posted {post.frontmatter.date}</h6>
-          </div>
+          <p css={styles.date}>Originally posted {post.frontmatter.date}</p>
         </section>
         {post.fields && (
           <section css={styles.related}>
@@ -87,26 +77,21 @@ const styles = {
     flex-direction: column;
     padding: 20px 20px 30px;
 
-    ${MIN_DEFAULT_MEDIA_QUERY} {
+    ${theme.MIN_DEFAULT_MEDIA_QUERY} {
       flex-direction: row;
       display: grid;
       grid-template-columns:
-        minmax(${MIN_SIDEBAR_WIDTH}, ${MAX_SIDEBAR_WIDTH}) minmax(
-          ${MIN_TEXT_WIDTH},
-          ${MAX_TEXT_WIDTH}
-        )
-        minmax(${MIN_SIDEBAR_WIDTH}, ${MAX_SIDEBAR_WIDTH});
+        minmax(${theme.MIN_SIDEBAR_WIDTH}, ${theme.MAX_SIDEBAR_WIDTH})
+        minmax(${theme.MIN_TEXT_WIDTH}, ${theme.MAX_BLOG_TEXT_WIDTH})
+        minmax(${theme.MIN_SIDEBAR_WIDTH}, ${theme.MAX_SIDEBAR_WIDTH});
       grid-template-rows: auto 1fr;
       grid-template-areas:
         'author  content'
         'related content';
       padding: 30px 40px;
-      max-width: calc(
-        ${MAX_SIDEBAR_WIDTH} + ${MAX_TEXT_WIDTH} + ${MAX_SIDEBAR_WIDTH}
-      );
       margin: 0 auto;
     }
-    ${MIN_LARGE_DISPLAY_MEDIA_QUERY} {
+    ${theme.MIN_LARGE_DISPLAY_MEDIA_QUERY} {
       padding-left: 100px;
       padding-right: 100px;
     }
@@ -115,41 +100,34 @@ const styles = {
     grid-area: author;
     margin-bottom: 50px;
 
-    ${MIN_DEFAULT_MEDIA_QUERY} {
+    ${theme.MIN_DEFAULT_MEDIA_QUERY} {
       margin-bottom: 0;
     }
 
-    ${ieBreakpoint} {
+    ${theme.ieBreakpoint} {
       min-width: 200px;
     }
   `,
   content: css`
     grid-area: content;
 
-    ${MIN_DEFAULT_MEDIA_QUERY} {
+    ${theme.MIN_DEFAULT_MEDIA_QUERY} {
       margin-left: 50px;
     }
 
-    ${ieBreakpoint} {
+    ${theme.ieBreakpoint} {
       width: 100%;
       min-width: 500px;
     }
   `,
-  footer: css`
-    grid-area: content;
-    border-top: 1px solid ${mainBorder};
-    border-bottom: 1px solid ${mainBorder};
-    padding-bottom: 15px;
-    ${ieBreakpoint} {
-      width: 100%;
-      min-width: 500px;
-    }
+  date: css`
+    font-style: italic;
   `,
   related: css`
     grid-area: related;
-    padding: 0 20px;
+    padding: 15px 20px;
 
-    ${ieBreakpoint} {
+    ${theme.ieBreakpoint} {
       min-width: 200px;
     }
   `,

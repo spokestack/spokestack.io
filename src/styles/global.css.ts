@@ -77,12 +77,12 @@ export default css`
     font-size: 0.8rem;
     font-weight: 400;
     font-style: italic;
-    margin: 15px 0 1px;
+    margin-bottom: 15px;
   }
   a {
     color: ${theme.link};
     font-weight: 700;
-    text-decoration: underline;
+    text-decoration: none;
     text-decoration-color: ${theme.link};
     text-decoration-thickness: 0.1em;
     text-underline-offset: 2px;
@@ -173,8 +173,7 @@ export default css`
     padding: 0;
   }
   ul {
-    padding: 0;
-    margin: 0;
+    margin: 0 0 20px;
   }
   li *:last-child {
     margin-bottom: 0;

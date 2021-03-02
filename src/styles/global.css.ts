@@ -57,27 +57,27 @@ export default css`
   h2 {
     font-size: 28px;
     line-height: 1.45;
-    margin: 15px 0;
+    margin-bottom: 15px;
   }
   h3 {
     font-size: 26px;
     line-height: 1.45;
-    margin: 15px 0;
+    margin-bottom: 15px;
   }
   h4 {
     font-size: 24px;
     line-height: 1.45;
-    margin: 15px 0;
+    margin-bottom: 15px;
   }
   h5 {
     font-size: 1rem;
-    margin: 15px 0;
+    margin: 0;
   }
   h6 {
     font-size: 0.8rem;
     font-weight: 400;
     font-style: italic;
-    margin: 15px 0;
+    margin-bottom: 15px;
   }
   a {
     color: ${theme.link};
@@ -173,7 +173,7 @@ export default css`
     padding: 0;
   }
   ul {
-    margin: 0;
+    margin: 0 0 20px;
   }
   li *:last-child {
     margin-bottom: 0;

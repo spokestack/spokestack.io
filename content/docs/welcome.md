@@ -27,8 +27,6 @@ You can find the Spokestack Tray libraries and documentation here:
 - [iOS](https://github.com/spokestack/spokestack-tray-ios)
 - [Android](https://github.com/spokestack/spokestack-tray-android)
 
-<br />
-
 #### Custom Integration
 
 A custom integration gives the app developer full control over voice integration. This path is more suitable for _intermediate_ and _advanced_ mobile developers as it requires building familiarity with individual Spokestack subsystems. Check out the Spokestack Studio app on [iOS](https://apps.apple.com/us/app/spokestack-studio/id1508393980) or the control room sample app on [Android](https://github.com/spokestack/android-control-room) for examples of all of our services and how they work.
@@ -39,15 +37,11 @@ If you're looking to integrate Spokestack in your project without using the tray
 - [iOS](/docs/iOS/getting-started)
 - [Android](/docs/Android/getting-started)
 
-<br />
-
 ### Tutorials
 
 Tutorials for integrating Spokestack are also available on our blog:
 
 ##### Spokestack Tray Tutorials
-
-<br />
 
 - [React Native Tray Tutorial](/blog/integrating-spokestack-in-react-native)
 - [iOS Tray Tutorial](/blog/integrating-spokestack-in-ios)
@@ -55,13 +49,9 @@ Tutorials for integrating Spokestack are also available on our blog:
 
 ##### Custom Integration Tutorials
 
-<br />
-
 - [React Native Tutorial](/blog/integrating-spokestack-in-react-native)
 - [iOS Tutorial](/blog/porting-a-smart-speaker-voice-app-to-mobile-part-1)
 - [Android Tutorial](/blog/porting-the-alexa-minecraft-skill-to-android-using-spokestack)
-
-<br />
 
 Check our blog for all of our [Spokestack Tutorials](/tutorials).
 

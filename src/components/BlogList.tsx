@@ -114,8 +114,8 @@ export default function BlogList({
             )}
           </div>
         </section>
+        {!isLoggedIn() && <Create small />}
       </div>
-      {!isLoggedIn() && <Create small />}
     </Layout>
   )
 }
@@ -123,7 +123,7 @@ export default function BlogList({
 const styles = {
   container: css`
     position: relative;
-    padding: 20px 20px 30px;
+    padding: 20px 20px 50px;
 
     ${theme.MIN_DEFAULT_MEDIA_QUERY} {
       padding-top: 215px;
@@ -161,6 +161,7 @@ const styles = {
   blogContent: css`
     display: flex;
     flex-direction: column;
+    padding-bottom: 30px;
 
     ${theme.MIN_DEFAULT_MEDIA_QUERY} {
       flex-direction: row;
@@ -186,7 +187,7 @@ const styles = {
     margin-bottom: 40px;
 
     ${theme.MIN_DEFAULT_MEDIA_QUERY} {
-      padding-top: 50px;
+      padding-top: 70px;
     }
 
     ${theme.ieBreakpoint} {

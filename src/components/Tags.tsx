@@ -58,6 +58,7 @@ const styles = {
     display: flex;
     flex-wrap: wrap;
     margin: -5px;
+    padding-bottom: 15px;
 
     .btn {
       display: inline-flex;

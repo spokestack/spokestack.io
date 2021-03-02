@@ -1,11 +1,12 @@
 import * as theme from '../styles/theme'
 
-import { Global, css } from '@emotion/react'
+import { Global, SerializedStyles, css } from '@emotion/react'
 
 import React from 'react'
 
 export interface BlueCardProps {
   button: React.ReactNode
+  extraCss?: SerializedStyles | SerializedStyles[]
   id?: string
   small?: boolean
   text: string
@@ -14,6 +15,7 @@ export interface BlueCardProps {
 
 export default function BlueCard({
   button,
+  extraCss,
   id,
   small,
   text,
@@ -24,7 +26,7 @@ export default function BlueCard({
     style.push(styles.smallCard)
   }
   return (
-    <section id={id} className="blue-card" css={style}>
+    <section id={id} className="blue-card" css={style.concat(extraCss)}>
       <Global
         styles={css`
           html.dark-mode {
@@ -64,7 +66,8 @@ const styles = {
 
     ${theme.MIN_DEFAULT_MEDIA_QUERY} {
       min-height: 400px;
-      margin: 0 50px;
+      margin-left: 50px;
+      margin-right: 50px;
     }
 
     ${theme.ieBreakpoint} {

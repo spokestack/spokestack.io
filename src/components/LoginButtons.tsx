@@ -3,7 +3,6 @@ import * as theme from '../styles/theme'
 import React, { useEffect, useState } from 'react'
 import { SerializedStyles, css } from '@emotion/react'
 
-import { Link } from 'gatsby'
 import NavDropdown from './NavDropdown'
 import SignInForm from './SignInForm'
 import { isLoggedIn } from '../utils/auth'
@@ -44,28 +43,18 @@ export default function LoginButtons({
             <SignInForm extraCss={styles.loginForm} />
           </NavDropdown>
         ) : (
-          <Link
-            to="/account/login"
-            css={styles.loginLink}
-            activeStyle={{ display: 'none' }}>
+          <a href="/account/login" css={styles.loginLink}>
             Sign in
-          </Link>
+          </a>
         )}
-        <Link
-          className={`btn ${btnClassName || ''}`}
-          to="/account/create"
-          activeStyle={{ display: 'none' }}>
+        <a className={`btn ${btnClassName || ''}`} href="/account/create">
           Create free account
-        </Link>
+        </a>
       </div>
       <div className="login-buttons--account">
-        <Link
-          to="/account"
-          partiallyActive
-          css={styles.loginLink}
-          activeStyle={{ display: 'none' }}>
+        <a href="/account" css={styles.loginLink}>
           Account
-        </Link>
+        </a>
         <a className={`btn ${btnClassName || ''}`} href="/api/auth/logout">
           Log out
         </a>

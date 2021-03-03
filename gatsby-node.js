@@ -77,7 +77,7 @@ async function getRelated({ tags, slug, graphql }) {
   }))
 }
 
-async function createAuthorPages({ author, tags, actions, graphql }) {
+async function createAuthorPages({ author, tags, actions, graphql, reporter }) {
   const { createPage } = actions
   const result = await graphql(`
     {
@@ -128,7 +128,7 @@ async function createAuthorPages({ author, tags, actions, graphql }) {
   })
 }
 
-async function createTagPages({ tag, tags, actions, graphql }) {
+async function createTagPages({ tag, tags, actions, graphql, reporter }) {
   const { createPage } = actions
   const result = await graphql(`
     {
@@ -289,7 +289,7 @@ exports.createPages = async ({ graphql, actions, reporter }) => {
     return
   }
 
-  // Create tag filter pages
+  // Add tag filter pages
   const tags = result.data.tags.edges.reduce((acc, current) => {
     current.node.fields.tags.forEach((tag) => {
       if (tag && acc.indexOf(tag) === -1) {
@@ -303,22 +303,24 @@ exports.createPages = async ({ graphql, actions, reporter }) => {
       tag,
       tags,
       actions,
-      graphql
+      graphql,
+      reporter
     })
   })
 
-  // Create author pages
+  // Add author pages
   const authors = result.data.site.siteMetadata.team.map((member) => member.key)
   authors.forEach((author) => {
     createAuthorPages({
       author,
       tags,
       actions,
-      graphql
+      graphql,
+      reporter
     })
   })
 
-  // Create blog post list pages
+  // Add blog list pages
   const { createPage } = actions
   const posts = result.data.blog.edges
   const numPages = Math.ceil(posts.length / postsPerPage)
@@ -339,14 +341,14 @@ exports.createPages = async ({ graphql, actions, reporter }) => {
     })
   })
 
-  // Create blog posts pages
+  // Add blog post pages
   await createPages({
     actions,
     graphql,
     posts: result.data.blog.edges,
     template: path.resolve('./src/templates/blog-post.tsx')
   })
-  // Create docs pages
+  // Add docs pages
   await createPages({
     actions,
     graphql,
@@ -354,6 +356,7 @@ exports.createPages = async ({ graphql, actions, reporter }) => {
     template: path.resolve('./src/templates/docs-page.tsx')
   })
 
+  // Add redirects from siteMetadata.redirects
   const redirects = result.data.site.siteMetadata.redirects
   return Promise.all(
     redirects.map((redirect) =>

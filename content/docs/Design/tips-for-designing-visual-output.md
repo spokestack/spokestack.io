@@ -3,6 +3,7 @@ title: Best Practices for Visual Output & Multimodal Interactions
 navId: Tips for Designing Visual Output
 description: Some helpful tips when writing your dialogue.
 draft: false
+tags: Conversation Design, UI
 ---
 
 The goal of any good experience designer is to reduce cognitive load on the user wherever possible ([golden rule #8:](https://www.cs.umd.edu/users/ben/goldenrules.html) “reduce short-term memory load”). We as humans are incapable of remembering [more than seven items at any given time](https://en.wikipedia.org/wiki/The_Magical_Number_Seven,_Plus_or_Minus_Two). With these limitations in mind, consider how visuals can reduce friction and eliminate confusion. What should you supplement dialog outlined in your script with?

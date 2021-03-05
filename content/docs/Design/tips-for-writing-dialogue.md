@@ -3,6 +3,7 @@ title: Best Practices for Writing a Script
 navId: Tips for Writing Dialogue
 description: Some helpful tips when writing your dialogue.
 draft: false
+tags: Conversation Design
 ---
 
 Human-to-human conversation is second nature. Talking to a voice assistant on the other hand doesn’t seem natural, yet is becoming more common. At Spokestack, we support user-initiated, call and response exchanges (often referred to as [system-centric](https://books.google.com/books?id=sxidDwAAQBAJ&pg=PA288&lpg=PA288&dq=system-centric+interaction+conversational+ux&source=bl&ots=GpWt-8ZIjQ&sig=ACfU3U37Qow3LDDcUTf92htxoFYb0pQt7A&hl=en&sa=X&ved=2ahUKEwi_hqvCsovpAhUHWN8KHR0CCDwQ6AEwBnoECAsQAQ#v=onepage&q=system-centric%20interaction%20conversational%20ux&f=false) interactions). These are conducive to voice control and information retrieval.

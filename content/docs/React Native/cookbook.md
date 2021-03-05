@@ -3,6 +3,7 @@ title: Cookbook
 navId: Cookbook (react-native)
 description: Code snippets and tips for React Native
 draft: false
+tags: ASR, Dialogue Management, NLU, React Native, TTS, Wakeword
 ---
 
 This is a collection of code snippets and brief descriptions designed to help you be as productive as possible as quickly as possible. Check out the Concepts section for more detailed discussions about the techniques mentioned here.

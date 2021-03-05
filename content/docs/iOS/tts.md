@@ -3,6 +3,7 @@ title: Text-to-speech for iOS
 navId: TTS (iOS)
 description: Documentation for Spokestack's iOS TTS subsystem.
 draft: false
+tags: iOS, TTS
 ---
 
 Text-to-speech is a broad topic, but as far as Spokestack is concerned, there are two things your app has to handle: sending the input to be synthesized, and playing the resulting audio for your users. This guide will cover both.

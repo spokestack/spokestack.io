@@ -3,6 +3,7 @@ title: NLU with Spokestack
 navId: NLU (Concepts)
 description: Understanding Spokestack's NLU system
 draft: false
+tags: NLU
 ---
 
 This guide explains the design of Spokestack's natural language understanding (NLU) API and how to use it with our on-device models or a third-party service.

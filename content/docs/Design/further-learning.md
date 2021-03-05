@@ -3,6 +3,7 @@ title: Further Learning
 navId: Further Learning
 description: More resources for learning
 draft: false
+tags: Conversation Design
 ---
 
 - [Conversational Design](https://www.amazon.com/Conversational-Design-Erika-Hall/dp/1937557677) - Erika Hall

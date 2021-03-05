@@ -3,6 +3,7 @@ title: NLU in Python
 navId: NLU (Python)
 description: Understanding the Python NLU API
 draft: false
+tags: NLU, Python
 ---
 
 This is a companion to the [NLU concept guide](/docs/concepts/nlu), which is a detailed outline of the NLU module. Here we'll talk about usage issues specific to the Python client library.

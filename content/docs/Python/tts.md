@@ -3,6 +3,7 @@ title: Text-to-speech for Python
 navId: TTS (Python)
 description: Documentation for Spokestack's Python TTS module.
 draft: false
+tags: Python, TTS
 ---
 
 Text-to-speech is a broad topic, but as far as Spokestack is concerned, there are two things your app has to handle: sending text, SSML, or Speech Markdown to be synthesized; and playing the resulting audio for your users. This guide will cover both.

@@ -3,6 +3,7 @@ title: ASR configuration
 navId: ASR (Concepts)
 description: Documentation for Spokestack's third-party ASR support
 draft: false
+tags: ASR
 ---
 
 Spokestack is designed to support multiple speech recognition providers so you can decide which is right for your use case. Support varies by mobile platform, however, so we decided to gather the information in one place to make the choice as easy as possible for your app.

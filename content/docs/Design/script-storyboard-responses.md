@@ -3,6 +3,7 @@ title: Script Responses
 navId: Script Responses
 description: Script responses to the user.
 draft: false
+tags: Conversation Design
 ---
 
 The next step after creating an [experience map](map-out-integration) is to focus on what will be said verbally. A script outlines sample dialog, both verbal and nonverbal, between a multimodal app and the user. This will include both what your app will say and do. Your script will help frame context for your responses and lay the groundwork for how intents are designed. A single back-and-forth interaction between an app and the user represents a single turn. Your script will represent dialog for the turns you defined previously in your experience map.

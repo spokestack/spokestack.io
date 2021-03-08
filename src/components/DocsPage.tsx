@@ -140,14 +140,16 @@ const styles = {
       justify-content: space-between;
     }
   `,
+  footerLeft: css`
+    margin-bottom: 15px;
+
+    ${theme.MIN_DEFAULT_MEDIA_QUERY} {
+      margin: 0;
+    }
+  `,
   footerRight: css`
-    float: right;
-    word-wrap: break-word;
     display: flex;
     flex-direction: column;
-  `,
-  footerLeft: css`
-    float: left;
   `,
   relatedLinks: css`
     display: flex;

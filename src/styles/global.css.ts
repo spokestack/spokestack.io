@@ -164,6 +164,7 @@ export default css`
   }
   code[class*='language-'],
   pre[class*='language-'] {
+    font-size: 16px;
     tab-size: 2;
   }
   pre[class*='language-'] {

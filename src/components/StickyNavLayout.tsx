@@ -74,6 +74,7 @@ const styles = {
   content: css`
     ${theme.MIN_DEFAULT_MEDIA_QUERY} {
       grid-area: content;
+      overflow: hidden;
     }
   `,
   contentWrap: css`

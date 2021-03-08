@@ -1,8 +1,9 @@
-import { PageRendererProps, graphql } from 'gatsby'
-import { RelatedLink } from '../types'
-import DocsPage from '../components/DocsPage'
 import { MarkdownRemark, Query } from '../utils/graphql'
+import { PageRendererProps, graphql } from 'gatsby'
+
+import DocsPage from '../components/DocsPage'
 import React from 'react'
+import { RelatedLink } from '../types'
 
 type Props = PageRendererProps & {
   data: Query
@@ -37,7 +38,6 @@ export const pageQuery = graphql`
       }
       frontmatter {
         title
-        date(formatString: "MMMM DD, YYYY")
         description
       }
     }

@@ -111,8 +111,8 @@ export default css`
   }
   td,
   th,
-  th:first-of-tyoe,
-  td:first-of-tyoe,
+  th:first-of-type,
+  td:first-of-type,
   th:last-of-type,
   td:last-of-type {
     padding-left: 10px;
@@ -162,7 +162,12 @@ export default css`
   h5 a {
     text-decoration: none;
   }
+  code[class*='language-'],
   pre[class*='language-'] {
+    tab-size: 2;
+  }
+  pre[class*='language-'] {
+    width: 100%;
     margin: 0 0 15px;
   }
   code {
@@ -348,6 +353,11 @@ export default css`
 
     ${theme.MIN_DEFAULT_MEDIA_QUERY} {
       font-size: 1rem;
+    }
+  }
+  .main-content {
+    table {
+      margin-bottom: 20px;
     }
   }
   .link-with-icon {

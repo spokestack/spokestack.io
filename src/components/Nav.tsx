@@ -262,6 +262,7 @@ const styles = {
     flex-grow: 1;
     list-style: none;
     margin: 0;
+    padding: 0;
     height: 100%;
     overflow-y: auto;
 

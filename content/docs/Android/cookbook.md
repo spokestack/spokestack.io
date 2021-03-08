@@ -1,5 +1,5 @@
 ---
-title: Cookbook
+title: Android Cookbook
 navId: Cookbook (Android)
 description: Code snippets and tips for Android
 draft: false

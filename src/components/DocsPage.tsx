@@ -1,14 +1,14 @@
 import * as theme from '../styles/theme'
 
-import { MarkdownRemark, Query } from '../utils/graphql'
 import { Link, graphql, useStaticQuery } from 'gatsby'
+import { MarkdownRemark, Query } from '../utils/graphql'
+import { RelatedLink, StickyLink } from '../types'
 
 import Create from './homepage/Create'
 import DarkModeButton from '../components/DarkModeButton'
 import Layout from '../components/Layout'
-import React, { Fragment } from 'react'
+import React from 'react'
 import SEO from '../components/SEO'
-import { RelatedLink, StickyLink } from '../types'
 import StickyNavLayout from '../components/StickyNavLayout'
 import { WindowLocation } from '@reach/router'
 import { css } from '@emotion/react'
@@ -96,25 +96,19 @@ export default function DocsPage({
         </header>
         <div dangerouslySetInnerHTML={{ __html: post.html }} />
         <div css={styles.footer}>
-          <div css={styles.footerboxLeft}>
-            {related && !!related.length && (
-              <Fragment>
-                <h5>See Also</h5>
-                <div css={styles.relatedLinks}>
-                  {related.map((link, i) => (
-                    <Link
-                      key={`related-${i}`}
-                      to={link.href}
-                      className="content-link">
-                      {link.title}
-                    </Link>
-                  ))}
-                </div>
-              </Fragment>
-            )}
-          </div>
-          <div css={styles.footerboxRight}>
-            <h5>Get in Touch</h5>
+          {!!related?.length && (
+            <div css={styles.footerLeft}>
+              See also
+              <div css={styles.relatedLinks}>
+                {related.map((link, i) => (
+                  <Link key={`related-${i}`} to={link.href}>
+                    {link.title}
+                  </Link>
+                ))}
+              </div>
+            </div>
+          )}
+          <div css={styles.footerRight}>
             Something missing here?
             <a
               href={post.fields.githubLink}
@@ -122,8 +116,8 @@ export default function DocsPage({
               target="_blank">
               Edit this doc!
             </a>
-            <br />
-            Questions? <a href="https://forum.spokestack.io/">View our forum</a>
+            Questions?{' '}
+            <a href="https://forum.spokestack.io/">Visit our forum</a>
           </div>
         </div>
         {!isLoggedIn() && <Create small />}
@@ -134,25 +128,30 @@ export default function DocsPage({
 
 const styles = {
   footer: css`
-    border-top: 1px solid ${theme.mainBorder};
-    margin-bottom: 30px;
+    display: flex;
+    flex-direction: column;
     padding: 20px 0;
+    margin-bottom: 15px;
+    border-top: 1px solid ${theme.mainBorder};
+    border-bottom: 1px solid ${theme.mainBorder};
+
+    ${theme.MIN_DEFAULT_MEDIA_QUERY} {
+      flex-direction: row;
+      justify-content: space-between;
+    }
   `,
-  footerboxRight: css`
+  footerRight: css`
     float: right;
     word-wrap: break-word;
     display: flex;
     flex-direction: column;
   `,
-  footerboxLeft: css`
+  footerLeft: css`
     float: left;
   `,
   relatedLinks: css`
     display: flex;
     flex-direction: column;
-    a {
-      margin-bottom: 10px;
-    }
   `
 }
 

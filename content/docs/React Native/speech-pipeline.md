@@ -3,6 +3,7 @@ title: Speech Pipeline in React Native
 navId: Speech Pipeline (react-native)
 description: Documentation for the Speech Pipeline in React Native
 draft: false
+tags: ASR, React Native, Wakeword
 ---
 
 If you've read any of our other documentation, you know that the speech pipeline is the main way you interact with Spokestack's speech recognition and wakeword. This guide is here to explain in more detail how the React Native version of Spokestack uses this architecture to recognize wakewords and user speech. Spokestack on React Native is just a wrapper around the [Android](/docs/Android/speech-pipeline) and [iOS](/docs/iOS/speech-pipeline) native libraries. Consult those guides for platform-specific questions.

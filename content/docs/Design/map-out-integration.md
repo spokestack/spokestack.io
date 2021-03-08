@@ -3,6 +3,7 @@ title: Map Out Integration
 navId: Map Out Integration
 description: Consider what users want to ask and how you will respond.
 draft: false
+tags: Conversation Design
 ---
 
 After [identifying the right use cases](find-the-right-use-case) for multimodality, map how you’ll integrate them into your app. Think about who/what you’re solving for and what users need in order to accomplish their goals. A useful technique for this is to create a customer journey or experience map.

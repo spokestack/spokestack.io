@@ -3,6 +3,7 @@ title: SpeechPipeline in iOS
 navId: Speech Pipeline (iOS)
 description: Documentation for the SpeechPipeline class in iOS
 draft: false
+tags: ASR, iOS, Wakeword
 ---
 
 If you've read any of our other documentation, you know that the speech pipeline is the main way you interact with Spokestack's speech recognition and wakeword. This guide is here to explain in a little more detail how the iOS version of Spokestack uses this collection of components to recognize wakewords and user speech.

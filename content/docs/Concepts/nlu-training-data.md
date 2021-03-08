@@ -3,6 +3,7 @@ title: NLU Training Data
 navId: NLU Training Data
 description: Documentation for the NLU training data format.
 draft: false
+tags: NLU
 ---
 
 Spokestack's NLU data is expressed in the [TOML](https://github.com/toml-lang/toml) format. A full model consists of a collection of TOML files, each one expressing a separate intent. These files can be compressed into a single `.zip` file and imported via the [Account](/account/services/nlu) section, which can be convenient if you don't have an existing voice app on another platform and want to start from scratch.

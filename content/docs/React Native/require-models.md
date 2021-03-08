@@ -3,6 +3,7 @@ title: Including model files in your app bundle
 navId: Local models (react-native)
 description: Documentation for including local Spokestack model files in React Native app bundles.
 draft: false
+tags: NLU, React Native, Wakeword
 ---
 
 To include model files locally in your app (rather than downloading them from a CDN), you also need to add the necessary extensions so

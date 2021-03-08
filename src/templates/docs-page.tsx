@@ -3,6 +3,7 @@ import { PageRendererProps, graphql } from 'gatsby'
 
 import DocsPage from '../components/DocsPage'
 import React from 'react'
+import { RelatedLink } from '../types'
 
 type Props = PageRendererProps & {
   data: Query
@@ -11,11 +12,22 @@ type Props = PageRendererProps & {
     slug: string
     previous: MarkdownRemark
     next: MarkdownRemark
+    related: RelatedLink[]
   }
 }
 
-export default function DocsPageTemplate({ data, location }: Props) {
-  return <DocsPage location={location} post={data.markdownRemark} />
+export default function DocsPageTemplate({
+  data,
+  location,
+  pageContext
+}: Props) {
+  return (
+    <DocsPage
+      location={location}
+      post={data.markdownRemark}
+      related={pageContext.related}
+    />
+  )
 }
 
 export const pageQuery = graphql`
@@ -26,6 +38,7 @@ export const pageQuery = graphql`
       html
       fields {
         githubLink
+        tags
       }
       frontmatter {
         title

@@ -3,6 +3,7 @@ title: Wakeword Models
 navId: Wakeword Models (Concepts)
 description: A detailed discussion of wakeword model design
 draft: false
+tags: Wakeword
 ---
 
 Spokestack provides pretrained [TensorFlow Lite](https://www.tensorflow.org/lite) models that enable on-device wakeword detection. These free models, however, only recognize the word "Spokestack"; in order to have your app respond to a different word or phrase, you'll need new models. If machine learning is outside your wheelhouse and you'd like a customized wakeword for your app, stop reading here and [drop us a line](mailto:hello@spokestack.io). We're happy to help.

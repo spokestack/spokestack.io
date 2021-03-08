@@ -3,6 +3,7 @@ title: Getting Started
 navId: Getting Started (Python)
 description: Getting started with the Spokestack Python API
 draft: false
+tags: Python
 ---
 
 This guide will get you up and running with Spokestack for Python, and you'll have a voice interface in your application in no time.

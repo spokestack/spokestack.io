@@ -3,6 +3,7 @@ title: Getting Started
 navId: Getting Started (Android)
 description: Getting started with the Spokestack Android API
 draft: false
+tags: Android
 ---
 
 This guide will get you up and running with Spokestack for Android, and you'll be hearing and responding to your users in no time.

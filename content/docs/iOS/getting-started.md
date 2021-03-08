@@ -3,6 +3,7 @@ title: Getting Started
 navId: Getting Started (iOS)
 description: Getting started with the Spokestack iOS API
 draft: false
+tags: iOS
 ---
 
 This guide will get you up and running with Spokestack for iOS, and you'll be hearing and responding to your users in no time. We'll start with how to integrate speech recognition, and then move on to how to process that recognized speech using natural langauge understanding, and finally learn how to speak back to your users using text to speech.

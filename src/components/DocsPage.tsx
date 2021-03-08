@@ -1,14 +1,14 @@
 import * as theme from '../styles/theme'
 
+import { Link, graphql, useStaticQuery } from 'gatsby'
 import { MarkdownRemark, Query } from '../utils/graphql'
-import { graphql, useStaticQuery } from 'gatsby'
+import { RelatedLink, StickyLink } from '../types'
 
 import Create from './homepage/Create'
 import DarkModeButton from '../components/DarkModeButton'
 import Layout from '../components/Layout'
 import React from 'react'
 import SEO from '../components/SEO'
-import { StickyLink } from '../types'
 import StickyNavLayout from '../components/StickyNavLayout'
 import { WindowLocation } from '@reach/router'
 import { css } from '@emotion/react'
@@ -21,6 +21,7 @@ import uniqBy from 'lodash/uniqBy'
 interface Props {
   location: WindowLocation
   post: MarkdownRemark
+  related: RelatedLink[]
   selectFirst?: boolean
 }
 
@@ -49,7 +50,12 @@ function orderLinks(links: StickyLink[]) {
   })
 }
 
-export default function DocsPage({ location, post, selectFirst }: Props) {
+export default function DocsPage({
+  location,
+  post,
+  related,
+  selectFirst
+}: Props) {
   const links: StickyLink[] = []
   const data = useStaticQuery<Query>(docsPageQuery)
   const posts = data.allMarkdownRemark.edges
@@ -90,13 +96,29 @@ export default function DocsPage({ location, post, selectFirst }: Props) {
         </header>
         <div dangerouslySetInnerHTML={{ __html: post.html }} />
         <div css={styles.footer}>
-          <h5>Spot a typo? Find a bug? Have an improvement?</h5>
-          <a
-            href={post.fields.githubLink}
-            rel="noopener noreferrer"
-            target="_blank">
-            Edit this doc directly in GitHub and help everyone!
-          </a>
+          {!!related?.length && (
+            <div css={styles.footerLeft}>
+              See also
+              <div css={styles.relatedLinks}>
+                {related.map((link, i) => (
+                  <Link key={`related-${i}`} to={link.href}>
+                    {link.title}
+                  </Link>
+                ))}
+              </div>
+            </div>
+          )}
+          <div css={styles.footerRight}>
+            Something missing here?
+            <a
+              href={post.fields.githubLink}
+              rel="noopener noreferrer"
+              target="_blank">
+              Edit this doc!
+            </a>
+            Questions?{' '}
+            <a href="https://forum.spokestack.io/">Visit our forum</a>
+          </div>
         </div>
         {!isLoggedIn() && <Create small />}
       </StickyNavLayout>
@@ -106,10 +128,32 @@ export default function DocsPage({ location, post, selectFirst }: Props) {
 
 const styles = {
   footer: css`
+    display: flex;
+    flex-direction: column;
+    padding: 20px 0;
+    margin-bottom: 15px;
     border-top: 1px solid ${theme.mainBorder};
     border-bottom: 1px solid ${theme.mainBorder};
-    margin-bottom: 30px;
-    padding: 20px 0;
+
+    ${theme.MIN_DEFAULT_MEDIA_QUERY} {
+      flex-direction: row;
+      justify-content: space-between;
+    }
+  `,
+  footerLeft: css`
+    margin-bottom: 15px;
+
+    ${theme.MIN_DEFAULT_MEDIA_QUERY} {
+      margin: 0;
+    }
+  `,
+  footerRight: css`
+    display: flex;
+    flex-direction: column;
+  `,
+  relatedLinks: css`
+    display: flex;
+    flex-direction: column;
   `
 }
 

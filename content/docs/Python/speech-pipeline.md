@@ -3,6 +3,7 @@ title: SpeechPipeline in Python
 navId: Speech Pipeline (Python)
 description: Documentation for the SpeechPipeline class in Python
 draft: false
+tags: ASR, Python, Wakeword
 ---
 
 ## What _is_ it?

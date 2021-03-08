@@ -3,6 +3,7 @@ title: Spokestack Configuration
 navId: Spokestack Configuration (Android)
 description: An in-depth guide to configuring all of Spokestack's Android modules in a single class.
 draft: false
+tags: Android, ASR, NLU, TTS, Wakeword
 ---
 
 As of version 9.0.0, Spokestack offers a single class that centralizes setup and configuration for all of its individual modules (ASR, NLU, TTS, etc.). This guide details the configuration options available when setting up that class as well as tips for runtime usage.

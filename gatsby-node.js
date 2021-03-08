@@ -201,7 +201,7 @@ async function createPages({ actions, graphql, posts, template }) {
       })
     }
 
-    // Add related tags (applicable to blog posts, but not docs)
+    // Add related tags
     const related = await getRelated({
       tags: fields.tags,
       slug,
@@ -261,6 +261,7 @@ exports.createPages = async ({ graphql, actions, reporter }) => {
             fields {
               slug
               oldSlug
+              tags
             }
           }
         }

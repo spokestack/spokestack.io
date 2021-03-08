@@ -59,7 +59,6 @@ const styles = {
   video: css`
     position: relative;
     border-radius: 10px;
-    overflow: hidden;
     width: 100%;
     max-width: 375px;
     line-height: 0;

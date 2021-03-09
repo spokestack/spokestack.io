@@ -1,12 +1,12 @@
 import * as theme from '../styles/theme'
-import Tags from './Tags'
 
 import { Global, css } from '@emotion/react'
-import { Link, graphql, useStaticQuery } from 'gatsby'
 import { MarkdownRemark, Query } from '../utils/graphql'
+import { graphql, useStaticQuery } from 'gatsby'
 
 import Color from 'color'
 import React from 'react'
+import Tags from './Tags'
 import find from 'lodash/find'
 
 interface Props {
@@ -23,8 +23,8 @@ export default function BlogListItem({ post }: Props) {
     key: author
   })
   return (
-    <Link
-      to={post.fields.slug}
+    <div
+      onClick={() => (window.location.href = post.fields.slug)}
       css={styles.container}
       className="blog-list-item">
       <Global
@@ -72,7 +72,7 @@ export default function BlogListItem({ post }: Props) {
           <Tags tags={post.fields.tags} header="" />
         </div>
       </div>
-    </Link>
+    </div>
   )
 }
 
@@ -86,6 +86,7 @@ const styles = {
     margin-bottom: 15px;
     text-decoration: none;
     font-weight: 400;
+    cursor: pointer;
 
     &,
     &:visited,

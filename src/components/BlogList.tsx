@@ -3,15 +3,16 @@ import * as theme from '../styles/theme'
 import { Global, SerializedStyles, css } from '@emotion/react'
 
 import BlogListItem from '../components/BlogListItem'
+import Create from './homepage/Create'
 import DarkModeButton from '../components/DarkModeButton'
 import Layout from '../components/Layout'
 import { MarkdownRemarkEdge } from '../utils/graphql'
+import Paging from './Paging'
 import React from 'react'
-import SVGIcon from '../components/SVGIcon'
 import Tags from '../components/Tags'
 import { WindowLocation } from '@reach/router'
-import Create from './homepage/Create'
 import { isLoggedIn } from '../utils/auth'
+import { navigate } from 'gatsby'
 
 interface Props {
   currentPage: number
@@ -37,9 +38,6 @@ export default function BlogList({
   tags,
   title
 }: Props) {
-  const hasPrevious = currentPage > 1
-  const hasNext = currentPage < numPages
-
   return (
     <Layout location={location}>
       <Global
@@ -75,43 +73,14 @@ export default function BlogList({
             {posts.map(({ node }) => (
               <BlogListItem key={node.fields.slug} post={node} />
             ))}
-            {(hasPrevious || hasNext) && (
-              <div className="blog-nav-links" css={styles.blogNavLinks}>
-                {hasPrevious ? (
-                  <a
-                    href={
-                      currentPage === 2
-                        ? homeUrl
-                        : `${homeUrl}/${currentPage - 1}`
-                    }
-                    css={styles.blogNavLink}>
-                    <SVGIcon
-                      className="icon"
-                      icon="#arrow-forward"
-                      extraCss={css`
-                        ${styles.iconArrow}
-                        transform: rotateY(180deg);
-                      `}
-                    />
-                    Previous
-                  </a>
-                ) : (
-                  <div />
-                )}
-                {hasNext && (
-                  <a
-                    href={`${homeUrl}/${currentPage + 1}`}
-                    css={styles.blogNavLink}>
-                    Next
-                    <SVGIcon
-                      className="icon"
-                      icon="#arrow-forward"
-                      extraCss={styles.iconArrow}
-                    />
-                  </a>
-                )}
-              </div>
-            )}
+            <Paging
+              page={currentPage}
+              maxPages={numPages}
+              onSelect={(page) => {
+                console.log('Selecting page', page)
+                navigate(page === 1 ? homeUrl : `${homeUrl}/${page}`)
+              }}
+            />
           </div>
         </section>
         {!isLoggedIn() && <Create small />}
@@ -207,31 +176,5 @@ const styles = {
       right: 0;
       bottom: 100%;
     }
-  `,
-  blogNavLinks: css`
-    display: flex;
-    flex-direction: row;
-    justify-content: space-between;
-  `,
-  blogNavLink: css`
-    display: flex;
-    align-items: center;
-    margin: 10px 20px 0;
-    text-decoration: none;
-
-    .icon {
-      margin: 0 5px;
-      transition: fill 0.1s ${theme.transitionEasing};
-      fill: ${theme.link};
-    }
-
-    &:hover .icon {
-      fill: ${theme.linkHover};
-    }
-  `,
-  iconArrow: css`
-    width: 18px;
-    height: 18px;
-    fill: ${theme.primary};
   `
 }

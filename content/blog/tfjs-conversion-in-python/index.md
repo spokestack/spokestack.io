@@ -90,4 +90,6 @@ Notice the creation of a new output directory for every signature. This is impor
 
 And just like that, we've come out the other side of our spelunking trip into the `tensorflowjs` source code, only a little worse for wear. Models converted using the above method can be loaded in TensorFlow.js via [`tf.loadGraphModel`](https://js.tensorflow.org/api/latest/#loadGraphModel).
 
-I hope this has been some small help in your journey to infer all the things in the browser.
+A well-designed repository can now host code for both model training and TensorFlow.js deployment, all in the same language, without maintaining separate shell scripts for model conversion, and all it took was reading a little source code. Who knows, maybe Google will see the value in this approach and choose to officially support this workflow with more public functions and some user-facing documentation in the future.
+
+I hope this speeds our collective journey to infer all the things in the browser, or at least makes it a bit more comfortable.

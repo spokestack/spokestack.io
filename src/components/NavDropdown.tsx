@@ -101,10 +101,10 @@ const styles = {
     justify-content: space-between;
   `,
   dropdownIcon: css`
-    width: 18px;
-    height: 18px;
+    width: 10px;
+    height: 10px;
     fill: ${theme.header};
-    margin-left: 5px;
+    margin-left: 8px;
     transform: rotateZ(270deg);
     transition: transform 0.2s ${theme.transitionEasing};
 

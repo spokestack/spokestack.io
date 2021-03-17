@@ -10,9 +10,8 @@
 			</g>
     </g>
 	</symbol>
-	<symbol id="arrow-down" viewBox="0 0 24 24">
-		<path d="M16.59 8.59L12 13.17 7.41 8.59 6 10l6 6 6-6z" />
-		<path d="M0 0h24v24H0z" fill="none" />
+	<symbol id="arrow-down" viewBox="0 0 14 15">
+		<path fill-rule="evenodd" clip-rule="evenodd" d="M7 11.826L14 4.82601L12.348 3.17401L7 8.55001L1.652 3.17401L0 4.82601L7 11.826Z" />
 	</symbol>
 	<symbol id="arrow-forward" viewBox="0 0 24 24">
 		<path d="M0 0h24v24H0z" fill="none" />

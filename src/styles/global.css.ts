@@ -360,6 +360,13 @@ export default css`
     table {
       margin-bottom: 20px;
     }
+    h2,
+    h3,
+    h4,
+    h5,
+    h6 {
+      margin-top: 15px;
+    }
   }
   .link-with-icon {
     text-decoration: none;

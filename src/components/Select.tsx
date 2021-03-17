@@ -18,9 +18,8 @@ interface Props
   extraCss?: SerializedStyles
   selectCss?: SerializedStyles
   labelCss?: SerializedStyles
-  iconCss?: SerializedStyles
-  iconWrapCss?: SerializedStyles
   selected: Option
+  expanded?: boolean
   onChange: (value: string) => void
 }
 
@@ -29,16 +28,25 @@ export default function Select({
   options,
   extraCss,
   labelCss,
-  iconCss,
-  iconWrapCss,
   selectCss,
   id,
   disabled,
-  selected = { title: 'None' },
+  expanded,
+  selected = { title: 'None selected' },
   onChange,
   ...props
 }: Props) {
   const [open, setOpen] = useState(false)
+
+  const dropdownStyle = [styles.dropdownCommon]
+  const labelStyle = [styles.label]
+  if (expanded) {
+    dropdownStyle.push(styles.dropdownExpanded)
+    labelStyle.push(styles.labelExpanded)
+  } else {
+    dropdownStyle.push(styles.dropdown)
+  }
+
   return (
     <div
       css={[styles.container, extraCss]}
@@ -46,20 +54,13 @@ export default function Select({
       <label
         htmlFor={id}
         className="select-label"
-        css={[styles.label, labelCss]}
+        css={labelStyle.concat(labelCss)}
         onClick={() => {
           setOpen(!disabled && !open)
         }}>
         <p>{selected.title}</p>
-        <div css={[styles.iconWrap, iconWrapCss]}>
-          <SVGIcon
-            className="icon"
-            icon="#arrow-down"
-            extraCss={css`
-              ${styles.icon}
-              ${iconCss}
-            `}
-          />
+        <div css={styles.iconWrap}>
+          <SVGIcon className="icon" icon="#arrow-down" extraCss={styles.icon} />
         </div>
       </label>
       <select
@@ -80,11 +81,15 @@ export default function Select({
           : children}
       </select>
       {options && (
-        <div css={styles.dropdown} className="dropdown">
+        <div css={dropdownStyle} className="dropdown">
           {options.map((option) => (
             <div
               key={option.value}
-              css={styles.dropdownOption}
+              css={
+                selected && option.value === selected.value
+                  ? [styles.dropdownOption, styles.dropdownOptionSelected]
+                  : styles.dropdownOption
+              }
               onClick={() => {
                 onChange(option.value)
                 setOpen(false)
@@ -100,10 +105,7 @@ export default function Select({
 
 const styles = {
   container: css`
-    height: 50px;
     position: relative;
-    display: flex;
-    align-items: center;
     z-index: 100;
 
     &.select-open {
@@ -140,6 +142,14 @@ const styles = {
     cursor: pointer;
     z-index: 99;
 
+    ${theme.ieBreakpoint} {
+      display: none;
+    }
+
+    ${theme.ieBreakpointMinDefault} {
+      display: block;
+    }
+
     p {
       width: 100%;
       overflow: hidden;
@@ -147,8 +157,11 @@ const styles = {
       white-space: nowrap;
       text-overflow: ellipsis;
       padding-left: 20px;
+      font-weight: 700;
     }
-    ${theme.ieBreakpoint} {
+  `,
+  labelExpanded: css`
+    ${theme.MIN_DEFAULT_MEDIA_QUERY} {
       display: none;
     }
   `,
@@ -159,14 +172,13 @@ const styles = {
     width: 50px;
     height: 100%;
     flex-shrink: 0;
-    border-left: 1px solid ${theme.mainBorder};
-    background-color: ${theme.textDarkBg};
-    border-radius: 0 25px 25px 0;
+    background: none;
   `,
   icon: css`
-    fill: ${theme.primary};
-    width: 20px;
-    height: 20px;
+    fill: ${theme.header};
+    fill-opacity: 0.75;
+    width: 14px;
+    height: 14px;
     transition: transform 0.1s ${theme.transitionEasing};
   `,
   select: css`
@@ -191,11 +203,12 @@ const styles = {
     ${theme.MIN_DEFAULT_MEDIA_QUERY} {
       display: none;
     }
+  `,
+  dropdownCommon: css`
+    overflow-y: auto;
 
-    ${theme.ieBreakpoint} {
-      display: block;
-      height: 50px;
-      background-color: white;
+    ${theme.DEFAULT_MEDIA_QUERY} {
+      display: none;
     }
   `,
   dropdown: css`
@@ -203,19 +216,30 @@ const styles = {
     top: 100%;
     width: 100%;
     max-height: 185px;
-    overflow-y: auto;
     background-color: white;
     border: 1px solid ${theme.mainBorder};
+
     transition: transform 0.2s ${theme.transitionEasing},
       opacity 0.2s ${theme.transitionEasing};
     transform: translateY(-50%) scaleY(0);
     opacity: 0;
   `,
+  dropdownExpanded: css`
+    border-right: 1px solid ${theme.mainBorder};
+  `,
   dropdownOption: css`
     padding: 10px 20px;
     cursor: pointer;
+    color: ${theme.primaryColor.fade(0.4).toString()};
+    font-weight: 700;
     &:hover {
       background-color: ${theme.primaryColor.fade(0.9).string()};
     }
+  `,
+  dropdownOptionSelected: css`
+    color: ${theme.primary};
+    background-color: ${theme.primaryColor.fade(0.9).string()};
+    border-top: 1px solid ${theme.mainBorder};
+    border-bottom: 1px solid ${theme.mainBorder};
   `
 }

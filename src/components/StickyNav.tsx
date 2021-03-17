@@ -1,16 +1,18 @@
 import * as theme from '../styles/theme'
 
 import React, { useEffect, useRef, useState } from 'react'
+import StickyNavSection, { StickyLink } from './StickyNavSection'
 
 import NavSelectedBackground from './NavSelectedBackground'
 import Select from './Select'
-import { StickyLink } from '../types'
-import StickyNavSection from './StickyNavSection'
 import { WindowLocation } from '@reach/router'
 import { css } from '@emotion/react'
+import currentPath from '../utils/currentPath'
 import groupBy from 'lodash/groupBy'
 import hashToId from '../utils/hashToId'
 import throttle from 'lodash/throttle'
+
+export type { StickyLink }
 
 export interface StickyNavProps {
   hideSelect?: boolean
@@ -21,13 +23,6 @@ export interface StickyNavProps {
 
 function isSection(section: string) {
   return section !== 'undefined' && section !== 'null'
-}
-
-function linkIsSelected(link: StickyLink) {
-  return (
-    link.forceSelect ||
-    decodeURIComponent(window.location.pathname).indexOf(link.href) > -1
-  )
 }
 
 function optionsFromLinks(links: StickyLink[]) {
@@ -56,6 +51,7 @@ export default function StickyNav({
   useEffect(() => {
     const locs: { [key: number]: HTMLElement } = {}
     const linksWithHash: StickyLink[] = []
+    const rcurrentPath = currentPath(location.pathname)
     links.forEach((link) => {
       if (link.matchHash) {
         const elem =
@@ -65,7 +61,7 @@ export default function StickyNav({
           locs[elem.offsetTop + elem.offsetHeight / 3] = elem
         }
         linksWithHash.push(link)
-      } else if (linkIsSelected(link)) {
+      } else if (link.forceSelect || rcurrentPath.test(link.href)) {
         setSelectedLink(link)
       }
     })
@@ -85,12 +81,11 @@ export default function StickyNav({
         }
       }
     }, 50)
-    document.addEventListener('scroll', onScroll, { passive: true })
     const timeout = setTimeout(() => {
+      document.addEventListener('scroll', onScroll, { passive: true })
       if (linksWithHash.length) {
-        setSelectedId(
-          `${hashToId(location.hash || linksWithHash[0].href)}-link`
-        )
+        const id = `${hashToId(location.hash || linksWithHash[0].href)}-link`
+        setSelectedId(id)
       }
       navigating = false
     }, 200)
@@ -128,7 +123,6 @@ export default function StickyNav({
           extraCss={styles.mobileNav}
           selectCss={styles.mobileNavSelect}
           labelCss={styles.mobileNavLabel}
-          iconWrapCss={styles.mobileNavIconWrap}
           selected={
             selectedLink
               ? {
@@ -194,10 +188,14 @@ const styles = {
       position: sticky;
       top: 0;
       bottom: 0;
-      padding: 25px 0;
+      padding: 30px 0;
       min-width: 250px;
-      max-height: calc(100vh - 25px);
+      max-height: calc(100vh - 60px);
       overflow-y: auto;
+    }
+    ${theme.MIN_LARGER_DISPLAY_MEDIA_QUERY} {
+      padding-top: 60px;
+      max-height: calc(100vh - 90px);
     }
   `,
   mobileNav: css`
@@ -216,28 +214,10 @@ const styles = {
 
     p {
       font-size: 20px;
-      font-weight: 700;
     }
-  `,
-  mobileNavIconWrap: css`
-    border: none;
-    background: transparent;
   `,
   section: css`
     display: flex;
     flex-direction: column;
-  `,
-  stickyNavLink: css`
-    padding: 15px 45px;
-    text-decoration: none;
-    user-select: none;
-    color: ${theme.linkStickyNav};
-
-    &:visited {
-      color: ${theme.linkStickyNav};
-    }
-    &:hover {
-      color: ${theme.linkStickyNavHover};
-    }
   `
 }

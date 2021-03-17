@@ -1,5 +1,4 @@
 import { MarkdownRemark } from './utils/graphql'
-import { MutableRefObject } from 'react'
 
 // Added by createPage to templates in gatsby-node.js
 export interface PageContext {
@@ -20,17 +19,6 @@ export interface PageContext {
 export interface RelatedLink {
   title: string
   href: string
-}
-
-export interface StickyLink {
-  forceSelect?: boolean
-  href: string
-  matchHash?: boolean
-  navId?: string
-  ref?: MutableRefObject<HTMLElement>
-  refSelector?: string
-  section?: string
-  title: string
 }
 
 /**

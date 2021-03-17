@@ -25,6 +25,11 @@ export default function Video() {
     }
     document.addEventListener('fullscreenchange', onFSChange)
     document.addEventListener('MSFullscreenChange', onFSChange)
+
+    return () => {
+      document.removeEventListener('fullscreenchange', onFSChange)
+      document.removeEventListener('MSFullscreenChange', onFSChange)
+    }
   }, [])
   return (
     <div css={styles.video}>

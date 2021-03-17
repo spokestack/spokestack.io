@@ -1,9 +1,11 @@
 import * as theme from '../styles/theme'
 
 import { Global, css } from '@emotion/react'
-import StickyNav, { StickyNavProps } from './StickyNav'
+import StickyNav, { StickyLink, StickyNavProps } from './StickyNav'
 
 import React from 'react'
+
+export type { StickyLink }
 
 interface Props extends StickyNavProps {
   children: React.ReactNode
@@ -62,32 +64,29 @@ const styles = {
     background-color: ${theme.stickyNavBackground};
     ${theme.MIN_DEFAULT_MEDIA_QUERY} {
       grid-area: sidenav;
-      padding: 0 0 25px 25px;
+      padding-left: 30px;
     }
-    ${theme.MIN_LARGE_DISPLAY_MEDIA_QUERY} {
-      padding-left: 50px;
+    ${theme.MIN_LARGER_DISPLAY_MEDIA_QUERY} {
+      padding-left: 100px;
     }
     ${theme.ieBreakpointMinDefault} {
       padding-bottom: 50px;
     }
   `,
   content: css`
-    ${theme.MIN_DEFAULT_MEDIA_QUERY} {
-      grid-area: content;
-      overflow: hidden;
-    }
-  `,
-  contentWrap: css`
     padding: 30px 20px;
-    max-width: ${theme.MAX_TEXT_WIDTH};
-    margin: 0 auto;
 
     ${theme.MIN_DEFAULT_MEDIA_QUERY} {
+      grid-area: content;
       padding-left: 50px;
       padding-right: 30px;
     }
     ${theme.MIN_LARGER_DISPLAY_MEDIA_QUERY} {
       padding-left: 70px;
     }
+  `,
+  contentWrap: css`
+    max-width: ${theme.MAX_TEXT_WIDTH};
+    margin: 0 auto;
   `
 }

@@ -14,6 +14,7 @@ import StickyNavLayout from '../components/StickyNavLayout'
 import { WindowLocation } from '@reach/router'
 import { css } from '@emotion/react'
 import difference from 'lodash/difference'
+import findImage from '../utils/findImage'
 import { isLoggedIn } from '../utils/auth'
 import order from '../../content/docs/nav.json'
 import sortBy from 'lodash/sortBy'
@@ -76,13 +77,14 @@ export default function DocsPage({
   return (
     <Layout location={location}>
       <SEO
-        title="Voice App Development Documentation | Spokestack"
+        title={`${post.frontmatter.title} - Spokestack`}
         description={
           'Explore our Developer Docs to learn about Spokestack’s services, including TTS and on-device ASR, Wakeword, and NLU. All of our documentation is also available on GitHub.' +
           post.frontmatter.description
             ? ` ${post.frontmatter.description}`
             : ''
         }
+        image={findImage(post.html)}
       />
       <StickyNavLayout links={orderedLinks} location={location}>
         <header className="docs-header">

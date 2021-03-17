@@ -74,19 +74,22 @@ const styles = {
     }
   `,
   content: css`
-    padding: 30px 20px;
-
     ${theme.MIN_DEFAULT_MEDIA_QUERY} {
       grid-area: content;
+      overflow: hidden;
+    }
+  `,
+  contentWrap: css`
+    padding: 30px 20px;
+    max-width: ${theme.MAX_TEXT_WIDTH};
+    margin: 0 auto;
+
+    ${theme.MIN_DEFAULT_MEDIA_QUERY} {
       padding-left: 50px;
       padding-right: 30px;
     }
     ${theme.MIN_LARGER_DISPLAY_MEDIA_QUERY} {
       padding-left: 70px;
     }
-  `,
-  contentWrap: css`
-    max-width: ${theme.MAX_TEXT_WIDTH};
-    margin: 0 auto;
   `
 }

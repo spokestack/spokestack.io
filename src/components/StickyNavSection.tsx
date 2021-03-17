@@ -45,16 +45,15 @@ export default function StickyNavSection({
   useEffect(() => {
     const openStorageValue = localStorage.getItem(storageKey)
     if (
-      !startOpen &&
-      openStorageValue !== null &&
-      openStorageValue === 'true'
+      (!startOpen &&
+        openStorageValue !== null &&
+        openStorageValue === 'true') ||
+      (!open && startOpen) ||
+      !headerText
     ) {
       setOpen(true)
       requestAnimationFrame(() => onOpenChange(true))
     }
-  }, [])
-  useEffect(() => {
-    setOpen(startOpen || !headerText)
   }, [startOpen])
   useEffect(() => {
     if (headerText) {

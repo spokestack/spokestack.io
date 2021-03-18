@@ -23,7 +23,7 @@ If you’ve built a Google Action or Alexa Skill, you’ve already defined a nat
 
 I want to pause to point out that you don’t have to use the Spokestack on-device NLU for your embedded assistant. Spokestack’s speech pipeline provides you with text from the ASR service. You could choose to classify this text using a hosted NLU service’s API like Google’s Dialogflow or Amazon Lex. However, running on device provides some advantages. First, it eliminates a network round trip that could result in faster performance depending on connection speeds. Second, it allows NLU to work even offline or with a poor signal. Finally, on-device NLU enhances privacy for your users by not sharing transcripts of their voice interactions with third party services.
 
-To get started with a free NLU model that’s compatible with Spokestack, [create a free account](/create) and upload your existing Alexa or Dialogflow interaction model. The following instructions for that process are paraphrased from our [export guide](/docs/Concepts/export):
+To get started with a free NLU model that’s compatible with Spokestack, [create a free account](/create) and upload your existing Alexa or Dialogflow interaction model. The following instructions for that process are paraphrased from our [export guide](/docs/Integrations/export):
 
 1.  Log into the Amazon developer console, find your skill, click the "Build" tab at the top, and look for "JSON Editor" listed under your intents and slots on the left side (at the time of this writing).
 1.  Copy the entire contents of the JSON editor and paste them into a new file on your computer. Save it as `<YOUR-MODEL-NAME-HERE>.json`.

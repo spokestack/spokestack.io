@@ -185,7 +185,7 @@ Some useful links for configuring Spokestack's NLU:
 
 - [high-level NLU guide](/docs/Concepts/nlu)
 - [Android NLU module documentation](nlu)
-- [converting an Alexa or Dialogflow NLU model](/docs/Concepts/export)
+- [converting an Alexa or Dialogflow NLU model](/docs/Integreations/export)
 
 ## Talking back to your users
 

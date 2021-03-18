@@ -1,6 +1,6 @@
 ---
-title: Speech Pipeline Configuration
-navId: Speech Pipeline Configuration (Concepts)
+title: Wakeword
+navId: Speech Pipeline Configuration (Machine Learning)
 description: Documentation for configuring the speech pipeline
 draft: false
 tags: ASR, Wakeword

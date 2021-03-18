@@ -1,6 +1,6 @@
 ---
 title: NLU Training Data
-navId: NLU Training Data
+navId: NLU Training (Machine Learning)
 description: Documentation for the NLU training data format.
 draft: false
 tags: NLU

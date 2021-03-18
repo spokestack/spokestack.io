@@ -6,7 +6,17 @@ draft: false
 tags: ASR
 ---
 
-Spokestack is designed to support multiple speech recognition providers so you can decide which is right for your use case. Support varies by mobile platform, however, so we decided to gather the information in one place to make the choice as easy as possible for your app.
+The technology for converting spoken words to text is known as automatic speech recognition (ASR).
+
+Automatic speech recognition (ASR) refers to the process of analyzing and transcribing a chunk of audio without human intervention. This technology is ubiquitous, with a place in the stack of every major voice assistant on the market.
+
+In software using voice powered by Spokestack, ASR is part of the [speech pipeline](/docs/Concepts/speech-pipeline).
+
+Many different techniques have been used to accomplish this throughout ASR's [long history](https://en.wikipedia.org/wiki/Speech_recognition#History), but modern models use — what else? — neural networks. The size and performance characteristics of these models vary widely, based on where they're designed to be deployed and their intended use cases. Technology has advanced to the point where models small enough to fit on a mobile device and run in almost real time are accurate enough to use for many tasks, but models that run in the cloud are still widely used for their speed and relatively higher accuracy.
+
+Accuracy is often measured in Word Error Rate (WER), or the percentage of words that differ between the ASR system's transcript and that of a gold-standard version. Getting an accurate WER measurement entails juggling many different variables (think accent, background noise, whether we're talking about a speech vs. a multi-party conversation, etc.), and it's [easy to spin](https://arxiv.org/abs/2010.03432). There are, however, various [academic comparisons](https://www.notion.so/spokestack/aclweb.org/anthology/2020.lrec-1.797.pdf) of major vendors. For perspective, human WER hovers [somewhere between 4-11%](https://www.microsoft.com/en-us/research/wp-content/uploads/2017/06/paper-revised2.pdf), depending on variables like those mentioned above, usually falling on the lower end of that range.
+
+The Spokestack open-source native libraries provide a convenient API across multiple ASR providers such as Apple, Google, and Microsoft. Spokestack is designed to support multiple speech recognition providers so you can decide which is right for your use case. Support varies by mobile platform, however, so we decided to gather the information in one place to make the choice as easy as possible for your app.
 
 ## Supported ASR providers by platform
 

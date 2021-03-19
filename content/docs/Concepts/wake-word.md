@@ -14,6 +14,6 @@ Spokestack's wake word detectors use a series of three neural models to filter u
 
 A wake word model can be trained to recognize a number of different utterances, so your app can respond to different invocations, but the different utterances will simply activate the speech pipeline; you won't know which one the user spoke. This contrasts with a [keyword recognizer](/docs/concepts/keywords), which will give you a transcript of the user's speech.
 
-### Personal Wake Word
+## Personal Wake Word
 
-Spokestack's personal wake word uses few-shot transfer learning, allowing a small amount of data to produce a neural model with an accuracy level suitable for personal, hobby, or exploratory projects. You should only expect them to respond to the voice (or voices) used in the data you submit.
+Your [Spokestack Maker account](/account#billing) gives you the ability to create a personal wake word using few-shot transfer learning, allowing a small amount of data to produce a neural model with an accuracy level suitable for personal, hobby, or exploratory projects. You should only expect them to respond to the voice (or voices) used in the data you submit.

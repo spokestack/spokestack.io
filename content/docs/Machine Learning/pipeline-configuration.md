@@ -1,5 +1,5 @@
 ---
-title: Wakeword
+title: Speech Pipeline Configuration
 navId: Speech Pipeline Configuration (Machine Learning)
 description: Documentation for configuring the speech pipeline
 draft: false

@@ -6,9 +6,9 @@ draft: false
 tags: Speech Pipeline, Wakeword
 ---
 
-A wakeword is a signal for the computer to begin transitioning from passive to active listening. It acts as your software's "name", signaling that the user is speaking to the app. “Hey Siri” and “Alexa” are two of the most widely known wake words.
+A wake word is a signal for the computer to begin transitioning from passive to active listening. It acts as your software's "name", signaling that the user is speaking to the app. “Hey Siri” and “Alexa” are two of the most widely known wake words.
 
-When Spokestack detects a wake word, [the speech pipeline](/docs/concepts/speech-pipeline) begins transcribing the user's speech until they stop talking for a pre-set amount of time, or a total activation time limit elapses.
+When Spokestack detects a wake word, the [speech pipeline](/docs/concepts/speech-pipeline) begins transcribing the user's speech until they stop talking for a pre-set amount of time, or a total activation time limit elapses.
 
 Spokestack's wake word detectors use a series of three neural models to filter user speech to isolate the most important frequency components, encode those for classification, and detect the presence of a wake word in the encoded version. More detailed information about the models themselves can be found [in our documentation](/docs/machine-learning/wakeword-models).
 

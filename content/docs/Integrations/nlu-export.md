@@ -8,7 +8,7 @@ tags: NLU, 3rd-Party Integrations
 
 This guide details the process of exporting an existing interaction model from Alexa, Dialogflow, or Jovo for use with Spokestack.
 
-See the documentation on [our training format](/docs/Machine Learning/nlu-training-data) for a way to create a model from scratch.
+See the documentation on [our training format](/docs/machine-learning/nlu-training-data) for a way to create a model from scratch.
 
 ## Alexa
 

@@ -10,7 +10,7 @@ The technology for converting spoken words to text is known as automatic speech 
 
 Automatic speech recognition (ASR) refers to the process of analyzing and transcribing a chunk of audio without human intervention. This technology is ubiquitous, with a place in the stack of every major voice assistant on the market.
 
-In software using voice powered by Spokestack, ASR is part of the [speech pipeline](/docs/Concepts/speech-pipeline).
+In software using voice powered by Spokestack, ASR is part of the [speech pipeline](/docs/concepts/speech-pipeline).
 
 Many different techniques have been used to accomplish this throughout ASR's [long history](https://en.wikipedia.org/wiki/Speech_recognition#History), but modern models use — what else? — neural networks. The size and performance characteristics of these models vary widely, based on where they're designed to be deployed and their intended use cases. Technology has advanced to the point where models small enough to fit on a mobile device and run in almost real time are accurate enough to use for many tasks, but models that run in the cloud are still widely used for their speed and relatively higher accuracy.
 

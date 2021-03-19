@@ -84,7 +84,7 @@ nlu = TFLiteNLU("tflite")
 
 ### Model Configuration
 
-We've included a pre-trained model, so you can follow along with this tutorial, but if you want to create your own, here's a quick introduction to writing NLU training data. See our [documentation](/docs/Machine Learning/nlu-training-data) for more information on our data format and how to train your own model. We are using a basic NLU template which includes intents like `greet`, `accept`, and `help`. In addition, we need a way to identify an entity in the user utterance to perform a Wikipedia search (more on this later). The name of this intent is `ask.question`, and the utterance templates are simple ways to ask a question. Naturally, these templates could be more complex and cover a wider variety of utterances, but for the purpose of this tutorial these will be enough.
+We've included a pre-trained model, so you can follow along with this tutorial, but if you want to create your own, here's a quick introduction to writing NLU training data. See our [documentation](/docs/machine-learning/nlu-training-data) for more information on our data format and how to train your own model. We are using a basic NLU template which includes intents like `greet`, `accept`, and `help`. In addition, we need a way to identify an entity in the user utterance to perform a Wikipedia search (more on this later). The name of this intent is `ask.question`, and the utterance templates are simple ways to ask a question. Naturally, these templates could be more complex and cover a wider variety of utterances, but for the purpose of this tutorial these will be enough.
 
 ```python
 [slots.subject]

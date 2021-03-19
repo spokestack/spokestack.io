@@ -20,7 +20,7 @@ As with all of our libraries, developers can create a [custom wakeword](/blog/wa
 
 `youtube: [Build your own voice interface to talk directly to your customers](https://www.youtube.com/watch?v=AvhQ6-9nCrQ)`
 
-Got an Alexa or Google Assistant app you want to set up as a kiosk? Now you can build one on a low-energy, small-form device such as a Raspberry Pi or [Tinker Board](https://www.asus.com/us/Single-Board-Computer/Tinker-Board/). Maybe you want to set up something on an old PC with a mic and a speaker. Simply [export your NLU model](/docs/Integrations/export), and you can do it!
+Got an Alexa or Google Assistant app you want to set up as a kiosk? Now you can build one on a low-energy, small-form device such as a Raspberry Pi or [Tinker Board](https://www.asus.com/us/Single-Board-Computer/Tinker-Board/). Maybe you want to set up something on an old PC with a mic and a speaker. Simply [export your NLU model](/docs/integrations/export), and you can do it!
 
 Or maybe you want to build a voice bot companion for a game or social platform. Whatever your project, there are a ton of ways to add an independent voice interface, and you have complete creative freedom using Spokestack Python.
 

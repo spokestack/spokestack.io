@@ -122,7 +122,7 @@ Some useful links for configuring Spokestack's NLU:
 
 - [high-level NLU guide](/docs/concepts/nlu)
 - [Python NLU module documentation](nlu)
-- [converting an Alexa or Dialogflow NLU model](/docs/Integrations/export)
+- [converting an Alexa or Dialogflow NLU model](/docs/integrations/export)
 
 ## Talking back to your users
 

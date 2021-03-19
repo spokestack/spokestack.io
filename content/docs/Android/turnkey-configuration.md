@@ -37,7 +37,7 @@ To disable wakeword and ASR altogether, use the builder's `withoutSpeechPipeline
 
 ### NLU
 
-Once a user's speech has been transcribed, it's useful to know what to _do_ with it. That's where [Natural Language Understanding](nlu) comes in. You'll need an NLU model and supporting files to use this feature; see our [model export guide](/docs/Concepts/export) for some easy ways to create your own. You'll supply the `Spokestack` builder with paths to these files just like you would wakeword files:
+Once a user's speech has been transcribed, it's useful to know what to _do_ with it. That's where [Natural Language Understanding](nlu) comes in. You'll need an NLU model and supporting files to use this feature; see our [model export guide](/docs/integrations/export) for some easy ways to create your own. You'll supply the `Spokestack` builder with paths to these files just like you would wakeword files:
 
 ```kotlin
 val spokestack = Spokestack.Builder()

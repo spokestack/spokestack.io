@@ -25,7 +25,7 @@ First, we'll need to recreate the ability to act on natural-language user reques
 
 If you've worked with voice platforms before (or read the page linked in the last paragraph), you might notice some familiar concepts in that file, especially if you've used any custom intents in your app. `intentName` is . . . well, the name of the intent, `parameter`s are slots, and `queryPatterns` are utterances. If you're using a built-in intent, like `GET_THING` in the sample app, `queryPatterns` is hidden from you, handled entirely by Google, but the other things are still there.
 
-We're going to exploit that similarity and convert our XML directly into Spokestack's [NLU format](/docs/concepts/nlu-training-data), using it to create a custom NLU model that will replicate the features we've just defined for Google Assistant in our app itself. This is a great opportunity to add new intents to your in-app NLU that would be too tricky or infeasible to expose via Google Assistant.
+We're going to exploit that similarity and convert our XML directly into Spokestack's [NLU format](/docs/machine-learning/nlu-training-data), using it to create a custom NLU model that will replicate the features we've just defined for Google Assistant in our app itself. This is a great opportunity to add new intents to your in-app NLU that would be too tricky or infeasible to expose via Google Assistant.
 
 We won't go over the converted versions of all the intents here, but here's the Spokestack version of the `navigate.settings` intent from `actions.xml`:
 
@@ -59,7 +59,7 @@ values = [
 ]
 ```
 
-In Spokestack's format, you can achieve the same effect as Google's conditionals (the parenthetical words and question marks in the XML) using [generators](/docs/concepts/nlu-training-data#generators). We've added a few more utterances to the Spokestack config than were present in `actions.xml` because they're a little easier to express here.
+In Spokestack's format, you can achieve the same effect as Google's conditionals (the parenthetical words and question marks in the XML) using [generators](/docs/machine-learning/nlu-training-data#generators). We've added a few more utterances to the Spokestack config than were present in `actions.xml` because they're a little easier to express here.
 
 The `description` field is optional but can help you think about the interplay among your various intents.
 
@@ -116,7 +116,7 @@ A couple more notes about `DeviceControlActivity`:
 
 We've overridden `onResume` from `VoiceActivity` here to avoid an awkward scenario where the TTS response starts playing before the system has completed the transition to the new activity, which causes playback to pause when the transition does finish.
 
-- `populateVoiceMaps` does a simple synonym mapping of potential slot values (what the user might actually _say_) to canonical device names — in this case, we're actually mapping straight to the UI components that represent those devices. This is because Google only lets us specify parameters for custom intents as plain text, rather than allowing the full expressive power of [entities](https://developers.google.com/assistant/app/action-schema#entity) that's available to built-in intents. Hence, we can't do that normalization in `actions.xml`. In Spokestack's format, we can fix this using a [selset slot](/docs/concepts/nlu-training-data/selset), but since user queries could come from either Google or Spokestack, we've left the parsing logic in the app so both query types can be handled the same way.
+- `populateVoiceMaps` does a simple synonym mapping of potential slot values (what the user might actually _say_) to canonical device names — in this case, we're actually mapping straight to the UI components that represent those devices. This is because Google only lets us specify parameters for custom intents as plain text, rather than allowing the full expressive power of [entities](https://developers.google.com/assistant/app/action-schema#entity) that's available to built-in intents. Hence, we can't do that normalization in `actions.xml`. In Spokestack's format, we can fix this using a [selset slot](/docs/machine-learning/nlu-training-data/selset), but since user queries could come from either Google or Spokestack, we've left the parsing logic in the app so both query types can be handled the same way.
 
 ### Time to talk back
 

@@ -32,7 +32,7 @@ If you've ever read the EULA for smart speaker platforms, you know how rapacious
 
 ## What do I have to do to declare independence?
 
-To further that mission to create a complete developer experience for developing voice apps, we're excited that now you can [export your smart speaker skill](/docs/Concepts/export) to run on-device in the major mobile platforms, and declare your independence as an independent voice assistant from smart speakers!
+To further that mission to create a complete developer experience for developing voice apps, we're excited that now you can [export your smart speaker skill](/docs/integrations/export) to run on-device in the major mobile platforms, and declare your independence as an independent voice assistant from smart speakers!
 
 You can leverage existing ASR and TTS services, which are the parts that actually benefit from scale and are difficult to DIY. Spokestack provides a seamless, unified API across mobile platforms ([iOS](/docs/iOS), [Android](/docs/Android), and [React/React Native](/docs/React%20Native)) that makes converting your skill into a indepedent voice app easy.
 

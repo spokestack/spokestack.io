@@ -78,7 +78,7 @@ func application(_ application: UIApplication, didFinishLaunchingWithOptions lau
 
 ### 3. Your free Spokestack Account
 
-Go to [spokestack.io](/account/) to set up your own account (it's free!). Once you've got that, go [grab one of our free NLU models](/account/services/nlu). We'll use the `Highlow` one in this example, but you can choose another, or [create your own](/docs/Concepts/export) if you already have something on DialogFlow or Alexa!
+Go to [spokestack.io](/account/) to set up your own account (it's free!). Once you've got that, go [grab one of our free NLU models](/account/services/nlu). We'll use the `Highlow` one in this example, but you can choose another, or [create your own](/docs/integrations/export) if you already have something on DialogFlow or Alexa!
 
 Once you've downloaded your NLU, unzip `nlu.tar.gz` and add the three files inside (`metadata.json`, `nlu.tflite`, `vocab.txt`) to your XCode project. See, that wasn't painful at all!
 

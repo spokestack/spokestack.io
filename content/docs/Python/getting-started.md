@@ -76,7 +76,7 @@ In order for your application to use Spokestack's features, there are a few thin
 
 ### 1. Spokestack Account
 
-Go to [spokestack.io](/create) to set up your own account (it's free!). Once you've got that, go [grab one of our free NLU models](/account/services/nlu). We'll use the `Highlow` one in this example, but you can choose another, or [create your own](/docs/concepts/nlu-training-data)
+Go to [spokestack.io](/create) to set up your own account (it's free!). Once you've got that, go [grab one of our free NLU models](/account/services/nlu). We'll use the `Highlow` one in this example, but you can choose another, or [create your own](/docs/integrations/export)
 
 Once you've downloaded your NLU, unzip `nlu.tar.gz` with the three files inside (`metadata.json`, `nlu.tflite`, `vocab.txt`). The location of the directory isn't important, because we will pass the path on initialization.
 
@@ -122,7 +122,7 @@ Some useful links for configuring Spokestack's NLU:
 
 - [high-level NLU guide](/docs/concepts/nlu)
 - [Python NLU module documentation](nlu)
-- [converting an Alexa or Dialogflow NLU model](/docs/concepts/export)
+- [converting an Alexa or Dialogflow NLU model](/docs/integrations/export)
 
 ## Talking back to your users
 

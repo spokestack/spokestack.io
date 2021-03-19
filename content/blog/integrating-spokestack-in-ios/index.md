@@ -193,7 +193,7 @@ At this point, you may be wondering what an "NLU" does. While Automatic Speech R
 
 A good example is searching with voice. If your app has just said, “What would you like to search for?” and the user says, “Bananas,” you can be reasonably sure that the user means for the app to search for bananas without the help of an NLU.
 
-But if the user initiated the interaction and said, “Search for bananas”, the NLU can parse that statement into an intent (e.g. “search”) with variables (e.g. “bananas”). If you were only using ASR, you’d probably end up searching for the whole sentence, “search for bananas”, rather than just “bananas”, which may yield different results. For more information on NLU in Spokestack, please check out [our guide](/docs/Concepts/nlu). If you’ve already built an NLU model in Alexa, Dialogflow, or Jovo, check out [our guide on exporting existing NLU models from other platforms](/docs/Concepts/export).
+But if the user initiated the interaction and said, “Search for bananas”, the NLU can parse that statement into an intent (e.g. “search”) with variables (e.g. “bananas”). If you were only using ASR, you’d probably end up searching for the whole sentence, “search for bananas”, rather than just “bananas”, which may yield different results. For more information on NLU in Spokestack, please check out [our guide](/docs/Concepts/nlu). If you’ve already built an NLU model in Alexa, Dialogflow, or Jovo, check out [our guide on exporting existing NLU models from other platforms](/docs/integrations/export).
 
 **handleIntent**
 

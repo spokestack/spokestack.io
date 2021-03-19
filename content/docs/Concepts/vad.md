@@ -1,7 +1,7 @@
 ---
 title: Voice Activity Detection
 navId: VAD (Concepts)
-description: Documentation for Spokestack's third-party ASR support
+description: Understanding Spokestack's voice activity detector
 draft: false
 tags: Speech Pipeline, VAD
 ---

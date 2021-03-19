@@ -8,7 +8,7 @@ tags: Speech Pipeline
 
 The speech pipeline is the main way you interact with Spokestack’s [voice activity detection (VAD)](/docs/concepts/vad), [wake word detection](/docs/concepts/wake-word), [keyword recognition](/docs/concepts/keywords) and [automatic speech recognition (ASR)](/docs/concepts/asr). The speech pipeline is an extensible audio processing pipeline that includes a variety of built-in speech processors for all the above stages.
 
-This pipeline seamlessly integrates VAD-triggered wake word detection using on-device machine learning models with speech transcription. It runs as a [soft real-time](https://en.wikipedia.org/wiki/Real-time_computing#Criteria_for_real-time_computing) system, and its components must be as responsive as possible.
+This pipeline seamlessly integrates VAD-triggered wake word detection using on-device machine learning models with speech transcription. It runs as a [soft real-time](https://en.wikipedia.org/wiki/Real-time_computing#Criteria_for_real-time_computing) system.
 
 [Voice activity detection](/docs/concepts/vad) enables the pipeline to listen to small segments of audio and determine if speech is present. To keep computation usage low for edge devices, the rest of the pipeline does not proceed if the VAD does not detect speech.
 

@@ -1,7 +1,7 @@
 ---
 title: Wake Word
 navId: Wake Word (Concepts)
-description: Understanding Wake Words
+description: Understanding wake words
 draft: false
 tags: Speech Pipeline, Wakeword
 ---

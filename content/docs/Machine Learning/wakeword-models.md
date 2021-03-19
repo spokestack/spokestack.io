@@ -1,7 +1,7 @@
 ---
 title: Wake Word Models
 navId: Wake Word Models (Machine Learning)
-description: A detailed discussion of wakeword model design
+description: A detailed discussion of wake word model design
 draft: false
 tags: Wakeword
 ---

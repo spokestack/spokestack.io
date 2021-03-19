@@ -37,7 +37,7 @@ const url = await Spokestack.synthesize(
 )
 ```
 
-`Spokestack.synthesize()` can also synthesize using other formats besides plain text (the default). This includes [SpeechMarkdown](https://www.speechmarkdown.org/) and [SSML](https://www.w3.org/TR/speech-synthesis). See [the TTS concept guide](/docs/Concepts/tts) for more information on providing SSML input.
+`Spokestack.synthesize()` can also synthesize using other formats besides plain text (the default). This includes [SpeechMarkdown](https://www.speechmarkdown.org/) and [SSML](https://www.w3.org/TR/speech-synthesis). See [the TTS concept guide](/docs/concepts/tts) for more information on providing SSML input.
 
 The default voice is Spokestack's free "demo-male" voice. Custom voices are available! [Contact us to find out more](mailto:hello@spokestack.io).
 

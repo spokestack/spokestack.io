@@ -32,7 +32,7 @@ The metadata for the model is a JSON definition of the possible intents and slot
 
 ## Usage
 
-See the platform-specific NLU guides([Android](/docs/Android/nlu)|[iOS](/docs/iOS/nlu)) for a discussion on design considerations in each client library and code samples.
+See the platform-specific NLU guides([Android](/docs/android/nlu)|[iOS](/docs/ios/nlu)) for a discussion on design considerations in each client library and code samples.
 
 ## Model confidence
 

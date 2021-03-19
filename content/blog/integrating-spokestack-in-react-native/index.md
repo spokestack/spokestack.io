@@ -12,7 +12,7 @@ hero: blog.png
 
 Not long ago, adding voice to any mobile app was not only time-consuming, but difficult and convoluted. This was especially true when adding voice experiences on multiple platforms, as might be the case when using React Native. Our mission at Spokestack is to make it as easy as possible to make your apps fully voice-enabled.
 
-After building the services needed to make voice interaction work, including [Wakeword](/docs/Concepts/wakeword-models), [Speech Recognition](/docs/Concepts/asr), [Natural Language Understanding](/docs/Concepts/nlu), and [Text-to-speech](/docs/Concepts/tts), we started working on ways users could integrate these services without having to completely rewrite their applications.
+After building the services needed to make voice interaction work, including [Wakeword](/docs/concepts/wakeword-models), [Speech Recognition](/docs/concepts/asr), [Natural Language Understanding](/docs/concepts/nlu), and [Text-to-speech](/docs/concepts/tts), we started working on ways users could integrate these services without having to completely rewrite their applications.
 
 Introducing [react-native-spokestack-tray](https://github.com/spokestack/react-native-spokestack-tray)!
 

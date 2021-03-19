@@ -58,4 +58,4 @@ Your colleagues will have likely written brief notes during the test. After test
 
 ![Feature ideas during user testing](./features.png)
 
-Continue to iterate and test throughout your product’s evolution. For more help designing independent voice assistants, visit the [design](/docs/Design/getting-started) section of our documentation.
+Continue to iterate and test throughout your product’s evolution. For more help designing independent voice assistants, visit the [design](/docs/design/getting-started) section of our documentation.

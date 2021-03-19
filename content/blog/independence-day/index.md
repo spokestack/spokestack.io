@@ -34,7 +34,7 @@ If you've ever read the EULA for smart speaker platforms, you know how rapacious
 
 To further that mission to create a complete developer experience for developing voice apps, we're excited that now you can [export your smart speaker skill](/docs/integrations/export) to run on-device in the major mobile platforms, and declare your independence as an independent voice assistant from smart speakers!
 
-You can leverage existing ASR and TTS services, which are the parts that actually benefit from scale and are difficult to DIY. Spokestack provides a seamless, unified API across mobile platforms ([iOS](/docs/iOS), [Android](/docs/Android), and [React/React Native](/docs/React%20Native)) that makes converting your skill into a indepedent voice app easy.
+You can leverage existing ASR and TTS services, which are the parts that actually benefit from scale and are difficult to DIY. Spokestack provides a seamless, unified API across mobile platforms ([iOS](/docs/ios/getting-started), [Android](/docs/android/getting-started), and [React/React Native](/docs/react-native/getting-started)) that makes converting your skill into a indepedent voice app easy.
 
 Finally, like [President Bill Pullman](https://www.imdb.com/title/tt0116629/characters/nm0000597), you must have the hubris to believe.
 

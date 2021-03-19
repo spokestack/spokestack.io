@@ -20,7 +20,7 @@ This tutorial is a direct port of the [Alexa sample skill](https://github.com/al
 
 ## Installation and Setup
 
-The easiest way to install Spokestack on iOS is using CocoaPods as described in more detail in the [getting started docs](/docs/iOS/getting-started). Download and unzip the [example code](https://d3dmqd7cy685il.cloudfront.net/docs/minecraft-ios-tutorial.zip). In the "start" folder, you’ll see a `Podfile` with the following contents:
+The easiest way to install Spokestack on iOS is using CocoaPods as described in more detail in the [getting started docs](/docs/ios/getting-started). Download and unzip the [example code](https://d3dmqd7cy685il.cloudfront.net/docs/minecraft-ios-tutorial.zip). In the "start" folder, you’ll see a `Podfile` with the following contents:
 
 ```ruby
 platform :ios, '13.0'
@@ -42,7 +42,7 @@ If you run the app now, you’ll see it doesn’t do much. It just displays a sc
 
 Next, you’re going to start the Spokestack speech pipeline so that your app can hear you. You’re going to configure the app so that it starts listening when you press a button.
 
-The example code contains a class `PipelineStore` that implements [the delegates](/docs/iOS/speech-pipeline) in the Spokestack speech pipeline. The `init` method of our `ContentView` already calls the `pipelineStore.start()` method to start background processing. To begin actually listening, add a new function to `PipelineStore`:
+The example code contains a class `PipelineStore` that implements [the delegates](/docs/ios/speech-pipeline) in the Spokestack speech pipeline. The `init` method of our `ContentView` already calls the `pipelineStore.start()` method to start background processing. To begin actually listening, add a new function to `PipelineStore`:
 
 ```swift
 func activatePipeline() {

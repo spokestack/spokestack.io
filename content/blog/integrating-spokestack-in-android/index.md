@@ -116,7 +116,7 @@ The optional second parameter in the `VoicePrompt` constructor lets the Tray kno
 
 ## Configuration
 
-The above sample will get you up and running with minimal fuss, but it's far from all that Spokestack Tray offers. When you're building a `TrayConfig` instance, you can choose to configure and provide the underlying `Spokestack` builder itself. This will let you do things like change ASR providers, set up custom listeners for events from individual systems, and add custom speech processing components if you need to. You can read about the Spokestack builder [here](/docs/Android/turnkey-configuration).
+The above sample will get you up and running with minimal fuss, but it's far from all that Spokestack Tray offers. When you're building a `TrayConfig` instance, you can choose to configure and provide the underlying `Spokestack` builder itself. This will let you do things like change ASR providers, set up custom listeners for events from individual systems, and add custom speech processing components if you need to. You can read about the Spokestack builder [here](/docs/android/turnkey-configuration).
 
 There are also a range of options that are applicable to the Tray itself, accessible via helper methods on the `TrayConfig.Builder` instance. See the [documentation](https://spokestack.github.io/spokestack-tray-android/-spokestack-tray/) for more details, specifically the documentation on [`TrayConfig.Builder`](https://spokestack.github.io/spokestack-tray-android/-spokestack-tray/io.spokestack.tray/-tray-config/-builder).
 

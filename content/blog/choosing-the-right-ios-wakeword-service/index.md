@@ -44,7 +44,7 @@ To get you started, Spokestack provides pretrained TensorFlow models that enable
 
 ### Prefer
 
-[Work with us to develop a custom TensorFlow model](/docs/Concepts/wakeword-models), and then distribute that model with your app configured to use `tfLiteWakeword`. When testing your app using `tfLiteWakeword`, be sure to consult the [Spokestack pipeline model hyperparameter configuration guide](/docs/Concepts/pipeline-configuration).
+[Work with us to develop a custom TensorFlow model](/docs/concepts/wakeword-models), and then distribute that model with your app configured to use `tfLiteWakeword`. When testing your app using `tfLiteWakeword`, be sure to consult the [Spokestack pipeline model hyperparameter configuration guide](/docs/concepts/pipeline-configuration).
 
 ### Avoid
 

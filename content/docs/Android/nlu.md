@@ -10,7 +10,7 @@ tags: Android, NLU
 
 ---
 
-This is a companion to the [NLU concept guide](/docs/Concepts/nlu), which discusses the NLU subsystem holistically. Here we'll talk about usage issues specific to the Android client library.
+This is a companion to the [NLU concept guide](/docs/concepts/nlu), which discusses the NLU subsystem holistically. Here we'll talk about usage issues specific to the Android client library.
 
 ## Usage
 

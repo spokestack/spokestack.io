@@ -167,6 +167,31 @@ module.exports = {
         from: '/login',
         to: '/account/login',
         permanent: true
+      },
+      {
+        from: '/docs/android',
+        to: '/docs/android/getting-started',
+        permanent: false
+      },
+      {
+        from: '/docs/design',
+        to: '/docs/design/getting-started',
+        permanent: false
+      },
+      {
+        from: '/docs/ios',
+        to: '/docs/ios/getting-started',
+        permanent: false
+      },
+      {
+        from: '/docs/python',
+        to: '/docs/python/getting-started',
+        permanent: false
+      },
+      {
+        from: '/docs/react-native',
+        to: '/docs/react-native/getting-started',
+        permanent: false
       }
     ]
   },

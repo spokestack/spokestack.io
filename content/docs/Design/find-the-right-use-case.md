@@ -6,7 +6,7 @@ draft: false
 tags: Conversation Design
 ---
 
-In our [last article](/docs/Design/getting-started), we illustrated the advantages of multimodal interfaces. Some of these are more relevant to certain types of smartphone apps. Before [mapping](/docs/Design/docs/Design/map-out-integration) your voice interface, the next step in the design process is to narrow down use cases.
+In our [last article](/docs/design/getting-started), we illustrated the advantages of multimodal interfaces. Some of these are more relevant to certain types of smartphone apps. Before [mapping](/docs/design/docs/design/map-out-integration) your voice interface, the next step in the design process is to narrow down use cases.
 
 Here are some key questions to keep in mind when planning to add voice to a mobile app:
 

@@ -44,7 +44,7 @@ fun speak(text: String, mode: SynthesisRequest.Mode) {
 }
 ```
 
-The `mode` parameter is included here as a reminder that Spokestack supports a subset of the [SSML](https://www.w3.org/TR/speech-synthesis11) spec for specifying pronunciation and specific pause times. See [the TTS concept guide](/docs/Concepts/tts) for more information on providing SSML input. If you don't need this level of control, simply omit `mode`; the default mode of `SynthesisRequest`is plain text.
+The `mode` parameter is included here as a reminder that Spokestack supports a subset of the [SSML](https://www.w3.org/TR/speech-synthesis11) spec for specifying pronunciation and specific pause times. See [the TTS concept guide](/docs/concepts/tts) for more information on providing SSML input. If you don't need this level of control, simply omit `mode`; the default mode of `SynthesisRequest`is plain text.
 
 ## Playing it
 

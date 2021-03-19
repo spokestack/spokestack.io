@@ -71,4 +71,4 @@ After the interview, I like to use recording to document takeaways by doing the 
 
 Don’t forget to re-visit this discussion as needed throughout the design process, especially when testing a product’s usability, to determine if what you’re building remains relevant to your intended audience. In further posts, I will show you how to take this research and turn it into a great voice user experience.
 
-For more help designing independent voice assistants, visit the [design](/docs/Design/getting-started) section of our documentation.
+For more help designing independent voice assistants, visit the [design](/docs/design/getting-started) section of our documentation.

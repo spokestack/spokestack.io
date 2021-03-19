@@ -34,7 +34,7 @@ This is the simplest arity of `synthesize`, which takes an instance of `TextToSp
 
 The `input` is simply the string you want to hear synthesized.
 
-The `inputFormat` argument is here because Spokestack supports serveral input formats: plain text, [SpeechMarkdown](https://www.speechmarkdown.org/), and a subset of the [SSML](https://www.w3.org/TR/speech-synthesis11) spec for specifying pronunciation and specific pause times. See [the TTS concept guide](/docs/Concepts/tts) for more information on providing SSML input. If you don't need this level of control, `TTSInputFormat.text` is the default.
+The `inputFormat` argument is here because Spokestack supports serveral input formats: plain text, [SpeechMarkdown](https://www.speechmarkdown.org/), and a subset of the [SSML](https://www.w3.org/TR/speech-synthesis11) spec for specifying pronunciation and specific pause times. See [the TTS concept guide](/docs/concepts/tts) for more information on providing SSML input. If you don't need this level of control, `TTSInputFormat.text` is the default.
 
 The `voice` argument allows you to specify which of Spokestack's library of synthetic voices you wish to use. Want something besides `demo-male`? [Create a Spokestack account](/create) to get your own free access to additional voices!
 

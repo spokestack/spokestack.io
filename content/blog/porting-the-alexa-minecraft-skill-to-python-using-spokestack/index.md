@@ -10,7 +10,7 @@ hero: blog.png
 
 ![Porting the Alexa Minecraft Skill to Python using Spokestack](blog.png)
 
-This is a tutorial on how to port a simple [Minecraft recipe skill](https://github.com/alexa/skill-sample-python-howto) to Spokestack using the [spokestack-python](https://github.com/spokestack/spokestack-python) library. It is similar to [our mobile tutorial series](/blog/porting-a-smart-speaker-voice-app-to-mobile-part-1), but the Python version not have any GUI components. This makes the experience closer to that of a smart speaker. We will discuss the concepts for each part of the user interaction briefly, but for a full description check out our [documentation](/docs/Concepts). Before we get into the programming, we will need to get API keys from our Spokestack account.
+This is a tutorial on how to port a simple [Minecraft recipe skill](https://github.com/alexa/skill-sample-python-howto) to Spokestack using the [spokestack-python](https://github.com/spokestack/spokestack-python) library. It is similar to [our mobile tutorial series](/blog/porting-a-smart-speaker-voice-app-to-mobile-part-1), but the Python version not have any GUI components. This makes the experience closer to that of a smart speaker. We will discuss the concepts for each part of the user interaction briefly, but for a full description check out our [documentation](/docs/concepts). Before we get into the programming, we will need to get API keys from our Spokestack account.
 
 ## Signing Up for a Spokestack Account
 
@@ -69,7 +69,7 @@ To follow along with the tutorial, we recommend making a new python file titled 
 
 ## Using the Speech Pipeline
 
-An essential piece to any voice interface is the ability to detect when the user is speaking, then convert the spoken phrase into a text transcript. Spokestack has an [easy-to-use speech pipeline](/docs/Concepts/pipeline-configuration) that will handle this for us. The speech pipeline consists of three major components: a voice detection module, a wakeword trigger, and a speech recognizer.
+An essential piece to any voice interface is the ability to detect when the user is speaking, then convert the spoken phrase into a text transcript. Spokestack has an [easy-to-use speech pipeline](/docs/concepts/pipeline-configuration) that will handle this for us. The speech pipeline consists of three major components: a voice detection module, a wakeword trigger, and a speech recognizer.
 
 ### Microphone Input
 
@@ -95,7 +95,7 @@ Now that we have a way to determine if the audio contains speech, let's move on 
 
 ### Wakeword Activation
 
-The [wakeword](/docs/Concepts/wakeword-models) component of the pipeline looks for a specific phrase in the audio input and signals the pipeline to activate ASR when it is recognized. For our purposes, we will be using "Spokestack" as the wakeword. As with most voice assistants, "Hey Spokestack" will work as well. The process to initialize this component mirrors the way we set up voice activity detection. The directory passed to `model_dir` should contain three `.tflite` files: `encode.tflite`, `detect.tflite`, and `filter.tflite`. These can be found inside the `tflite` directory of the project GitHub repository.
+The [wakeword](/docs/concepts/wakeword-models) component of the pipeline looks for a specific phrase in the audio input and signals the pipeline to activate ASR when it is recognized. For our purposes, we will be using "Spokestack" as the wakeword. As with most voice assistants, "Hey Spokestack" will work as well. The process to initialize this component mirrors the way we set up voice activity detection. The directory passed to `model_dir` should contain three `.tflite` files: `encode.tflite`, `detect.tflite`, and `filter.tflite`. These can be found inside the `tflite` directory of the project GitHub repository.
 
 ```python
 from spokestack.wakeword.tflite import WakewordTrigger
@@ -107,7 +107,7 @@ Once the skill is actively listening for user speech, all we have to do is trans
 
 ### Automatic Speech Recognition (ASR)
 
-[ASR](/docs/Concepts/asr) is the most critical piece of the speech pipeline, because it produces the transcript that is used to turn speech into actions. However, critical components do not have to be difficult to add. The following initializes the [ASR component](https://github.com/spokestack/spokestack-python/blob/4009a9d8b61cd4375886c66ca0d4a87d99e12153/spokestack/asr/speech_recognizer.py#L12).
+[ASR](/docs/concepts/asr) is the most critical piece of the speech pipeline, because it produces the transcript that is used to turn speech into actions. However, critical components do not have to be difficult to add. The following initializes the [ASR component](https://github.com/spokestack/spokestack-python/blob/4009a9d8b61cd4375886c66ca0d4a87d99e12153/spokestack/asr/speech_recognizer.py#L12).
 
 **Note:** This is where you will need your API keys from the account console.
 
@@ -161,7 +161,7 @@ In the application, we don't want to print the transcript, but we've added that 
 
 ## Natural Language Understanding (NLU)
 
-The Natural Language Understanding, or [NLU](/docs/Concepts/nlu), component takes a transcript of user speech and distills it into unambiguous instructions for an app. The paradigm used in most systems is the intent and slot model. Essentially, an intent is the function the user intends to invoke, and the slots are the arguments the intent needs to accomplish its action. For example, a user may say `What is the recipe for a dark prismarine?`. In this case, the intent is `RecipeSearch`, and the slot is `dark prismarine` . The initialization of the [TFLiteNLU](https://github.com/spokestack/spokestack-python/blob/4009a9d8b61cd4375886c66ca0d4a87d99e12153/spokestack/nlu/tflite.py#L18) should look familiar at this point. The directory passed to `model_dir` contains three files: `vocab.txt`, `metadata.json`, `nlu.tflite`. These files are necessary to run our on-device NLU model and are in the `tflite` directory of the GitHub repository.
+The Natural Language Understanding, or [NLU](/docs/concepts/nlu), component takes a transcript of user speech and distills it into unambiguous instructions for an app. The paradigm used in most systems is the intent and slot model. Essentially, an intent is the function the user intends to invoke, and the slots are the arguments the intent needs to accomplish its action. For example, a user may say `What is the recipe for a dark prismarine?`. In this case, the intent is `RecipeSearch`, and the slot is `dark prismarine` . The initialization of the [TFLiteNLU](https://github.com/spokestack/spokestack-python/blob/4009a9d8b61cd4375886c66ca0d4a87d99e12153/spokestack/nlu/tflite.py#L18) should look familiar at this point. The directory passed to `model_dir` contains three files: `vocab.txt`, `metadata.json`, `nlu.tflite`. These files are necessary to run our on-device NLU model and are in the `tflite` directory of the GitHub repository.
 
 ```python
 from spokestack.nlu.tflite import TFLiteNLU
@@ -291,7 +291,7 @@ OK, that was a lot to cover, but we are almost to the finish line. In the next s
 
 ## Text to Speech (TTS)
 
-Much like the name suggests, [TTS](/docs/Concepts/tts) translates written text into its spoken form with a synthetic voice. This tutorial assumes you are using our default voice, but if you have a paid plan you can replace `demo-male` with the name of a custom voice. To initialize the [TTSClient](https://github.com/spokestack/spokestack-python/blob/4009a9d8b61cd4375886c66ca0d4a87d99e12153/spokestack/tts/clients/spokestack.py#L20), you simply do the following:
+Much like the name suggests, [TTS](/docs/concepts/tts) translates written text into its spoken form with a synthetic voice. This tutorial assumes you are using our default voice, but if you have a paid plan you can replace `demo-male` with the name of a custom voice. To initialize the [TTSClient](https://github.com/spokestack/spokestack-python/blob/4009a9d8b61cd4375886c66ca0d4a87d99e12153/spokestack/tts/clients/spokestack.py#L20), you simply do the following:
 
 **Note:** This is another part where you will need your Spokestack API keys. However, notice that the URL for TTS is slightly different than for ASR.
 

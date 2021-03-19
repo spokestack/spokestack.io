@@ -61,7 +61,7 @@ pip install transformers
 
 ## Speech Pipeline with Profiles
 
-Profiles are preset configurations for our [Speech Pipeline](/docs/Python/speech-pipeline). For this tutorial, we will use the Spokestack wakeword and ASR profile. The wakeword model runs on device, and can be activated by saying "Hey, Spokestack". ASR is in the cloud though, so you will need to get your API credentials to use it. If you already have a free account, [log in](/account/login). If you do not, you will need to [create](/create) one. The credentials can be found in your [account settings](/account/settings). This is everything you need to speak to your app.
+Profiles are preset configurations for our [Speech Pipeline](/docs/python/speech-pipeline). For this tutorial, we will use the Spokestack wakeword and ASR profile. The wakeword model runs on device, and can be activated by saying "Hey, Spokestack". ASR is in the cloud though, so you will need to get your API credentials to use it. If you already have a free account, [log in](/account/login). If you do not, you will need to [create](/create) one. The credentials can be found in your [account settings](/account/settings). This is everything you need to speak to your app.
 
 ```python
 from spokestack.profile.wakeword_asr import WakewordSpokestackASR
@@ -74,7 +74,7 @@ pipeline.start()
 
 ## Natural Language Understanding (NLU)
 
-Natural Language Understanding (NLU) is how we transform what the user says into action. For more explanation on the NLU see our [docs](/docs/Concepts/nlu). The NLU model for this project is already included in the GitHub repository. However, we will briefly discuss the model configuration in the next section.
+Natural Language Understanding (NLU) is how we transform what the user says into action. For more explanation on the NLU see our [docs](/docs/concepts/nlu). The NLU model for this project is already included in the GitHub repository. However, we will briefly discuss the model configuration in the next section.
 
 ```python
 from spokestack.nlu.tflite import TFLiteNLU
@@ -229,7 +229,7 @@ Now that we have given our bot a voice, we can put everything together. At this 
 ## Putting it All Together
 
 We have all the modules set up. Now we need to add the logic that will respond to events in the conversation.
-For this, we use our [Pipeline Events](/docs/Python/speech-pipeline). Pipeline Events are simply events that occur while the pipeline is running. To use them, you decorate functions with an event decorator. Most applications will want an event handler that does something when speech is recognized. For ours, we want to process the question and play the response. This is defined in the `on_recognize` handler. The function we are using for this example can be seen below. For more information on the included events take a look [here](/docs/Python/speech-pipeline#speech-event-handlers).
+For this, we use our [Pipeline Events](/docs/python/speech-pipeline). Pipeline Events are simply events that occur while the pipeline is running. To use them, you decorate functions with an event decorator. Most applications will want an event handler that does something when speech is recognized. For ours, we want to process the question and play the response. This is defined in the `on_recognize` handler. The function we are using for this example can be seen below. For more information on the included events take a look [here](/docs/python/speech-pipeline#speech-event-handlers).
 
 ```python
 @pipeline.event

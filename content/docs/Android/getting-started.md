@@ -103,7 +103,7 @@ spokestack = Spokestack.Builder()
   .build()
 ```
 
-This is a complete example and uses wakeword activation, on-device [ASR](/docs/Concepts/asr), [NLU](/docs/Concepts/nlu), and [TTS](/docs/Concepts/tts), hence the properties that point Spokestack to [TensorFlow Lite](https://www.tensorflow.org/lite) model files. We've assumed that these files are stored in the app's cache directory for convenience, but they can be kept wherever it makes sense for your app.
+This is a complete example and uses wakeword activation, on-device [ASR](/docs/concepts/asr), [NLU](/docs/concepts/nlu), and [TTS](/docs/concepts/tts), hence the properties that point Spokestack to [TensorFlow Lite](https://www.tensorflow.org/lite) model files. We've assumed that these files are stored in the app's cache directory for convenience, but they can be kept wherever it makes sense for your app.
 
 See [the `Spokestack` guide](turnkey-configuration) for more information on downloading wakeword and NLU models.
 
@@ -183,7 +183,7 @@ private fun respond(utterance: String) {
 
 Some useful links for configuring Spokestack's NLU:
 
-- [high-level NLU guide](/docs/Concepts/nlu)
+- [high-level NLU guide](/docs/concepts/nlu)
 - [Android NLU module documentation](nlu)
 - [converting an Alexa or Dialogflow NLU model](/docs/integrations/export)
 
@@ -191,7 +191,7 @@ Some useful links for configuring Spokestack's NLU:
 
 If you want full hands- and eyes-free interaction, you'll want to deliver responses via voice as well. This requires a text-to-speech (TTS) component, and Spokestack has one of these too!
 
-In fact, we just used it in the previous section; it's as simple as building a `SynthesisRequest` and calling `synthesize`. For more details about controlling pronunciation, see [the TTS concept guide](/docs/Concepts/tts).
+In fact, we just used it in the previous section; it's as simple as building a `SynthesisRequest` and calling `synthesize`. For more details about controlling pronunciation, see [the TTS concept guide](/docs/concepts/tts).
 
 By default, Spokestack handles playback of the synthesized audio; see the [configuration guide](turnkey-configuration) for instructions on handling it yourself. Spoiler alert—it involves the `ttsEvent()` listener method:
 

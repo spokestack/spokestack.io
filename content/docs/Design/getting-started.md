@@ -6,7 +6,7 @@ draft: false
 tags: Conversation Design, Principals, UI
 ---
 
-In this section, we’ll introduce you to design considerations for multimodal apps that are voice-enabled. Smartphones are well-suited for this type of interaction because they have a screen, a microphone, _and_ a speaker. All best practices and exercises in this section maximize these capabilities by design. This guide will cover how to [find the right use case](/docs/Design/find-the-right-use-case), [map an experience](/docs/Design/map-out-integration), [write dialogue](/docs/Design/docs/Design/script-storyboard-responses), and [design a multi-modal UI](/docs/Design/docs/Design/tips-for-designing-visual-output).
+In this section, we’ll introduce you to design considerations for multimodal apps that are voice-enabled. Smartphones are well-suited for this type of interaction because they have a screen, a microphone, _and_ a speaker. All best practices and exercises in this section maximize these capabilities by design. This guide will cover how to [find the right use case](/docs/design/find-the-right-use-case), [map an experience](/docs/design/map-out-integration), [write dialogue](/docs/design/docs/design/script-storyboard-responses), and [design a multi-modal UI](/docs/design/docs/design/tips-for-designing-visual-output).
 
 ### Modes of interaction
 

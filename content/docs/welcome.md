@@ -7,7 +7,7 @@ draft: false
 
 Spokestack is a powerful platform of open source libraries and robust services to make your app fully voice-enabled.
 
-If you're new to voice, we've put together an introduction to how Spokestack thinks about voice. For more on how to design the voice experience, walk through the [Design](/docs/Design) section of our docs.
+If you're new to voice, we've put together an introduction to how Spokestack thinks about voice. For more on how to design the voice experience, walk through the [Design](/docs/design/getting-started) section of our docs.
 
 `youtube: [Voice is just another interface](https://www.youtube.com/watch?v=wbJ8fZh-iQw)`
 
@@ -33,9 +33,9 @@ A custom integration gives the app developer full control over voice integration
 
 If you're looking to integrate Spokestack in your project without using the tray, our **quickstart** guides for each platform can be found here:
 
-- [React Native](/docs/React%20Native/getting-started)
-- [iOS](/docs/iOS/getting-started)
-- [Android](/docs/Android/getting-started)
+- [React Native](/docs/react-native/getting-started)
+- [iOS](/docs/ios/getting-started)
+- [Android](/docs/android/getting-started)
 
 ### Tutorials
 
@@ -57,7 +57,7 @@ Check our blog for all of our [Spokestack Tutorials](/tutorials).
 
 ### Design Resources
 
-Want to see how you might customize Spokestack Tray for your app? We have [design documentation](/docs/Design/getting-started) to help you get started designing beautiful voice experiences.
+Want to see how you might customize Spokestack Tray for your app? We have [design documentation](/docs/design/getting-started) to help you get started designing beautiful voice experiences.
 
 We also have a [Figma template](https://www.figma.com/file/LvU9UXNPElCcJ3XYrFXFif/Spokestack-Tray) to help you visualize Spokestack Tray in your app.
 

@@ -30,4 +30,4 @@ Decide what information is most critical to your research. Understand how your a
 
 Limit open-ended feedback. You’ll be able to further probe for detail when conducting user interviews. Draft your survey and get feedback from those you trust. Here’s a [sample survey](https://docs.google.com/forms/d/1faU7-M5zxTLjpTrweklUl1AELeaKsPMzcY7ipENxL60/edit) I created to get you started.
 
-For more help designing independent voice assistants, visit the [design](/docs/Design/getting-started) section of our design documentation.
+For more help designing independent voice assistants, visit the [design](/docs/design/getting-started) section of our design documentation.

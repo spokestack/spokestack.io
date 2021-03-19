@@ -78,7 +78,7 @@ func application(_ application: UIApplication, didFinishLaunchingWithOptions lau
 
 ### 3. Your free Spokestack Account
 
-Go to [spokestack.io](/account/) to set up your own account (it's free!). Once you've got that, go [grab one of our free NLU models](/account/services/nlu). We'll use the `Highlow` one in this example, but you can choose another, or [create your own](/docs/integrations/export) if you already have something on DialogFlow or Alexa!
+[Set up your own account](/account/create) (it's free!). Once you've got that, [grab one of our free NLU models](/account/services/nlu). We'll use the `Highlow` one in this example, but you can choose another, or [create your own](/docs/integrations/export) if you already have something on DialogFlow or Alexa!
 
 Once you've downloaded your NLU, unzip `nlu.tar.gz` and add the three files inside (`metadata.json`, `nlu.tflite`, `vocab.txt`) to your XCode project. See, that wasn't painful at all!
 
@@ -99,7 +99,7 @@ public let spokestack = SpokestackBuilder()
 
 Note that `spokestack` must persist outside the scope of the calling function, so don't declare it inside a function call that will get garbage collected! If this is confusing, please consult the [fuller discussion of the pipeline](speech-pipeline).
 
-There are many options for configuring the speech pipeline. This particular setup will begin capturing audio when `spokestack.pipeline.start()` is called and use a Voice Activity Detection (VAD) component to send any audio determined to be speech through on-device ASR using Apple's `SFSpeech` API. In other words, the app is always actively listening, and no wakeword detection is performed. See [the configuration guide](/docs/iOS/speech-pipeline) for more information about pipeline building options. Using a `vadTriggerAppleSpeech` profile is a good way to test out ASR without having to tap a button to activate it or downloading and configuring wakeword models. Consider your use-case fully before using it in production, however, since it will capture all speech it hears, not just what's directed at your app.
+There are many options for configuring the speech pipeline. This particular setup will begin capturing audio when `spokestack.pipeline.start()` is called and use a Voice Activity Detection (VAD) component to send any audio determined to be speech through on-device ASR using Apple's `SFSpeech` API. In other words, the app is always actively listening, and no wakeword detection is performed. See [the configuration guide](/docs/ios/speech-pipeline) for more information about pipeline building options. Using a `vadTriggerAppleSpeech` profile is a good way to test out ASR without having to tap a button to activate it or downloading and configuring wakeword models. Consider your use-case fully before using it in production, however, since it will capture all speech it hears, not just what's directed at your app.
 
 The `self` in this example means that `MyViewController` also implements `SpokestackDelegate`, which, conveniently enough, is the next step.
 
@@ -204,7 +204,7 @@ func speak(_ text: String) {
 
 The `speak` function will call your delegate's `didBeginSpeaking` and `didFinishSpeaking` at the start and finish, respectively, of response playback.
 
-In this example, `SpeechConfiguration.apiId` and `SpeechConfiguration.apiSecret` are set to sample values that let you try Spokestack TTS with a demo voice, without creating an account. You can [get your own free API credentials](/create). For more TTS input configuration options, see [the TTS guide](/docs/Concepts/tts).
+In this example, `SpeechConfiguration.apiId` and `SpeechConfiguration.apiSecret` are set to sample values that let you try Spokestack TTS with a demo voice, without creating an account. You can [get your own free API credentials](/create). For more TTS input configuration options, see [the TTS guide](/docs/concepts/tts).
 
 If you want more fine-grained control over how the TTS response is played back, you're free to feed the `TextToSpeechResult.url` in the `success` handler into your own audio player. See the [cookbook](cookbook) for a quick version of that recipe.
 

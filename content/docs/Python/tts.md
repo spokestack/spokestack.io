@@ -6,6 +6,8 @@ draft: false
 tags: Python, TTS
 ---
 
+<img src="../../assets/docs/python-tts.png" style="display:none"/>
+
 Text-to-speech is a broad topic, but as far as Spokestack is concerned, there are two things your app has to handle: sending text, SSML, or Speech Markdown to be synthesized; and playing the resulting audio for your users. This guide will cover both.
 
 ## Generating Audio

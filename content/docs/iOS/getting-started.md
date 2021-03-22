@@ -6,6 +6,8 @@ draft: false
 tags: iOS
 ---
 
+<img src="../../assets/docs/ios-getting-started.png" style="display:none"/>
+
 This guide will get you up and running with Spokestack for iOS, and you'll be hearing and responding to your users in no time. We'll start with how to integrate speech recognition, and then move on to how to process that recognized speech using natural langauge understanding, and finally learn how to speak back to your users using text to speech.
 
 One caveat before we start, though: _This is not a collection of best practices_. We're going to be trading thoughtful organization for convenience here, so when we say something like "put this in your view controller", just know that you might not want to leave it there long-term. OK, now that that's out of the way, let's jump right in.

@@ -6,6 +6,8 @@ draft: false
 tags: ASR, iOS, Wake Word
 ---
 
+<img src="../../assets/docs/ios-speech-pipeline.png" style="display:none"/>
+
 If you've read any of our other documentation, you know that the speech pipeline is the main way you interact with Spokestack's speech recognition and wake word. This guide is here to explain in a little more detail how the iOS version of Spokestack uses this collection of components to recognize wake words and user speech.
 
 ## What _is_ it?

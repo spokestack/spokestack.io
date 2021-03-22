@@ -6,6 +6,8 @@ draft: false
 tags: ASR, Speech Pipeline, Wake Word
 ---
 
+<img src="../../assets/docs/concepts-speech-pipeline.png" style="display:none"/>
+
 Speech recognition is a complicated process, and fine-tuning it can be something of an art. To that end, Spokestack enables a great deal of customization via the `SpeechConfiguration` class on iOS and pipeline properties on Android. This guide provides a discussion of its various parameters, but note that the default settings are based on either standard practices or our own experience tuning our systems; even small changes can sometimes have a great effect on performance.
 
 Parameters are listed here under their property names (the names themselves are designed to be platform-agnostic, but you use them directly to configure the Android pipeline); to convert to iOS `SpeechConfiguration` fields, in most cases just change the `snake-case` to `camelCase`. Exceptions to this rule are noted along with the relevant properties.

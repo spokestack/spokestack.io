@@ -6,6 +6,8 @@ draft: false
 tags: Python
 ---
 
+<img src="../../assets/docs/python-getting-started.png" style="display:none"/>
+
 This guide will get you up and running with Spokestack for Python, and you'll have a voice interface in your application in no time.
 
 ## Installation

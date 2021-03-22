@@ -10,11 +10,11 @@ The goal of any good experience designer is to reduce cognitive load on the user
 
 While much has been written about conversational design, few standards exist for how to integrate visuals with independent voice assistants (IVA). These best practices draw from user experience (UX) design as well as from our own professional experiences. You might recognize some of these best practices from Ben Schneiderman’s [_The Eight Golden Rules of Interface Design_](https://www.cs.umd.edu/users/ben/goldenrules.html).
 
-## Use nonverbal visual cues to clarify communication
+## Use Nonverbal Visual Cues to Clarify Communication
 
 How would a friend communicate that it’s your turn to talk? You’d likely rely on their body language or facial expressions. For example, they might pause and/or maintain eye contact. Hand gestures facilitate both [speech fluency and accuracy](https://vimeo.com/410056595). With multimodal experiences, this nonverbal communication is accounted for in the UI. For instance, it’s ok if something takes longer to process something so long as you clearly communicate the delay in action ([golden rule #3:](https://www.cs.umd.edu/users/ben/goldenrules.html) “offer informative feedback”). Without a visual cue, a user could misinterpret silence as an error or need for additional information. We’ll describe different types of nonverbal cues in the sections that follow.
 
-## Include a touch-to-talk button, even if your app is wake word enabled
+## Include a Touch-to-Talk Button, Even if Your App is Wake Word Enabled
 
 Hardware limitations may limit your ability to have your service work the way you want it to with wake word only voice activation. Touch-to-talk allows users to invoke listening by touch instead. Here are some considerations to keep in mind:
 
@@ -23,7 +23,7 @@ Hardware limitations may limit your ability to have your service work the way yo
 - Avoid using a toggle. Many users assume toggles control listening for the wake word, similar to how Alexa works.
 - Make sure your button is always in the same place. This way, users will know where to look ([golden rule #1:](https://www.cs.umd.edu/users/ben/goldenrules.html) “strive for consistency”).
 
-## Make sure users know who’s turn it is to talk
+## Make Sure Users Know Whose Turn It Is to Talk
 
 This is often referred to as “turn taking.” You want to communicate that you’re listening to the user’s utterance and then that you’re processing what they said.
 
@@ -31,7 +31,7 @@ Use cues that are easy to spot from a distance. For example, Alexa is a voice-on
 
 Be judicious with screen real estate by deciding whether visual turn taking should occupy a full or [partial](https://uxdesign.cc/redesigning-siri-and-adding-multitasking-features-to-ios-70c2f1a1569b) screen. Using a full screen to communicate turn taking isn’t always realistic.
 
-## Communicate active listening using an animation
+## Communicate Active Listening Using an Animation
 
 Static cues don’t convey activity in the same way. Here are some things to keep in mind when designing your listening animation:
 
@@ -40,7 +40,7 @@ Static cues don’t convey activity in the same way. Here are some things to kee
 - Be consistent with placement.
 - If your app has a touch-to-talk button, consider including your listening animation here.
 
-## Signal that the app is no longer listening
+## Signal That the App Is No Longer Listening
 
 It’s important to separate the voice assistant _feature_ of an app from the app itself. The voice assistant can control the app, but it only does so at the behest of the user. The only thing it does autonomously is stop actively listening after a pre-set timeout. With this in mind, here are some considerations:
 
@@ -49,7 +49,7 @@ It’s important to separate the voice assistant _feature_ of an app from the ap
 - Allow users to end listening using gestures or an `exit` intent.
 - If no speech is detected by your automatic speech recognition (ASR) engine, consider how long you’ll wait before turning off listening. Consider reminding users what they can say visually (see next section). For example, Alexa’s blue ring turns off after 8 seconds. On the other hand, Google Assistant and Siri show a help screen with sample intents after 5 seconds.
 
-## Remind users how they can continue or pivot the conversation
+## Remind Users How They Can Continue or Pivot the Conversation
 
 If screen real estate permits, consider including visual prompts (Google refers to these as “[suggestion chips](https://developers.google.com/assistant/conversational/rich-responses#suggestion_chips)”). This will help users remember what they can ask, even when unprompted. Take into account the context in which your user is using your app and where they are in the conversation. For example, if users are in a situation where they’re unable to view their screen, visuals might not be as useful. When designing visual prompts, consider the following:
 
@@ -58,9 +58,9 @@ If screen real estate permits, consider including visual prompts (Google refers 
 
 In the example below, introducing visual cues for intents when a user is recording a run for the first time might not be useful.
 
-![MyRunBuddy Distance](./images/run.png)
+![MyRunBuddy Distance](../../assets/docs/design-tips-for-designing-visual-output/run.png)
 
-## Offer multiple modalities for input (and, to correct input)
+## Offer Multiple Modalities for Input (and, to Correct Input)
 
 Recognize that some information may be better heard; other information might be better seen ([golden rule #2:](https://www.cs.umd.edu/users/ben/goldenrules.html) “seek universal usability”). Providing multiple ways of accomplishing the same task can provide a better experience, especially when handling errors with your ASR engine. For example, Siri provides “tap to edit” below the user’s utterance on the screen.
 
@@ -78,7 +78,7 @@ In the example below, the app asked a follow-up and the user responded by tappin
 
 ![](https://paper-attachments.dropbox.com/s_BF5D22BAD9421AD3845A926151A97CA26F837572D6DA91B630753CEABD822986_1581631877473_MyRunBuddy+-+Stop+a+run.png)
 
-## Provide enough information to properly orient users, but don’t distract them
+## Provide Enough Information to Properly Orient Users, but Don’t Distract Them
 
 It’s important to keep the conversation moving and quickly allow users to confirm whether or not they’re on a path to success ([golden rule #3:](https://www.cs.umd.edu/users/ben/goldenrules.html) “offer informative feedback”). Here are some things to keep in mind:
 
@@ -88,11 +88,11 @@ It’s important to keep the conversation moving and quickly allow users to conf
 
 For this example, the app could either choose to a) implicitly end the run and save it or b) tell the user they have a run in progress and ask if they want to stop & save. The user then recorded a walk. Once saved, the user received visual confirmation.
 
-![MyRunBuddy Saving a Run](./images/save_run.png)
+![MyRunBuddy Saving a Run](../../assets/docs/design-tips-for-designing-visual-output/save_run.png)
 
-![MyRunBuddy Recording a Walk](./images/record_walk.png)
+![MyRunBuddy Recording a Walk](../../assets/docs/design-tips-for-designing-visual-output/record_walk.png)
 
-## Format information for quick retrieval, emphasizing utility over complexity
+## Format Information for Quick Retrieval, Emphasizing Utility over Complexity
 
 Memory and processing are [fundamentally different](https://link.springer.com/article/10.3758/s13423-019-01597-7?shared-article-renderer) visually and aurally. Consider certain GUI components like a menu, a list of names, or a billing statement—all are easy to browse visually, but would be painful to hear read aloud.
 
@@ -105,4 +105,4 @@ Here are some things to keep in mind:
 
 In this example, the user requested information that wasn’t already on the screen. As a result, the screen reformatted information to match the user’s request.
 
-![MyRunBuddy Distance](./images/distance.png)
+![MyRunBuddy Distance](../../assets/docs/design-tips-for-designing-visual-output/distance.png)

@@ -5,6 +5,8 @@ description: In-depth explanations of Spokestack technology
 draft: false
 ---
 
+<img src="../../assets/docs/concepts-index.png" style="display:none"/>
+
 `youtube: [The Basic Elements of Voice Interfaces](https://www.youtube.com/watch?v=1x4MdTKEy3E)`
 
 A smooth voice experience requires several different pieces of technology working together. The three primary systems involved are the [speech pipeline](/docs/concepts/speech-pipeline), responsible for listening to the user and converting their speech into text; [Natural Language Understanding](/docs/concepts/nlu), which translates phrases and sentences into actionable input for an application; and [Text to Speech](/docs/concepts/tts), which converts textual system responses into audio to be read to the user.

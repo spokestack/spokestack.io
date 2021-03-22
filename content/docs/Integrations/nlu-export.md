@@ -3,8 +3,10 @@ title: Export An Existing NLU Model
 navId: Export (Integrations)
 description: Convert an existing Alexa, Dialogflow, or Jovo model into Spokestack's format
 draft: false
-tags: NLU, 3rd-Party Integrations
+tags: NLU, 3rd Party Integrations
 ---
+
+<img src="../../assets/docs/concepts-nlu.png" style="display:none"/>
 
 This guide details the process of exporting an existing interaction model from Alexa, Dialogflow, or Jovo for use with Spokestack.
 

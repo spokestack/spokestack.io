@@ -6,6 +6,8 @@ draft: false
 tags: Android, ASR, NLU, TTS, Wake Word
 ---
 
+<img src="../../assets/docs/android-getting-started.png" style="display:none"/>
+
 As of version 9.0.0, Spokestack offers a single class that centralizes setup and configuration for all of its individual modules (ASR, NLU, TTS, etc.). This guide details the configuration options available when setting up that class as well as tips for runtime usage.
 
 ## Builders everywhere

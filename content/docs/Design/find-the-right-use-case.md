@@ -6,21 +6,25 @@ draft: false
 tags: Conversation Design
 ---
 
-In our [last article](/docs/design/getting-started), we illustrated the advantages of multimodal interfaces. Some of these are more relevant to certain types of smartphone apps. Before [mapping](/docs/design/docs/design/map-out-integration) your voice interface, the next step in the design process is to narrow down use cases.
+<img src="../../assets/docs/design-find-the-right-use-case.png" style="display:none"/>
+
+In our [last article](/docs/design/getting-started), we illustrated the advantages of multimodal interfaces. Some of these are more relevant to certain types of smartphone apps. Before [mapping](/docs/design/map-out-integration) your voice interface, the next step in the design process is to narrow down use cases.
 
 Here are some key questions to keep in mind when planning to add voice to a mobile app:
 
 1. What problems or pain points are you trying to address?
+
 1. How can a multimodal solution solve or ease these problems?
+
 1. Will integrating voice provide a more effective way of accomplishing certain tasks?
 
 Addressing all answers to these questions is beyond this guide’s scope. Many boil down to two primary sources of information: your product team and your users.
 
-## Evaluate product objectives
+## Evaluate Product Objectives
 
 Focus on measurable goals that have been hard to solve with visual UI changes alone. For example, you may be looking to increase the accuracy of search results. A spoken natural language search can make this easier for some users. Or, you may notice users are having trouble finding a certain setting. Allowing a user to ask for it using their voice can alleviate this issue.
 
-#### Consider context
+### Consider Context
 
 Voice interfaces allow certain tasks to be completed while multitasking. This is why context is key. What are people doing while using your app? Some examples might include commuting (driving, biking, walking, etc.), exercising, cooking, and childcare. Your users may not always be able to touch their device. This is where voice input and output can be valuable.
 

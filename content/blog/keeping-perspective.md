@@ -5,13 +5,14 @@ description: Learn more about perspective while developing new voice products. M
 author: mike
 tags: News, Principles
 draft: false
+hero: ../assets/blog/keeping-perspective.png
 ---
 
 I watch [this presentation](https://vimeo.com/34017777) by Wilson Minor at the 2011 Build Conference at least once a year. Last week, I rewatched it trying to refocus my mind from pandemic to product development work. Watching Wilson’s talk reminds me why we make things, both the impact and consequences. If you can spare 38 minutes, it's worth your time.
 
 Nine years ago, before we knew the full impact of mobile and social apps would have on our lives, Wilson used a quote from Marshall McLuhan and adapted by Winston Churchill to explain the future:
 
-> "We shape our tools, and thereafter our tools shape us."
+![Keeping Perspective](../assets/blog/keeping-perspective.png)
 
 This quote is a reminder that the things we build impact the world. Even if it [looks like a toy at first](https://cdixon.org/2010/01/03/the-next-big-thing-will-start-out-looking-like-a-toy), like [Chris Dixon](https://twitter.com/cdixon) said 10 years ago. At the beginning of a project, you may not understand all potential uses for what you are building. But, if you keep your eyes and ears open, some of those uses may find you.
 

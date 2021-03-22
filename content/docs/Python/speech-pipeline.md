@@ -6,6 +6,8 @@ draft: false
 tags: ASR, Python, Wake Word
 ---
 
+<img src="../../assets/docs/python-speech-pipeline.png" style="display:none"/>
+
 ## What _is_ it?
 
 The `SpeechPipeline` is a collection of modular components that work together to process user speech. The pipeline receives frame-level audio from an _input_ class, and then processes the audio by sending it through a series of _stages_. Information sharing is accomplished by `SpeechContext`, which can be altered by each stage of the pipeline. For example, a voice activity detector may set `is_speech` to `True` if speech is detected. In addition, at each stage an event can be triggered that allows code outside the pipeline to be executed.

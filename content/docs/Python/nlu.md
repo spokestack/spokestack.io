@@ -6,6 +6,8 @@ draft: false
 tags: NLU, Python
 ---
 
+<img src="../../assets/docs/python-nlu.png" style="display:none"/>
+
 This is a companion to the [NLU concept guide](/docs/concepts/nlu), which is a detailed outline of the NLU module. Here we'll talk about usage issues specific to the Python client library.
 
 ### Configuration

@@ -6,6 +6,8 @@ draft: false
 tags: Speech Pipeline, VAD
 ---
 
+<img src="../../assets/docs/concepts-vad+wake-word.png" style="display:none"/>
+
 Voice activity detection, or VAD, is responsible for making a quick, low-cost determination of whether a snippet of audio contains human speech.
 
 VADs range in complexity from simple frequency analyzers to heavier black-box neural models. The underlying implementation in Spokestack's libraries varies based on tools available for the various platforms, but we try to strike a balance between speed and accuracy.

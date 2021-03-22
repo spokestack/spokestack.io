@@ -6,6 +6,8 @@ draft: false
 tags: Wakeword
 ---
 
+<img src="../../assets/docs/concepts-vad+wake-word.png" style="display:none"/>
+
 Spokestack provides pretrained [TensorFlow Lite](https://www.tensorflow.org/lite) models that enable on-device wake word detection. These free models, however, only recognize the word "Spokestack"; in order to have your app respond to a different word or phrase, you'll need new models. If machine learning is outside your wheelhouse and you'd like a customized wake word for your app, stop reading here and [drop us a line](mailto:hello@spokestack.io). We're happy to help.
 
 If building a custom model sounds like fun, though, soldier on. We'll describe the design of the models and their input/output shapes below; see [the configuration guide](pipeline-configuration) for more information about hyperparameters. Spokestack uses three separate models; they operate continuously, each feeding output into the next, for both efficiency and accuracy. We'll go over them in the order in which they're used. See the list of references at the end for descriptions of any unfamiliar terminology, and let us know if we missed anything!

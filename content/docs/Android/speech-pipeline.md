@@ -6,6 +6,8 @@ draft: false
 tags: Android, ASR, Wake Word
 ---
 
+<img src="../../assets/docs/android-speech-pipeline.png" style="display:none"/>
+
 **Note**: As of version 9.0.0, the speech pipeline is included in the turnkey `Spokestack` object. This guide is still valid as an in-depth introduction to the pipeline module itself, but see [the configuration guide](turnkey-configuration) for more information about how it's integrated in newer versions of Spokestack.
 
 ---

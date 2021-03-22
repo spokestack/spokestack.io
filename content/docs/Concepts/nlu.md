@@ -6,6 +6,8 @@ draft: false
 tags: NLU
 ---
 
+<img src="../../assets/docs/concepts-nlu.png" style="display:none"/>
+
 This guide explains the design of Spokestack's natural language understanding (NLU) API and how to use it with our on-device models or a third-party service.
 
 ## The basics

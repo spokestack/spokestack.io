@@ -10,11 +10,11 @@ Human-to-human conversation is second nature. Talking to a voice assistant on th
 
 Below are some ground rules to keep in mind while [writing](/docs/design/script-storyboard-responses) system-centric dialog. These draw from industry standards found in user experience (UX) design, conversational user experience (CUX) design, and conversational analysis (CA) as well as from our own professional experiences. You might recognize some of these from Ben Schneiderman’s [_The Eight Golden Rules of Interface Design_](https://www.cs.umd.edu/users/ben/goldenrules.html) and Paul Grice’s [_Cooperative Principle_](https://en.wikipedia.org/wiki/Cooperative_principle).
 
-## Start with a greeting
+## Start with a Greeting
 
 Consider how you’d start a conversation with a friend. Perhaps “Hello” or “Hi,” followed by enough context to continue communication. With system-centric exchanges, users control the conversation ([golden rule #7:](https://www.cs.umd.edu/users/ben/goldenrules.html) “keep users in control”). Consider what choices users will have and what they’ll need to elicit an appropriate response.
 
-#### Give new users options, but don’t assume intent
+#### Give New Users Options, but Don’t Assume Intent
 
 This will be their first interaction with your app’s voice. Make a brief, but transparent first impression ([quality maxim](https://en.wikipedia.org/wiki/Cooperative_principle)). New users require varying degrees of hand holding. Do this by either asking a question or providing instruction. Well-defined prompts followed by keywords, often referred to as “slot values” or “entities,” are going to be your shortest path to success.
 

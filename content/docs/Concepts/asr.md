@@ -6,6 +6,8 @@ draft: false
 tags: ASR
 ---
 
+<img src="../../assets/docs/concepts-asr.png" style="display:none"/>
+
 The technology for converting spoken words to text is known as automatic speech recognition (ASR).
 
 ASR refers to the process of analyzing and transcribing a chunk of audio without human intervention. This technology is ubiquitous, with a place in the stack of every major voice assistant on the market.

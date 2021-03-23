@@ -4,6 +4,7 @@ const siteUrl = new URL(process.env.SITE_URL)
 console.log(`Site URL in Gatsby config: ${siteUrl.href}`)
 
 module.exports = {
+  flags: { PRESERVE_WEBPACK_CACHE: true },
   siteMetadata: {
     title: 'Spokestack - Independent Voice Assistant',
     author: 'Spokestack',

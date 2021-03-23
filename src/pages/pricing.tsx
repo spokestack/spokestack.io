@@ -56,7 +56,7 @@ export default function Pricing({ data, location }: Props) {
         onPointerMove={hover}>
         <Plan
           showBanners
-          cta="Create free account"
+          cta="Create account"
           name="Free"
           price="$0"
           slug="/create"

@@ -119,7 +119,10 @@ Notice that this function was registered to listen to the `recognize` event, hin
 
 Thanks to some pre-recorded and cleverly named audio files, we're able to not only print a scolding message to the terminal, but play the sound of a hard-earned coin dropping into the jar.
 
-This code could be modified to keep a running total of the amount deposited throughout the day, but that feature is left as an exercise to the reader.
+## Go Deeper
+- Keep a running total of the amount deposited throughout the day
+- Grab a housemate and train using both your voices
+- ???
 
 ## Conclusion
 

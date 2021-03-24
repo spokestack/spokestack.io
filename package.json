@@ -9,7 +9,7 @@
     "clean": "gatsby clean",
     "deploy": "gatsby-plugin-s3 deploy --yes",
     "format": "eslint . --fix && prettier --write \"**/*.tsx\" \"**/*.ts\" \"**/*.js\" \"**/*.json\" \"**/*.md\"",
-    "lint": "concurrently --raw \"eslint .\" \"npm run prettier\"",
+    "lint": "concurrently --raw \"eslint .\" \"npm run prettier\" \"npm run typescript\"",
     "post": "node tasks/post.js",
     "prepare": "husky install",
     "prettier": "prettier --check \"**/*.json\" \"**/*.md\"",
@@ -17,7 +17,7 @@
     "schema": "graphql-codegen --config codegen.yml && prettier --write \"**/graphql.d.ts\"",
     "serve": "serve -l 8000 public/",
     "start": "gatsby develop",
-    "test": "concurrently --raw \"npm run lint\" \"npm run typescript\"",
+    "test": "npm run lint",
     "typescript": "tsc -p tsconfig.json --noEmit"
   },
   "dependencies": {

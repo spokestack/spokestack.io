@@ -16,7 +16,7 @@ How would a friend communicate that it’s your turn to talk? You’d likely rel
 
 ## Include a touch-to-talk button, even if your app is wake word enabled
 
-Hardware limitations may limit your ability to have your service work the way you want it to with wakeword only voice activation. Touch-to-talk allows users to invoke listening by touch instead. Here are some considerations to keep in mind:
+Hardware limitations may limit your ability to have your service work the way you want it to with wake word only voice activation. Touch-to-talk allows users to invoke listening by touch instead. Here are some considerations to keep in mind:
 
 - Make sure touch-to-talk is accessible one-handed. Especially if your target demographic might use your app while in the car.
 - Don’t make your button discrete or hide it at any point.

@@ -69,7 +69,7 @@ This is Spokestack's mission: We exist to enable businesses to take back their v
 
 In fact, we go a couple steps further than what the major voice platforms currently let you do. Spokestack can help you:
 
-1. Give your app its own wakeword (so a user can _start_ a voice-only interaction from within the app, as if they'd said "Hey Google/Siri" to their phone).
+1. Give your app its own wake word (so a user can _start_ a voice-only interaction from within the app, as if they'd said "Hey Google/Siri" to their phone).
 1. Create your own voice to use for responses, so users can differentiate your brand from a generic AI voice.
 
 `youtube: [Spokestack Overview](https://www.youtube.com/watch?v=MW2cYSQhbZE)`

@@ -87,7 +87,7 @@ public class MainActivity extends AppCompatActivity {
 }
 ```
 
-This is all we need to interact with the components we've built — the `start` method gives Spokestack control of the microphone via its `SpeechPipeline` so that we can start hearing the user. If you look at how we've set the pipeline up for this project, though (in `Spokestack`), you'll notice a line that sets the pipeline's "profile" to `PushToTalkAndroidASR`. This means that we're not using a wakeword (e.g., "Alexa") to tell the app to start actively listening to the user. Spokestack does support this, and you can see an example configuration in [our Android cookbook](/docs/android/cookbook), but we're going to use a button here for sake of simplicity. That means we'll need a microphone button and a handler that starts sending audio through speech recognition when the button is tapped:
+This is all we need to interact with the components we've built — the `start` method gives Spokestack control of the microphone via its `SpeechPipeline` so that we can start hearing the user. If you look at how we've set the pipeline up for this project, though (in `Spokestack`), you'll notice a line that sets the pipeline's "profile" to `PushToTalkAndroidASR`. This means that we're not using a wake word (e.g., "Alexa") to tell the app to start actively listening to the user. Spokestack does support this, and you can see an example configuration in [our Android cookbook](/docs/android/cookbook), but we're going to use a button here for sake of simplicity. That means we'll need a microphone button and a handler that starts sending audio through speech recognition when the button is tapped:
 
 ```java
 // still in MainActivity

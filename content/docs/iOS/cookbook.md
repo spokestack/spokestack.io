@@ -3,7 +3,7 @@ title: iOS Cookbook
 navId: Cookbook (iOS)
 description: Code snippets and tips for iOS
 draft: false
-tags: ASR, Dialogue Management, iOS, NLU, TTS, Wakeword
+tags: ASR, Dialogue Management, iOS, NLU, TTS, Wake Word
 ---
 
 This is a collection of code snippets and brief descriptions designed to help you be as productive as possible as quickly as possible. Check out the Concepts section for more detailed discussions about the techniques mentioned here.
@@ -16,7 +16,7 @@ import Spokestack
 ...
 
 // The default configuration uses Apple's ASR as both a
-// wakeword recognizer and speech recognizer
+// wake word recognizer and speech recognizer
 // `self` adopts the `SpeechEventListener` protocol
 lazy public var pipeline: SpeechPipeline = {
     return SpeechPipelineBuilder()
@@ -28,7 +28,7 @@ lazy public var pipeline: SpeechPipeline = {
 ...
 
 func startListening() {
-    // Spokestack will start listening for its wakeword
+    // Spokestack will start listening for its wake word
     pipeline.start()
 }
 ```
@@ -42,15 +42,15 @@ func onTalkButtonPressed() {
     // don't need this line
     pipeline.start()
 
-    // skips the wakeword activation and sends the pipeline
+    // skips the wake word activation and sends the pipeline
     // straight to ASR
     pipeline.activate()
 }
 ```
 
-### Use a custom wakeword
+### Use a custom wake word
 
-This example uses the same profile as the previous recipe, which is to say that Apple ASR is used as a wakeword detector. This may or may not perform well for your specific wakeword, but it should be suitable for demo purposes. Contact us for more information about developing a custom wakeword for your app.
+This example uses the same profile as the previous recipe, which is to say that Apple ASR is used as a wake word detector. This may or may not perform well for your specific wake word, but it should be suitable for demo purposes. Contact us for more information about developing a custom wake word for your app.
 
 ```swift
 import Spokestack
@@ -66,9 +66,9 @@ import Spokestack
         }()
 ```
 
-### Recognize Wakewords On-Device
+### Recognize Wake Words On-Device
 
-To use the demo "Spokestack" wakeword, download the TensorFlow Lite models: [detect](https://s.spokestack.io/u/hgmYb/detect.tflite) | [encode](https://s.spokestack.io/u/hgmYb/encode.tflite) | [filter](https://s.spokestack.io/u/hgmYb/filter.tflite)
+To use the demo "Spokestack" wake word, download the TensorFlow Lite models: [detect](https://s.spokestack.io/u/hgmYb/detect.tflite) | [encode](https://s.spokestack.io/u/hgmYb/encode.tflite) | [filter](https://s.spokestack.io/u/hgmYb/filter.tflite)
 
 ```swift
 import Spokestack
@@ -98,7 +98,7 @@ func cancelAsr() {
 }
 ```
 
-When `deactivate` is called, Spokestack will continue listening for the next wakeword activation. To stop listening entirely, call
+When `deactivate` is called, Spokestack will continue listening for the next wake word activation. To stop listening entirely, call
 
 ```swift
 pipeline.stop()
@@ -110,7 +110,7 @@ After calling this, you'll need to call
 pipeline.start()
 ```
 
-before you'll be able to recognize a wakeword again.
+before you'll be able to recognize a wake word again.
 
 If speech is being processed when `deactivate` is called, it will still be delivered to your `SpeechEventListener`'s `didRecognize` method when processing is complete.
 

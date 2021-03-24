@@ -79,7 +79,7 @@ Notice that this design means there's very little business logic to add to any g
 
 There are, however, two details that are particularly important:
 
-1. The `Spokestack` setup in `Voice`, specifically how it deals with wakeword and NLU data files
+1. The `Spokestack` setup in `Voice`, specifically how it deals with wake word and NLU data files
 
 For this tutorial, we're taking the simple approach of including all our data files in the `assets` folder (thus distributing them with the app itself) and simply decompressing them to the cache folder on startup. To decrease app size, you can choose to omit these files from the distribution and download them if absent, possibly forcing the app to redownload them based on version changes. It's important to think up front about how you'll distribute updates to your NLU model, since it essentially determines which features are available via voice.
 
@@ -135,7 +135,7 @@ override fun ttsEvent(event: TTSEvent) {
 
 This snippet automatically reactivates ASR when Spokestack finishes playing the audio for a TTS prompt, so the user can give another search if they want. If they say nothing, the ASR will deactivate after a timeout.
 
-That brings us to one last point: in its current state, voice integration in the sample app can only be accessed via wakeword ("Spokestack", in this case). It's easy enough to add a microphone button of your choosing, and it should call `spokestack.activate()` just as our TTS listener above. If you want to make your button work like a walkie-talkie, you can call `spokestack.deactivate()` when the user releases it; otherwise, calling `deactivate` is unnecessary.
+That brings us to one last point: in its current state, voice integration in the sample app can only be accessed via wake word ("Spokestack", in this case). It's easy enough to add a microphone button of your choosing, and it should call `spokestack.activate()` just as our TTS listener above. If you want to make your button work like a walkie-talkie, you can call `spokestack.deactivate()` when the user releases it; otherwise, calling `deactivate` is unnecessary.
 
 ## Conclusion...or is it?
 

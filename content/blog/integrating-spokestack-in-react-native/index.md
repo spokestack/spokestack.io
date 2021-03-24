@@ -12,15 +12,15 @@ hero: blog.png
 
 Not long ago, adding voice to any mobile app was not only time-consuming, but difficult and convoluted. This was especially true when adding voice experiences on multiple platforms, as might be the case when using React Native. Our mission at Spokestack is to make it as easy as possible to make your apps fully voice-enabled.
 
-After building the services needed to make voice interaction work, including [Wakeword](/docs/concepts/wakeword-models), [Speech Recognition](/docs/concepts/asr), [Natural Language Understanding](/docs/concepts/nlu), and [Text-to-speech](/docs/concepts/tts), we started working on ways users could integrate these services without having to completely rewrite their applications.
+After building the services needed to make voice interaction work, including [Wake Word](/docs/concepts/wakeword-models), [Speech Recognition](/docs/concepts/asr), [Natural Language Understanding](/docs/concepts/nlu), and [Text-to-speech](/docs/concepts/tts), we started working on ways users could integrate these services without having to completely rewrite their applications.
 
 Introducing [react-native-spokestack-tray](https://github.com/spokestack/react-native-spokestack-tray)!
 
 ![React Native Spokestack Tray Example](./tray_example.gif)
 
-[react-native-spokestack-tray](https://github.com/spokestack/react-native-spokestack-tray) is a React Native component that is designed to work in any application, regardless of its layout or navigation. It uses multiple existing React Native plugins, including [react-native-spokestack](https://github.com/spokestack/react-native-spokestack), to add voice experiences. With **on-device** wakeword, ASR, and NLU, the tray's `silent` mode works completely offline–TTS is the only service that requires a network.
+[react-native-spokestack-tray](https://github.com/spokestack/react-native-spokestack-tray) is a React Native component that is designed to work in any application, regardless of its layout or navigation. It uses multiple existing React Native plugins, including [react-native-spokestack](https://github.com/spokestack/react-native-spokestack), to add voice experiences. With **on-device** wake word, ASR, and NLU, the tray's `silent` mode works completely offline–TTS is the only service that requires a network.
 
-With a few required props (and [lots of optional ones](https://github.com/spokestack/react-native-spokestack-tray#spokestacktray--component-props)), you can start building a customizable voice experience without the hassle that usually comes with listening for a wakeword, working with a microphone, or playing audio in iOS and Android.
+With a few required props (and [lots of optional ones](https://github.com/spokestack/react-native-spokestack-tray#spokestacktray--component-props)), you can start building a customizable voice experience without the hassle that usually comes with listening for a wake word, working with a microphone, or playing audio in iOS and Android.
 
 This tutorial will guide you through the process of installing `react-native-spokestack-tray` as well as using the `<SpokestackTray />` component to respond to user intents. We won't go through the process of [setting up a new React Native project](https://reactnative.dev/docs/environment-setup), but be sure to use the React Native CLI path and not expo.
 
@@ -135,7 +135,7 @@ In our [example app](https://github.com/spokestack/react-native-spokestack-tray/
 ```xml
     <!-- For TTS -->
     <uses-permission android:name="android.permission.INTERNET" />
-    <!-- For wakeword and ASR -->
+    <!-- For wake word and ASR -->
     <uses-permission android:name="android.permission.RECORD_AUDIO" />
 ```
 
@@ -162,7 +162,7 @@ android {
 
 `youtube: [Build your own voice interface to talk directly to your customers](https://www.youtube.com/watch?v=AvhQ6-9nCrQ)`
 
-The [react-native-spokestack-tray example app](https://github.com/spokestack/react-native-spokestack-tray/tree/develop/example) uses the "Spokestack" wakeword and [sample Minecraft NLU models](/blog/porting-the-alexa-minecraft-skill-to-ios-using-spokestack).
+The [react-native-spokestack-tray example app](https://github.com/spokestack/react-native-spokestack-tray/tree/develop/example) uses the "Spokestack" wake word and [sample Minecraft NLU models](/blog/porting-the-alexa-minecraft-skill-to-ios-using-spokestack).
 
 In this example, the following code is used to add the `<SpokestackTray />` component:
 

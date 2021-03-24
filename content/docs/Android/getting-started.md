@@ -36,7 +36,7 @@ dependencies {
 
   implementation 'io.spokestack:spokestack-android:%ANDROID_VERSION'
 
-  // for TensorFlow Lite-powered wakeword detection and/or NLU, add this one too
+  // for TensorFlow Lite-powered wake word detection and/or NLU, add this one too
   implementation 'org.tensorflow:tensorflow-lite:2.3.0'
 
   // for automatic playback of TTS audio
@@ -103,11 +103,11 @@ spokestack = Spokestack.Builder()
   .build()
 ```
 
-This is a complete example and uses wakeword activation, on-device [ASR](/docs/concepts/asr), [NLU](/docs/concepts/nlu), and [TTS](/docs/concepts/tts), hence the properties that point Spokestack to [TensorFlow Lite](https://www.tensorflow.org/lite) model files. We've assumed that these files are stored in the app's cache directory for convenience, but they can be kept wherever it makes sense for your app.
+This is a complete example and uses wake word activation, on-device [ASR](/docs/concepts/asr), [NLU](/docs/concepts/nlu), and [TTS](/docs/concepts/tts), hence the properties that point Spokestack to [TensorFlow Lite](https://www.tensorflow.org/lite) model files. We've assumed that these files are stored in the app's cache directory for convenience, but they can be kept wherever it makes sense for your app.
 
-See [the `Spokestack` guide](turnkey-configuration) for more information on downloading wakeword and NLU models.
+See [the `Spokestack` guide](turnkey-configuration) for more information on downloading wake word and NLU models.
 
-Once a `Spokestack` instance has been built, it begins processing audio when `start()` is called. If the wakeword component is enabled (as it is by default), this processing is entirely on-device until the wakeword is recognized. After wakeword recognition, Spokestack begins "actively" listening, sending audio through ASR for transcription. Depending on which ASR provider is used, this may also be done on-device (the default Android ASR currently processes on-device).
+Once a `Spokestack` instance has been built, it begins processing audio when `start()` is called. If the wake word component is enabled (as it is by default), this processing is entirely on-device until the wake word is recognized. After wake word recognition, Spokestack begins "actively" listening, sending audio through ASR for transcription. Depending on which ASR provider is used, this may also be done on-device (the default Android ASR currently processes on-device).
 
 There are many options for configuring Spokestack beyond what we've described here. For example, to spin up a quick demo that just uses ASR and TTS, you can avoid downloading/storing neural models and set up Spokestack like this:
 
@@ -215,6 +215,6 @@ override fun ttsEvent(event: TTSEvent) {
 
 ## Conclusion
 
-That's all there is to it! Your app is now configured to accept and respond to voice commands. Obviously there's more we could tell you, and you can have much more control over the speech recognition process (including, but not limited to, configuring the pipeline's sensitivity and adding your own custom wakeword models). If you're interested in these advanced topics, check out our other guides. We'll be adding to them as Spokestack grows.
+That's all there is to it! Your app is now configured to accept and respond to voice commands. Obviously there's more we could tell you, and you can have much more control over the speech recognition process (including, but not limited to, configuring the pipeline's sensitivity and adding your own custom wake word models). If you're interested in these advanced topics, check out our other guides. We'll be adding to them as Spokestack grows.
 
 Thanks for reading!

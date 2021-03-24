@@ -3,7 +3,7 @@ title: Spokestack Configuration
 navId: Spokestack Configuration (Android)
 description: An in-depth guide to configuring all of Spokestack's Android modules in a single class.
 draft: false
-tags: Android, ASR, NLU, TTS, Wakeword
+tags: Android, ASR, NLU, TTS, Wake Word
 ---
 
 As of version 9.0.0, Spokestack offers a single class that centralizes setup and configuration for all of its individual modules (ASR, NLU, TTS, etc.). This guide details the configuration options available when setting up that class as well as tips for runtime usage.
@@ -14,7 +14,7 @@ Each Spokestack module can be used independently and comes with its own builder 
 
 ### Speech pipeline
 
-The [speech pipeline](speech-pipeline) is the first piece of the puzzle in any voice interaction and is responsible for capturing user audio and translating it into text. Configuring it entails choices about whether or not to use a wakeword to activate ASR, what kind of preprocessing to perform on audio before sending it to ASR, and which ASR service to use. These choices can all be made individually or through the use of configuration profiles, as mentioned in the pipeline guide linked above.
+The [speech pipeline](speech-pipeline) is the first piece of the puzzle in any voice interaction and is responsible for capturing user audio and translating it into text. Configuring it entails choices about whether or not to use a wake word to activate ASR, what kind of preprocessing to perform on audio before sending it to ASR, and which ASR service to use. These choices can all be made individually or through the use of configuration profiles, as mentioned in the pipeline guide linked above.
 
 By default, the `Spokestack` class uses the `TFWakewordAndroidASR` profile, which expects paths to [TensorFlow Lite](https://www.tensorflow.org/lite) model files to be added to the builder:
 
@@ -27,17 +27,17 @@ val spokestack = Spokestack.Builder()
   .build()
 ```
 
-Wakeword models that respond to the "Spokestack" wakeword can be found here: [detect](https://d3dmqd7cy685il.cloudfront.net/model/wake/spokestack/detect.tflite) | [encode](https://d3dmqd7cy685il.cloudfront.net/model/wake/spokestack/encode.tflite) | [filter](https://d3dmqd7cy685il.cloudfront.net/model/wake/spokestack/filter.tflite)
+Wake word models that respond to the "Spokestack" wake word can be found here: [detect](https://d3dmqd7cy685il.cloudfront.net/model/wake/spokestack/detect.tflite) | [encode](https://d3dmqd7cy685il.cloudfront.net/model/wake/spokestack/encode.tflite) | [filter](https://d3dmqd7cy685il.cloudfront.net/model/wake/spokestack/filter.tflite)
 
 **Note**: configurations using Android's ASR must also provide an Android application context via `withAndroidContext()`.
 
-If you would prefer to manually activate ASR, you can disable wakeword using the builder's `withoutWakeword()` method, which will activate the `PushToTalkAndroidASR` profile and remove the need to supply wakeword model files, or you can select your own profile via `getPipelineBuilder().useProfile()`.
+If you would prefer to manually activate ASR, you can disable wake word using the builder's `withoutWakeword()` method, which will activate the `PushToTalkAndroidASR` profile and remove the need to supply wake word model files, or you can select your own profile via `getPipelineBuilder().useProfile()`.
 
-To disable wakeword and ASR altogether, use the builder's `withoutSpeechPipeline()` method.
+To disable wake word and ASR altogether, use the builder's `withoutSpeechPipeline()` method.
 
 ### NLU
 
-Once a user's speech has been transcribed, it's useful to know what to _do_ with it. That's where [Natural Language Understanding](nlu) comes in. You'll need an NLU model and supporting files to use this feature; see our [model export guide](/docs/integrations/export) for some easy ways to create your own. You'll supply the `Spokestack` builder with paths to these files just like you would wakeword files:
+Once a user's speech has been transcribed, it's useful to know what to _do_ with it. That's where [Natural Language Understanding](nlu) comes in. You'll need an NLU model and supporting files to use this feature; see our [model export guide](/docs/integrations/export) for some easy ways to create your own. You'll supply the `Spokestack` builder with paths to these files just like you would wake word files:
 
 ```kotlin
 val spokestack = Spokestack.Builder()

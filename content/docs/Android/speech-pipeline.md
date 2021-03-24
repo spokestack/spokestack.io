@@ -3,14 +3,14 @@ title: SpeechPipeline in Android
 navId: Speech Pipeline (Android)
 description: Documentation for the SpeechPipeline class in Android
 draft: false
-tags: Android, ASR, Wakeword
+tags: Android, ASR, Wake Word
 ---
 
 **Note**: As of version 9.0.0, the speech pipeline is included in the turnkey `Spokestack` object. This guide is still valid as an in-depth introduction to the pipeline module itself, but see [the configuration guide](turnkey-configuration) for more information about how it's integrated in newer versions of Spokestack.
 
 ---
 
-If you've read any of our other documentation, you know that the speech pipeline is the main way you interact with Spokestack's speech recognition and wakeword. This guide is here to explain in a little more detail how the Android version of Spokestack uses this architecture to recognize wakewords and user speech.
+If you've read any of our other documentation, you know that the speech pipeline is the main way you interact with Spokestack's speech recognition and wake word. This guide is here to explain in a little more detail how the Android version of Spokestack uses this architecture to recognize wake words and user speech.
 
 ## What _is_ it?
 
@@ -22,12 +22,12 @@ All pipeline processing is done on a background thread to avoid blocking the UI.
 
 Configuration available at build time include properties, described in [the configuration guide](/docs/concepts/pipeline-configuration) and the [Javadoc](https://www.javadoc.io/doc/io.spokestack/spokestack-android) for the various pipeline stages; and the designated speech event listener(s), which we'll talk about a bit later.
 
-Stage order matters in the build process; audio is processed by each stage in turn, according to the order in which it's declared at build time. For example, a stage that activates ASR based on the presence of the wakeword needs to be placed before the ASR stage, and any stages that process audio to make the wakeword detector's job easier (for example, gain control) must be declared before the wakeword detection stage. The order of configuration properties, on the other hand, does not matter, and their declarations can be placed before or after those of processing stages.
+Stage order matters in the build process; audio is processed by each stage in turn, according to the order in which it's declared at build time. For example, a stage that activates ASR based on the presence of the wake word needs to be placed before the ASR stage, and any stages that process audio to make the wake word detector's job easier (for example, gain control) must be declared before the wake word detection stage. The order of configuration properties, on the other hand, does not matter, and their declarations can be placed before or after those of processing stages.
 
 Spokestack offers several pre-built "profiles" that bundle input class, stage classes, and in some cases configuration properties tuned to support different app configurations. See the [Javadoc](https://www.javadoc.io/doc/io.spokestack/spokestack-android) for the `io.spokestack.spokestack.profile` package for a complete listing, but here's a brief summary:
 
 - Profiles whose names begin with `VADTrigger` send any detected speech straight to the chosen speech recognizer.
-- `TFWakeword` profiles use [TensorFlow Lite](https://www.tensorflow.org/lite) for wakeword recognition.
+- `TFWakeword` profiles use [TensorFlow Lite](https://www.tensorflow.org/lite) for wake word recognition.
 - `PushToTalk` profiles have no automatic triggering; the pipeline's `activate` method must be called to perform speech recognition.
 
 Profiles take care of all configuration that can be managed in a one-size-fits-all fashion, but note that some components require additional configuration, such as third-party API keys, paths to TensorFlow models, or runtime objects from an Android application. See the javadoc for your chosen profile to see if anything else is required.
@@ -60,7 +60,7 @@ These listeners only have to implement a single method, `onEvent(SpeechContext.E
 
 ## And the cycle continues...
 
-Once the ASR stage has completed its request and fired a `RECOGNIZE` event, it signals the pipeline to return to listening passively for the wakeword. If a multi-turn interaction is desired, the pipeline can be manually reactivated after a system response via its `SpeechContext`:
+Once the ASR stage has completed its request and fired a `RECOGNIZE` event, it signals the pipeline to return to listening passively for the wake word. If a multi-turn interaction is desired, the pipeline can be manually reactivated after a system response via its `SpeechContext`:
 
 ```kotlin
 pipeline.context.isActive = true

@@ -20,6 +20,8 @@ export const primaryLighter = primaryLighterColor.hex()
 export const secondary = secondaryColor.hex()
 export const grayDark = '#c9c9c9'
 export const yellow = '#facc5f'
+export const green = '#daffcc'
+export const greenDark = '#228000'
 
 export const mainBackground = '#f6f9fc'
 export const mainBackgroundDark = textColor.hex()

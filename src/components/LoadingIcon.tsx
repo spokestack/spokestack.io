@@ -5,16 +5,12 @@ import React from 'react'
 
 interface Props {
   color?: string
-  extraCss?: SerializedStyles
+  extraCss?: SerializedStyles | SerializedStyles[]
 }
 
 export default function LoadingIcon({ color = primary, extraCss }: Props) {
   return (
-    <svg
-      css={[styles.icon, extraCss]}
-      width="25px"
-      height="25px"
-      viewBox="0 0 25 25">
+    <svg css={[styles.icon, extraCss]} viewBox="0 0 25 25">
       <path
         css={styles.path}
         style={{ stroke: color }}
@@ -34,6 +30,8 @@ const dashAnimation = keyframes`
 
 const styles = {
   icon: css`
+    width: 25px;
+    height: 25px;
     pointer-events: none;
   `,
   path: css`

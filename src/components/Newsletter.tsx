@@ -1,7 +1,7 @@
 import * as theme from '../styles/theme'
 
 import { Global, css } from '@emotion/react'
-import React, { FormEvent, useRef, useState } from 'react'
+import React, { FormEvent, Fragment, useRef, useState } from 'react'
 
 import Button from './Button'
 import SVGIcon from './SVGIcon'
@@ -10,11 +10,13 @@ import validateEmail from '../utils/validateEmail'
 export default function Newsletter() {
   const formRef = useRef<HTMLFormElement>(null)
   const [invalid, setInvalid] = useState(false)
+  const [error, setError] = useState('')
   const [success, setSuccess] = useState(false)
+  const [submitting, setSubmitting] = useState(false)
   function submit(e: FormEvent<HTMLFormElement>) {
     e.preventDefault()
     const form = formRef.current
-    if (!form) {
+    if (!form || success) {
       return
     }
     const email = form.email.value
@@ -22,23 +24,34 @@ export default function Newsletter() {
       setInvalid(true)
       return
     }
-    fetch('https://api.convertkit.com/v3/forms/1861787/subscribe', {
+    setInvalid(false)
+    setSubmitting(true)
+    fetch('/api/newsletter', {
       method: 'POST',
       headers: {
         Accept: 'application/json',
         'Content-Type': 'application/json'
       },
-      body: JSON.stringify({
-        api_key: 'lO21-69YyNQfTK-CUC69Lw',
-        email: email
-      })
-    }).then((response) => {
-      if (!response.ok) {
-        setInvalid(true)
-      }
-      setSuccess(true)
-      setInvalid(false)
+      body: JSON.stringify({ email })
     })
+      .then((response) => {
+        setSubmitting(false)
+        if (response.ok) {
+          setSuccess(true)
+        } else {
+          console.error(response)
+          setError(
+            'There was a problem subscribing. Please refresh and try again.'
+          )
+        }
+      })
+      .catch((error) => {
+        setSubmitting(false)
+        console.error(error)
+        setError(
+          'There was a problem subscribing. Please refresh and try again.'
+        )
+      })
   }
   return (
     <form ref={formRef} onSubmit={submit} css={styles.form}>
@@ -51,34 +64,41 @@ export default function Newsletter() {
         `}
       />
       <p>Stay up-to-date with the latest news from the Spokestack community</p>
+      {error && <p className="error">{error}</p>}
       <div css={styles.inputWrap}>
         <input
           aria-label="Email address"
           type="email"
           name="email"
-          readOnly={success ? true : false}
+          readOnly={success}
           className={`input${invalid ? ' error' : ''}`}
           placeholder="Enter email"
         />
-        {success ? (
-          <Button type="submit" transparent extraCss={styles.button}>
-            Subscribed!
-            <SVGIcon
-              className="icon"
-              icon="#checkmark"
-              extraCss={styles.icon}
-            />
-          </Button>
-        ) : (
-          <Button type="submit" transparent extraCss={styles.button}>
-            Subscribe
-            <SVGIcon
-              className="icon"
-              icon="#arrow-forward"
-              extraCss={styles.icon}
-            />
-          </Button>
-        )}
+        <Button
+          type="submit"
+          transparent
+          submitting={submitting}
+          extraCss={success ? [styles.button, styles.success] : styles.button}>
+          {success ? (
+            <Fragment>
+              Subscribed
+              <SVGIcon
+                className="icon"
+                icon="#checkmark"
+                extraCss={styles.icon}
+              />
+            </Fragment>
+          ) : (
+            <Fragment>
+              Subscribe
+              <SVGIcon
+                className="icon"
+                icon="#arrow-forward"
+                extraCss={styles.icon}
+              />
+            </Fragment>
+          )}
+        </Button>
       </div>
     </form>
   )
@@ -143,9 +163,14 @@ const styles = {
       width: 200px;
     }
   `,
+  success: css`
+    color: ${theme.greenDark} !important;
+    border-color: ${theme.green} !important;
+    background-color: ${theme.green} !important;
+  `,
   icon: css`
-    width: 17px;
-    height: 17px;
+    width: 24px;
+    height: 24px;
     margin-left: 5px;
     fill: ${theme.primary};
   `

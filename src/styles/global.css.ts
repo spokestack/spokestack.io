@@ -21,6 +21,10 @@ export default css`
     letter-spacing: 0.03em;
     margin: 0;
   }
+  ::selection {
+    color: ${theme.text};
+    background-color: ${theme.primaryLighter};
+  }
   p {
     margin-top: 0;
   }
@@ -209,7 +213,8 @@ export default css`
     user-select: none;
     transition: background-color 0.1s ${theme.transitionEasing},
       border-color 0.1s ${theme.transitionEasing},
-      color 0.1s ${theme.transitionEasing};
+      color 0.1s ${theme.transitionEasing},
+      opacity 0.2s ${theme.transitionEasing};
 
     .icon {
       fill: ${theme.textDarkBg};
@@ -306,14 +311,36 @@ export default css`
       height: 49px;
     }
     &.btn-small {
-      height: 33px;
-      padding: 1px 15px 0;
+      height: 37px;
+    }
+    &.btn-wide {
       font-size: 14px;
-      font-weight: 600;
+
+      ${theme.MIN_DEFAULT_MEDIA_QUERY} {
+        min-width: 155px;
+      }
+    }
+    &.btn-link {
+      background: none;
+      border: none;
+      border-radius: 0;
+      color: ${theme.primary};
+      padding: 5px 10px;
+      height: auto;
+
+      &:hover:not([disabled]),
+      &:active:not([disabled]),
+      &.btn-submitting {
+        background: none;
+        border: none;
+        color: ${theme.primaryDark};
+      }
     }
   }
   .input-wrap {
     width: 100%;
+    display: flex;
+    flex-direction: column;
     display: grid;
     grid-template-columns: 100%;
 
@@ -336,6 +363,9 @@ export default css`
     background-color: white;
     padding-left: 20px;
     padding-right: 20px;
+  }
+  input[readonly]:focus {
+    outline: 0;
   }
   .input,
   .input-value {
@@ -511,6 +541,7 @@ export default css`
       font-size: 24px;
     }
     .input-wrap {
+      flex-direction: row;
       grid-template-columns: 180px 1fr;
 
       label {
@@ -541,9 +572,12 @@ export default css`
     h1,
     h2,
     h3,
-    h4,
-    h5 {
+    h4 {
       width: 100%;
+    }
+
+    .input-wrap label {
+      width: 180px;
     }
   }
 `

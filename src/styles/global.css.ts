@@ -456,10 +456,29 @@ export default css`
         color: ${theme.linkDarkActive};
       }
     }
+    .main-content a:not(.btn),
+    a.content-link,
+    a.library-link {
+      color: ${theme.linkDark};
+      text-decoration-color: ${theme.linkDark};
+
+      &:hover {
+        color: ${theme.linkDarkHover};
+        text-decoration-color: ${theme.linkDarkHover};
+      }
+      &:active {
+        color: ${theme.linkDarkActive};
+        text-decoration-color: ${theme.linkDarkActive};
+      }
+    }
     .btn {
       background-color: ${theme.buttonBackgroundDark};
       border-color: ${theme.buttonBackgroundDark};
       color: ${theme.text};
+
+      .icon {
+        fill: ${theme.text};
+      }
 
       &:hover:not([disabled]),
       &:active:not([disabled]),
@@ -495,21 +514,6 @@ export default css`
       border-left-color: hsl(0, 0%, 80%);
       padding-left: 20px;
       margin-left: 0;
-    }
-    .main-content a,
-    a.content-link,
-    a.library-link {
-      color: ${theme.linkDark};
-      text-decoration-color: ${theme.linkDark};
-
-      &:hover {
-        color: ${theme.linkDarkHover};
-        text-decoration-color: ${theme.linkDarkHover};
-      }
-      &:active {
-        color: ${theme.linkDarkActive};
-        text-decoration-color: ${theme.linkDarkActive};
-      }
     }
     .blue {
       color: ${theme.primaryLight} !important;

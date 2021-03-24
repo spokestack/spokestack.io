@@ -74,6 +74,9 @@ pipeline = SpeechPipeline(
 # we'll talk about this function in just a bit
 pipeline.context.add_handler("recognize", swear_heard)
 pipeline.start()
+print("OK, I'll be listening. No funny business.")
+print("Press Ctrl-c to exit.\n")
+pipeline.run()
 ```
 
 Believe it or not, this is the bulk of the code you'll need for this app. We're setting up the speech pipeline with the help of some hard-coded default values. `WORDS` isn't shown here, but it maps the keyword classes we just created to their values in cents so we can report how much we owe later on. See [the GitHub repository](https://github.com/spokestack/swear-jar-python) for more details.

@@ -75,7 +75,6 @@ pipeline = SpeechPipeline(
 
 # we'll talk about this function in just a bit
 pipeline.context.add_handler("recognize", swear_heard)
-pipeline.start()
 print("OK, I'll be listening. No funny business.")
 print("Press Ctrl-c to exit.\n")
 pipeline.run()

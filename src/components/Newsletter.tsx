@@ -76,9 +76,9 @@ export default function Newsletter() {
         />
         <Button
           type="submit"
-          transparent
+          transparent={!success}
           submitting={submitting}
-          extraCss={success ? [styles.button, styles.success] : styles.button}>
+          extraCss={styles.button}>
           {success ? (
             <Fragment>
               Subscribed
@@ -162,11 +162,6 @@ const styles = {
     ${theme.ieBreakpoint} {
       width: 200px;
     }
-  `,
-  success: css`
-    color: ${theme.greenDark} !important;
-    border-color: ${theme.green} !important;
-    background-color: ${theme.green} !important;
   `,
   icon: css`
     width: 24px;

@@ -170,6 +170,13 @@
       }
     },
     "rules": {
+      "eqeqeq": [
+        "error",
+        "always",
+        {
+          "null": "ignore"
+        }
+      ],
       "prettier/prettier": "error",
       "@typescript-eslint/explicit-function-return-type": 0,
       "@typescript-eslint/explicit-module-boundary-types": 0,

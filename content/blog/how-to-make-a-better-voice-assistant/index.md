@@ -36,9 +36,9 @@ That may sound bleak, but this isn't a gloom-and-doom post. After all, deep voic
 
 ## Be Your Own Assistant
 
-As it turns out, it's not as hard as it used to be to handle voice commands in your app. Our whole mission at Spokestack is to continue making it easier. A [free account](/create) gives you access to everything from in-app wakeword detection to ASR, NLU, and TTS to read your responses. Here are some of the benefits of turning your app into a purpose-built voice assistant using Spokestack libraries:
+As it turns out, it's not as hard as it used to be to handle voice commands in your app. Our whole mission at Spokestack is to continue making it easier. A [free account](/create) gives you access to everything from in-app wake word detection to ASR, NLU, and TTS to read your responses. Here are some of the benefits of turning your app into a purpose-built voice assistant using Spokestack libraries:
 
-- Use your own app name as a wakeword instead of users interacting with another voice assistant as a gatekeeper for _your_ app's features.
+- Use your own app name as a wake word instead of users interacting with another voice assistant as a gatekeeper for _your_ app's features.
 - Call your features and manage your scene transitions directly instead of relying on an external system being able to break the task down into simple steps.
 - Keep your user interactions private.
 - Gain insight into what your users _want to do_ with your app rather than the way they interact with the features they can see at any given time.

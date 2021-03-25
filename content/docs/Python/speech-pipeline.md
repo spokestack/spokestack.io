@@ -3,7 +3,7 @@ title: SpeechPipeline in Python
 navId: Speech Pipeline (Python)
 description: Documentation for the SpeechPipeline class in Python
 draft: false
-tags: ASR, Python, Wakeword
+tags: ASR, Python, Wake Word
 ---
 
 ## What _is_ it?
@@ -12,7 +12,7 @@ The `SpeechPipeline` is a collection of modular components that work together to
 
 ## How does it work?
 
-Once the pipeline is initialized and started with `pipeline.start()`, it will remain in a passive listening state until an activation event occurs. In most cases, this activation event will be triggered by the wakeword.
+Once the pipeline is initialized and started with `pipeline.start()`, it will remain in a passive listening state until an activation event occurs. In most cases, this activation event will be triggered by the wake word.
 
 When the pipeline is passively listening, a single frame of audio flows through each component of the pipeline. The default frame size is 20ms, but can be configured. This audio does not leave the device. The pipeline is waiting until a trigger sets the `SpeechContext` to `active`. Most likely, the trigger will be either `WakewordTrigger` or `VoiceActivityTrigger`, but every trigger class will contain `Trigger` in the name.
 

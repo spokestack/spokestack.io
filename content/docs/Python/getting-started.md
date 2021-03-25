@@ -86,7 +86,7 @@ The `PyAudioInput` class will use the system default audio input device. Most pe
 
 ### 3. `SpeechPipeline` Instance
 
-Spokestack's speech pipeline handles collecting audio from the input device and transcribing speech directed at your app. The [`SpeechPipeline` guide](speech-pipeline) has a detailed explanation of how to set up the pipeline, so we will show the quickest way here using a profile, which configures the pipeline's components for a specific use case. The profile we use here includes wakeword activation and speech transcription using Spokestack's cloud ASR.
+Spokestack's speech pipeline handles collecting audio from the input device and transcribing speech directed at your app. The [`SpeechPipeline` guide](speech-pipeline) has a detailed explanation of how to set up the pipeline, so we will show the quickest way here using a profile, which configures the pipeline's components for a specific use case. The profile we use here includes wake word activation and speech transcription using Spokestack's cloud ASR.
 
 ```python
 from spokestack.profile.wakeword_asr import WakewordSpokestackASR

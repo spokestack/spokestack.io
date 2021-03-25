@@ -19,7 +19,7 @@ export default function Create(props: Partial<BlueCardProps>) {
       }
       id="create"
       title="Create a free Spokestack account"
-      text={`Access our collection of synthetic voices and private speech recognition, download offline wakewords, create your own NLU, and more!`}
+      text={`Access our collection of synthetic voices and private speech recognition, download offline wake words, create your own NLU, and more!`}
       {...props}
     />
   )

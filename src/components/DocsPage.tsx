@@ -79,7 +79,7 @@ export default function DocsPage({
       <SEO
         title={`${post.frontmatter.title} - Spokestack`}
         description={
-          'Explore our Developer Docs to learn about Spokestack’s services, including TTS and on-device ASR, Wakeword, and NLU. All of our documentation is also available on GitHub.' +
+          'Explore our Developer Docs to learn about Spokestack’s services, including TTS and on-device ASR, wake word, and NLU. All of our documentation is also available on GitHub.' +
           post.frontmatter.description
             ? ` ${post.frontmatter.description}`
             : ''

@@ -35,7 +35,7 @@ We take the interaction model that powers your conversation on smart speakers an
 
 We realize that the barrier to building conversations on mobile is lacking the skills to build apps that work on iOS and Android. Sometimes it's thinking through how voice would work on mobile. We've tried to address both issues.
 
-On iOS, we have [Spokestack Studio](https://apps.apple.com/us/app/spokestack-studio/id1508393980), which was built to show developers exactly how wakewords, speech recognition, text-to-speech, and intent classification work on mobile. It even includes a port of the [Alexa Minecraft Helper](/blog/porting-the-alexa-minecraft-skill-to-ios-using-spokestack) skill to iOS.
+On iOS, we have [Spokestack Studio](https://apps.apple.com/us/app/spokestack-studio/id1508393980), which was built to show developers exactly how wake words, speech recognition, text-to-speech, and intent classification work on mobile. It even includes a port of the [Alexa Minecraft Helper](/blog/porting-the-alexa-minecraft-skill-to-ios-using-spokestack) skill to iOS.
 
 Spokestack Studio isn't available for Android yet, but Spokestack does work on Android. We have another tutorial for [porting an Alexa Skill to Android](/blog/porting-the-alexa-minecraft-skill-to-android-using-spokestack) that walks you step-by-step from Alexa skill to Android app. After going through our tutorial, you should be able to port your smart speaker skill to the mobile platform of your choice.
 

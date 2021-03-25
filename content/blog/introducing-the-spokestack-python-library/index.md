@@ -16,7 +16,7 @@ Just as they do with our [iOS](https://github.com/spokestack/spokestack-ios), [A
 <figcaption>You have everything you need to add a voice interface to any project.</figcaption>
 </figure>
 
-As with all of our libraries, developers can create a [custom wakeword](/blog/wakewords-for-mobile-apps) and a text-to-speech voice that is unique to their brand and application. With the Spokestack Python library, the voice interface is less tied to a platform, opening up a number of application opportunities.
+As with all of our libraries, developers can create a [custom wake word](/blog/wakewords-for-mobile-apps) and a text-to-speech voice that is unique to their brand and application. With the Spokestack Python library, the voice interface is less tied to a platform, opening up a number of application opportunities.
 
 `youtube: [Build your own voice interface to talk directly to your customers](https://www.youtube.com/watch?v=AvhQ6-9nCrQ)`
 

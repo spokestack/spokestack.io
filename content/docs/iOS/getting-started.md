@@ -99,7 +99,7 @@ public let spokestack = SpokestackBuilder()
 
 Note that `spokestack` must persist outside the scope of the calling function, so don't declare it inside a function call that will get garbage collected! If this is confusing, please consult the [fuller discussion of the pipeline](speech-pipeline).
 
-There are many options for configuring the speech pipeline. This particular setup will begin capturing audio when `spokestack.pipeline.start()` is called and use a Voice Activity Detection (VAD) component to send any audio determined to be speech through on-device ASR using Apple's `SFSpeech` API. In other words, the app is always actively listening, and no wakeword detection is performed. See [the configuration guide](/docs/ios/speech-pipeline) for more information about pipeline building options. Using a `vadTriggerAppleSpeech` profile is a good way to test out ASR without having to tap a button to activate it or downloading and configuring wakeword models. Consider your use-case fully before using it in production, however, since it will capture all speech it hears, not just what's directed at your app.
+There are many options for configuring the speech pipeline. This particular setup will begin capturing audio when `spokestack.pipeline.start()` is called and use a Voice Activity Detection (VAD) component to send any audio determined to be speech through on-device ASR using Apple's `SFSpeech` API. In other words, the app is always actively listening, and no wake word detection is performed. See [the configuration guide](/docs/ios/speech-pipeline) for more information about pipeline building options. Using a `vadTriggerAppleSpeech` profile is a good way to test out ASR without having to tap a button to activate it or downloading and configuring wake word models. Consider your use-case fully before using it in production, however, since it will capture all speech it hears, not just what's directed at your app.
 
 The `self` in this example means that `MyViewController` also implements `SpokestackDelegate`, which, conveniently enough, is the next step.
 
@@ -214,13 +214,13 @@ When we first configured Spokestack, we used voice activity-activated speech rec
 
 ### I want the user to tap a button before talking
 
-After the pipeline is started, call `pipeline.activate()` in the action of whatever button you want to activate the microphone. This skips the wakeword step of the pipeline and starts the Automatic Speech Recognition (ASR) component directly. ASR will stop automatically after the user is silent for a few seconds (how _many_ seconds is one of the configuration parameters we hinted at earlier) or after a preconfigured timeout is reached, but if you need to stop listening immediately for any reason, call `pipeline.deactivate()`. You can then call `pipeline.activate()` to start ASR again or `pipeline.stop()` to shut the pipeline down completely.
+After the pipeline is started, call `pipeline.activate()` in the action of whatever button you want to activate the microphone. This skips the wake word step of the pipeline and starts the Automatic Speech Recognition (ASR) component directly. ASR will stop automatically after the user is silent for a few seconds (how _many_ seconds is one of the configuration parameters we hinted at earlier) or after a preconfigured timeout is reached, but if you need to stop listening immediately for any reason, call `pipeline.deactivate()`. You can then call `pipeline.activate()` to start ASR again or `pipeline.stop()` to shut the pipeline down completely.
 
 Note that, as we mentioned earlier, the very first time you start a speech pipeline, the microphone is activated, so your user will be presented with permissions modals for the microphone and speech recognition; you may want to plan for this in your designs.
 
-### I want to use a wakeword
+### I want to use a wake word
 
-If you want your app to be controllable purely by voice, you need a wakeword — a word (or short phrase) that tells your app "the next thing the user says is meant for you". Spokestack comes with a default wakeword ("Spokestack", believe it or not), and that's enabled just by changing the pipeline profile enum in the `SpeechPipeline` we just set up. Try changing `.vadTriggerAppleSpeech` to `.appleWakewordAppleSpeech` in that Spokestack configuration example. Then, to begin listening for the default wakeword "Spokestack", just call `pipeline.start()`.
+If you want your app to be controllable purely by voice, you need a wake word — a word (or short phrase) that tells your app "the next thing the user says is meant for you". Spokestack comes with a default wake word ("Spokestack", believe it or not), and that's enabled just by changing the pipeline profile enum in the `SpeechPipeline` we just set up. Try changing `.vadTriggerAppleSpeech` to `.appleWakewordAppleSpeech` in that Spokestack configuration example. Then, to begin listening for the default wake word, "Spokestack", just call `pipeline.start()`.
 
 ## Understanding your users
 
@@ -228,6 +228,6 @@ Spokestack leaves the choice of NLU up to you, but we do offer our own full-feat
 
 ## Conclusion
 
-That's all there is to it! Your app is now configured to accept voice commands and play back synthetic voice responses. Obviously there's more we could tell you, and you can have much more control over the speech recognition process (including, but not limited to, configuring the pipeline's sensitivity, using a different ASR provider, or adding your own custom wakeword model). If you're interested in these advanced topics, check out our other guides. We'll be adding to them as Spokestack grows.
+That's all there is to it! Your app is now configured to accept voice commands and play back synthetic voice responses. Obviously there's more we could tell you, and you can have much more control over the speech recognition process (including, but not limited to, configuring the pipeline's sensitivity, using a different ASR provider, or adding your own custom wake word model). If you're interested in these advanced topics, check out our other guides. We'll be adding to them as Spokestack grows.
 
 Thanks for reading!

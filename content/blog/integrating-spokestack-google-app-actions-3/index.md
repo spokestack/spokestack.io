@@ -25,7 +25,7 @@ To follow along, run `git checkout spokestack-tray` in your copy of the [sample 
 
 ## The why and how of Tray
 
-As we've seen in other tutorials, you can add voice control to your app using just the [Spokestack library](https://github.com/spokestack/spokestack-android). [Spokestack Tray](https://github.com/spokestack/spokestack-tray-android) exists to help the user visualize their voice interactions without you having to build an entire UI for them from scratch. It includes a microphone button used to activate ASR without the use of a wakeword, visual feedback while ASR is active, and a chat-like interface that displays the conversation between user and app.
+As we've seen in other tutorials, you can add voice control to your app using just the [Spokestack library](https://github.com/spokestack/spokestack-android). [Spokestack Tray](https://github.com/spokestack/spokestack-tray-android) exists to help the user visualize their voice interactions without you having to build an entire UI for them from scratch. It includes a microphone button used to activate ASR without the use of a wake word, visual feedback while ASR is active, and a chat-like interface that displays the conversation between user and app.
 
 Let's walk through the process of dropping it into our project, starting with the changes to `build.gradle`. Since the Tray exists to mediate your users' interaction with Spokestack, it bundles the dependencies necessary for that. That means we can replace all our Spokestack-related dependencies with the following:
 
@@ -54,7 +54,7 @@ That takes care of the setup, so let's move on to the code from [part 2](/blog/i
 
 First, the `Voice` class goes away entirely — all `Spokestack` interaction goes through Spokestack Tray.
 
-`VoiceActivity` gets a new parent class, the `TrayActivity` convenience class, which inherits from `AppCompatActivity` and deals with some Android platform unpleasantness related to `Fragment` construction. We've moved our main `Spokestack` configuration (now configuration for the Tray, which is similar) from `Voice` to `VoiceActivity` so we can provide it to `TrayActivity`. This configuration includes URLs instead of paths for wakeword and NLU files since the Tray downloads them automatically; this means that our app bundle can be smaller, and we don't have to write the download code.
+`VoiceActivity` gets a new parent class, the `TrayActivity` convenience class, which inherits from `AppCompatActivity` and deals with some Android platform unpleasantness related to `Fragment` construction. We've moved our main `Spokestack` configuration (now configuration for the Tray, which is similar) from `Voice` to `VoiceActivity` so we can provide it to `TrayActivity`. This configuration includes URLs instead of paths for wake word and NLU files since the Tray downloads them automatically; this means that our app bundle can be smaller, and we don't have to write the download code.
 
 We've also taken the opportunity to provide a fallback voice response that'll be available to all subclasses:
 

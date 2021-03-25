@@ -15,9 +15,9 @@ The concept of a swear jar is simple: you have a list of words or short phrases 
 
 We should note that if swearing's not your thing, this concept also lets you reward yourself for saying nice things—call it a "compliment jar". We wouldn't want to limit this tutorial to us reprobates.
 
-Anyway, the first thing that might come to mind for this use case is a [wakeword detector](/docs/concepts/wake-word): you don't want your app running ASR all day, continuously streaming a pipe of data to wherever; you just want it to notice when you've said certain things. But there's a wrinkle: if movie ratings have taught us anything, it's that certain words are just . . . ickier than others. We'd like to make it more expensive to say _\<insert epithet here\>_ than, say, _\<insert milder epithet here\>_. (You didn't think we were actually going to suggest profanity for your list, did you? This is a family-friendly tech site we're running here.)
+Anyway, the first thing that might come to mind for this use case is a [wake word detector](/docs/concepts/wake-word): you don't want your app running ASR all day, continuously streaming a pipe of data to wherever; you just want it to notice when you've said certain things. But there's a wrinkle: if movie ratings have taught us anything, it's that certain words are just . . . ickier than others. We'd like to make it more expensive to say _\<insert epithet here\>_ than, say, _\<insert milder epithet here\>_. (You didn't think we were actually going to suggest profanity for your list, did you? This is a family-friendly tech site we're running here.)
 
-A [keyword recognizer](/docs/concepts/keywords) is perfect for this. Trained on a small set of utterances, it acts as a wakeword recognizer and ASR in one, letting you know which utterance it heard without activating a cloud service in the process—your bad habits stay on your device forever.
+A [keyword recognizer](/docs/concepts/keywords) is perfect for this. Trained on a small set of utterances, it acts as a wake word recognizer and ASR in one, letting you know which utterance it heard without activating a cloud service in the process—your bad habits stay on your device forever.
 
 Now that we know what we're doing and why, let's get to _doing_ it.
 

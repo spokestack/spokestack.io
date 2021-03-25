@@ -1,16 +1,16 @@
 ---
-title: Wakewords for Mobile Apps
+title: Wake Words for Mobile Apps
 date: '2020-07-09'
-description: Amazon added the "Hey Alexa" wakeword to its mobile app. This is going to change user perceptions of mobile voice apps. Start building your Independent Voice Assistant with Spokestack.
-tags: Principles, Voice Assistant, Wakeword
+description: Amazon added the "Hey Alexa" wake word to its mobile app. This is going to change user perceptions of mobile voice apps. Start building your Independent Voice Assistant with Spokestack.
+tags: Principles, Voice Assistant, Wake Word
 author: mike
 draft: false
 hero: blog.png
 ---
 
-![Wakewords for Mobile Apps](blog.png)
+![Wake Words for Mobile Apps](blog.png)
 
-Amazon added the "Hey Alexa" wakeword to its mobile app. This is going to change user perceptions of mobile voice apps.
+Amazon added the "Hey Alexa" wake word to its mobile app. This is going to change user perceptions of mobile voice apps.
 
 One of the main hurdles I've encountered when explaining mobile voice apps to people is that they don't seem to understand how to start talking to mobile apps. For some reason, it's difficult for people to get their heads around the idea that a mobile app is the same as a smart speaker such as an [Alexa Skill](https://www.amazon.com/alexa-skills/) or a [Google Assistant Action](https://assistant.google.com/explore).
 
@@ -44,6 +44,6 @@ That's convenient and definitely faster than scrolling through pages of apps to 
 
 `youtube: [The Basic Elements of Voice Interfaces](https://www.youtube.com/watch?v=1x4MdTKEy3E)`
 
-To be fair, Alexa isn't the first mobile app to add a voice interface or wakeword. Spotify, Home Depot, Sephora, Pandora, and Snapchat have all added voice to their apps with varying degrees of interaction. Most focus on initiating a product search, which makes sense. It's just that the interactions, sans the ones built by Houndify, are not that robust.
+To be fair, Alexa isn't the first mobile app to add a voice interface or wake word. Spotify, Home Depot, Sephora, Pandora, and Snapchat have all added voice to their apps with varying degrees of interaction. Most focus on initiating a product search, which makes sense. It's just that the interactions, sans the ones built by Houndify, are not that robust.
 
-We think all of that will change which is why we built Spokestack. So if you're looking for a wakeword, on-device NLU, or custom synthetic voice to speak to your customer, email us at [hello@spokestack.io](mailto:hello@spokestack.io).
+We think all of that will change which is why we built Spokestack. So if you're looking for a wake word, on-device NLU, or custom synthetic voice to speak to your customer, email us at [hello@spokestack.io](mailto:hello@spokestack.io).

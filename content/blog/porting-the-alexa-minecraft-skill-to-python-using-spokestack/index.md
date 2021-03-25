@@ -69,7 +69,7 @@ To follow along with the tutorial, we recommend making a new python file titled 
 
 ## Using the Speech Pipeline
 
-An essential piece to any voice interface is the ability to detect when the user is speaking, then convert the spoken phrase into a text transcript. Spokestack has an [easy-to-use speech pipeline](/docs/concepts/pipeline-configuration) that will handle this for us. The speech pipeline consists of three major components: a voice detection module, a wakeword trigger, and a speech recognizer.
+An essential piece to any voice interface is the ability to detect when the user is speaking, then convert the spoken phrase into a text transcript. Spokestack has an [easy-to-use speech pipeline](/docs/concepts/pipeline-configuration) that will handle this for us. The speech pipeline consists of three major components: a voice detection module, a wake word trigger, and a speech recognizer.
 
 ### Microphone Input
 
@@ -93,9 +93,9 @@ vad = VoiceActivityDetector()
 
 Now that we have a way to determine if the audio contains speech, let's move on to the component that activates the pipeline when it hears a specific phrase.
 
-### Wakeword Activation
+### Wake Word Activation
 
-The [wakeword](/docs/concepts/wakeword-models) component of the pipeline looks for a specific phrase in the audio input and signals the pipeline to activate ASR when it is recognized. For our purposes, we will be using "Spokestack" as the wakeword. As with most voice assistants, "Hey Spokestack" will work as well. The process to initialize this component mirrors the way we set up voice activity detection. The directory passed to `model_dir` should contain three `.tflite` files: `encode.tflite`, `detect.tflite`, and `filter.tflite`. These can be found inside the `tflite` directory of the project GitHub repository.
+The [wake word](/docs/concepts/wakeword-models) component of the pipeline looks for a specific phrase in the audio input and signals the pipeline to activate ASR when it is recognized. For our purposes, we will be using "Spokestack" as the wake word. As with most voice assistants, "Hey Spokestack" will work as well. The process to initialize this component mirrors the way we set up voice activity detection. The directory passed to `model_dir` should contain three `.tflite` files: `encode.tflite`, `detect.tflite`, and `filter.tflite`. These can be found inside the `tflite` directory of the project GitHub repository.
 
 ```python
 from spokestack.wakeword.tflite import WakewordTrigger

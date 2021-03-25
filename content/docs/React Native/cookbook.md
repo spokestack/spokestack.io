@@ -3,7 +3,7 @@ title: React Native Cookbook
 navId: Cookbook (react-native)
 description: Code snippets and tips for React Native
 draft: false
-tags: ASR, Dialogue Management, NLU, React Native, TTS, Wakeword
+tags: ASR, Dialogue Management, NLU, React Native, TTS, Wake Word
 ---
 
 This is a collection of code snippets and brief descriptions designed to help you be as productive as possible as quickly as possible. Check out the Concepts section for more detailed discussions about the techniques mentioned here.
@@ -12,7 +12,7 @@ This is a collection of code snippets and brief descriptions designed to help yo
 
 Beginning in version 4, react-native-spokestack provides profiles with common configurations for the speech pipeline.
 
-The default profile in is `PTT_NATIVE_ASR` (if no wakeword models are specified), which is a push-to-talk profile using native (iOS and Android) speech recognition.
+The default profile in is `PTT_NATIVE_ASR` (if no wake word models are specified), which is a push-to-talk profile using native (iOS and Android) speech recognition.
 
 ```javascript
 // Uses the default profile
@@ -44,11 +44,11 @@ async onTalkButtonPressed () {
 }
 ```
 
-### Wakeword Activation
+### Wake Word Activation
 
-To use the demo "Spokestack" wakeword, you'll need the demo TensorFlow Lite models: [detect](https://s.spokestack.io/u/hgmYb/detect.tflite) | [encode](https://s.spokestack.io/u/hgmYb/encode.tflite) | [filter](https://s.spokestack.io/u/hgmYb/filter.tflite).
+To use the demo "Spokestack" wake word, you'll need the demo TensorFlow Lite models: [detect](https://s.spokestack.io/u/hgmYb/detect.tflite) | [encode](https://s.spokestack.io/u/hgmYb/encode.tflite) | [filter](https://s.spokestack.io/u/hgmYb/filter.tflite).
 
-The pipeline will default to the native wakeword-activated profile (`TFLITE_WAKEWORD_NATIVE_ASR`) if these configuration properties are specified, so we don't need to set it here.
+The pipeline will default to the native wake word-activated profile (`TFLITE_WAKEWORD_NATIVE_ASR`) if these configuration properties are specified, so we don't need to set it here.
 
 ```javascript
 await Spokestack.initialize(clientId, clientSecret, {
@@ -60,7 +60,7 @@ await Spokestack.initialize(clientId, clientSecret, {
 })
 
 // Only call start after initialize is called.
-// Begins listening for the configured wakeword.
+// Begins listening for the configured wake word.
 await Spokestack.start()
 ```
 
@@ -72,7 +72,7 @@ cancelAsr () {
 }
 ```
 
-When `deactivate` is called, Spokestack will continue listening for the next wakeword activation. To stop listening entirely, call
+When `deactivate` is called, Spokestack will continue listening for the next wake word activation. To stop listening entirely, call
 
 ```javascript
 Spokestack.stop()
@@ -84,7 +84,7 @@ After calling this, you'll need to call
 Spokestack.start()
 ```
 
-before you'll be able to recognize a wakeword again.
+before you'll be able to recognize a wake word again.
 
 If speech is being processed when `deactivate` is called, it may still trigger the `onRecognize` event when processing is complete.
 

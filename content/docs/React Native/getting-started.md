@@ -163,7 +163,7 @@ Add the necessary permissions to your `AndroidManifest.xml`. The first permissio
 ```xml
     <!-- For TTS -->
     <uses-permission android:name="android.permission.INTERNET" />
-    <!-- For wakeword and ASR -->
+    <!-- For wake word and ASR -->
     <uses-permission android:name="android.permission.RECORD_AUDIO" />
     <!-- For ensuring no downloads happen over cellular, unless forced -->
     <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
@@ -184,7 +184,7 @@ React Native already provides a module for this. See [React Native's Permissions
 
 ## Configuration
 
-There are many options for configuring Spokestack. This example begins capturing audio when `Spokestack.start()` is called and uses a Voice Activity Detection (VAD) component to detect speech and send it through an automated speech recognition system, in this case the platform's built-in speech recognizer. In other words, we're configuring this app to always actively listen, and no wakeword detection is performed. See [the configuration guide](/docs/concepts/pipeline-configuration) for more information about pipeline building options. Beginning in version 4.0.0, it's easy to change the pipeline configuration through the use of the `profile` property.
+There are many options for configuring Spokestack. This example begins capturing audio when `Spokestack.start()` is called and uses a Voice Activity Detection (VAD) component to detect speech and send it through an automated speech recognition system, in this case the platform's built-in speech recognizer. In other words, we're configuring this app to always actively listen, and no wake word detection is performed. See [the configuration guide](/docs/concepts/pipeline-configuration) for more information about pipeline building options. Beginning in version 4.0.0, it's easy to change the pipeline configuration through the use of the `profile` property.
 
 We'll configure the NLU (Natural Language Understanding) component, which uses Spokestack models. To test things out, try one of our free NLU models on [your Spokestack account page](/account/services/nlu), such as our [example Minecraft NLU model](https://s.spokestack.io/u/7fYxV/nlu.tflite), [model metadata](https://s.spokestack.io/u/7fYxV/metadata.json), and [NLU vocabulary](https://s.spokestack.io/u/7fYxV/vocab.txt).
 
@@ -239,9 +239,9 @@ Including model files in your app bundle requires a small change to your React N
 
 Call `Spokestack.start()` to begin listening for speech. `Spokestack.stop()` will stop listening completely.
 
-To manually start speech recognition, without waiting for activation from a wakeword or voice trigger, call `Spokestack.activate()` after calling `Spokestack.start()`.
+To manually start speech recognition, without waiting for activation from a wake word or voice trigger, call `Spokestack.activate()` after calling `Spokestack.start()`.
 
-Call `Spokestack.deactivate()` to stop speech recognition. The speech pipeline will continue listening for a wakeword or voice trigger, if applicable.
+Call `Spokestack.deactivate()` to stop speech recognition. The speech pipeline will continue listening for a wake word or voice trigger, if applicable.
 
 ```javascript
 // Start and stop the speech pipeline. All methods can be called repeatedly.
@@ -294,4 +294,4 @@ Spokestack includes one free voice. An upgraded account is needed for custom voi
 
 ## Conclusion
 
-That's all there is to it! Your app is now configured to accept and respond to voice commands. Hopefully, this guide gives you an idea of the power of Spokestack. Spokestack has everything you need to start building rich voice experiences in your apps in an elegant way. If you're interested in advanced topics (such as configuring the pipeline's sensitivity or adding your own custom wakeword), check out our other Concepts and Design guides.
+That's all there is to it! Your app is now configured to accept and respond to voice commands. Hopefully, this guide gives you an idea of the power of Spokestack. Spokestack has everything you need to start building rich voice experiences in your apps in an elegant way. If you're interested in advanced topics (such as configuring the pipeline's sensitivity or adding your own custom wake word), check out our other Concepts and Design guides.

@@ -13,15 +13,15 @@ hero: blog.png
 As much time, talent and treasure that Apple has put into Siri, ASR, and NLU, integrating a custom voice-enabled app experience is still challenging!
 Spokestack changes all of that. Our mission at Spokestack is to make it as easy as possible to make your apps fully voice-enabled.
 
-After building the services needed to make voice interaction work, including [Wakeword](/docs/concepts/wakeword-models), [Speech Recognition](/docs/concepts/asr), [Natural Language Understanding](/docs/concepts/nlu), and [Text-to-speech](/docs/concepts/tts), we started working on ways users could integrate these services without having to completely rewrite their applications.
+After building the services needed to make voice interaction work, including [Wake Word](/docs/concepts/wakeword-models), [Speech Recognition](/docs/concepts/asr), [Natural Language Understanding](/docs/concepts/nlu), and [Text-to-speech](/docs/concepts/tts), we started working on ways users could integrate these services without having to completely rewrite their applications.
 
 Introducing [spokestack-tray-ios](https://github.com/spokestack/spokestack-tray-ios)
 
 ![iOS Spokestack Tray Example](./tray_example.gif)
 
-[spokestack-tray-ios](https://github.com/spokestack/spokestack-tray-ios) is an iOS framework that is designed to work in any application, regardless of its layout or navigation. It utilizes [spokestack-ios](https://github.com/spokestack/spokestack-ios), to add voice experiences. With on-device wakeword, ASR, and NLU, the tray’s silent mode works completely offline–TTS is the only service that requires a network.
+[spokestack-tray-ios](https://github.com/spokestack/spokestack-tray-ios) is an iOS framework that is designed to work in any application, regardless of its layout or navigation. It utilizes [spokestack-ios](https://github.com/spokestack/spokestack-ios), to add voice experiences. With on-device wake word, ASR, and NLU, the tray’s silent mode works completely offline–TTS is the only service that requires a network.
 
-With a few required props (and [lots of optional ones](https://github.com/spokestack/spokestack-tray-ios/blob/master/SpokestackTray/Models/TrayConfiguration.swift)), you can start building a customizable voice experience without the hassle that usually comes with listening for a wakeword, working with a microphone, or playing audio in iOS.
+With a few required props (and [lots of optional ones](https://github.com/spokestack/spokestack-tray-ios/blob/master/SpokestackTray/Models/TrayConfiguration.swift)), you can start building a customizable voice experience without the hassle that usually comes with listening for a wake word, working with a microphone, or playing audio in iOS.
 
 This tutorial will guide you through the process of installing `spokestack-tray-ios` as well as using the SpokestackTray framework to respond to your users.
 
@@ -64,7 +64,7 @@ do {
 
 ### Usage
 
-The [spokestack-tray-ios example app](https://github.com/spokestack/spokestack-tray-ios/tree/master/SpokestackTrayExample) uses the “Spokestack” wakeword and [sample Minecraft NLU models](/blog/porting-the-alexa-minecraft-skill-to-ios-using-spokestack).
+The [spokestack-tray-ios example app](https://github.com/spokestack/spokestack-tray-ios/tree/master/SpokestackTrayExample) uses the “Spokestack” wake word and [sample Minecraft NLU models](/blog/porting-the-alexa-minecraft-skill-to-ios-using-spokestack).
 
 To create your own copy of the Spokestack/Minecraft Helper, add the `SpokestackTray` framework:
 
@@ -94,7 +94,7 @@ override func viewDidLoad() {
         UIColor.systemRed
     ]
 
-    /// Apart of the initialization of the tray is to download the nlu and wakeword models.
+    /// Apart of the initialization of the tray is to download the nlu and wake word models.
     /// These are the default Spokestack models, but you can replace with your own
 
     configuration.nluModelURLs = [

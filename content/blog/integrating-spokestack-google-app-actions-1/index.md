@@ -47,7 +47,7 @@ implementation 'androidx.media:media:1.2.0'
 implementation 'com.google.android.exoplayer:exoplayer-core:2.11.7'
 ```
 
-There are several non-Spokestack dependencies here because Spokestack takes a "use only what you need" approach and doesn't include many transitive dependencies by default. The sample app will use everything, though, so we'll need to pull in some libraries to support wakeword, NLU, and TTS that we wouldn't need if we didn't want that functionality.
+There are several non-Spokestack dependencies here because Spokestack takes a "use only what you need" approach and doesn't include many transitive dependencies by default. The sample app will use everything, though, so we'll need to pull in some libraries to support wake word, NLU, and TTS that we wouldn't need if we didn't want that functionality.
 
 ### Declaring App Actions
 

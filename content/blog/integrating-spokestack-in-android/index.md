@@ -17,7 +17,7 @@ If you're here, you probably know that the Spokestack library helps you with the
 
 ## What is it?
 
-We created Spokestack Tray to give developers a full-featured visual UI to reflect an app's voice interactions with the user. At first glance, it's just a microphone button that sits on the side of the screen. When the user taps the button (or says the wakeword), it opens up into a full tray that displays the user's speech as well as system responses, reading those responses aloud as it displays them.
+We created Spokestack Tray to give developers a full-featured visual UI to reflect an app's voice interactions with the user. At first glance, it's just a microphone button that sits on the side of the screen. When the user taps the button (or says the wake word), it opens up into a full tray that displays the user's speech as well as system responses, reading those responses aloud as it displays them.
 
 ![Android Spokestack Tray Example](./tray_example.gif)
 
@@ -88,7 +88,7 @@ class MyActivity : AppCompatActivity(), SpokestackTrayListener {
   }
 ```
 
-When you download Spokestack wakeword or NLU models, you'll have several URLs to different files. `wakewordModelURL` and `nluURL` above only require the path to the relevant directory, not full file URLs. So for the demo "Spokestack" wakeword, set `wakewordModelURL` to "https://d3dmqd7cy685il.cloudfront.net/model/wake/spokestack/".
+When you download Spokestack wake word or NLU models, you'll have several URLs to different files. `wakewordModelURL` and `nluURL` above only require the path to the relevant directory, not full file URLs. So for the demo "Spokestack" wake word, set `wakewordModelURL` to "https://d3dmqd7cy685il.cloudfront.net/model/wake/spokestack/".
 
 The Tray is designed for seamless use across activities — for example, to allow a user to continue giving a voice command while the app switches activities — so its state is stored outside the fragment itself and survives fragment destruction. If your app needs to release resources held by the Tray and its underlying `Spokestack` instance, call the tray's `stop()` method. If you then need to re-enable voice control before the current Tray fragment instance is destroyed, you must call `start()`.
 
@@ -112,7 +112,7 @@ override fun onClassification(result: NLUResult): VoicePrompt {
 }
 ```
 
-The optional second parameter in the `VoicePrompt` constructor lets the Tray know if you're expecting a response — if you are, it will resume active listening after your prompt is played so the user doesn't have to use the wakeword or a button for each interaction.
+The optional second parameter in the `VoicePrompt` constructor lets the Tray know if you're expecting a response — if you are, it will resume active listening after your prompt is played so the user doesn't have to use the wake word or a button for each interaction.
 
 ## Configuration
 

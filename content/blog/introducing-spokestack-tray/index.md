@@ -10,7 +10,7 @@ hero: blog.png
 
 ![Introducing Spokestack Tray](blog.png)
 
-Today we are excited to announce our latest developer feature: Spokestack Tray, a mobile library that lets developers easily add a voice interface to their existing app through a UI component that opens inside the application. Spokestack Tray incorporates our voice services, such as a wakeword, speech recognition, natural language processing, and custom text-to-speech voices, into one easy-to-add package along with any existing mobile application. We've built a demo, the Bartender mobile app, that uses Spokestack Tray.
+Today we are excited to announce our latest developer feature: Spokestack Tray, a mobile library that lets developers easily add a voice interface to their existing app through a UI component that opens inside the application. Spokestack Tray incorporates our voice services, such as a wake word, speech recognition, natural language processing, and custom text-to-speech voices, into one easy-to-add package along with any existing mobile application. We've built a demo, the Bartender mobile app, that uses Spokestack Tray.
 
 Here’s a video of Spokestack Tray working in our demo Bartender app:
 
@@ -44,11 +44,11 @@ If you're new to voice, we've put together an introduction to how Spokestack thi
 
 ### Customizing Spokestack Tray
 
-At Spokestack, we believe flexibility and customization are keys to building successful conversational interfaces. We will be adding more design resources and tools over the next few weeks. Additionally, we help you further customize your app with custom wakewords, TTS, and your own cloud or on-device NLU model.
+At Spokestack, we believe flexibility and customization are keys to building successful conversational interfaces. We will be adding more design resources and tools over the next few weeks. Additionally, we help you further customize your app with custom wake words, TTS, and your own cloud or on-device NLU model.
 
-### Want a free wakeword, NLU training, and custom TTS?
+### Want a free wake word, NLU training, and custom TTS?
 
-After you get a demo up and running, let us know if we can build a custom wakeword or TTS for your mobile app. We’ll hook up the first three developers who show us a working version of Spokestack Tray in their mobile app with a free wakeword, NLU training, and custom TTS. [Email us](mailto:hello@spokestack.io) your working demo and we’ll help you add these features to your app so you can publish it live.
+After you get a demo up and running, let us know if we can build a custom wake word or TTS for your mobile app. We’ll hook up the first three developers who show us a working version of Spokestack Tray in their mobile app with a free wake word, NLU training, and custom TTS. [Email us](mailto:hello@spokestack.io) your working demo and we’ll help you add these features to your app so you can publish it live.
 
 ### What's next?
 

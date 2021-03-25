@@ -3,7 +3,7 @@ title: Android Cookbook
 navId: Cookbook (Android)
 description: Code snippets and tips for Android
 draft: false
-tags: Android, ASR, Dialogue Management, NLU, TTS, Wakeword
+tags: Android, ASR, Dialogue Management, NLU, TTS, Wake Word
 ---
 
 This is a collection of code snippets and brief descriptions designed to help you be as productive as possible as quickly as possible. Check out the Concepts section for more detailed discussions about the techniques mentioned here, in particular the [configuration guide](/docs/concepts/pipeline-configuration) for descriptions of properties used for the various configurations.
@@ -14,7 +14,7 @@ Client IDs and secret keys can be created in the [account](/account/settings) se
 
 ### Activate ASR with any speech
 
-No wakeword is used in this base configuration; any audio recognized as speech will be sent to ASR.
+No wake word is used in this base configuration; any audio recognized as speech will be sent to ASR.
 
 ```kotlin
 private lateinit var spokestack: Spokestack
@@ -40,7 +40,7 @@ Note the use of `useProfile()`. Available profiles can be found [here](https://w
 
 ### Tap-to-talk + ASR
 
-If you want to allow the user to manually activate ASR via a button as well as with a wakeword, call this inside your button handler:
+If you want to allow the user to manually activate ASR via a button as well as with a wake word, call this inside your button handler:
 
 ```kotlin
 // assumes `start()` has already been called on `spokestack`
@@ -51,7 +51,7 @@ fun onMicButtonTap(view: View) {
 
 ### Cancel ASR
 
-If you need to stop ASR before the timeout is reached (for example, your app has a "close" button that stops the current voice interaction but leaves wakeword detection active so that ASR can be reactivated), do the following:
+If you need to stop ASR before the timeout is reached (for example, your app has a "close" button that stops the current voice interaction but leaves wake word detection active so that ASR can be reactivated), do the following:
 
 ```kotlin
 func cancelAsr() {
@@ -61,7 +61,7 @@ func cancelAsr() {
 
 If speech is being processed when the `DEACTIVATE` event is received, the transcript will still be delivered to your event listener via a `RECOGNIZE` event when processing is complete.
 
-If you want to stop Spokestack entirely (including wakeword detection), you can call:
+If you want to stop Spokestack entirely (including wake word detection), you can call:
 
 ```kotlin
 pipeline.stop()
@@ -73,7 +73,7 @@ After calling this, you'll need to call
 pipeline.start()
 ```
 
-before you'll be able to recognize a wakeword again. In-flight ASR requests will produce transcripts here as well.
+before you'll be able to recognize a wake word again. In-flight ASR requests will produce transcripts here as well.
 
 ### Regex-based NLU
 

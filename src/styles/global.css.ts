@@ -113,15 +113,6 @@ export default css`
   form {
     margin: 0;
   }
-  td,
-  th,
-  th:first-of-type,
-  td:first-of-type,
-  th:last-of-type,
-  td:last-of-type {
-    padding-left: 10px;
-    padding-right: 10px;
-  }
   figcaption {
     font-size: 0.9rem;
     font-style: italic;
@@ -389,6 +380,22 @@ export default css`
   .main-content {
     table {
       margin-bottom: 20px;
+      border-spacing: 0;
+    }
+    th,
+    td {
+      text-align: left;
+      padding-left: 10px;
+      padding-right: 10px;
+      border-top: 1px solid ${theme.mainBorder};
+      border-left: 1px solid ${theme.mainBorder};
+    }
+    tr:last-of-type td {
+      border-bottom: 1px solid ${theme.mainBorder};
+    }
+    th:last-of-type,
+    td:last-of-type {
+      border-right: 1px solid ${theme.mainBorder};
     }
     h2,
     h3,
@@ -522,12 +529,14 @@ export default css`
       background-color: ${theme.stickyNavBackgroundDark};
       color: ${theme.textDarkBg};
     }
-    td,
-    th {
-      border-bottom-color: ${theme.mainBorderDark};
-    }
-    tr:nth-of-type(2n) {
-      background-color: ${theme.navFullColumnDark};
+    .main-content {
+      td,
+      th {
+        border-color: ${theme.mainBorderDark};
+      }
+      tr:nth-of-type(2n) {
+        background-color: ${theme.navFullColumnDark};
+      }
     }
   }
   ${theme.MIN_DEFAULT_MEDIA_QUERY} {

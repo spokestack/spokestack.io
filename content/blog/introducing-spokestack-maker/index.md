@@ -5,8 +5,10 @@ description: Spokestack Maker introduces sophisticated AutoML tools for voice in
 tags: News, Product
 author: noel
 draft: false
-hero:
+hero: introducing-spokestack-maker.png
 ---
+
+![Introducing Spokestack Maker - AutoML Personal Voice for Creators](introducing-spokestack-maker.png)
 
 Spokestack exists to help put voice into software because voice is a humane way to interface with software and because software needs better, more accessible tools to utilize voice.
 

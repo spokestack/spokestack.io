@@ -97,6 +97,13 @@ export default function DocsPage({
           )}
           <DarkModeButton />
         </header>
+        {post.frontmatter.hero ? (
+          <img
+            alt={post.frontmatter.description}
+            css={styles.hero}
+            src={post.frontmatter.hero.publicURL}
+          />
+        ) : null}
         <div dangerouslySetInnerHTML={{ __html: post.html }} />
         <div css={styles.footer}>
           {!!related?.length && (
@@ -153,6 +160,10 @@ const styles = {
   footerRight: css`
     display: flex;
     flex-direction: column;
+  `,
+  hero: css`
+    width: 100%;
+    border-radius: 7px;
   `,
   relatedLinks: css`
     display: flex;

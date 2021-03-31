@@ -94,9 +94,9 @@ module.exports = {
         key: 'mike',
         name: 'Mike Tatum',
         image: '/headshots/mike.png',
-        title: 'CEO',
+        title: 'Advisor',
         bio:
-          'Mike is the CEO of Spokestack. He loves making late-night purchases on Discogs and using new technologies to create better user experiences and products.',
+          'Mike loves making late-night purchases on Discogs and using new technologies to create better user experiences and products.',
         external: false,
         social: {
           twitter: 'https://twitter.com/miketatum',
@@ -108,13 +108,14 @@ module.exports = {
         key: 'noel',
         name: 'Noel Weichbrodt',
         image: '/headshots/noel.png',
-        title: 'Principal Engineer',
-        bio: '',
+        title: 'President',
+        bio:
+          'Noel is President and co-creator of Spokestack, and is overly fond of Star Trek: The Next Generation examples.',
         external: false,
         social: {
-          twitter: '',
-          linkedin: '',
-          email: ''
+          twitter: '@noelweichbrodt',
+          linkedin: 'https://www.linkedin.com/in/noelweichbrodt',
+          email: 'noel@spokestack.io'
         }
       },
       {

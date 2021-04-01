@@ -6,14 +6,14 @@ console.log(`Site URL in Gatsby config: ${siteUrl.href}`)
 module.exports = {
   flags: { PRESERVE_WEBPACK_CACHE: true },
   siteMetadata: {
-    title: 'Spokestack - Independent Voice Assistant',
+    title: 'Spokestack - AutoML tools that put custom voice into software',
     author: 'Spokestack',
     contact: {
       email: 'hello@spokestack.io',
       phone: '(415) 425-0071'
     },
     description:
-      'Build an independent voice assistant. Spokestack features open source tools for mobile and web voice interfaces. Create an account and get started.',
+      'Advanced machine learning services for making wake word, keyword, ASR, NLU, and custom AI TTS voices in your software. Spokestack features open source tools for mobile, web, embedded, and edge voice interfaces and independent assistants. Get started free.',
     siteUrl: siteUrl.href,
     logo: `${siteUrl.href}logo.png`,
     social: {
@@ -230,14 +230,6 @@ module.exports = {
     },
     'gatsby-plugin-typescript',
     'gatsby-plugin-emotion',
-    {
-      resolve: 'gatsby-plugin-google-analytics',
-      options: {
-        trackingId: 'UA-96106131-7',
-        anonymize: true,
-        respectDNT: true
-      }
-    },
     'gatsby-plugin-optimize-svgs',
     'gatsby-plugin-image',
     'gatsby-plugin-sharp',
@@ -341,6 +333,30 @@ module.exports = {
             title: "Spokestack's Blog RSS"
           }
         ]
+      }
+    },
+    {
+      resolve: 'gatsby-plugin-google-tagmanager',
+      options: {
+        id: 'GTM-WC6JHT4',
+        includeInDevelopment: false,
+
+        // datalayer to be set before GTM is loaded
+        // should be an object or a function that is executed in the browser
+        //
+        // Defaults to null
+        defaultDataLayer: { platform: 'gatsby' },
+
+        // Specify optional GTM environment details.
+        // gtmAuth: 'YOUR_GOOGLE_TAGMANAGER_ENVIRONMENT_AUTH_STRING',
+        // gtmPreview: 'YOUR_GOOGLE_TAGMANAGER_ENVIRONMENT_PREVIEW_NAME',
+        // dataLayerName: 'YOUR_DATA_LAYER_NAME',
+
+        // Name of the event that is triggered
+        // on every Gatsby route change.
+        //
+        // Defaults to gatsby-route-change
+        routeChangeEventName: 'route_change'
       }
     },
     {

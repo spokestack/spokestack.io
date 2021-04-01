@@ -68,6 +68,10 @@ const styles = {
     max-width: 375px;
     line-height: 0;
     margin-top: 20px;
+
+    img {
+      max-width: 100%;
+    }
   `,
   videoElem: css`
     display: none;

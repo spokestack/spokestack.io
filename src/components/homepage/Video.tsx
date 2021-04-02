@@ -90,7 +90,6 @@ const styles = {
     right: 0;
   `,
   videoElem: css`
-    display: none;
     line-height: 0;
     width: 100%;
     object-fit: contain;

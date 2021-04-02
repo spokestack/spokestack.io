@@ -371,6 +371,11 @@ module.exports = {
         workboxConfig: {
           runtimeCaching: [
             {
+              // Avoid caching the web worker in the account section
+              urlPattern: /account\/spokestack-web-worker.js$/,
+              handler: 'StaleWhileRevalidate'
+            },
+            {
               // Use cacheFirst since these don't need to be revalidated (same RegExp
               // and same reason as above)
               urlPattern: /(\.js$|\.css$|static\/)/,
@@ -405,7 +410,7 @@ module.exports = {
       }
     },
     {
-      resolve: `gatsby-plugin-s3`,
+      resolve: 'gatsby-plugin-s3',
       options: {
         bucketName: siteUrl.hostname,
         protocol: siteUrl.protocol.slice(0, -1),

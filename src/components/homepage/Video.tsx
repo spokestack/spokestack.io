@@ -38,7 +38,9 @@ export default function Video() {
         ref={videoRef}
         controls
         css={[styles.absoluteFill, styles.videoElem]}
-        style={{ display: fullscreen ? 'block' : 'none' }}>
+        style={{
+          visibility: fullscreen ? 'visible' : 'hidden'
+        }}>
         <source src="/homepage/spokestack-tray-demo.mp4" type="video/mp4" />
         <source src="/homepage/spokestack-tray-demo.webm" type="video/webm" />
       </video>

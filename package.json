@@ -16,7 +16,7 @@
     "release": "release-it",
     "schema": "graphql-codegen --config codegen.yml && prettier --write \"**/graphql.d.ts\"",
     "serve": "serve -l 8000 public/",
-    "start": "gatsby develop",
+    "start": "gatsby develop --host=0.0.0.0",
     "test": "npm run lint",
     "typescript": "tsc -p tsconfig.json --noEmit"
   },

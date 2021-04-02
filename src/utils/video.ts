@@ -1,13 +1,21 @@
 export function requestFullscreen(video: HTMLVideoElement) {
+  if (
+    ('fullscreenEnabled' in document && !document.fullscreenEnabled) ||
+    ('msFullscreenEnabled' in document &&
+      !(document as any).msFullscreenEnabled)
+  ) {
+    return false
+  }
   if (video.requestFullscreen) {
     return video.requestFullscreen()
-  } else if ((video as any).webkitRequestFullScreen) {
+  }
+  if ((video as any).webkitRequestFullScreen) {
     return (video as any).webkitRequestFullScreen()
-  } else if ((video as any).webkitRequestFullscreen) {
-    return (video as any).webkitRequestFullscreen()
-  } else if ((video as any).msRequestFullscreen) {
+  }
+  if ((video as any).msRequestFullscreen) {
     return (video as any).msRequestFullscreen()
   }
+  return false
 }
 
 export function fullscreenElement() {

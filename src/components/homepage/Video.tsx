@@ -37,7 +37,7 @@ export default function Video() {
         aria-label="Spokestack Tray Introduction Video"
         ref={videoRef}
         controls
-        css={styles.videoElem}
+        css={[styles.absoluteFill, styles.videoElem]}
         style={{ display: fullscreen ? 'block' : 'none' }}>
         <source src="/homepage/spokestack-tray-demo.mp4" type="video/mp4" />
         <source src="/homepage/spokestack-tray-demo.webm" type="video/webm" />
@@ -46,11 +46,17 @@ export default function Video() {
       <a
         tabIndex={0}
         title="Play video"
-        css={styles.playLink}
+        css={[styles.absoluteFill, styles.playLink]}
         onClick={async () => {
           try {
-            await requestFullscreen(videoRef.current)
-          } catch (e) {}
+            const result = await requestFullscreen(videoRef.current)
+            if (result === false) {
+              setFullscreen(true)
+              videoRef.current?.play()
+            }
+          } catch (e) {
+            console.error(e)
+          }
         }}>
         <div className="play-icon">
           <SVGIcon icon="#play" extraCss={styles.playIcon} />
@@ -68,22 +74,26 @@ const styles = {
     max-width: 375px;
     line-height: 0;
     margin-top: 20px;
+    overflow: hidden;
 
     img {
       max-width: 100%;
     }
   `,
-  videoElem: css`
-    display: none;
-    line-height: 0;
-    object-fit: contain;
-  `,
-  playLink: css`
+  absoluteFill: css`
     position: absolute;
     top: 0;
     bottom: 0;
     left: 0;
     right: 0;
+  `,
+  videoElem: css`
+    display: none;
+    line-height: 0;
+    width: 100%;
+    object-fit: contain;
+  `,
+  playLink: css`
     display: flex;
     justify-content: center;
     align-items: center;

@@ -5,8 +5,10 @@ description: Spokestack Maker introduces sophisticated AutoML tools for creating
 tags: News, Product
 author: noel
 draft: true
-hero:
+hero: what-are-personal-ai-models.png
 ---
+
+![What are Personal AI Models?](what-are-personal-ai-models.png)
 
 The [Spokestack Maker](/account/settings#billing) service is designed for two audiences: (1) hobbyists who want to personalize their projects, and (2) developers who want to prototype a project as realistically as possible before committing to training a universal wake word model or studio-quality text-to-speech (TTS) voice. This is a great way to test drive the technology without breaking the bank.
 

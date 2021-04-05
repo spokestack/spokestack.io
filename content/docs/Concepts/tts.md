@@ -4,9 +4,8 @@ navId: TTS (Concepts)
 description: Documentation for Spokestack's controllable TTS system.
 draft: false
 tags: TTS
+seoImage: '../../assets/docs/concepts-tts.png'
 ---
-
-<img src="../../assets/docs/concepts-tts.png" style="display:none"/>
 
 Spokestack offers a rich, controllable text-to-speech (TTS) system. The voices available to use in your app are determined by your API client identifier, but we offer a demo voice to all users so that you can try custom TTS in your app without making a commitment. If you need a unique voice for your brand, [contact us](mailto:hello@spokestack.io), and we can work with you to create a custom experience for your users.
 

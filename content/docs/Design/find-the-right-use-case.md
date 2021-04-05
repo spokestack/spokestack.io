@@ -4,9 +4,8 @@ navId: Find the Right Use Case
 description: Find the right use case for your design
 draft: false
 tags: Conversation Design
+seoImage: '../../assets/docs/design-find-the-right-use-case.png'
 ---
-
-<img src="../../assets/docs/design-find-the-right-use-case.png" style="display:none"/>
 
 In our [last article](/docs/design/getting-started), we illustrated the advantages of multimodal interfaces. Some of these are more relevant to certain types of smartphone apps. Before [mapping](/docs/design/map-out-integration) your voice interface, the next step in the design process is to narrow down use cases.
 

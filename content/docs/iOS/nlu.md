@@ -4,9 +4,8 @@ navId: NLU (iOS)
 description: Understanding the iOS NLU API
 draft: false
 tags: iOS, NLU
+seoImage: '../../assets/docs/ios-nlu.png'
 ---
-
-<img src="../../assets/docs/ios-nlu.png" style="display:none"/>
 
 This is a companion to the [NLU concept guide](/docs/concepts/nlu), which discusses the NLU subsystem holistically. Here we'll talk about usage issues specific to the iOS client library.
 

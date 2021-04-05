@@ -4,9 +4,8 @@ navId: TTS (react-native)
 description: Documentation for Spokestack's React Native TTS API.
 draft: false
 tags: React Native, TTS
+seoImage: '../../assets/docs/react-native-tts.png'
 ---
-
-<img src="../../assets/docs/react-native-tts.png" style="display:none"/>
 
 Text-to-speech is a broad topic, but as far as Spokestack is concerned, there are two things your app has to handle: sending the input to be synthesized, and playing the resulting audio for your users. This guide will cover both.
 

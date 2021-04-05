@@ -4,9 +4,8 @@ navId: ASR (Concepts)
 description: Documentation for Spokestack's third-party ASR support
 draft: false
 tags: ASR
+seoImage: '../../assets/docs/concepts-asr.png'
 ---
-
-<img src="../../assets/docs/concepts-asr.png" style="display:none"/>
 
 The technology for converting spoken words to text is known as automatic speech recognition (ASR).
 

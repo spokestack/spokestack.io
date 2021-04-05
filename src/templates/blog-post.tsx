@@ -44,6 +44,12 @@ export const pageQuery = graphql`
         author
         date(formatString: "MMMM DD, YYYY")
         description
+        hero {
+          publicURL
+        }
+        seoImage {
+          publicURL
+        }
         title
       }
     }

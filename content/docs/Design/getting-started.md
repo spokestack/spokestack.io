@@ -3,7 +3,7 @@ title: Getting Started
 navId: Getting Started (Design)
 description: Getting started with designing your app to work with Spokestack
 draft: false
-tags: Conversation Design, Principals, UI
+tags: Conversation Design, Principles, UI
 seoImage: '../../assets/docs/design-getting-started.png'
 ---
 

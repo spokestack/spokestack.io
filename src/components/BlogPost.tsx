@@ -28,7 +28,7 @@ export default function BlogPost({ location, post, related }: Props) {
       <SEO
         title={`${post.frontmatter.title} - Spokestack`}
         description={post.frontmatter.description}
-        image={findImage(post.html)}
+        image={post.frontmatter.seoImage?.publicURL || findImage(post.html)}
       />
       <div className="ie-fix" css={styles.container}>
         <section css={styles.author}>

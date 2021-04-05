@@ -4,9 +4,8 @@ navId: Speech Pipeline (Concepts)
 description: Understanding the Spokestack Speech Pipeline
 draft: false
 tags: Speech Pipeline
+seoImage: '../../assets/docs/concepts-speech-pipeline.png'
 ---
-
-<img src="../../assets/docs/concepts-speech-pipeline.png" style="display:none"/>
 
 The speech pipeline is the main way you interact with Spokestack’s [voice activity detection (VAD)](/docs/concepts/vad), [wake word detection](/docs/concepts/wake-word), [keyword recognition](/docs/concepts/keywords) and [automatic speech recognition (ASR)](/docs/concepts/asr). The speech pipeline is an extensible audio processing pipeline that includes a variety of built-in speech processors for all the above stages.
 

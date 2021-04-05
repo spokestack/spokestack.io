@@ -4,9 +4,8 @@ navId: Keyword (Concepts)
 description: Documentation for Spokestack's Keyword Recognizer
 draft: false
 tags: Keywords
+seoImage: '../../assets/docs/concepts-keywords.png'
 ---
-
-<img src="../../assets/docs/concepts-keywords.png" style="display:none"/>
 
 Keyword recognition detects words or phrases from a list of key words. You define that list of words, and Spokestack notifies your software when any of them is recognized. This detection happens entirely on-device, with no data going over the network or to the cloud. Keyword detection straddles the line between [wake word detection](/docs/concepts/wakeword) and [speech recognition](/docs/concepts/asr), with the performance of the former and the results of the latter. Each keyword may comprise multiple utterances. When the model detects the presence of an utterance in user speech, it returns the keyword as a transcript.
 

@@ -84,7 +84,7 @@ export default function DocsPage({
             ? ` ${post.frontmatter.description}`
             : ''
         }
-        image={findImage(post.html)}
+        image={post.frontmatter.seoImage?.publicURL || findImage(post.html)}
       />
       <StickyNavLayout links={orderedLinks} location={location}>
         <header className="docs-header">

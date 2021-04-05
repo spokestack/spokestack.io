@@ -4,9 +4,8 @@ navId: Wake Word (Concepts)
 description: Understanding wake words
 draft: false
 tags: Speech Pipeline, Wake Word
+seoImage: '../../assets/docs/concepts-vad-wake-word.png'
 ---
-
-<img src="../../assets/docs/concepts-vad+wake-word.png" style="display:none"/>
 
 A wake word is a signal for the computer to begin transitioning from passive to active listening. It acts as your software's "name", signaling that the user is speaking to the app. “Hey Siri” and “Alexa” are two of the most widely known wake words.
 

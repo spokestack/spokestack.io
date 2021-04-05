@@ -3,9 +3,8 @@ title: Concepts Overview
 navId: Concepts Overview
 description: In-depth explanations of Spokestack technology
 draft: false
+seoImage: '../../assets/docs/concepts-index.png'
 ---
-
-<img src="../../assets/docs/concepts-index.png" style="display:none"/>
 
 `youtube: [The Basic Elements of Voice Interfaces](https://www.youtube.com/watch?v=1x4MdTKEy3E)`
 

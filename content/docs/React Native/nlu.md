@@ -4,9 +4,8 @@ navId: NLU (react-native)
 description: Understanding the React Native NLU API
 draft: false
 tags: NLU, React Native
+seoImage: '../../assets/docs/react-native-nlu.png'
 ---
-
-<img src="../../assets/docs/react-native-nlu.png" style="display:none"/>
 
 This is a companion to the [NLU concept guide](/docs/concepts/nlu), which discusses the NLU subsystem holistically. Here we'll talk about usage issues specific to the React Native client library.
 

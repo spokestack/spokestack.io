@@ -4,9 +4,8 @@ navId: TTS (Android)
 description: Documentation for Spokestack's Android TTS subsystem.
 draft: false
 tags: Android, TTS
+seoImage: '../../assets/docs/android-tts.png'
 ---
-
-<img src="../../assets/docs/android-tts.png" style="display:none"/>
 
 **Note**: As of version 9.0.0, TTS is included in the turnkey `Spokestack` object. This guide is still valid as an in-depth introduction to the TTS module itself, but see [the configuration guide](turnkey-configuration) for more information about how it's integrated in newer versions of Spokestack.
 

@@ -41,11 +41,14 @@ export const pageQuery = graphql`
         tags
       }
       frontmatter {
-        title
         description
         hero {
           publicURL
         }
+        seoImage {
+          publicURL
+        }
+        title
       }
     }
   }

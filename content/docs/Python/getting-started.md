@@ -4,9 +4,8 @@ navId: Getting Started (Python)
 description: Getting started with the Spokestack Python API
 draft: false
 tags: Python
+seoImage: '../../assets/docs/python-getting-started.png'
 ---
-
-<img src="../../assets/docs/python-getting-started.png" style="display:none"/>
 
 This guide will get you up and running with Spokestack for Python, and you'll have a voice interface in your application in no time.
 

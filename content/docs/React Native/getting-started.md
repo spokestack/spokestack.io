@@ -4,9 +4,8 @@ navId: Getting Started (react-native)
 description: Getting started with the Spokestack React Native API
 draft: false
 tags: React Native
+seoImage: '../../assets/docs/react-native-getting-started.png'
 ---
-
-<img src="../../assets/docs/react-native-getting-started.png" style="display:none"/>
 
 This guide will get you up and running with Spokestack for React Native, and you'll be hearing and responding to your users in no time.
 

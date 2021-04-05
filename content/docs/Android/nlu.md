@@ -4,9 +4,8 @@ navId: NLU (Android)
 description: Understanding the Android NLU API
 draft: false
 tags: Android, NLU
+seoImage: '../../assets/docs/android-nlu.png'
 ---
-
-<img src="../../assets/docs/android-nlu.png" style="display:none"/>
 
 **Note**: As of version 9.0.0, NLU is included in the turnkey `Spokestack` object. This guide is still valid as an in-depth introduction to the NLU module itself, but see [the configuration guide](turnkey-configuration) for more information about how it's integrated in newer versions of Spokestack.
 

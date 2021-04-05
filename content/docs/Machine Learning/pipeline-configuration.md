@@ -4,9 +4,8 @@ navId: Speech Pipeline Configuration (Machine Learning)
 description: Documentation for configuring the speech pipeline
 draft: false
 tags: ASR, Speech Pipeline, Wake Word
+seoImage: '../../assets/docs/concepts-speech-pipeline.png'
 ---
-
-<img src="../../assets/docs/concepts-speech-pipeline.png" style="display:none"/>
 
 Speech recognition is a complicated process, and fine-tuning it can be something of an art. To that end, Spokestack enables a great deal of customization via the `SpeechConfiguration` class on iOS and pipeline properties on Android. This guide provides a discussion of its various parameters, but note that the default settings are based on either standard practices or our own experience tuning our systems; even small changes can sometimes have a great effect on performance.
 

@@ -4,9 +4,8 @@ navId: Speech Pipeline (Python)
 description: Documentation for the SpeechPipeline class in Python
 draft: false
 tags: ASR, Python, Wake Word
+seoImage: '../../assets/docs/python-speech-pipeline.png'
 ---
-
-<img src="../../assets/docs/python-speech-pipeline.png" style="display:none"/>
 
 ## What _is_ it?
 

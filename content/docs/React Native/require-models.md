@@ -4,9 +4,8 @@ navId: Local models (react-native)
 description: Documentation for including local Spokestack model files in React Native app bundles.
 draft: false
 tags: NLU, React Native, Wake Word
+seoImage: '../../assets/docs/react-native-getting-started.png'
 ---
-
-<img src="../../assets/docs/react-native-getting-started.png" style="display:none"/>
 
 To include model files locally in your app (rather than downloading them from a CDN), you also need to add the necessary extensions so
 the files can be included by Babel. To do this, edit your [`metro.config.js`](https://facebook.github.io/metro/docs/configuration/).

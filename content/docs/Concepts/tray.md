@@ -4,9 +4,8 @@ navId: Tray (Concepts)
 description: Easily add voice to mobile with Spokestack Tray
 draft: false
 tags: Concepts, Tray
+seoImage: '../../assets/docs/concepts-tray.png'
 ---
-
-<img src="../../assets/docs/concepts-tray.png" style="display:none"/>
 
 Spokestack Tray manages voice interactions for your app, delivering actionable user commands with just a few lines of code.
 

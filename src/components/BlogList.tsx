@@ -77,7 +77,6 @@ export default function BlogList({
               page={currentPage}
               maxPages={numPages}
               onSelect={(page) => {
-                console.log('Selecting page', page)
                 navigate(page === 1 ? homeUrl : `${homeUrl}/${page}`)
               }}
             />

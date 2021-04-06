@@ -13,7 +13,6 @@ interface Props {
 export default function Paging({ page, maxPages, onSelect }: Props) {
   const hasPrevious = page > 1
   const hasNext = page < maxPages
-  console.log(page, maxPages)
   if (!hasPrevious && !hasNext) {
     return null
   }

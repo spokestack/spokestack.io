@@ -61,6 +61,7 @@
     "gatsby-plugin-web-font-loader": "^1.0.4",
     "gatsby-react-router-scroll": "^4.2.0",
     "gatsby-remark-autolink-headers": "^3.2.0",
+    "gatsby-remark-check-links": "^2.1.0",
     "gatsby-remark-copy-linked-files": "^3.2.0",
     "gatsby-remark-embed-video": "^3.1.1",
     "gatsby-remark-embedder": "^4.1.0",

@@ -374,7 +374,7 @@ module.exports = {
               // The SW should not cache account site data
               // given the potential to accidentally leak
               // data to different users on the same machine.
-              urlPattern: /^https?:.+\/account\/.+/,
+              urlPattern: /^https?:.+\/(?:account|_next|api)(?:\/.+|\/?$)/,
               handler: 'NetworkOnly'
             },
             {

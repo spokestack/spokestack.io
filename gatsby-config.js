@@ -371,9 +371,11 @@ module.exports = {
         workboxConfig: {
           runtimeCaching: [
             {
-              // Avoid caching the web worker in the account section
-              urlPattern: /account\/spokestack-web-worker.js$/,
-              handler: 'StaleWhileRevalidate'
+              // The SW should not cache account site data
+              // given the potential to accidentally leak
+              // data to different users on the same machine.
+              urlPattern: /^https?:.+\/account\/.+/,
+              handler: 'NetworkOnly'
             },
             {
               // Use cacheFirst since these don't need to be revalidated (same RegExp

@@ -26,9 +26,8 @@ export default function Support({ data, location }: Props) {
           <header css={styles.header}>
             <h1>Support</h1>
             <p>
-              We offer multiple support channels that best suit the topic and
-              product. Choose from below the one that would best fits your
-              needs.
+              We offer multiple support channels to suit various topics and
+              products. Choose the one that best fits your needs.
             </p>
           </header>
           <div css={styles.methods}>

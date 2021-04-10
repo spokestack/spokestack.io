@@ -94,7 +94,6 @@
     "@commitlint/config-conventional": "^12.1.1",
     "@graphql-codegen/cli": "^1.21.3",
     "@graphql-codegen/typescript": "^1.21.1",
-    "@graphql-inspector/cli": "^2.5.0",
     "@release-it/conventional-changelog": "^2.0.1",
     "@types/codemirror": "0.0.108",
     "@types/color": "^3.0.0",

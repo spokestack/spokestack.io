@@ -1,6 +1,6 @@
 ---
 title: Converting a TensorFlow Model to TensorFlow.js in Python
-date: '2021-03-15T16:00:02.000Z'
+date: '2021-04-12'
 description: Google provides a command line utility for converting TensorFlow models into TensorFlow.js format for running in a browser, but what if you want to do that conversion in code?
 tags: Engineering, Machine Learning, JavaScript, Python
 author: josh

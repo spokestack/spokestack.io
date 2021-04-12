@@ -158,12 +158,12 @@ export default function Pricing({ data, location }: Props) {
             <Fragment>
               <div css={styles.saveBadge} style={{ opacity: yearly ? 1 : 0 }}>
                 <SVGIcon icon="#star" extraCss={styles.starIcon} />
-                <strong>-15%</strong>
+                <strong>-16%</strong>
               </div>
               <span>Pro</span>
             </Fragment>
           }
-          price={yearly ? '$84/mo' : '$99/mo'}
+          price={yearly ? '$99.99/yr' : '$9.99/mo'}
           categories={[
             {
               name: 'Automatic Speech Recognition (ASR)',
@@ -233,18 +233,8 @@ export default function Pricing({ data, location }: Props) {
                   enabled: yearly,
                   showDisabled: true,
                   name: 'Custom synthetic voice',
-                  mobileText: yearly ? (
-                    '1 custom synthetic voice'
-                  ) : (
-                    <span className="error">
-                      Yearly subscription required for custom synthetic voices
-                    </span>
-                  ),
-                  desktopText: yearly ? (
-                    'Limited to 1'
-                  ) : (
-                    <span className="error">Yearly subscription required</span>
-                  )
+                  mobileText: '1 custom synthetic voice',
+                  desktopText: 'Limited to 1'
                 }
               ]
             },

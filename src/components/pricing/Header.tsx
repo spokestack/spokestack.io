@@ -15,7 +15,7 @@ export default function Header({ cta, name, price, slug }: HeaderProps) {
   return (
     <header css={styles.pricingHeader}>
       <h4 className="blue">{name}</h4>
-      <h2>{price}</h2>
+      <h3>{price}</h3>
       {cta === 'Coming soon' ? (
         <p>{cta}</p>
       ) : (

@@ -42,7 +42,6 @@ const styles = {
 
     h4 {
       position: relative;
-      width: 100%;
     }
 
     h4,

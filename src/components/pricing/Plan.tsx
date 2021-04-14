@@ -79,5 +79,8 @@ const styles = {
     ${theme.MIN_DEFAULT_MEDIA_QUERY} {
       height: calc(100% - 44px - 25px - 75px);
     }
+    ${theme.ieBreakpointMinDefault} {
+      height: 100%;
+    }
   `
 }

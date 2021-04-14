@@ -584,8 +584,7 @@ export default css`
     p,
     h1,
     h2,
-    h3,
-    h4 {
+    h3 {
       width: 100%;
     }
 

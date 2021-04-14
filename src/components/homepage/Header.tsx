@@ -13,7 +13,7 @@ export default function Header() {
         <p className="title spokestack-speakable">
           Open source tools for mobile &amp; web
         </p>
-        <a href="/create" className="btn btn-secondary">
+        <a href="/account/create" className="btn btn-secondary">
           Get started free
           <SVGIcon icon="#arrow-forward" extraCss={styles.createAccountIcon} />
         </a>

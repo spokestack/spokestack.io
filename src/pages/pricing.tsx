@@ -394,7 +394,7 @@ const styles = {
   saveBadge: css`
     position: absolute;
     top: -4px;
-    left: 20px;
+    left: -50px;
     width: 41px;
     height: 41px;
     display: flex;

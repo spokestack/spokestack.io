@@ -1,7 +1,7 @@
 import * as theme from '../styles/theme'
 
 import { PageRendererProps, graphql } from 'gatsby'
-import React, { Fragment, useRef, useState } from 'react'
+import React, { Fragment, useEffect, useRef, useState } from 'react'
 
 import Layout from '../components/Layout'
 import Plan from '../components/pricing/Plan'
@@ -11,17 +11,25 @@ import SEO from '../components/SEO'
 import SVGIcon from '../components/SVGIcon'
 import Switch from '../components/pricing/Switch'
 import { css } from '@emotion/react'
+import { isLoggedIn } from '../utils/auth'
 
 interface Props extends PageRendererProps {
   data: Query
 }
 
 export default function Pricing({ data, location }: Props) {
-  const { contact } = data.site.siteMetadata
-  const pricingElem = useRef<HTMLDivElement>(null)
+  const [loggedIn, setLoggedIn] = useState(false)
   const [yearly, setYearly] = useState(true)
   const [rowBgY, setRowBgY] = useState(0)
   const [showRowBg, setShowRowBg] = useState(false)
+  const { contact } = data.site.siteMetadata
+  const pricingElem = useRef<HTMLDivElement>(null)
+
+  useEffect(() => {
+    requestAnimationFrame(() => {
+      setLoggedIn(isLoggedIn())
+    })
+  }, [])
 
   function hover(e: React.PointerEvent<HTMLDivElement>) {
     let elem = e.target as HTMLDivElement
@@ -47,7 +55,7 @@ export default function Pricing({ data, location }: Props) {
     <Layout location={location}>
       <SEO
         title="Pricing | Spokestack"
-        description="Choose the right plan for you: Free, Pro, or Enterprise. We support Automatic Speech Recognition, Natural Language Understanding, and Text to Speech."
+        description="Choose the right plan for you: Free, Maker, or Enterprise. We support Automatic Speech Recognition, Natural Language Understanding, and Text to Speech."
       />
       <div
         className="ie-fix"
@@ -59,7 +67,7 @@ export default function Pricing({ data, location }: Props) {
           cta="Create account"
           name="Free"
           price="$0"
-          slug="/create"
+          slug="/account/create"
           categories={[
             {
               name: 'Automatic Speech Recognition (ASR)',
@@ -144,8 +152,8 @@ export default function Pricing({ data, location }: Props) {
           ]}
         />
         <Plan
-          cta="Email us"
-          slug={`mailto:${contact.email}`}
+          cta={loggedIn ? 'Upgrade' : 'Create account'}
+          slug={loggedIn ? '/account/settings#billing' : '/account/create'}
           background={theme.primaryLighter}
           extraHeader={
             <Switch
@@ -160,7 +168,7 @@ export default function Pricing({ data, location }: Props) {
                 <SVGIcon icon="#star" extraCss={styles.starIcon} />
                 <strong>-16%</strong>
               </div>
-              <span>Pro</span>
+              <span>Maker</span>
             </Fragment>
           }
           price={yearly ? '$99.99/yr' : '$9.99/mo'}

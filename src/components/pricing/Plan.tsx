@@ -3,7 +3,6 @@ import * as theme from '../../styles/theme'
 import Category, { CategoryProps } from './Category'
 import Header, { HeaderProps } from './Header'
 
-import Button from '../Button'
 import React from 'react'
 import { css } from '@emotion/react'
 
@@ -16,13 +15,12 @@ interface Props extends HeaderProps {
 
 export default function Plan({
   background,
-  cta,
   extraHeader,
-  name,
-  price,
-  slug,
   categories,
-  showBanners
+  showBanners,
+  cta,
+  slug,
+  ...headerProps
 }: Props) {
   return (
     <div css={styles.plan}>
@@ -31,7 +29,7 @@ export default function Plan({
         className="ie-fix"
         style={{ backgroundColor: background || 'white' }}>
         {extraHeader}
-        <Header cta={cta} name={name} price={price} slug={slug} />
+        <Header {...headerProps} cta={cta} slug={slug} />
         {categories.map((category) => (
           <Category
             key={category.name}
@@ -40,15 +38,9 @@ export default function Plan({
           />
         ))}
       </div>
-      {cta === 'Coming soon' ? (
-        <Button disabled transparent>
-          {cta}
-        </Button>
-      ) : (
-        <a href={slug} className="btn btn-transparent" tabIndex={0} title={cta}>
-          {cta}
-        </a>
-      )}
+      <a href={slug} className="btn btn-transparent" tabIndex={0} title={cta}>
+        {cta}
+      </a>
     </div>
   )
 }

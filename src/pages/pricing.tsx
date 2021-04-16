@@ -153,7 +153,7 @@ export default function Pricing({ data, location }: Props) {
         />
         <Plan
           cta={loggedIn ? 'Upgrade' : 'Create account'}
-          slug={loggedIn ? '/account/settings#billing' : '/account/create'}
+          slug={loggedIn ? '/account/upgrade' : '/account/create'}
           background={theme.primaryLighter}
           extraHeader={
             <Switch
@@ -172,6 +172,7 @@ export default function Pricing({ data, location }: Props) {
             </Fragment>
           }
           price={yearly ? '$99.99/yr' : '$9.99/mo'}
+          subtitle="With 5-day free trial"
           categories={[
             {
               name: 'Automatic Speech Recognition (ASR)',
@@ -394,7 +395,7 @@ const styles = {
   saveBadge: css`
     position: absolute;
     top: -4px;
-    left: -50px;
+    left: -48px;
     width: 41px;
     height: 41px;
     display: flex;

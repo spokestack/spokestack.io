@@ -55,7 +55,7 @@ export default function Pricing({ data, location }: Props) {
     <Layout location={location}>
       <SEO
         title="Pricing | Spokestack"
-        description="Choose the right plan for you: Free, Maker, or Enterprise. We support Automatic Speech Recognition, Natural Language Understanding, and Text to Speech."
+        description="Choose the right plan for you: Free, Maker, or Enterprise. All plans feature pre-trained models for Wake Word activation, Keyword recognition, Natural Language Understanding, and Text to Speech, as well as free API access to our Automatic Speech Recognition and Text to Speech streaming services."
       />
       <div
         className="ie-fix"
@@ -70,15 +70,124 @@ export default function Pricing({ data, location }: Props) {
           slug="/account/create"
           categories={[
             {
+              name: 'Native platform SDKs',
+              features: [
+                {
+                  enabled: true,
+                  name: 'Node'
+                },
+                {
+                  enabled: true,
+                  name: 'React Native'
+                },
+                {
+                  enabled: true,
+                  name: 'Python'
+                },
+                {
+                  enabled: true,
+                  name: 'iOS (Swift, ObjC)'
+                },
+                {
+                  enabled: true,
+                  name: 'Android (Java, Kotlin)'
+                }
+              ]
+            },
+            {
+              name: 'Wake Word',
+              features: [
+                {
+                  enabled: true,
+                  name: 'Local real-time inference on platform SDKs'
+                },
+                {
+                  enabled: true,
+                  name: 'Pre-trained universal models'
+                },
+                {
+                  enabled: false,
+                  name: 'Custom personal model creation'
+                },
+                {
+                  enabled: false,
+                  name: 'Custom universal model creation'
+                },
+                {
+                  enabled: false,
+                  name: 'Self-service custom data collection'
+                },
+                {
+                  enabled: false,
+                  name: 'Any language (or sound) supported'
+                },
+                {
+                  enabled: false,
+                  name: 'No-code model training'
+                },
+                {
+                  enabled: false,
+                  name: 'Fast global model distribution'
+                }
+              ]
+            },
+            {
+              name: 'Keyword Recognition',
+              features: [
+                {
+                  enabled: true,
+                  name: 'Local real-time inference on platform SDKs'
+                },
+                {
+                  enabled: true,
+                  name: 'Pre-trained universal models'
+                },
+                {
+                  enabled: false,
+                  name: 'Custom personal model creation'
+                },
+                {
+                  enabled: false,
+                  name: 'Custom universal model creation'
+                },
+                {
+                  enabled: false,
+                  name: 'Self-service custom data collection'
+                },
+                {
+                  enabled: false,
+                  name: 'Any language (or sound) supported'
+                },
+                {
+                  enabled: false,
+                  name: 'No-code model training'
+                },
+                {
+                  enabled: false,
+                  name: 'Fast global model distribution'
+                }
+              ]
+            },
+            {
               name: 'Automatic Speech Recognition (ASR)',
               features: [
                 {
                   enabled: true,
-                  name: 'Open source ASR management'
+                  name: 'Spokestack cloud real-time streaming API',
+                  mobileText: '25k requests/month',
+                  desktopText: '25k requests/month'
+                },
+                {
+                  enabled: true,
+                  name: 'Platform SDK access to 3rd-party ASR providers'
                 },
                 {
                   enabled: false,
-                  name: 'Spokestack ASR'
+                  name: 'Local real-time inference on platform SDKs'
+                },
+                {
+                  enabled: false,
+                  name: 'Custom vocabulary creation'
                 }
               ]
             },
@@ -87,29 +196,35 @@ export default function Pricing({ data, location }: Props) {
               features: [
                 {
                   enabled: true,
-                  name: 'Spokestack cloud NLU'
+                  name: 'Local real-time inference on platform SDKs'
                 },
                 {
                   enabled: true,
-                  name: 'Spokestack on-device NLU'
+                  name: 'Real-time cloud NLU',
+                  mobileText: '25k requests/month',
+                  desktopText: '25k requests/month'
                 },
                 {
                   enabled: true,
-                  name: 'Model imports',
-                  mobileText: 'Limited to 2 model imports',
-                  desktopText: 'Limited to 2'
+                  name: 'Alexa, Dialogflow, & Rasa model imports',
+                  mobileText: '2',
+                  desktopText: '2'
                 },
                 {
                   enabled: true,
-                  name: 'Model hosting'
+                  name: 'Platform SDK access to Jovo NLU'
                 },
                 {
                   enabled: false,
-                  name: 'Custom dictionary & pronunciation'
+                  name: 'Custom model creation'
                 },
                 {
                   enabled: false,
-                  name: 'Model training'
+                  name: 'No-code model training'
+                },
+                {
+                  enabled: false,
+                  name: 'Fast global model distribution'
                 }
               ]
             },
@@ -118,17 +233,38 @@ export default function Pricing({ data, location }: Props) {
               features: [
                 {
                   enabled: true,
-                  name: 'TTS requests',
-                  mobileText: 'Limited to 25k TTS requests/month',
-                  desktopText: 'Limited to 25k requests/month'
+                  name: 'Faster-than-real-time streaming cloud TTS',
+                  mobileText: '25k requests/month',
+                  desktopText: '25k requests/month'
                 },
                 {
                   enabled: true,
-                  name: 'Spokestack synthetic voice library'
+                  name: 'Platform SDK access to 3rd-party TTS providers'
+                },
+                {
+                  enabled: true,
+                  name:
+                    'Pre-trained Spokestack Showcase Hollywood Actor AI Voice'
                 },
                 {
                   enabled: false,
-                  name: 'Custom synthetic voices'
+                  name: 'Full Spokestack library of AI voices'
+                },
+                {
+                  enabled: false,
+                  name: 'Personal custom AI voice model creation'
+                },
+                {
+                  enabled: false,
+                  name: 'Branded custom AI voice model creation'
+                },
+                {
+                  enabled: false,
+                  name: 'Self-service voice data collection'
+                },
+                {
+                  enabled: false,
+                  name: 'No-code model training'
                 }
               ]
             },
@@ -175,18 +311,124 @@ export default function Pricing({ data, location }: Props) {
           subtitle="With 5-day free trial"
           categories={[
             {
+              name: 'Native platform SDKs',
+              features: [
+                {
+                  enabled: true,
+                  name: 'Node'
+                },
+                {
+                  enabled: true,
+                  name: 'React Native'
+                },
+                {
+                  enabled: true,
+                  name: 'Python'
+                },
+                {
+                  enabled: true,
+                  name: 'iOS (Swift, ObjC)'
+                },
+                {
+                  enabled: true,
+                  name: 'Android (Java, Kotlin)'
+                }
+              ]
+            },
+            {
+              name: 'Wake Word',
+              features: [
+                {
+                  enabled: true,
+                  name: 'Local real-time inference on platform SDKs'
+                },
+                {
+                  enabled: true,
+                  name: 'Pre-trained universal models'
+                },
+                {
+                  enabled: true,
+                  name: 'Custom personal model creation'
+                },
+                {
+                  enabled: false,
+                  name: 'Custom universal model creation'
+                },
+                {
+                  enabled: true,
+                  name: 'Self-service custom data collection'
+                },
+                {
+                  enabled: true,
+                  name: 'Any language (or sound) supported'
+                },
+                {
+                  enabled: true,
+                  name: 'No-code model training'
+                },
+                {
+                  enabled: true,
+                  name: 'Fast global model distribution'
+                }
+              ]
+            },
+            {
+              name: 'Keyword Recognition',
+              features: [
+                {
+                  enabled: true,
+                  name: 'Local real-time inference on platform SDKs'
+                },
+                {
+                  enabled: true,
+                  name: 'Pre-trained universal models'
+                },
+                {
+                  enabled: true,
+                  name: 'Custom personal model creation'
+                },
+                {
+                  enabled: false,
+                  name: 'Custom universal model creation'
+                },
+                {
+                  enabled: true,
+                  name: 'Self-service custom data collection'
+                },
+                {
+                  enabled: true,
+                  name: 'Any language (or sound) supported'
+                },
+                {
+                  enabled: true,
+                  name: 'No-code model training'
+                },
+                {
+                  enabled: true,
+                  name: 'Fast global model distribution'
+                }
+              ]
+            },
+            {
               name: 'Automatic Speech Recognition (ASR)',
               features: [
                 {
                   enabled: true,
-                  name: 'Open source ASR management'
+                  name: 'Spokestack cloud real-time streaming API',
+                  mobileText: '1M requests/month',
+                  desktopText: '1M requests/month'
+                },
+                {
+                  enabled: true,
+                  name: 'Platform SDK access to 3rd-party ASR providers'
                 },
                 {
                   enabled: false,
-                  showDisabled: true,
-                  name: 'Spokestack ASR',
-                  desktopText: 'Coming soon',
-                  mobileText: 'Spokestack ASR coming soon'
+                  name: 'Local real-time inference on platform SDKs'
+                },
+                {
+                  enabled: false,
+                  name: 'Custom vocabulary creation'
                 }
               ]
             },
@@ -195,33 +437,35 @@ export default function Pricing({ data, location }: Props) {
               features: [
                 {
                   enabled: true,
-                  name: 'Spokestack cloud NLU'
+                  name: 'Local real-time inference on platform SDKs'
                 },
                 {
                   enabled: true,
-                  name: 'Spokestack on-device NLU',
-                  mobileText:
-                    'Continual Spokestack on-device NLU model updates',
-                  desktopText: 'Continual model updates'
+                  name: 'Real-time cloud NLU',
+                  mobileText: '1M requests/month',
+                  desktopText: '1M requests/month'
                 },
                 {
                   enabled: true,
-                  name: 'Model import',
-                  mobileText: 'Unlimited model imports',
-                  desktopText: 'Unlimited'
+                  name: 'Alexa, Dialogflow, & Rasa model imports',
+                  mobileText: '5',
+                  desktopText: '5'
                 },
                 {
                   enabled: true,
-                  name: 'Model hosting'
+                  name: 'Platform SDK access to Jovo NLU'
                 },
                 {
                   enabled: true,
-                  name: 'Custom dictionary & pronunciation',
-                  desktopText: 'Custom development'
+                  name: 'Custom model creation'
                 },
                 {
-                  enabled: false,
-                  name: 'Model training'
+                  enabled: true,
+                  name: 'No-code model training'
+                },
+                {
+                  enabled: true,
+                  name: 'Fast global model distribution'
                 }
               ]
             },
@@ -230,20 +474,263 @@ export default function Pricing({ data, location }: Props) {
               features: [
                 {
                   enabled: true,
-                  name: 'TTS requests',
-                  mobileText: 'Limited to 1M TTS requests/month',
-                  desktopText: 'Limited to 1M requests/month'
+                  name: 'Faster-than-real-time streaming cloud TTS',
+                  mobileText: '1M requests/month',
+                  desktopText: '1M requests/month'
                 },
                 {
                   enabled: true,
-                  name: 'Spokestack synthetic voice library'
+                  name: 'Platform SDK access to 3rd-party TTS providers'
                 },
                 {
-                  enabled: yearly,
-                  showDisabled: true,
-                  name: 'Custom synthetic voice',
-                  mobileText: '1 custom synthetic voice',
-                  desktopText: 'Limited to 1'
+                  enabled: true,
+                  name:
+                    'Pre-trained Spokestack Showcase Hollywood Actor AI Voice'
+                },
+                {
+                  enabled: false,
+                  name: 'Full Spokestack library of AI voices'
+                },
+                {
+                  enabled: true,
+                  name: 'Personal custom AI voice model creation'
+                },
+                {
+                  enabled: false,
+                  name: 'Branded custom AI voice model creation'
+                },
+                {
+                  enabled: true,
+                  name: 'Self-service voice data collection'
+                },
+                {
+                  enabled: true,
+                  name: 'No-code model training'
+                }
+              ]
+            },
+            {
+              name: 'Support & training',
+              features: [
+                {
+                  enabled: true,
+                  name: 'Community support'
+                },
+                {
+                  enabled: false,
+                  name: 'Email support'
+                },
+                {
+                  enabled: false,
+                  name: 'Enterprise support & training'
+                }
+              ]
+            }
+          ]}
+        />
+        <Plan
+          background={theme.primaryLight}
+          name="Pro"
+          cta="Coming Soon"
+          slug={`mailto:${contact.email}?subject=Join Pro Waitlist`}
+          price="TBA"
+          categories={[
+            {
+              name: 'Native platform SDKs',
+              features: [
+                {
+                  enabled: true,
+                  name: 'Node'
+                },
+                {
+                  enabled: true,
+                  name: 'React Native'
+                },
+                {
+                  enabled: true,
+                  name: 'Python'
+                },
+                {
+                  enabled: true,
+                  name: 'iOS (Swift, ObjC)'
+                },
+                {
+                  enabled: true,
+                  name: 'Android (Java, Kotlin)'
+                }
+              ]
+            },
+            {
+              name: 'Wake Word',
+              features: [
+                {
+                  enabled: true,
+                  name: 'Local real-time inference on platform SDKs'
+                },
+                {
+                  enabled: true,
+                  name: 'Pre-trained universal models'
+                },
+                {
+                  enabled: true,
+                  name: 'Custom personal model creation'
+                },
+                {
+                  enabled: true,
+                  name: 'Custom universal model creation'
+                },
+                {
+                  enabled: true,
+                  name: 'Self-service custom data collection'
+                },
+                {
+                  enabled: true,
+                  name: 'Any language (or sound) supported'
+                },
+                {
+                  enabled: true,
+                  name: 'No-code model training'
+                },
+                {
+                  enabled: true,
+                  name: 'Fast global model distribution'
+                }
+              ]
+            },
+            {
+              name: 'Keyword Recognition',
+              features: [
+                {
+                  enabled: true,
+                  name: 'Local real-time inference on platform SDKs'
+                },
+                {
+                  enabled: true,
+                  name: 'Pre-trained universal models'
+                },
+                {
+                  enabled: true,
+                  name: 'Custom personal model creation'
+                },
+                {
+                  enabled: true,
+                  name: 'Custom universal model creation'
+                },
+                {
+                  enabled: true,
+                  name: 'Self-service custom data collection'
+                },
+                {
+                  enabled: true,
+                  name: 'Any language (or sound) supported'
+                },
+                {
+                  enabled: true,
+                  name: 'No-code model training'
+                },
+                {
+                  enabled: true,
+                  name: 'Fast global model distribution'
+                }
+              ]
+            },
+            {
+              name: 'Automatic Speech Recognition (ASR)',
+              features: [
+                {
+                  enabled: true,
+                  name: 'Spokestack cloud real-time streaming API',
+                  mobileText: '10M requests/month',
+                  desktopText: '10M requests/month'
+                },
+                {
+                  enabled: true,
+                  name: 'Platform SDK access to 3rd-party ASR providers'
+                },
+                {
+                  enabled: true,
+                  name: 'Local real-time inference on platform SDKs'
+                },
+                {
+                  enabled: true,
+                  name: 'Custom vocabulary creation'
+                }
+              ]
+            },
+            {
+              name: 'Natural Language Understanding (NLU)',
+              features: [
+                {
+                  enabled: true,
+                  name: 'Local real-time inference on platform SDKs'
+                },
+                {
+                  enabled: true,
+                  name: 'Real-time cloud NLU',
+                  mobileText: '10M requests/month',
+                  desktopText: '10M requests/month'
+                },
+                {
+                  enabled: true,
+                  name: 'Alexa, Dialogflow, & Rasa model imports',
+                  mobileText: 'Unlimited',
+                  desktopText: 'Unlimited'
+                },
+                {
+                  enabled: true,
+                  name: 'Platform SDK access to Jovo NLU'
+                },
+                {
+                  enabled: true,
+                  name: 'Custom model creation'
+                },
+                {
+                  enabled: true,
+                  name: 'No-code model training'
+                },
+                {
+                  enabled: true,
+                  name: 'Fast global model distribution'
+                }
+              ]
+            },
+            {
+              name: 'Text-to-speech (TTS)',
+              features: [
+                {
+                  enabled: true,
+                  name: 'Faster-than-real-time streaming cloud TTS',
+                  mobileText: '1M requests/month',
+                  desktopText: '1M requests/month'
+                },
+                {
+                  enabled: true,
+                  name: 'Platform SDK access to 3rd-party TTS providers'
+                },
+                {
+                  enabled: true,
+                  name:
+                    'Pre-trained Spokestack Showcase Hollywood Actor AI Voice'
+                },
+                {
+                  enabled: true,
+                  name: 'Full Spokestack library of AI voices'
+                },
+                {
+                  enabled: true,
+                  name: 'Personal custom AI voice model creation'
+                },
+                {
+                  enabled: false,
+                  name: 'Branded custom AI voice model creation'
+                },
+                {
+                  enabled: true,
+                  name: 'Self-service voice data collection'
+                },
+                {
+                  enabled: true,
+                  name: 'No-code model training'
                 }
               ]
             },
@@ -267,25 +754,131 @@ export default function Pricing({ data, location }: Props) {
           ]}
         />
         <Plan
-          background={theme.primaryLight}
+          background={theme.primaryDark}
           name="Enterprise"
           cta="Email us"
           slug={`mailto:${contact!.email}`}
           price="Custom"
           categories={[
             {
+              name: 'Native platform SDKs',
+              features: [
+                {
+                  enabled: true,
+                  name: 'Node'
+                },
+                {
+                  enabled: true,
+                  name: 'React Native'
+                },
+                {
+                  enabled: true,
+                  name: 'Python'
+                },
+                {
+                  enabled: true,
+                  name: 'iOS (Swift, ObjC)'
+                },
+                {
+                  enabled: true,
+                  name: 'Android (Java, Kotlin)'
+                }
+              ]
+            },
+            {
+              name: 'Wake Word',
+              features: [
+                {
+                  enabled: true,
+                  name: 'Local real-time inference on platform SDKs'
+                },
+                {
+                  enabled: true,
+                  name: 'Pre-trained universal models'
+                },
+                {
+                  enabled: true,
+                  name: 'Custom personal model creation'
+                },
+                {
+                  enabled: true,
+                  name: 'Custom universal model creation'
+                },
+                {
+                  enabled: true,
+                  name: 'Self-service custom data collection'
+                },
+                {
+                  enabled: true,
+                  name: 'Any language (or sound) supported'
+                },
+                {
+                  enabled: true,
+                  name: 'No-code model training'
+                },
+                {
+                  enabled: true,
+                  name: 'Fast global model distribution'
+                }
+              ]
+            },
+            {
+              name: 'Keyword Recognition',
+              features: [
+                {
+                  enabled: true,
+                  name: 'Local real-time inference on platform SDKs'
+                },
+                {
+                  enabled: true,
+                  name: 'Pre-trained universal models'
+                },
+                {
+                  enabled: true,
+                  name: 'Custom personal model creation'
+                },
+                {
+                  enabled: true,
+                  name: 'Custom universal model creation'
+                },
+                {
+                  enabled: true,
+                  name: 'Self-service custom data collection'
+                },
+                {
+                  enabled: true,
+                  name: 'Any language (or sound) supported'
+                },
+                {
+                  enabled: true,
+                  name: 'No-code model training'
+                },
+                {
+                  enabled: true,
+                  name: 'Fast global model distribution'
+                }
+              ]
+            },
+            {
               name: 'Automatic Speech Recognition (ASR)',
               features: [
                 {
                   enabled: true,
-                  name: 'Open source ASR management'
+                  name: 'Spokestack cloud real-time streaming API',
+                  mobileText: '10M requests/month',
+                  desktopText: '10M requests/month'
                 },
                 {
-                  enabled: false,
-                  showDisabled: true,
-                  name: 'Spokestack ASR',
-                  desktopText: 'Coming soon',
-                  mobileText: 'Spokestack ASR coming soon'
+                  enabled: true,
+                  name: 'Platform SDK access to 3rd-party ASR providers'
+                },
+                {
+                  enabled: true,
+                  name: 'Local real-time inference on platform SDKs'
+                },
+                {
+                  enabled: true,
+                  name: 'Custom vocabulary creation'
                 }
               ]
             },
@@ -294,34 +887,35 @@ export default function Pricing({ data, location }: Props) {
               features: [
                 {
                   enabled: true,
-                  name: 'Spokestack cloud NLU'
+                  name: 'Local real-time inference on platform SDKs'
                 },
                 {
                   enabled: true,
-                  name: 'Spokestack on-device NLU',
-                  mobileText: 'Custom model development for on-device NLU',
-                  desktopText: 'Custom model development'
+                  name: 'Real-time cloud NLU',
+                  mobileText: '10M requests/month',
+                  desktopText: '10M requests/month'
                 },
                 {
                   enabled: true,
-                  name: 'Model import',
-                  mobileText: 'Unlimited model imports',
+                  name: 'Alexa, Dialogflow, & Rasa model imports',
+                  mobileText: 'Unlimited',
                   desktopText: 'Unlimited'
                 },
                 {
                   enabled: true,
-                  name: 'Model hosting'
+                  name: 'Platform SDK access to Jovo NLU'
                 },
                 {
                   enabled: true,
-                  name: 'Custom dictionary & pronunciation',
-                  desktopText: 'Custom development'
+                  name: 'Custom model creation'
                 },
                 {
                   enabled: true,
-                  name: 'Model training',
-                  mobileText: 'Unlimited model training',
-                  desktopText: 'Unlimited'
+                  name: 'No-code model training'
+                },
+                {
+                  enabled: true,
+                  name: 'Fast global model distribution'
                 }
               ]
             },
@@ -330,19 +924,38 @@ export default function Pricing({ data, location }: Props) {
               features: [
                 {
                   enabled: true,
-                  name: 'TTS requests',
-                  mobileText: 'Unlimited TTS requests',
-                  desktopText: 'Unlimited'
+                  name: 'Faster-than-real-time streaming cloud TTS',
+                  mobileText: '1M requests/month',
+                  desktopText: '1M requests/month'
                 },
                 {
                   enabled: true,
-                  name: 'Spokestack synthetic voice library'
+                  name: 'Platform SDK access to 3rd-party TTS providers'
                 },
                 {
                   enabled: true,
-                  name: 'Custom synthetic voices',
-                  mobileText: 'Unlimited custom synthetic voices',
-                  desktopText: 'Unlimited'
+                  name:
+                    'Pre-trained Spokestack Showcase Hollywood Actor AI Voice'
+                },
+                {
+                  enabled: true,
+                  name: 'Full Spokestack library of AI voices'
+                },
+                {
+                  enabled: true,
+                  name: 'Personal custom AI voice model creation'
+                },
+                {
+                  enabled: true,
+                  name: 'Branded custom AI voice model creation'
+                },
+                {
+                  enabled: true,
+                  name: 'Self-service voice data collection'
+                },
+                {
+                  enabled: true,
+                  name: 'No-code model training'
                 }
               ]
             },

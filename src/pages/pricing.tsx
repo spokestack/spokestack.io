@@ -55,7 +55,7 @@ export default function Pricing({ data, location }: Props) {
     <Layout location={location}>
       <SEO
         title="Pricing | Spokestack"
-        description="Choose the right plan for you: Free, Maker, or Enterprise. We support Automatic Speech Recognition, Natural Language Understanding, and Text to Speech."
+        description="Choose the right plan for you: Free, Maker, or Enterprise. All plans feature pre-trained models for Wake Word activation, Keyword recognition, Natural Language Understanding, and Text to Speech, as well as free API acess to our Automatic Speech Recognition and Text to Speech streaming services."
       />
       <div
         className="ie-fix"
@@ -70,15 +70,67 @@ export default function Pricing({ data, location }: Props) {
           slug="/account/create"
           categories={[
             {
+              name: 'Wake Word',
+              features: [
+                {
+                  enabled: true,
+                  name: 'Cross-platform native SDKs'
+                },
+                {
+                  enabled: true,
+                  name: 'Pre-trained universal models'
+                },
+                {
+                  enabled: false,
+                  name:
+                    'No-code multilingual personal model creation, data collection, training, and distribution'
+                },
+                {
+                  enabled: false,
+                  name:
+                    'No-code multilingual universal model creation, data collection, training, and distribution'
+                }
+              ]
+            },
+            {
+              name: 'Keyword Recognition',
+              features: [
+                {
+                  enabled: true,
+                  name: 'Cross-platform native SDKs'
+                },
+                {
+                  enabled: true,
+                  name: 'Pre-trained, universal models'
+                },
+                {
+                  enabled: false,
+                  name:
+                    'No-code multilingual personal model creation, data collection, training, and distribution'
+                },
+                {
+                  enabled: false,
+                  name:
+                    'No-code multilingual universal model creation, data collection, training, and distribution'
+                }
+              ]
+            },
+            {
               name: 'Automatic Speech Recognition (ASR)',
               features: [
                 {
                   enabled: true,
-                  name: 'Open source ASR management'
+                  name: 'Cross-platform native SDKs'
+                },
+                {
+                  enabled: true,
+                  name: 'Spokestack real-time streaming ASR API',
+                  mobileText: '25k requests/mo',
+                  desktopText: '25k requests/mo'
                 },
                 {
                   enabled: false,
-                  name: 'Spokestack ASR'
+                  name: 'Custom vocabulary, on-device, real-time streaming ASR'
                 }
               ]
             },
@@ -87,29 +139,23 @@ export default function Pricing({ data, location }: Props) {
               features: [
                 {
                   enabled: true,
-                  name: 'Spokestack cloud NLU'
+                  name: 'Cross-platform native SDKs'
                 },
                 {
                   enabled: true,
-                  name: 'Spokestack on-device NLU'
+                  name: 'Spokestack real-time NLU API',
+                  mobileText: '25k requests/mo',
+                  desktopText: '25k requests/mo'
                 },
                 {
                   enabled: true,
-                  name: 'Model imports',
-                  mobileText: 'Limited to 2 model imports',
-                  desktopText: 'Limited to 2'
-                },
-                {
-                  enabled: true,
-                  name: 'Model hosting'
+                  name: 'Alexa & DialogFlow model imports',
+                  mobileText: '2',
+                  desktopText: '2'
                 },
                 {
                   enabled: false,
-                  name: 'Custom dictionary & pronunciation'
-                },
-                {
-                  enabled: false,
-                  name: 'Model training'
+                  name: 'Custom model creation, training, and distribution'
                 }
               ]
             },
@@ -118,17 +164,31 @@ export default function Pricing({ data, location }: Props) {
               features: [
                 {
                   enabled: true,
-                  name: 'TTS requests',
-                  mobileText: 'Limited to 25k TTS requests/month',
-                  desktopText: 'Limited to 25k requests/month'
+                  name: 'Cross-platform native SDKs'
                 },
                 {
                   enabled: true,
-                  name: 'Spokestack synthetic voice library'
+                  name: 'Spokestack real-time streaming TTS API',
+                  mobileText: '25k requests/month',
+                  desktopText: '25k requests/month'
+                },
+                {
+                  enabled: true,
+                  name: 'Spokestack Showcase Hollywood Actor AI Voice'
                 },
                 {
                   enabled: false,
-                  name: 'Custom synthetic voices'
+                  name: 'Personal custom AI voice models'
+                },
+                {
+                  enabled: false,
+                  name:
+                    'Universal custom AI voice model creation, data collection, training, and distribution'
+                },
+                {
+                  enabled: false,
+                  name:
+                    'Branded custom AI voice model creation, data collection, training, and distribution'
                 }
               ]
             },
@@ -153,7 +213,7 @@ export default function Pricing({ data, location }: Props) {
         />
         <Plan
           cta={loggedIn ? 'Upgrade' : 'Create account'}
-          slug={loggedIn ? '/account/settings#billing' : '/account/create'}
+          slug={loggedIn ? '/account/upgrade' : '/account/create'}
           background={theme.primaryLighter}
           extraHeader={
             <Switch
@@ -174,18 +234,67 @@ export default function Pricing({ data, location }: Props) {
           price={yearly ? '$99.99/yr' : '$9.99/mo'}
           categories={[
             {
+              name: 'Wake Word',
+              features: [
+                {
+                  enabled: true,
+                  name: 'Cross-platform native SDKs'
+                },
+                {
+                  enabled: true,
+                  name: 'Pre-trained universal models'
+                },
+                {
+                  enabled: true,
+                  name:
+                    'No-code multilingual personal model creation, data collection, training, and distribution'
+                },
+                {
+                  enabled: false,
+                  name:
+                    'No-code multilingual universal model creation, data collection, training, and distribution'
+                }
+              ]
+            },
+            {
+              name: 'Keyword Recognition',
+              features: [
+                {
+                  enabled: true,
+                  name: 'Cross-platform native SDKs'
+                },
+                {
+                  enabled: true,
+                  name: 'Pre-trained, universal models'
+                },
+                {
+                  enabled: true,
+                  name:
+                    'No-code multilingual personal model creation, data collection, training, and distribution'
+                },
+                {
+                  enabled: false,
+                  name:
+                    'No-code multilingual universal model creation, data collection, training, and distribution'
+                }
+              ]
+            },
+            {
               name: 'Automatic Speech Recognition (ASR)',
               features: [
                 {
                   enabled: true,
-                  name: 'Open source ASR management'
+                  name: 'Cross-platform native SDKs'
+                },
+                {
+                  enabled: true,
+                  name: 'Spokestack real-time streaming ASR API',
+                  mobileText: '1000k requests/mo',
+                  desktopText: '1000k requests/mo'
                 },
                 {
                   enabled: false,
-                  showDisabled: true,
-                  name: 'Spokestack ASR',
-                  desktopText: 'Coming soon',
-                  mobileText: 'Spokestack ASR coming soon'
+                  name: 'Custom vocabulary, on-device, real-time streaming ASR'
                 }
               ]
             },
@@ -194,33 +303,23 @@ export default function Pricing({ data, location }: Props) {
               features: [
                 {
                   enabled: true,
-                  name: 'Spokestack cloud NLU'
+                  name: 'Cross-platform native SDKs'
                 },
                 {
                   enabled: true,
-                  name: 'Spokestack on-device NLU',
-                  mobileText:
-                    'Continual Spokestack on-device NLU model updates',
-                  desktopText: 'Continual model updates'
+                  name: 'Spokestack real-time NLU API',
+                  mobileText: '1000k requests/mo',
+                  desktopText: '1000k requests/mo'
                 },
                 {
                   enabled: true,
-                  name: 'Model import',
-                  mobileText: 'Unlimited model imports',
+                  name: 'Alexa & DialogFlow model imports',
+                  mobileText: 'Unlimited',
                   desktopText: 'Unlimited'
                 },
                 {
-                  enabled: true,
-                  name: 'Model hosting'
-                },
-                {
-                  enabled: true,
-                  name: 'Custom dictionary & pronunciation',
-                  desktopText: 'Custom development'
-                },
-                {
                   enabled: false,
-                  name: 'Model training'
+                  name: 'Custom model creation, training, and distribution'
                 }
               ]
             },
@@ -229,20 +328,180 @@ export default function Pricing({ data, location }: Props) {
               features: [
                 {
                   enabled: true,
-                  name: 'TTS requests',
-                  mobileText: 'Limited to 1M TTS requests/month',
-                  desktopText: 'Limited to 1M requests/month'
+                  name: 'Cross-platform native SDKs'
                 },
                 {
                   enabled: true,
-                  name: 'Spokestack synthetic voice library'
+                  name: 'Spokestack real-time streaming TTS API',
+                  mobileText: '1000k requests/month',
+                  desktopText: '1000k requests/month'
                 },
                 {
-                  enabled: yearly,
-                  showDisabled: true,
-                  name: 'Custom synthetic voice',
-                  mobileText: '1 custom synthetic voice',
-                  desktopText: 'Limited to 1'
+                  enabled: true,
+                  name: 'Spokestack Showcase Hollywood Actor AI Voice'
+                },
+                {
+                  enabled: true,
+                  name: 'Personal custom AI voice models'
+                },
+                {
+                  enabled: false,
+                  name:
+                    'Universal custom AI voice model creation, data collection, training, and distribution'
+                },
+                {
+                  enabled: false,
+                  name:
+                    'Branded custom AI voice model creation, data collection, training, and distribution'
+                }
+              ]
+            },
+            {
+              name: 'Support & training',
+              features: [
+                {
+                  enabled: true,
+                  name: 'Community support'
+                },
+                {
+                  enabled: false,
+                  name: 'Email support'
+                },
+                {
+                  enabled: false,
+                  name: 'Enterprise support & training'
+                }
+              ]
+            }
+          ]}
+        />
+        <Plan
+          background={theme.primaryLight}
+          name="Pro (coming soon)"
+          cta="Join the Waitlist"
+          slug={`mailto:${contact.email}?subject=Join Pro Waitlist`}
+          price="TBA"
+          categories={[
+            {
+              name: 'Wake Word',
+              features: [
+                {
+                  enabled: true,
+                  name: 'Cross-platform native SDKs'
+                },
+                {
+                  enabled: true,
+                  name: 'Pre-trained universal models'
+                },
+                {
+                  enabled: true,
+                  name:
+                    'No-code multilingual personal model creation, data collection, training, and distribution'
+                },
+                {
+                  enabled: true,
+                  name:
+                    'No-code multilingual universal model creation, data collection, training, and distribution'
+                }
+              ]
+            },
+            {
+              name: 'Keyword Recognition',
+              features: [
+                {
+                  enabled: true,
+                  name: 'Cross-platform native SDKs'
+                },
+                {
+                  enabled: true,
+                  name: 'Pre-trained, universal models'
+                },
+                {
+                  enabled: true,
+                  name:
+                    'No-code multilingual personal model creation, data collection, training, and distribution'
+                },
+                {
+                  enabled: true,
+                  name:
+                    'No-code multilingual universal model creation, data collection, training, and distribution'
+                }
+              ]
+            },
+            {
+              name: 'Automatic Speech Recognition (ASR)',
+              features: [
+                {
+                  enabled: true,
+                  name: 'Cross-platform native SDKs'
+                },
+                {
+                  enabled: true,
+                  name: 'Spokestack real-time streaming ASR API',
+                  mobileText: '10M requests/mo',
+                  desktopText: '10M requests/mo'
+                },
+                {
+                  enabled: false,
+                  name: 'Custom vocabulary, on-device, real-time streaming ASR'
+                }
+              ]
+            },
+            {
+              name: 'Natural Language Understanding (NLU)',
+              features: [
+                {
+                  enabled: true,
+                  name: 'Cross-platform native SDKs'
+                },
+                {
+                  enabled: true,
+                  name: 'Spokestack real-time NLU API',
+                  mobileText: '10M requests/mo',
+                  desktopText: '10M requests/mo'
+                },
+                {
+                  enabled: true,
+                  name: 'Alexa & DialogFlow model imports',
+                  mobileText: 'Unlimited',
+                  desktopText: 'Unlimited'
+                },
+                {
+                  enabled: false,
+                  name: 'Custom model creation, training, and distribution'
+                }
+              ]
+            },
+            {
+              name: 'Text-to-speech (TTS)',
+              features: [
+                {
+                  enabled: true,
+                  name: 'Cross-platform native SDKs'
+                },
+                {
+                  enabled: true,
+                  name: 'Spokestack real-time streaming TTS API',
+                  mobileText: '10M requests/month',
+                  desktopText: '10M requests/month'
+                },
+                {
+                  enabled: true,
+                  name: 'Spokestack Showcase Hollywood Actor AI Voice'
+                },
+                {
+                  enabled: true,
+                  name: 'Personal custom AI voice models'
+                },
+                {
+                  enabled: true,
+                  name:
+                    'Universal custom AI voice model creation, data collection, training, and distribution'
+                },
+                {
+                  enabled: false,
+                  name:
+                    'Branded custom AI voice model creation, data collection, training, and distribution'
                 }
               ]
             },
@@ -266,25 +525,74 @@ export default function Pricing({ data, location }: Props) {
           ]}
         />
         <Plan
-          background={theme.primaryLight}
+          background={theme.primaryDark}
           name="Enterprise"
           cta="Email us"
           slug={`mailto:${contact.email}`}
           price="Custom"
           categories={[
             {
+              name: 'Wake Word',
+              features: [
+                {
+                  enabled: true,
+                  name: 'Cross-platform native SDKs'
+                },
+                {
+                  enabled: true,
+                  name: 'Pre-trained universal models'
+                },
+                {
+                  enabled: true,
+                  name:
+                    'No-code multilingual personal model creation, data collection, training, and distribution'
+                },
+                {
+                  enabled: true,
+                  name:
+                    'No-code multilingual universal model creation, data collection, training, and distribution'
+                }
+              ]
+            },
+            {
+              name: 'Keyword Recognition',
+              features: [
+                {
+                  enabled: true,
+                  name: 'Cross-platform native SDKs'
+                },
+                {
+                  enabled: true,
+                  name: 'Pre-trained, universal models'
+                },
+                {
+                  enabled: true,
+                  name:
+                    'No-code multilingual personal model creation, data collection, training, and distribution'
+                },
+                {
+                  enabled: true,
+                  name:
+                    'No-code multilingual universal model creation, data collection, training, and distribution'
+                }
+              ]
+            },
+            {
               name: 'Automatic Speech Recognition (ASR)',
               features: [
                 {
                   enabled: true,
-                  name: 'Open source ASR management'
+                  name: 'Cross-platform native SDKs'
                 },
                 {
-                  enabled: false,
-                  showDisabled: true,
-                  name: 'Spokestack ASR',
-                  desktopText: 'Coming soon',
-                  mobileText: 'Spokestack ASR coming soon'
+                  enabled: true,
+                  name: 'Spokestack real-time streaming ASR API',
+                  mobileText: 'Unlimited requests/mo',
+                  desktopText: 'Unlimited requests/mo'
+                },
+                {
+                  enabled: true,
+                  name: 'Custom vocabulary, on-device, real-time streaming ASR'
                 }
               ]
             },
@@ -293,34 +601,23 @@ export default function Pricing({ data, location }: Props) {
               features: [
                 {
                   enabled: true,
-                  name: 'Spokestack cloud NLU'
+                  name: 'Cross-platform native SDKs'
                 },
                 {
                   enabled: true,
-                  name: 'Spokestack on-device NLU',
-                  mobileText: 'Custom model development for on-device NLU',
-                  desktopText: 'Custom model development'
+                  name: 'Spokestack real-time NLU API',
+                  mobileText: 'Unlimited requests/mo',
+                  desktopText: 'Unlimited requests/mo'
                 },
                 {
                   enabled: true,
-                  name: 'Model import',
-                  mobileText: 'Unlimited model imports',
+                  name: 'Alexa & DialogFlow model imports',
+                  mobileText: 'Unlimited',
                   desktopText: 'Unlimited'
                 },
                 {
                   enabled: true,
-                  name: 'Model hosting'
-                },
-                {
-                  enabled: true,
-                  name: 'Custom dictionary & pronunciation',
-                  desktopText: 'Custom development'
-                },
-                {
-                  enabled: true,
-                  name: 'Model training',
-                  mobileText: 'Unlimited model training',
-                  desktopText: 'Unlimited'
+                  name: 'Custom model creation, training, and distribution'
                 }
               ]
             },
@@ -329,19 +626,31 @@ export default function Pricing({ data, location }: Props) {
               features: [
                 {
                   enabled: true,
-                  name: 'TTS requests',
-                  mobileText: 'Unlimited TTS requests',
-                  desktopText: 'Unlimited'
+                  name: 'Cross-platform native SDKs'
                 },
                 {
                   enabled: true,
-                  name: 'Spokestack synthetic voice library'
+                  name: 'Spokestack real-time streaming TTS API',
+                  mobileText: 'Unlimited requests/month',
+                  desktopText: 'Unlimited requests/month'
                 },
                 {
                   enabled: true,
-                  name: 'Custom synthetic voices',
-                  mobileText: 'Unlimited custom synthetic voices',
-                  desktopText: 'Unlimited'
+                  name: 'Spokestack Showcase Hollywood Actor AI Voice'
+                },
+                {
+                  enabled: true,
+                  name: 'Personal custom AI voice models'
+                },
+                {
+                  enabled: true,
+                  name:
+                    'Universal custom AI voice model creation, data collection, training, and distribution'
+                },
+                {
+                  enabled: true,
+                  name:
+                    'Branded custom AI voice model creation, data collection, training, and distribution'
                 }
               ]
             },

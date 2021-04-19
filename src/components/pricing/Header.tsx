@@ -23,14 +23,18 @@ export default function Header({
     <header css={styles.pricingHeader}>
       <h4 className="blue">{name}</h4>
       <h3>{price}</h3>
-      <a href={slug}>
-        {cta}
-        <SVGIcon
-          className="icon"
-          icon="#arrow-forward"
-          extraCss={styles.iconArrow}
-        />
-      </a>
+      {cta === 'Coming soon' ? (
+        <p>{cta}</p>
+      ) : (
+        <a href={slug}>
+          {cta}
+          <SVGIcon
+            className="icon"
+            icon="#arrow-forward"
+            extraCss={styles.iconArrow}
+          />
+        </a>
+      )}
       {!!subtitle && <p css={styles.subtitle}>{subtitle}</p>}
     </header>
   )

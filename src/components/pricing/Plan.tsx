@@ -5,6 +5,7 @@ import Header, { HeaderProps } from './Header'
 
 import React from 'react'
 import { css } from '@emotion/react'
+import Button from '../Button'
 
 interface Props extends HeaderProps {
   background?: string
@@ -38,9 +39,15 @@ export default function Plan({
           />
         ))}
       </div>
-      <a href={slug} className="btn btn-transparent" tabIndex={0} title={cta}>
-        {cta}
-      </a>
+      {cta === 'Coming soon' ? (
+        <Button disabled transparent>
+          {cta}
+        </Button>
+      ) : (
+        <a href={slug} className="btn btn-transparent" tabIndex={0} title={cta}>
+          {cta}
+        </a>
+      )}
     </div>
   )
 }

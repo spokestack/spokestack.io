@@ -19,11 +19,11 @@ export function setCookie(
   options: CookieSerializeOptions = {}
 ) {
   if (typeof document !== 'undefined') {
-    if (!('expires' in options)) {
+    if (options.expires == null) {
       options.maxAge = 60 * 60 * 24 * 364 // One year
     }
 
-    if ('maxAge' in options) {
+    if (options.maxAge != null) {
       options.expires = new Date(Date.now() + options.maxAge)
     }
 

@@ -24,7 +24,7 @@ export default function BlogPostTemplate({
   return (
     <BlogPost
       location={location}
-      post={data.markdownRemark}
+      post={data.markdownRemark!}
       related={pageContext.related}
     />
   )

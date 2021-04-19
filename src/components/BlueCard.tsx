@@ -26,7 +26,7 @@ export default function BlueCard({
     style.push(styles.smallCard)
   }
   return (
-    <section id={id} className="blue-card" css={style.concat(extraCss)}>
+    <section id={id} className="blue-card" css={style.concat(extraCss!)}>
       <Global
         styles={css`
           html.dark-mode {

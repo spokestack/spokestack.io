@@ -40,7 +40,7 @@ export default function SEO({
     `
   )
 
-  const metaDescription = description || site.siteMetadata.description
+  const metaDescription = description || site!.siteMetadata!.description!
 
   return (
     <Helmet
@@ -68,7 +68,7 @@ export default function SEO({
         },
         {
           property: 'og:image',
-          content: image || site.siteMetadata.logo
+          content: image || site!.siteMetadata!.logo!
         },
         {
           name: 'twitter:card',
@@ -76,7 +76,7 @@ export default function SEO({
         },
         {
           name: 'twitter:creator',
-          content: site.siteMetadata.author
+          content: site!.siteMetadata!.author!
         },
         {
           name: 'twitter:title',
@@ -88,7 +88,7 @@ export default function SEO({
         },
         {
           name: 'twitter:image',
-          content: image || site.siteMetadata.logo
+          content: image || site!.siteMetadata!.logo!
         }
       ].concat(meta)}
     />

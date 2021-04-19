@@ -7,7 +7,7 @@ import React from 'react'
 
 interface Props {
   children?: React.ReactNode
-  extraCss?: SerializedStyles
+  extraCss?: SerializedStyles | SerializedStyles[]
   href?: string
   imageUrl: string
   partiallyActive?: boolean
@@ -29,7 +29,7 @@ export default function NavLinkDropdown({
       mobileOnly
       partiallyActive={partiallyActive}
       className="nav-link-dropdown"
-      extraCss={[styles.dropdownLink, extraCss]}
+      extraCss={[styles.dropdownLink].concat(extraCss!)}
       to={href}
       title={title}>
       <Global

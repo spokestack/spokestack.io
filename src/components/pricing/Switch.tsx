@@ -15,9 +15,9 @@ interface State {
 }
 
 export default class Switch extends PureComponent<Props, State> {
-  private dragged: boolean
-  private prevX: number
-  private startX: number
+  private dragged?: boolean
+  private prevX?: number
+  private startX?: number
   private knob = React.createRef<HTMLDivElement>()
 
   state: State = {
@@ -55,7 +55,7 @@ export default class Switch extends PureComponent<Props, State> {
     e.preventDefault()
     e.stopPropagation()
     const nextX = this.nextX(e.clientX)
-    this.dragged = this.dragged || Math.abs(nextX - this.prevX) > 5
+    this.dragged = this.dragged || Math.abs(nextX - this.prevX!) > 5
     this.setState({ x: nextX })
   }
 
@@ -82,7 +82,7 @@ export default class Switch extends PureComponent<Props, State> {
   }
 
   nextX(clientX: number) {
-    return this.constrainX(clientX - this.startX + this.prevX)
+    return this.constrainX(clientX - this.startX! + this.prevX!)
   }
 
   constrainX(x: number) {

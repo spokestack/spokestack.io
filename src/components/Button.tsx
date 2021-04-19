@@ -60,7 +60,7 @@ export default function Button({
         <Fragment>
           <div style={{ visibility: 'hidden' }}>{children}</div>
           <LoadingIcon
-            extraCss={[styles.loading].concat(loadingCss)}
+            extraCss={[styles.loading].concat(loadingCss!)}
             color={loadingColor}
           />
         </Fragment>

@@ -23,28 +23,32 @@ interface Props {
 }
 
 export default function BlogPost({ location, post, related }: Props) {
+  const frontmatter = post.frontmatter!
   return (
     <Layout contentStyle={styles.post} location={location}>
       <SEO
-        title={`${post.frontmatter.title} - Spokestack`}
-        description={post.frontmatter.description}
-        image={post.frontmatter.seoImage?.publicURL || findImage(post.html)}
+        title={`${frontmatter.title} - Spokestack`}
+        description={frontmatter.description!}
+        image={frontmatter.seoImage?.publicURL || findImage(post.html!)}
       />
       <div className="ie-fix" css={styles.container}>
         <section css={styles.author}>
-          <Author author={post.frontmatter.author} />
+          <Author author={frontmatter.author!} />
         </section>
         <section className="main-content" css={styles.content}>
           <header className="docs-header">
-            <h2>{post.frontmatter.title}</h2>
+            <h2>{frontmatter.title}</h2>
             <DarkModeButton />
           </header>
-          <div dangerouslySetInnerHTML={{ __html: post.html }} />
-          <p css={styles.date}>Originally posted {post.frontmatter.date}</p>
+          <div dangerouslySetInnerHTML={{ __html: post.html! }} />
+          <p css={styles.date}>Originally posted {frontmatter.date}</p>
         </section>
         {post.fields && (
           <section css={styles.related}>
-            <Tags tags={post.fields.tags} header="Related Tags" />
+            <Tags
+              tags={post.fields.tags?.filter(Boolean) as string[]}
+              header="Related Tags"
+            />
             {related && !!related.length && (
               <Fragment>
                 <h6>Related Articles</h6>

@@ -11,7 +11,7 @@ interface Props
   label: string
   extraCss?: SerializedStyles
   labelCss?: SerializedStyles
-  onChange?: (value: string) => void
+  onChange: (value: string) => void
   /* Show a loading animation on the textarea */
   loading?: boolean
 }

@@ -10,7 +10,7 @@ import React from 'react'
 
 export default function Footer() {
   const { site } = useStaticQuery<Query>(footerQuery)
-  const { contact, social } = site.siteMetadata
+  const { contact, social } = site!.siteMetadata!
   return (
     <footer css={styles.footer}>
       <Global
@@ -29,11 +29,11 @@ export default function Footer() {
           <a href="/" css={styles.logoLink} aria-label="Spokestack Home">
             <Logo className="footer-logo" />
           </a>
-          <a css={styles.footerLink} href={`mailto:${contact.email}`}>
-            {contact.email}
+          <a css={styles.footerLink} href={`mailto:${contact!.email}`}>
+            {contact!.email}
           </a>
-          <a css={styles.footerLink} href={`tel:${contact.phone}`}>
-            {contact.phone}
+          <a css={styles.footerLink} href={`tel:${contact!.phone}`}>
+            {contact!.phone}
           </a>
         </div>
         <div css={styles.column}>
@@ -86,16 +86,16 @@ export default function Footer() {
           <a css={styles.footerLink} href="/support">
             Support
           </a>
-          <a css={styles.footerLink} href={social.github}>
+          <a css={styles.footerLink} href={social!.github!}>
             GitHub
           </a>
-          <a css={styles.footerLink} href={social.twitter}>
+          <a css={styles.footerLink} href={social!.twitter!}>
             Twitter
           </a>
-          <a css={styles.footerLink} href={social.forum}>
+          <a css={styles.footerLink} href={social!.forum!}>
             Forum
           </a>
-          <a css={styles.footerLink} href={social.stackoverflow}>
+          <a css={styles.footerLink} href={social!.stackoverflow!}>
             Stack Overflow
           </a>
         </div>

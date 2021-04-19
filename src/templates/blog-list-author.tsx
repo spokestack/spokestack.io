@@ -24,11 +24,11 @@ export default function BlogListAuthorTemplate({
 }: Props) {
   const posts = data.allMarkdownRemark.edges
   const { name, bio, social, title, image } = find(
-    data.site.siteMetadata.team,
+    data!.site!.siteMetadata!.team,
     {
       key: author
     }
-  )
+  )!
   return (
     <Fragment>
       <Global
@@ -54,34 +54,34 @@ export default function BlogListAuthorTemplate({
         homeUrl={slug}
         header={
           <div css={styles.author}>
-            <img alt={name} css={styles.image} src={image} />
+            <img alt={name!} css={styles.image} src={image!} />
             <h4 css={styles.name}>{name}</h4>
             <p className="author-bio" css={styles.bio}>
               {bio || title}
             </p>
             <div css={styles.social}>
-              {social.twitter && (
+              {social!.twitter && (
                 <SocialLink
                   icon="#twitter"
-                  href={social.twitter}
+                  href={social!.twitter}
                   title="Twitter"
                   extraCss={styles.socialIcon}
                   iconCss={styles.twitterIcon}
                 />
               )}
-              {social.linkedin && (
+              {social!.linkedin && (
                 <SocialLink
                   icon="#linkedin"
-                  href={social.linkedin}
+                  href={social!.linkedin}
                   title="LinkedIn"
                   extraCss={styles.socialIcon}
                   iconCss={styles.linkedinIcon}
                 />
               )}
-              {social.email && (
+              {social!.email && (
                 <SocialLink
                   icon="#email"
-                  href={`mailto:${social.email}`}
+                  href={`mailto:${social!.email}`}
                   title="Email"
                   extraCss={styles.socialIcon}
                   iconCss={styles.emailIcon}

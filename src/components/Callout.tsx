@@ -14,7 +14,7 @@ interface Props {
 }
 
 export default function Callout({ children, extraCss, href, to }: Props) {
-  const style = [styles.callout].concat(extraCss)
+  const style = [styles.callout].concat(extraCss!)
   return (
     <Fragment>
       <Global

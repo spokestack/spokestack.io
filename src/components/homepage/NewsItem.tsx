@@ -28,7 +28,7 @@ export default function NewsItem({
   type
 }: Props) {
   const data = useStaticQuery<Query>(newsItemQuery)
-  const { name, image } = find(data.site.siteMetadata.team, { key: author })
+  const { name, image } = find(data.site!.siteMetadata!.team, { key: author })!
   return (
     <Callout extraCss={styles.callout} href={href} to={to}>
       <div css={styles.title}>
@@ -36,7 +36,7 @@ export default function NewsItem({
         <h4>{header}</h4>
       </div>
       <div css={styles.about}>
-        <img alt={name} css={styles.image} src={image} />
+        <img alt={name!} css={styles.image} src={image!} />
         <div
           aria-label={header}
           tabIndex={0}

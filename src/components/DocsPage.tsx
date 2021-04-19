@@ -63,48 +63,49 @@ export default function DocsPage({
   const posts = data.allMarkdownRemark.edges
   posts.forEach(({ node }) => {
     links.push({
-      href: node.fields.slug,
-      section: node.fields.folder,
-      title: node.frontmatter.title,
-      navId: node.frontmatter.navId
+      href: node.fields!.slug!,
+      section: node.fields!.folder!,
+      title: node.frontmatter!.title!,
+      navId: node.frontmatter!.navId!
     })
   })
   const orderedLinks = orderLinks(links)
   if (selectFirst) {
     orderedLinks[0].forceSelect = true
   }
+  const frontmatter = post.frontmatter!
 
   return (
     <Layout location={location}>
       <SEO
-        title={`${post.frontmatter.title} - Spokestack`}
+        title={`${frontmatter.title} - Spokestack`}
         description={
           'Explore our Developer Docs to learn about Spokestack’s services, including TTS and on-device ASR, wake word, and NLU. All of our documentation is also available on GitHub.' +
-          post.frontmatter.description
-            ? ` ${post.frontmatter.description}`
+          frontmatter.description
+            ? ` ${frontmatter.description}`
             : ''
         }
-        image={post.frontmatter.seoImage?.publicURL || findImage(post.html)}
+        image={frontmatter.seoImage?.publicURL || findImage(post.html!)}
       />
       <StickyNavLayout links={orderedLinks} location={location}>
         <header className="docs-header">
           {selectFirst ? (
             <h2>
-              <a href={post.fields.slug}>{post.frontmatter.title}</a>
+              <a href={post.fields!.slug!}>{frontmatter.title}</a>
             </h2>
           ) : (
-            <h2>{post.frontmatter.title}</h2>
+            <h2>{frontmatter.title}</h2>
           )}
           <DarkModeButton />
         </header>
-        {post.frontmatter.hero ? (
+        {frontmatter.hero?.publicURL ? (
           <img
-            alt={post.frontmatter.description}
+            alt={frontmatter.description!}
             css={styles.hero}
-            src={post.frontmatter.hero.publicURL}
+            src={frontmatter.hero.publicURL}
           />
         ) : null}
-        <div dangerouslySetInnerHTML={{ __html: post.html }} />
+        <div dangerouslySetInnerHTML={{ __html: post.html! }} />
         <div css={styles.footer}>
           {!!related?.length && (
             <div css={styles.footerLeft}>
@@ -121,7 +122,7 @@ export default function DocsPage({
           <div css={styles.footerRight}>
             Something missing here?
             <a
-              href={post.fields.githubLink}
+              href={post.fields!.githubLink!}
               rel="noopener noreferrer"
               target="_blank">
               Edit this doc!

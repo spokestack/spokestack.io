@@ -25,7 +25,7 @@ export default function NavLink({
   if (!mobileOnly) {
     style.push(styles.navLinkDesktop)
   }
-  style = style.concat(extraCss)
+  style = style.concat(extraCss!)
   return to ? (
     <Link
       className="nav-link"

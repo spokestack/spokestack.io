@@ -23,11 +23,11 @@ export interface StickyLink {
 
 interface Props {
   startOpen?: boolean
-  headerText: string
+  headerText?: string
   links: StickyLink[]
   location: WindowLocation
-  onOpenChange?: (open: boolean) => void
-  onSelect?: (id: string) => void
+  onOpenChange: (open: boolean) => void
+  onSelect: (id: string) => void
   selectedId?: string
 }
 

@@ -9,8 +9,8 @@ import { css } from '@emotion/react'
 
 function sortPosts(posts: Query['allMarkdownRemark']['edges']) {
   return posts.sort((a, b) => {
-    const aDate = +new Date(a.node.frontmatter.date)
-    const bDate = +new Date(b.node.frontmatter.date)
+    const aDate = +new Date(a.node.frontmatter!.date)
+    const bDate = +new Date(b.node.frontmatter!.date)
     return bDate - aDate
   })
 }
@@ -31,17 +31,18 @@ export default function News() {
       <div css={styles.content}>
         {sortPosts(posts).map((edge) => {
           const post = edge.node
-          const author = post.frontmatter.author
+          const frontmatter = post.frontmatter!
+          const author = frontmatter.author!
           return (
             <NewsItem
               key={post.id}
               author={author}
               authorHref={`/blog/author/${author}`}
-              date={post.frontmatter.date}
-              header={post.frontmatter.title}
-              to={post.fields.slug}
+              date={frontmatter.date}
+              header={frontmatter.title!}
+              to={post.fields!.slug!}
               type={
-                post.frontmatter.tags.includes('Tutorial') ? 'Tutorial' : 'Blog'
+                frontmatter.tags!.includes('Tutorial') ? 'Tutorial' : 'Blog'
               }
             />
           )

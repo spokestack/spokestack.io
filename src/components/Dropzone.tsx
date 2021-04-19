@@ -31,14 +31,14 @@ export default class Dropzone extends Component<Props, State> {
 
   fileAdded(file: File) {
     const { onFileAdded } = this.props
-    if (file && onFileAdded) {
+    if (file) {
       onFileAdded(file)
     }
   }
 
   onFilesAdded = (event: React.ChangeEvent<HTMLInputElement>) => {
     if (this.props.disabled) return
-    this.fileAdded(event.target.files[0])
+    this.fileAdded(event.target.files![0])
   }
 
   onDragOver = (event: React.DragEvent<HTMLDivElement>) => {

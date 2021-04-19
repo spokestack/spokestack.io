@@ -18,8 +18,7 @@ interface Props {
   currentPage: number
   extraCss?: SerializedStyles
   header?: React.ReactNode
-  // Url that shows all tags
-  homeUrl?: string
+  homeUrl: string
   location: WindowLocation
   numPages: number
   posts: MarkdownRemarkEdge[]
@@ -71,7 +70,7 @@ export default function BlogList({
               </header>
             )}
             {posts.map(({ node }) => (
-              <BlogListItem key={node.fields.slug} post={node} />
+              <BlogListItem key={node.fields!.slug} post={node} />
             ))}
             <Paging
               page={currentPage}

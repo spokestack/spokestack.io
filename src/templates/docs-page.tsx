@@ -24,7 +24,7 @@ export default function DocsPageTemplate({
   return (
     <DocsPage
       location={location}
-      post={data.markdownRemark}
+      post={data.markdownRemark!}
       related={pageContext.related}
     />
   )

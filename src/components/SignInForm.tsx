@@ -18,7 +18,7 @@ export default function SignInForm({ extraCss, header, isCreate }: Props) {
     checkState()
   }, [])
   return (
-    <Card extraCss={[styles.container].concat(extraCss)}>
+    <Card extraCss={[styles.container].concat(extraCss!)}>
       {!!header && <h4 css={styles.header}>{header}</h4>}
       <a href="/api/auth/github" className="btn btn-large" css={styles.button}>
         <div css={styles.iconWrap}>

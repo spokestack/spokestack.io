@@ -14,17 +14,17 @@ interface Props {
 }
 
 export default function BlogListItem({ post }: Props) {
-  const author = post.frontmatter.author
+  const author = post.frontmatter?.author
   const data = useStaticQuery<Query>(blogListItemQuery)
   if (!author || !data || !data.site) {
     return null
   }
-  const { name, title, image } = find(data.site.siteMetadata.team, {
+  const { name, title, image } = find(data!.site!.siteMetadata!.team, {
     key: author
-  })
+  })!
   return (
     <div
-      onClick={() => (window.location.href = post.fields.slug)}
+      onClick={() => (window.location.href = post.fields!.slug!)}
       css={styles.container}
       className="blog-list-item">
       <Global
@@ -51,7 +51,7 @@ export default function BlogListItem({ post }: Props) {
         `}
       />
       <div css={styles.author}>
-        <img alt={name} css={styles.image} src={image} />
+        <img alt={name!} css={styles.image} src={image!} />
         <p>
           <span>
             {name}, {title}
@@ -59,17 +59,20 @@ export default function BlogListItem({ post }: Props) {
         </p>
       </div>
       <div>
-        {post.frontmatter.hero ? (
+        {post.frontmatter?.hero ? (
           <img
-            alt={post.frontmatter.description}
+            alt={post.frontmatter.description!}
             css={styles.hero}
-            src={post.frontmatter.hero.publicURL}
+            src={post.frontmatter.hero.publicURL!}
           />
         ) : null}
-        <h4>{post.frontmatter.title}</h4>
+        <h4>{post.frontmatter?.title}</h4>
         <p css={styles.excerpt}>{post.excerpt}</p>
         <div css={styles.tags}>
-          <Tags tags={post.fields.tags} header="" />
+          <Tags
+            tags={post.fields!.tags!.filter(Boolean) as string[]}
+            header=""
+          />
         </div>
       </div>
     </div>

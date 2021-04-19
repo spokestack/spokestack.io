@@ -11,10 +11,10 @@ import globalStyles from '../styles/global.css'
 interface Props {
   banner?: React.ReactNode
   children: React.ReactNode
-  contentStyle?: SerializedStyles
-  extraCss?: SerializedStyles
+  contentStyle?: SerializedStyles | SerializedStyles[]
+  extraCss?: SerializedStyles | SerializedStyles[]
   location: WindowLocation
-  navStyle?: SerializedStyles
+  navStyle?: SerializedStyles | SerializedStyles[]
 }
 
 export default function Layout({
@@ -31,15 +31,15 @@ export default function Layout({
       top: 40px;
     `)
   }
-  style.push(extraCss)
+
   return (
     <Fragment>
       {banner}
-      <div css={style}>
+      <div css={style.concat(extraCss!)}>
         <Global styles={globalStyles} />
         <Sprite />
         <Nav extraCss={navStyle} location={location} />
-        <main css={[styles.content, contentStyle]}>{children}</main>
+        <main css={[styles.content].concat(contentStyle!)}>{children}</main>
         <Footer />
       </div>
     </Fragment>

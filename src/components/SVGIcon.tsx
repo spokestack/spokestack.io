@@ -15,7 +15,7 @@ interface Props extends SVGAttributes<SVGElement> {
 export default function SVGIcon({ icon, extraCss, ...props }: Props) {
   return (
     <svg
-      css={[styles.icon].concat(extraCss)}
+      css={[styles.icon].concat(extraCss!)}
       aria-hidden="true"
       role="presentation"
       {...props}>

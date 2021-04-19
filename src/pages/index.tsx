@@ -18,7 +18,7 @@ interface Props extends PageRendererProps {
 }
 
 export default function Index({ data, location }: Props) {
-  const siteTitle = data.site.siteMetadata.title
+  const siteTitle = data!.site!.siteMetadata!.title!
 
   return (
     <Layout

@@ -11,21 +11,25 @@ import { css } from '@emotion/react'
 
 export default function Team() {
   const data = useStaticQuery<Query>(teamQuery)
-  const team = data.site.siteMetadata.team
+  const team = data!.site!.siteMetadata!.team!
   return (
     <div css={styles.teamMembers}>
       {team.map((member) => {
-        if (member.external) {
+        if (member!.external) {
           return null
         }
         return (
           <TeamMember
-            key={`team-member-${member.key}`}
+            key={`team-member-${member!.key}`}
             avatar={
-              <img alt={member.name} css={styles.image} src={member.image} />
+              <img
+                alt={member!.name!}
+                css={styles.image}
+                src={member!.image!}
+              />
             }
-            name={member.name}
-            title={member.title}
+            name={member!.name!}
+            title={member!.title!}
           />
         )
       })}

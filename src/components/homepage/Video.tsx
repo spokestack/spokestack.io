@@ -50,6 +50,9 @@ export default function Video() {
         title="Play video"
         css={[styles.absoluteFill, styles.playLink]}
         onClick={async () => {
+          if (!videoRef.current) {
+            return
+          }
           try {
             const result = await requestFullscreen(videoRef.current)
             if (result === false) {

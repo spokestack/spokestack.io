@@ -21,7 +21,7 @@ export default function Docs({ data, location, pageContext }: Props) {
     <DocsPage
       selectFirst
       location={location}
-      post={data.markdownRemark}
+      post={data.markdownRemark!}
       related={pageContext.related}
     />
   )

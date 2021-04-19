@@ -6,7 +6,9 @@ import { SerializedStyles, css } from '@emotion/react'
 import SVGIcon from './SVGIcon'
 
 interface CopyProps {
-  inputRef: React.MutableRefObject<HTMLInputElement | HTMLTextAreaElement>
+  inputRef: React.MutableRefObject<
+    HTMLInputElement | HTMLTextAreaElement | null
+  >
   title: string
 }
 
@@ -44,7 +46,7 @@ export function CopyInputWithButton({
 }: CopyInputProps) {
   const inputRef = useRef<HTMLInputElement>(null)
   return (
-    <div css={[styles.copyInput].concat(extraCss)}>
+    <div css={[styles.copyInput].concat(extraCss!)}>
       <div css={styles.row}>
         <label className="label" htmlFor={id}>
           {title}
@@ -57,7 +59,7 @@ export function CopyInputWithButton({
         id={id}
         type="text"
         className="input"
-        onFocus={() => inputRef.current.select()}
+        onFocus={() => inputRef.current?.select()}
         value={value}
       />
     </div>

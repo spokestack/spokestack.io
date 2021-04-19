@@ -53,7 +53,7 @@ export default function NavDropdown({ children, menuCss, title }: Props) {
           extraCss={styles.dropdownIcon}
         />
       </NavLink>
-      <div className="dropdown-menu" css={menuStyles.concat(menuCss)}>
+      <div className="dropdown-menu" css={menuStyles.concat(menuCss!)}>
         <div className="dropdown-content" css={styles.dropdownContent}>
           <NavLink
             mobileOnly

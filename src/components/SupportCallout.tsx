@@ -5,7 +5,7 @@ import React from 'react'
 import { ieBreakpoint } from '../styles/theme'
 
 interface Props {
-  extraCss?: SerializedStyles
+  extraCss?: SerializedStyles | SerializedStyles[]
   imageUrl: string
   name: string
   slug: string
@@ -20,7 +20,7 @@ export default function SupportCallout({
   text
 }: Props) {
   return (
-    <Callout href={slug} extraCss={[styles.container, extraCss]}>
+    <Callout href={slug} extraCss={[styles.container].concat(extraCss!)}>
       <img src={imageUrl} alt={name} css={styles.image} />
       <h4 css={styles.header}>{name}</h4>
       <p css={styles.text}>{text}</p>

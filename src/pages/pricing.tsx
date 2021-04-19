@@ -22,7 +22,7 @@ export default function Pricing({ data, location }: Props) {
   const [yearly, setYearly] = useState(true)
   const [rowBgY, setRowBgY] = useState(0)
   const [showRowBg, setShowRowBg] = useState(false)
-  const { contact } = data.site.siteMetadata
+  const { contact } = data!.site!.siteMetadata!
   const pricingElem = useRef<HTMLDivElement>(null)
 
   useEffect(() => {
@@ -32,7 +32,7 @@ export default function Pricing({ data, location }: Props) {
   }, [])
 
   function hover(e: React.PointerEvent<HTMLDivElement>) {
-    let elem = e.target as HTMLDivElement
+    let elem: HTMLDivElement | null = e.target as HTMLDivElement
     if (!elem || typeof elem.className !== 'string') {
       return
     }
@@ -41,7 +41,7 @@ export default function Pricing({ data, location }: Props) {
       return
     }
     elem = elem.closest('.category-feature')
-    if (elem) {
+    if (elem && pricingElem.current) {
       const y =
         elem.getBoundingClientRect().top +
         window.pageYOffset -
@@ -270,7 +270,7 @@ export default function Pricing({ data, location }: Props) {
           background={theme.primaryLight}
           name="Enterprise"
           cta="Email us"
-          slug={`mailto:${contact.email}`}
+          slug={`mailto:${contact!.email}`}
           price="Custom"
           categories={[
             {

@@ -21,7 +21,7 @@ export default function LoginButtons({
   loginDropdown
 }: Props) {
   const [loggedIn, setLoggedIn] = useState(false)
-  const style = [styles.loginButtons].concat(extraCss)
+  const style = [styles.loginButtons].concat(extraCss!)
   const classes = [className]
   useEffect(() => {
     const timeout = setTimeout(() => {

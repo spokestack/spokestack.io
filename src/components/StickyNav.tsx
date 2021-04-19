@@ -45,9 +45,11 @@ export default function StickyNav({
     return null
   }
   const navRef = useRef<HTMLElement>(null)
-  const [selectedLink, setSelectedLink] = useState<StickyLink>(null)
-  const [selectedId, setSelectedId] = useState<string>(null)
-  const [selectedElemVisible, setSelectedElemVisible] = useState<boolean>(null)
+  const [selectedLink, setSelectedLink] = useState<StickyLink | null>(null)
+  const [selectedId, setSelectedId] = useState<string | null>(null)
+  const [selectedElemVisible, setSelectedElemVisible] = useState<
+    boolean | null
+  >(null)
   useEffect(() => {
     const locs: { [key: number]: HTMLElement } = {}
     const linksWithHash: StickyLink[] = []
@@ -56,7 +58,7 @@ export default function StickyNav({
       if (link.matchHash) {
         const elem =
           (link.ref && link.ref.current) ||
-          document.querySelector(link.refSelector)
+          document.querySelector<HTMLElement>(link.refSelector!)
         if (elem) {
           locs[elem.offsetTop + elem.offsetHeight / 3] = elem
         }
@@ -154,12 +156,12 @@ export default function StickyNav({
           startOpen={
             startOpen ||
             (selectedLink && selectedLink.section === section) ||
-            (selectedId &&
+            (!!selectedId &&
               groupedLinks[section].some(
                 (link) => `${hashToId(link.href)}-link` === selectedId
               ))
           }
-          headerText={isSection(section) ? section : null}
+          headerText={isSection(section) ? section : undefined}
           links={groupedLinks[section]}
           location={location}
           onOpenChange={updateSelectedElemVisible}
@@ -170,7 +172,7 @@ export default function StickyNav({
               navigating = false
             }, 200)
           }}
-          selectedId={!selectedLink && selectedId}
+          selectedId={!selectedLink && selectedId ? selectedId : undefined}
         />
       ))}
       {/* Check if the selected element is visible */}

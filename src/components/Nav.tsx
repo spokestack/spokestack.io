@@ -24,7 +24,7 @@ export default function Nav({ extraCss }: Props) {
     contentStyles.push(styles.navContentOpen)
   }
   return (
-    <nav css={[styles.nav].concat(extraCss)}>
+    <nav css={[styles.nav].concat(extraCss!)}>
       <Global
         styles={css`
           ${theme.MIN_DEFAULT_MEDIA_QUERY} {

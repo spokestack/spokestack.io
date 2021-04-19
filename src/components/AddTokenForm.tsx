@@ -7,7 +7,7 @@ import { css } from '@emotion/react'
 
 interface Props {
   submitting: boolean
-  onSubmit?: (token: string) => void
+  onSubmit: (token: string) => void
 }
 
 export default function AddTokenForm({ submitting, onSubmit }: Props) {

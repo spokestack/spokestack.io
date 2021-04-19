@@ -14,7 +14,7 @@ interface Props extends PageRendererProps {
 }
 
 export default function Support({ data, location }: Props) {
-  const { social, contact } = data.site.siteMetadata
+  const { social, contact } = data!.site!.siteMetadata!
   return (
     <Layout location={location}>
       <SEO
@@ -35,28 +35,28 @@ export default function Support({ data, location }: Props) {
               extraCss={styles.callout}
               imageUrl="/support/github.svg"
               name="GitHub"
-              slug={social.github}
+              slug={social!.github!}
               text="Open source libaries &amp; projects"
             />
             <SupportCallout
               extraCss={styles.callout}
               imageUrl="/support/twitter.svg"
               name="Twitter"
-              slug={social.twitter}
+              slug={social!.twitter!}
               text="Follow us for service updates, tutorials, and tips"
             />
             <SupportCallout
               extraCss={styles.callout}
               imageUrl="/support/discourse.svg"
               name="Forum"
-              slug={social.forum}
+              slug={social!.forum!}
               text="Questions answered by Spokestack &amp; the community"
             />
             <SupportCallout
               extraCss={styles.callout}
               imageUrl="/support/stackoverflow.png"
               name="Stack Overflow"
-              slug={social.stackoverflow}
+              slug={social!.stackoverflow!}
               text="Questions answered by Spokestack and the community"
             />
           </div>
@@ -64,7 +64,7 @@ export default function Support({ data, location }: Props) {
         <BlueCard
           small
           button={
-            <a href={`mailto:${contact.email}`} className="btn">
+            <a href={`mailto:${contact!.email}`} className="btn">
               Contact us
             </a>
           }

@@ -12,7 +12,7 @@ interface Props {
 
 export default function Card({ title, children, extraCss }: Props) {
   return (
-    <div css={[styles.card].concat(extraCss)} className="card">
+    <div css={[styles.card].concat(extraCss!)} className="card">
       <Global
         styles={css`
           html.dark-mode .card {

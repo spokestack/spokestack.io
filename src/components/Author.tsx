@@ -17,9 +17,9 @@ export default function Author({ author }: Props) {
   if (!author || !data.site) {
     return null
   }
-  const { name, title, image } = find(data.site.siteMetadata.team, {
+  const { name, title, image } = find(data.site.siteMetadata!.team, {
     key: author
-  })
+  })!
   return (
     <Callout to={`/blog/author/${author}`} extraCss={styles.author}>
       <Global
@@ -31,7 +31,7 @@ export default function Author({ author }: Props) {
           }
         `}
       />
-      <img alt={name} css={styles.image} src={image} />
+      <img alt={name!} css={styles.image} src={image!} />
       <p css={styles.about}>About the Author</p>
       <h4 css={styles.name}>{name}</h4>
       <p className="author-bio" css={styles.bio}>

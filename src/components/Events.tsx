@@ -7,11 +7,8 @@ import React from 'react'
 import { css } from '@emotion/react'
 
 export default function Events() {
-  const {
-    site: {
-      siteMetadata: { events }
-    }
-  } = useStaticQuery<Query>(eventsQuery)
+  const data = useStaticQuery<Query>(eventsQuery)
+  const events = data.site!.siteMetadata!.events
   if (!events || !events.length) {
     return null
   }
@@ -20,24 +17,24 @@ export default function Events() {
       {events.map((event, i) => (
         <div key={`event-${i}`} css={styles.event} className="event">
           <div css={styles.about}>
-            <h3>{event.title}</h3>
-            <p>{event.description}</p>
+            <h3>{event!.title}</h3>
+            <p>{event!.description}</p>
             <a
               className="btn btn-large"
-              href={event.url}
+              href={event!.url!}
               css={styles.registerButton}>
               Register
             </a>
           </div>
           <div css={styles.details}>
             <div css={styles.date}>
-              <div css={styles.month}>{event.month}</div>
-              <div css={styles.day}>{event.day}</div>
+              <div css={styles.month}>{event!.month}</div>
+              <div css={styles.day}>{event!.day}</div>
             </div>
             <div css={styles.location}>
-              <div css={styles.time}>{event.time}</div>
-              <div>{event.locationLine1}</div>
-              <div>{event.locationLine2}</div>
+              <div css={styles.time}>{event!.time}</div>
+              <div>{event!.locationLine1}</div>
+              <div>{event!.locationLine2}</div>
             </div>
           </div>
         </div>

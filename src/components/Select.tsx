@@ -18,7 +18,7 @@ interface Props
   extraCss?: SerializedStyles
   selectCss?: SerializedStyles
   labelCss?: SerializedStyles
-  selected: Option
+  selected?: Option
   expanded?: boolean
   onChange: (value: string) => void
 }
@@ -32,7 +32,7 @@ export default function Select({
   id,
   disabled,
   expanded,
-  selected = { title: 'None selected' },
+  selected = { title: '' },
   onChange,
   ...props
 }: Props) {
@@ -41,7 +41,6 @@ export default function Select({
   const dropdownStyle = [styles.dropdownCommon]
   const labelStyle = [styles.label]
   if (expanded) {
-    dropdownStyle.push(styles.dropdownExpanded)
     labelStyle.push(styles.labelExpanded)
   } else {
     dropdownStyle.push(styles.dropdown)
@@ -54,7 +53,7 @@ export default function Select({
       <label
         htmlFor={id}
         className="select-label"
-        css={labelStyle.concat(labelCss)}
+        css={labelStyle.concat(labelCss!)}
         onClick={() => {
           setOpen(!disabled && !open)
         }}>
@@ -67,7 +66,7 @@ export default function Select({
         css={[styles.select, selectCss]}
         id={id}
         disabled={disabled}
-        value={selected.value}
+        value={selected.value || ''}
         onChange={(event) => {
           onChange(event.target.value)
         }}
@@ -91,7 +90,7 @@ export default function Select({
                   : styles.dropdownOption
               }
               onClick={() => {
-                onChange(option.value)
+                onChange(option.value!)
                 setOpen(false)
               }}>
               {option.title}
@@ -224,14 +223,12 @@ const styles = {
     transform: translateY(-50%) scaleY(0);
     opacity: 0;
   `,
-  dropdownExpanded: css`
-    border-right: 1px solid ${theme.mainBorder};
-  `,
   dropdownOption: css`
     padding: 10px 20px;
     cursor: pointer;
     color: ${theme.primaryColor.fade(0.4).toString()};
     font-weight: 700;
+    border-bottom: 1px solid ${theme.mainBorder};
     &:hover {
       background-color: ${theme.primaryColor.fade(0.9).string()};
     }
@@ -239,7 +236,5 @@ const styles = {
   dropdownOptionSelected: css`
     color: ${theme.primary};
     background-color: ${theme.primaryColor.fade(0.9).string()};
-    border-top: 1px solid ${theme.mainBorder};
-    border-bottom: 1px solid ${theme.mainBorder};
   `
 }

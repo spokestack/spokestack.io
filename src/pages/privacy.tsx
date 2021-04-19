@@ -12,7 +12,7 @@ interface Props extends PageRendererProps {
 }
 
 export default function Privacy({ data, location }: Props) {
-  const email = data.site.siteMetadata.contact.email
+  const email = data!.site!.siteMetadata!.contact!.email!
   return (
     <Layout location={location}>
       <SEO title="Privacy Policy" />

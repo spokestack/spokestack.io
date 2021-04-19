@@ -6,7 +6,7 @@ import { Link } from 'gatsby'
 
 interface Props {
   children: React.ReactNode
-  to?: string
+  to: string
 }
 
 export default function Banner({ children, to }: Props) {

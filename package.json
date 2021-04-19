@@ -179,12 +179,21 @@
         }
       ],
       "prettier/prettier": "error",
-      "@typescript-eslint/explicit-function-return-type": 0,
-      "@typescript-eslint/explicit-module-boundary-types": 0,
-      "@typescript-eslint/no-explicit-any": 0,
-      "@typescript-eslint/no-use-before-define": 0,
-      "@typescript-eslint/no-var-requires": 0,
-      "react/prop-types": 0
+      "no-unused-vars": "off",
+      "@typescript-eslint/explicit-function-return-type": "off",
+      "@typescript-eslint/explicit-module-boundary-types": "off",
+      "@typescript-eslint/no-explicit-any": "off",
+      "@typescript-eslint/no-use-before-define": "off",
+      "@typescript-eslint/no-var-requires": "off",
+      "@typescript-eslint/no-non-null-assertion": "off",
+      "@typescript-eslint/no-unused-vars": [
+        "error",
+        {
+          "args": "after-used",
+          "argsIgnorePattern": "^_"
+        }
+      ],
+      "react/prop-types": "off"
     }
   },
   "eslintIgnore": [

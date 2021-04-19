@@ -55,7 +55,7 @@ export default function Pricing({ data, location }: Props) {
     <Layout location={location}>
       <SEO
         title="Pricing | Spokestack"
-        description="Choose the right plan for you: Free, Maker, or Enterprise. All plans feature pre-trained models for Wake Word activation, Keyword recognition, Natural Language Understanding, and Text to Speech, as well as free API acess to our Automatic Speech Recognition and Text to Speech streaming services."
+        description="Choose the right plan for you: Free, Maker, or Enterprise. All plans feature pre-trained models for Wake Word activation, Keyword recognition, Natural Language Understanding, and Text to Speech, as well as free API access to our Automatic Speech Recognition and Text to Speech streaming services."
       />
       <div
         className="ie-fix"
@@ -101,7 +101,7 @@ export default function Pricing({ data, location }: Props) {
                 },
                 {
                   enabled: true,
-                  name: 'Pre-trained, universal models'
+                  name: 'Pre-trained universal models'
                 },
                 {
                   enabled: false,
@@ -149,7 +149,7 @@ export default function Pricing({ data, location }: Props) {
                 },
                 {
                   enabled: true,
-                  name: 'Alexa & DialogFlow model imports',
+                  name: 'Alexa, Dialogflow, & Rasa model imports',
                   mobileText: '2',
                   desktopText: '2'
                 },
@@ -265,7 +265,7 @@ export default function Pricing({ data, location }: Props) {
                 },
                 {
                   enabled: true,
-                  name: 'Pre-trained, universal models'
+                  name: 'Pre-trained universal models'
                 },
                 {
                   enabled: true,
@@ -289,8 +289,8 @@ export default function Pricing({ data, location }: Props) {
                 {
                   enabled: true,
                   name: 'Spokestack real-time streaming ASR API',
-                  mobileText: '1000k requests/mo',
-                  desktopText: '1000k requests/mo'
+                  mobileText: '1M requests/mo',
+                  desktopText: '1M requests/mo'
                 },
                 {
                   enabled: false,
@@ -308,12 +308,12 @@ export default function Pricing({ data, location }: Props) {
                 {
                   enabled: true,
                   name: 'Spokestack real-time NLU API',
-                  mobileText: '1000k requests/mo',
-                  desktopText: '1000k requests/mo'
+                  mobileText: '1M requests/mo',
+                  desktopText: '1M requests/mo'
                 },
                 {
                   enabled: true,
-                  name: 'Alexa & DialogFlow model imports',
+                  name: 'Alexa, Dialogflow, & Rasa model imports',
                   mobileText: 'Unlimited',
                   desktopText: 'Unlimited'
                 },
@@ -333,8 +333,8 @@ export default function Pricing({ data, location }: Props) {
                 {
                   enabled: true,
                   name: 'Spokestack real-time streaming TTS API',
-                  mobileText: '1000k requests/month',
-                  desktopText: '1000k requests/month'
+                  mobileText: '1M requests/month',
+                  desktopText: '1M requests/month'
                 },
                 {
                   enabled: true,
@@ -414,7 +414,7 @@ export default function Pricing({ data, location }: Props) {
                 },
                 {
                   enabled: true,
-                  name: 'Pre-trained, universal models'
+                  name: 'Pre-trained universal models'
                 },
                 {
                   enabled: true,
@@ -462,7 +462,7 @@ export default function Pricing({ data, location }: Props) {
                 },
                 {
                   enabled: true,
-                  name: 'Alexa & DialogFlow model imports',
+                  name: 'Alexa, Dialogflow, & Rasa model imports',
                   mobileText: 'Unlimited',
                   desktopText: 'Unlimited'
                 },
@@ -563,7 +563,7 @@ export default function Pricing({ data, location }: Props) {
                 },
                 {
                   enabled: true,
-                  name: 'Pre-trained, universal models'
+                  name: 'Pre-trained universal models'
                 },
                 {
                   enabled: true,
@@ -611,7 +611,7 @@ export default function Pricing({ data, location }: Props) {
                 },
                 {
                   enabled: true,
-                  name: 'Alexa & DialogFlow model imports',
+                  name: 'Alexa, Dialogflow, & Rasa model imports',
                   mobileText: 'Unlimited',
                   desktopText: 'Unlimited'
                 },

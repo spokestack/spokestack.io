@@ -1,8 +1,7 @@
 ---
 title: Why Haven't We Seen a Killer Voice App?
 date: '2021-04-21'
-description: |
-"Voice app" is a convenient shorthand for "Alexa Skill" or "Google Action", but does it do more harm than good?
+description: '"Voice app" is a convenient shorthand for "Alexa Skill" or "Google Action", but does it do more harm than good?'
 author: josh
 tags: Opinion
 draft: false

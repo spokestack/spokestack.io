@@ -59,7 +59,7 @@ export default css`
     margin-bottom: 15px;
   }
   h2 {
-    font-size: 28px;
+    font-size: 32px;
     line-height: 1.45;
     margin-bottom: 15px;
   }
@@ -74,7 +74,7 @@ export default css`
     margin-bottom: 15px;
   }
   h5 {
-    font-size: 1rem;
+    font-size: 1em;
     margin: 0;
   }
   h6 {
@@ -130,9 +130,6 @@ export default css`
   }
   blockquote * {
     margin: 0;
-  }
-  .title {
-    font-size: 20px;
   }
   .blue {
     color: ${theme.primary} !important;
@@ -302,6 +299,7 @@ export default css`
       height: 49px;
     }
     &.btn-small {
+      font-size: 14px;
       height: 37px;
     }
     &.btn-wide {
@@ -310,6 +308,9 @@ export default css`
       ${theme.MIN_DEFAULT_MEDIA_QUERY} {
         min-width: 155px;
       }
+    }
+    &.btn-full {
+      width: 100%;
     }
     &.btn-link {
       background: none;

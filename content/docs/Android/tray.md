@@ -1,5 +1,5 @@
 ---
-title: Spokestack Tray
+title: Spokestack Tray for Android
 navId: Tray (Android)
 description: Getting started with Spokestack Tray for Android
 draft: false

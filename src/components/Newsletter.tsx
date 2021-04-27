@@ -63,7 +63,7 @@ export default function Newsletter() {
           }
         `}
       />
-      <p>Stay up-to-date with the latest news from the Spokestack community</p>
+      <p>Sign up for developer and community updates:</p>
       {error && <p className="error">{error}</p>}
       <div css={styles.inputWrap}>
         <input
@@ -76,9 +76,9 @@ export default function Newsletter() {
         />
         <Button
           type="submit"
-          transparent={!success}
+          transparent
           submitting={submitting}
-          extraCss={styles.button}>
+          extraCss={success ? [styles.button, styles.success] : styles.button}>
           {success ? (
             <Fragment>
               Subscribed
@@ -89,17 +89,14 @@ export default function Newsletter() {
               />
             </Fragment>
           ) : (
-            <Fragment>
-              Subscribe
-              <SVGIcon
-                className="icon"
-                icon="#arrow-forward"
-                extraCss={styles.icon}
-              />
-            </Fragment>
+            <Fragment>Sign up</Fragment>
           )}
         </Button>
       </div>
+      <p css={styles.privacy}>
+        You can unsubscribe at any time. Read our{' '}
+        <a href="/privacy">privacy policy</a>.
+      </p>
     </form>
   )
 }
@@ -112,50 +109,31 @@ const styles = {
     align-items: center;
     text-align: center;
     padding: 50px 0;
-    border-top: 1px solid ${theme.mainBorder};
-    border-bottom: 1px solid ${theme.mainBorder};
-
-    p {
-      width: 100%;
-      max-width: 400px;
-      margin-bottom: 25px;
-    }
-
-    ${theme.MIN_DEFAULT_MEDIA_QUERY} {
-      flex-direction: row;
-
-      p {
-        margin: 0;
-      }
-    }
   `,
   inputWrap: css`
     display: flex;
-    flex-direction: column;
+    flex-direction: row;
+    margin: 10px 0 25px;
 
     .input {
-      padding-left: 30px;
-      margin-bottom: 20px;
+      font-size: 14px;
+      padding-left: 20px;
       background-color: transparent;
       border-color: ${theme.primary};
+      border-radius: 30px 0 0 30px;
+      border-right: none;
+    }
+    .btn {
+      border-radius: 0 30px 30px 0;
     }
     .input,
     .btn {
-      height: 50px;
+      height: 42px;
     }
 
-    ${theme.MIN_TABLET_MEDIA_QUERY} {
-      flex-direction: row;
-      margin: 0 0 0 25px;
-
-      .input {
-        border-radius: 24px 0 0 24px;
-        margin-bottom: 0;
-        border-right: none;
-      }
-      .btn {
-        border-radius: 0 24px 24px 0;
-      }
+    ${theme.MIN_DEFAULT_MEDIA_QUERY} {
+      width: 100%;
+      max-width: 590px;
     }
   `,
   button: css`
@@ -163,10 +141,27 @@ const styles = {
       width: 200px;
     }
   `,
+  success: css`
+    color: ${theme.greenDark} !important;
+    border-color: ${theme.green} !important;
+    background-color: ${theme.green} !important;
+  `,
   icon: css`
     width: 24px;
     height: 24px;
     margin-left: 5px;
     fill: ${theme.primary};
+  `,
+  privacy: css`
+    max-width: 290px;
+    color: ${theme.textColor.fade(0.25).toString()};
+
+    a {
+      font-weight: 400;
+    }
+
+    ${theme.MIN_DEFAULT_MEDIA_QUERY} {
+      max-width: none;
+    }
   `
 }

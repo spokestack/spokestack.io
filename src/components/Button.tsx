@@ -12,6 +12,7 @@ interface Props extends ButtonHTMLAttributes<HTMLButtonElement> {
   link?: boolean
   loadingColor?: string
   small?: boolean
+  full?: boolean
   wide?: boolean
   secondary?: boolean
   submitting?: boolean
@@ -26,6 +27,7 @@ export default function Button({
   link,
   loadingColor = theme.secondary,
   small,
+  full,
   wide,
   secondary,
   submitting,
@@ -38,6 +40,9 @@ export default function Button({
   }
   if (small) {
     classNames.push('btn-small')
+  }
+  if (full) {
+    classNames.push('btn-full')
   }
   if (wide) {
     classNames.push('btn-wide')

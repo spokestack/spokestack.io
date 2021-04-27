@@ -7,7 +7,7 @@ export const primaryLighterColor = Color('#cce4ff')
 export const secondaryColor = Color('#61fae9')
 export const textColor = Color('#323e48')
 export const headerColor = Color('#2c363f')
-export const mainBorderColor = Color('#e6e9e9')
+export const mainBorderColor = Color('#d4d7d9')
 export const linkColor = primaryColor
 export const linkColorDark = primaryLightColor
 export const authorBackgroundColor = Color('#5b6a79')
@@ -30,7 +30,7 @@ export const stickyNavBackgroundDark = textColor.darken(0.3).hex()
 export const text = textColor.hex()
 export const textLight = textColor.fade(0.5).toString()
 export const textError = '#ea2e31'
-export const textDarkBg = mainBackground
+export const textDarkBg = '#ffffff'
 export const navFullColumnDark = primaryColor.fade(0.85).toString()
 
 export const header = headerColor.hex()
@@ -40,7 +40,9 @@ export const buttonBackgroundDark = primaryLight
 export const buttonBackgroundDarkHover = primaryLightColor.darken(0.4).hex()
 export const mainBorder = mainBorderColor.hex()
 export const mainBorderDark = '#96a2a2'
-export const pricingRowBackground = primaryColor.fade(0.9).toString()
+export const pricingBorder = primaryColor.fade(0.75).toString()
+export const pricingBorderHorizontal = `url("data:image/svg+xml,%3csvg width='100%25' height='1' xmlns='http://www.w3.org/2000/svg'%3e%3crect width='100%25' height='4' fill='none' stroke='%23d4d7d9' stroke-width='2' stroke-dasharray='10%2c10' stroke-dashoffset='0' stroke-linecap='square'/%3e%3c/svg%3e")`
+export const pricingBorderVertical = `url("data:image/svg+xml,%3csvg width='1' height='100%25' xmlns='http://www.w3.org/2000/svg'%3e%3crect width='4' height='100%25' fill='none' stroke='%23d4d7d9' stroke-width='2' stroke-dasharray='10%2c10' stroke-dashoffset='0' stroke-linecap='square'/%3e%3c/svg%3e")`
 
 export const transitionEasing = 'cubic-bezier(0.77, 0.41, 0.2, 0.84)'
 export const bubbleEasing = 'cubic-bezier(0.3, 0.55, 0.54, 0.86)'

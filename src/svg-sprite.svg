@@ -18,8 +18,7 @@
 		<path d="M12 4l-1.41 1.41L16.17 11H4v2h12.17l-5.58 5.59L12 20l8-8z" />
 	</symbol>
 	<symbol id="checkmark" viewBox="0 0 27 27">
-		<circle fill="#2F5BEA" cx="13.125" cy="13.125" r="13.125"></circle>
-		<polygon fill="#F6F9FC" fill-rule="nonzero" points="10.713 18.156 19.713 9.156 18.651 8.094 10.713 16.05 7.581 12.918 6.537 13.98" />
+		<polygon fill-rule="nonzero" points="10.713 18.156 19.713 9.156 18.651 8.094 10.713 16.05 7.581 12.918 6.537 13.98" />
 	</symbol>
 	<symbol id="copy" viewBox="0 0 24 24">
 		<path fill="none" d="M0 0h24v24H0z" />

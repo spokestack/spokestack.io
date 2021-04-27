@@ -1,85 +1,175 @@
 import * as theme from '../../styles/theme'
 
-import Category, { CategoryProps } from './Category'
-import Header, { HeaderProps } from './Header'
-
 import React from 'react'
+import SVGIcon from '../SVGIcon'
 import { css } from '@emotion/react'
-import Button from '../Button'
 
-interface Props extends HeaderProps {
+interface Props {
   background?: string
-  categories: CategoryProps[]
-  extraHeader?: React.ReactNode
-  showBanners?: boolean
+  cta: string
+  description: string
+  features: React.ReactNode[]
+  highlight?: boolean
+  imageUrl: string
+  name: string
+  price: React.ReactNode
+  slug: string
+  subtext?: React.ReactNode
 }
 
 export default function Plan({
   background,
-  extraHeader,
-  categories,
-  showBanners,
   cta,
+  description,
+  features,
+  highlight,
+  imageUrl,
+  name,
+  price,
   slug,
-  ...headerProps
+  subtext
 }: Props) {
   return (
-    <div css={styles.plan}>
-      <div
-        css={styles.card}
-        className="ie-fix"
-        style={{ backgroundColor: background || 'white' }}>
-        {extraHeader}
-        <Header {...headerProps} cta={cta} slug={slug} />
-        {categories.map((category) => (
-          <Category
-            key={category.name}
-            showBanners={showBanners}
-            {...category}
-          />
+    <div
+      css={styles.plan}
+      className="ie-fix"
+      style={{ backgroundColor: background || 'white' }}>
+      <h5 css={[styles.header].concat(highlight ? styles.highlight : [])}>
+        {name}
+      </h5>
+      <div css={styles.price}>
+        <img title={name} src={imageUrl} />
+        {typeof price === 'string' ? <h2>{price}</h2> : price}
+      </div>
+      <div css={styles.features}>
+        {features.map((feature, i) => (
+          <div key={`feature-${i}`} css={styles.feature} className="ie-fix">
+            <SVGIcon icon="#checkmark" extraCss={styles.checkmarkIcon} />
+            {feature}
+          </div>
         ))}
       </div>
-      {cta === 'Coming soon' ? (
-        <Button disabled transparent>
-          {cta}
-        </Button>
-      ) : (
-        <a href={slug} className="btn btn-transparent" tabIndex={0} title={cta}>
+      <div css={styles.footer}>
+        <h5>{description}</h5>
+        <a
+          href={slug}
+          className={`btn btn-full btn-small${
+            highlight ? '' : ' btn-transparent'
+          }`}
+          tabIndex={0}
+          title={cta}>
           {cta}
         </a>
-      )}
+        <div css={styles.subtext}>{subtext}</div>
+      </div>
     </div>
   )
 }
 
 const styles = {
   plan: css`
-    position: relative;
-    margin-top: 75px;
-    height: 100%;
-    .btn {
-      width: 100%;
-    }
+    width: 100%;
+    border: 1px solid ${theme.pricingBorder};
+    border-radius: 7px;
+    margin-bottom: 20px;
+    overflow: hidden;
 
     ${theme.ieBreakpointMinDefault} {
-      margin-left: 12px;
-      margin-right: 12px;
-      width: 186px;
+      margin-left: 10px;
+      margin-right: 10px;
+      width: 245px;
     }
-  `,
-  card: css`
-    width: 100%;
-    border: 1px solid ${theme.mainBorder};
-    border-top: 6px solid ${theme.primaryColor.fade(0.75).toString()};
-    border-radius: 0 0 7px 7px;
-    padding: 70px 0 50px;
-    margin-bottom: 25px;
 
     ${theme.MIN_DEFAULT_MEDIA_QUERY} {
-      height: calc(100% - 44px - 25px - 75px);
+      display: flex;
+      flex-direction: column;
+      display: grid;
+      grid-template-rows: auto auto 1fr 250px;
     }
-    ${theme.ieBreakpointMinDefault} {
-      height: 100%;
+
+    ${theme.MIN_LARGE_DISPLAY_MEDIA_QUERY} {
+      grid-template-rows: auto auto 1fr 227px;
+    }
+  `,
+  header: css`
+    background: white;
+    text-transform: uppercase;
+    text-align: center;
+    border-bottom: 1px solid ${theme.pricingBorder};
+    padding: 10px;
+  `,
+  highlight: css`
+    background: linear-gradient(to right, ${theme.secondary}, ${theme.primary});
+    color: white;
+  `,
+  price: css`
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    height: 180px;
+    background: linear-gradient(${theme.pricingBorder}, transparent);
+
+    h2 {
+      font-size: 42px;
+    }
+  `,
+  features: css`
+    width: 100%;
+    text-align: left;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    align-items: flex-start;
+    flex-grow: 1;
+    padding: 0 0 20px;
+  `,
+  feature: css`
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    font-size: 14px;
+    padding: 10px 10px 10px 12px;
+
+    a {
+      font-weight: 400;
+    }
+  `,
+  checkmarkIcon: css`
+    width: 27px;
+    height: 27px;
+    fill: ${theme.primary};
+    flex-shrink: 0;
+  `,
+  footer: css`
+    width: 100%;
+    background: white;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    align-items: center;
+    text-align: center;
+    padding: 15px;
+    border-top: 1px solid ${theme.pricingBorder};
+
+    h5 {
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      margin: 5px 0 25px;
+      width: 100%;
+      height: 80px;
+    }
+  `,
+  subtext: css`
+    font-size: 14px;
+    font-style: italic;
+    margin-top: 10px;
+    width: 100%;
+
+    a {
+      font-weight: 400;
     }
   `
 }

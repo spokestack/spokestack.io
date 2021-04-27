@@ -1,13 +1,13 @@
 import * as theme from '../styles/theme'
 
 import { Link, PageRendererProps } from 'gatsby'
-import React, { Fragment } from 'react'
 
 import Author from './Author'
 import Create from './homepage/Create'
 import DarkModeButton from './DarkModeButton'
 import Layout from '../components/Layout'
 import { MarkdownRemark } from '../utils/graphql'
+import React from 'react'
 import { RelatedLink } from '../types'
 import SEO from '../components/SEO'
 import Tags from './Tags'
@@ -55,20 +55,18 @@ export default function BlogPost({ location, post, related }: Props) {
               tags={post.fields.tags?.filter(Boolean) as string[]}
               header="Related Tags"
             />
-            {related && !!related.length && (
-              <Fragment>
+            {!!related?.length && (
+              <div css={styles.relatedLinks}>
                 <h6>Related Articles</h6>
-                <div css={styles.relatedLinks}>
-                  {related.map((link, i) => (
-                    <Link
-                      key={`related-${i}`}
-                      to={link.href}
-                      className="content-link">
-                      {link.title}
-                    </Link>
-                  ))}
-                </div>
-              </Fragment>
+                {related.map((link, i) => (
+                  <Link
+                    key={`related-${i}`}
+                    to={link.href}
+                    className="content-link">
+                    {link.title}
+                  </Link>
+                ))}
+              </div>
             )}
           </section>
         )}
@@ -144,6 +142,7 @@ const styles = {
   relatedLinks: css`
     display: flex;
     flex-direction: column;
+    margin-top: 15px;
 
     a {
       margin-bottom: 10px;

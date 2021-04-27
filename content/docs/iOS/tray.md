@@ -1,5 +1,5 @@
 ---
-title: Spokestack Tray
+title: Spokestack Tray for iOS
 navId: Tray (iOS)
 description: Getting started with Spokestack Tray for iOS
 draft: false

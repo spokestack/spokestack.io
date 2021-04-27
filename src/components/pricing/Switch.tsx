@@ -14,6 +14,8 @@ interface State {
   x: number
 }
 
+const KNOB_WIDTH = 83
+
 export default class Switch extends PureComponent<Props, State> {
   private dragged?: boolean
   private prevX?: number
@@ -22,7 +24,7 @@ export default class Switch extends PureComponent<Props, State> {
 
   state: State = {
     moving: false,
-    x: this.props.yearly ? 0 : 81
+    x: this.props.yearly ? 0 : KNOB_WIDTH
   }
 
   componentDidMount() {
@@ -109,6 +111,7 @@ export default class Switch extends PureComponent<Props, State> {
   render() {
     const { yearly, extraCss } = this.props
     const { moving, x } = this.state
+    const halfWidth = KNOB_WIDTH / 2
     return (
       <button
         tabIndex={0}
@@ -128,10 +131,10 @@ export default class Switch extends PureComponent<Props, State> {
         }}>
         <div css={styles.track}>
           <div className="switch-text" css={styles.text}>
-            Bill Yearly
+            Yearly
           </div>
           <div className="switch-text" css={styles.text}>
-            Bill Monthly
+            Monthly
           </div>
         </div>
         <div
@@ -145,19 +148,23 @@ export default class Switch extends PureComponent<Props, State> {
               ? `translateX(${x}px)`
               : yearly
               ? 'none'
-              : 'translateX(81px)'
+              : `translateX(${KNOB_WIDTH}px)`
           }}>
           <div
             className="switch-text"
             css={styles.text}
-            style={{ opacity: moving ? (40.5 - x) / 40.5 : yearly ? 1 : 0 }}>
-            Bill Yearly
+            style={{
+              opacity: moving ? (halfWidth - x) / halfWidth : yearly ? 1 : 0
+            }}>
+            Yearly
           </div>
           <div
             className="switch-text"
             css={styles.text}
-            style={{ opacity: moving ? (x - 40.5) / 40.5 : yearly ? 0 : 1 }}>
-            Bill Monthly
+            style={{
+              opacity: moving ? (x - halfWidth) / halfWidth : yearly ? 0 : 1
+            }}>
+            Monthly
           </div>
         </div>
       </button>
@@ -181,30 +188,29 @@ const styles = {
     top: 0;
     left: 0;
     right: 0;
-    height: 35px;
+    height: 31px;
     display: flex;
     flex-direction: row;
     justify-content: space-between;
     align-items: center;
-    padding: 0 17px;
-    border-radius: 22px;
-    background-color: ${theme.mainBorder};
+    padding: 0 18px;
+    border-radius: 25px;
+    background-color: white;
+    border: 1px solid ${theme.primary};
 
     .switch-text {
-      opacity: 0.5;
       padding-top: 1px;
     }
   `,
   knob: css`
     position: relative;
-    width: 85px;
-    height: 35px;
+    width: 83px;
+    height: 31px;
     display: flex;
     justify-content: center;
     align-items: center;
-    border-radius: 22px;
-    background-color: white;
-    border: 1px solid ${theme.primary};
+    border-radius: 30px;
+    background-color: ${theme.primary};
 
     &:not(.moving) {
       transition: transform 0.1s ${theme.transitionEasing};
@@ -215,7 +221,6 @@ const styles = {
     }
 
     .switch-text {
-      font-weight: 700;
       position: absolute;
       top: 0;
       bottom: 0;
@@ -225,11 +230,11 @@ const styles = {
       justify-content: center;
       align-items: center;
       text-align: center;
-      color: ${theme.primary};
+      color: white;
     }
   `,
   text: css`
-    color: ${theme.header};
-    font-size: 11px;
+    color: ${theme.primary};
+    font-size: 12px;
   `
 }

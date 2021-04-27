@@ -1,5 +1,5 @@
 ---
-title: Spokestack Tray
+title: Spokestack Tray for React Native
 navId: Tray (react-native)
 description: Getting started with Spokestack Tray for React Native
 draft: false

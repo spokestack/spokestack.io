@@ -59,6 +59,7 @@ const styles = {
     display: grid;
     grid-template-columns: 100%;
     min-height: 300px;
+    position: relative;
 
     ${ieBreakpoint} {
       display: flex;

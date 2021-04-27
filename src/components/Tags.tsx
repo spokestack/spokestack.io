@@ -9,7 +9,7 @@ import toUrl from '../utils/toUrl'
 interface Props {
   // Url that represents showing all tags
   allUrl?: string
-  header: string
+  header?: string
   tags: string[]
 }
 
@@ -58,7 +58,6 @@ const styles = {
     display: flex;
     flex-wrap: wrap;
     margin: -5px;
-    padding-bottom: 15px;
 
     .btn {
       display: inline-flex;

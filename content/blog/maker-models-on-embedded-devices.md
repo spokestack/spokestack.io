@@ -1,18 +1,18 @@
 ---
-title: Learn to use wake word and text-to-speech on a Raspberry Pi.
-date: '2020-10-05'
+title: Learn to use Custom Wake Word and Text-to-Speech on a Raspberry Pi.
+date: '2021-04-28'
 description: Following this guide teaches you how to deploy your Maker models on an embedded device.
 author: will
 tags: Apps, Engineering, Python, Tutorial
 draft: true
-hero: ../assets/blog/
+hero: null
 ---
 
-One of the primary motivations for working on [spokestack-python](https://github.com/spokestack/spokestack-python) was to allow our models to run on embedded devices like [Raspberry Pi](raspberrypi.org). We are excited to show you how easy it is to use [Wake Word](/docs/concepts/wakeword) and [TTS](/docs/concepts/tts) models on these devices.
+One of the primary motivations for working on [spokestack-python](https://github.com/spokestack/spokestack-python) was to allow our models to run on embedded devices like [Raspberry Pi](https://www.raspberrypi.org/). We are excited to show you how easy it is to use [Wake Word](/docs/concepts/wakeword) and [TTS](/docs/concepts/tts) models on these devices.
 
 ## Spokestack Account
 
-You will want to [login](https://www.spokestack.io/account/login) and get your API keys for this tutorial. If you do not already have a Spokestack account please [create one](https://www.spokestack.io/account/create)
+You will want to [login](/account/login) and get your API keys for this tutorial. If you do not already have a Spokestack account please [create one](/account/create)
 
 ## Hardware
 
@@ -102,6 +102,6 @@ You will want to add your API keys to the `const.py` in `KEY_ID` and `KEY_SECRET
 python app.py
 ```
 
-### Wrapping Up
+## Wrapping Up
 
 In this tutorial, we covered how to set up Spokestack on an embedded device. This should get you started with using Spokestack with your projects. If you run into any trouble be sure to reach out through our [channels](/support).

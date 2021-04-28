@@ -30,7 +30,7 @@ This tutorial is geared toward the [Raspberry Pi 4B](https://www.raspberrypi.org
 
 ## Raspberry Pi Setup
 
-For the initial setup of the Raspberry Pi we recommend following the [Adafruit Voice Bonnet tutorial](https://learn.adafruit.com/adafruit-voice-bonnet/overview). This guide walks you through everything from OS installation to sound configuration. In addition to the Adafruit instructions there are few Spokestack specific instructions/tips in the following. These instructions should be followed while connected to your Raspberry Pi via SSH.
+For the initial setup of the Raspberry Pi we recommend following the [Adafruit Voice Bonnet tutorial](https://learn.adafruit.com/adafruit-voice-bonnet/overview). This guide walks you through everything from OS installation to sound configuration. In addition to the Adafruit instructions, there are a few Spokestack-specific instructions/tips in the following. These instructions should be followed while connected to your Raspberry Pi via SSH.
 
 ### Audio
 

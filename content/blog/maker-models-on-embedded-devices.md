@@ -79,7 +79,7 @@ pip install spokestack==0.0.20
 
 ## Testing with a Project
 
-We will test with our "[Hello, World! project](https://github.com/spokestack/python-hello-world)". Keep in mind we installed the dependencies in the previous sections so you will not need to follow that project's README.
+We will test with our ["Hello, World!" project](https://github.com/spokestack/python-hello-world). Keep in mind we installed the dependencies in the previous sections, so you will not need to follow that project's README.
 
 ```shell
 git clone https://github.com/spokestack/python-hello-world.git

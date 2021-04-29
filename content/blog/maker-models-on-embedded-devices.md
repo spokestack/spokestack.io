@@ -1,18 +1,17 @@
 ---
-title: Learn to use wake word and text-to-speech on a Raspberry Pi.
-date: '2020-10-05'
+title: Learn to Use Custom Wake Word and Text-to-Speech on a Raspberry Pi.
+date: '2021-04-28'
 description: Following this guide teaches you how to deploy your Maker models on an embedded device.
 author: will
 tags: Apps, Engineering, Python, Tutorial
 draft: true
-hero: ../assets/blog/
 ---
 
-One of the primary motivations for working on [spokestack-python](https://github.com/spokestack/spokestack-python) was to allow our models to run on embedded devices like [Raspberry Pi](raspberrypi.org). We are excited to show you how easy it is to use [Wake Word](/docs/concepts/wakeword) and [TTS](/docs/concepts/tts) models on these devices.
+One of the primary motivations for working on [spokestack-python](https://github.com/spokestack/spokestack-python) was to allow our models to run on embedded devices like [Raspberry Pi](https://www.raspberrypi.org/). We are excited to show you how easy it is to use [Wake Word](/docs/concepts/wakeword) and [TTS](/docs/concepts/tts) models on these devices.
 
 ## Spokestack Account
 
-You will want to [login](https://www.spokestack.io/account/login) and get your API keys for this tutorial. If you do not already have a Spokestack account please [create one](https://www.spokestack.io/account/create)
+You will want to [login](/account/login) and get your API keys for this tutorial. If you do not already have a Spokestack account, please [create one](/account/create).
 
 ## Hardware
 
@@ -30,7 +29,7 @@ This tutorial is geared toward the [Raspberry Pi 4B](https://www.raspberrypi.org
 
 ## Raspberry Pi Setup
 
-For the initial setup of the Raspberry Pi we recommend following the [Adafruit Voice Bonnet tutorial](https://learn.adafruit.com/adafruit-voice-bonnet/overview). This guide walks you through everything from OS installation to sound configuration. In addition, to the Adafruit instructions there are few Spokestack specific instructions/tips in the following.
+For the initial setup of the Raspberry Pi we recommend following the [Adafruit Voice Bonnet tutorial](https://learn.adafruit.com/adafruit-voice-bonnet/overview). This guide walks you through everything from OS installation to sound configuration. In addition to the Adafruit instructions, there are a few Spokestack-specific instructions/tips in the following. These instructions should be followed while connected to your Raspberry Pi via SSH.
 
 ### Audio
 
@@ -50,17 +49,7 @@ systemctl --user start pulseaudio.socket pulseaudio.service
 
 The following are some system dependencies that need to be installed before installing `spokestack` on the Raspberry Pi.
 
-#### PyAudio
-
-`sudo apt-get -y install portaudio19-dev`
-
-#### Numpy
-
-`sudo apt-get -y install libblas-dev`
-
-#### Streamp3
-
-`sudo apt-get -y install libmp3lame-dev`
+`sudo apt-get -y install portaudio19-dev libblas-dev libmp3lame-dev`
 
 ### Install Rust for Tokenizers
 
@@ -70,7 +59,7 @@ The command to install Rust is taken directly from the [instructions](https://ww
 
 ### TFlite Interpreter
 
-For this, we can go with TensorFlow recommended apt package. We've used the `pip` versions in the past, but this one is easier to install. These commands are directly from the original [instructions](https://www.tensorflow.org/lite/guide/python#install_tensorflow_lite_for_python).
+For this, we can go with TensorFlow's recommended apt package. We've used the `pip` versions in the past, but this one is easier to install. These commands are directly from the original [instructions](https://www.tensorflow.org/lite/guide/python#install_tensorflow_lite_for_python).
 
 ```shell
 echo "deb https://packages.cloud.google.com/apt coral-edgetpu-stable main" | sudo tee /etc/apt/sources.list.d/coral-edgetpu.list
@@ -81,7 +70,7 @@ sudo apt-get install python3-tflite-runtime
 
 ## Installing Spokestack
 
-Spokestack should be installed though `pip`. We are currently using `v0.0.20` for this tutorial. However, newer versions should be backwards compatible.
+Spokestack should be installed through `pip`. We are currently using `v0.0.20` for this tutorial.
 
 ```shell
 pip install spokestack==0.0.20
@@ -89,7 +78,7 @@ pip install spokestack==0.0.20
 
 ## Testing with a Project
 
-We will test with our Spokestack "Hello, World!" [project](https://github.com/spokestack/python-hello-world). Keep in mind we installed the dependencies in the previous sections.
+We will test with our ["Hello, World!" project](https://github.com/spokestack/python-hello-world). Keep in mind we installed the dependencies in the previous sections, so you will not need to follow that project's README.
 
 ```shell
 git clone https://github.com/spokestack/python-hello-world.git
@@ -102,6 +91,6 @@ You will want to add your API keys to the `const.py` in `KEY_ID` and `KEY_SECRET
 python app.py
 ```
 
-### Wrapping Up
+## Wrapping Up
 
-In this tutorial, we covered how to set up Spokestack on an embedded device. This should get you started with using Spokestack with your projects. If you run into any trouble be sure to reach out through our [channels](/support).
+In this tutorial, we covered how to set up Spokestack on an embedded device. This should get you started with using Spokestack with your projects. If you run into any trouble be sure to reach out through our [support channels](/support).

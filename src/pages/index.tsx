@@ -1,6 +1,6 @@
 import { PageRendererProps, graphql } from 'gatsby'
 
-import Create from '../components/homepage/Create'
+import Create from '../components/Create'
 import Flexible from '../components/homepage/Flexible'
 import Header from '../components/homepage/Header'
 import Layout from '../components/Layout'

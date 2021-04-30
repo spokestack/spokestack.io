@@ -1,7 +1,7 @@
-import BlueCard, { BlueCardProps } from '../BlueCard'
+import BlueCard, { BlueCardProps } from './BlueCard'
 
 import React from 'react'
-import SVGIcon from '../SVGIcon'
+import SVGIcon from './SVGIcon'
 import { css } from '@emotion/react'
 
 export default function Create(props: Partial<BlueCardProps>) {

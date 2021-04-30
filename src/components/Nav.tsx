@@ -11,6 +11,7 @@ import NavDropdown from './NavDropdown'
 import NavLink from './NavLink'
 import NavLinkDropdown from './NavLinkDropdown'
 import { WindowLocation } from '@reach/router'
+import { StaticImage } from 'gatsby-plugin-image'
 
 interface Props {
   extraCss?: SerializedStyles | SerializedStyles[]
@@ -75,9 +76,112 @@ export default function Nav({ extraCss }: Props) {
       <div className="nav-content" css={contentStyles}>
         <ul css={styles.links}>
           <li css={styles.listItem} aria-label="Features Navigation">
-            <NavLink partiallyActive to="/features" title="Spokestack Features">
-              Features
-            </NavLink>
+            <NavDropdown title="Features">
+              <div css={styles.dropdownContent}>
+                <div css={styles.dropdownColumn}>
+                  <NavLinkDropdown
+                    extraCss={styles.navLinkDropdown}
+                    href="/features/asr"
+                    partiallyActive
+                    title="Automatic Speech recognition"
+                    image={
+                      <StaticImage
+                        css={styles.dropdownLinkImage}
+                        alt="Automatic Speech Recognition"
+                        src="../images/navigation/asr.png"
+                      />
+                    }
+                    text="Start integrating voice using our tools &amp; services"
+                  />
+                  <NavLinkDropdown
+                    extraCss={styles.navLinkDropdown}
+                    href="/features/tts"
+                    title="Text-to-Speech"
+                    image={
+                      <StaticImage
+                        css={styles.dropdownLinkImage}
+                        alt="Text-to-Speech"
+                        src="../images/navigation/tts.png"
+                      />
+                    }
+                    text="Step-by-step instructions to build real-world products"
+                  />
+                  <NavLinkDropdown
+                    extraCss={styles.navLinkDropdown}
+                    href="/features/nlu"
+                    partiallyActive
+                    title="Natural Language Understanding"
+                    image={
+                      <StaticImage
+                        css={styles.dropdownLinkImage}
+                        alt="Natural Language Understanding"
+                        src="../images/navigation/nlu.png"
+                      />
+                    }
+                    text="How-to articles on creating voice assistants from our team"
+                  />
+                </div>
+                <div css={styles.dropdownColumn}>
+                  <NavLinkDropdown
+                    extraCss={styles.navLinkDropdown}
+                    href="/features/wake-word"
+                    partiallyActive
+                    title="Wake word"
+                    image={
+                      <StaticImage
+                        css={styles.dropdownLinkImage}
+                        alt="Wake word"
+                        src="../images/navigation/wake-word.png"
+                      />
+                    }
+                    text="How-to articles on creating voice assistants from our team"
+                  />
+                  <NavLinkDropdown
+                    extraCss={styles.navLinkDropdown}
+                    href="/features/keyword"
+                    partiallyActive
+                    title="Keyword"
+                    image={
+                      <StaticImage
+                        css={styles.dropdownLinkImage}
+                        alt="Keyword"
+                        src="../images/navigation/keyword.png"
+                      />
+                    }
+                    text="How-to articles on creating voice assistants from our team"
+                  />
+                  <NavLinkDropdown
+                    extraCss={styles.navLinkDropdown}
+                    href="/features/speech-pipeline"
+                    partiallyActive
+                    title="Speech Pipeline"
+                    image={
+                      <StaticImage
+                        css={styles.dropdownLinkImage}
+                        alt="Speech Pipeline"
+                        src="../images/navigation/speech-pipeline.png"
+                      />
+                    }
+                    text="How-to articles on creating voice assistants from our team"
+                  />
+                </div>
+                <div
+                  className="dropdown-col-full"
+                  css={[
+                    styles.dropdownColumn,
+                    styles.dropdownColumnFull,
+                    styles.desktopOnly
+                  ]}>
+                  <h4>
+                    <a href="/account/create">Get started</a>
+                  </h4>
+                  <p>No credit card required</p>
+                  <a className="btn btn-primary" href="/account/create">
+                    Sign up free
+                  </a>
+                </div>
+              </div>
+            </NavDropdown>
           </li>
           <li css={styles.listItem} aria-label="Resources Navigation">
             <NavDropdown title="Resources">
@@ -293,13 +397,14 @@ const styles = {
     flex-direction: column;
     display: grid;
     grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    padding-left: 20px;
   `,
   dropdownColumn: css`
     display: flex;
     flex-direction: column;
 
     ${theme.MIN_DEFAULT_MEDIA_QUERY} {
-      padding: 20px 0 20px 20px;
+      padding: 20px 20px 20px 0;
     }
 
     ${theme.ieBreakpoint} {
@@ -328,6 +433,11 @@ const styles = {
         ${borderTopStyle};
       }
     }
+  `,
+  dropdownLinkImage: css`
+    flex-shrink: 0;
+    width: 60px;
+    margin-right: 10px;
   `,
   mobileLogin: css`
     position: relative;

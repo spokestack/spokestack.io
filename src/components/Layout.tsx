@@ -58,6 +58,7 @@ const styles = {
   content: css`
     display: grid;
     grid-template-columns: 100%;
+    grid-template-rows: max-content;
     min-height: 300px;
     position: relative;
 

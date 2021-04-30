@@ -7,7 +7,6 @@ import { css } from '@emotion/react'
 export default function ContactUs(props: Partial<BlueCardProps>) {
   return (
     <BlueCard
-      extraCss={styles.card}
       button={
         <a href="/account/create" className="btn btn-primary">
           Contact Us
@@ -27,11 +26,6 @@ export default function ContactUs(props: Partial<BlueCardProps>) {
 }
 
 const styles = {
-  card: css`
-    margin: 0 !important;
-    width: 100% !important;
-    border-radius: 0;
-  `,
   arrowIcon: css`
     width: 20px;
     height: 20px;

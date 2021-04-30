@@ -3,7 +3,7 @@ import * as theme from '../styles/theme'
 import { Link, PageRendererProps } from 'gatsby'
 
 import Author from './Author'
-import Create from './homepage/Create'
+import Create from './Create'
 import DarkModeButton from './DarkModeButton'
 import Layout from '../components/Layout'
 import { MarkdownRemark } from '../utils/graphql'

@@ -105,6 +105,42 @@ export default css`
       color: ${theme.linkActive};
       text-decoration-color: ${theme.linkActive};
     }
+
+    &.link-secondary {
+      color: ${theme.linkSecondary};
+
+      .icon {
+        fill: ${theme.linkSecondary};
+        transition: fill 0.1s ${theme.transitionEasing};
+      }
+
+      &:visited {
+        color: ${theme.linkSecondaryVisited};
+
+        .icon {
+          fill: ${theme.linkSecondaryVisited};
+        }
+      }
+      &:hover {
+        color: ${theme.linkSecondaryHover};
+
+        .icon {
+          fill: ${theme.linkSecondaryHover};
+        }
+      }
+      &:active {
+        color: ${theme.linkSecondaryActive};
+
+        .icon {
+          fill: ${theme.linkSecondaryActive};
+        }
+      }
+    }
+  }
+  .link-with-icon {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
   }
   h1 a {
     color: ${theme.text};
@@ -122,14 +158,14 @@ export default css`
     text-align: center;
   }
   blockquote {
-    color: hsl(0, 0%, 40%);
     border-left: 6px solid ${theme.primaryLight};
-    font-style: italic;
-    margin-left: -15px;
-    padding: 5px 10px;
-  }
-  blockquote * {
+    font-size: 24px;
     margin: 0;
+    padding: 5px 20px;
+
+    * {
+      margin: 0;
+    }
   }
   .blue {
     color: ${theme.primary} !important;
@@ -163,12 +199,18 @@ export default css`
     width: 100%;
     margin: 0 0 15px;
   }
-  code {
+  code:not(pre > code) {
     background-color: ${theme.codeBackground};
-    padding: 2px 3px;
+    border: 1px solid ${theme.mainBorder};
+    border-radius: 7px;
+    font-weight: 600;
+    padding: 2px 5px;
   }
   pre code {
     padding: 0;
+  }
+  div.code-toolbar > .toolbar {
+    right: 20px;
   }
   ul {
     margin: 0 0 20px;
@@ -406,13 +448,9 @@ export default css`
       margin-top: 15px;
     }
   }
-  .link-with-icon {
-    text-decoration: none;
-
-    svg {
-      margin-left: 3px;
-      margin-bottom: -2px;
-    }
+  .columns {
+    display: flex;
+    flex-direction: column;
   }
   .card ul {
     margin-left: 34px;
@@ -517,12 +555,6 @@ export default css`
         }
       }
     }
-    blockquote {
-      color: hsl(0, 0%, 80%);
-      border-left-color: hsl(0, 0%, 80%);
-      padding-left: 20px;
-      margin-left: 0;
-    }
     .blue {
       color: ${theme.primaryLight} !important;
     }
@@ -553,6 +585,23 @@ export default css`
     h4,
     .title {
       font-size: 24px;
+    }
+    .columns {
+      flex-direction: row;
+    }
+    .column-half {
+      width: calc(50% - 12.5px);
+
+      &:first-of-type {
+        margin-right: 25px;
+      }
+    }
+    .column-third {
+      width: calc(33% - ${50 / 3}px);
+
+      &:nth-last-of-type(n + 2) {
+        margin-right: 25px;
+      }
     }
     .input-wrap {
       flex-direction: row;

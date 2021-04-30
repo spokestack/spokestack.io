@@ -38,7 +38,7 @@ export default function Plan({
         {name}
       </h5>
       <div css={styles.price}>
-        <img title={name} src={imageUrl} />
+        <img alt={name} src={imageUrl} />
         {typeof price === 'string' ? <h2>{price}</h2> : price}
       </div>
       <div css={styles.features}>
@@ -137,10 +137,11 @@ const styles = {
     }
   `,
   checkmarkIcon: css`
-    width: 27px;
-    height: 27px;
+    width: 24px;
+    height: 24px;
     fill: ${theme.primary};
     flex-shrink: 0;
+    margin-right: 5px;
   `,
   footer: css`
     width: 100%;

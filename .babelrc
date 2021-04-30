@@ -1,6 +1,15 @@
 {
-  "plugins": ["graphql-tag", "inline-import", "transform-inline-environment-variables"],
   "presets": ["babel-preset-gatsby"],
+  "plugins": [
+    "graphql-tag",
+    "inline-import",
+    "transform-inline-environment-variables",
+    ["prismjs", {
+      "languages": ["javascript", "swift", "java", "kotlin", "python"],
+      "plugins": ["line-numbers", "show-language"],
+      "css": false
+    }]
+  ],
   "env": {
     "production": {
       "plugins": ["transform-remove-console"]

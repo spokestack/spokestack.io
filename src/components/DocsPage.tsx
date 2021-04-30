@@ -3,7 +3,7 @@ import * as theme from '../styles/theme'
 import { Link, PageRendererProps, graphql, useStaticQuery } from 'gatsby'
 import { MarkdownRemark, Query } from '../utils/graphql'
 
-import Create from './homepage/Create'
+import Create from './Create'
 import DarkModeButton from '../components/DarkModeButton'
 import Layout from '../components/Layout'
 import React from 'react'

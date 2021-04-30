@@ -109,6 +109,7 @@ const styles = {
     align-items: center;
     text-align: center;
     padding: 50px 0;
+    border-bottom: 1px solid ${theme.mainBorder};
   `,
   inputWrap: css`
     display: flex;

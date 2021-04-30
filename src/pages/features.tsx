@@ -7,6 +7,7 @@ import React from 'react'
 import SEO from '../components/SEO'
 import { css } from '@emotion/react'
 import { PageRendererProps } from 'gatsby'
+import { StaticImage } from 'gatsby-plugin-image'
 
 export default function Features({ location }: PageRendererProps) {
   return (
@@ -30,28 +31,88 @@ export default function Features({ location }: PageRendererProps) {
           <h2>Libraries &amp; services</h2>
           <div css={styles.features}>
             <Feature
-              id="understanding"
-              imageUrl="/navigation/nlu.svg"
-              name="Natural language understanding"
-              text="Natural language understanding (NLU) is what makes user speech actionable. Spokestack provides deep learning-based NLU models that can be deployed on device or to a web service. On-device NLU keeps your customer data away from third-party services and can operate even without a network connection."
-            />
-            <Feature
               id="speech-recognition"
-              imageUrl="/navigation/asr.svg"
-              name="Automatic speech recognition"
-              text="The technology for converting spoken words to text is known as automatic speech recognition (ASR). The Spokestack open-source native libraries provide a convenient API across multiple ASR providers such as Apple, Google, and Microsoft."
+              image={
+                <StaticImage
+                  css={styles.image}
+                  alt="Automatic Speech Recognition"
+                  src="../images/navigation/asr.png"
+                />
+              }
+              name="Automatic Speech Recognition"
+              text="The technology for converting spoken words to text is known as Automatic Speech Recognition (ASR). The Spokestack open-source native libraries provide a convenient API across multiple ASR providers such as Apple, Google, and Microsoft."
             />
             <Feature
               id="text-to-speech"
-              imageUrl="/navigation/tts.svg"
+              image={
+                <StaticImage
+                  css={styles.image}
+                  alt="Text-to-speech"
+                  src="../images/navigation/tts.png"
+                />
+              }
               name="Text-to-speech &amp; custom voice"
               text="Text-to-speech (TTS) is how voice user interfaces talk back. Spokestack provides a hosted TTS service that you can access directly or through our native libraries. What separates Spokestack TTS from other providers is our synthetic voice capability. Spokestack will build a custom voice model from your audio data so you can present a branded voice experience to your customers."
             />
             <Feature
-              id="wakeword"
-              imageUrl="/navigation/wakeword.svg"
+              id="wake-word"
+              image={
+                <StaticImage
+                  css={styles.image}
+                  alt="Wake word"
+                  src="../images/navigation/wake-word.png"
+                />
+              }
               name="Wake word"
               text="A wake word is a specific term or phrase that can wake up an app for active listening. “Hey Siri” and “Alexa” are two of the most widely known wake words. The Spokestack native libraries have built-in support for wake words on mobile. Our services include building a customized, high-performance wake word model for your brand."
+            />
+            <Feature
+              id="keyword"
+              image={
+                <StaticImage
+                  css={styles.image}
+                  alt="Keyword"
+                  src="../images/navigation/keyword.png"
+                />
+              }
+              name="Keyword"
+              text="A keyword is a brief command that supports variations in phrasing—using a fast, lightweight model—without user audio leaving the device."
+            />
+            <Feature
+              id="vad"
+              image={
+                <StaticImage
+                  css={styles.image}
+                  alt="Voice Activity Detection"
+                  src="../images/navigation/vad.png"
+                />
+              }
+              name="Voice Activity Detection"
+              text="Voice Activity Detection (VAD) is responsible for making an initial determination of whether or not a snippet of audio contains human speech. Ignoring audio that's not detected as speech saves energy and processing power. The savings grow with each downstream processor you have in your speech pipeline."
+            />
+            <Feature
+              id="understanding"
+              image={
+                <StaticImage
+                  css={styles.image}
+                  alt="Natural Language Understanding"
+                  src="../images/navigation/nlu.png"
+                />
+              }
+              name="Natural Language Understanding"
+              text="Natural Language Understanding (NLU) is what makes user speech actionable. Spokestack provides deep learning-based NLU models that can be deployed on device or to a web service. On-device NLU keeps your customer data away from third-party services and can operate even without a network connection."
+            />
+            <Feature
+              id="speech-pipeline"
+              image={
+                <StaticImage
+                  css={styles.image}
+                  alt="Speech Pipeline"
+                  src="../images/navigation/speech-pipeline.png"
+                />
+              }
+              name="Speech Pipeline"
+              text="The speech pipeline is the main way you interact with Spokestack’s VAD, wake word, and speech recognition. The speech pipeline is an extensible audio processing pipeline that includes a variety of built-in speech processors for voice activity detection (VAD), wake word activation, and automatic speech recognition (ASR)."
             />
           </div>
         </section>
@@ -85,6 +146,16 @@ const styles = {
 
     ${MIN_DEFAULT_MEDIA_QUERY} {
       padding: 0;
+    }
+  `,
+  image: css`
+    width: 80px;
+    height: 80px;
+    display: block;
+    flex-shrink: 0;
+
+    ${MIN_DEFAULT_MEDIA_QUERY} {
+      margin-right: 25px;
     }
   `
 }

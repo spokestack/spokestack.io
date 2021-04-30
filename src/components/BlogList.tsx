@@ -3,7 +3,7 @@ import * as theme from '../styles/theme'
 import { Global, SerializedStyles, css } from '@emotion/react'
 
 import BlogListItem from '../components/BlogListItem'
-import Create from './homepage/Create'
+import Create from './Create'
 import DarkModeButton from '../components/DarkModeButton'
 import Layout from '../components/Layout'
 import { MarkdownRemarkEdge } from '../utils/graphql'

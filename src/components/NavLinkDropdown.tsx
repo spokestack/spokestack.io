@@ -9,7 +9,8 @@ interface Props {
   children?: React.ReactNode
   extraCss?: SerializedStyles | SerializedStyles[]
   href?: string
-  imageUrl: string
+  image?: React.ReactNode
+  imageUrl?: string
   partiallyActive?: boolean
   title: string
   text: string
@@ -19,6 +20,7 @@ export default function NavLinkDropdown({
   children,
   extraCss,
   href,
+  image,
   imageUrl,
   partiallyActive,
   title,
@@ -42,7 +44,11 @@ export default function NavLinkDropdown({
           }
         `}
       />
-      <img alt={title} css={styles.dropdownLinkImage} src={imageUrl} />
+      {image
+        ? image
+        : !!imageUrl && (
+            <img alt={title} css={styles.dropdownLinkImage} src={imageUrl} />
+          )}
       <div className="ie-fix" css={styles.dropdownLinkContent}>
         <span className={href ? 'blue' : ''} css={styles.dropdownLinkTitle}>
           {title}

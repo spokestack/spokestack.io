@@ -4,15 +4,15 @@ import { css } from '@emotion/react'
 
 interface Props {
   id: string
-  imageUrl: string
+  image: React.ReactNode
   name: string
   text: string
 }
 
-export default function Feature({ id, imageUrl, name, text }: Props) {
+export default function Feature({ id, image, name, text }: Props) {
   return (
     <div id={id} css={styles.feature}>
-      <img alt={name} src={imageUrl} css={styles.image} />
+      {image}
       <div className="ie-fix" css={styles.featureContent}>
         <h3>{name}</h3>
         <p>{text}</p>
@@ -31,17 +31,7 @@ const styles = {
     ${MIN_DEFAULT_MEDIA_QUERY} {
       flex-direction: row;
       align-items: flex-start;
-
-      img {
-        margin-right: 25px;
-      }
     }
-  `,
-  image: css`
-    width: 80px;
-    height: 80px;
-    display: block;
-    flex-shrink: 0;
   `,
   featureContent: css`
     display: flex;

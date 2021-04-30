@@ -45,15 +45,14 @@ export default function BlueCard({
 
 const styles = {
   card: css`
+    width: 100%;
     display: flex;
     flex-direction: column;
     justify-content: center;
     align-items: center;
     text-align: center;
     background-color: ${theme.primaryLighter};
-    border-radius: 7px;
     padding: 75px 40px;
-    margin: 0 20px;
 
     h3 {
       margin-bottom: 15px;
@@ -66,12 +65,6 @@ const styles = {
 
     ${theme.MIN_DEFAULT_MEDIA_QUERY} {
       min-height: 400px;
-      margin-left: 50px;
-      margin-right: 50px;
-    }
-
-    ${theme.ieBreakpoint} {
-      width: 80%;
     }
   `,
   smallCard: css`
@@ -80,6 +73,7 @@ const styles = {
       max-width: 808px;
       margin: 0 auto;
       min-height: 0;
+      border-radius: 7px;
     }
 
     .title {

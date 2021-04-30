@@ -1,4 +1,6 @@
 import 'prismjs/themes/prism-tomorrow.css'
+import 'prismjs/plugins/line-numbers/prism-line-numbers.css'
+import 'prismjs/plugins/toolbar/prism-toolbar.css'
 import './src/utils/closest-polyfill.js'
 
 import { getDarkModePref } from './src/utils/darkMode'

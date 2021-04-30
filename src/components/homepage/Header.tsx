@@ -30,7 +30,8 @@ const styles = {
     flex-direction: column;
     justify-content: center;
     align-items: center;
-    background: ${theme.mainBackground} url(/background.svg) no-repeat;
+    background: ${theme.mainBackground} url('/homepage/background.svg')
+      no-repeat;
     background-position: center bottom;
     background-size: cover;
     color: ${theme.textDarkBg};

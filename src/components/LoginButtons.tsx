@@ -48,7 +48,7 @@ export default function LoginButtons({
           </a>
         )}
         <a className={`btn ${btnClassName || ''}`} href="/account/create">
-          Create account
+          Sign up free
         </a>
       </div>
       <div className="login-buttons--account">

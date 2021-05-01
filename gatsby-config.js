@@ -245,7 +245,7 @@ module.exports = {
             resolve: 'gatsby-remark-find-replace',
             options: {
               replacements: {
-                ANDROID_VERSION: '11.2.0',
+                ANDROID_VERSION: '11.3.0',
                 ANDROID_TRAY_VERSION: '0.4.4'
               }
             }

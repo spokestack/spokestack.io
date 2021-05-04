@@ -9,8 +9,9 @@ interface Props {
   href: string
   title: string
   icon: string
-  extraCss: SerializedStyles
-  iconCss: SerializedStyles
+  extraCss: SerializedStyles | SerializedStyles[]
+  iconCss: SerializedStyles | SerializedStyles[]
+  transparent?: boolean
 }
 
 export default function SocialLink({
@@ -18,10 +19,15 @@ export default function SocialLink({
   title,
   icon,
   extraCss,
-  iconCss
+  iconCss,
+  transparent
 }: Props) {
+  const style = [styles.socialLink]
+  if (transparent) {
+    style.push(styles.transparent)
+  }
   return (
-    <a css={[styles.socialLink, extraCss]} href={href} title={title}>
+    <a css={style.concat(extraCss!)} href={href} title={title}>
       <SVGIcon icon={icon} extraCss={iconCss} />
     </a>
   )
@@ -34,10 +40,13 @@ const styles = {
     justify-content: center;
     align-items: center;
     border-radius: 50%;
-    margin: 0 5px;
     background-color: ${theme.primary};
     transition: background-color 0.2s ${theme.transitionEasing};
+    cursor: pointer;
 
+    &:not(:last-of-type) {
+      margin-right: 10px;
+    }
     &:hover {
       background-color: ${theme.primaryColor.darken(0.1).hex()};
     }
@@ -47,6 +56,20 @@ const styles = {
 
     svg {
       fill: white;
+    }
+  `,
+  transparent: css`
+    background-color: transparent;
+    border: 1px solid ${theme.primary};
+
+    svg {
+      fill: ${theme.primary};
+    }
+
+    &:hover {
+      svg {
+        fill: white;
+      }
     }
   `,
   title: css`

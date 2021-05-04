@@ -17,10 +17,13 @@ module.exports = {
     siteUrl: siteUrl.href,
     logo: `${siteUrl.href}logo.png`,
     social: {
+      facebook: 'https://www.facebook.com/spokestack',
       forum: 'https://forum.spokestack.io',
       github: 'https://github.com/spokestack',
+      linkedin: 'https://www.linkedin.com/company/spokestack',
       stackoverflow: 'https://stackoverflow.com/questions/tagged/spokestack',
-      twitter: 'https://twitter.com/spokestack'
+      twitter: 'https://twitter.com/spokestack',
+      youtube: 'https://www.youtube.com/channel/UCn1kViAiPO-XzCfREvGI_AA'
     },
     team: [
       {

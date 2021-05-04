@@ -7,10 +7,13 @@ import Logo from './Logo'
 import Newsletter from './Newsletter'
 import { Query } from '../utils/graphql'
 import React from 'react'
+import SocialLink from './SocialLink'
+import AppStoreButton from './AppStoreButton'
 
 export default function Footer() {
   const { site } = useStaticQuery<Query>(footerQuery)
-  const { contact, social } = site!.siteMetadata!
+  const contact = site!.siteMetadata!.contact!
+  const social = site!.siteMetadata!.social!
   return (
     <footer css={styles.footer}>
       <Global
@@ -29,32 +32,135 @@ export default function Footer() {
           <a href="/" css={styles.logoLink} aria-label="Spokestack Home">
             <Logo className="footer-logo" />
           </a>
-          <a css={styles.footerLink} href={`mailto:${contact!.email}`}>
-            {contact!.email}
+          <p>
+            Open source libraries + AutoML tools to put custom voice into your
+            software.
+          </p>
+          <div css={styles.social}>
+            <SocialLink
+              transparent
+              icon="#github"
+              href={social.twitter!}
+              title="GitHub"
+              extraCss={styles.socialIcon}
+              iconCss={styles.githubIcon}
+            />
+            <SocialLink
+              transparent
+              icon="#twitter"
+              href={social.twitter!}
+              title="Twitter"
+              extraCss={styles.socialIcon}
+              iconCss={styles.twitterIcon}
+            />
+            <SocialLink
+              transparent
+              icon="#linkedin"
+              href={social.linkedin!}
+              title="LinkedIn"
+              extraCss={styles.socialIcon}
+              iconCss={styles.linkedinIcon}
+            />
+            <SocialLink
+              transparent
+              icon="#youtube"
+              href={social.youtube!}
+              title="YouTube"
+              extraCss={styles.socialIcon}
+              iconCss={styles.youtubeIcon}
+            />
+            <SocialLink
+              transparent
+              icon="#facebook"
+              href={social.facebook!}
+              title="Facebook"
+              extraCss={styles.socialIcon}
+              iconCss={styles.facebookIcon}
+            />
+          </div>
+          <div css={styles.appLink}>
+            <img
+              alt="Spokestack Studio"
+              src="/mark.svg"
+              css={styles.studioLogo}
+            />
+            <div css={styles.appLinkContent}>
+              <p>
+                Download Spokestack Studio to test wake word, text-to-speech,
+                NLU, and ASR.
+              </p>
+              <AppStoreButton
+                extraCss={styles.appStoreButton}
+                slug="https://apps.apple.com/us/app/spokestack-studio/id1508393980"
+              />
+            </div>
+          </div>
+        </div>
+        <div css={styles.column}>
+          <h5>Products</h5>
+          <a css={styles.footerLink} href="https://github.com/spokestack">
+            Spokestack Open Source
           </a>
-          <a css={styles.footerLink} href={`tel:${contact!.phone}`}>
-            {contact!.phone}
+          <Link css={styles.footerLink} to="/pricing#maker">
+            Spokestack Maker
+          </Link>
+          <Link css={styles.footerLink} to="/pricing#pro">
+            Spokestack Pro
+            <span css={styles.comingSoon}>Coming Soon</span>
+          </Link>
+          <Link css={styles.footerLink} to="/docs/concepts/tray">
+            Spokestack Tray
+          </Link>
+          <Link css={styles.footerLink} to="/features/speech-pipeline">
+            Spokestack Speech Pipeline
+          </Link>
+          <h5>Native Platform SDKs</h5>
+          <a
+            css={styles.footerLink}
+            href="https://github.com/spokestack/spokestack-ios">
+            iOS (Swift, Obj-C)
+          </a>
+          <a
+            css={styles.footerLink}
+            href="https://github.com/spokestack/spokestack-ios">
+            Android (Java, Kotlin)
+          </a>
+          <a
+            css={styles.footerLink}
+            href="https://github.com/spokestack/spokestack-python">
+            Python
+          </a>
+          <a
+            css={styles.footerLink}
+            href="https://github.com/spokestack/react-native-spokestack">
+            React Native
+          </a>
+          <a
+            css={styles.footerLink}
+            href="https://github.com/spokestack/node-spokestack">
+            Node
           </a>
         </div>
         <div css={styles.column}>
           <h5>Features</h5>
-          <Link css={styles.footerLink} to="/features#understanding">
-            Natural Language Understanding
-          </Link>
-          <Link css={styles.footerLink} to="/features#speech-recognition">
-            Automatic Speech Recognition
-          </Link>
-          <Link css={styles.footerLink} to="/features#text-to-speech">
-            Text-to-Speech &amp; Custom Voices
-          </Link>
-          <Link css={styles.footerLink} to="/features#wakeword">
+          <Link css={styles.footerLink} to="/features/wake-word">
             Wake Word
           </Link>
-          <Link css={styles.footerLink} to="/pricing">
-            Pricing
+          <Link css={styles.footerLink} to="/features/keyword">
+            Keyword Recognition
           </Link>
-        </div>
-        <div css={styles.column}>
+          <Link css={styles.footerLink} to="/features/tts">
+            Text-to-Speech
+          </Link>
+          <Link css={styles.footerLink} to="/features/nlu">
+            Natural Language Understanding (NLU)
+          </Link>
+          <Link css={styles.footerLink} to="/features/asr">
+            Automatic Speech Recognition (ASR)
+          </Link>
+          <Link css={styles.footerLink} to="/features/vad">
+            Voice Activity Detection (VAD)
+          </Link>
           <h5>Resources</h5>
           <Link css={styles.footerLink} to="/docs">
             Developer Docs
@@ -65,20 +171,14 @@ export default function Footer() {
           <Link css={styles.footerLink} to="/blog">
             Blog
           </Link>
-          <a
-            css={styles.footerLink}
-            href="https://github.com/spokestack/spokestack-ios">
-            iOS Library
+          <Link css={styles.footerLink} to="/pricing">
+            Pricing
+          </Link>
+          <a css={styles.footerLink} href="/account/create">
+            Get Started Free
           </a>
-          <a
-            css={styles.footerLink}
-            href="https://github.com/spokestack/spokestack-android">
-            Android Library
-          </a>
-          <a
-            css={styles.footerLink}
-            href="https://github.com/spokestack/react-native-spokestack">
-            React Native Library
+          <a css={styles.footerLink} href="/account/login">
+            Sign In
           </a>
         </div>
         <div css={styles.column}>
@@ -89,23 +189,21 @@ export default function Footer() {
           <a css={styles.footerLink} href={social!.github!}>
             GitHub
           </a>
-          <a css={styles.footerLink} href={social!.twitter!}>
-            Twitter
-          </a>
           <a css={styles.footerLink} href={social!.forum!}>
             Forum
           </a>
           <a css={styles.footerLink} href={social!.stackoverflow!}>
             Stack Overflow
           </a>
-        </div>
-        <div css={styles.column}>
           <h5>About</h5>
           <a css={styles.footerLink} href="/about/story">
             Story
           </a>
           <a css={styles.footerLink} href="/about/team">
             Team
+          </a>
+          <a css={styles.footerLink} href={`mailto:${contact!.email}`}>
+            Email Us
           </a>
         </div>
         <div css={styles.bottom}>
@@ -126,7 +224,7 @@ const styles = {
   footer: css`
     display: flex;
     flex-direction: column;
-    padding: 0 20px 40px;
+    padding: 0 20px 50px;
 
     ${theme.MIN_DEFAULT_MEDIA_QUERY} {
       padding-left: 100px;
@@ -137,12 +235,15 @@ const styles = {
     position: relative;
     display: flex;
     flex-direction: column;
-    padding: 25px 0 50px;
+    padding: 50px 0 75px;
     margin: 0 auto;
 
     ${theme.MIN_DEFAULT_MEDIA_QUERY} {
       flex-direction: row;
       justify-content: center;
+      display: grid;
+      grid-template-columns: 295px 265px 265px 265px;
+      grid-gap: 50px;
     }
   `,
   column: css`
@@ -151,40 +252,91 @@ const styles = {
     justify-content: flex-start;
     align-items: center;
     text-align: center;
-    padding: 25px 0;
 
     h5 {
       text-transform: uppercase;
       color: ${theme.primary};
-      margin-bottom: 25px;
+      margin-bottom: 10px;
     }
 
     ${theme.MIN_DEFAULT_MEDIA_QUERY} {
       align-items: flex-start;
       text-align: left;
 
-      & + & {
-        margin-left: 40px;
+      h5:not(:first-of-type) {
+        margin-top: 10px;
       }
     }
 
-    ${theme.MIN_LARGE_DISPLAY_MEDIA_QUERY} {
-      &:not(:first-of-type) + & {
-        margin-left: 80px;
+    ${theme.ieBreakpointMinDefault} {
+      width: 25%;
+      & + & {
+        margin-left: 50px;
       }
     }
   `,
   logoLink: css`
-    margin-top: -25px;
+    margin-top: -15px;
+  `,
+  social: css`
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    margin-bottom: 50px;
+  `,
+  socialIcon: css`
+    width: 50px;
+    height: 50px;
+  `,
+  githubIcon: css`
+    width: 17px;
+    height: 16px;
+  `,
+  twitterIcon: css`
+    width: 17px;
+    height: 15px;
+  `,
+  linkedinIcon: css`
+    width: 20px;
+    height: 20px;
+  `,
+  youtubeIcon: css`
+    width: 17px;
+    height: 17px;
+  `,
+  facebookIcon: css`
+    width: 17px;
+    height: 17px;
+  `,
+  appLink: css`
+    display: flex;
+    flex-direction: row;
+    align-items: flex-start;
+    margin-bottom: 25px;
+  `,
+  studioLogo: css`
+    width: 45px;
+    height: 45px;
+    border-radius: 7px;
+  `,
+  appLinkContent: css`
+    display: flex;
+    flex-direction: column;
+    font-size: 14px;
+    margin-left: 10px;
+  `,
+  appStoreButton: css`
+    border-radius: 7px;
   `,
   footerLink: css`
     text-decoration: none;
+    font-size: 14px;
     font-weight: 400;
-    margin-bottom: 15px;
+    margin-bottom: 10px;
 
     &,
     &:visited {
-      color: ${theme.text};
+      color: ${theme.header};
     }
 
     &:hover {
@@ -195,6 +347,15 @@ const styles = {
     &:active {
       color: ${theme.textColor.darken(0.6).hex()};
     }
+  `,
+  comingSoon: css`
+    display: inline-block;
+    background-color: #ccf2ff;
+    border-radius: 30px;
+    font-size: 12px;
+    color: ${theme.primary};
+    padding: 2px 12px;
+    margin-left: 10px;
   `,
   bottom: css`
     position: absolute;
@@ -225,6 +386,8 @@ const styles = {
   `,
   privacyLink: css`
     margin: 0;
+    font-size: 18px;
+
     &,
     &:visited {
       color: ${theme.mainBorderDark};

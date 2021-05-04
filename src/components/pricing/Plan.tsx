@@ -32,6 +32,7 @@ export default function Plan({
   return (
     <div
       css={styles.plan}
+      id={name.toLowerCase()}
       className="ie-fix"
       style={{ backgroundColor: background || 'white' }}>
       <h5 css={[styles.header].concat(highlight ? styles.highlight : [])}>

@@ -28,5 +28,6 @@ const styles = {
   icon: css`
     display: inline-block;
     line-height: 0;
+    flex-shrink: 0;
   `
 }

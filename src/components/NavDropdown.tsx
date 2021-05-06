@@ -8,11 +8,17 @@ import SVGIcon from './SVGIcon'
 
 interface Props {
   children: React.ReactNode
+  maxMenuWidth?: number
   menuCss?: SerializedStyles | SerializedStyles[]
   title: string
 }
 
-export default function NavDropdown({ children, menuCss, title }: Props) {
+export default function NavDropdown({
+  children,
+  maxMenuWidth = 1315,
+  menuCss,
+  title
+}: Props) {
   const [open, setOpen] = useState(false)
 
   const menuStyles = [styles.dropdownMenu]
@@ -53,7 +59,10 @@ export default function NavDropdown({ children, menuCss, title }: Props) {
           extraCss={styles.dropdownIcon}
         />
       </NavLink>
-      <div className="dropdown-menu" css={menuStyles.concat(menuCss!)}>
+      <div
+        className="dropdown-menu"
+        css={menuStyles.concat(menuCss!)}
+        style={{ maxWidth: `${maxMenuWidth}px` }}>
         <div className="dropdown-content" css={styles.dropdownContent}>
           <NavLink
             mobileOnly
@@ -140,12 +149,7 @@ const styles = {
       right: auto;
       bottom: auto;
       width: calc(100% - 100px);
-      max-width: 1300px;
       perspective: 2000px;
-    }
-
-    ${theme.MIN_LARGE_DISPLAY_MEDIA_QUERY} {
-      width: calc(100% - 200px);
     }
   `,
   dropdownMenuOpen: css`
@@ -169,10 +173,12 @@ const styles = {
       border-radius: 7px;
       transform-origin: 50% -60px;
       transform: rotateX(-15deg);
+      box-shadow: 0 4px 4px rgba(0, 0, 0, 0.25);
     }
   `,
   dropdownBack: css`
     font-weight: 700;
+    border-bottom: 1px solid ${theme.mainBorder};
 
     ${theme.MIN_DEFAULT_MEDIA_QUERY} {
       display: none;

@@ -503,8 +503,7 @@ export default css`
       }
     }
     .main-content a:not(.btn),
-    a.content-link,
-    a.library-link {
+    a.content-link {
       color: ${theme.linkDark};
       text-decoration-color: ${theme.linkDark};
 

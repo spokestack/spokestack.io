@@ -9,7 +9,7 @@ export default function Create(props: Partial<BlueCardProps>) {
     <BlueCard
       button={
         <a href="/account/create" className="btn btn-primary">
-          Free account
+          Sign up free
           <SVGIcon
             icon="#arrow-forward"
             className="icon"

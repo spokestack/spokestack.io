@@ -54,9 +54,7 @@ const styles = {
     justify-content: flex-start;
     align-items: center;
     width: 100%;
-    height: 60px;
-    font-size: 18px;
-    line-height: 1.1;
+    height: 50px;
     transition: background-color 0.2s ${theme.transitionEasing},
       color 0.2s ${theme.transitionEasing};
     padding: 0 20px;
@@ -85,6 +83,7 @@ const styles = {
   navLinkDesktop: css`
     ${theme.MIN_DEFAULT_MEDIA_QUERY} {
       width: auto;
+      height: 60px;
       margin: 0;
       padding: 0 15px;
       font-weight: 400;

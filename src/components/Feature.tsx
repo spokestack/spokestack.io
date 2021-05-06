@@ -1,18 +1,22 @@
-import { MIN_DEFAULT_MEDIA_QUERY } from '../styles/theme'
+import { SerializedStyles, css } from '@emotion/react'
+
 import React from 'react'
-import { css } from '@emotion/react'
+import SVGIcon from './SVGIcon'
 
 interface Props {
   id: string
-  image: React.ReactNode
+  icon: string
+  iconCss: SerializedStyles | SerializedStyles[]
   name: string
   text: string
 }
 
-export default function Feature({ id, image, name, text }: Props) {
+export default function Feature({ id, icon, iconCss, name, text }: Props) {
   return (
     <div id={id} css={styles.feature}>
-      {image}
+      <div css={styles.image}>
+        <SVGIcon icon={icon} extraCss={iconCss} />
+      </div>
       <div className="ie-fix" css={styles.featureContent}>
         <h3>{name}</h3>
         <p>{text}</p>
@@ -24,14 +28,14 @@ export default function Feature({ id, image, name, text }: Props) {
 const styles = {
   feature: css`
     display: flex;
-    flex-direction: column;
-    align-items: center;
+    flex-direction: row;
     margin-bottom: 30px;
-
-    ${MIN_DEFAULT_MEDIA_QUERY} {
-      flex-direction: row;
-      align-items: flex-start;
-    }
+  `,
+  image: css`
+    width: 50px;
+    padding-top: 5px;
+    margin-right: 10px;
+    flex-shrink: 0;
   `,
   featureContent: css`
     display: flex;

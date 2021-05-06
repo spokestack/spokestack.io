@@ -3,12 +3,12 @@ import * as theme from '../styles/theme'
 import { Global, css } from '@emotion/react'
 import { Link, graphql, useStaticQuery } from 'gatsby'
 
+import AppStoreButton from './AppStoreButton'
 import Logo from './Logo'
 import Newsletter from './Newsletter'
 import { Query } from '../utils/graphql'
 import React from 'react'
 import SocialLink from './SocialLink'
-import AppStoreButton from './AppStoreButton'
 
 export default function Footer() {
   const { site } = useStaticQuery<Query>(footerQuery)
@@ -91,6 +91,7 @@ export default function Footer() {
               </p>
               <AppStoreButton
                 extraCss={styles.appStoreButton}
+                transparent
                 slug="https://apps.apple.com/us/app/spokestack-studio/id1508393980"
               />
             </div>
@@ -226,7 +227,12 @@ const styles = {
     flex-direction: column;
     padding: 0 20px 50px;
 
-    ${theme.MIN_DEFAULT_MEDIA_QUERY} {
+    ${theme.MIN_LARGE_DISPLAY_MEDIA_QUERY} {
+      padding-left: 50px;
+      padding-right: 50px;
+    }
+
+    ${theme.MIN_LARGER_DISPLAY_MEDIA_QUERY} {
       padding-left: 100px;
       padding-right: 100px;
     }
@@ -238,12 +244,12 @@ const styles = {
     padding: 50px 0 75px;
     margin: 0 auto;
 
-    ${theme.MIN_DEFAULT_MEDIA_QUERY} {
+    ${theme.MIN_LARGE_DISPLAY_MEDIA_QUERY} {
       flex-direction: row;
       justify-content: center;
       display: grid;
-      grid-template-columns: 295px 265px 265px 265px;
-      grid-gap: 50px;
+      grid-template-columns: 350px 265px 265px 265px;
+      grid-gap: 20px;
     }
   `,
   column: css`
@@ -256,15 +262,19 @@ const styles = {
     h5 {
       text-transform: uppercase;
       color: ${theme.primary};
-      margin-bottom: 10px;
+      margin: 10px 0;
     }
 
     ${theme.MIN_DEFAULT_MEDIA_QUERY} {
       align-items: flex-start;
       text-align: left;
 
-      h5:not(:first-of-type) {
-        margin-top: 10px;
+      &:first-of-type {
+        margin-right: 50px;
+      }
+
+      h5:first-of-type {
+        margin-top: 0;
       }
     }
 

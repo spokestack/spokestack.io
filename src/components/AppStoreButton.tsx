@@ -1,17 +1,23 @@
+import { SerializedStyles, css } from '@emotion/react'
+
 import React from 'react'
 import SVGIcon from './SVGIcon'
-import { css, SerializedStyles } from '@emotion/react'
 
 interface Props {
   extraCss?: SerializedStyles | SerializedStyles[]
   slug: string
+  transparent?: boolean
 }
 
-export default function AppStoreButton({ extraCss, slug }: Props) {
+export default function AppStoreButton({ extraCss, slug, transparent }: Props) {
+  const classes = ['btn']
+  if (transparent) {
+    classes.push('btn-transparent')
+  }
   return (
     <a
       href={slug}
-      className="btn btn-transparent"
+      className={classes.join(' ')}
       css={[styles.button].concat(extraCss!)}>
       <SVGIcon icon="#apple" className="icon" extraCss={styles.icon} />
       <div css={styles.text}>

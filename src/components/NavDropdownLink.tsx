@@ -4,24 +4,25 @@ import { Global, SerializedStyles, css } from '@emotion/react'
 
 import NavLink from './NavLink'
 import React from 'react'
+import SVGIcon from './SVGIcon'
 
 interface Props {
   children?: React.ReactNode
   extraCss?: SerializedStyles | SerializedStyles[]
   href?: string
-  image?: React.ReactNode
-  imageUrl?: string
+  icon: string
+  iconCss: SerializedStyles | SerializedStyles[]
   partiallyActive?: boolean
   title: string
   text: string
 }
 
-export default function NavLinkDropdown({
+export default function NavDropdownLink({
   children,
   extraCss,
   href,
-  image,
-  imageUrl,
+  icon,
+  iconCss,
   partiallyActive,
   title,
   text
@@ -44,16 +45,14 @@ export default function NavLinkDropdown({
           }
         `}
       />
-      {image
-        ? image
-        : !!imageUrl && (
-            <img alt={title} css={styles.dropdownLinkImage} src={imageUrl} />
-          )}
-      <div className="ie-fix" css={styles.dropdownLinkContent}>
-        <span className={href ? 'blue' : ''} css={styles.dropdownLinkTitle}>
+      <div css={styles.image}>
+        <SVGIcon icon={icon} extraCss={iconCss} />
+      </div>
+      <div className="ie-fix" css={styles.content}>
+        <span className={href ? 'blue' : ''} css={styles.title}>
           {title}
         </span>
-        <p css={styles.dropdownLinkText}>{text}</p>
+        <p css={styles.text}>{text}</p>
         {children}
       </div>
     </NavLink>
@@ -77,25 +76,29 @@ const styles = {
     }
 
     ${theme.MIN_DEFAULT_MEDIA_QUERY} {
-      padding: 10px 20px;
+      padding: 10px;
       border-radius: 7px;
+
+      &:not(:last-of-type) {
+        margin-bottom: 25px;
+      }
     }
   `,
-  dropdownLinkImage: css`
+  image: css`
+    width: 50px;
     flex-shrink: 0;
-    width: 60px;
-    margin-right: 10px;
   `,
-  dropdownLinkContent: css`
+  content: css`
     display: flex;
     flex-direction: column;
+    margin-left: 5px;
   `,
-  dropdownLinkTitle: css`
-    color: ${theme.header};
+  title: css`
+    font-size: 21px;
     font-weight: 700;
     margin-bottom: 5px;
   `,
-  dropdownLinkText: css`
+  text: css`
     font-weight: 400;
   `
 }

@@ -378,12 +378,15 @@ const styles = {
   dropdownColumn: css`
     display: flex;
     flex-direction: column;
+    width: 100%;
   `,
   dropdownContent: css`
     display: flex;
     flex-direction: column;
 
     ${theme.MIN_DEFAULT_MEDIA_QUERY} {
+      flex-direction: row;
+      flex-wrap: wrap;
       display: grid;
       grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
       gap: 10px;

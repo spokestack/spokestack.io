@@ -68,12 +68,6 @@ export const linkStickyNav = '#8da6e3'
 export const linkStickyNavHover = linkHover
 export const linkStickyNavActive = link
 
-export const ieBreakpoint =
-  '@media all and (-ms-high-contrast: none), (-ms-high-contrast: active)'
-
-export const ieBreakpointMinDefault =
-  '@media all and (-ms-high-contrast: none) and (min-width:980px), (-ms-high-contrast: active) and (min-width:980px)'
-
 export const LARGER_DISPLAY_WIDTH = '1600px'
 export const LARGE_DISPLAY_WIDTH = '1280px'
 export const DEFAULT_WIDTH = '980px'
@@ -85,6 +79,13 @@ export const MAX_SIDEBAR_WIDTH = '365px'
 export const MIN_TEXT_WIDTH = '608px'
 export const MAX_TEXT_WIDTH = '1175px'
 export const MAX_BLOG_TEXT_WIDTH = '850px'
+
+export const ieBreakpoint =
+  '@media all and (-ms-high-contrast: none), (-ms-high-contrast: active)'
+
+export const ieBreakpointMinDefault = `@media all and (-ms-high-contrast: none) and (min-width:${DEFAULT_WIDTH}), (-ms-high-contrast: active) and (min-width:${DEFAULT_WIDTH})`
+
+export const ieBreakpointMinLarge = `@media all and (-ms-high-contrast: none) and (min-width:${LARGE_DISPLAY_WIDTH}), (-ms-high-contrast: active) and (min-width:${LARGE_DISPLAY_WIDTH})`
 
 /**
  * Responsive media queries

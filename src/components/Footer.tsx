@@ -78,13 +78,13 @@ export default function Footer() {
               iconCss={styles.facebookIcon}
             />
           </div>
-          <div css={styles.appLink}>
+          <div className="ie-fix" css={styles.appLink}>
             <img
               alt="Spokestack Studio"
               src="/mark.svg"
               css={styles.studioLogo}
             />
-            <div css={styles.appLinkContent}>
+            <div className="ie-fix" css={styles.appLinkContent}>
               <p>
                 Download Spokestack Studio to test wake word, text-to-speech,
                 NLU, and ASR.
@@ -203,7 +203,7 @@ export default function Footer() {
           <a css={styles.footerLink} href="/about/team">
             Team
           </a>
-          <a css={styles.footerLink} href={`mailto:${contact!.email}`}>
+          <a css={styles.footerLink} href={`mailto:${contact.email}`}>
             Email Us
           </a>
         </div>
@@ -248,7 +248,7 @@ const styles = {
       flex-direction: row;
       justify-content: center;
       display: grid;
-      grid-template-columns: 350px 265px 265px 265px;
+      grid-template-columns: 365px 240px 270px 240px;
       grid-gap: 20px;
     }
   `,
@@ -265,12 +265,12 @@ const styles = {
       margin: 10px 0;
     }
 
-    ${theme.MIN_DEFAULT_MEDIA_QUERY} {
+    ${theme.MIN_LARGE_DISPLAY_MEDIA_QUERY} {
       align-items: flex-start;
       text-align: left;
 
       &:first-of-type {
-        margin-right: 50px;
+        margin-right: 30px;
       }
 
       h5:first-of-type {
@@ -278,7 +278,7 @@ const styles = {
       }
     }
 
-    ${theme.ieBreakpointMinDefault} {
+    ${theme.ieBreakpointMinLarge} {
       width: 25%;
       & + & {
         margin-left: 50px;
@@ -332,8 +332,10 @@ const styles = {
   appLinkContent: css`
     display: flex;
     flex-direction: column;
+    text-align: left;
     font-size: 14px;
     margin-left: 10px;
+    max-width: 350px;
   `,
   appStoreButton: css`
     border-radius: 7px;
@@ -380,6 +382,8 @@ const styles = {
 
     ${theme.MIN_TABLET_MEDIA_QUERY} {
       flex-direction: row;
+    }
+    ${theme.MIN_LARGE_DISPLAY_MEDIA_QUERY} {
       justify-content: flex-start;
     }
   `,

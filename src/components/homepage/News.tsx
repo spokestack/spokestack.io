@@ -28,7 +28,7 @@ export default function News() {
       <p className="title">
         Stay informed and learn to build your own Independent Voice Assistant
       </p>
-      <div css={styles.content}>
+      <div className="ie-fix" css={styles.content}>
         {sortPosts(posts).map((edge) => {
           const post = edge.node
           const frontmatter = post.frontmatter!

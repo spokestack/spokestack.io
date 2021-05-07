@@ -83,6 +83,11 @@ const styles = {
         margin-bottom: 25px;
       }
     }
+
+    ${theme.ieBreakpointMinDefault} {
+      margin-bottom: 0 !important;
+      min-height: 0 !important;
+    }
   `,
   image: css`
     width: 50px;

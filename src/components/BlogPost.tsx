@@ -1,11 +1,10 @@
 import * as theme from '../styles/theme'
 
-import { Link, PageRendererProps } from 'gatsby'
-
 import Author from './Author'
 import Create from './Create'
 import DarkModeButton from './DarkModeButton'
 import Layout from '../components/Layout'
+import { Link } from 'gatsby'
 import { MarkdownRemark } from '../utils/graphql'
 import React from 'react'
 import { RelatedLink } from '../types'
@@ -17,15 +16,14 @@ import { isLoggedIn } from '../utils/auth'
 import removeTrailingSlash from '../utils/removeTrailingSlash'
 
 interface Props {
-  location: PageRendererProps['location']
   post: MarkdownRemark
   related?: RelatedLink[]
 }
 
-export default function BlogPost({ location, post, related }: Props) {
+export default function BlogPost({ post, related }: Props) {
   const frontmatter = post.frontmatter!
   return (
-    <Layout contentStyle={styles.post} location={location}>
+    <Layout contentStyle={styles.post}>
       <SEO
         title={`${frontmatter.title} - Spokestack`}
         description={frontmatter.description!}

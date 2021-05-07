@@ -76,7 +76,7 @@ export default function DocsPage({
   const frontmatter = post.frontmatter!
 
   return (
-    <Layout location={location}>
+    <Layout>
       <SEO
         title={`${frontmatter.title} - Spokestack`}
         description={

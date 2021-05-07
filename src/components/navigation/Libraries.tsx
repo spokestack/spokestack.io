@@ -1,5 +1,5 @@
 import React from 'react'
-import SVGIcon from './SVGIcon'
+import SVGIcon from '../SVGIcon'
 import { css } from '@emotion/react'
 
 export default function Libraries() {

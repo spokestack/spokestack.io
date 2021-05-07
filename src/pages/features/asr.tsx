@@ -1,4 +1,3 @@
-import { PageRendererProps } from 'gatsby'
 import React from 'react'
 import Header from '../../components/features/Header'
 import Section from '../../components/features/Section'
@@ -8,9 +7,9 @@ import * as styles from '../../styles/features.css'
 import { StaticImage } from 'gatsby-plugin-image'
 import Create from '../../components/Create'
 
-export default function ASRPage({ location }: PageRendererProps) {
+export default function ASRPage() {
   return (
-    <Layout location={location}>
+    <Layout>
       <SEO
         title="Automatic Speech Recognition | Spokestack"
         description="The technology for converting spoken words to text is known as Automatic Speech Recognition (ASR). The Spokestack open-source native libraries provide a convenient API across multiple ASR providers such as Apple, Google, and Microsoft."

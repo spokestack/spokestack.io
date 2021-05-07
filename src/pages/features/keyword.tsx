@@ -1,4 +1,3 @@
-import { PageRendererProps } from 'gatsby'
 import React from 'react'
 import FeatureCallout from '../../components/features/FeatureCallout'
 import Header from '../../components/features/Header'
@@ -12,9 +11,9 @@ import { StaticImage } from 'gatsby-plugin-image'
 import Create from '../../components/Create'
 import SampleCode from '../../components/features/SampleCode'
 
-export default function KeywordPage({ location }: PageRendererProps) {
+export default function KeywordPage() {
   return (
-    <Layout location={location}>
+    <Layout>
       <SEO
         title="Keyword | Spokestack"
         description="A keyword is a brief command that supports variations in phrasing—using a fast, lightweight model—without user audio leaving the device. Create an account and make your own keyword models with Spokestack."

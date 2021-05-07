@@ -20,7 +20,6 @@ const descriptions = {
 
 export default function BlogListTagTemplate({
   data,
-  location,
   pageContext: { currentPage, numPages, slug, tag, tags, total }
 }: Props) {
   const isTutorial = tag === 'Tutorial'
@@ -39,7 +38,6 @@ export default function BlogListTagTemplate({
       <BlogList
         currentPage={currentPage}
         homeUrl={slug}
-        location={location}
         numPages={numPages}
         posts={posts}
         tags={tags}

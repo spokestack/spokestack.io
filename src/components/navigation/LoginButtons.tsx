@@ -1,11 +1,11 @@
-import * as theme from '../styles/theme'
+import * as theme from '../../styles/theme'
 
 import React, { useEffect, useState } from 'react'
 import { SerializedStyles, css } from '@emotion/react'
 
 import NavDropdown from './NavDropdown'
-import SignInForm from './SignInForm'
-import { isLoggedIn } from '../utils/auth'
+import LoginForm from '../LoginForm'
+import { isLoggedIn } from '../../utils/auth'
 
 interface Props {
   btnClassName?: string
@@ -40,7 +40,7 @@ export default function LoginButtons({
       <div className="login-buttons--login">
         {loginDropdown ? (
           <NavDropdown title="Sign in" menuCss={styles.dropdown}>
-            <SignInForm extraCss={styles.loginForm} />
+            <LoginForm extraCss={styles.loginForm} />
           </NavDropdown>
         ) : (
           <a href="/account/login" css={styles.loginLink}>

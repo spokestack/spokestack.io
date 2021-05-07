@@ -19,13 +19,13 @@ interface Props extends PageRendererProps {
   data: Query
 }
 
-export default function Pricing({ data, location }: Props) {
+export default function Pricing({ data }: Props) {
   const [yearly, setYearly] = useState(true)
   const contact = data.site!.siteMetadata!.contact!
   const pricingElem = useRef<HTMLDivElement>(null)
 
   return (
-    <Layout location={location}>
+    <Layout>
       <SEO
         title="Pricing | Spokestack"
         description="Choose the right plan for you: Free, Maker, or Enterprise. All plans feature pre-trained models for Wake Word activation, Keyword recognition, Natural Language Understanding, and Text to Speech, as well as free API access to our Automatic Speech Recognition and Text to Speech streaming services."

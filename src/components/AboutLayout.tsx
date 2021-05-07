@@ -21,7 +21,7 @@ interface Props {
 
 export default function About({ children, location }: Props) {
   return (
-    <Layout location={location}>
+    <Layout>
       <StickyNavLayout links={links} location={location}>
         {children}
       </StickyNavLayout>

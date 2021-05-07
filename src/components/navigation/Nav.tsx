@@ -1,4 +1,4 @@
-import * as theme from '../styles/theme'
+import * as theme from '../../styles/theme'
 
 import { Global, SerializedStyles, css } from '@emotion/react'
 import React, { useState } from 'react'
@@ -6,15 +6,13 @@ import React, { useState } from 'react'
 import Hamburger from './Hamburger'
 import Libraries from './Libraries'
 import LoginButtons from './LoginButtons'
-import Logo from './Logo'
+import Logo from '../Logo'
 import NavDropdown from './NavDropdown'
 import NavDropdownLink from './NavDropdownLink'
 import NavLink from './NavLink'
-import { WindowLocation } from '@reach/router'
 
 interface Props {
   extraCss?: SerializedStyles | SerializedStyles[]
-  location: WindowLocation
 }
 
 export default function Nav({ extraCss }: Props) {

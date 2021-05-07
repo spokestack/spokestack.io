@@ -1,7 +1,7 @@
 import React, { AnchorHTMLAttributes } from 'react'
 import { SerializedStyles, css } from '@emotion/react'
 
-import { transitionEasing } from '../styles/theme'
+import { transitionEasing } from '../../styles/theme'
 
 interface Props {
   open: boolean

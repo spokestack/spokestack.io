@@ -1,4 +1,4 @@
-import * as theme from '../styles/theme'
+import * as theme from '../../styles/theme'
 
 import React, { AnchorHTMLAttributes } from 'react'
 import { SerializedStyles, css } from '@emotion/react'

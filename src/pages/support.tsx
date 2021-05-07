@@ -13,10 +13,10 @@ interface Props extends PageRendererProps {
   data: Query
 }
 
-export default function Support({ data, location }: Props) {
+export default function Support({ data }: Props) {
   const { social, contact } = data!.site!.siteMetadata!
   return (
-    <Layout location={location}>
+    <Layout>
       <SEO
         title="Text to Speech Voice Integration Support | Spokestack"
         description="We offer multiple support channels that best suit your text to speech topic or voice product. Choose from GitHub, Twitter, Stack Overflow, or our Forum."

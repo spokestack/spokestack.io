@@ -3,14 +3,13 @@ import { MIN_DEFAULT_MEDIA_QUERY, MIN_TEXT_WIDTH } from '../styles/theme'
 import Create from '../components/Create'
 import Feature from '../components/Feature'
 import Layout from '../components/Layout'
-import { PageRendererProps } from 'gatsby'
 import React from 'react'
 import SEO from '../components/SEO'
 import { css } from '@emotion/react'
 
-export default function Features({ location }: PageRendererProps) {
+export default function Features() {
   return (
-    <Layout location={location}>
+    <Layout>
       <SEO
         title="Features for Voice User Interfaces | Spokestack"
         description="Spokestack makes it easy to add voice user interfaces to your mobile apps and websites. Explore the features of our libraries and services."

@@ -1,10 +1,10 @@
-import * as theme from '../styles/theme'
+import * as theme from '../../styles/theme'
 
 import { Global, SerializedStyles, css } from '@emotion/react'
 
 import NavLink from './NavLink'
 import React from 'react'
-import SVGIcon from './SVGIcon'
+import SVGIcon from '../SVGIcon'
 
 interface Props {
   children?: React.ReactNode

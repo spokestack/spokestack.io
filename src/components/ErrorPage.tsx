@@ -2,17 +2,15 @@ import Layout from '../components/Layout'
 import React from 'react'
 import SEO from '../components/SEO'
 import { css } from '@emotion/react'
-import { WindowLocation } from '@reach/router'
 
 interface Props {
   children?: React.ReactNode
-  location: WindowLocation
   title: string
 }
 
-export default function ErrorPage({ children, location, title }: Props) {
+export default function ErrorPage({ children, title }: Props) {
   return (
-    <Layout location={location}>
+    <Layout>
       <SEO title={title} />
       <div css={styles.container}>{children}</div>
     </Layout>

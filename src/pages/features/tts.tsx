@@ -1,4 +1,3 @@
-import { PageRendererProps } from 'gatsby'
 import React from 'react'
 import FeatureCallout from '../../components/features/FeatureCallout'
 import Header from '../../components/features/Header'
@@ -12,9 +11,9 @@ import { StaticImage } from 'gatsby-plugin-image'
 import Create from '../../components/Create'
 import SampleCode from '../../components/features/SampleCode'
 
-export default function TTSPage({ location }: PageRendererProps) {
+export default function TTSPage() {
   return (
-    <Layout location={location}>
+    <Layout>
       <SEO
         title="Text-to-Speech | Spokestack"
         description="Spokestack's Text-to-Speech service is easy to use and available on many platforms."

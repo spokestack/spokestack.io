@@ -1,4 +1,3 @@
-import { PageRendererProps } from 'gatsby'
 import React from 'react'
 import FeatureCallout from '../../components/features/FeatureCallout'
 import Header from '../../components/features/Header'
@@ -12,9 +11,9 @@ import { StaticImage } from 'gatsby-plugin-image'
 import Create from '../../components/Create'
 import SampleCode from '../../components/features/SampleCode'
 
-export default function WakewordPage({ location }: PageRendererProps) {
+export default function WakewordPage() {
   return (
-    <Layout location={location}>
+    <Layout>
       <SEO
         title="Wake Word | Spokestack"
         description="A wake word is a specific term or phrase that can wake up an app for active listening. “Hey Siri” and “Alexa” are two of the most widely known wake words. Create your own wake word with Spokestack."

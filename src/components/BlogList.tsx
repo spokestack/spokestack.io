@@ -10,7 +10,6 @@ import { MarkdownRemarkEdge } from '../utils/graphql'
 import Paging from './Paging'
 import React from 'react'
 import Tags from '../components/Tags'
-import { WindowLocation } from '@reach/router'
 import { isLoggedIn } from '../utils/auth'
 import { navigate } from 'gatsby'
 
@@ -19,7 +18,6 @@ interface Props {
   extraCss?: SerializedStyles
   header?: React.ReactNode
   homeUrl: string
-  location: WindowLocation
   numPages: number
   posts: MarkdownRemarkEdge[]
   tags: string[]
@@ -31,14 +29,13 @@ export default function BlogList({
   extraCss,
   header,
   homeUrl,
-  location,
   numPages,
   posts,
   tags,
   title
 }: Props) {
   return (
-    <Layout location={location}>
+    <Layout>
       <Global
         styles={css`
           html.dark-mode .blog-nav-links a {

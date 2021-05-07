@@ -1,4 +1,3 @@
-import { PageRendererProps } from 'gatsby'
 import React from 'react'
 import FeatureCallout from '../../components/features/FeatureCallout'
 import Header from '../../components/features/Header'
@@ -9,9 +8,9 @@ import * as styles from '../../styles/features.css'
 import { StaticImage } from 'gatsby-plugin-image'
 import Create from '../../components/Create'
 
-export default function NLUPage({ location }: PageRendererProps) {
+export default function NLUPage() {
   return (
-    <Layout location={location}>
+    <Layout>
       <SEO
         title="Natural Language Understanding | Spokestack"
         description="Spokestack's Natural Language Understanding (NLU) is what makes user speech actionable. Spokestack provides deep learning-based NLU models that can be deployed on device or to a web service. On-device NLU keeps your customer data away from third-party services and can operate even without a network connection."

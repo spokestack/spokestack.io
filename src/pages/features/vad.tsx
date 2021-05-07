@@ -1,4 +1,3 @@
-import { PageRendererProps } from 'gatsby'
 import React from 'react'
 import Header from '../../components/features/Header'
 import Section from '../../components/features/Section'
@@ -8,9 +7,9 @@ import * as styles from '../../styles/features.css'
 import { StaticImage } from 'gatsby-plugin-image'
 import Create from '../../components/Create'
 
-export default function VADPage({ location }: PageRendererProps) {
+export default function VADPage() {
   return (
-    <Layout location={location}>
+    <Layout>
       <SEO
         title="Voice Activity Detection | Spokestack"
         description="Voice Activity Detection (VAD) is responsible for making an initial determination of whether or not a snippet of audio contains human speech. Ignoring audio that's not detected as speech saves energy and processing power. The savings grow with each downstream processor you have in your speech pipeline."

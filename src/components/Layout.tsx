@@ -3,9 +3,8 @@ import { MIN_DEFAULT_MEDIA_QUERY, ieBreakpoint } from '../styles/theme'
 import React, { Fragment } from 'react'
 
 import Footer from './Footer'
-import Nav from './Nav'
+import Nav from './navigation/Nav'
 import Sprite from '../svg-sprite.svg'
-import { WindowLocation } from '@reach/router'
 import globalStyles from '../styles/global.css'
 
 interface Props {
@@ -13,7 +12,6 @@ interface Props {
   children: React.ReactNode
   contentStyle?: SerializedStyles | SerializedStyles[]
   extraCss?: SerializedStyles | SerializedStyles[]
-  location: WindowLocation
   navStyle?: SerializedStyles | SerializedStyles[]
 }
 
@@ -22,7 +20,6 @@ export default function Layout({
   children,
   contentStyle,
   extraCss,
-  location,
   navStyle
 }: Props) {
   const style = [styles.container]
@@ -38,7 +35,7 @@ export default function Layout({
       <div css={style.concat(extraCss!)}>
         <Global styles={globalStyles} />
         <Sprite />
-        <Nav extraCss={navStyle} location={location} />
+        <Nav extraCss={navStyle} />
         <main css={[styles.content].concat(contentStyle!)}>{children}</main>
         <Footer />
       </div>

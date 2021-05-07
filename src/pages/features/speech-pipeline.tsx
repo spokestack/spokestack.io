@@ -1,4 +1,3 @@
-import { PageRendererProps } from 'gatsby'
 import React from 'react'
 import Header from '../../components/features/Header'
 import Section from '../../components/features/Section'
@@ -8,9 +7,9 @@ import * as styles from '../../styles/features.css'
 import { StaticImage } from 'gatsby-plugin-image'
 import Create from '../../components/Create'
 
-export default function SpeechPipelinePage({ location }: PageRendererProps) {
+export default function SpeechPipelinePage() {
   return (
-    <Layout location={location}>
+    <Layout>
       <SEO
         title="Speech Pipeline | Spokestack"
         description="The Spokestack Speech Pipeline is an extensible audio processing pipeline that includes a variety of built-in speech processors for all processing stages, including VAD, wake word and keyword recognition, and ASR."

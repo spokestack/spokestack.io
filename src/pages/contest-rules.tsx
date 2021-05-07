@@ -1,13 +1,12 @@
 import * as theme from '../styles/theme'
 
 import Layout from '../components/Layout'
-import { PageRendererProps } from 'gatsby'
 import React from 'react'
 import { css } from '@emotion/react'
 
-export default function Rules({ location }: PageRendererProps) {
+export default function Rules() {
   return (
-    <Layout location={location}>
+    <Layout>
       <div css={styles.container}>
         <h1>Spokestack Export to Independence Developer Contest</h1>
         <h2>Official Rules</h2>

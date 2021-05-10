@@ -225,21 +225,23 @@
     },
     "plugins": {
       "@release-it/conventional-changelog": {
-        "name": "conventionalcommits",
-        "types": [
-          {
-            "type": "feat",
-            "section": "Features"
-          },
-          {
-            "type": "fix",
-            "section": "Bug Fixes"
-          },
-          {
-            "type": "perf",
-            "section": "Performance Improvements"
-          }
-        ]
+        "preset": {
+          "name": "conventionalcommits",
+          "types": [
+            {
+              "type": "feat",
+              "section": "Features"
+            },
+            {
+              "type": "fix",
+              "section": "Bug Fixes"
+            },
+            {
+              "type": "perf",
+              "section": "Performance Improvements"
+            }
+          ]
+        }
       }
     }
   }

@@ -79,7 +79,7 @@ func application(_ application: UIApplication, didFinishLaunchingWithOptions lau
 
 ### 3. Your free Spokestack Account
 
-[Set up your own account](/account/create) (it's free!). Once you've got that, [grab one of our free NLU models](/account/services/nlu). We'll use the `Highlow` one in this example, but you can choose another, or [create your own](/docs/integrations/export) if you already have something on DialogFlow or Alexa!
+[Set up your own account](/account/create) (it's free!). Once you've got that, [grab one of our free NLU models](/account/services/nlu). We'll use the `Highlow` one in this example, but you can choose another, or [create your own](/docs/integrations/export) if you already have something on Dialogflow or Alexa!
 
 Once you've downloaded your NLU, unzip `nlu.tar.gz` and add the three files inside (`metadata.json`, `nlu.tflite`, `vocab.txt`) to your XCode project. See, that wasn't painful at all!
 
@@ -225,7 +225,7 @@ If you want your app to be controllable purely by voice, you need a wake word â€
 
 ## Understanding your users
 
-Spokestack leaves the choice of NLU up to you, but we do offer our own full-featured NLU component for Spokestack based on years of research and lessons learned from working with other services. Our NLU runs directly on your user's device, instead of calling back to the cloud. If you're a fan of the cloud, though, you might want to check out [DialogFlow](https://dialogflow.com/), [LUIS](https://www.luis.ai/home), or [wit.ai](https://wit.ai/). And if your app is simple enough, you can make your own NLU with string matching or regular expressions (see the [cookbook](cookbook) for an example of this).
+Spokestack leaves the choice of NLU up to you, but we do offer our own full-featured NLU component for Spokestack based on years of research and lessons learned from working with other services. Our NLU runs directly on your user's device, instead of calling back to the cloud. If you're a fan of the cloud, though, you might want to check out [Dialogflow](https://dialogflow.com/), [LUIS](https://www.luis.ai/home), or [wit.ai](https://wit.ai/). And if your app is simple enough, you can make your own NLU with string matching or regular expressions (see the [cookbook](cookbook) for an example of this).
 
 ## Conclusion
 

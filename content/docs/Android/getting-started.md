@@ -158,7 +158,7 @@ We've listed all possible speech events here; see [the documentation](https://ww
 
 ## From text to meaning
 
-If the event is `RECOGNIZE`, `context.transcript` will give you the raw text of what the user just said. Translating that raw text into an action in your app is the job of an NLU, or natural language understanding, component. Spokestack offers custom NLU models that run entirely on-device, removing a network request from the equation. There are also a variety of cloud NLU providers: [DialogFlow](https://dialogflow.com/), [LUIS](https://www.luis.ai/home), or [wit.ai](https://wit.ai/), to name a few. If your app is simple enough, you can even make your own with string matching or regular expressions (see the [cookbook](cookbook) for an example).
+If the event is `RECOGNIZE`, `context.transcript` will give you the raw text of what the user just said. Translating that raw text into an action in your app is the job of an NLU, or natural language understanding, component. Spokestack offers custom NLU models that run entirely on-device, removing a network request from the equation. There are also a variety of cloud NLU providers: [Dialogflow](https://dialogflow.com/), [LUIS](https://www.luis.ai/home), or [wit.ai](https://wit.ai/), to name a few. If your app is simple enough, you can even make your own with string matching or regular expressions (see the [cookbook](cookbook) for an example).
 
 If you supply the `Spokestack` builder with NLU files, each speech transcript will automatically be classified using Spokestack's NLU. The results of the classification are dispatched via the `SpokestackAdapter.nluResult()` method:
 

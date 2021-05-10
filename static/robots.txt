@@ -1,7 +1,6 @@
-User-agent: Googlebot
-Disallow: /account/
-
 User-agent: *
-Allow: /
+Disallow: /account/
+Disallow: /api/
+Disallow: /_next/
 
 Sitemap: https://www.spokestack.io/sitemap.xml

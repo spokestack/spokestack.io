@@ -34,8 +34,8 @@ export default function Pricing({ data, location }: Props) {
       <header css={styles.header}>
         <h2>Pricing that Fits Your Software Needs</h2>
         <p className="title">
-          Plans range from &ldquo;checking it out&rdquo; to &ldquo;build it for
-          me&rdquo;
+          Plans for everything, from &ldquo;checking it out&rdquo; to
+          &ldquo;build it for me&rdquo;
         </p>
         <Switch yearly={yearly} onChange={(y) => setYearly(y)} />
       </header>

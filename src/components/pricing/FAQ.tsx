@@ -71,7 +71,7 @@ export default function FAQ({ contact }: Props) {
               on your behalf, and we&apos;ll notify you when the task is
               complete, meaning your model is ready to train. If you have a
               substantial user base already, there are ways to bootstrap this
-              data collection, and we&apos;re happy to help with that; just
+              data collection, and we&apos;re happy to help with that; just{' '}
               <a href="mailto:hello@spokestack.io?subject=Bootstrapping data for custom model">
                 get in touch
               </a>
@@ -86,6 +86,8 @@ export default function FAQ({ contact }: Props) {
 
 const styles = {
   faq: css`
+    max-width: 1024px;
+    margin: 0 auto;
     padding: 50px 20px 0;
   `,
   header: css`

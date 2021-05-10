@@ -23,7 +23,7 @@ To move your smart speaker skill or action to a mobile device, you need to mix t
 1. Modern smartphones have integrated microphones and speakers you can access. Both Android and iOS devices allow app to access audio input and output using their development kits.
 2. Android provides programmatic access to Google’s ASR. iOS apps have access to Apple’s ASR.
 3. You can write a dialog manager to handle conversation turns in your app.
-4. You can train an NLU model using a cloud service like Amazon Lex or Google’s DialogFlow.
+4. You can train an NLU model using a cloud service like Amazon Lex or Google’s Dialogflow.
 5. You can integrate a service like Amazon Polly or Google Cloud’s Speech-to-Text.
 
 If you’re highly competent with native Android and iOS SDKs as well as with integrating third-party web services, you could write code to mix four of the five ingredients necessary for a mobile voice app. But, it’s not easy. We’ve done it. This experience is what drove us to create Spokestack. Our libraries for iOS, Android, and React Native consolidate mobile ASR, NLU, and TTS into a single, easy-to-use API.
@@ -33,7 +33,7 @@ If you’re highly competent with native Android and iOS SDKs as well as with in
 1. ✅ Spokestack managed hardware control
 2. ✅ Spokestack managed ASR
 3. Custom Dialog Mananger
-4. ✅ Import Alexa or DialogFlow conversation model for Spokestack NLU
+4. ✅ Import Alexa or Dialogflow conversation model for Spokestack NLU
 5. ✅ Spokestack TTS
 
 The Spokestack libaries simply make it easier for you to focus on the custom portions of your voice assistant experience like the conversation flow and the content. You have to worry much less about platform-specific implementation details.

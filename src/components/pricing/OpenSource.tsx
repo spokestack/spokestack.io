@@ -73,7 +73,7 @@ export default function OpenSource() {
           description={
             <p>
               Get a head start on your projects with{' '}
-              <a href="/docs/concepts/tray">Spokestack Tray</a> available for:
+              <a href="/docs/concepts/tray">Spokestack Tray</a>, available for:
             </p>
           }>
           <ul>
@@ -98,10 +98,10 @@ export default function OpenSource() {
           title="3rd-Party Provider Support for ASR"
           description="Use Spokestack ASR or choose from one of the following providers*:">
           <ul>
-            <li>Apple</li>
-            <li>Android</li>
+            <li>Apple (on-device)</li>
+            <li>Google (on-device)</li>
             <li>Microsoft</li>
-            <li>Google</li>
+            <li>Google Cloud Speech</li>
           </ul>
           <p css={styles.footnote}>*Provider availability varies by platform</p>
         </OpenSourceFeature>
@@ -119,7 +119,7 @@ export default function OpenSource() {
           description="Use the default AI voice provided by default or use an AI voice from one of the following providers*:">
           <ul>
             <li>Apple</li>
-            <li>Android</li>
+            <li>Google</li>
           </ul>
           <p css={styles.footnote}>*Voice availability varies by platform</p>
         </OpenSourceFeature>

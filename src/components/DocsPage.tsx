@@ -1,6 +1,6 @@
 import * as theme from '../styles/theme'
 
-import { Link, graphql, useStaticQuery } from 'gatsby'
+import { Link, PageRendererProps, graphql, useStaticQuery } from 'gatsby'
 import { MarkdownRemark, Query } from '../utils/graphql'
 
 import Create from './homepage/Create'
@@ -11,17 +11,17 @@ import { RelatedLink } from '../types'
 import SEO from '../components/SEO'
 import { StickyLink } from '../components/StickyNav'
 import StickyNavLayout from '../components/StickyNavLayout'
-import { WindowLocation } from '@reach/router'
 import { css } from '@emotion/react'
 import difference from 'lodash/difference'
 import findImage from '../utils/findImage'
 import { isLoggedIn } from '../utils/auth'
 import order from '../../content/docs/nav.json'
+import removeTrailingSlash from '../utils/removeTrailingSlash'
 import sortBy from 'lodash/sortBy'
 import uniqBy from 'lodash/uniqBy'
 
 interface Props {
-  location: WindowLocation
+  location: PageRendererProps['location']
   post: MarkdownRemark
   related: RelatedLink[]
   selectFirst?: boolean
@@ -87,7 +87,9 @@ export default function DocsPage({
         }
         image={
           frontmatter.seoImage?.publicURL
-            ? `${location.origin}${frontmatter.seoImage.publicURL}`
+            ? `${removeTrailingSlash(process.env.SITE_URL!)}${
+                frontmatter.seoImage.publicURL
+              }`
             : findImage(post.html!)
         }
       />

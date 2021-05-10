@@ -1,23 +1,23 @@
 import * as theme from '../styles/theme'
 
+import { Link, PageRendererProps } from 'gatsby'
 import React, { Fragment } from 'react'
 
 import Author from './Author'
 import Create from './homepage/Create'
 import DarkModeButton from './DarkModeButton'
 import Layout from '../components/Layout'
-import { Link } from 'gatsby'
 import { MarkdownRemark } from '../utils/graphql'
 import { RelatedLink } from '../types'
 import SEO from '../components/SEO'
 import Tags from './Tags'
-import { WindowLocation } from '@reach/router'
 import { css } from '@emotion/react'
 import findImage from '../utils/findImage'
 import { isLoggedIn } from '../utils/auth'
+import removeTrailingSlash from '../utils/removeTrailingSlash'
 
 interface Props {
-  location: WindowLocation
+  location: PageRendererProps['location']
   post: MarkdownRemark
   related?: RelatedLink[]
 }
@@ -31,7 +31,9 @@ export default function BlogPost({ location, post, related }: Props) {
         description={frontmatter.description!}
         image={
           frontmatter.seoImage?.publicURL
-            ? `${location.origin}${frontmatter.seoImage.publicURL}`
+            ? `${removeTrailingSlash(process.env.SITE_URL!)}${
+                frontmatter.seoImage.publicURL
+              }`
             : findImage(post.html!)
         }
       />

@@ -4,16 +4,16 @@ import * as theme from '../styles/theme'
 import { PageRendererProps, graphql } from 'gatsby'
 import React, { useRef, useState } from 'react'
 
+import ContactUs from '../components/pricing/ContactUs'
+import FAQ from '../components/pricing/FAQ'
 import Layout from '../components/Layout'
 import OpenSource from '../components/pricing/OpenSource'
 import Plan from '../components/pricing/Plan'
 import { Query } from '../utils/graphql'
-import ContactUs from '../components/pricing/ContactUs'
 import SEO from '../components/SEO'
 import SaveBadge from '../components/pricing/SaveBadge'
 import Switch from '../components/pricing/Switch'
 import { css } from '@emotion/react'
-import FAQ from '../components/pricing/FAQ'
 
 interface Props extends PageRendererProps {
   data: Query
@@ -68,8 +68,10 @@ export default function Pricing({ data }: Props) {
           description="Entry-level pricing for makers, startups, &amp; personal projects"
           subtext={
             <div>
-              Open source contributor? Get a discount as thanks!{' '}
-              <a href="">See details</a>
+              Contribute to our open source projects?{' '}
+              <a href="mailto:hello@spokestack.io?subject=Open Source Contributor Discount Request">
+                Request a discount!
+              </a>
             </div>
           }
           background="#ebf4ff"

@@ -16,7 +16,24 @@ export const wakeword = `try {
 }
 `
 
-export const keyword = ``
+export const keyword = `try {
+  await Spokestack.initialize(
+    "YOUR_SPOKESTACK_API_ID",
+    "YOUR_SPOKESTACK_API_SECRET",
+    {
+      keyword: {
+        filter: require('./filter.tflite'),
+        detect: require('./detect.tflite'),
+        encode: require('./encode.tflite'),
+        classes: ['one', 'two', 'three']
+      }
+    }
+  )
+  await Spokestack.start()
+} catch (e) {
+  console.error(e)
+}
+`
 
 export const tts = `try {
   const url = await Spokestack.synthesize('Hello world')

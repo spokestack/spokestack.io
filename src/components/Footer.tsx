@@ -40,7 +40,7 @@ export default function Footer() {
             <SocialLink
               transparent
               icon="#github"
-              href={social.twitter!}
+              href={social.github!}
               title="GitHub"
               extraCss={styles.socialIcon}
               iconCss={styles.githubIcon}
@@ -187,13 +187,13 @@ export default function Footer() {
           <a css={styles.footerLink} href="/support">
             Support
           </a>
-          <a css={styles.footerLink} href={social!.github!}>
+          <a css={styles.footerLink} href={social.github!}>
             GitHub
           </a>
-          <a css={styles.footerLink} href={social!.forum!}>
+          <a css={styles.footerLink} href={social.forum!}>
             Forum
           </a>
-          <a css={styles.footerLink} href={social!.stackoverflow!}>
+          <a css={styles.footerLink} href={social.stackoverflow!}>
             Stack Overflow
           </a>
           <h5>About</h5>

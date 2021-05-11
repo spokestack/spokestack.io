@@ -48,7 +48,7 @@ export default function Features() {
               text="A keyword is a brief command that supports variations in phrasing—using a fast, lightweight model—without user audio leaving the device."
             />
             <Feature
-              id="text-to-speech"
+              id="tts"
               icon="#tts"
               iconCss={css`
                 width: 40px;
@@ -58,7 +58,7 @@ export default function Features() {
               text="Text-to-speech (TTS) is how voice user interfaces talk back. Spokestack provides a hosted TTS service that you can access directly or through our native libraries. What separates Spokestack TTS from other providers is our synthetic voice capability. Spokestack will build a custom voice model from your audio data so you can present a branded voice experience to your customers."
             />
             <Feature
-              id="speech-recognition"
+              id="asr"
               icon="#asr"
               iconCss={css`
                 width: 46px;
@@ -68,7 +68,7 @@ export default function Features() {
               text="The technology for converting spoken words to text is known as Automatic Speech Recognition (ASR). The Spokestack open-source native libraries provide a convenient API across multiple ASR providers such as Apple, Google, and Microsoft."
             />
             <Feature
-              id="understanding"
+              id="nlu"
               icon="#nlu"
               iconCss={css`
                 width: 34px;

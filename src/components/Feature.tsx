@@ -1,5 +1,6 @@
 import { SerializedStyles, css } from '@emotion/react'
 
+import { Link } from 'gatsby'
 import React from 'react'
 import SVGIcon from './SVGIcon'
 
@@ -18,7 +19,9 @@ export default function Feature({ id, icon, iconCss, name, text }: Props) {
         <SVGIcon icon={icon} extraCss={iconCss} />
       </div>
       <div className="ie-fix" css={styles.featureContent}>
-        <h3>{name}</h3>
+        <h3>
+          <Link to={`/features/${id}`}>{name}</Link>
+        </h3>
         <p>{text}</p>
       </div>
     </div>

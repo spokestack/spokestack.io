@@ -423,8 +423,7 @@ module.exports = {
     {
       resolve: 'gatsby-plugin-sitemap',
       options: {
-        output: '/sitemap.xml',
-        exclude: ['/account/*', '/api/*', '/_next/*']
+        excludes: ['/account/*', '/api/*', '/_next/*']
       }
     },
     {

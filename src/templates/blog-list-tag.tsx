@@ -12,8 +12,7 @@ type Props = PageRendererProps & {
 }
 
 const descriptions = {
-  tags:
-    'The Spokestack blog shares articles for voice assistant and app creators and enthusiasts. See product updates and tips to build better voice experiences.',
+  tags: 'The Spokestack blog shares articles for voice assistant and app creators and enthusiasts. See product updates and tips to build better voice experiences.',
   tutorials:
     'Learn from Spokestack developers, app creators, and enthusiasts and build your own independent voice assistant.'
 }

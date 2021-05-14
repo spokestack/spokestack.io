@@ -47,9 +47,8 @@ export default function StickyNav({
   const navRef = useRef<HTMLElement>(null)
   const [selectedLink, setSelectedLink] = useState<StickyLink | null>(null)
   const [selectedId, setSelectedId] = useState<string | null>(null)
-  const [selectedElemVisible, setSelectedElemVisible] = useState<
-    boolean | null
-  >(null)
+  const [selectedElemVisible, setSelectedElemVisible] =
+    useState<boolean | null>(null)
   useEffect(() => {
     const locs: { [key: number]: HTMLElement } = {}
     const linksWithHash: StickyLink[] = []

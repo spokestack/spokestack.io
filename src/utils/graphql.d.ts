@@ -3749,10 +3749,11 @@ export type SitePluginPluginOptionsPluginsPluginOptionsReplacements = {
   ANDROID_TRAY_VERSION?: Maybe<Scalars['String']>
 }
 
-export type SitePluginPluginOptionsPluginsPluginOptionsReplacementsFilterInput = {
-  ANDROID_VERSION?: Maybe<StringQueryOperatorInput>
-  ANDROID_TRAY_VERSION?: Maybe<StringQueryOperatorInput>
-}
+export type SitePluginPluginOptionsPluginsPluginOptionsReplacementsFilterInput =
+  {
+    ANDROID_VERSION?: Maybe<StringQueryOperatorInput>
+    ANDROID_TRAY_VERSION?: Maybe<StringQueryOperatorInput>
+  }
 
 export type SitePluginPluginOptionsReplacements = {
   __typename?: 'SitePluginPluginOptionsReplacements'
@@ -3785,9 +3786,10 @@ export type SitePluginPluginOptionsWorkboxConfigRuntimeCachingFilterInput = {
   handler?: Maybe<StringQueryOperatorInput>
 }
 
-export type SitePluginPluginOptionsWorkboxConfigRuntimeCachingFilterListInput = {
-  elemMatch?: Maybe<SitePluginPluginOptionsWorkboxConfigRuntimeCachingFilterInput>
-}
+export type SitePluginPluginOptionsWorkboxConfigRuntimeCachingFilterListInput =
+  {
+    elemMatch?: Maybe<SitePluginPluginOptionsWorkboxConfigRuntimeCachingFilterInput>
+  }
 
 export type SitePluginSortInput = {
   fields?: Maybe<Array<Maybe<SitePluginFieldsEnum>>>

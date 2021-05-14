@@ -70,8 +70,7 @@ module.exports = {
         name: 'Elizabeth Ropp',
         image: '/headshots/elizabeth.png',
         title: 'UX & Product Design',
-        bio:
-          'Elizabeth designs multimodal experiences with language and visuals in mind. A classically trained violinist, she enjoys bluegrass fiddle and spicy food of all kinds.',
+        bio: 'Elizabeth designs multimodal experiences with language and visuals in mind. A classically trained violinist, she enjoys bluegrass fiddle and spicy food of all kinds.',
         external: false,
         social: {
           twitter: 'https://twitter.com/roppem9',
@@ -84,8 +83,7 @@ module.exports = {
         name: 'Josh Ziegler',
         image: '/headshots/josh.png',
         title: 'Principal Computational Linguist',
-        bio:
-          'Josh lives at the intersection of language and technology. An avid reader, he enjoys long runs in the woods and pedantic arguments about...well, pick a topic.',
+        bio: 'Josh lives at the intersection of language and technology. An avid reader, he enjoys long runs in the woods and pedantic arguments about...well, pick a topic.',
         external: false,
         social: {
           twitter: '',
@@ -98,8 +96,7 @@ module.exports = {
         name: 'Mike Tatum',
         image: '/headshots/mike.png',
         title: 'Advisor',
-        bio:
-          'Mike loves making late-night purchases on Discogs and using new technologies to create better user experiences and products.',
+        bio: 'Mike loves making late-night purchases on Discogs and using new technologies to create better user experiences and products.',
         external: false,
         social: {
           twitter: 'https://twitter.com/miketatum',
@@ -112,8 +109,7 @@ module.exports = {
         name: 'Noel Weichbrodt',
         image: '/headshots/noel.png',
         title: 'President',
-        bio:
-          'Noel is President and co-creator of Spokestack, and is overly fond of Star Trek: The Next Generation examples.',
+        bio: 'Noel is President and co-creator of Spokestack, and is overly fond of Star Trek: The Next Generation examples.',
         external: false,
         social: {
           twitter: '@noelweichbrodt',
@@ -158,8 +154,7 @@ module.exports = {
         time: '5:30pm - 7:00pm',
         locationLine1: 'The Edney, Floor 5',
         locationLine2: 'Chattanooga, TN',
-        url:
-          'https://www.eventbrite.com/e/how-to-add-voice-to-mobile-workshop-tickets-91159870627'
+        url: 'https://www.eventbrite.com/e/how-to-add-voice-to-mobile-workshop-tickets-91159870627'
       }
     ],
     redirects: [
@@ -411,7 +406,8 @@ module.exports = {
             },
             {
               // Add runtime caching of various other page resources
-              urlPattern: /^https?:.*\.(png|jpg|jpeg|webp|svg|gif|tiff|js|woff|woff2|json|css)$/,
+              urlPattern:
+                /^https?:.*\.(png|jpg|jpeg|webp|svg|gif|tiff|js|woff|woff2|json|css)$/,
               handler: 'StaleWhileRevalidate'
             },
             {

@@ -172,8 +172,7 @@ In this example, the following code is used to add the `<SpokestackTray />` comp
   clientSecret={process.env.SPOKESTACK_CLIENT_SECRET}
   handleIntent={handleIntent}
   nluModelUrls={{
-    nlu:
-      'https://d3dmqd7cy685il.cloudfront.net/nlu/production/shared/XtASJqxkO6UwefOzia-he2gnIMcBnR2UCF-VyaIy-OI/nlu.tflite',
+    nlu: 'https://d3dmqd7cy685il.cloudfront.net/nlu/production/shared/XtASJqxkO6UwefOzia-he2gnIMcBnR2UCF-VyaIy-OI/nlu.tflite',
     vocab:
       'https://d3dmqd7cy685il.cloudfront.net/nlu/production/shared/XtASJqxkO6UwefOzia-he2gnIMcBnR2UCF-VyaIy-OI/vocab.txt',
     metadata:

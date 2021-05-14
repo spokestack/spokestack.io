@@ -15,9 +15,8 @@ export interface ConfiguratorProps {
 }
 
 export default function Configurator({ codeKey, extraCss }: ConfiguratorProps) {
-  const [platform, setPlatform] = useState<
-    'ios' | 'android' | 'rn' | 'node' | 'python'
-  >('ios')
+  const [platform, setPlatform] =
+    useState<'ios' | 'android' | 'rn' | 'node' | 'python'>('ios')
 
   useEffect(() => {
     Prism.highlightAll()

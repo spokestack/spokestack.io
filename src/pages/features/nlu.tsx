@@ -20,7 +20,7 @@ export default function NLUPage() {
         subtitle="Turn speech into software commands by classifying intent and slot variables from speech."
         image={
           <StaticImage
-            placeholder="blurred"
+            width={600}
             alt="NLU"
             src="../../images/features/nlu.png"
           />
@@ -69,6 +69,7 @@ export default function NLUPage() {
             utterance:{' '}
           </p>
           <StaticImage
+            width={814}
             css={styles.stepImage}
             alt="NLU Example"
             src="../../images/features/nlu/example.png"
@@ -111,6 +112,7 @@ export default function NLUPage() {
               description="Extract intent and variables from a sentence."
               image={
                 <StaticImage
+                  width={395}
                   alt="Turn Speech Into Software Commands"
                   src="../../images/features/nlu/commands.png"
                 />
@@ -120,6 +122,7 @@ export default function NLUPage() {
               title="Don't Just Listen to Your Users"
               image={
                 <StaticImage
+                  width={395}
                   alt="Don't Just Listen to Your Users"
                   src="../../images/features/nlu/understand.png"
                 />
@@ -130,6 +133,7 @@ export default function NLUPage() {
               description="Integrate a voice interface into your software by responding to an NLU intent the same way you respond to a screen tap or mouse click."
               image={
                 <StaticImage
+                  width={395}
                   alt="Respond the Same Way You Would to a Tap/Click"
                   src="../../images/features/nlu/respond.png"
                 />
@@ -140,6 +144,7 @@ export default function NLUPage() {
               description="Easily import Alexa, DialogFlow, or Jovo NLU models into your software on all Spokestack Open Source platforms."
               image={
                 <StaticImage
+                  width={395}
                   alt="Import Models"
                   src="../../images/features/nlu/import.png"
                 />
@@ -153,6 +158,7 @@ export default function NLUPage() {
               title="Simple Commands"
               image={
                 <StaticImage
+                  width={395}
                   alt="Simple Commands"
                   src="../../images/features/nlu/simple-commands.png"
                 />
@@ -162,6 +168,7 @@ export default function NLUPage() {
               title="Complex Utterances"
               image={
                 <StaticImage
+                  width={395}
                   alt="Complex Utterances"
                   src="../../images/features/nlu/complex-utterances.png"
                 />
@@ -172,6 +179,7 @@ export default function NLUPage() {
               description="Move from using RegEx-based approaches to a more sophisticated, robust solution."
               image={
                 <StaticImage
+                  width={395}
                   alt="More Sophisticated"
                   src="../../images/features/nlu/sophisticated.png"
                 />

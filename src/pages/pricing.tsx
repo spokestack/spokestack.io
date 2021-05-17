@@ -4,7 +4,7 @@ import * as theme from '../styles/theme'
 import { PageRendererProps, graphql } from 'gatsby'
 import React, { useRef, useState } from 'react'
 
-import ContactUs from '../components/pricing/ContactUs'
+import Create from '../components/Create'
 import FAQ from '../components/pricing/FAQ'
 import Layout from '../components/Layout'
 import OpenSource from '../components/pricing/OpenSource'
@@ -100,7 +100,7 @@ export default function Pricing({ data }: Props) {
         />
       </div>
       <OpenSource />
-      <ContactUs />
+      <Create hidePricing />
       <FAQ contact={contact} />
     </Layout>
   )

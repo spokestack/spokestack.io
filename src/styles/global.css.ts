@@ -596,10 +596,10 @@ export default css`
       }
     }
     .column-third {
-      width: calc(33% - ${50 / 3}px);
+      width: calc(33% - ${40 / 3}px);
 
       &:nth-last-of-type(n + 2) {
-        margin-right: 25px;
+        margin-right: 20px;
       }
     }
     .input-wrap {

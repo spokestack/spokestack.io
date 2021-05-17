@@ -18,9 +18,9 @@ export default function SpeechPipelinePage() {
         title="Spokestack Speech Pipeline"
         image={
           <StaticImage
-            placeholder="blurred"
+            width={600}
             alt="Speech Pipeline"
-            src="../../images/features/asr.png"
+            src="../../images/features/speech-pipeline.png"
           />
         }
       />

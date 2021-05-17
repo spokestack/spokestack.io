@@ -23,7 +23,7 @@ export default function KeywordPage() {
         subtitle="Local on-device keyword spotting &mdash; recognize any sound whether or not it's part of a langauge."
         image={
           <StaticImage
-            placeholder="blurred"
+            width={544}
             alt="Keyword"
             src="../../images/features/keyword.png"
           />
@@ -64,6 +64,7 @@ export default function KeywordPage() {
               description="Accessible, safe, natural."
               image={
                 <StaticImage
+                  width={395}
                   alt="Hands-Free"
                   src="../../images/features/keyword/hands-free.png"
                 />
@@ -74,6 +75,7 @@ export default function KeywordPage() {
               description="Only activating your software when it’s directly addressed processes audio as efficiently as possible."
               image={
                 <StaticImage
+                  width={395}
                   alt="Edge-Based"
                   src="../../images/features/keyword/edge-based.png"
                 />
@@ -84,7 +86,8 @@ export default function KeywordPage() {
               description="Running fully on device (without an internet connection) is fast and consumes little power."
               image={
                 <StaticImage
-                  alt="Energy"
+                  width={395}
+                  alt="Energy-Conscious"
                   src="../../images/features/keyword/energy.png"
                 />
               }
@@ -100,6 +103,7 @@ export default function KeywordPage() {
               }
               image={
                 <StaticImage
+                  width={395}
                   alt="Cross-Platform"
                   src="../../images/features/keyword/cross-platform.png"
                 />
@@ -110,6 +114,7 @@ export default function KeywordPage() {
               description="Rather than listen to audio, only answer &ldquo;Did I hear on the keywords you trained me to listen for?&rdquo; All other sounds are immediately forgotten."
               image={
                 <StaticImage
+                  width={395}
                   alt="Privacy-Minded"
                   src="../../images/features/keyword/privacy.png"
                 />
@@ -120,6 +125,7 @@ export default function KeywordPage() {
               description="Constraining your app’s vocabulary means a lightweight customized recognition model."
               image={
                 <StaticImage
+                  width={395}
                   alt="Portable"
                   src="../../images/features/keyword/portable.png"
                 />
@@ -144,6 +150,7 @@ export default function KeywordPage() {
                 Utterances (variations) for <code>play</code> could include:
               </p>
               <StaticImage
+                width={395}
                 alt="play, start, go, music on"
                 src="../../images/features/keyword/play.png"
                 css={styles.image}
@@ -154,6 +161,7 @@ export default function KeywordPage() {
                 Utterances (variations) for <code>stop</code> could include:
               </p>
               <StaticImage
+                width={395}
                 alt="stop, quit, pause, music off"
                 src="../../images/features/keyword/stop.png"
                 css={styles.image}
@@ -188,6 +196,7 @@ export default function KeywordPage() {
             <a href="/features/vad">voice activity detector</a> to:
           </p>
           <StaticImage
+            width={815}
             alt="How Do Keyword Recognition Models Work?"
             src="../../images/features/keyword/detection.png"
             css={styles.image}
@@ -241,6 +250,7 @@ export default function KeywordPage() {
         </Section>
       </div>
       <StaticImage
+        layout="fullWidth"
         alt="Create a Custom Keyword Model"
         src="../../images/features/keyword/custom-keyword.png"
         css={styles.image}
@@ -270,6 +280,7 @@ export default function KeywordPage() {
                 Model
               </h4>
               <StaticImage
+                width={811}
                 css={styles.stepImage}
                 alt="Create a Keyword Recognition Model"
                 src="../../images/features/keyword/create.png"
@@ -286,6 +297,7 @@ export default function KeywordPage() {
                 <span css={styles.number}>2</span> Add and Record Utterances
               </h4>
               <StaticImage
+                width={811}
                 css={styles.stepImage}
                 alt="Add and Record Utterances"
                 src="../../images/features/keyword/utterances.png"
@@ -300,6 +312,7 @@ export default function KeywordPage() {
               <div className="columns" css={styles.utterances}>
                 <div className="column-third">
                   <StaticImage
+                    width={254}
                     alt="Set keyword text"
                     src="../../images/features/keyword/keyword-text.png"
                   />
@@ -307,6 +320,7 @@ export default function KeywordPage() {
                 </div>
                 <div className="column-third">
                   <StaticImage
+                    width={254}
                     alt="View utterances"
                     src="../../images/features/keyword/view-utterances.png"
                   />
@@ -317,6 +331,7 @@ export default function KeywordPage() {
                 </div>
                 <div className="column-third">
                   <StaticImage
+                    width={254}
                     alt="Add utterance"
                     src="../../images/features/keyword/add-utterance.png"
                   />
@@ -329,7 +344,8 @@ export default function KeywordPage() {
               <div className="columns" css={styles.utterances}>
                 <div className="column-third">
                   <StaticImage
-                    alt="Click the arrow to the right of an utterance to view samples."
+                    width={254}
+                    alt="View samples"
                     src="../../images/features/keyword/view-samples.png"
                   />
                   <p>
@@ -339,6 +355,7 @@ export default function KeywordPage() {
                 </div>
                 <div className="column-third">
                   <StaticImage
+                    width={254}
                     alt="Record"
                     src="../../images/features/keyword/record.png"
                   />
@@ -392,6 +409,7 @@ export default function KeywordPage() {
                 <span css={styles.number}>3</span> Train Your Model
               </h4>
               <StaticImage
+                width={811}
                 css={styles.stepImage}
                 alt="Train Your Model"
                 src="../../images/features/keyword/train.png"

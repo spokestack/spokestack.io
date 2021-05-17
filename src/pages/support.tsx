@@ -63,14 +63,12 @@ export default function Support({ data }: Props) {
         </section>
         <BlueCard
           small
-          button={
-            <a href={`mailto:${contact!.email}`} className="btn">
-              Contact us
-            </a>
-          }
           title="Can't find what you need?"
-          text="Email us a help request."
-        />
+          text="Email us a help request.">
+          <a href={`mailto:${contact!.email}`} className="btn">
+            Contact us
+          </a>
+        </BlueCard>
       </div>
     </Layout>
   )

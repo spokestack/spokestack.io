@@ -88,7 +88,7 @@ export default class Switch extends PureComponent<Props, State> {
   }
 
   constrainX(x: number) {
-    return Math.max(0, Math.min(81, x))
+    return Math.max(0, Math.min(KNOB_WIDTH, x))
   }
 
   addListeners() {
@@ -193,7 +193,7 @@ const styles = {
     flex-direction: row;
     justify-content: space-between;
     align-items: center;
-    padding: 0 18px;
+    padding: 0 20px;
     border-radius: 25px;
     background-color: white;
     border: 1px solid ${theme.primary};

@@ -230,7 +230,15 @@ module.exports = {
     'gatsby-plugin-emotion',
     'gatsby-plugin-optimize-svgs',
     'gatsby-plugin-image',
-    'gatsby-plugin-sharp',
+    {
+      resolve: 'gatsby-plugin-sharp',
+      options: {
+        defaults: {
+          placeholder: 'blurred',
+          quality: 70
+        }
+      }
+    },
     'gatsby-transformer-sharp',
     'gatsby-plugin-react-svg',
     {

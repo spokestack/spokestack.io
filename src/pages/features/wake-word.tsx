@@ -23,7 +23,7 @@ export default function WakewordPage() {
         subtitle="Multilingual on-device wake words recognize one or multiple commands to activate listening in your software."
         image={
           <StaticImage
-            placeholder="blurred"
+            width={600}
             alt="Wake word"
             src="../../images/features/vad-wake-word.png"
           />
@@ -65,6 +65,7 @@ export default function WakewordPage() {
               description="Accessible, safe, natural."
               image={
                 <StaticImage
+                  width={395}
                   alt="Hands-Free"
                   src="../../images/features/wake-word/hands-free.png"
                 />
@@ -75,7 +76,8 @@ export default function WakewordPage() {
               description="Detection happens entirely on the device without accessing a network or cloud services."
               image={
                 <StaticImage
-                  alt="Hands-Free"
+                  width={395}
+                  alt="Edge-Based"
                   src="../../images/features/wake-word/edge-based.png"
                 />
               }
@@ -85,7 +87,8 @@ export default function WakewordPage() {
               description="Only activating your software when it’s directly addressed processes audio as efficiently as possible and uses less power."
               image={
                 <StaticImage
-                  alt="Energy"
+                  width={395}
+                  alt="Energy-Conscious"
                   src="../../images/features/wake-word/energy.png"
                 />
               }
@@ -96,11 +99,12 @@ export default function WakewordPage() {
                 <p>
                   Train a model with our{' '}
                   <a href="/account">no-code AutoSpeech Maker</a> and use it
-                  across all our <a href="/docs">platforms</a>
+                  across all of our <a href="/docs">platforms</a>.
                 </p>
               }
               image={
                 <StaticImage
+                  width={395}
                   alt="Cross-Platform"
                   src="../../images/features/wake-word/cross-platform.png"
                 />
@@ -111,6 +115,7 @@ export default function WakewordPage() {
               description="Rather than listen to audio, only answer &ldquo;Did I hear one of the names you trained me to listen for?&rdquo;"
               image={
                 <StaticImage
+                  width={395}
                   alt="Privacy-Minded"
                   src="../../images/features/wake-word/privacy.png"
                 />
@@ -128,6 +133,7 @@ export default function WakewordPage() {
             <a href="/features/vad">Voice Activity Detector</a> to:{' '}
           </p>
           <StaticImage
+            width={815}
             alt="How Does Wake Word Work?"
             src="../../images/features/wake-word/detection.png"
             css={styles.image}
@@ -204,6 +210,7 @@ export default function WakewordPage() {
         </Section>
       </div>
       <StaticImage
+        layout="fullWidth"
         alt="Create a Custom Wake Word"
         src="../../images/features/wake-word/custom-wake-word.png"
         css={styles.image}
@@ -232,6 +239,7 @@ export default function WakewordPage() {
                 <span css={styles.number}>1</span> Create a Wake Word
               </h4>
               <StaticImage
+                width={811}
                 css={styles.stepImage}
                 alt="Create a Wake Word Model"
                 src="../../images/features/wake-word/create.png"
@@ -248,6 +256,7 @@ export default function WakewordPage() {
                 <span css={styles.number}>2</span> Add and Record Utterances
               </h4>
               <StaticImage
+                width={811}
                 css={styles.stepImage}
                 alt="Add and Record Utterances"
                 src="../../images/features/wake-word/utterances.png"
@@ -261,6 +270,7 @@ export default function WakewordPage() {
               <div className="columns" css={styles.utterances}>
                 <div className="column-third">
                   <StaticImage
+                    width={254}
                     alt="Set utterance text"
                     src="../../images/features/wake-word/utterance-text.png"
                   />
@@ -268,7 +278,8 @@ export default function WakewordPage() {
                 </div>
                 <div className="column-third">
                   <StaticImage
-                    alt="Set utterance text"
+                    width={254}
+                    alt="View samples"
                     src="../../images/features/wake-word/view-samples.png"
                   />
                   <p>
@@ -278,7 +289,8 @@ export default function WakewordPage() {
                 </div>
                 <div className="column-third">
                   <StaticImage
-                    alt="Set utterance text"
+                    width={254}
+                    alt="Record"
                     src="../../images/features/wake-word/record.png"
                   />
                   <p>
@@ -303,6 +315,7 @@ export default function WakewordPage() {
                 <span css={styles.number}>3</span> Train Your Model
               </h4>
               <StaticImage
+                width={811}
                 css={styles.stepImage}
                 alt="Train Your Model"
                 src="../../images/features/wake-word/train.png"

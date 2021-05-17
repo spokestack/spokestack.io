@@ -48,5 +48,10 @@ const styles = {
   image: css`
     width: 100%;
     margin-bottom: 15px;
+    line-height: 0;
+
+    img {
+      width: 100%;
+    }
   `
 }

@@ -4,24 +4,24 @@ import React from 'react'
 import SVGIcon from '../SVGIcon'
 import { css } from '@emotion/react'
 
-export default function ContactUs(props: Partial<BlueCardProps>) {
+export default function ContactUs(
+  props: Partial<Omit<BlueCardProps, 'children'>>
+) {
   return (
     <BlueCard
-      button={
-        <a href="/account/create" className="btn btn-primary">
-          Contact Us
-          <SVGIcon
-            icon="#arrow-forward"
-            className="icon"
-            extraCss={styles.arrowIcon}
-          />
-        </a>
-      }
       id="request"
       title="Need Help Choosing a Plan?"
       text="Let us show you around before you decide."
-      {...props}
-    />
+      {...props}>
+      <a href="mailto:hello@spokestack.io" className="btn">
+        Request demo
+        <SVGIcon
+          icon="#arrow-forward"
+          className="icon"
+          extraCss={styles.arrowIcon}
+        />
+      </a>
+    </BlueCard>
   )
 }
 

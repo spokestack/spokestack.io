@@ -5,7 +5,7 @@ import { Global, SerializedStyles, css } from '@emotion/react'
 import React from 'react'
 
 export interface BlueCardProps {
-  button: React.ReactNode
+  children: React.ReactNode
   extraCss?: SerializedStyles | SerializedStyles[]
   id?: string
   small?: boolean
@@ -14,7 +14,7 @@ export interface BlueCardProps {
 }
 
 export default function BlueCard({
-  button,
+  children,
   extraCss,
   id,
   small,
@@ -38,7 +38,7 @@ export default function BlueCard({
       />
       <h3>{title}</h3>
       <div className="title">{text}</div>
-      {button}
+      {children}
     </section>
   )
 }

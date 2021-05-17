@@ -23,7 +23,7 @@ export default function TTSPage() {
         subtitle="Personal AI voice clone — it's your voice, not a deepfake!"
         image={
           <StaticImage
-            placeholder="blurred"
+            width={540}
             alt="TTS"
             src="../../images/features/tts.png"
           />
@@ -50,6 +50,7 @@ export default function TTSPage() {
               title="Unique Audio Branding Opportunity"
               image={
                 <StaticImage
+                  width={395}
                   alt="Unique Audio Branding Opportunity"
                   src="../../images/features/tts/branding.png"
                 />
@@ -59,6 +60,7 @@ export default function TTSPage() {
               title="Multimodal UI Not Limited to a Screen"
               image={
                 <StaticImage
+                  width={395}
                   alt="Multimodal UI Not Limited to a Screen"
                   src="../../images/features/tts/multimodal.png"
                 />
@@ -68,6 +70,7 @@ export default function TTSPage() {
               title="Create an Artificial Persona"
               image={
                 <StaticImage
+                  width={395}
                   alt="Create an Artificial Persona"
                   src="../../images/features/tts/persona.png"
                 />
@@ -77,6 +80,7 @@ export default function TTSPage() {
               title="Personalized Speech Specific to Each Potential User"
               image={
                 <StaticImage
+                  width={395}
                   alt="Personalized Speech"
                   src="../../images/features/tts/personalized.png"
                 />
@@ -133,6 +137,7 @@ export default function TTSPage() {
         </Section>
       </div>
       <StaticImage
+        layout="fullWidth"
         alt="Create a Custom TTS Model"
         src="../../images/features/tts/custom-voice.png"
         css={styles.image}
@@ -162,6 +167,7 @@ export default function TTSPage() {
                 <span css={styles.number}>1</span> Create a TTS Model
               </h4>
               <StaticImage
+                width={811}
                 css={styles.stepImage}
                 alt="Create a TTS Model"
                 src="../../images/features/tts/create.png"
@@ -178,6 +184,7 @@ export default function TTSPage() {
                 <span css={styles.number}>2</span> Record and Upload Samples
               </h4>
               <StaticImage
+                width={811}
                 css={styles.stepImage}
                 alt="Record Samples"
                 src="../../images/features/tts/record.png"
@@ -203,6 +210,7 @@ export default function TTSPage() {
                 don&apos;t put too much emotion into your read.
               </p>
               <StaticImage
+                width={811}
                 css={styles.stepImage}
                 alt="Upload Samples"
                 src="../../images/features/tts/upload.png"
@@ -213,6 +221,7 @@ export default function TTSPage() {
                 <span css={styles.number}>3</span> Train Your Model
               </h4>
               <StaticImage
+                width={811}
                 css={styles.stepImage}
                 alt="Train Your Model"
                 src="../../images/features/tts/train.png"

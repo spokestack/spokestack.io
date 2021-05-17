@@ -117,7 +117,7 @@
     "eslint-plugin-react": "^7.23.2",
     "husky": "^6.0.0",
     "mkdirp": "^1.0.4",
-    "open": "^8.0.8",
+    "open": "^8.0.9",
     "prettier": "^2.3.0",
     "release-it": "^14.6.2",
     "serve": "^11.3.2",

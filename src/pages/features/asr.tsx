@@ -19,7 +19,7 @@ export default function ASRPage() {
         subtitle="Analyze and transcribe your software’s audio to perform a function or simply record."
         image={
           <StaticImage
-            placeholder="blurred"
+            width={416}
             alt="ASR"
             src="../../images/features/asr.png"
           />

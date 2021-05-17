@@ -19,7 +19,7 @@ export default function VADPage() {
         subtitle="Determine whether or not an audio snippet contains human speech."
         image={
           <StaticImage
-            placeholder="blurred"
+            width={600}
             alt="VAD"
             src="../../images/features/vad-wake-word.png"
           />

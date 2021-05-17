@@ -251,8 +251,11 @@ export default function KeywordPage() {
       </div>
       <StaticImage
         layout="fullWidth"
+        quality={100}
+        breakpoints={[750, 1080, 1366, 1920, 2200, 2500]}
+        placeholder="dominantColor"
         alt="Create a Custom Keyword Model"
-        src="../../images/features/keyword/custom-keyword.png"
+        src="../../images/features/keyword/custom.png"
         css={styles.image}
       />
       <div css={styles.content}>

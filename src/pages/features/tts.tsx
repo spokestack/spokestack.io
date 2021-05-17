@@ -138,8 +138,11 @@ export default function TTSPage() {
       </div>
       <StaticImage
         layout="fullWidth"
+        quality={100}
+        breakpoints={[750, 1080, 1366, 1920, 2200, 2500]}
+        placeholder="dominantColor"
         alt="Create a Custom TTS Model"
-        src="../../images/features/tts/custom-voice.png"
+        src="../../images/features/tts/custom.png"
         css={styles.image}
       />
       <div css={styles.content}>

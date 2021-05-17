@@ -211,8 +211,11 @@ export default function WakewordPage() {
       </div>
       <StaticImage
         layout="fullWidth"
-        alt="Create a Custom Wake Word"
-        src="../../images/features/wake-word/custom-wake-word.png"
+        quality={100}
+        breakpoints={[750, 1080, 1366, 1920, 2200, 2500]}
+        placeholder="dominantColor"
+        alt="Create a Custom Wake Word Model"
+        src="../../images/features/wake-word/custom.png"
         css={styles.image}
       />
       <div css={styles.content}>

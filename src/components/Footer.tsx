@@ -123,7 +123,7 @@ export default function Footer() {
           </a>
           <a
             css={styles.footerLink}
-            href="https://github.com/spokestack/spokestack-ios">
+            href="https://github.com/spokestack/spokestack-android">
             Android (Java, Kotlin)
           </a>
           <a

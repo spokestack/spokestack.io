@@ -258,12 +258,12 @@ export default function NLUPage() {
             additional work required on your part.
           </p>
           <p>
-            If you&apos;re starting from scratch, we recommend Spokestack&apos;s
+            If you&apos;re starting from scratch, we recommend Spokestack&apos;s{' '}
             <a href="/docs/machine-learning/nlu-training-data">
               NLU training data format
             </a>
             . This will give you the maximum amount of flexibility, as our
-            format supports several features you won&apos;t find elsewhere, like
+            format supports several features you won&apos;t find elsewhere, like{' '}
             <a href="/docs/machine-learning/nlu-training-data#implicit-slot-values">
               implicit slots
             </a>{' '}

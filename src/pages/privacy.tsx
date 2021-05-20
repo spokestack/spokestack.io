@@ -520,7 +520,7 @@ export default function Privacy({ data }: Props) {
 const styles = {
   container: css`
     padding: 20px;
-    max-width: ${DEFAULT_WIDTH};
+    max-width: ${DEFAULT_WIDTH}px;
     margin: 0 auto;
   `
 }

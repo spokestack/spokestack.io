@@ -1,86 +1,86 @@
 import * as theme from '../../styles/theme'
 
 import React from 'react'
-import SVGIcon from '../SVGIcon'
-import Video from './Video'
 import { css } from '@emotion/react'
+import { StaticImage } from 'gatsby-plugin-image'
 
 export default function Header() {
   return (
     <header css={styles.header}>
       <div className="ie-fix" css={styles.headerContent}>
-        <h1 css={styles.headerText}>Give your app a voice interface</h1>
+        <h1 css={styles.headerText}>Give Your Software a Voice Interface</h1>
         <p className="title spokestack-speakable">
-          Open source tools for mobile &amp; web
+          Open source tools for mobile, web, &amp; embedded devices
         </p>
         <a href="/account/create" className="btn btn-secondary">
           Get started free
-          <SVGIcon icon="#arrow-forward" extraCss={styles.createAccountIcon} />
         </a>
       </div>
-      <Video />
+      <StaticImage
+        width={549}
+        css={styles.image}
+        alt="Spokestack Example"
+        src="../../images/homepage/hero.png"
+      />
     </header>
   )
 }
 
 const styles = {
   header: css`
-    position: relative;
     display: flex;
     flex-direction: column;
     justify-content: center;
     align-items: center;
     background: ${theme.mainBackground} url('/homepage/background.svg')
       no-repeat;
-    background-position: center bottom;
+    background-position: center top;
     background-size: cover;
     color: ${theme.textDarkBg};
     width: 100%;
-    padding: 90px 20px 20px;
+    padding: 15px 20px 0;
 
     ${theme.MIN_DEFAULT_MEDIA_QUERY} {
+      height: 602px;
       flex-direction: row;
       align-items: flex-start;
-      padding: 0 30px;
-      height: 566px;
+      padding-left: 50px;
+      padding-right: 50px;
     }
 
     ${theme.MIN_LARGE_DISPLAY_MEDIA_QUERY} {
-      padding: 0 100px;
+      padding-left: 150px;
+      padding-right: 150px;
     }
   `,
   headerContent: css`
-    height: 100%;
     display: flex;
     flex-direction: column;
-    justify-content: center;
-    align-items: center;
-    text-align: center;
-    max-width: 700px;
-    margin-bottom: 90px;
+    align-items: flex-start;
+    margin-bottom: 25px;
 
     .title {
-      margin-bottom: 15px;
+      margin-bottom: 50px;
+    }
+
+    .btn {
+      width: 100%;
     }
 
     ${theme.MIN_DEFAULT_MEDIA_QUERY} {
-      align-items: flex-start;
-      text-align: left;
-      margin-right: 20px;
-      margin-bottom: 0;
+      max-width: 540px;
+      margin-top: 80px;
+      margin-right: 50px;
 
-      .title {
-        margin-bottom: 25px;
+      .btn {
+        width: auto;
       }
     }
   `,
   headerText: css`
     color: ${theme.textDarkBg};
   `,
-  createAccountIcon: css`
-    fill: ${theme.header};
-    width: 20px;
-    height: 20px;
-    margin-left: 5px;
+  image: css`
+    flex-shrink: 0;
   `
 }

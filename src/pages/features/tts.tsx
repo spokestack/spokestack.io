@@ -128,18 +128,19 @@ export default function TTSPage() {
           <p>
             Our TTS is currently limited to English, but we can produce{' '}
             <strong>custom voices</strong> for your brand, and we offer an{' '}
-            <a href="/pricing">affordable subscription tier</a>
-            that lets you train your own TTS voice with as little as 5 minutes
-            of data. The quality of a voice trained on a very small data set
-            won&apos;t be quite up to par with our custom voices, but it can be
-            a great way to produce a proof of concept or power a hobby project.
+            <a href="/pricing">affordable subscription tier</a> that lets you
+            train your own TTS voice with as little as 5 minutes of data. The
+            quality of a voice trained on a very small data set won&apos;t be
+            quite up to par with our custom voices, but it can be a great way to
+            produce a proof of concept or power a hobby project.
           </p>
         </Section>
       </div>
       <StaticImage
         layout="fullWidth"
         quality={100}
-        breakpoints={[750, 1080, 1366, 1920, 2200, 2500]}
+        // gatsby default: [750, 1080, 1366, 1920]
+        breakpoints={[750, 980, 1280, 1600, 1920, 2200, 2500]}
         placeholder="dominantColor"
         alt="Create a Custom TTS Model"
         src="../../images/features/tts/custom.png"

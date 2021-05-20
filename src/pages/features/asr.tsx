@@ -94,7 +94,7 @@ export default function ASRPage() {
             <a href="https://www.aclweb.org/anthology/2020.lrec-1.797.pdf">
               academic comparisons
             </a>{' '}
-            of major vendors. For perspective, human WER hovers somewhere
+            of major vendors. For perspective, human WER hovers somewhere{' '}
             <a href="https://www.microsoft.com/en-us/research/wp-content/uploads/2017/06/paper-revised2.pdf">
               between 4-11%
             </a>

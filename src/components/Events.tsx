@@ -49,7 +49,7 @@ const styles = {
     flex-direction: column;
     justify-content: center;
     align-items: center;
-    max-width: ${theme.DEFAULT_WIDTH};
+    max-width: ${theme.DEFAULT_WIDTH}px;
     margin: 0 auto;
 
     .event + .event {

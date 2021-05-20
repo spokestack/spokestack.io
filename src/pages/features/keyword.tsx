@@ -252,7 +252,8 @@ export default function KeywordPage() {
       <StaticImage
         layout="fullWidth"
         quality={100}
-        breakpoints={[750, 1080, 1366, 1920, 2200, 2500]}
+        // gatsby default: [750, 1080, 1366, 1920]
+        breakpoints={[750, 980, 1280, 1600, 1920, 2200, 2500]}
         placeholder="dominantColor"
         alt="Create a Custom Keyword Model"
         src="../../images/features/keyword/custom.png"

@@ -7,7 +7,7 @@ export const primaryLighterColor = Color('#c2dfff')
 export const secondaryColor = Color('#61fae9')
 export const textColor = Color('#323e48')
 export const headerColor = Color('#2c363f')
-export const mainBorderColor = Color('#d4d7d9')
+export const mainBorderColor = Color('#d5d7d9')
 export const linkColor = primaryColor
 export const linkColorDark = primaryLightColor
 export const authorBackgroundColor = Color('#5b6a79')
@@ -68,11 +68,11 @@ export const linkStickyNav = '#8da6e3'
 export const linkStickyNavHover = linkHover
 export const linkStickyNavActive = link
 
-export const LARGER_DISPLAY_WIDTH = '1600px'
-export const LARGE_DISPLAY_WIDTH = '1280px'
-export const DEFAULT_WIDTH = '980px'
-export const TABLET_WIDTH = '768px'
-export const MOBILE_WIDTH = '480px'
+export const LARGER_DISPLAY_WIDTH = 1600
+export const LARGE_DISPLAY_WIDTH = 1280
+export const DEFAULT_WIDTH = 980
+export const TABLET_WIDTH = 768
+export const MOBILE_WIDTH = 480
 
 export const MIN_SIDEBAR_WIDTH = '300px'
 export const MAX_SIDEBAR_WIDTH = '365px'
@@ -90,14 +90,24 @@ export const ieBreakpointMinLarge = `@media all and (-ms-high-contrast: none) an
 /**
  * Responsive media queries
  */
-export const LARGER_DISPLAY_MEDIA_QUERY = `@media only screen and (max-width:${LARGER_DISPLAY_WIDTH})`
-export const LARGE_DISPLAY_MEDIA_QUERY = `@media only screen and (max-width:${LARGE_DISPLAY_WIDTH})`
-export const DEFAULT_MEDIA_QUERY = `@media only screen and (max-width:${DEFAULT_WIDTH})`
-export const TABLET_MEDIA_QUERY = `@media only screen and (max-width:${TABLET_WIDTH})`
-export const MOBILE_MEDIA_QUERY = `@media only screen and (max-width:${MOBILE_WIDTH})`
+export const LARGER_DISPLAY_MEDIA_QUERY = `@media only screen and (max-width:${
+  LARGER_DISPLAY_WIDTH - 1
+}px)`
+export const LARGE_DISPLAY_MEDIA_QUERY = `@media only screen and (max-width:${
+  LARGE_DISPLAY_WIDTH - 1
+}px)`
+export const DEFAULT_MEDIA_QUERY = `@media only screen and (max-width:${
+  DEFAULT_WIDTH - 1
+}px)`
+export const TABLET_MEDIA_QUERY = `@media only screen and (max-width:${
+  TABLET_WIDTH - 1
+}px)`
+export const MOBILE_MEDIA_QUERY = `@media only screen and (max-width:${
+  MOBILE_WIDTH - 1
+}px)`
 
-export const MIN_LARGER_DISPLAY_MEDIA_QUERY = `@media (min-width:${LARGER_DISPLAY_WIDTH})`
-export const MIN_LARGE_DISPLAY_MEDIA_QUERY = `@media (min-width:${LARGE_DISPLAY_WIDTH})`
-export const MIN_DEFAULT_MEDIA_QUERY = `@media (min-width:${DEFAULT_WIDTH})`
-export const MIN_TABLET_MEDIA_QUERY = `@media (min-width:${TABLET_WIDTH})`
-export const MIN_MOBILE_MEDIA_QUERY = `@media (min-width:${MOBILE_WIDTH})`
+export const MIN_LARGER_DISPLAY_MEDIA_QUERY = `@media (min-width:${LARGER_DISPLAY_WIDTH}px)`
+export const MIN_LARGE_DISPLAY_MEDIA_QUERY = `@media (min-width:${LARGE_DISPLAY_WIDTH}px)`
+export const MIN_DEFAULT_MEDIA_QUERY = `@media (min-width:${DEFAULT_WIDTH}px)`
+export const MIN_TABLET_MEDIA_QUERY = `@media (min-width:${TABLET_WIDTH}px)`
+export const MIN_MOBILE_MEDIA_QUERY = `@media (min-width:${MOBILE_WIDTH}px)`

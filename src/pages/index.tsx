@@ -2,17 +2,17 @@ import { PageRendererProps, graphql } from 'gatsby'
 
 import Banner from '../components/Banner'
 import Create from '../components/Create'
-import Flexible from '../components/homepage/Flexible'
 import Header from '../components/homepage/Header'
 import Layout from '../components/Layout'
 import { MIN_DEFAULT_MEDIA_QUERY } from '../styles/theme'
 import News from '../components/homepage/News'
-import Platforms from '../components/homepage/Platforms'
 import { Query } from '../utils/graphql'
 import React from 'react'
 import SEO from '../components/SEO'
-import Tray from '../components/homepage/Tray'
 import { css } from '@emotion/react'
+import Problems from '../components/homepage/Problems'
+import Benefits from '../components/homepage/Benefits'
+import Solution from '../components/homepage/Solution'
 
 interface Props extends PageRendererProps {
   data: Query
@@ -35,9 +35,9 @@ export default function Index({ data }: Props) {
       navStyle={styles.nav}>
       <SEO title={siteTitle} />
       <Header />
-      <Tray />
-      <Platforms />
-      <Flexible />
+      <Problems />
+      <Benefits />
+      <Solution />
       <News />
       <Create />
     </Layout>
@@ -63,9 +63,6 @@ export const pageQuery = graphql`
     site {
       siteMetadata {
         title
-        events {
-          title
-        }
       }
     }
   }

@@ -70,7 +70,7 @@ export default class Switch extends PureComponent<Props, State> {
     })
     if (this.dragged) {
       const nextX = this.nextX(e.clientX)
-      this.updateYearly(nextX < 40)
+      this.updateYearly(nextX < KNOB_WIDTH / 2)
     } else {
       this.updateYearly(!yearly)
     }
@@ -78,7 +78,7 @@ export default class Switch extends PureComponent<Props, State> {
 
   updateYearly = (newYearly: boolean) => {
     this.setState({
-      x: newYearly ? 0 : 81
+      x: newYearly ? 0 : KNOB_WIDTH
     })
     this.props.onChange(newYearly)
   }
@@ -123,6 +123,7 @@ export default class Switch extends PureComponent<Props, State> {
             !e.altKey &&
             !e.ctrlKey &&
             !e.metaKey &&
+            // Enter (13) or Space (32) triggers a toggle
             (e.keyCode === 13 || e.keyCode === 32)
           ) {
             e.preventDefault()
@@ -204,7 +205,7 @@ const styles = {
   `,
   knob: css`
     position: relative;
-    width: 83px;
+    width: ${KNOB_WIDTH}px;
     height: 31px;
     display: flex;
     justify-content: center;

@@ -64,12 +64,12 @@ export default css`
     margin-bottom: 15px;
   }
   h3 {
-    font-size: 26px;
+    font-size: 24px;
     line-height: 1.45;
     margin-bottom: 15px;
   }
   h4 {
-    font-size: 24px;
+    font-size: 1em;
     line-height: 1.45;
     margin-bottom: 15px;
   }

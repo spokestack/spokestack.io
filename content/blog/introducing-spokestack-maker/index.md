@@ -1,6 +1,6 @@
 ---
 title: Introducing Spokestack Maker - AutoML Personal Voice for Creators
-date: '2021-03-25'
+date: '2021-05-26'
 description: Spokestack Maker introduces sophisticated AutoML tools for voice interfaces to a new audience of prototypers, enthusiasts, and makers.
 tags: News, Product
 author: noel

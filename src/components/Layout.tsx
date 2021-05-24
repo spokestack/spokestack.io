@@ -77,9 +77,5 @@ const styles = {
       flex-direction: column;
       align-items: center;
     }
-
-    ${theme.MIN_DEFAULT_MEDIA_QUERY} {
-      min-height: calc(100vh - 60px);
-    }
   `
 }

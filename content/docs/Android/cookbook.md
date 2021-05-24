@@ -11,7 +11,7 @@ This is a collection of code snippets and brief descriptions designed to help yo
 
 Most configuration tuning is done at build time, so the majority of these examples simply demonstrate a different build process. For simplicity, these examples assume that the class containing the pipeline has a reference to a subclass of `SpokestackAdapter` (which we've creatively named `adapter`); adjust as necessary for your project.
 
-Client IDs and secret keys can be created in the [account](/account/settings) section.
+Client IDs and secret keys can be created in the [API credentials](/account/settings#api) section.
 
 ### Activate ASR with any speech
 

@@ -5,8 +5,10 @@ description: Why should your Alexa skill sound like all the others? Use Spokesta
 author: josh
 tags: News, 3rd Party Integration
 draft: true
-hero: ../../assets/alexa-custom-tts.png
+hero: ../assets/blog/using-a-custom-tts-voice-in-an-alexa-skill.png
 ---
+
+![Using a Custom TTS Voice in an Alexa Skill](../assets/blog/using-a-custom-tts-voice-in-an-alexa-skill.png)
 
 At Spokestack, our mission is to give every mobile app a voice. To that end, we've focused on building mobile libraries with cohesive APIs that include all the voice tech you'll need to recreate the smart speaker experience (and then some!) on a smartphone.
 

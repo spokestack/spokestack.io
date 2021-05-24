@@ -15,8 +15,8 @@ export default function TTSPage() {
   return (
     <Layout>
       <SEO
-        title="Text-to-Speech | Spokestack"
-        description="Spokestack's Text-to-Speech service is easy to use and available on many platforms."
+        title="Text to Speed (TTS) - Spokestack Maker"
+        description="Create a custom AI voice clone with Spokestack Maker. It's your voice, not a deep fake. Learn more about TTS and start building free."
       />
       <Header
         title="Text-to-Speech"

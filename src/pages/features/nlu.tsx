@@ -12,8 +12,8 @@ export default function NLUPage() {
   return (
     <Layout>
       <SEO
-        title="Natural Language Understanding | Spokestack"
-        description="Spokestack's Natural Language Understanding (NLU) is what makes user speech actionable. Spokestack provides deep learning-based NLU models that can be deployed on device or to a web service. On-device NLU keeps your customer data away from third-party services and can operate even without a network connection."
+        title="Natural Language Understanding (NLU) - Spokestack Maker"
+        description="Turn speech into software commands by classifying intent and slot variables from speech. Learn more about NLU and start building free with Spokestack Maker."
       />
       <Header
         title="Natural Language Understanding"

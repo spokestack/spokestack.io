@@ -11,8 +11,8 @@ export default function SpeechPipelinePage() {
   return (
     <Layout>
       <SEO
-        title="Speech Pipeline | Spokestack"
-        description="The Spokestack Speech Pipeline is an extensible audio processing pipeline that includes a variety of built-in speech processors for all processing stages, including VAD, wake word and keyword recognition, and ASR."
+        title="Spokestack Speech Pipeline - Spokestack Maker"
+        description="The speech pipeline is how you interact with Spokestack's VAD, wake word, and speech recognition. Learn more about how the speech pipeline works and start building."
       />
       <Header
         title="Spokestack Speech Pipeline"

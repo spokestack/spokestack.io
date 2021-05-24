@@ -11,8 +11,8 @@ export default function VADPage() {
   return (
     <Layout>
       <SEO
-        title="Voice Activity Detection | Spokestack"
-        description="Voice Activity Detection (VAD) is responsible for making an initial determination of whether or not a snippet of audio contains human speech. Ignoring audio that's not detected as speech saves energy and processing power. The savings grow with each downstream processor you have in your speech pipeline."
+        title="Voice Activity Detection (VAD) - Spokestack Maker"
+        description="Determine whether or not an audio snippet contains human speech with Voice Activity Detection. VAD is the first gatekeeper in a speech detection pipeline."
       />
       <Header
         title="Voice Activity Detection"

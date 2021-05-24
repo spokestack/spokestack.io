@@ -9,6 +9,25 @@ seoImage: '../../assets/docs/concepts-nlu.png'
 
 Spokestack's NLU data is expressed in the [TOML](https://github.com/toml-lang/toml) format. A full model consists of a collection of TOML files, each one expressing a separate intent. These files can be compressed into a single `.zip` file and imported via the [Account](/account/services/nlu) section, which can be convenient if you don't have an existing voice app on another platform and want to start from scratch.
 
+Your zip file's hierarchy should look like this (read on for information on each folder):
+
+```text
+yourModel.zip
+├--intents/
+| ├-intent.one.toml
+| |-intent.two.toml
+| └- ...
+|
+└--entities/
+  ├-entity1.txt
+  ├-entity2.txt
+  └- ...
+```
+
+Spokestack's NLU models are currently English-centric. Other languages may work, but accuracy will likely be lower than with English data, and special slot types like `integer` and `digits` (see below) generate data in English only.
+
+We're currently experimenting with support for multilingual NLU; if this is a feature that would be useful to you, please let us know [on our forum](https://forum.spokestack.io/).
+
 ## Intent file format
 
 Intent files are named after the intents they're meant to produce at runtime, so an intent named `request.search` would be described in a file named `request.search.toml`. Note that dots are valid in intent names; the intent filename without the extension will be returned at runtime.
@@ -18,6 +37,8 @@ The main content in an intent file is a list of phrases that a user might utter 
 Utterances are expressed using templates with placeholder values. These placeholders are expanded into concrete values by a data generator, thus producing many natural-language permutations of each template.
 
 A full example of features supported by intent configuration is below.
+
+_**Note**: All sections except `utterances` are optional. However, for each placeholder in `{braces}` used in your utterances, you must have either a slot or generator with a name that matches the text inside the braces._
 
 ```toml
 description = """
@@ -90,26 +111,26 @@ Note that the value for an implicit slot defined by an intent can be overridden 
 
 _This feature is currently only supported at runtime on the Android platform._
 
-| field   | type   | description               |
-| ------- | ------ | ------------------------- |
-| `type`  | string | the slot's type           |
-| `value` | string | the slot's implicit value |
+| field   | type   | description               | default |
+| ------- | ------ | ------------------------- | ------- |
+| `type`  | string | the slot's type           | N/A     |
+| `value` | string | the slot's implicit value | N/A     |
 
 #### Slots
 
-[Slots](slot) represent key portions of an utterance that are important to completing the user's request and thus must be captured explicitly at prediction time. The type of a slot determines both how it is expressed in an intent configuration and how it is interpreted by clients of the NLU model. For more information on each type and additional fields it supports, see its description below.
+Slots represent key portions of an utterance that are important to completing the user's request and thus must be captured explicitly at prediction time. The type of a slot determines both how it is expressed in an intent configuration and how it is interpreted by clients of the NLU model. For more information on each type and additional fields it supports, see its description below.
 
-| field  | type   | description     |
-| ------ | ------ | --------------- |
-| `type` | string | the slot's type |
+| field  | type   | description                    | default |
+| ------ | ------ | ------------------------------ | ------- |
+| `type` | string | the slot's [type](#slot-types) | N/A     |
 
 #### Generators
 
 Generators are placeholders that exist merely to reduce duplication in utterance templates, e.g., to substitute verb or preposition synonyms in a given template. These values are not captured at prediction time. For more information on each type and additional fields it supports, see its description below.
 
-| field  | type   | description          |
-| ------ | ------ | -------------------- |
-| `type` | string | the generator's type |
+| field  | type   | description                              | default |
+| ------ | ------ | ---------------------------------------- | ------- |
+| `type` | string | the generator's [type](#generator-types) | N/A     |
 
 #### Utterances
 
@@ -117,33 +138,95 @@ The `utterances` map only supports one key — `values` — which is a list cont
 
 ## Slot types
 
-### `digits`
+### digits
 
-A `digits` slot is similar to an [`integer`](#integer) slot, but not identical. `digits` slots capture numbers that are spoken in a series, such as a birthday or phone number: "one eight zero zero" (or "one eight hundred") instead of "one thousand eight hundred" or "eighteen hundred". Pronunciation conventions for these sorts of numbers create an ambiguity — "one eight hundred thirty-six" could mean 1836 or 180036. Given the common pronunciation of phone numbers, a `digits` slot will generate the latter format, and words like "hundred" will result in trailing zeros when the slot value is parsed by a Spokestack client library. The first format might also be generated, but it would only be parsed from an ASR result that doesn't contain "hundred": for example, "eighteen thirty-six" or "one eight three six".
+A `digits` slot is similar to an [`integer`](#integer) slot, but not identical. `digits` slots capture numbers that are spoken in a series, such as a birthday or phone number: "one eight zero zero" (or "one eight hundred") instead of "one thousand eight hundred" or "eighteen hundred". Pronunciation conventions for these sorts of numbers create an ambiguity — "one eight hundred thirty-six" could mean 1836 or 180036. Given the common pronunciation of phone numbers, a `digits` slot will generate the latter format, and words like "hundred" will result in trailing zeros when the slot value is parsed by a Spokestack client library. The first format would only be produced by parsing an ASR result that doesn't contain "hundred", for example, "eighteen thirty-six" or "one eight three six".
 
-| field   | type    | description                                                                                  |
-| ------- | ------- | -------------------------------------------------------------------------------------------- |
-| `count` | integer | the number of consecutive integers to generate, including trailing zeros in numbers like 100 |
+| field    | type    | description                                                                                  | default |
+| -------- | ------- | -------------------------------------------------------------------------------------------- | ------- |
+| `count`  | integer | the number of consecutive integers to generate, including trailing zeros in numbers like 100 | N/A     |
+| `canon`  | boolean | only generate canonical number words (no homophones)                                         | false   |
+| `digits` | boolean | generate numerical sequences as well as number words                                         | true    |
 
-### `integer`
+#### Example
+
+```toml
+[slots.phone_number]
+type = "digits"
+count = 5
+```
+
+will result in 5-digit random numbers being included in your training data, as a mix of English words and numerals (note the homophones in the last example to provide a degree of protection against noisy ASR results):
+
+```text
+12345
+one eight hundred 2
+183 twenty five
+won too ate tin
+```
+
+### integer
 
 Numbers are often important parts of a user utterance — the number of seconds for a timer, selecting an item from a list, etc. The `integer` slot expands to a mix of English number words ("one", "ten", "three thousand") and Arabic numerals (1, 10, 3000) to accommodate potential differences in ASR results. Negative numbers are supported.
 
-| field   | type | description                                                                                                                                   |
-| ------- | ---- | --------------------------------------------------------------------------------------------------------------------------------------------- |
-| `range` | list | a list of two integers representing the start (inclusive) and end (exclusive) of the numbers that will be sampled for inclusion in utterances |
+| field          | type    | description                                                                                                                                   | default |
+| -------------- | ------- | --------------------------------------------------------------------------------------------------------------------------------------------- | ------- |
+| `range`        | list    | a list of two integers representing the start (inclusive) and end (exclusive) of the numbers that will be sampled for inclusion in utterances | N/A     |
+| `canon`        | boolean | only generate canonical number words (no homophones)                                                                                          | false   |
+| `digits`       | boolean | generate numerical sequences as well as number words                                                                                          | true    |
+| `ordinals`     | boolean | generate ordinal words (first, second, etc.)                                                                                                  | true    |
+| `only_numbers` | boolean | only generate numerals (no words)                                                                                                             | false   |
+| `only_words`   | boolean | only generate number words (no numerals)                                                                                                      | false   |
 
-### `entity`
+#### Example
+
+```toml
+[slots.phone_number]
+type = "digits"
+range = [1, 10]
+```
+
+will result in the generation of integers and number words between 1 and 10:
+
+```text
+2
+third
+one
+9
+ate
+```
+
+### entity
 
 An `entity` slot captures names of objects important to the domain. To include entities inline, simply list them as separate items in the `values` field.
 
 For entities with a large number of values, it can be more convenient to list them in a separate file. To do that, group all your intents in a directory named `intents` and files containing entity data in a directory named `entities`. Leave out the `values` field; data will automatically be loaded from a file named `entities/<slot_name>.txt`. When [importing](/account/services/nlu) your data, include both `intents` and `entities` directories in your `.zip` file.
 
-| field    | type | description             |
-| -------- | ---- | ----------------------- |
-| `values` | list | a list of entity values |
+| field    | type | description             | default |
+| -------- | ---- | ----------------------- | ------- |
+| `values` | list | a list of entity values | N/A     |
 
-### `selset`
+#### Example
+
+```toml
+[slots.city]
+type = "entity"
+values = [
+    "Paris",
+    "London",
+    ...
+]
+```
+
+Alternatively:
+
+```toml
+[slots.city]
+type = "entity"
+# omit `values` and include a file named `entities/city.txt` containing one city per line
+```
+
+### selset
 
 A `selset` slot represents an entity that has common paraphrases or synonyms that should be normalized to a canonical value. For instance, a camera app that can record both pictures and videos might wish to normalize input of "photo", "pic", "selfie", or "picture" to the word "photo" for easy processing.
 
@@ -155,13 +238,11 @@ A `selset` slot represents an entity that has common paraphrases or synonyms tha
 
 #### Fields for each `selections` key
 
-| field     | type | description                    |
-| --------- | ---- | ------------------------------ |
-| `aliases` | list | a list of synonyms for the key |
+| field     | type | description                    | default |
+| --------- | ---- | ------------------------------ | ------- |
+| `aliases` | list | a list of synonyms for the key | N/A     |
 
 #### Example
-
-This is a sample configuration for the camera app described above. Possible capture media are "photo" and "video"; all aliases found in an utterance are returned to the app as one of those two words.
 
 ```toml
 [slots.medium]
@@ -170,12 +251,28 @@ selections.photo.aliases = ["picture", "pictures", "pic", "pics"]
 selections.video.aliases = ["movie", "film"]
 ```
 
+This is a sample configuration for the camera app described above. Possible capture media are "photo" and "video"; all aliases found in an utterance are returned to the app as one of those two words.
+
 ## Generator types
 
-### `list`
+### list
 
 A `list` generator relies on an inline list of values to generate expansions for the placeholder.
 
 | field    | type | description                                              |
 | -------- | ---- | -------------------------------------------------------- |
 | `values` | list | list of strings to use as expansions for the placeholder |
+
+#### Example
+
+```toml
+[generators.request_opener]
+type = "list"
+values = [
+    "I'd like",
+    "find me",
+    "how about",
+    "we're looking for",
+    ...
+]
+```

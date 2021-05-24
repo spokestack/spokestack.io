@@ -78,13 +78,13 @@ export default function Footer() {
               iconCss={styles.facebookIcon}
             />
           </div>
-          <div className="ie-fix" css={styles.appLink}>
+          <div css={styles.appLink}>
             <img
               alt="Spokestack Studio"
               src="/mark.svg"
               css={styles.studioLogo}
             />
-            <div css={styles.appLinkContent}>
+            <div className="ie-fix" css={styles.appLinkContent}>
               <p>
                 Download Spokestack Studio to test wake word, text-to-speech,
                 NLU, and ASR.

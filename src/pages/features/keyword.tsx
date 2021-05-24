@@ -15,8 +15,8 @@ export default function KeywordPage() {
   return (
     <Layout>
       <SEO
-        title="Keyword | Spokestack"
-        description="A keyword is a brief command that supports variations in phrasing—using a fast, lightweight model—without user audio leaving the device. Create an account and make your own keyword models with Spokestack."
+        title="Keyword Recognition - Spokestack Maker"
+        description="Local on-device keyword spotting — recognize any sound whether or not its part of a language. Create a custom keyword model with Spokestack Maker."
       />
       <Header
         title="Keyword Recognition"

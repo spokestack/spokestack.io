@@ -15,8 +15,8 @@ export default function WakewordPage() {
   return (
     <Layout>
       <SEO
-        title="Wake Word | Spokestack"
-        description="A wake word is a specific term or phrase that can wake up an app for active listening. “Hey Siri” and “Alexa” are two of the most widely known wake words. Create your own wake word with Spokestack."
+        title="Wake Words for Activating Software - Spokestack Maker"
+        description="Multilingual on-device wake words recognize one or multiple commands to activate listening in your software. Create a custom wake word for free."
       />
       <Header
         title="Wake Words for Activating Software"

@@ -11,8 +11,8 @@ export default function ASRPage() {
   return (
     <Layout>
       <SEO
-        title="Automatic Speech Recognition | Spokestack"
-        description="The technology for converting spoken words to text is known as Automatic Speech Recognition (ASR). The Spokestack open-source native libraries provide a convenient API across multiple ASR providers such as Apple, Google, and Microsoft."
+        title="Automatic Speech Recognition (ASR)- Spokestack Maker"
+        description="Analyze and transcribe your software's audio to perform a function or simply record. Create a free account to access our ASR tools."
       />
       <Header
         title="Automatic Speech Recognition"

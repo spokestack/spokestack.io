@@ -84,7 +84,7 @@ export default function Footer() {
               src="/mark.svg"
               css={styles.studioLogo}
             />
-            <div className="ie-fix" css={styles.appLinkContent}>
+            <div css={styles.appLinkContent}>
               <p>
                 Download Spokestack Studio to test wake word, text-to-speech,
                 NLU, and ASR.

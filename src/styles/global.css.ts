@@ -183,6 +183,11 @@ export default css`
   .gatsby-resp-image-link {
     background-image: none;
   }
+  // get gatsby images to show in IE11
+  // see https://github.com/gatsbyjs/gatsby/issues/30053
+  .object-fit-polyfill[style] {
+    position: static !important;
+  }
   h1 a,
   h2 a,
   h3 a,

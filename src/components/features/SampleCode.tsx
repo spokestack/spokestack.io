@@ -22,8 +22,8 @@ interface Props {
 
 export default function SampleCode({ codeKey, title }: Props) {
   return (
-    <section css={styles.sampleCode}>
-      <div css={styles.description}>
+    <section className="ie-fix" css={styles.sampleCode}>
+      <div className="ie-fix" css={styles.description}>
         <h2>{title}</h2>
         <p className="title">
           For mobile apps, integrate{' '}

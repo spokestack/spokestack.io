@@ -13,7 +13,7 @@ One caveat before we start, though: _This is not a collection of best practices_
 
 To follow along with these snippets in the context of a full project, download our [Android skeleton](https://github.com/spokestack/android-skeleton) app. Its UI doesn't offer much to look at, but it might be easier than copying and pasting code snippets from this guide as we list them.
 
-You'll also need API credentials to use some Spokestack services. Click [here](/create) to create your free account; API keys can be found in [account settings](/account/settings).
+You'll also need API credentials to use some Spokestack services. Click [here](/create) to create your free account; API keys can be found in [the API credentials section](/account/settings#api).
 
 ## Installation
 

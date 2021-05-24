@@ -47,7 +47,7 @@ The tray is implemented as a `Fragment`, so to include it, add this to your acti
 
 Then make your activity itself extend `TrayActivity` (a subclass of `AppCompatActivity`), implement the methods it requires, and the library will take care of the rest. Voice interaction will be handled by the Tray, which you'll have access to via an instance variable named `tray` that's initialized during `onStart`.
 
-You'll need an ID and secret key from your [Spokestack account](/account/settings) in order to set up the `TrayConfig` that `TrayActivity` requires.
+You'll need an ID and secret key from your [Spokestack account](/account/settings#api) in order to set up the `TrayConfig` that `TrayActivity` requires.
 
 If you'd prefer to do the setup yourself, here's a sample that doesn't use `TrayActivity`, and demonstrates a minimal complete `TrayConfig` as well:
 

@@ -6,7 +6,7 @@ import * as theme from '../../styles/theme'
 
 export default function Problems() {
   return (
-    <div css={styles.problems}>
+    <div className="ie-fix" css={styles.problems}>
       <h2>Building a Voice Interface is Hard</h2>
       <p>
         We know, we&apos;ve done it before! And we&apos;ve heard all about it
@@ -90,6 +90,7 @@ const styles = {
     display: flex;
     flex-direction: column;
     align-items: center;
+    gap: 50px;
     margin-top: 50px;
 
     ${theme.MIN_DEFAULT_MEDIA_QUERY} {

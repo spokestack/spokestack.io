@@ -24,4 +24,4 @@ Want to test drive cutting-edge machine learning features like keyword recogniti
 
 [Spokestack's Maker subscription pricing](/pricing) is tailored for two audiences: hobbyists who want to personalize their projects and developers who want to prototype a project as realistically as possible before committing to training a universal wake word model or studio-quality TTS voice.
 
-You'll be able to download your personal models, train and retrain your personal models and enjoy API access your personal TTS voice as long as your Maker subscription is active. If you decide you'd like to take it to the next level and make a universal wake word/keyword model or a studio-quality TTS voice, [join the Spokestack Pro waitlist!](/pricing)
+You'll be able to download your personal models, train and retrain your personal models and enjoy API access your personal TTS voice as long as your Maker subscription is active. If you decide you'd like to take it to the next level and make a universal wake word/keyword model or a studio-quality TTS voice, [join the Spokestack Pro waitlist!](mailto:hello@spokestack.io?subject=Join%20Pro%20Waitlist)

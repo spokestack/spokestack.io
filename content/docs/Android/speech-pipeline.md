@@ -13,19 +13,19 @@ seoImage: '../../assets/docs/android-speech-pipeline.png'
 
 If you've read any of our other documentation, you know that the speech pipeline is the main way you interact with Spokestack's speech recognition and wake word. This guide is here to explain in a little more detail how the Android version of Spokestack uses this architecture to recognize wake words and user speech.
 
-## What _is_ it?
+## What _Is_ It?
 
 As the name implies, `SpeechPipeline` is a collection of distinct modular components that work together to process user speech. It uses the [Builder pattern](https://en.wikipedia.org/wiki/Builder_pattern) (via the `SpeechPipeline.Builder` class) to handle its potentially complex configuration. In short, the pipeline receives audio via an _input class_ and sends it through a variable number of _stages_, each of which performs some form of processing and optionally dispatches events back through the pipeline. The stages interact with the pipeline via a shared `SpeechContext`; each stage may alter this context; for example, a voice activity detector may set `isSpeech` to `true`, signalling that the last frame of audio represented speech.
 
 All pipeline processing is done on a background thread to avoid blocking the UI.
 
-## How do I set it up?
+## How Do I Set It Up?
 
-Configuration available at build time include properties, described in [the configuration guide](/docs/concepts/pipeline-configuration) and the [Javadoc](https://www.javadoc.io/doc/io.spokestack/spokestack-android) for the various pipeline stages; and the designated speech event listener(s), which we'll talk about a bit later.
+Configuration available at build time include the properties described in [the configuration guide](/docs/concepts/pipeline-configuration) and the [Javadoc](https://www.javadoc.io/doc/io.spokestack/spokestack-android) for the various pipeline stages and the designated speech event listener(s), which we'll talk about a bit later.
 
-Stage order matters in the build process; audio is processed by each stage in turn, according to the order in which it's declared at build time. For example, a stage that activates ASR based on the presence of the wake word needs to be placed before the ASR stage, and any stages that process audio to make the wake word detector's job easier (for example, gain control) must be declared before the wake word detection stage. The order of configuration properties, on the other hand, does not matter, and their declarations can be placed before or after those of processing stages.
+Stage order matters in the build process. Audio is processed by each stage in turn, according to the order in which it's declared at build time. For example, a stage that activates ASR based on the presence of the wake word needs to be placed before the ASR stage, and any stages that process audio to make the wake word detector's job easier (for example, gain control) must be declared before the wake word detection stage. The order of configuration properties, on the other hand, does not matter, and their declarations can be placed before or after those of processing stages.
 
-Spokestack offers several pre-built "profiles" that bundle input class, stage classes, and in some cases configuration properties tuned to support different app configurations. See the [Javadoc](https://www.javadoc.io/doc/io.spokestack/spokestack-android) for the `io.spokestack.spokestack.profile` package for a complete listing, but here's a brief summary:
+Spokestack offers several pre-built "profiles" that bundle input class, stage classes, and in some cases configuration properties tuned to support different app configurations. See the [Javadoc for the profile package](https://www.javadoc.io/doc/io.spokestack/spokestack-android/latest/io/spokestack/spokestack/profile/package-summary.html) for a complete listing, but here's a brief summary:
 
 - Profiles whose names begin with `VADTrigger` send any detected speech straight to the chosen speech recognizer.
 - `TFWakeword` profiles use [TensorFlow Lite](https://www.tensorflow.org/lite) for wake word recognition.
@@ -35,9 +35,9 @@ Profiles take care of all configuration that can be managed in a one-size-fits-a
 
 Any configuration properties set after a profile is applied will override configuration set by that profile, but any processing stages added after the profile will be added to those established by the profile, just as if the profile's configuration had been performed directly as chained calls to the pipeline builder.
 
-Input classes, processing stages, and profiles are all loaded dynamically via their class names, making it straightforward to create a custom profile or pipeline component to fit your specific needs: Just have your class implement the `PipelineProfile` interface to create a profile, the `SpeechInput` interface to create an input class, or the `SpeechProcessor` interface to create a processing stage. Note that descriptions of the various processing stages below assume well-behaved implementations; custom implementations can of course do whatever they want in their `process` method, regarless of whether it meets the pipeline's general expectations.
+Input classes, processing stages, and profiles are all loaded dynamically via their class names, making it straightforward to create a custom profile or pipeline component to fit your specific needs: Just have your class implement the `PipelineProfile` interface to create a profile, the `SpeechInput` interface to create an input class, or the `SpeechProcessor` interface to create a processing stage. Note that descriptions of the various processing stages below assume well-behaved implementations; custom implementations can of course do whatever they want in their `process` method, regardless of whether it meets the pipeline's general expectations.
 
-## How does it work?
+## How Does It Work?
 
 `youtube: [Build your own voice interface to talk directly to your customers](https://www.youtube.com/watch?v=AvhQ6-9nCrQ)`
 
@@ -53,19 +53,18 @@ The pipeline can also be activated by calling its `activate` method. This is wha
 
 When active, audio frames are not processed on-device but are instead sent to an ASR service to be transcribed (if an ASR component is registered in the pipeline; these components have names that end in `SpeechRecognizer`). These ASR requests end when a pre-set timeout is reached or when the pipeline's `SpeechContext` is manually set to inactive. At that point, the ASR service's best effort at a transcription is delivered via a speech event to any registered listeners.
 
-## What's a speech event listener?
+## What's a Speech Event Listener?
 
 All pipeline activity, including activations, deactivations, ASR timeouts, receipt of ASR transcriptions, and tracing messages/errors are delivered asynchronously to components that implement the `OnSpeechEventListener` interface and are registered in the pipeline via `addOnSpeechEventListener(OnSpeechEventListener)` at build time.
 
 These listeners only have to implement a single method, `onEvent(SpeechContext.Event, SpeechContext)`. For simple apps, the main event of interest is `RECOGNIZE`; `TRACE` and `ERROR` may also be useful if you're running into configuration issues. When your listener receives this event, the `SpeechContext`'s `transcript` field will contain the full text of the user's last utterance. This can be sent to an NLU service, or it can be processed directly in the app to determine the app's next action.
 
-## And the cycle continues...
+## And the Cycle Continues...
 
 Once the ASR stage has completed its request and fired a `RECOGNIZE` event, it signals the pipeline to return to listening passively for the wake word. If a multi-turn interaction is desired, the pipeline can be manually reactivated after a system response via its `SpeechContext`:
 
 ```kotlin
-pipeline.context.isActive = true
-pipeline.context.dispatch(SpeechContext.Event.ACTIVATE)
+pipeline.activate()
 ```
 
 To stop the pipeline completely, call its `stop()` method. As long as you retain a reference to its built instance, you can call `start()` again at any time without rebuilding it.

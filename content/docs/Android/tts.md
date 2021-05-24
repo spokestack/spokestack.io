@@ -13,7 +13,7 @@ seoImage: '../../assets/docs/android-tts.png'
 
 Text-to-speech is a broad topic, but as far as Spokestack is concerned, there are two things your app has to handle: sending text or SSML to be synthesized, and playing the resulting audio for your users. This guide will cover both.
 
-## Generating the audio
+## Generating the Audio
 
 The best way to synthesize speech in Spokestack is to use the `TTSManager` subsystem. This small collection of components is built similarly to the `SpeechPipeline`, but it operates completely independently.
 
@@ -47,7 +47,7 @@ fun speak(text: String, mode: SynthesisRequest.Mode) {
 
 The `mode` parameter is included here as a reminder that Spokestack supports a subset of the [SSML](https://www.w3.org/TR/speech-synthesis11) spec for specifying pronunciation and specific pause times. See [the TTS concept guide](/docs/concepts/tts) for more information on providing SSML input. If you don't need this level of control, simply omit `mode`; the default mode of `SynthesisRequest`is plain text.
 
-## Playing it
+## Playing It
 
 Spokestack lets you choose how you manage the audio for your app's voice, and the right option for you will likely depend on your app's category and feature set. There are two main categories of interest here:
 
@@ -88,6 +88,6 @@ tts = TTSManager.Builder()
   .build()
 ```
 
-## Handing back the mic
+## Handing Back the Mic
 
 For multi-turn conversations or system prompts that ask the user to respond, you'll want to reactivate ASR when the TTS audio is done playing. If you're using Spokestack's automatic playback, the best way to do this is by calling `activate()` on your [speech pipeline](speech-pipeline) instance when your TTS listener receives the `PLAYBACK_COMPLETE` event.

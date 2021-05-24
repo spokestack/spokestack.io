@@ -9,11 +9,17 @@ seoImage: '../../assets/docs/android-getting-started.png'
 
 As of version 9.0.0, Spokestack offers a single class that centralizes setup and configuration for all of its individual modules (ASR, NLU, TTS, etc.). This guide details the configuration options available when setting up that class as well as tips for runtime usage.
 
-## Builders everywhere
+Note that you don't _have_ to use this class to use Spokestack. Each module still has its own builder and can be configured and used independently if that's best for your app. More information about the individual modules can be found at the following links:
+
+- [Speech pipeline](speech-pipeline)
+- [NLU](nlu)
+- [TTS](tts)
+
+## Builders Everywhere
 
 Each Spokestack module can be used independently and comes with its own builder interface for configuration. The other guides in this section detail those builders, and the `Spokestack.Builder` uses them internally to configure the modules. If you prefer to use the `Spokestack` class but configure each module individually, that can be done via the `get***Builder` methods. You'll also need these builders to perform low-level customization (for example, changing ASR provider). If you don't need anything quite that advanced and would rather configure `Spokestack` directly, read on.
 
-### Speech pipeline
+### Speech Pipeline
 
 The [speech pipeline](speech-pipeline) is the first piece of the puzzle in any voice interaction and is responsible for capturing user audio and translating it into text. Configuring it entails choices about whether or not to use a wake word to activate ASR, what kind of preprocessing to perform on audio before sending it to ASR, and which ASR service to use. These choices can all be made individually or through the use of configuration profiles, as mentioned in the pipeline guide linked above.
 
@@ -31,6 +37,8 @@ val spokestack = Spokestack.Builder()
 Wake word models that respond to the "Spokestack" wake word can be found here: [detect](https://d3dmqd7cy685il.cloudfront.net/model/wake/spokestack/detect.tflite) | [encode](https://d3dmqd7cy685il.cloudfront.net/model/wake/spokestack/encode.tflite) | [filter](https://d3dmqd7cy685il.cloudfront.net/model/wake/spokestack/filter.tflite)
 
 **Note**: configurations using Android's ASR must also provide an Android application context via `withAndroidContext()`.
+
+To change pipeline profiles without leaving the builder's call chain, use `withPipelineProfile()` and pass it the full class name of a profile. This can even be a custom profile you've created; see [the existing pipeline profiles](https://github.com/spokestack/spokestack-android/tree/master/src/main/java/io/spokestack/spokestack/profile) for examples of how to create one.
 
 If you would prefer to manually activate ASR, you can disable wake word using the builder's `withoutWakeword()` method, which will activate the `PushToTalkAndroidASR` profile and remove the need to supply wake word model files, or you can select your own profile via `getPipelineBuilder().useProfile()`.
 
@@ -73,7 +81,7 @@ As with the speech pipeline, NLU features can also be disabled with builder meth
 
 ### TTS
 
-Once your app has processed the user's request, you'll likely want to respond via the same input modality that request came from—audio. That's where [text-to-speech](tts) comes in. By default, `Spokestack` handles sending text responses to a cloud service for synthesis and playing the resulting audio. The only configuration necessary are your Spokestack credentials (client ID and secret key, available from the [account settings](/account/settings) dashboard) and a couple Android system components:
+Once your app has processed the user's request, you'll likely want to respond via the same input modality that request came from—audio. That's where [text-to-speech](tts) comes in. By default, `Spokestack` handles sending text responses to a cloud service for synthesis and playing the resulting audio. The only configuration properties necessary are your Spokestack credentials (client ID and secret key, available from the [API credentials section](/account/settings#api) of your account settings) and a couple Android system components:
 
 ```kotlin
 val spokestack = Spokestack.Builder()
@@ -88,7 +96,7 @@ With TTS enabled, you can use `Spokestack`'s `synthesize()` method to respond to
 
 To disable TTS entirely at build time, eliminating the need to add your Spokestack credentials to the builder (unless you've switched ASR providers to Spokestack ASR), call `withoutTts()`.
 
-## Receiving events
+## Receiving Events
 
 So far we've talked mostly about how to get Spokestack running and turn some knobs to make it work just the way you'd like. We've touted all the things it does without any intervention from an app that's using it . . . but at some point, you're going to want to interact with your user's requests. Once a transcript goes through NLU, you'll need the results of that classification in order to actually respond to the user.
 
@@ -96,8 +104,8 @@ Events from all Spokestack modules are dispatched to a listener registered at bu
 
 `SpokestackAdapter` implements listener interfaces for all individual Spokestack modules, so those listeners' methods can be overridden and used as event handlers. Since these methods were originally designed for separate modules, though, their names don't look great all together in the same class. For that reason, we've also (since version 9.1.0) provided convenience methods that specify the module where the event originated. The new methods are:
 
-- `speechEvent()`: Receives events from the speech pipeline—activation, deactivation, ASR results, etc. Trace events are also sent to the `log()` method (see below).
+- `speechEvent()`: Receives events from the speech pipeline—activation, deactivation, ASR results, etc. Trace events are also sent to the `trace()` method (see below).
 - `nluResult()`: Receives classifications from the NLU module.
-- `ttsEvent()`: Receives events from the TTS subsystem. If you're managing TTS playback manually, the `AUDIO_AVAILABLE` event will let you know when your TTS response is ready to play. Be sure to download or play the audio within 60 seconds of this event, or it will become unavailable.
-- `trace()`: Receives trace events from all modules, specifying the module that originated the event. These events are also sent to the handlers related to individual modules, so it's up to you where to handle them. Overriding `trace()`, just like any of the other methods, is optional.
+- `ttsEvent()`: Receives events from the TTS subsystem. If you're managing TTS playback manually, the `AUDIO_AVAILABLE` event will let you know when your TTS response is ready to play. If you're using Spokestack TTS, be sure to download or play the audio within 60 seconds of receibing this event, or it will become unavailable.
+- `trace()`: Receives trace events from all modules, specifying the module that originated the event. These events are also sent to any handlers registered to individual modules, so it's up to you where to handle them. Overriding `trace()`, just like any of the other methods, is optional.
 - `error()`: Like `trace()`, this method receives errors from all modules, specifying the module that originated the error.

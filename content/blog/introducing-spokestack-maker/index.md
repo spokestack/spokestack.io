@@ -14,7 +14,7 @@ Spokestack exists to help put voice into software because voice is a humane way 
 
 [Spokestack Maker](/account/upgrade) introduces sophisticated machine learning tools for voice to a new audience of prototypers, enthusiasts, and makers. Create, train, distribute, and use state-of-the-art personal wake word, keyword, and text-to-speech (TTS) models — with _your_ own voice.
 
-Now all developers, not just voice assistant experts or machine learning specialists, can create sofware featuring voice. Spokestack Maker turns voice technology into just another interface developers can utilize—like a mouse & keyboard or a touchscreen—to interact with users. 
+Now all developers, not just voice assistant experts or machine learning specialists, can create sofware featuring voice. Spokestack Maker turns voice technology into just another interface developers can utilize—like a mouse & keyboard or a touchscreen—to interact with users.
 
 Lowering the barriers to voice technology means reducing technical cost in addition to the sticker shock that custom machine learning models often carry. Voice AI is a difficult field, full of papers with irreproducible results, hidden pitfalls, and undocumented code. You can end up spending all day in Jupyter notebooks babysitting training jobs instead of building your killer app. We know, we’ve done it before! [Spokestack Maker](/account/upgrade) turns voice into just another interface developers utilize—like a mouse & keyboard or a touchscreen—to interact with users.
 

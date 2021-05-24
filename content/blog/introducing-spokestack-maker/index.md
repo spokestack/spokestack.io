@@ -14,13 +14,17 @@ Spokestack exists to help put voice into software because voice is a humane way 
 
 [Spokestack Maker](/account/upgrade) introduces sophisticated machine learning tools for voice to a new audience of prototypers, enthusiasts, and makers. Create, train, distribute, and use state-of-the-art personal wake word, keyword, and text-to-speech (TTS) models — with _your_ own voice.
 
-Voice AI is a difficult field, full of papers with irreproducible results, hidden pitfalls, and undocumented code. You can end up spending all day in Jupyter notebooks babysitting training jobs instead of building your killer app. We know, we’ve done it before! [Spokestack Maker](/account/upgrade) turns voice into just another interface developers utilize—like a mouse & keyboard or a touchscreen—to interact with users.
+Now all developers, not just voice assistant experts or machine learning specialists, can create sofware featuring voice. Spokestack Maker turns voice technology into just another interface developers can utilize—like a mouse & keyboard or a touchscreen—to interact with users. 
+
+Lowering the barriers to voice technology means reducing technical cost in addition to the sticker shock that custom machine learning models often carry. Voice AI is a difficult field, full of papers with irreproducible results, hidden pitfalls, and undocumented code. You can end up spending all day in Jupyter notebooks babysitting training jobs instead of building your killer app. We know, we’ve done it before! [Spokestack Maker](/account/upgrade) turns voice into just another interface developers utilize—like a mouse & keyboard or a touchscreen—to interact with users.
 
 Spokestack already offers powerful, industry-leading libraries for utilizing voice in [Python](/docs/python/getting-started), [React Native](/docs/react-native/getting-started), [Android](/docs/android/getting-started), [Node](/docs/node/getting-started], and [iOS](/docs/ios/getting-started). With [Spokestack Maker](/account/settings#billing), that voice becomes personal and customizable, utilizing state of the art self-service AutoML technology.
 
 With [Spokestack Maker](/account/upgrade), you have the power of three new tools for training your own [wake word](/features/wake-word), [keyword](/features/keyword), and [TTS](/features/tts) models using data you record yourself. You'll still have access to the same [NLU](/features/nlu) model trainer and TTS showcase available to all existing free accounts.
 
 Want to test drive cutting-edge machine learning features like keyword recognition, wake word activation, and custom AI voices without breaking the bank? [Spokestack Maker](/account/upgrade) brings this enterprise-level technology to the creator market for the first time.
+
+Have more questions, or want a live demo of Maker? We're [going live on Twitch](https://www.twitch.tv/spokestack) Wednesday June 2 at 1pm EDT with the whole Spokestack team to talk about why we created Maker, some ideas of how you can use the tools in your software, and answer any questions from the chat! Can't make it then? The live event will be archived [on our Youtube](https://www.youtube.com/channel/UCn1kViAiPO-XzCfREvGI_AA) for on-demand viewing.
 
 [Spokestack's Maker subscription pricing](/pricing) is tailored for two audiences: hobbyists who want to personalize their projects and developers who want to prototype a project as realistically as possible before committing to training a universal wake word model or studio-quality TTS voice.
 

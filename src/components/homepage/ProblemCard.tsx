@@ -33,28 +33,22 @@ const styles = {
     border-radius: 7px;
     background-color: white;
     padding-top: 230px;
-    margin-bottom: 50px;
     overflow: hidden;
     width: 100%;
 
     &:not(.full) {
       max-width: 518px;
+      margin: 0 auto;
     }
 
     ${theme.MIN_DEFAULT_MEDIA_QUERY} {
       &:not(.full) {
         height: 580px;
-        max-width: 420px;
-      }
-
-      &:nth-of-type(2n) {
-        margin-left: 50px;
       }
     }
-    ${theme.MIN_LARGE_DISPLAY_MEDIA_QUERY} {
-      &:not(.full) {
-        max-width: 518px;
-      }
+
+    ${theme.ieBreakpoint} {
+      margin-bottom: 50px;
     }
   `,
   image: css`

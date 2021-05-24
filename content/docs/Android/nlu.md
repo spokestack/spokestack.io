@@ -18,7 +18,7 @@ This is a companion to the [NLU concept guide](/docs/concepts/nlu), which discus
 As mentioned in the [Getting Started](getting-started) guide, initializing the Spokestack NLU is done using a fluent interface, just like other Spokestack components:
 
 ```kotlin
-val nlu = TensorflowNLU.Builder()
+val nlu = NLUManager.Builder()
   .setProperty("nlu-model-path", "$cacheDir/nlu.tflite")
   .setProperty("nlu-metadata-path", "$cacheDir/metadata.json")
   .setProperty("wordpiece-vocab-path", "$cacheDir/vocab.txt")

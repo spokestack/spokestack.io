@@ -21,6 +21,7 @@ interface Props extends ButtonHTMLAttributes<HTMLButtonElement> {
 
 export default function Button({
   children,
+  className,
   extraCss,
   loadingCss,
   large,
@@ -60,7 +61,10 @@ export default function Button({
     classNames.push('btn-link')
   }
   return (
-    <button css={extraCss} className={classNames.join(' ')} {...props}>
+    <button
+      css={extraCss}
+      className={`${className} ${classNames.join(' ')}`}
+      {...props}>
       {submitting ? (
         <Fragment>
           <div style={{ visibility: 'hidden' }}>{children}</div>

@@ -1,14 +1,15 @@
-import { css } from '@emotion/react'
-import { StaticImage } from 'gatsby-plugin-image'
-import React from 'react'
-import ProblemCard from './ProblemCard'
 import * as theme from '../../styles/theme'
+
+import ProblemCard from './ProblemCard'
+import React from 'react'
+import { StaticImage } from 'gatsby-plugin-image'
+import { css } from '@emotion/react'
 
 export default function Problems() {
   return (
-    <div className="ie-fix" css={styles.problems}>
+    <div className="ie-fix" id="problems" css={styles.problems}>
       <h2>Building a Voice Interface is Hard</h2>
-      <p>
+      <p className="title">
         We know, we&apos;ve done it before! And we&apos;ve heard all about it
         from you too:
       </p>

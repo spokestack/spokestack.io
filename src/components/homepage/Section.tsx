@@ -1,4 +1,5 @@
 import * as theme from '../../styles/theme'
+
 import React from 'react'
 import { css } from '@emotion/react'
 
@@ -34,7 +35,7 @@ export default function Section({
       <div css={styles.content} className="ie-fix">
         <h4 className="blue">{subHeader}</h4>
         <h3>{header}</h3>
-        <p className="title">{text}</p>
+        {typeof text === 'string' ? <p className="title">{text}</p> : text}
       </div>
       <div style={{ width: '100px', height: '50px', flexShrink: 0 }} />
       <div css={styles.image}>{image}</div>

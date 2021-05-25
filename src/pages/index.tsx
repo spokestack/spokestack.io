@@ -1,18 +1,19 @@
 import { PageRendererProps, graphql } from 'gatsby'
 
 import Banner from '../components/Banner'
+import Benefits from '../components/homepage/Benefits'
 import Create from '../components/Create'
 import Header from '../components/homepage/Header'
 import Layout from '../components/Layout'
 import { MIN_DEFAULT_MEDIA_QUERY } from '../styles/theme'
 import News from '../components/homepage/News'
+import Problems from '../components/homepage/Problems'
 import { Query } from '../utils/graphql'
 import React from 'react'
 import SEO from '../components/SEO'
-import { css } from '@emotion/react'
-import Problems from '../components/homepage/Problems'
-import Benefits from '../components/homepage/Benefits'
 import Solution from '../components/homepage/Solution'
+import Testimonials from '../components/homepage/Testimonials'
+import { css } from '@emotion/react'
 
 interface Props extends PageRendererProps {
   data: Query
@@ -38,6 +39,7 @@ export default function Index({ data }: Props) {
       <Problems />
       <Benefits />
       <Solution />
+      <Testimonials />
       <News />
       <Create />
     </Layout>

@@ -10,7 +10,7 @@ export interface BlueCardProps {
   id?: string
   small?: boolean
   text: string
-  title: string
+  title: React.ReactNode
 }
 
 export default function BlueCard({
@@ -36,7 +36,7 @@ export default function BlueCard({
           }
         `}
       />
-      <h3>{title}</h3>
+      {typeof title === 'string' ? <h3>{title}</h3> : title}
       <div className="title">{text}</div>
       {children}
     </section>
@@ -59,8 +59,8 @@ const styles = {
     }
 
     .title {
-      max-width: 815px;
-      margin: 0 auto 30px;
+      max-width: 700px;
+      margin: 0 auto 50px;
     }
 
     ${theme.MIN_DEFAULT_MEDIA_QUERY} {

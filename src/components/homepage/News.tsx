@@ -39,7 +39,8 @@ export default function News() {
               author={author}
               authorHref={`/blog/author/${author}`}
               date={frontmatter.date}
-              header={frontmatter.title!}
+              title={frontmatter.title!}
+              imageUrl={frontmatter.hero!.publicURL!}
               to={post.fields!.slug!}
               type={
                 frontmatter.tags!.includes('Tutorial') ? 'Tutorial' : 'Blog'
@@ -59,14 +60,14 @@ const styles = {
     justify-content: center;
     align-items: center;
     text-align: center;
-    padding: 50px 20px;
+    padding: 50px 20px 100px;
     min-height: 638px;
 
     h2 {
-      margin-bottom: 10px;
+      margin-bottom: 25px;
     }
-    .title {
-      margin-bottom: 20px;
+    p {
+      margin: 0;
     }
   `,
   content: css`
@@ -76,6 +77,8 @@ const styles = {
     align-items: center;
     flex-wrap: wrap;
     text-align: center;
+    gap: 25px;
+    margin-top: 60px;
 
     ${theme.ieBreakpoint} {
       flex-direction: column;

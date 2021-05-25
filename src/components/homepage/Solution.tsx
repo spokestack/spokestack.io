@@ -1,13 +1,13 @@
-import { css } from '@emotion/react'
-import { StaticImage } from 'gatsby-plugin-image'
-import React from 'react'
 import Carousel from '../Carousel'
+import React from 'react'
+import { StaticImage } from 'gatsby-plugin-image'
+import { css } from '@emotion/react'
 
 const carouselBreakpoints = [750, 980, 1080, 1120, 1240]
 
 export default function Solution() {
   return (
-    <div css={styles.solution}>
+    <div id="solution" className="ie-fix" css={styles.solution}>
       <h2>Spokestack Maker</h2>
       <p>
         Developers and hobbyists use Spokestack to prototype projects before
@@ -16,6 +16,7 @@ export default function Solution() {
       </p>
       <Carousel
         keys={['Wake Word', 'Keyword Recognition', 'NLU', 'TTS']}
+        numSlides={4}
         maxWidth={1240}>
         <StaticImage
           width={1240}

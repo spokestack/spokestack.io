@@ -1,12 +1,13 @@
-import React from 'react'
+import * as styles from '../../styles/features.css'
+
+import Create from '../../components/Create'
 import FeatureCallout from '../../components/features/FeatureCallout'
 import Header from '../../components/features/Header'
-import Section from '../../components/features/Section'
 import Layout from '../../components/Layout'
+import React from 'react'
 import SEO from '../../components/SEO'
-import * as styles from '../../styles/features.css'
+import Section from '../../components/features/Section'
 import { StaticImage } from 'gatsby-plugin-image'
-import Create from '../../components/Create'
 
 export default function NLUPage() {
   return (
@@ -40,7 +41,7 @@ export default function NLUPage() {
             you&apos;ve configured in another system, or use our{' '}
             <a href="/docs/machine-learning/nlu-training-data">
               training data format
-            </a>
+            </a>{' '}
             to create your own.
           </p>
         </Section>

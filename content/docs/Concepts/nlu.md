@@ -33,7 +33,7 @@ The metadata for the model is a JSON definition of the possible intents and slot
 
 ## Usage
 
-See the platform-specific NLU guides([Android](/docs/android/nlu)|[iOS](/docs/ios/nlu)) for a discussion on design considerations in each client library and code samples.
+See the platform-specific NLU guides([Android](/docs/android/nlu) | [iOS](/docs/ios/nlu) | [React Native](/docs/react-native/nlu) | [Python](/docs/python/nlu)) for a discussion on design considerations in each client library and code samples.
 
 ## Model confidence
 
@@ -50,6 +50,8 @@ The Spokestack library translates the model's numeric outputs into an intent nam
 Spokestack slot definitions include types that are used to transform model results into objects that more closely represent the value's meaning to the application and are hence more useful to application logic. Note that `Slot`'s `value` field itself is an `Object`. This prevents a type/generics explosion in the library itself and makes the values easier to deal with. `value` can be safely cast to the types described in this section.
 
 A slot's type can be found by inspecting the model's JSON metadata, which can also specify valid values for many of the types; see below for details. If slot parsing fails, the classifier will return an `NLUResult`with an error instead of a full slots map.
+
+Note that the following slot types are only available when the NLU model is created using [Spokestack's training data format](/docs/machine-learning/nlu-training-data).
 
 #### Digits
 

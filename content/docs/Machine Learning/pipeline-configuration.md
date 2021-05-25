@@ -90,15 +90,11 @@ These parameters may be adjusted at runtime without rebuilding/retraining the ML
 - `wake-threshold`
   This is the threshold that is compared with the detector model's posterior probability, in order to determine whether to activate the pipeline. It is the primary means of tuning precision/recall for model performance. A standard approach is to choose this threshold such that the model outputs no more than 1 false positive per hour in the test set. This parameter takes on values in the range [0, 1] and defaults to 0.5.
 
-- `active-min`
+- `wake-active-min`
   This parameter represents the minimum number of milliseconds that a pipeline activation must last. It is used to prevent a VAD deactivation at the end of the wake word utterance from prematurely terminating the wake word activation when a user pauses between saying the wake word and making the system request. It should be tuned alongside `vad-fall-delay` and is typically longer than `vad-fall-delay`.
 
-  **iOS name**: `wakeActiveMin`
-
-- `active-max`
+- `wake-active-max`
   The maximum activation length (milliseconds) is the maximum amount of time any activation can take, even if a VAD deactivation does not occur. This limits the amount of audio processed further in the pipeline by allowing the pipeline activation to time out. The maximum activation length applies to wake word activations, as well as manual activations (external calls to `context.set-active`). It should be tuned to the longest expected user utterance.
-
-  **iOS name**: `wakeActiveMax`
 
 - `sample-rate`
   The number of audio samples per second sent to the wake word detector. Defaults to 16000 (16kHz).
@@ -133,6 +129,3 @@ These parameters only exist in the iOS `SpeechConfiguration` class.
 
 - `wakewordRequestTimeout`
   When using Apple's ASR for wake word detection, this is the amount of time, in milliseconds, allotted to each request. Apple has an undocumented limit of 1 minute for requests to its built-in ASR, so that is an upper bound for this parameter. The Apple wake word detector automatically restarts requests that time out, so this parameter controls how often those restarts occur when the wake word is not detected. We recommend keeping this timeout relatively long.
-
-- `authorization`
-  Used to authorize requests for Spokestack TTS. Defaults to an API key that allows access only to the free `demo-male` voice.

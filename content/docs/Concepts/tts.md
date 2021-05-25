@@ -46,17 +46,33 @@ Using invalid characters will not cause an error, but it might result in unexpec
 
 ### Examples
 
-- When you just can't give up that web prefix:
+When you just can't give up that web prefix:
 
-  `<speak>See all our products at <say-as interpret-as="characters">www</say-as> dot my company dot com.</speak>`
+```xml
+<speak>
+See all our products at
+<say-as interpret-as="characters">www</say-as>
+dot my company dot com.
+</speak>
+```
 
-- Insert a pregnant pause:
+Insert a pregnant pause:
 
-  `<speak>Today's stock price <break time="500ms"/> fell three percent.</speak>`
+```xml
+<speak>
+Today's stock price <break time="500ms"/> fell three percent.
+</speak>
+```
 
-- Customize pronunciation to make a point:
+Customize pronunciation to make a point:
 
-  `<speak>I don't care what you say; it's pronounced <phoneme alphabet="ipa" ph="gɪf">gif</phoneme>, not <phoneme alphabet="ipa" ph="dʒɪf">gif</phoneme>!</speak>`
+```xml
+<speak>
+I don't care what you say; it's pronounced
+<phoneme alphabet="ipa" ph="gɪf">gif</phoneme>, not
+<phoneme alphabet="ipa" ph="dʒɪf">gif</phoneme>!
+</speak>
+```
 
 ## Speech Markdown
 
@@ -77,8 +93,14 @@ Speech Markdown is a convenience wrapper around SSML syntax, so Spokestack's sup
 
 Here are the above SSML examples translated into Speech Markdown:
 
-`See all our products at (www)[characters] dot my company dot com.`
+```none
+See all our products at (www)[characters] dot my company dot com.
+```
 
-`Today's stock price [500ms] fell three percent.`
+```none
+Today's stock price [500ms] fell three percent.
+```
 
-`I don't care what you say; it's pronounced (gif)[/gɪf/], not (gif)[/dʒɪf/]!`
+```none
+I don't care what you say; it's pronounced (gif)[/gɪf/], not (gif)[/dʒɪf/]!
+```

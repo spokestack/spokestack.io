@@ -11,7 +11,7 @@ The technology for converting spoken words to text is known as automatic speech 
 
 ASR refers to the process of analyzing and transcribing a chunk of audio without human intervention. This technology is ubiquitous, with a place in the stack of every major voice assistant on the market.
 
-In software using voice powered by Spokestack, ASR is part of the [speech pipeline](/docs/concepts/speech-pipeline).
+In software using voice powered by Spokestack, ASR is part of the [speech pipeline](speech-pipeline). To change ASR providers from the default, you'll want to either set a pipeline profile at configuration time or directly configure your speech pipeline's stages. See the "Getting Started" guide for your platform for information about pipeline profiles or [the speech configuration introduction](speech-pipeline) for an explanation of pipeline stages.
 
 Many different techniques have been used to accomplish this throughout ASR's [long history](https://en.wikipedia.org/wiki/Speech_recognition#History), but modern models use — what else? — neural networks. The size and performance characteristics of these models vary widely, based on where they're designed to be deployed and their intended use cases. Technology has advanced to the point where models small enough to fit on a mobile device and run in almost real time are accurate enough to use for many tasks, but models that run in the cloud are still widely used for their speed and relatively higher accuracy.
 
@@ -19,7 +19,7 @@ Accuracy is often measured in Word Error Rate (WER), or the percentage of words 
 
 The Spokestack open-source native libraries provide a convenient API across multiple ASR providers such as Apple, Google, and Microsoft. Spokestack is designed to support multiple speech recognition providers so you can decide which is right for your use case. Support varies by mobile platform, however, so we decided to gather the information in one place to make the choice as easy as possible for your app.
 
-## Supported ASR providers by platform
+## Supported ASR Providers by Platform
 
 | Provider                                                                                                | Android  | iOS      |
 | ------------------------------------------------------------------------------------------------------- | -------- | -------- |

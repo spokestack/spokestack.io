@@ -11,7 +11,7 @@ interface Props {
 
 export default function Question({ question, answer }: Props) {
   const [open, setOpen] = useState(true)
-  const [height, setHeight] = useState<number | undefined>(0)
+  const [height, setHeight] = useState(0)
   const ref = useRef<HTMLDivElement>(null)
   const answerRef = useRef<HTMLDivElement>(null)
   const answerStyle = [styles.answer]
@@ -43,11 +43,13 @@ export default function Question({ question, answer }: Props) {
 
   if (open) {
     answerStyle.push(styles.open)
-    answerStyle.push(
-      css`
-        height: ${height}px;
-      `
-    )
+    if (height > 0) {
+      answerStyle.push(
+        css`
+          height: ${height}px;
+        `
+      )
+    }
   } else {
     answerStyle.push(
       css`

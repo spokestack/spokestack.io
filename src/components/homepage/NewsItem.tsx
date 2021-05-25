@@ -58,6 +58,11 @@ const styles = {
     border: 1px solid ${theme.mainBorder};
     border-radius: 7px;
     overflow: hidden;
+
+    ${theme.ieBreakpoint} {
+      margin-left: 10px;
+      margin-right: 10px;
+    }
   `,
   image: css`
     height: 229px;
@@ -79,6 +84,8 @@ const styles = {
   title: css`
     padding-top: 20px;
     flex-grow: 1;
+    width: 100%;
+
     h5.blue {
       text-transform: uppercase;
       margin-bottom: 12px;

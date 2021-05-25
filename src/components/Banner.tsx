@@ -50,6 +50,7 @@ const styles = {
     }
 
     p {
+      width: auto;
       margin: 0;
     }
 

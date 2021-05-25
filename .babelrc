@@ -1,12 +1,5 @@
 {
-  "presets": [[
-    "babel-preset-gatsby",
-    {
-      "targets": {
-        "browsers": [">0.25%", "not dead", "IE 11"]
-      }
-    }
-  ]],
+  "presets": ["babel-preset-gatsby"],
   "plugins": [
     "graphql-tag",
     "inline-import",

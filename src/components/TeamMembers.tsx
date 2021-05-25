@@ -48,7 +48,7 @@ const styles = {
     ${MIN_TABLET_MEDIA_QUERY} {
       flex-direction: row;
       flex-wrap: wrap;
-      grid-gap: 25px;
+      gap: 25px;
       grid-template-columns: 185px 185px 185px;
     }
     ${MIN_DEFAULT_MEDIA_QUERY} {

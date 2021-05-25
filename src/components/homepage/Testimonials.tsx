@@ -7,7 +7,7 @@ import { css } from '@emotion/react'
 
 export default function Testimonials() {
   return (
-    <div id="testimonials" css={styles.testimonials}>
+    <div id="testimonials" className="ie-fix" css={styles.testimonials}>
       <h2>Testimonials from Developers like You</h2>
       <Carousel maxWidth={750} numSlides={2} interval={0} showDesktopButtons>
         <Testimonial

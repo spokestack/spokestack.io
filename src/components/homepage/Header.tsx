@@ -19,7 +19,6 @@ export default function Header() {
       </div>
       <StaticImage
         width={549}
-        css={styles.image}
         alt="Spokestack Example"
         src="../../images/homepage/hero.png"
       />
@@ -35,11 +34,15 @@ const styles = {
     align-items: center;
     background: ${theme.mainBackground} url('/homepage/background.svg')
       no-repeat;
-    background-position: center -66px;
+    background-position: center calc(100% - 66px);
     background-size: cover;
     color: ${theme.textDarkBg};
     width: 100%;
     padding: 15px 20px 0;
+
+    @media (min-width: 1440px) {
+      background-size: 100% 549px;
+    }
 
     ${theme.MIN_DEFAULT_MEDIA_QUERY} {
       height: 602px;
@@ -80,8 +83,5 @@ const styles = {
   `,
   headerText: css`
     color: ${theme.textDarkBg};
-  `,
-  image: css`
-    flex-shrink: 0;
   `
 }

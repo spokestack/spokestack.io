@@ -15,7 +15,7 @@ To synthesize speech in Spokestack, use the `synthesize` method. This small API 
 
 TTS requires very little configuration. The only things needed are your Spokestack API client ID and secret.
 
-```javascript
+```js
 await Spokestack.initialize(
   // Your Spokestack API key ID
   'f0bc990c-e9db-4a0c-a2b1-6a6395a3d97e',
@@ -32,7 +32,7 @@ In this example, the credentials are set to public values that allow you to try 
 
 Generating a URL to an audio stream of a TTS synthesized voice is just a single method in Spokestack!
 
-```javascript
+```js
 const url = await Spokestack.synthesize(
   'Here I am, a brain the size of a planet.'
 )

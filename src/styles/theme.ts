@@ -83,9 +83,9 @@ export const MAX_BLOG_TEXT_WIDTH = '850px'
 export const ieBreakpoint =
   '@media all and (-ms-high-contrast: none), (-ms-high-contrast: active)'
 
-export const ieBreakpointMinDefault = `@media all and (-ms-high-contrast: none) and (min-width:${DEFAULT_WIDTH}), (-ms-high-contrast: active) and (min-width:${DEFAULT_WIDTH})`
+export const ieBreakpointMinDefault = `@media all and (-ms-high-contrast: none) and (min-width:${DEFAULT_WIDTH}px), (-ms-high-contrast: active) and (min-width:${DEFAULT_WIDTH}px)`
 
-export const ieBreakpointMinLarge = `@media all and (-ms-high-contrast: none) and (min-width:${LARGE_DISPLAY_WIDTH}), (-ms-high-contrast: active) and (min-width:${LARGE_DISPLAY_WIDTH})`
+export const ieBreakpointMinLarge = `@media all and (-ms-high-contrast: none) and (min-width:${LARGE_DISPLAY_WIDTH}px), (-ms-high-contrast: active) and (min-width:${LARGE_DISPLAY_WIDTH}px)`
 
 /**
  * Responsive media queries

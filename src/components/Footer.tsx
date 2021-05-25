@@ -249,7 +249,7 @@ const styles = {
       justify-content: center;
       display: grid;
       grid-template-columns: 365px 240px 270px 240px;
-      grid-gap: 20px;
+      gap: 20px;
     }
   `,
   column: css`
@@ -323,6 +323,10 @@ const styles = {
     flex-direction: row;
     align-items: flex-start;
     margin-bottom: 25px;
+
+    ${theme.MIN_LARGE_DISPLAY_MEDIA_QUERY} {
+      width: 100%;
+    }
   `,
   studioLogo: css`
     width: 45px;

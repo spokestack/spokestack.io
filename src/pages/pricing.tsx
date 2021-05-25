@@ -138,7 +138,7 @@ const styles = {
 
       display: grid;
       grid-template-columns: 1fr 1fr 1fr 1fr;
-      grid-gap: 25px;
+      gap: 25px;
     }
 
     ${theme.MIN_LARGE_DISPLAY_MEDIA_QUERY} {

@@ -316,6 +316,7 @@ const styles = {
   moveButton: css`
     position: absolute;
     top: -92px;
+    padding: 0;
 
     &.prev-button {
       left: 0;

@@ -103,7 +103,7 @@ const styles = {
       flex-wrap: wrap;
       display: grid;
       grid-template-columns: 1fr 1fr;
-      grid-gap: 25px;
+      gap: 25px;
     }
   `,
   callout: css`

@@ -48,7 +48,7 @@ const styles = {
     }
 
     ${theme.ieBreakpoint} {
-      margin-bottom: 50px;
+      margin-bottom: 50px !important;
     }
   `,
   image: css`

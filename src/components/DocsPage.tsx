@@ -104,13 +104,13 @@ export default function DocsPage({
           )}
           <DarkModeButton />
         </header>
-        {frontmatter.hero?.publicURL ? (
+        {!!frontmatter.hero?.publicURL && (
           <img
             alt={frontmatter.description!}
             css={styles.hero}
             src={frontmatter.hero.publicURL}
           />
-        ) : null}
+        )}
         <div dangerouslySetInnerHTML={{ __html: post.html! }} />
         <div css={styles.footer}>
           {!!related?.length && (

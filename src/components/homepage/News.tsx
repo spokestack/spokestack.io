@@ -106,6 +106,9 @@ const newsQuery = graphql`
           frontmatter {
             author
             date(formatString: "MMM DD, YYYY")
+            hero {
+              publicURL
+            }
             tags
             title
           }

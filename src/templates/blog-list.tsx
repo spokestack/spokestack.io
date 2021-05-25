@@ -56,10 +56,10 @@ export const blogListQuery = graphql`
             author
             date(formatString: "MMMM DD, YYYY")
             description
-            title
             hero {
               publicURL
             }
+            title
           }
         }
       }

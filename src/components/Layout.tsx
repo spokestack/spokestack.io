@@ -29,6 +29,9 @@ export default function Layout({
   if (banner) {
     style.push(css`
       top: 40px;
+      ${theme.DEFAULT_MEDIA_QUERY} {
+        top: 80px;
+      }
     `)
     const navPushStyle = css`
       ${theme.DEFAULT_MEDIA_QUERY} {

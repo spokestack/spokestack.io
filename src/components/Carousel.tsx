@@ -1,14 +1,19 @@
-import { css } from '@emotion/react'
-import React, { PureComponent } from 'react'
 import * as theme from '../styles/theme'
+
+import React, { PureComponent } from 'react'
+
 import Button from './Button'
 import SVGIcon from './SVGIcon'
+import { css } from '@emotion/react'
 
 interface Props {
   children: React.ReactNode
-  keys: string[]
-  maxWidth: number
+  keys?: string[]
+  // Set to 0 to stop
   interval?: number
+  maxWidth: number
+  numSlides: number
+  showDesktopButtons?: boolean
 }
 
 interface State {
@@ -98,10 +103,6 @@ export default class Carousel extends PureComponent<Props, State> {
     this.addListeners()
   }
 
-  getNumSlides() {
-    return this.slides.current?.childElementCount || 1
-  }
-
   getCurrentWidth() {
     if (!this.container.current) {
       return 0
@@ -111,10 +112,10 @@ export default class Carousel extends PureComponent<Props, State> {
 
   constrainX(x: number) {
     const width = this.getCurrentWidth()
+    const { numSlides } = this.props
     const { index } = this.state
-    const len = this.getNumSlides()
     return Math.max(
-      -width * (index < len - 1 ? index + 1 : index),
+      -width * (index < numSlides - 1 ? index + 1 : index),
       Math.min(-width * (index > 0 ? index - 1 : index), x)
     )
   }
@@ -151,25 +152,28 @@ export default class Carousel extends PureComponent<Props, State> {
   }
 
   next = () => {
+    const { numSlides } = this.props
     const { index } = this.state
-    const len = this.getNumSlides()
     this.setState({
-      index: (index + 1) % len,
+      index: (index + 1) % numSlides,
       moving: false
     })
   }
 
   prev = () => {
+    const { numSlides } = this.props
     const { index } = this.state
-    const len = this.getNumSlides()
     this.setState({
-      index: (index + len - 1) % len,
+      index: (index + numSlides - 1) % numSlides,
       moving: false
     })
   }
 
   start() {
-    this.timeout = setInterval(this.next, this.props.interval)
+    const { interval } = this.props
+    if (interval! > 0) {
+      this.timeout = setInterval(this.next, interval)
+    }
   }
 
   stop() {
@@ -177,41 +181,55 @@ export default class Carousel extends PureComponent<Props, State> {
   }
 
   render() {
-    const { children, keys, maxWidth } = this.props
+    const {
+      children,
+      keys = [],
+      maxWidth,
+      numSlides,
+      showDesktopButtons
+    } = this.props
     const { index, moving, x } = this.state
+    const buttonStyle = [styles.moveButton]
+    const arrowStyle = [styles.arrow]
+    if (showDesktopButtons) {
+      buttonStyle.push(styles.desktopButton)
+      arrowStyle.push(styles.desktopArrow)
+    }
 
     return (
-      <div ref={this.container} style={{ maxWidth }}>
-        <div css={styles.buttons}>
-          {keys.map((key, i) => (
-            <Button
-              key={key}
-              transparent={i !== index}
-              extraCss={[
-                styles.button,
-                css`
-                  ${theme.DEFAULT_MEDIA_QUERY} {
-                    :not(:nth-of-type(${index + 1})) {
-                      display: none;
+      <div css={styles.carousel} ref={this.container} style={{ maxWidth }}>
+        {!!keys.length && (
+          <div css={styles.buttons}>
+            {keys.map((key, i) => (
+              <Button
+                key={key}
+                transparent={i !== index}
+                extraCss={[
+                  styles.button,
+                  css`
+                    ${theme.DEFAULT_MEDIA_QUERY} {
+                      :not(:nth-of-type(${index + 1})) {
+                        display: none;
+                      }
                     }
+                  `
+                ]}
+                onClick={() => {
+                  this.stop()
+                  if (
+                    window.matchMedia(`(min-width:${theme.DEFAULT_WIDTH}px)`)
+                      .matches
+                  ) {
+                    this.setState({ index: i })
+                  } else {
+                    this.next()
                   }
-                `
-              ]}
-              onClick={() => {
-                this.stop()
-                if (
-                  window.matchMedia(`(min-width:${theme.DEFAULT_WIDTH}px)`)
-                    .matches
-                ) {
-                  this.setState({ index: i })
-                } else {
-                  this.next()
-                }
-              }}>
-              {key}
-            </Button>
-          ))}
-        </div>
+                }}>
+                {key}
+              </Button>
+            ))}
+          </div>
+        )}
         <div css={styles.content}>
           <div css={styles.slidesWrap}>
             <div
@@ -223,32 +241,34 @@ export default class Carousel extends PureComponent<Props, State> {
               style={{
                 transform: moving
                   ? `translateX(${x}px)`
-                  : `translateX(-${index * 25}%)`,
-                width: `${keys.length * 100}%`
+                  : `translateX(-${index * (100 / numSlides)}%)`,
+                width: `${numSlides * 100}%`
               }}>
               {children}
             </div>
           </div>
           <Button
-            link
+            link={!showDesktopButtons}
             onClick={() => {
               this.stop()
               this.prev()
             }}
-            extraCss={[styles.moveButton, styles.prevButton]}>
+            className="prev-button"
+            extraCss={buttonStyle}>
             <SVGIcon
-              icon="#arrow-down"
-              extraCss={[styles.arrow, styles.backArrow]}
+              icon="#arrow-forward"
+              extraCss={arrowStyle.concat(styles.backArrow)}
             />
           </Button>
           <Button
-            link
+            link={!showDesktopButtons}
             onClick={() => {
               this.stop()
               this.next()
             }}
-            extraCss={[styles.moveButton, styles.nextButton]}>
-            <SVGIcon icon="#arrow-down" extraCss={[styles.arrow]} />
+            className="next-button"
+            extraCss={buttonStyle}>
+            <SVGIcon icon="#arrow-forward" extraCss={arrowStyle} />
           </Button>
         </div>
       </div>
@@ -257,6 +277,10 @@ export default class Carousel extends PureComponent<Props, State> {
 }
 
 const styles = {
+  carousel: css`
+    width: 100%;
+    cursor: default;
+  `,
   buttons: css`
     display: flex;
     flex-direction: row;
@@ -291,25 +315,50 @@ const styles = {
   `,
   moveButton: css`
     position: absolute;
-    top: 50%;
-    transform: translateY(-50%);
+    top: -92px;
+
+    &.prev-button {
+      left: 0;
+    }
+
+    &.next-button {
+      right: 0;
+    }
 
     ${theme.MIN_DEFAULT_MEDIA_QUERY} {
       display: none;
     }
   `,
-  prevButton: css`
-    left: -20px;
-  `,
-  nextButton: css`
-    right: -20px;
+  desktopButton: css`
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    top: 50%;
+    transform: translateY(-50%);
+
+    ${theme.MIN_DEFAULT_MEDIA_QUERY} {
+      display: flex;
+      width: 60px;
+      height: 60px;
+
+      &.prev-button {
+        left: -100px;
+      }
+
+      &.next-button {
+        right: -100px;
+      }
+    }
   `,
   arrow: css`
-    width: 14px;
-    height: 15px;
-    transform: rotateZ(-90deg);
+    width: 32px;
+    height: 32px;
+    fill: ${theme.primary};
+  `,
+  desktopArrow: css`
+    fill: white;
   `,
   backArrow: css`
-    transform: rotateZ(90deg);
+    transform: rotateY(180deg);
   `
 }

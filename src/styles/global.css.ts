@@ -456,6 +456,20 @@ export default css`
   .columns {
     display: flex;
     flex-direction: column;
+    width: 100%;
+  }
+  .columns-mobile {
+    display: flex;
+    flex-direction: row;
+    width: 100%;
+
+    .column-half {
+      width: calc(50% - 12.5px);
+
+      &:first-of-type {
+        margin-right: 25px;
+      }
+    }
   }
   .card ul {
     margin-left: 34px;
@@ -592,19 +606,20 @@ export default css`
     }
     .columns {
       flex-direction: row;
-    }
-    .column-half {
-      width: calc(50% - 12.5px);
 
-      &:first-of-type {
-        margin-right: 25px;
+      .column-half {
+        width: calc(50% - 12.5px);
+
+        &:first-of-type {
+          margin-right: 25px;
+        }
       }
-    }
-    .column-third {
-      width: calc(33% - ${40 / 3}px);
+      .column-third {
+        width: calc(33% - ${40 / 3}px);
 
-      &:nth-last-of-type(n + 2) {
-        margin-right: 20px;
+        &:nth-last-of-type(n + 2) {
+          margin-right: 20px;
+        }
       }
     }
     .input-wrap {

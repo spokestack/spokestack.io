@@ -4,6 +4,7 @@ import * as theme from '../styles/theme'
 import { PageRendererProps, graphql } from 'gatsby'
 import React, { useRef, useState } from 'react'
 
+import Background from '../components/pricing/Background'
 import Create from '../components/Create'
 import FAQ from '../components/pricing/FAQ'
 import Layout from '../components/Layout'
@@ -30,7 +31,7 @@ export default function Pricing({ data }: Props) {
         title="Pricing | Spokestack"
         description="Choose the right plan for you: Free, Maker, or Enterprise. All plans feature pre-trained models for Wake Word activation, Keyword recognition, Natural Language Understanding, and Text to Speech, as well as free API access to our Automatic Speech Recognition and Text to Speech streaming services."
       />
-      <div css={styles.background} />
+      <Background height="450px" />
       <header css={styles.header}>
         <h2>Pricing that Fits Your Software Needs</h2>
         <p className="title">
@@ -107,19 +108,6 @@ export default function Pricing({ data }: Props) {
 }
 
 const styles = {
-  background: css`
-    position: absolute;
-    top: 0;
-    left: 0;
-    right: 0;
-    height: 450px;
-    background: ${theme.header} url(/pricing/wave.png) no-repeat bottom center;
-    z-index: -1;
-
-    @media (min-width: 1440px) {
-      background-size: 100% 270px;
-    }
-  `,
   header: css`
     display: flex;
     flex-direction: column;

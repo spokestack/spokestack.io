@@ -1,16 +1,17 @@
 import * as theme from '../../styles/theme'
 
 import React from 'react'
-import { css } from '@emotion/react'
 import { StaticImage } from 'gatsby-plugin-image'
+import { css } from '@emotion/react'
 
 export default function Header() {
   return (
     <header css={styles.header}>
       <div className="ie-fix" css={styles.headerContent}>
-        <h1 css={styles.headerText}>Give Your Software a Voice Interface</h1>
+        <h1 css={styles.headerText}>Machine Learning for Voice Made Easy</h1>
         <p className="title spokestack-speakable">
-          Open source tools for mobile, web, &amp; embedded devices
+          AutoML tools and open source libraries for mobile, web, &amp; embedded
+          software
         </p>
         <a href="/account/create" className="btn btn-secondary">
           Get started free
@@ -34,7 +35,7 @@ const styles = {
     align-items: center;
     background: ${theme.mainBackground} url('/homepage/background.svg')
       no-repeat;
-    background-position: center top;
+    background-position: center -66px;
     background-size: cover;
     color: ${theme.textDarkBg};
     width: 100%;
@@ -49,8 +50,8 @@ const styles = {
     }
 
     ${theme.MIN_LARGE_DISPLAY_MEDIA_QUERY} {
-      padding-left: 150px;
-      padding-right: 150px;
+      padding-left: 100px;
+      padding-right: 100px;
     }
   `,
   headerContent: css`

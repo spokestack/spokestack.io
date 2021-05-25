@@ -18,6 +18,7 @@ date: '<%- date %>'<% if(typeof description !== 'undefined') { %>
 description: '<%- description %>'<% } %>
 tags:
 author: <%- author %>
+hero:
 draft: false
 ---
 

@@ -2,26 +2,18 @@ import * as theme from '../styles/theme'
 
 import React from 'react'
 import { css } from '@emotion/react'
-import { Link } from 'gatsby'
 
 interface Props {
   children: React.ReactNode
-  to: string
+  href: string
 }
 
-export default function Banner({ children, to }: Props) {
+export default function Banner({ children, href }: Props) {
   return (
-    <Link css={styles.banner} to={to}>
-      <img
-        css={[styles.bannerImage, styles.bannerImageLeft]}
-        src="/banner.svg"
-      />
+    <a css={styles.banner} href={href}>
+      <img css={styles.bannerImage} src="/banner.svg" />
       {children}
-      <img
-        css={[styles.bannerImage, styles.bannerImageRight]}
-        src="/banner.svg"
-      />
-    </Link>
+    </a>
   )
 }
 
@@ -30,28 +22,28 @@ const styles = {
     position: fixed;
     top: 0;
     width: 100%;
-    height: 40px;
+    height: 80px;
     display: flex;
     flex-direction: row;
     justify-content: center;
     align-items: center;
-    text-align: center;
     text-decoration: none;
-    background-color: ${theme.header};
-    box-shadow: 0 2px 16px rgba(0, 0, 0, 0.5);
-    font-size: 13px;
-    padding-bottom: 1px;
+    background-color: ${theme.primaryDark};
+    font-size: 14px;
+    font-weight: 400;
+    padding: 20px;
+    overflow: hidden;
     z-index: 99999;
 
     &,
     &:visited,
     &:hover,
     &:active {
-      color: ${theme.textDarkBg};
+      color: white;
     }
 
     &:hover {
-      background-color: ${theme.headerColor.darken(0.1).hex()};
+      background-color: ${theme.primary};
     }
     &:active {
       box-shadow: inset 0 0 16px rgba(0, 0, 0, 0.7);
@@ -63,26 +55,14 @@ const styles = {
 
     ${theme.MIN_DEFAULT_MEDIA_QUERY} {
       position: absolute;
-      font-size: 16px;
+      height: 40px;
     }
   `,
   bannerImage: css`
-    width: 437px;
-    height: 40px;
-    position: absolute;
-    margin: 0;
+    width: 62px;
+    height: 62px;
+    flex-shrink: 0;
     line-height: 0;
-    display: none;
-
-    ${theme.MIN_LARGE_DISPLAY_MEDIA_QUERY} {
-      display: block;
-    }
-  `,
-  bannerImageLeft: css`
-    left: 0;
-  `,
-  bannerImageRight: css`
-    right: 0;
-    transform: rotateY(180deg);
+    margin-right: 20px;
   `
 }

@@ -12,10 +12,11 @@ import NavDropdownLink from './NavDropdownLink'
 import NavLink from './NavLink'
 
 interface Props {
+  contentCss?: SerializedStyles | SerializedStyles[]
   extraCss?: SerializedStyles | SerializedStyles[]
 }
 
-export default function Nav({ extraCss }: Props) {
+export default function Nav({ contentCss, extraCss }: Props) {
   const [mobileOpen, setMobileOpen] = useState(false)
   const contentStyles = [styles.navContent]
   if (mobileOpen) {
@@ -63,7 +64,7 @@ export default function Nav({ extraCss }: Props) {
           <Logo />
         </a>
       </header>
-      <div className="nav-content" css={contentStyles}>
+      <div className="nav-content" css={contentStyles.concat(contentCss!)}>
         <ul css={styles.links}>
           <li css={styles.listItem} aria-label="Features Navigation">
             <NavDropdown title="Features">

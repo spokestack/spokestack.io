@@ -1,5 +1,6 @@
+import * as theme from '../styles/theme'
+
 import { Global, SerializedStyles, css } from '@emotion/react'
-import { MIN_DEFAULT_MEDIA_QUERY, ieBreakpoint } from '../styles/theme'
 import React, { Fragment } from 'react'
 
 import Footer from './Footer'
@@ -23,10 +24,19 @@ export default function Layout({
   navStyle
 }: Props) {
   const style = [styles.container]
+  const navStyles = []
+  const navContentStyles = []
   if (banner) {
     style.push(css`
       top: 40px;
     `)
+    const navPushStyle = css`
+      ${theme.DEFAULT_MEDIA_QUERY} {
+        top: 80px;
+      }
+    `
+    navStyles.push(navPushStyle)
+    navContentStyles.push(navPushStyle)
   }
 
   return (
@@ -35,7 +45,10 @@ export default function Layout({
       <div css={style.concat(extraCss!)}>
         <Global styles={globalStyles} />
         <Sprite />
-        <Nav extraCss={navStyle} />
+        <Nav
+          extraCss={navStyles.concat(navStyle!)}
+          contentCss={navContentStyles}
+        />
         <main css={[styles.content].concat(contentStyle!)}>{children}</main>
         <Footer />
       </div>
@@ -59,13 +72,13 @@ const styles = {
     min-height: 300px;
     position: relative;
 
-    ${ieBreakpoint} {
+    ${theme.ieBreakpoint} {
       display: flex;
       flex-direction: column;
       align-items: center;
     }
 
-    ${MIN_DEFAULT_MEDIA_QUERY} {
+    ${theme.MIN_DEFAULT_MEDIA_QUERY} {
       min-height: calc(100vh - 60px);
     }
   `

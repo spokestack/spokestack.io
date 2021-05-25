@@ -1,5 +1,6 @@
 import { PageRendererProps, graphql } from 'gatsby'
 
+import Banner from '../components/Banner'
 import Create from '../components/Create'
 import Flexible from '../components/homepage/Flexible'
 import Header from '../components/homepage/Header'
@@ -21,7 +22,17 @@ export default function Index({ data }: Props) {
   const siteTitle = data!.site!.siteMetadata!.title!
 
   return (
-    <Layout extraCss={styles.container} navStyle={styles.nav}>
+    <Layout
+      banner={
+        <Banner href="/account/create">
+          <p>
+            Spokestack Maker - Self-Service Tools for Personal Voice Model
+            Creation
+          </p>
+        </Banner>
+      }
+      extraCss={styles.container}
+      navStyle={styles.nav}>
       <SEO title={siteTitle} />
       <Header />
       <Tray />

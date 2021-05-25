@@ -219,7 +219,71 @@ async function createPages({ actions, graphql, posts, template }) {
   }
 }
 
+async function verifyHeros(graphql, reporter) {
+  const result = await graphql(`
+    {
+      heros: allMarkdownRemark(
+        filter: {
+          fileAbsolutePath: { regex: "/blog/" }
+          frontmatter: { hero: { publicURL: { eq: null } } }
+        }
+      ) {
+        edges {
+          node {
+            fileAbsolutePath
+            frontmatter {
+              title
+            }
+          }
+        }
+      }
+      seos: allMarkdownRemark(
+        filter: {
+          fileAbsolutePath: { regex: "/docs/" }
+          frontmatter: { seoImage: { publicURL: { eq: null } } }
+        }
+      ) {
+        edges {
+          node {
+            fileAbsolutePath
+            frontmatter {
+              title
+            }
+          }
+        }
+      }
+    }
+  `)
+  if (result.errors) {
+    console.error(result.errors)
+    reporter.panicOnBuild('Error while running GraphQL query')
+    return
+  }
+  let panic = false
+  if (result.data.heros.edges.length) {
+    panic = true
+    result.data.heros.edges.forEach((edge) => {
+      console.error(
+        `Blog post with title "${edge.node.frontmatter.title}" at path ${edge.node.fileAbsolutePath} does not have a hero image set in frontmatter`
+      )
+    })
+  }
+  if (result.data.seos.edges.length) {
+    // Only warn about SEO images for now
+    // panic = true
+    result.data.seos.edges.forEach((edge) => {
+      console.warn(
+        `Docs page with title "${edge.node.frontmatter.title}" at path ${edge.node.fileAbsolutePath} does not have an seoImage set in frontmatter`
+      )
+    })
+  }
+  if (panic) {
+    reporter.panicOnBuild('Please add the necessary images')
+  }
+}
+
 exports.createPages = async ({ graphql, actions, reporter }) => {
+  await verifyHeros(graphql, reporter)
   const result = await graphql(`
     {
       site {

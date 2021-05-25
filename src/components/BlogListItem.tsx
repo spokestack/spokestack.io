@@ -14,7 +14,8 @@ interface Props {
 }
 
 export default function BlogListItem({ post }: Props) {
-  const author = post.frontmatter?.author
+  const frontmatter = post.frontmatter!
+  const author = frontmatter.author
   const data = useStaticQuery<Query>(blogListItemQuery)
   if (!author || !data || !data.site) {
     return null
@@ -59,14 +60,14 @@ export default function BlogListItem({ post }: Props) {
         </p>
       </div>
       <div>
-        {post.frontmatter?.hero ? (
+        {!!frontmatter.hero?.publicURL && (
           <img
-            alt={post.frontmatter.description!}
+            alt={frontmatter.description!}
             css={styles.hero}
-            src={post.frontmatter.hero.publicURL!}
+            src={frontmatter.hero.publicURL}
           />
-        ) : null}
-        <h4>{post.frontmatter?.title}</h4>
+        )}
+        <h4>{frontmatter.title}</h4>
         <p css={styles.excerpt}>{post.excerpt}</p>
         <div css={styles.tags}>
           <Tags

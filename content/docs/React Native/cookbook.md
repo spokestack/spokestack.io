@@ -15,14 +15,14 @@ Beginning in version 4, react-native-spokestack provides profiles with common co
 
 The default profile in is `PTT_NATIVE_ASR` (if no wake word models are specified), which is a push-to-talk profile using native (iOS and Android) speech recognition.
 
-```javascript
+```js
 // Uses the default profile
 Spokestack.initialize(clientID, clientSecret)
 ```
 
 There's another push-to-talk profile available that uses Spokestack ASR instead: `PTT_SPOKESTACK_ASR`. Set a different profile than the default using the `pipeline.profile` property:
 
-```javascript
+```js
 Spokestack.initialize(clientID, clientSecret, {
   pipeline: {
     profile: Spokestack.PipelineProfile.PTT_SPOKESTACK_ASR
@@ -32,7 +32,7 @@ Spokestack.initialize(clientID, clientSecret, {
 
 Once Spokestack is initialized, call `activate()` to start listening.
 
-```javascript
+```js
 async onTalkButtonPressed () {
   // Start the speech pipeline
   // If the pipeline has been started elsewhere, you
@@ -51,7 +51,7 @@ To use the demo "Spokestack" wake word, you'll need the demo TensorFlow Lite mod
 
 The pipeline will default to the native wake word-activated profile (`TFLITE_WAKEWORD_NATIVE_ASR`) if these configuration properties are specified, so we don't need to set it here.
 
-```javascript
+```js
 await Spokestack.initialize(clientId, clientSecret, {
   wakeword: {
     filter: filterModelPath,
@@ -67,7 +67,7 @@ await Spokestack.start()
 
 ### Cancel ASR (before the timeout is reached)
 
-```javascript
+```js
 cancelAsr () {
   Spokestack.deactivate()
 }
@@ -75,13 +75,13 @@ cancelAsr () {
 
 When `deactivate` is called, Spokestack will continue listening for the next wake word activation. To stop listening entirely, call
 
-```javascript
+```js
 Spokestack.stop()
 ```
 
 After calling this, you'll need to call
 
-```javascript
+```js
 Spokestack.start()
 ```
 
@@ -118,7 +118,7 @@ switch (intent) {
 
 When creating a synthesis request, the request takes a dictionary with specific keys. The `id` field is for your convenience, and `voice` may be changed by creating a [Spokestack account](/account). The `input` is where the SpeechMarkdown-formatted text will be placed.
 
-```javascript
+```js
 const url = await Spokestack.synthesize(
   'Yet right now the average age of this (50)[number] second Parliament is (49)[number] years old, [1s] OK.',
   Spokestack.TTSFormat.SPEECHMARKDOWN

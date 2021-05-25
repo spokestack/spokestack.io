@@ -191,7 +191,7 @@ We'll configure the NLU (Natural Language Understanding) component, which uses S
 
 First, we'll need a Spokestack API key and secret, available for free once you've [created an account](/create). Create a key in the [account section](/account/settings/#api).
 
-```javascript
+```js
 import Spokestack from 'react-native-spokestack'
 
 /**
@@ -244,7 +244,7 @@ To manually start speech recognition, without waiting for activation from a wake
 
 Call `Spokestack.deactivate()` to stop speech recognition. The speech pipeline will continue listening for a wake word or voice trigger, if applicable.
 
-```javascript
+```js
 // Start and stop the speech pipeline. All methods can be called repeatedly.
 await Spokestack.start() // start speech pipeline. can only start after initialize is called.
 await Spokestack.stop() // stop speech pipeline
@@ -254,7 +254,7 @@ await Spokestack.deactivate() // manually deactivate the speech pipeline. The sp
 
 Listen to speech events to receive the speech recognition results, be informed of errors and debugging events, or get notified when the pipeline activates or deactivates. For example, you may want to disable any buttons or show a special "listening" indicator while recording.
 
-```javascript
+```js
 componentDidMount() {
   Spokestack.addListener('recognize', ({ transcript }) => console.log(transcript))
   Spokestack.addListener('activate', () => console.log('activated'))
@@ -273,7 +273,7 @@ componentWillUnmount() {
 
 The `"recognize"` event will give you the raw text of what the user just said via the `transcript` property. Translating that utterance into an action in your app is the job of an NLU component. Spokestack leaves the choice of NLU up to you, but we do offer our own full-featured NLU component for Spokestack based on years of research and lessons learned from working with other services. Our NLU runs directly on your user's device, instead of calling back to the cloud. Call `Spokestack.classify()` to use your NLU.
 
-```javascript
+```js
 const result = await Spokestack.classify(utterance)
 console.log(result)
 // { "intent": "request.lights.activate", "slots": [{ "location": { "value": "room", "type": "selset" } }], "confidence":" 0.9999888" }
@@ -285,7 +285,7 @@ Classification results are in a map containing an intent. An intent-based classi
 
 If you want full hands-free and eyes-free interaction, you'll also want to deliver responses via voice. This requires a text-to-speech (TTS) component, and Spokestack has one of these too! Call it with the text you want to synthesize, and it will send you an event with an audio file containing the synthesized voice speaking your text utterance.
 
-```javascript
+```js
 // Get a URL to a mp3 audio file of the processed speech
 const url = await Spokestack.synthesize(utterance)
 audioPlayer.play(url)

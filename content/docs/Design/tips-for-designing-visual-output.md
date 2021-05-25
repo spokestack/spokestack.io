@@ -76,7 +76,7 @@ Here are a few other considerations to keep in mind:
 
 In the example below, the app asked a follow-up and the user responded by tapping a button. The mic would stop listening once the user interacts using gestures thereby ending the conversation. If the user said “yes,” you could confirm their intent by highlighting the save button as if the user had tapped it. This can prove to be especially useful for fixed feedback such as yes and no.
 
-![](https://paper-attachments.dropbox.com/s_BF5D22BAD9421AD3845A926151A97CA26F837572D6DA91B630753CEABD822986_1581631877473_MyRunBuddy+-+Stop+a+run.png)
+![MyRunBuddy Stop Run](../../assets/docs/design-tips-for-designing-visual-output/stop_run.png)
 
 ## Provide Enough Information to Properly Orient Users, but Don’t Distract Them
 

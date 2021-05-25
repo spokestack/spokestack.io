@@ -11,7 +11,7 @@ Spokestack's NLU data is expressed in the [TOML](https://github.com/toml-lang/to
 
 Your zip file's hierarchy should look like this (read on for information on each folder):
 
-```text
+```none
 yourModel.zip
 ├--intents/
 | ├-intent.one.toml
@@ -158,7 +158,7 @@ count = 5
 
 will result in 5-digit random numbers being included in your training data, as a mix of English words and numerals (note the homophones in the last example to provide a degree of protection against noisy ASR results):
 
-```text
+```none
 12345
 one eight hundred 2
 183 twenty five
@@ -188,7 +188,7 @@ range = [1, 10]
 
 will result in the generation of integers and number words between 1 and 10:
 
-```text
+```none
 2
 third
 one
@@ -273,6 +273,6 @@ values = [
     "find me",
     "how about",
     "we're looking for",
-    ...
+    # ...
 ]
 ```

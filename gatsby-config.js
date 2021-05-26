@@ -385,7 +385,7 @@ module.exports = {
         background_color: '#ffffff',
         theme_color: '#2f5bea',
         display: 'minimal-ui',
-        icon: 'static/mark.svg'
+        icon: 'static/favicon.svg'
       }
     },
     {

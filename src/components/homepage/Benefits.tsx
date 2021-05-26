@@ -17,7 +17,7 @@ export default function Benefits() {
         id="modular"
         subHeader="Modular"
         header="Develop Across Platforms Using One API"
-        text="Managing voice interfaces across embedded, mobile, and the web can be complicated, time-consuming, and expensive. With Spokestack, spend more time helping customers and less time managing platforms."
+        text="Managing voice interfaces across embedded, mobile, and the web can be complicated, time-consuming, and expensive. With Spokestack, spend more time building voice-powered features for your customers and less time managing platforms."
         image={
           <img
             css={styles.mobileDiagram}
@@ -67,11 +67,11 @@ export default function Benefits() {
           <Fragment>
             <p className="title">
               Spokestack&apos;s, er, stack, has all the voice technology
-              features you could want, but doesn&apos;t make you use any that
-              you don&apos;t need. Voice activity detection that triggers when
-              human speech is heard, wake word activation on your custom
-              phrases, keyword recognition of just the commands you define,
-              automatic speech recognition choices, natural language
+              features you could want, but its modular design doesn’t make you
+              use any that you don’t need. Voice activity detection that
+              triggers when human speech is heard, wake word activation on your
+              custom phrases, keyword recognition of just the commands you
+              define, automatic speech recognition choices, natural language
               understanding of intents and slots, and text-to-speech voices
               unique to you.
             </p>

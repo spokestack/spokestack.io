@@ -61,7 +61,7 @@ export default function Problems() {
         <ProblemCard
           full
           title="Can't Customize"
-          description="Can your software listen when a user runs it? Can you only speak to users in &ldquo;Siri Voice&rdquo;? Is the platform wake word the only way to open your app?"
+          description="Can your software listen when a user runs it? Can you only speak to users in &ldquo;Siri Voice&rdquo;? Is the platform wake word the only way to activate your app?"
           image={
             <StaticImage
               width={1086}

@@ -26,7 +26,7 @@ export default function News() {
     <div id="news" className="ie-fix" css={styles.container}>
       <h2>News &amp; Tutorials</h2>
       <p className="title">
-        Stay informed and learn to build your own Independent Voice Assistant
+        The latest tutorials, low-code integrations, and Spokestack news
       </p>
       <div className="ie-fix" css={styles.content}>
         {sortPosts(posts).map((edge) => {

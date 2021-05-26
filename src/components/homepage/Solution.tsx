@@ -3,15 +3,15 @@ import React from 'react'
 import { StaticImage } from 'gatsby-plugin-image'
 import { css } from '@emotion/react'
 
-const carouselBreakpoints = [750, 980, 1080, 1120, 1240]
+const carouselBreakpoints = [750, 980, 1080, 1240, 1366, 1920]
 
 export default function Solution() {
   return (
     <div id="solution" className="ie-fix" css={styles.solution}>
       <h2>Spokestack Maker</h2>
       <p>
-        Developers and hobbyists use Spokestack to prototype projects before
-        committing to training a universal wake word/keyword model or
+        Startups, developers, and hobbyists use Spokestack to prototype projects
+        before committing to training a universal wake word/keyword model or
         studio-quality TTS voice.
       </p>
       <Carousel

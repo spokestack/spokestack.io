@@ -32,7 +32,7 @@ const styles = {
     flex-direction: column;
     justify-content: center;
     align-items: center;
-    background: ${theme.mainBackground} url('/homepage/background.svg')
+    background: ${theme.mainBackground} url('/homepage/wave_background.svg')
       no-repeat;
     background-position: center calc(100% - 66px);
     background-size: cover;

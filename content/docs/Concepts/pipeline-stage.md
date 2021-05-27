@@ -55,7 +55,7 @@ If none of these conditions matches, it means the speech context is inactive (AS
 
 The above approach can easily be adapted to stream frames of audio to a neural ASR model running locally. In the case of our sample stage, the `PARTIAL_RECOGNIZE` and `RECOGNIZE` events are dispatched in response to events received asynchronously from the internal HTTP client, but they could just as easily be sent in response to events produced by a local model. In the Android library, these events are sent to listeners via `context.dispatch(SpeechContext.Event)` after relevant fields (the current transcript, in most cases) is set, but event dispatch is similar on all platforms.
 
-A caveat to this approach is that such a stage should run its ASR model, scorer, and/or anything else needed to encode inputs and interpret outputs on a background thread so that the pipeline can continue to process audio in near-real time.
+A caveat to this approach is that such a stage should run its ASR model, scorer, and/or anything else needed to encode inputs and interpret outputs on a background thread so that the pipeline can continue to process audio in soft real time.
 
 The key point is that Spokestack doesn't attempt to hide the raw audio signal or pipeline state, so the information available to its first-party stages is available to any third-party extensions. This means that stages should be careful to avoid violating expectations of other stages (i.e., don't set the context to active or tell it speech is present unless that's explicitly your stage's job), but it also means that the full power of the pipeline is at your disposal and ready to be extended.
 

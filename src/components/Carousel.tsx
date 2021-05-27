@@ -33,6 +33,7 @@ export default class Carousel extends PureComponent<Props, State> {
   private startX?: number
   private container = React.createRef<HTMLDivElement>()
   private slides = React.createRef<HTMLDivElement>()
+  private observer?: IntersectionObserver
 
   static defaultProps = {
     interval: 5000
@@ -45,7 +46,22 @@ export default class Carousel extends PureComponent<Props, State> {
   }
 
   componentDidMount() {
-    this.start()
+    this.observer = new IntersectionObserver(
+      (entries) => {
+        entries.forEach((entry) => {
+          if (
+            entry.target === this.container.current! &&
+            entry.isIntersecting
+          ) {
+            this.start()
+          }
+        })
+      },
+      {
+        threshold: 0.5
+      }
+    )
+    this.observer.observe(this.container.current!)
     if (this.slides.current) {
       this.slides.current.addEventListener('mousedown', this.preventDefault)
       this.slides.current.addEventListener('touchstart', this.preventDefault)
@@ -53,6 +69,7 @@ export default class Carousel extends PureComponent<Props, State> {
   }
 
   componentWillUnmount() {
+    this.observer?.disconnect()
     this.stop()
     if (this.slides.current) {
       this.slides.current.removeEventListener('mousedown', this.preventDefault)
@@ -178,7 +195,8 @@ export default class Carousel extends PureComponent<Props, State> {
     })
   }
 
-  start() {
+  start = () => {
+    this.observer?.disconnect()
     const { interval } = this.props
     if (interval! > 0) {
       this.timeout = setInterval(this.next, interval)

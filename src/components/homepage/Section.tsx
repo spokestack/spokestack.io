@@ -72,7 +72,7 @@ const styles = {
     justify-content: center;
     align-items: center;
     text-align: center;
-    max-width: 610px;
+    max-width: 615px;
 
     h4.blue {
       text-transform: uppercase;

@@ -3,6 +3,8 @@ import * as theme from '../../styles/theme'
 import React, { Fragment, useEffect, useRef, useState } from 'react'
 import Scroller, { ScrollerSection } from './Scroller'
 
+import BenefitsListItem from './BenefitsListItem'
+import BenefitsSprite from '../../images/homepage/benefits-sprite.svg'
 import Section from './Section'
 import { css } from '@emotion/react'
 import throttle from 'lodash/throttle'
@@ -23,7 +25,6 @@ export default function Benefits() {
         const id = elem.id as ScrollerSection
         if (top < height / 2) {
           if (section !== id) {
-            console.log('Setting section', id)
             setSection(id as ScrollerSection)
           }
           return
@@ -39,6 +40,7 @@ export default function Benefits() {
   }, [section])
   return (
     <div id="benefits" className="ie-fix" css={styles.benefits}>
+      <BenefitsSprite />
       <div css={styles.header}>
         <h4 className="blue">Voice Doesn&apos;t Have to Be Hard</h4>
         <h2>Built by Developers, for Developers</h2>
@@ -77,13 +79,49 @@ export default function Benefits() {
               </p>
               <div className="columns-mobile">
                 <div className="column-half">
-                  <p className="title">Android</p>
-                  <p className="title">iOS</p>
-                  <p className="title">React Native</p>
+                  <BenefitsListItem
+                    icon="#android"
+                    iconCss={css`
+                      width: 15px;
+                      height: 15px;
+                    `}
+                    text="Android"
+                  />
+                  <BenefitsListItem
+                    icon="#benefits-ios"
+                    iconCss={css`
+                      width: 15px;
+                      height: 16px;
+                      fill: white;
+                    `}
+                    text="iOS"
+                  />
+                  <BenefitsListItem
+                    icon="#react-native"
+                    iconCss={css`
+                      width: 15px;
+                      height: 15px;
+                    `}
+                    text="React Native"
+                  />
                 </div>
                 <div className="column-half">
-                  <p className="title">Python</p>
-                  <p className="title">Node</p>
+                  <BenefitsListItem
+                    icon="#python"
+                    iconCss={css`
+                      width: 15px;
+                      height: 15px;
+                    `}
+                    text="Python"
+                  />
+                  <BenefitsListItem
+                    icon="#node"
+                    iconCss={css`
+                      width: 15px;
+                      height: 15px;
+                    `}
+                    text="Node.js"
+                  />
                 </div>
               </div>
             </Fragment>
@@ -118,14 +156,62 @@ export default function Benefits() {
               </p>
               <div className="columns-mobile">
                 <div className="column-half">
-                  <p className="title">Automatic Speech Recognition (ASR)</p>
-                  <p className="title">Voice Activity Detection (VAD)</p>
-                  <p className="title">Wake Word</p>
+                  <BenefitsListItem
+                    bgColor="#c490d1"
+                    icon="#benefits-asr"
+                    iconCss={css`
+                      width: 27px;
+                      height: 11px;
+                    `}
+                    text="Automatic Speech Recognition"
+                  />
+                  <BenefitsListItem
+                    bgColor="#a4036f"
+                    icon="#benefits-vad"
+                    iconCss={css`
+                      width: 27px;
+                      height: 10px;
+                    `}
+                    text="Voice Activity Detection"
+                  />
+                  <BenefitsListItem
+                    bgColor="#3ab795"
+                    icon="#benefits-wake-word"
+                    iconCss={css`
+                      width: 27px;
+                      height: 20px;
+                    `}
+                    text="Wake Word"
+                  />
                 </div>
                 <div className="column-half">
-                  <p className="title">Keyword Recognition</p>
-                  <p className="title">Text-to-Speech (TTS)</p>
-                  <p className="title">Natural Language Understanding (NLU)</p>
+                  <BenefitsListItem
+                    bgColor="#ff6666"
+                    icon="#benefits-keyword"
+                    iconCss={css`
+                      width: 33px;
+                      height: 6px;
+                    `}
+                    text="Keyword Recognition"
+                  />
+                  <BenefitsListItem
+                    bgColor="#facc5f"
+                    icon="#benefits-tts"
+                    iconCss={css`
+                      width: 26px;
+                      height: 11px;
+                    `}
+                    text="Text-to-Speech"
+                  />
+                  <BenefitsListItem
+                    bgColor="#f29e4c"
+                    icon="#benefits-nlu"
+                    iconCss={css`
+                      width: 25px;
+                      height: 11px;
+                    `}
+                    text="Natural Language Understanding"
+                  />
                 </div>
               </div>
             </Fragment>
@@ -155,29 +241,98 @@ export default function Benefits() {
                 are saying? Want to use our TTS service instead of Amazon Polly?
                 No problem!
               </p>
-              <div className="columns">
-                <div className="column-third">
-                  <h4>ASR</h4>
-                  <p className="title">Android</p>
-                  <p className="title">Apple</p>
-                  <p className="title">Google Cloud</p>
-                  <p className="title">Microsoft Azure</p>
-                  <p className="title">Spokestack</p>
+              <div className="columns-mobile">
+                <div className="column-half">
+                  <BenefitsListItem
+                    icon="#benefits-alexa"
+                    iconCss={css`
+                      width: 15px;
+                      height: 15px;
+                    `}
+                    text="Alexa"
+                  />
+                  <BenefitsListItem
+                    icon="#android"
+                    iconCss={css`
+                      width: 15px;
+                      height: 15px;
+                    `}
+                    text="Android"
+                  />
+                  <BenefitsListItem
+                    icon="#benefits-ios"
+                    iconCss={css`
+                      width: 15px;
+                      height: 16px;
+                    `}
+                    text="Apple"
+                  />
+                  <BenefitsListItem
+                    icon="#benefits-dialogflow"
+                    iconCss={css`
+                      width: 15px;
+                      height: 15px;
+                    `}
+                    text="Dialogflow"
+                  />
+                  <BenefitsListItem
+                    iconUrl="/homepage/diagrams/jovo.png"
+                    iconCss={css`
+                      width: 15px;
+                      height: 15px;
+                    `}
+                    text="Jovo"
+                  />
+                  <BenefitsListItem
+                    icon="#benefits-google-assistant"
+                    iconCss={css`
+                      width: 15px;
+                      height: 15px;
+                    `}
+                    text="Google Assistant"
+                  />
                 </div>
-                <div className="column-third">
-                  <h4>NLU</h4>
-                  <p className="title">Alexa</p>
-                  <p className="title">Dialogflow</p>
-                  <p className="title">Jovo</p>
-                  <p className="title">Rasa</p>
-                  <p className="title">Spokestack</p>
-                </div>
-                <div className="column-third">
-                  <h4>TTS</h4>
-                  <p className="title">Alexa</p>
-                  <p className="title">Google Assistant</p>
-                  <p className="title">Siri</p>
-                  <p className="title">Spokestack</p>
+                <div className="column-half">
+                  <BenefitsListItem
+                    icon="#benefits-google-cloud"
+                    iconCss={css`
+                      width: 20px;
+                      height: 15px;
+                    `}
+                    text="Google Cloud"
+                  />
+                  <BenefitsListItem
+                    icon="#benefits-microsoft"
+                    iconCss={css`
+                      width: 15px;
+                      height: 15px;
+                    `}
+                    text="Microsoft Azure"
+                  />
+                  <BenefitsListItem
+                    icon="#benefits-rasa"
+                    iconCss={css`
+                      width: 15px;
+                      height: 15px;
+                    `}
+                    text="Rasa"
+                  />
+                  <BenefitsListItem
+                    iconUrl="/homepage/diagrams/siri.png"
+                    iconCss={css`
+                      width: 15px;
+                      height: 15px;
+                    `}
+                    text="Siri"
+                  />
+                  <BenefitsListItem
+                    icon="#benefits-spokestack"
+                    iconCss={css`
+                      width: 15px;
+                      height: 15px;
+                    `}
+                    text="Spokestack"
+                  />
                 </div>
               </div>
             </Fragment>
@@ -205,10 +360,59 @@ export default function Benefits() {
                 language (or sound!), and create your own AI voice clone. Oh,
                 and it all runs offline!
               </p>
-              <div className="columns">
-                <p className="column-third">Text-to-Speech (TTS)</p>
-                <p className="column-third">Wake Word</p>
-                <p className="column-third">Keyword Recognition</p>
+              <div className="columns-mobile">
+                <div className="column-half">
+                  <BenefitsListItem
+                    imageCss={[
+                      styles.customListItem,
+                      css`
+                        border: 2px solid #facc5f;
+                      `
+                    ]}
+                    icon="#benefits-custom"
+                    iconCss={[
+                      styles.customIcon,
+                      css`
+                        fill: #facc5f;
+                      `
+                    ]}
+                    text="Text-to-Speech"
+                  />
+                  <BenefitsListItem
+                    imageCss={[
+                      styles.customListItem,
+                      css`
+                        border: 2px solid #3ab795;
+                      `
+                    ]}
+                    icon="#benefits-custom"
+                    iconCss={[
+                      styles.customIcon,
+                      css`
+                        fill: #3ab795;
+                      `
+                    ]}
+                    text="Wake Word"
+                  />
+                </div>
+                <div className="column-half">
+                  <BenefitsListItem
+                    imageCss={[
+                      styles.customListItem,
+                      css`
+                        border: 2px solid #ff6666;
+                      `
+                    ]}
+                    icon="#benefits-custom"
+                    iconCss={[
+                      styles.customIcon,
+                      css`
+                        fill: #ff6666;
+                      `
+                    ]}
+                    text="Keyword Recognition"
+                  />
+                </div>
               </div>
             </Fragment>
           }
@@ -274,5 +478,13 @@ const styles = {
     ${theme.MIN_LARGE_DISPLAY_MEDIA_QUERY} {
       display: none;
     }
+  `,
+  customListItem: css`
+    width: 60px;
+    height: 60px;
+  `,
+  customIcon: css`
+    width: 42px;
+    height: 8px;
   `
 }

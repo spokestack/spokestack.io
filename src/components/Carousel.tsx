@@ -13,6 +13,7 @@ interface Props {
   interval?: number
   maxWidth: number
   numSlides: number
+  onSlideChange?: (index: number) => void
   showDesktopButtons?: boolean
 }
 
@@ -58,6 +59,14 @@ export default class Carousel extends PureComponent<Props, State> {
       this.slides.current.removeEventListener('touchstart', this.preventDefault)
     }
     this.removeListeners()
+  }
+
+  componentDidUpdate(_props: Props, { index: prevIndex }: State) {
+    const { onSlideChange } = this.props
+    const { index } = this.state
+    if (onSlideChange && index !== prevIndex) {
+      onSlideChange.call(null, index)
+    }
   }
 
   preventDefault(e: React.MouseEvent | React.TouchEvent | Event) {

@@ -3,7 +3,7 @@ import React from 'react'
 import { StaticImage } from 'gatsby-plugin-image'
 import { css } from '@emotion/react'
 
-const carouselBreakpoints = [750, 980, 1080, 1240, 1366, 1920]
+const carouselBreakpoints = [750, 980, 1080, 1240]
 
 export default function Solution() {
   return (
@@ -20,6 +20,7 @@ export default function Solution() {
         maxWidth={1240}>
         <StaticImage
           width={1240}
+          quality={100}
           placeholder="dominantColor"
           breakpoints={carouselBreakpoints}
           alt="Wake Word"
@@ -27,6 +28,7 @@ export default function Solution() {
         />
         <StaticImage
           width={1240}
+          quality={100}
           placeholder="dominantColor"
           breakpoints={carouselBreakpoints}
           alt="Keyword Recognition"
@@ -34,6 +36,7 @@ export default function Solution() {
         />
         <StaticImage
           width={1240}
+          quality={100}
           placeholder="dominantColor"
           breakpoints={carouselBreakpoints}
           alt="NLU"
@@ -41,6 +44,7 @@ export default function Solution() {
         />
         <StaticImage
           width={1240}
+          quality={100}
           placeholder="dominantColor"
           breakpoints={carouselBreakpoints}
           alt="TTS"

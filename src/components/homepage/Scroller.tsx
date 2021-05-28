@@ -1,6 +1,4 @@
 import * as theme from '../../styles/theme'
-
-import { MIN_LARGE_DISPLAY_MEDIA_QUERY } from '../../styles/theme'
 import React from 'react'
 import { css } from '@emotion/react'
 
@@ -978,8 +976,12 @@ const styles = {
     padding: 0 65px 50px;
     display: none;
 
-    ${MIN_LARGE_DISPLAY_MEDIA_QUERY} {
+    ${theme.MIN_LARGE_DISPLAY_MEDIA_QUERY} {
       display: block;
+    }
+
+    ${theme.ieBreakpointMinDefault} {
+      display: none;
     }
   `,
   content: css`

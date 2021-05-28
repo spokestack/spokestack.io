@@ -478,6 +478,10 @@ const styles = {
     ${theme.MIN_LARGE_DISPLAY_MEDIA_QUERY} {
       display: none;
     }
+
+    ${theme.ieBreakpointMinDefault} {
+      display: block;
+    }
   `,
   customListItem: css`
     width: 60px;

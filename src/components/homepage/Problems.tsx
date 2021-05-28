@@ -19,7 +19,8 @@ export default function Problems() {
           description="Fragmented voice ecosystems means that you’re either stuck on one platform, or only support one part of voice technology. Only for Android. Only for smart speakers. Only TTS."
           image={
             <StaticImage
-              width={518}
+              css={styles.absoluteFill}
+              height={230}
               alt="Technology Lock-In"
               src="../../images/homepage/technology-lock-in.png"
             />
@@ -30,7 +31,8 @@ export default function Problems() {
           description="Voice AI is a difficult field full of papers with irreproducible results, easy to overlook pitfalls, and undocumented code."
           image={
             <StaticImage
-              width={518}
+              css={styles.absoluteFill}
+              height={230}
               alt="Specialized Machine Learning Expertise"
               src="../../images/homepage/machine-learning.png"
             />
@@ -41,7 +43,8 @@ export default function Problems() {
           description="So many packages and acronoyms, where to begin..."
           image={
             <StaticImage
-              width={518}
+              css={styles.absoluteFill}
+              height={230}
               alt="Where to Start?"
               src="../../images/homepage/start.png"
             />
@@ -49,10 +52,11 @@ export default function Problems() {
         />
         <ProblemCard
           title="Hard To Use Tools"
-          description="Spend all day in Jupyter notebooks babysitting training jobs instead of building your killer app! Or spend all day clicking and dragging in a poorly-designed &ldquo;Conversation Designer&rdquo;"
+          description="Spend all day in Jupyter notebooks babysitting training jobs instead of building your killer app! Or spend all day clicking and dragging in a poorly-designed &ldquo;Conversation Designer&rdquo;."
           image={
             <StaticImage
-              width={518}
+              css={styles.absoluteFill}
+              height={230}
               alt="Hard To Use Tools"
               src="../../images/homepage/hard-to-use.png"
             />
@@ -64,7 +68,8 @@ export default function Problems() {
           description="Can your software listen when a user runs it? Can you only speak to users in &ldquo;Siri Voice&rdquo;? Is the platform wake word the only way to activate your app?"
           image={
             <StaticImage
-              width={1086}
+              css={styles.absoluteFill}
+              height={230}
               alt="Can't Customize"
               src="../../images/homepage/cant-customize.png"
             />
@@ -91,8 +96,8 @@ const styles = {
     display: flex;
     flex-direction: column;
     align-items: center;
-    gap: 50px;
     margin-top: 50px;
+    column-gap: 50px;
 
     ${theme.MIN_DEFAULT_MEDIA_QUERY} {
       flex-direction: row;
@@ -102,5 +107,12 @@ const styles = {
       margin-left: auto;
       margin-right: auto;
     }
+  `,
+  absoluteFill: css`
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
   `
 }

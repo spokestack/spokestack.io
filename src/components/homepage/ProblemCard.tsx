@@ -38,17 +38,17 @@ const styles = {
 
     &:not(.full) {
       max-width: 518px;
-      margin: 0 auto;
+      margin: 0 auto 50px;
+    }
+
+    &.full {
+      padding-bottom: 10px;
     }
 
     ${theme.MIN_DEFAULT_MEDIA_QUERY} {
       &:not(.full) {
         height: 580px;
       }
-    }
-
-    ${theme.ieBreakpoint} {
-      margin-bottom: 50px !important;
     }
   `,
   image: css`
@@ -80,8 +80,8 @@ const styles = {
     }
 
     ${theme.MIN_DEFAULT_MEDIA_QUERY} {
-      padding-left: 50px;
-      padding-right: 50px;
+      padding-left: 45px;
+      padding-right: 45px;
 
       h3 {
         font-size: 32px;

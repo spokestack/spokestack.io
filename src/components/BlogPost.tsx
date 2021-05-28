@@ -69,7 +69,7 @@ export default function BlogPost({ post, related }: Props) {
           </section>
         )}
       </div>
-      {!isLoggedIn() && <Create small />}
+      {!isLoggedIn() && <Create />}
     </Layout>
   )
 }

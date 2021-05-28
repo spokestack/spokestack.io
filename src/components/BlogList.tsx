@@ -78,8 +78,8 @@ export default function BlogList({
             />
           </div>
         </section>
-        {!isLoggedIn() && <Create small />}
       </div>
+      {!isLoggedIn() && <Create />}
     </Layout>
   )
 }
@@ -124,8 +124,7 @@ const styles = {
   `,
   blogContent: css`
     display: flex;
-    flex-direction: column;
-    padding-bottom: 30px;
+    flex-direction: column-reverse;
 
     ${theme.MIN_DEFAULT_MEDIA_QUERY} {
       flex-direction: row;
@@ -147,12 +146,7 @@ const styles = {
   `,
   sidenav: css`
     grid-area: sidenav;
-    padding-right: 20px;
-    margin-bottom: 40px;
-
-    ${theme.MIN_DEFAULT_MEDIA_QUERY} {
-      padding-top: 70px;
-    }
+    padding: 70px 20px 0 0;
 
     ${theme.ieBreakpoint} {
       width: 100%;

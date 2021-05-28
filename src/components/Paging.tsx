@@ -18,19 +18,10 @@ export default function Paging({ page, maxPages, onSelect }: Props) {
   }
   return (
     <div css={[styles.row, styles.paging]}>
-      <div css={[styles.row, styles.pages]}>
-        {[...Array(maxPages)].map((_, i) => (
-          <a
-            key={`page-${i}`}
-            onClick={() => onSelect(i + 1)}
-            css={styles.pageLink}
-            style={{ fontWeight: page === i + 1 ? 700 : 400 }}>
-            {i + 1}
-          </a>
-        ))}
-      </div>
       {hasPrevious ? (
-        <a onClick={() => onSelect(page - 1)} css={styles.pageLink}>
+        <a
+          onClick={() => onSelect(page - 1)}
+          css={[styles.pageLink, styles.prevNextLink]}>
           <SVGIcon
             className="icon"
             icon="#arrow-forward"
@@ -44,8 +35,21 @@ export default function Paging({ page, maxPages, onSelect }: Props) {
       ) : (
         <div />
       )}
+      <div css={[styles.row, styles.pages]}>
+        {[...Array(maxPages)].map((_, i) => (
+          <a
+            key={`page-${i}`}
+            onClick={() => onSelect(i + 1)}
+            css={styles.pageLink}
+            style={{ fontWeight: page === i + 1 ? 700 : 400 }}>
+            {i + 1}
+          </a>
+        ))}
+      </div>
       {hasNext && (
-        <a onClick={() => onSelect(page + 1)} css={styles.pageLink}>
+        <a
+          onClick={() => onSelect(page + 1)}
+          css={[styles.pageLink, styles.prevNextLink, styles.nextLink]}>
           Next
           <SVGIcon
             className="icon"
@@ -70,12 +74,8 @@ const styles = {
     padding: 10px 15px;
   `,
   pages: css`
-    position: absolute;
-    top: 0;
-    left: 0;
-    right: 0;
-    bottom: 0;
-    justify-content: center;
+    justify-content: flex-start;
+    overflow-x: auto;
 
     a {
       margin: 0 5px;
@@ -96,6 +96,13 @@ const styles = {
     &:hover .icon {
       fill: ${theme.linkHover};
     }
+  `,
+  prevNextLink: css`
+    width: 105px;
+    flex-shrink: 0;
+  `,
+  nextLink: css`
+    justify-content: flex-end;
   `,
   arrowForwardIcon: css`
     width: 18px;

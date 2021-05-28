@@ -137,8 +137,8 @@ export default function DocsPage({
             <a href="https://forum.spokestack.io/">Visit our forum</a>
           </div>
         </div>
-        {!isLoggedIn() && <Create small />}
       </StickyNavLayout>
+      {!isLoggedIn() && <Create />}
     </Layout>
   )
 }
@@ -148,9 +148,7 @@ const styles = {
     display: flex;
     flex-direction: column;
     padding: 20px 0;
-    margin-bottom: 15px;
     border-top: 1px solid ${theme.mainBorder};
-    border-bottom: 1px solid ${theme.mainBorder};
 
     ${theme.MIN_DEFAULT_MEDIA_QUERY} {
       flex-direction: row;

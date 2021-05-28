@@ -161,6 +161,7 @@ const styles = {
   privacy: css`
     max-width: 290px;
     color: ${theme.textColor.fade(0.25).toString()};
+    margin: 0;
 
     a {
       font-weight: 400;

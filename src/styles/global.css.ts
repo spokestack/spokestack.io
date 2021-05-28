@@ -201,7 +201,6 @@ export default css`
     tab-size: 2;
   }
   pre[class*='language-'] {
-    width: 100%;
     margin: 0 0 15px;
   }
   code:not(pre > code) {
@@ -514,11 +513,22 @@ export default css`
       color: ${theme.textDarkBg};
     }
     a {
+      .icon {
+        fill: ${theme.textDarkBg};
+      }
       &:hover {
         color: ${theme.linkDarkHover};
+
+        .icon {
+          fill: ${theme.linkDarkHover};
+        }
       }
       &:active {
         color: ${theme.linkDarkActive};
+
+        .icon {
+          fill: ${theme.linkDarkActive};
+        }
       }
     }
     .main-content a:not(.btn),

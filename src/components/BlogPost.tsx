@@ -82,6 +82,7 @@ const styles = {
     display: flex;
     flex-direction: column;
     padding: 20px 20px 30px;
+    width: 100%;
 
     ${theme.MIN_DEFAULT_MEDIA_QUERY} {
       flex-direction: row;

@@ -38,6 +38,7 @@ const styles = {
   container: css`
     display: flex;
     flex-direction: column;
+    width: 100%;
 
     ${theme.MIN_DEFAULT_MEDIA_QUERY} {
       flex-direction: row;

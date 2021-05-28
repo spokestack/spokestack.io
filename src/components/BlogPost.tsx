@@ -14,6 +14,7 @@ import { css } from '@emotion/react'
 import findImage from '../utils/findImage'
 import { isLoggedIn } from '../utils/auth'
 import removeTrailingSlash from '../utils/removeTrailingSlash'
+import DraftBadge from './DraftBadge'
 
 interface Props {
   post: MarkdownRemark
@@ -36,6 +37,7 @@ export default function BlogPost({ post, related }: Props) {
         }
       />
       <div className="ie-fix" css={styles.container}>
+        {frontmatter.draft && <DraftBadge />}
         <section css={styles.author}>
           <Author author={frontmatter.author!} />
         </section>
@@ -79,6 +81,7 @@ const styles = {
     padding-bottom: 50px;
   `,
   container: css`
+    position: relative;
     display: flex;
     flex-direction: column;
     padding: 20px 20px 30px;

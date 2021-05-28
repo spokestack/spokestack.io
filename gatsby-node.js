@@ -86,8 +86,8 @@ async function createAuthorPages({ author, tags, actions, graphql, reporter }) {
         filter: {
           fileAbsolutePath: { regex: "/blog/" },
           frontmatter: {
-            ${isProd ? 'draft: { ne: true },' : ''}
             author: { eq: "${author}" }
+            ${isProd ? ',draft: { ne: true }' : ''}
           }
         },
         limit: 1000
@@ -117,6 +117,7 @@ async function createAuthorPages({ author, tags, actions, graphql, reporter }) {
       context: {
         author,
         currentPage: i + 1,
+        dev: !isProd,
         limit: postsPerPage,
         numPages,
         skip: i * postsPerPage,
@@ -165,6 +166,7 @@ async function createTagPages({ tag, tags, actions, graphql, reporter }) {
       component: path.resolve('./src/templates/blog-list-tag.tsx'),
       context: {
         currentPage: i + 1,
+        dev: !isProd,
         limit: postsPerPage,
         numPages,
         skip: i * postsPerPage,
@@ -299,9 +301,10 @@ exports.createPages = async ({ graphql, actions, reporter }) => {
       }
       blog: allMarkdownRemark(
         sort: { fields: [frontmatter___date], order: DESC },
-        filter: { fileAbsolutePath: { regex: "/blog/" }${
-          isProd ? ',frontmatter: { draft: { ne: true } }' : ''
-        } },
+        filter: {
+          fileAbsolutePath: { regex: "/blog/" }
+          ${isProd ? ',frontmatter: { draft: { ne: true } }' : ''}
+        },
         limit: 1000
       ) {
         edges {
@@ -315,9 +318,10 @@ exports.createPages = async ({ graphql, actions, reporter }) => {
         }
       }
       docs: allMarkdownRemark(
-        filter: { fileAbsolutePath: { regex: "/docs/" }${
-          isProd ? ',frontmatter: { draft: { ne: true } }' : ''
-        } },
+        filter: {
+          fileAbsolutePath: { regex: "/docs/" }
+          ${isProd ? ',frontmatter: { draft: { ne: true } }' : ''}
+        },
         limit: 1000
       ) {
         edges {
@@ -333,9 +337,8 @@ exports.createPages = async ({ graphql, actions, reporter }) => {
       tags: allMarkdownRemark(
         filter: {
           fileAbsolutePath: { regex: "/blog/" }
-          fields: { tags: { ne: null } }${
-            isProd ? ',frontmatter: { draft: { ne: true } }' : ''
-          }
+          fields: { tags: { ne: null } }
+          ${isProd ? ',frontmatter: { draft: { ne: true } }' : ''}
         }
       ) {
         edges {
@@ -392,10 +395,11 @@ exports.createPages = async ({ graphql, actions, reporter }) => {
   const url = '/blog'
   Array.from({ length: numPages }).forEach((_, i) => {
     createPage({
-      path: i === 0 ? url : `/blog/${i + 1}`,
+      path: i === 0 ? url : `${url}/${i + 1}`,
       component: path.resolve('./src/templates/blog-list.tsx'),
       context: {
         currentPage: i + 1,
+        dev: !isProd,
         limit: postsPerPage,
         numPages,
         skip: i * postsPerPage,

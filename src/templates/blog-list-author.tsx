@@ -162,7 +162,12 @@ const styles = {
 }
 
 export const blogListQuery = graphql`
-  query blogListAuthorQuery($skip: Int!, $limit: Int!, $author: String!) {
+  query blogListAuthorQuery(
+    $skip: Int!
+    $limit: Int!
+    $author: String!
+    $dev: Boolean!
+  ) {
     site {
       siteMetadata {
         team {
@@ -182,7 +187,7 @@ export const blogListQuery = graphql`
     allMarkdownRemark(
       filter: {
         fileAbsolutePath: { regex: "/blog/" }
-        frontmatter: { author: { eq: $author }, draft: { ne: true } }
+        frontmatter: { author: { eq: $author }, draft: { in: [false, $dev] } }
       }
       sort: { fields: [frontmatter___date], order: DESC }
       limit: $limit
@@ -199,6 +204,10 @@ export const blogListQuery = graphql`
             author
             date(formatString: "MMMM DD, YYYY")
             description
+            draft
+            hero {
+              publicURL
+            }
             title
           }
         }

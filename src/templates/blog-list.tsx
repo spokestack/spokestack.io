@@ -14,7 +14,7 @@ type Props = PageRendererProps & {
 
 export default function BlogListTemplate({
   data,
-  pageContext: { numPages, currentPage, slug, tags }
+  pageContext: { currentPage, numPages, slug, tags }
 }: Props) {
   return (
     <Fragment>
@@ -35,11 +35,11 @@ export default function BlogListTemplate({
 }
 
 export const blogListQuery = graphql`
-  query blogListQuery($skip: Int!, $limit: Int!) {
+  query blogListQuery($skip: Int!, $limit: Int!, $dev: Boolean!) {
     allMarkdownRemark(
       filter: {
         fileAbsolutePath: { regex: "/blog/" }
-        frontmatter: { draft: { ne: true } }
+        frontmatter: { draft: { in: [false, $dev] } }
       }
       sort: { fields: [frontmatter___date], order: DESC }
       limit: $limit
@@ -56,6 +56,7 @@ export const blogListQuery = graphql`
             author
             date(formatString: "MMMM DD, YYYY")
             description
+            draft
             hero {
               publicURL
             }

@@ -4,6 +4,7 @@ import { MarkdownRemark } from './utils/graphql'
 export interface PageContext {
   author: string
   currentPage: number
+  dev: boolean
   limit: number
   next: MarkdownRemark
   numPages: number

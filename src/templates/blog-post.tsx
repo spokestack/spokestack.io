@@ -34,6 +34,7 @@ export const pageQuery = graphql`
         author
         date(formatString: "MMMM DD, YYYY")
         description
+        draft
         hero {
           publicURL
         }

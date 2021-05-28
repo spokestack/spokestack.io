@@ -8,6 +8,7 @@ import Color from 'color'
 import React from 'react'
 import Tags from './Tags'
 import find from 'lodash/find'
+import DraftBadge from './DraftBadge'
 
 interface Props {
   post: MarkdownRemark
@@ -25,7 +26,11 @@ export default function BlogListItem({ post }: Props) {
   })!
   return (
     <div
-      onClick={() => (window.location.href = post.fields!.slug!)}
+      onClick={(e) => {
+        if ((e.target as HTMLAnchorElement).nodeName.toLowerCase() !== 'a') {
+          window.location.href = post.fields!.slug!
+        }
+      }}
       css={styles.container}
       className="blog-list-item">
       <Global
@@ -51,6 +56,7 @@ export default function BlogListItem({ post }: Props) {
           }
         `}
       />
+      {post.frontmatter?.draft && <DraftBadge />}
       <div css={styles.author}>
         <img alt={name!} css={styles.image} src={image!} />
         <p>
@@ -82,6 +88,7 @@ export default function BlogListItem({ post }: Props) {
 
 const styles = {
   container: css`
+    position: relative;
     display: block;
     padding: 30px;
     background-color: white;

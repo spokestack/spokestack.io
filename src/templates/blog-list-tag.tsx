@@ -47,12 +47,17 @@ export default function BlogListTagTemplate({
 }
 
 export const blogListQuery = graphql`
-  query blogListTagQuery($skip: Int!, $limit: Int!, $tag: String!) {
+  query blogListTagQuery(
+    $skip: Int!
+    $limit: Int!
+    $tag: String!
+    $dev: Boolean!
+  ) {
     allMarkdownRemark(
       filter: {
         fileAbsolutePath: { regex: "/blog/" }
         fields: { tags: { in: [$tag] } }
-        frontmatter: { draft: { ne: true } }
+        frontmatter: { draft: { in: [false, $dev] } }
       }
       sort: { fields: [frontmatter___date], order: DESC }
       limit: $limit
@@ -69,6 +74,10 @@ export const blogListQuery = graphql`
             author
             date(formatString: "MMMM DD, YYYY")
             description
+            draft
+            hero {
+              publicURL
+            }
             title
           }
         }

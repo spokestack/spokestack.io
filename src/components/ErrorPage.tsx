@@ -12,7 +12,13 @@ export default function ErrorPage({ children, title }: Props) {
   return (
     <Layout>
       <SEO title={title} />
-      <div css={styles.container}>{children}</div>
+      <div css={styles.container}>
+        {children}
+        <div css={styles.links}>
+          <a href="/">Home</a>&nbsp;|&nbsp;<a href="/blog">Blog</a>&nbsp;|&nbsp;
+          <a href="/docs">Docs</a>&nbsp;|&nbsp;<a href="/account">Account</a>
+        </div>
+      </div>
     </Layout>
   )
 }
@@ -24,6 +30,13 @@ const styles = {
     justify-content: center;
     align-items: center;
     text-align: center;
-    padding: 0 20px;
+    padding: 100px 20px;
+  `,
+  links: css`
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    padding: 20px;
   `
 }

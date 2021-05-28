@@ -57,9 +57,14 @@ export default function Newsletter() {
     <form ref={formRef} onSubmit={submit} css={styles.form}>
       <Global
         styles={css`
-          html.dark-mode .input {
-            border-color: ${theme.primaryLight};
-            color: white;
+          html.dark-mode {
+            .input {
+              border-color: ${theme.primaryLight};
+              color: white;
+            }
+            .privacy-text {
+              color: ${theme.textDarkBg};
+            }
           }
         `}
       />
@@ -93,7 +98,7 @@ export default function Newsletter() {
           )}
         </Button>
       </div>
-      <p css={styles.privacy}>
+      <p className="privacy-text" css={styles.privacy}>
         You can unsubscribe at any time. Read our{' '}
         <a href="/privacy">privacy policy</a>.
       </p>

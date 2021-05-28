@@ -1,6 +1,6 @@
 import * as theme from '../styles/theme'
 
-import { SerializedStyles, css } from '@emotion/react'
+import { SerializedStyles, css, Global } from '@emotion/react'
 
 import React from 'react'
 import SVGIcon from './SVGIcon'
@@ -22,12 +22,31 @@ export default function SocialLink({
   iconCss,
   transparent
 }: Props) {
-  const style = [styles.socialLink]
-  if (transparent) {
-    style.push(styles.transparent)
-  }
   return (
-    <a css={style.concat(extraCss!)} href={href} title={title}>
+    <a
+      className={`social-link${transparent ? ' social-link-transparent' : ''}`}
+      css={[styles.socialLink].concat(extraCss!)}
+      href={href}
+      title={title}>
+      <Global
+        styles={css`
+          html:not(.dark-mode) .social-link.social-link-transparent {
+            background-color: transparent;
+            border: 1px solid ${theme.primary};
+
+            svg {
+              fill: ${theme.primary};
+            }
+
+            &:hover {
+              background-color: ${theme.primaryColor.darken(0.1).hex()};
+              svg {
+                fill: white;
+              }
+            }
+          }
+        `}
+      />
       <SVGIcon icon={icon} extraCss={iconCss} />
     </a>
   )
@@ -56,20 +75,6 @@ const styles = {
 
     svg {
       fill: white;
-    }
-  `,
-  transparent: css`
-    background-color: transparent;
-    border: 1px solid ${theme.primary};
-
-    svg {
-      fill: ${theme.primary};
-    }
-
-    &:hover {
-      svg {
-        fill: white;
-      }
     }
   `,
   title: css`

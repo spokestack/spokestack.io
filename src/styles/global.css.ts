@@ -522,7 +522,8 @@ export default css`
       }
     }
     .main-content a:not(.btn),
-    a.content-link {
+    a.content-link,
+    .privacy-text a {
       color: ${theme.linkDark};
       text-decoration-color: ${theme.linkDark};
 
@@ -538,7 +539,11 @@ export default css`
     .btn {
       background-color: ${theme.buttonBackgroundDark};
       border-color: ${theme.buttonBackgroundDark};
-      color: ${theme.text};
+
+      &,
+      &:visited {
+        color: ${theme.text};
+      }
 
       .icon {
         fill: ${theme.text};
@@ -549,6 +554,7 @@ export default css`
       &.btn-submitting {
         background-color: ${theme.buttonBackgroundDarkHover};
         border-color: ${theme.buttonBackgroundDarkHover};
+        color: ${theme.textDarkBg};
       }
 
       &.btn-transparent {

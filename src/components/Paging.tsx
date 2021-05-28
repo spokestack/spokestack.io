@@ -33,7 +33,7 @@ export default function Paging({ page, maxPages, onSelect }: Props) {
           Previous
         </a>
       ) : (
-        <div />
+        <div css={styles.prevNextLink} />
       )}
       <div css={[styles.row, styles.pages]}>
         {[...Array(maxPages)].map((_, i) => (
@@ -46,7 +46,7 @@ export default function Paging({ page, maxPages, onSelect }: Props) {
           </a>
         ))}
       </div>
-      {hasNext && (
+      {hasNext ? (
         <a
           onClick={() => onSelect(page + 1)}
           css={[styles.pageLink, styles.prevNextLink, styles.nextLink]}>
@@ -57,6 +57,8 @@ export default function Paging({ page, maxPages, onSelect }: Props) {
             extraCss={styles.arrowForwardIcon}
           />
         </a>
+      ) : (
+        <div css={styles.prevNextLink} />
       )}
     </div>
   )

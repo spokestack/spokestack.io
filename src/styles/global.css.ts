@@ -208,7 +208,7 @@ export default css`
     border: 1px solid ${theme.mainBorder};
     border-radius: 7px;
     font-weight: 600;
-    padding: 2px 5px;
+    padding: 0 5px;
   }
   pre code {
     padding: 0;

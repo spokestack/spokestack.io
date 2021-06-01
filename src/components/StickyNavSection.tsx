@@ -145,6 +145,7 @@ export default function StickyNavSection({
               key={`sticky-nav-link-${i}`}
               css={styles.stickyNavLink}
               className="sticky-nav-link"
+              id={id}
               activeClassName="active"
               title={link.title}
               to={link.href}>

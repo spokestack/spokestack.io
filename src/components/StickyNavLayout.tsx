@@ -67,9 +67,6 @@ const styles = {
       grid-area: sidenav;
       padding-left: 30px;
     }
-    ${theme.MIN_LARGER_DISPLAY_MEDIA_QUERY} {
-      padding-left: 100px;
-    }
     ${theme.ieBreakpointMinDefault} {
       padding-bottom: 50px;
     }

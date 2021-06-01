@@ -10,6 +10,7 @@ import * as styles from '../../styles/features.css'
 import { StaticImage } from 'gatsby-plugin-image'
 import Create from '../../components/Create'
 import SampleCode from '../../components/features/SampleCode'
+import removeTrailingSlash from '../../utils/removeTrailingSlash'
 
 export default function KeywordPage() {
   return (
@@ -17,6 +18,7 @@ export default function KeywordPage() {
       <SEO
         title="Keyword Recognition - Spokestack Maker"
         description="Local on-device keyword spotting — recognize any sound whether or not its part of a language. Create a custom keyword model with Spokestack Maker."
+        image={`${removeTrailingSlash(process.env.SITE_URL!)}/seo/keyword.png`}
       />
       <Header
         title="Keyword Recognition"

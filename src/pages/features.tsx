@@ -6,6 +6,7 @@ import Layout from '../components/Layout'
 import React from 'react'
 import SEO from '../components/SEO'
 import { css } from '@emotion/react'
+import removeTrailingSlash from '../utils/removeTrailingSlash'
 
 export default function Features() {
   return (
@@ -13,6 +14,7 @@ export default function Features() {
       <SEO
         title="Features for Voice User Interfaces | Spokestack"
         description="Spokestack makes it easy to add voice user interfaces to your mobile apps and websites. Explore the features of our libraries and services."
+        image={`${removeTrailingSlash(process.env.SITE_URL!)}/seo/features.png`}
       />
       <div css={styles.container}>
         <section css={styles.content}>

@@ -8,6 +8,7 @@ import React from 'react'
 import SEO from '../../components/SEO'
 import Section from '../../components/features/Section'
 import { StaticImage } from 'gatsby-plugin-image'
+import removeTrailingSlash from '../../utils/removeTrailingSlash'
 
 export default function NLUPage() {
   return (
@@ -15,6 +16,7 @@ export default function NLUPage() {
       <SEO
         title="Natural Language Understanding (NLU) - Spokestack Maker"
         description="Turn speech into software commands by classifying intent and slot variables from speech. Learn more about NLU and start building free with Spokestack Maker."
+        image={`${removeTrailingSlash(process.env.SITE_URL!)}/seo/nlu.png`}
       />
       <Header
         title="Natural Language Understanding"

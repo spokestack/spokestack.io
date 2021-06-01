@@ -6,6 +6,7 @@ import SEO from '../../components/SEO'
 import * as styles from '../../styles/features.css'
 import { StaticImage } from 'gatsby-plugin-image'
 import Create from '../../components/Create'
+import removeTrailingSlash from '../../utils/removeTrailingSlash'
 
 export default function ASRPage() {
   return (
@@ -13,6 +14,7 @@ export default function ASRPage() {
       <SEO
         title="Automatic Speech Recognition (ASR)- Spokestack Maker"
         description="Analyze and transcribe your software's audio to perform a function or simply record. Create a free account to access our ASR tools."
+        image={`${removeTrailingSlash(process.env.SITE_URL!)}/seo/asr.png`}
       />
       <Header
         title="Automatic Speech Recognition"

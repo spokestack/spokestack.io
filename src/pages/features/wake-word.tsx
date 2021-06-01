@@ -10,6 +10,7 @@ import * as styles from '../../styles/features.css'
 import { StaticImage } from 'gatsby-plugin-image'
 import Create from '../../components/Create'
 import SampleCode from '../../components/features/SampleCode'
+import removeTrailingSlash from '../../utils/removeTrailingSlash'
 
 export default function WakewordPage() {
   return (
@@ -17,6 +18,9 @@ export default function WakewordPage() {
       <SEO
         title="Wake Words for Activating Software - Spokestack Maker"
         description="Multilingual on-device wake words recognize one or multiple commands to activate listening in your software. Create a custom wake word for free."
+        image={`${removeTrailingSlash(
+          process.env.SITE_URL!
+        )}/seo/wake-word.png`}
       />
       <Header
         title="Wake Words for Activating Software"

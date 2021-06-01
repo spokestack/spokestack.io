@@ -10,6 +10,7 @@ import * as styles from '../../styles/features.css'
 import { StaticImage } from 'gatsby-plugin-image'
 import Create from '../../components/Create'
 import SampleCode from '../../components/features/SampleCode'
+import removeTrailingSlash from '../../utils/removeTrailingSlash'
 
 export default function TTSPage() {
   return (
@@ -17,6 +18,7 @@ export default function TTSPage() {
       <SEO
         title="Text to Speed (TTS) - Spokestack Maker"
         description="Create a custom AI voice clone with Spokestack Maker. It's your voice, not a deep fake. Learn more about TTS and start building free."
+        image={`${removeTrailingSlash(process.env.SITE_URL!)}/seo/tts.png`}
       />
       <Header
         title="Text-to-Speech"

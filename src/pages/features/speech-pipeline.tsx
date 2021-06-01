@@ -6,6 +6,7 @@ import SEO from '../../components/SEO'
 import * as styles from '../../styles/features.css'
 import { StaticImage } from 'gatsby-plugin-image'
 import Create from '../../components/Create'
+import removeTrailingSlash from '../../utils/removeTrailingSlash'
 
 export default function SpeechPipelinePage() {
   return (
@@ -13,6 +14,9 @@ export default function SpeechPipelinePage() {
       <SEO
         title="Spokestack Speech Pipeline - Spokestack Maker"
         description="The speech pipeline is how you interact with Spokestack's VAD, wake word, and speech recognition. Learn more about how the speech pipeline works and start building."
+        image={`${removeTrailingSlash(
+          process.env.SITE_URL!
+        )}/seo/speech-pipeline.png`}
       />
       <Header
         title="Spokestack Speech Pipeline"

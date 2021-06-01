@@ -6,6 +6,7 @@ import SEO from '../../components/SEO'
 import * as styles from '../../styles/features.css'
 import { StaticImage } from 'gatsby-plugin-image'
 import Create from '../../components/Create'
+import removeTrailingSlash from '../../utils/removeTrailingSlash'
 
 export default function VADPage() {
   return (
@@ -13,6 +14,7 @@ export default function VADPage() {
       <SEO
         title="Voice Activity Detection (VAD) - Spokestack Maker"
         description="Determine whether or not an audio snippet contains human speech with Voice Activity Detection. VAD is the first gatekeeper in a speech detection pipeline."
+        image={`${removeTrailingSlash(process.env.SITE_URL!)}/seo/vad.png`}
       />
       <Header
         title="Voice Activity Detection"

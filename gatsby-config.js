@@ -344,7 +344,7 @@ module.exports = {
     {
       resolve: 'gatsby-plugin-google-tagmanager',
       options: {
-        id: 'GTM-WC6JHT4',
+        id: process.env.GOOGLE_TAG_MANAGER_ID,
         includeInDevelopment: false,
 
         // datalayer to be set before GTM is loaded

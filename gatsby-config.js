@@ -217,6 +217,61 @@ module.exports = {
         name: 'assets'
       }
     },
+    {
+      resolve: 'gatsby-source-rss-feed',
+      options: {
+        url: 'https://forum.spokestack.io/latest.rss',
+        name: 'SpokestackForum'
+        // Optional
+        // Read parser document: https://github.com/bobby-brennan/rss-parser#readme
+        // parserOption: {
+        //   customFields: {
+        //     item: ['itunes:duration']
+        //   }
+        // }
+      }
+    },
+    {
+      resolve: 'gatsby-source-graphql',
+      options: {
+        typeName: 'GitHub',
+        fieldName: 'github',
+        url: 'https://api.github.com/graphql',
+        headers: {
+          Authorization: `Bearer ${process.env.GITHUB_ACCESS_TOKEN}`
+        },
+        // Additional options to pass to node-fetch
+        fetchOptions: {}
+      }
+    },
+    {
+      resolve: 'gatsby-source-youtube-v3',
+      options: {
+        channelId: ['UCn1kViAiPO-XzCfREvGI_AA'],
+        apiKey: process.env.GOOGLE_API_KEY, // Optional for public requests
+        maxVideos: 12 // Defaults to 50
+      }
+    },
+    {
+      resolve: 'gatsby-source-twitter',
+      options: {
+        credentials: {
+          consumer_key: process.env.TWITTER_API_KEY,
+          consumer_secret: process.env.TWITTER_API_SECRET_KEY,
+          bearer_token: process.env.TWITTER_BEARER_TOKEN
+        },
+        queries: {
+          spokestack: {
+            endpoint: 'statuses/user_timeline',
+            params: {
+              screen_name: 'spokestack',
+              count: 3,
+              tweet_mode: 'extended'
+            }
+          }
+        }
+      }
+    },
     'gatsby-plugin-react-helmet',
     {
       resolve: 'gatsby-plugin-web-font-loader',

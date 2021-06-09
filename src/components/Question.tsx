@@ -1,15 +1,20 @@
+import * as theme from '../styles/theme'
+
+import React, { useEffect, useRef, useState } from 'react'
+
 import { css } from '@emotion/react'
 import debounce from 'lodash/debounce'
-import React, { useEffect, useRef, useState } from 'react'
-import * as theme from '../../styles/theme'
-import getTextHeight from '../../utils/getTextHeight'
+import getTextHeight from '../utils/getTextHeight'
 
 interface Props {
   question: React.ReactNode
   answer: React.ReactNode
+  startOpen?: boolean
 }
 
-export default function Question({ question, answer }: Props) {
+const PADDING_BOTTOM = 25
+
+export default function Question({ question, answer, startOpen }: Props) {
   const [open, setOpen] = useState(true)
   const [height, setHeight] = useState(0)
   const ref = useRef<HTMLDivElement>(null)
@@ -19,19 +24,19 @@ export default function Question({ question, answer }: Props) {
   useEffect(() => {
     function resetHeight() {
       if (answerRef.current && ref.current) {
-        // Add 20 for bottom padding
+        // Add space for bottom padding
         setHeight(
-          20 +
+          PADDING_BOTTOM +
             getTextHeight(
               answerRef.current.innerHTML!,
               ref.current,
-              'padding:0 65px 0 25px'
+              `padding:0 65px 0 ${PADDING_BOTTOM}px`
             )
         )
       }
     }
     resetHeight()
-    setOpen(false)
+    setOpen(!!startOpen)
 
     const debouncedReset = debounce(resetHeight, 100)
     window.addEventListener('resize', debouncedReset)
@@ -80,7 +85,7 @@ const styles = {
       margin: 0;
     }
     &:not(:first-of-type) .question-link {
-      background: white ${theme.pricingBorderHorizontal} top left no-repeat;
+      background: white ${theme.pricingBorderHorizontal} top center no-repeat;
 
       &:active {
         background-color: ${theme.mainBackground};
@@ -93,7 +98,7 @@ const styles = {
     justify-content: space-between;
     align-items: center;
     color: #1f2833 !important;
-    padding: 20px;
+    padding: ${PADDING_BOTTOM}px 20px;
     background-color: white;
     cursor: pointer;
 
@@ -120,14 +125,23 @@ const styles = {
   answer: css`
     position: relative;
     opacity: 0;
-    padding: 0 65px 0 20px;
+    padding: 0 65px 0 ${PADDING_BOTTOM}px;
     transition: height 0.2s ${theme.transitionEasing},
       padding-bottom 0.2s ${theme.transitionEasing},
       opacity 0.2s ${theme.transitionEasing};
     overflow: hidden;
+
+    p,
+    ul {
+      margin: 0;
+    }
+
+    a {
+      font-weight: 400;
+    }
   `,
   open: css`
     opacity: 1;
-    padding-bottom: 20px;
+    padding-bottom: ${PADDING_BOTTOM}px;
   `
 }

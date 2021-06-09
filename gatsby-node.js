@@ -1,5 +1,6 @@
 const path = require('path')
 const { createFilePath } = require('gatsby-source-filesystem')
+const { getHTML } = require('gatsby-remark-embedder/dist/transformers/Twitter')
 
 const isProd = process.env.NODE_ENV === 'production'
 const rdocs = /\/docs\//
@@ -440,9 +441,21 @@ exports.createPages = async ({ graphql, actions, reporter }) => {
   )
 }
 
-exports.onCreateNode = ({ node, actions, getNode }) => {
+exports.onCreateNode = async ({ node, actions, getNode }) => {
   const { createNodeField } = actions
 
+  // Retrieve embeddable HTML for tweets from the Spokestack timeline
+  if (node.internal.type === 'twitterStatusesUserTimelineSpokestack') {
+    const url = `https://www.twitter.com/spokestack/status/${node.id_str}`
+    const html = await getHTML(url)
+    createNodeField({
+      name: 'html',
+      node,
+      value: html
+    })
+  }
+
+  // Add custom fields for docs and blog contexts
   if (node.internal.type === 'MarkdownRemark') {
     const isDocsPage = rdocs.test(node.fileAbsolutePath)
     const folder = path.basename(path.dirname(node.fileAbsolutePath))

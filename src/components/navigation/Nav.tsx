@@ -210,20 +210,17 @@ export default function Nav({ contentCss, extraCss }: Props) {
                     <Libraries />
                   </NavDropdownLink>
                   {/* <NavDropdownLink
-                  extraCss={styles.navLinkDropdown}
-                  href="/community"
-                  partiallyActive
-                  title="Community"
-                  icon="#community"
-                  iconCss={css`
-                    width: 34px;
-                    height: 36px;
-                  `}
-                  text="How-to articles on creating voice assistants from our team"
-                /> */}
+                    href="/community"
+                    title="Community"
+                    icon="#community"
+                    iconCss={css`
+                      width: 34px;
+                      height: 36px;
+                    `}
+                    text="Find other makers and help each other create better voice-enabled software."
+                  /> */}
                   <NavDropdownLink
                     href="/support"
-                    partiallyActive
                     title="Support"
                     icon="#support"
                     iconCss={css`
@@ -237,12 +234,17 @@ export default function Nav({ contentCss, extraCss }: Props) {
             </NavDropdown>
           </li>
           <li css={styles.listItem} aria-label="Pricing Navigation">
-            <NavLink partiallyActive to="/pricing" title="Spokestack Pricing">
+            <NavLink to="/pricing" title="Spokestack Pricing">
               Pricing
             </NavLink>
           </li>
+          <li css={styles.listItem} aria-label="Community Navigation">
+            <NavLink to="/community" title="Spokestack Community">
+              Community
+            </NavLink>
+          </li>
           <li css={styles.listItem} aria-label="Support Navigation">
-            <NavLink partiallyActive to="/support" title="Spokestack Support">
+            <NavLink to="/support" title="Spokestack Support">
               Support
             </NavLink>
           </li>

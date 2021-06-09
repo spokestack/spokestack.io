@@ -115,7 +115,6 @@ const styles = {
     align-items: center;
     text-align: center;
 
-    background-size: 100% 270px;
     padding: 70px 25px;
 
     h2,

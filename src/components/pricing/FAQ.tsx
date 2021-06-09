@@ -1,6 +1,6 @@
 import * as theme from '../../styles/theme'
 
-import Question from './Question'
+import Question from '../Question'
 import React from 'react'
 import { SiteSiteMetadataContact } from '../../utils/graphql'
 import { css } from '@emotion/react'
@@ -110,5 +110,6 @@ const styles = {
     border: 1px solid ${theme.mainBorder};
     border-radius: 7px;
     overflow: hidden;
+    padding: 0 20px;
   `
 }

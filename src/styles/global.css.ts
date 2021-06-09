@@ -334,10 +334,10 @@ export default css`
       &.btn-submitting {
         background-color: ${theme.linkSecondaryHover};
         border-color: ${theme.linkSecondaryHover};
-        color: ${theme.primary};
+        color: ${theme.text};
 
         .icon {
-          fill: ${theme.primary};
+          fill: ${theme.text};
         }
       }
     }
@@ -349,10 +349,8 @@ export default css`
       height: 37px;
     }
     &.btn-wide {
-      font-size: 14px;
-
       ${theme.MIN_DEFAULT_MEDIA_QUERY} {
-        min-width: 155px;
+        min-width: 230px;
       }
     }
     &.btn-full {

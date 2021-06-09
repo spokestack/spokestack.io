@@ -74,6 +74,9 @@
     "gatsby-remark-smartypants": "^4.3.0",
     "gatsby-source-filesystem": "^3.6.0",
     "gatsby-source-graphql": "^3.6.0",
+    "gatsby-source-rss-feed": "^1.2.2",
+    "gatsby-source-twitter": "^4.0.0",
+    "gatsby-source-youtube-v3": "^3.0.1",
     "gatsby-transformer-remark": "^4.3.0",
     "gatsby-transformer-sharp": "^3.6.0",
     "graphql": "^15.5.0",
@@ -120,7 +123,7 @@
     "open": "^8.2.0",
     "prettier": "^2.3.1",
     "release-it": "^14.8.0",
-    "serve": "^11.3.2",
+    "serve": "^12.0.0",
     "shelljs": "^0.8.4"
   },
   "bugs": {

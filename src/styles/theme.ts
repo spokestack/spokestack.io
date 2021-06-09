@@ -17,6 +17,7 @@ export const primary = primaryColor.hex()
 export const primaryDark = primaryDarkColor.hex()
 export const primaryLight = primaryLightColor.hex()
 export const primaryLighter = primaryLighterColor.hex()
+export const primaryLightest = '#ebf4ff'
 export const secondary = secondaryColor.hex()
 export const grayDark = '#c9c9c9'
 export const yellow = '#facc5f'
@@ -41,8 +42,8 @@ export const buttonBackgroundDarkHover = primaryLightColor.darken(0.4).hex()
 export const mainBorder = mainBorderColor.hex()
 export const mainBorderDark = '#96a2a2'
 export const pricingBorder = primaryColor.fade(0.75).toString()
-export const pricingBorderHorizontal = `url("data:image/svg+xml,%3csvg width='100%25' height='1' xmlns='http://www.w3.org/2000/svg'%3e%3crect width='100%25' height='4' fill='none' stroke='%23d4d7d9' stroke-width='2' stroke-dasharray='10%2c10' stroke-dashoffset='0' stroke-linecap='square'/%3e%3c/svg%3e")`
-export const pricingBorderVertical = `url("data:image/svg+xml,%3csvg width='1' height='100%25' xmlns='http://www.w3.org/2000/svg'%3e%3crect width='4' height='100%25' fill='none' stroke='%23d4d7d9' stroke-width='2' stroke-dasharray='10%2c10' stroke-dashoffset='0' stroke-linecap='square'/%3e%3c/svg%3e")`
+export const pricingBorderHorizontal = `url("data:image/svg+xml,%3csvg width='100%25' height='2' xmlns='http://www.w3.org/2000/svg'%3e%3crect width='100%25' height='4' fill='none' stroke='%23eceded' stroke-width='4' stroke-dasharray='10%2c10' stroke-dashoffset='4' stroke-linecap='square'/%3e%3c/svg%3e")`
+export const pricingBorderVertical = `url("data:image/svg+xml,%3csvg width='2' height='100%25' xmlns='http://www.w3.org/2000/svg'%3e%3crect width='4' height='100%25' fill='none' stroke='%23eceded' stroke-width='4' stroke-dasharray='10%2c10' stroke-dashoffset='4' stroke-linecap='square'/%3e%3c/svg%3e")`
 
 export const transitionEasing = 'cubic-bezier(0.77, 0.41, 0.2, 0.84)'
 export const bubbleEasing = 'cubic-bezier(0.3, 0.55, 0.54, 0.86)'

@@ -6,14 +6,14 @@ console.log(`Site URL in Gatsby config: ${siteUrl.href}`)
 module.exports = {
   flags: { FAST_DEV: true },
   siteMetadata: {
-    title: 'Spokestack - AutoML tools that put custom voice into software',
+    title: 'Spokestack - Machine Learning for Voice Made Easy',
     author: 'Spokestack',
     contact: {
       email: 'hello@spokestack.io',
       phone: '(415) 425-0071'
     },
     description:
-      'Advanced machine learning services for making wake word, keyword, ASR, NLU, and custom AI TTS voices in your software. Spokestack features open source tools for mobile, web, embedded, and edge voice interfaces and independent assistants. Get started free.',
+      'AutoML tools and open source libraries for mobile, web, and embedded software. Built by Developers, for Developers. Get started free.',
     siteUrl: siteUrl.href,
     logo: `${siteUrl.href}logo.png`,
     social: {

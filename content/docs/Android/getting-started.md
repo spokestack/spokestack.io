@@ -17,32 +17,32 @@ You'll also need API credentials to use some Spokestack services. Click [here](/
 
 ## Installation
 
-First, you'll need to declare the Spokestack dependencies in your project. Add the following to your app's `build.gradle`:
+### Prerequisites
+
+The minimum Android SDK version listed in Spokestack's manifest is 8 because that's all you should need to run wake word detection and speech recognition. To use other features, it's best to target at least API level 21.
+
+If you include ExoPlayer for TTS playback (see below), you might have trouble running on versions of Android older than this. If you run into this problem, try adding the following line to your `gradle.properties` file:
+
+```none
+android.enableDexingArtifactTransform=false
+```
+
+### Dependencies
+
+First, you'll need to declare a dependency on the Spokestack library along with optional dependencies for the components/modules you want to use. Add the following to your app's `build.gradle` (dependency versions here may be somewhat out of date; check for the latest ones, though note that newer versions do have the potential to break compatibility with Spokestack):
 
 ```groovy
-android {
-
-  // ...
-
-  compileOptions {
-      sourceCompatibility JavaVersion.VERSION_1_8
-      targetCompatibility JavaVersion.VERSION_1_8
-  }
-}
-
-// ...
-
 dependencies {
   // ...
 
   implementation 'io.spokestack:spokestack-android:%ANDROID_VERSION'
 
   // for TensorFlow Lite-powered wake word detection and/or NLU, add this one too
-  implementation 'org.tensorflow:tensorflow-lite:2.3.0'
+  implementation 'org.tensorflow:tensorflow-lite:2.4.0'
 
   // for automatic playback of TTS audio
-  implementation 'androidx.media:media:1.2.1'
-  implementation 'com.google.android.exoplayer:exoplayer-core:2.11.7'
+  implementation 'androidx.media:media:1.3.1'
+  implementation 'com.google.android.exoplayer:exoplayer-core:2.14.0'
 
   // if you plan to use Google ASR, include these
   implementation 'com.google.cloud:google-cloud-speech:1.22.2'

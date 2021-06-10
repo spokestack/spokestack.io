@@ -26,10 +26,7 @@ export default function Index({ data }: Props) {
     <Layout
       banner={
         <Banner href="/account/create">
-          <p>
-            Spokestack Maker - Self-Service Tools for Personal Voice Model
-            Creation
-          </p>
+          <p>Spokestack Maker - Painless Voice Interface Prototyping!</p>
         </Banner>
       }
       extraCss={styles.container}

@@ -1,10 +1,10 @@
 ---
 title: A Swear Jar in 100 Lines of Python
-date: '2021-03-25'
+date: '2021-06-10'
 description: Use Spokestack's keyword recognizer model and Python library to help save up for a rainy day.
 author: josh
 tags: Keyword Recognition, Maker, Python, Tutorial
-draft: true
+draft: false
 hero: ../assets/blog/keyword-recognizer-python-tutorial.png
 ---
 

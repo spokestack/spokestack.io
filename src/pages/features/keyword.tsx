@@ -377,7 +377,7 @@ export default function KeywordPage() {
                 model, but the more samples, the better. If you want the model
                 to respond to anyone other than you, collect samples using more
                 than one voice (remember, this is a{' '}
-                <a href="/docs/concepts/keywords/#personal-keyword">
+                <a href="/blog/what-are-personal-ai-models">
                   personal keyword model
                 </a>
                 , not a universal one).

@@ -1,6 +1,6 @@
 ---
 title: What's a Keyword Model, and Why Would I Use One?
-date: '2021-06-11'
+date: '2021-06-14'
 description: We'll show you where keyword recognition models fit in with wake words, ASR, and NLU; and we'll help you decide if they're right for your app.
 tags: ASR, Concepts, Keyword, NLU, Wake Word
 author: josh

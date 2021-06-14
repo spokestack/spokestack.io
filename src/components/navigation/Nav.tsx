@@ -238,7 +238,9 @@ export default function Nav({ contentCss, extraCss }: Props) {
               Pricing
             </NavLink>
           </li>
-          <li css={styles.listItem} aria-label="Community Navigation">
+          <li
+            css={[styles.listItem, styles.largeScreenOnly]}
+            aria-label="Community Navigation">
             <NavLink to="/community" title="Spokestack Community">
               Community
             </NavLink>
@@ -426,6 +428,13 @@ const styles = {
     display: none;
 
     ${theme.MIN_DEFAULT_MEDIA_QUERY} {
+      display: flex;
+    }
+  `,
+  largeScreenOnly: css`
+    display: none;
+
+    ${theme.MIN_LARGE_DISPLAY_MEDIA_QUERY} {
       display: flex;
     }
   `

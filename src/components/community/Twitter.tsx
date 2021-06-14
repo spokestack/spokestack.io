@@ -67,9 +67,9 @@ const styles = {
     flex-direction: column;
     justify-content: center;
     align-items: center;
+    gap: 30px;
 
     .twitter-tweet {
-      margin: 0 0 30px !important;
       max-width: 390px !important;
     }
 
@@ -77,10 +77,6 @@ const styles = {
       flex-direction: row;
       flex-wrap: wrap;
       align-items: flex-start;
-
-      .twitter-tweet + .twitter-tweet {
-        margin-left: 30px !important;
-      }
     }
   `
 }

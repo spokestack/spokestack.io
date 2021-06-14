@@ -79,7 +79,12 @@ const styles = {
 
     ${theme.MIN_DEFAULT_MEDIA_QUERY} {
       flex-direction: row;
-      padding: 30px 100px;
+      padding: 30px;
+    }
+
+    ${theme.MIN_LARGE_DISPLAY_MEDIA_QUERY} {
+      padding-left: 100px;
+      padding-right: 100px;
     }
   `,
   headerContent: css`

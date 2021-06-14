@@ -447,6 +447,9 @@ module.exports = {
       resolve: 'gatsby-plugin-offline',
       options: {
         workboxConfig: {
+          // Don't cache bust spokestack JS and other spokestack assets
+          // We do want to cache bust third-party JS
+          dontCacheBustURLsMatching: /spokestack.*(\.js$|\.css$|static\/)/,
           runtimeCaching: [
             {
               // The SW should not cache account site data
@@ -456,9 +459,9 @@ module.exports = {
               handler: 'NetworkOnly'
             },
             {
-              // Use cacheFirst since these don't need to be revalidated (same RegExp
-              // and same reason as above)
-              urlPattern: /(\.js$|\.css$|static\/)/,
+              // Use cacheFirst since these don't need to be revalidated
+              // This regex is the same as the dontCacheBustURLsMatching regex
+              urlPattern: /spokestack.*(\.js$|\.css$|static\/)/,
               handler: 'CacheFirst'
             },
             {
@@ -469,13 +472,9 @@ module.exports = {
             },
             {
               // Add runtime caching of various other page resources
+              // that we control. This avoids caching third-party resources.
               urlPattern:
-                /^https?:.*\.(png|jpg|jpeg|webp|svg|gif|tiff|js|woff|woff2|json|css)$/,
-              handler: 'StaleWhileRevalidate'
-            },
-            {
-              // Google Fonts CSS (doesn't end in .css so we need to specify it)
-              urlPattern: /^https?:\/\/fonts\.googleapis\.com\/css/,
+                /^https?:.*spokestack.*\.(png|jpg|jpeg|webp|svg|gif|tiff|js|woff|woff2|json|css)$/,
               handler: 'StaleWhileRevalidate'
             }
           ]

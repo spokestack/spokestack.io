@@ -89,6 +89,10 @@ export default function SEO({
         {
           name: 'twitter:image',
           content: image || site!.siteMetadata!.logo!
+        },
+        {
+          name: 'twitter:dnt',
+          content: 'on'
         }
       ].concat(meta)}
     />

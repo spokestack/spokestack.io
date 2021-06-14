@@ -1,6 +1,8 @@
 const path = require('path')
 const { createFilePath } = require('gatsby-source-filesystem')
-const { getHTML } = require('gatsby-remark-embedder/dist/transformers/Twitter')
+const {
+  fetchOEmbedData
+} = require('gatsby-remark-embedder/dist/transformers/utils')
 
 const isProd = process.env.NODE_ENV === 'production'
 const rdocs = /\/docs\//
@@ -10,6 +12,23 @@ const postsPerPage = 5
 
 function toUrl(url) {
   return url.toLowerCase().replace(rspaces, '-')
+}
+
+function getTwitterHTML(url) {
+  /**
+   * For moments, Twitter oembed doesn't work with urls using 'events', they should
+   * use 'moments', even though they redirect from 'moments' to 'events' on the browser.
+   */
+  const twitterUrl = url.replace('events', 'moments')
+  return fetchOEmbedData(
+    `https://publish.twitter.com/oembed?url=${twitterUrl}&dnt=true&omit_script=true&hide_thread=true`
+  ).then(({ html }) =>
+    [html]
+      .map((s) => s.replace(/\?ref_src=twsrc.*?fw/g, ''))
+      .map((s) => s.replace(/<br>/g, '<br />'))
+      .join('')
+      .trim()
+  )
 }
 
 async function getRelated({ tags, slug, graphql }) {
@@ -447,7 +466,7 @@ exports.onCreateNode = async ({ node, actions, getNode }) => {
   // Retrieve embeddable HTML for tweets from the Spokestack timeline
   if (node.internal.type === 'twitterStatusesUserTimelineSpokestack') {
     const url = `https://www.twitter.com/spokestack/status/${node.id_str}`
-    const html = await getHTML(url)
+    const html = await getTwitterHTML(url)
     createNodeField({
       name: 'html',
       node,

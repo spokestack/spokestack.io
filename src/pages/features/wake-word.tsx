@@ -312,7 +312,7 @@ export default function WakewordPage() {
                 model, but the more samples, the better. If you want the model
                 to respond to anyone other than you, collect samples using more
                 than one voice (remember, this is a{' '}
-                <a href="/docs/concepts/wake-word#personal-wake-word">
+                <a href="/blog/what-are-personal-ai-models">
                   personal wake word model
                 </a>
                 , not a universal one).

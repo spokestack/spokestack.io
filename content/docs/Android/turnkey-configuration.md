@@ -37,6 +37,8 @@ val spokestack = Spokestack.Builder()
 Wake word models that respond to the "Spokestack" wake word can be found here:
 [detect](https://d3dmqd7cy685il.cloudfront.net/model/wake/spokestack/detect.tflite) | [encode](https://d3dmqd7cy685il.cloudfront.net/model/wake/spokestack/encode.tflite) | [filter](https://d3dmqd7cy685il.cloudfront.net/model/wake/spokestack/filter.tflite)
 
+For more pre-trained wake words, and to make your own custom wake words, [create your free Spokestack account!](account/create)
+
 If you would prefer to manually activate ASR, you can disable wake word using the builder's `withoutWakeword()` method, which will activate the `PushToTalkAndroidASR` profile and remove the need to supply wake word model files, or you can select your own profile via `withPipelineProfile()`, passing the full class name of a profile. This can even be a custom profile you've created; see [the existing pipeline profiles](https://github.com/spokestack/spokestack-android/tree/master/src/main/java/io/spokestack/spokestack/profile) for examples of how to create one.
 
 To disable wake word and ASR altogether, use the builder's `withoutSpeechPipeline()` method.

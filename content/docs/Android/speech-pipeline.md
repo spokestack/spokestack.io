@@ -45,7 +45,7 @@ Input classes, processing stages, and profiles are all loaded dynamically via th
 
 This is the speech pipeline's state machine:
 
-![speech pipeline](../../assets/docs/speech_pipeline_states.png 'speech pipeline')
+![speech pipeline](../../assets/docs/speech_pipeline_states.png)
 
 As you can see, once the pipeline has been built (after the return of `SpeechPipeline.Builder.build()`), calling `start()` puts it into a passive listening state—or it will if the pipeline has been properly configured. You _could_ have an ASR class as the only stage, in which case an ASR request would start immediately upon calling `start()`. This is almost certainly not what you want.
 

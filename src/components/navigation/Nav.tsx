@@ -209,16 +209,6 @@ export default function Nav({ contentCss, extraCss }: Props) {
                     text="Open source libraries for integrating Spokestack into your apps">
                     <Libraries />
                   </NavDropdownLink>
-                  {/* <NavDropdownLink
-                    href="/community"
-                    title="Community"
-                    icon="#community"
-                    iconCss={css`
-                      width: 34px;
-                      height: 36px;
-                    `}
-                    text="Find other makers and help each other create better voice-enabled software."
-                  /> */}
                   <NavDropdownLink
                     href="/support"
                     title="Support"
@@ -239,7 +229,7 @@ export default function Nav({ contentCss, extraCss }: Props) {
             </NavLink>
           </li>
           <li
-            css={[styles.listItem, styles.largeScreenOnly]}
+            css={[styles.listItem, styles.mobileAndLarge]}
             aria-label="Community Navigation">
             <NavLink to="/community" title="Spokestack Community">
               Community
@@ -400,6 +390,9 @@ const styles = {
     ${theme.MIN_DEFAULT_MEDIA_QUERY} {
       min-height: 137px;
     }
+    ${theme.ieBreakpointMinDefault} {
+      min-height: 0 !important;
+    }
   `,
   mobileLogin: css`
     position: relative;
@@ -431,8 +424,12 @@ const styles = {
       display: flex;
     }
   `,
-  largeScreenOnly: css`
-    display: none;
+  mobileAndLarge: css`
+    display: flex;
+
+    ${theme.MIN_DEFAULT_MEDIA_QUERY} {
+      display: none;
+    }
 
     ${theme.MIN_LARGE_DISPLAY_MEDIA_QUERY} {
       display: flex;

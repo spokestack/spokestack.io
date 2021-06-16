@@ -7,6 +7,7 @@ import GitHubRepo from './GitHubRepo'
 import React from 'react'
 import SVGIcon from '../SVGIcon'
 import { css } from '@emotion/react'
+import CommunityHeader from './Header'
 
 interface ReposQuery extends Omit<Query, 'github'> {
   github: {
@@ -20,15 +21,18 @@ export default function GitHubRepos() {
   const data = useStaticQuery<ReposQuery>(githubReposQuery)
   return (
     <div css={styles.container}>
-      <div css={styles.header}>
-        <h2>Explore Open Source Repositories</h2>
-        <a
-          href={data.site!.siteMetadata!.social!.github!}
-          className="btn btn-wide">
-          <SVGIcon icon="#github" extraCss={styles.githubIcon} />
-          See All Repos
-        </a>
-      </div>
+      <CommunityHeader
+        href={data.site!.siteMetadata!.social!.github!}
+        icon={
+          <SVGIcon
+            icon="#github"
+            className="icon"
+            extraCss={styles.githubIcon}
+          />
+        }
+        linkText="See All Repos"
+        text="Expore Open Source Repositories"
+      />
       <div css={styles.repos}>
         {[
           'python',
@@ -50,33 +54,18 @@ export default function GitHubRepos() {
 
 const styles = {
   container: css`
+    display: flex;
+    flex-direction: column;
+    align-items: center;
     padding: 50px 30px 100px;
 
     ${theme.MIN_DEFAULT_MEDIA_QUERY} {
       padding: 100px;
     }
   `,
-  header: css`
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-    text-align: center;
-    margin-bottom: 50px;
-
-    ${theme.MIN_DEFAULT_MEDIA_QUERY} {
-      flex-direction: row;
-
-      h2 {
-        margin: 0 50px 0 0;
-      }
-    }
-  `,
   githubIcon: css`
     width: 17px;
     height: 16px;
-    fill: white;
-    margin-right: 7px;
   `,
   repos: css`
     display: flex;

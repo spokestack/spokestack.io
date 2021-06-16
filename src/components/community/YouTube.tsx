@@ -7,21 +7,25 @@ import React from 'react'
 import SVGIcon from '../SVGIcon'
 import YouTubeEmbed from '../YouTubeEmbed'
 import { css } from '@emotion/react'
+import CommunityHeader from './Header'
 
 export default function YouTube() {
   const data = useStaticQuery<Query>(youtubeQuery)
   const firstVideo = data.allYoutubeVideo.nodes[0]!
   return (
     <div css={styles.youtube}>
-      <div css={styles.header}>
-        <h2>Level Up Your Skills</h2>
-        <a
-          href={data.site!.siteMetadata!.social!.youtube!}
-          className="btn btn-wide">
-          <SVGIcon icon="#youtube" extraCss={styles.youtubeIcon} />
-          Subscribe
-        </a>
-      </div>
+      <CommunityHeader
+        href={data.site!.siteMetadata!.social!.youtube!}
+        icon={
+          <SVGIcon
+            icon="#youtube"
+            className="icon"
+            extraCss={styles.youtubeIcon}
+          />
+        }
+        linkText="Subscribe to Channel"
+        text="Level Up Your Skills"
+      />
       <div css={styles.present}>
         <div css={styles.video}>
           <YouTubeEmbed
@@ -52,6 +56,9 @@ export default function YouTube() {
 
 const styles = {
   youtube: css`
+    display: flex;
+    flex-direction: column;
+    align-items: center;
     background-color: ${theme.primaryLightest};
     padding: 100px 30px;
 
@@ -59,36 +66,21 @@ const styles = {
       padding: 100px;
     }
   `,
-  header: css`
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-    text-align: center;
-    margin-bottom: 50px;
-
-    ${theme.MIN_DEFAULT_MEDIA_QUERY} {
-      flex-direction: row;
-
-      h2 {
-        margin: 0 50px 0 0;
-      }
-    }
-  `,
   youtubeIcon: css`
     width: 17px;
     height: 17px;
-    fill: white;
-    margin-right: 7px;
   `,
   present: css`
     display: flex;
     flex-direction: column;
     justify-content: center;
     align-items: center;
+    width: 100%;
 
     ${theme.MIN_DEFAULT_MEDIA_QUERY} {
       flex-direction: row;
+      justify-content: flex-start;
+      max-width: 1240px;
     }
   `,
   video: css`
@@ -120,7 +112,7 @@ const styles = {
     margin-bottom: 10px;
 
     .icon {
-      fill: ${theme.primary};
+      margin-right: 7px;
     }
 
     &:hover {

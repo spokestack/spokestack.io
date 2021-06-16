@@ -251,7 +251,7 @@ const styles = {
     }
   `,
   howWrapper: css`
-    padding: 100px 25px;
+    padding: 100px 25px 25px;
   `,
   how: css`
     max-width: 1024px;

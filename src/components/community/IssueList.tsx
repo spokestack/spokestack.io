@@ -29,6 +29,7 @@ const styles = {
 
     ${theme.MIN_DEFAULT_MEDIA_QUERY} {
       padding: 50px;
+      flex-shrink: 0;
     }
   `
 }

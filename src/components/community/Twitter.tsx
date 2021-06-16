@@ -6,20 +6,24 @@ import { Query } from '../../utils/graphql'
 import React from 'react'
 import SVGIcon from '../SVGIcon'
 import { css } from '@emotion/react'
+import CommunityHeader from './Header'
 
 export default function Twitter() {
   const data = useStaticQuery<Query>(twitterQuery)
   return (
     <div css={styles.twitter}>
-      <div css={styles.header}>
-        <h2>Stay Up-to-Date on the Latest</h2>
-        <a
-          href={data.site!.siteMetadata!.social!.twitter!}
-          className="btn btn-wide">
-          <SVGIcon icon="#twitter" extraCss={styles.twitterIcon} />
-          Follow @spokestack
-        </a>
-      </div>
+      <CommunityHeader
+        href={data.site!.siteMetadata!.social!.twitter!}
+        icon={
+          <SVGIcon
+            icon="#twitter"
+            className="icon"
+            extraCss={styles.twitterIcon}
+          />
+        }
+        linkText="Follow @spokestack"
+        text="Stay Up-to-Date on the Latest"
+      />
       <div
         css={styles.tweets}
         dangerouslySetInnerHTML={{
@@ -34,33 +38,18 @@ export default function Twitter() {
 
 const styles = {
   twitter: css`
+    display: flex;
+    flex-direction: column;
+    align-items: center;
     padding: 100px 30px;
 
     ${theme.MIN_DEFAULT_MEDIA_QUERY} {
       padding: 100px;
     }
   `,
-  header: css`
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-    text-align: center;
-    margin-bottom: 50px;
-
-    ${theme.MIN_DEFAULT_MEDIA_QUERY} {
-      flex-direction: row;
-
-      h2 {
-        margin: 0 50px 0 0;
-      }
-    }
-  `,
   twitterIcon: css`
     width: 17px;
     height: 15px;
-    fill: white;
-    margin-right: 7px;
   `,
   tweets: css`
     display: flex;
@@ -77,6 +66,7 @@ const styles = {
       flex-direction: row;
       flex-wrap: wrap;
       align-items: flex-start;
+      max-width: 1240px;
     }
   `
 }

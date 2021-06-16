@@ -93,17 +93,33 @@ export default css`
     transition: color 0.1s ${theme.transitionEasing},
       text-decoration-color 0.1s ${theme.transitionEasing};
 
+    .icon {
+      fill: ${theme.link};
+    }
+
     &:visited {
       color: ${theme.linkVisited};
       text-decoration-color: ${theme.linkVisited};
+
+      .icon {
+        fill: ${theme.linkVisited};
+      }
     }
     &:hover {
       color: ${theme.linkHover};
       text-decoration-color: ${theme.linkHover};
+
+      .icon {
+        fill: ${theme.linkHover};
+      }
     }
     &:active {
       color: ${theme.linkActive};
       text-decoration-color: ${theme.linkActive};
+
+      .icon {
+        fill: ${theme.linkActive};
+      }
     }
 
     &.link-secondary {

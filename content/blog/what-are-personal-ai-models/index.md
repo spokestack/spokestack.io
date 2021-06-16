@@ -10,7 +10,7 @@ hero: what-are-personal-ai-models.png
 
 ![What are Personal AI Models?](what-are-personal-ai-models.png)
 
-The [Spokestack Maker](/pricing#maker) service is designed for two audiences: (1) hobbyists who want to personalize their projects, and (2) developers who want to prototype a project as realistically as possible before committing to training a universal wake word model or studio-quality text-to-speech (TTS) voice. This is a great way to test drive the technology without breaking the bank.
+The [Spokestack Maker](/account/upgrade) service is designed for two audiences: (1) hobbyists who want to personalize their projects, and (2) developers who want to prototype a project as realistically as possible before committing to training a universal wake word model or studio-quality text-to-speech (TTS) voice. This is a great way to test drive the technology without breaking the bank.
 
 ## What are the Differences Between "Personal" and "Universal" Voice AI Models?
 

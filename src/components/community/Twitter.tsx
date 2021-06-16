@@ -11,7 +11,7 @@ import CommunityHeader from './Header'
 export default function Twitter() {
   const data = useStaticQuery<Query>(twitterQuery)
   return (
-    <div css={styles.twitter}>
+    <div className="ie-fix" css={styles.twitter}>
       <CommunityHeader
         href={data.site!.siteMetadata!.social!.twitter!}
         icon={

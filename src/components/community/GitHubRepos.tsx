@@ -20,7 +20,7 @@ interface ReposQuery extends Omit<Query, 'github'> {
 export default function GitHubRepos() {
   const data = useStaticQuery<ReposQuery>(githubReposQuery)
   return (
-    <div css={styles.container}>
+    <div className="ie-fix" css={styles.container}>
       <CommunityHeader
         href={data.site!.siteMetadata!.social!.github!}
         icon={

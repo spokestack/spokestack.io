@@ -13,7 +13,7 @@ export default function YouTube() {
   const data = useStaticQuery<Query>(youtubeQuery)
   const firstVideo = data.allYoutubeVideo.nodes[0]!
   return (
-    <div css={styles.youtube}>
+    <div className="ie-fix" css={styles.youtube}>
       <CommunityHeader
         href={data.site!.siteMetadata!.social!.youtube!}
         icon={

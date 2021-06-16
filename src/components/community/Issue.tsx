@@ -104,6 +104,7 @@ const styles = {
     flex: 1;
 
     h5 {
+      width: 100%;
       margin-bottom: 5px;
     }
   `,

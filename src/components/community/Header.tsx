@@ -35,6 +35,7 @@ const styles = {
     ${theme.MIN_DEFAULT_MEDIA_QUERY} {
       flex-direction: row;
       justify-content: space-between;
+      text-align: left;
       max-width: 1240px;
 
       h3 {

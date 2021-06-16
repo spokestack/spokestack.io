@@ -157,6 +157,7 @@ export default css`
     display: flex;
     flex-direction: row;
     align-items: center;
+    white-space: nowrap;
   }
   h1 a {
     color: ${theme.text};

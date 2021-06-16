@@ -42,7 +42,7 @@ export default function Contribute({ data }: Props) {
       />
       <PricingBackground height="590px" />
       <header css={styles.header}>
-        <div css={styles.headerContent}>
+        <div className="ie-fix" css={styles.headerContent}>
           <h1>Contribute to Spokestack</h1>
           <p className="title">
             Spokestack is an open source project which thrives from community
@@ -241,6 +241,7 @@ const styles = {
     h4 {
       font-weight: 400;
       margin: 25px 0 0;
+      width: 100%;
     }
 
     ${theme.MIN_DEFAULT_MEDIA_QUERY} {

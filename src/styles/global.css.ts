@@ -364,6 +364,7 @@ export default css`
     &.btn-small {
       font-size: 14px;
       height: 37px;
+      padding-top: 1px;
     }
     &.btn-wide {
       ${theme.MIN_DEFAULT_MEDIA_QUERY} {

@@ -102,8 +102,8 @@ export default function Configurator({ codeKey, extraCss }: ConfiguratorProps) {
               href="https://github.com/spokestack/spokestack-ios">
               native iOS library
             </a>{' '}
-            is written in Swift and includes a top-level class that handles wake
-            word configuration making setup a breeze.
+            is written in Swift and includes a top-level class that makes setup
+            a breeze.
           </p>
         ) : platform === 'android' ? (
           <p>
@@ -113,8 +113,8 @@ export default function Configurator({ codeKey, extraCss }: ConfiguratorProps) {
               href="https://github.com/spokestack/spokestack-android">
               native Android library
             </a>{' '}
-            is written in Java and includes a top-level class that handles wake
-            word configuration making setup a breeze.
+            is written in Java and includes a top-level class that makes setup a
+            breeze.
           </p>
         ) : platform === 'rn' ? (
           <p>
@@ -147,8 +147,7 @@ export default function Configurator({ codeKey, extraCss }: ConfiguratorProps) {
                 href="https://github.com/spokestack/spokestack-python">
                 native Python library
               </a>{' '}
-              includes a top-level class that handles wake word configuration
-              making setup a breeze.
+              includes a top-level class that makes setup a breeze.
             </p>
           )
         )}

@@ -10,6 +10,7 @@ export const headerColor = Color('#2c363f')
 export const mainBorderColor = Color('#d5d7d9')
 export const linkColor = primaryColor
 export const linkColorDark = primaryLightColor
+export const mainBackgroundColor = Color('#f6f9fc')
 export const authorBackgroundColor = Color('#5b6a79')
 export const codeBackgroundColor = primaryLighterColor.fade(0.85)
 
@@ -25,7 +26,7 @@ export const yellow = '#facc5f'
 export const green = '#daffcc'
 export const greenDark = '#228000'
 
-export const mainBackground = '#f6f9fc'
+export const mainBackground = mainBackgroundColor.hex()
 export const mainBackgroundDark = textColor.hex()
 export const stickyNavBackground = 'white'
 export const stickyNavBackgroundDark = textColor.darken(0.3).hex()

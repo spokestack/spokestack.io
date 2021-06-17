@@ -7,7 +7,7 @@ tags: Keywords
 seoImage: '../../assets/docs/concepts-keywords.png'
 ---
 
-Keyword recognition detects words or phrases from a list of key words. You define that list of words, and Spokestack notifies your software when any of them is recognized. This detection happens entirely on-device, with no data going over the network or to the cloud. Keyword detection straddles the line between [wake word detection](/docs/concepts/wakeword) and [speech recognition](/docs/concepts/asr), with the performance of the former and the results of the latter. Each keyword may comprise multiple utterances. When the model detects the presence of an utterance in user speech, it returns the keyword as a transcript.
+Keyword recognition detects words or phrases from a list of key words. You define that list of words, and Spokestack notifies your software when any of them is recognized. This detection happens entirely on-device, with no data going over the network or to the cloud. Keyword detection straddles the line between [wake word detection](/docs/concepts/wakeword) and [speech recognition](/docs/concepts/asr), with the performance of the former and the results of the latter. Each keyword may comprise multiple utterances. When the model detects the presence of an utterance in user speech, it returns the keyword as a transcript. This means that in the context of Spokestack's [speech pipeline](speech-pipeline), keyword recognition [functions as an ASR stage](/blog/whats-a-keyword-model).
 
 ### Keyword Detection
 

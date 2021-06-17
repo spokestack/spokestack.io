@@ -25,6 +25,8 @@ Configuration available at build time include the properties described in [the c
 
 Stage order matters in the build process. Audio is processed by each stage in turn, according to the order in which it's declared at build time. For example, a stage that activates ASR based on the presence of the wake word needs to be placed before the ASR stage, and any stages that process audio to make the wake word detector's job easier (for example, gain control) must be declared before the wake word detection stage. The order of configuration properties, on the other hand, does not matter, and their declarations can be placed before or after those of processing stages.
 
+### Pipeline Profiles
+
 Spokestack offers several pre-built "profiles" that bundle input class, stage classes, and in some cases configuration properties tuned to support different app configurations. See the [Javadoc for the profile package](https://www.javadoc.io/doc/io.spokestack/spokestack-android/latest/io/spokestack/spokestack/profile/package-summary.html) for a complete listing, but here's a brief summary:
 
 - Profiles whose names begin with `VADTrigger` send any detected speech straight to the chosen speech recognizer.
@@ -43,7 +45,7 @@ Input classes, processing stages, and profiles are all loaded dynamically via th
 
 This is the speech pipeline's state machine:
 
-![](images/speech_pipeline_android.png 'Android speech pipeline')
+![speech pipeline](../../assets/docs/speech_pipeline_states.png)
 
 As you can see, once the pipeline has been built (after the return of `SpeechPipeline.Builder.build()`), calling `start()` puts it into a passive listening state—or it will if the pipeline has been properly configured. You _could_ have an ASR class as the only stage, in which case an ASR request would start immediately upon calling `start()`. This is almost certainly not what you want.
 

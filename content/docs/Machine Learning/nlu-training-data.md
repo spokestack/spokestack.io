@@ -24,9 +24,9 @@ yourModel.zip
   └- ...
 ```
 
-Spokestack's NLU models are currently English-centric. Other languages may work, but accuracy will likely be lower than with English data, and special slot types like `integer` and `digits` (see below) generate data in English only.
+Spokestack's NLU models are currently English-centric. Other languages may work, but accuracy will likely be lower than with English data, and special slot types like [`integer`](#integer) and [`digits`](#digits) generate data in English only.
 
-We're currently experimenting with support for multilingual NLU; if this is a feature that would be useful to you, please let us know [on our forum](https://forum.spokestack.io/).
+We're currently experimenting with support for multilingual NLU; if this is a feature that would be useful to you, please let us know [on our forum](https://forum.spokestack.io/c/feature-requests/16).
 
 ## Intent file format
 

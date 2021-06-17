@@ -30,6 +30,11 @@ await Spokestack.initialize(clientId, clientSecret, {
     detect: require('./detect.tflite'),
     encode: require('./encode.tflite')
   },
+  keyword: {
+    filter: require('./keyword/filter.tflite'),
+    detect: require('./keyword/detect.tflite'),
+    encode: require('./keyword/encode.tflite')
+  },
   nlu: {
     model: require('./nlu.tflite'),
     metadata: require('./metadata.json'),
@@ -46,6 +51,11 @@ await Spokestack.initialize(clientId, clientSecret, {
     filter: 'https://s.spokestack.io/u/hgmYb/filter.tflite',
     detect: 'https://s.spokestack.io/u/hgmYb/detect.tflite',
     encode: 'https://s.spokestack.io/u/hgmYb/encode.tflite'
+  },
+  keyword: {
+    filter: 'https://s.spokestack.io/u/UbMeX/filter.tflite',
+    detect: 'https://s.spokestack.io/u/UbMeX/detect.tflite',
+    encode: 'https://s.spokestack.io/u/UbMeX/encode.tflite'
   },
   nlu: {
     model: 'https://s.spokestack.io/u/7fYxV/nlu.tflite',

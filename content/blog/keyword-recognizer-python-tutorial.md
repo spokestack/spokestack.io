@@ -26,7 +26,7 @@ Now that we know what we're doing and why, let's get to _doing_ it.
 
 _**Note**: You'll need a Spokestack Maker account to follow along with model creation. Running the sample app is totally free, so go ahead and take it for a spin first. Keep in mind that the models provided with the sample code are [personal models](/docs/concepts/keywords#personal-keyword), so [performance with your voice may vary](what-are-personal-ai-models). They were trained with a relatively deep voice._
 
-If this is your first time using Spokestack, you'll need [an account](/create). If you have a free account, you'll need to [upgrade to the Maker tier](/account/settings#billing). Once that's taken care of, head over to the [keyword tool](/account/keyword). Click the "New Model" button and name the model whatever you like. We're going with "swear jar" here, saving our creativity for the actual list of words.
+If this is your first time using Spokestack, you'll need [an account](/create). If you have a free account, you'll need to [upgrade to the Maker tier](/pricing#maker). Once that's taken care of, head over to the [keyword tool](/account/keyword). Click the "New Model" button and name the model whatever you like. We're going with "swear jar" here, saving our creativity for the actual list of words.
 
 Speaking of, now's the moment you've been waiting for: channel your inner George Carlin and click that "add keyword" button until you've accumulated enough to break (or reinforce) your habit.
 

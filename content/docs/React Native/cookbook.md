@@ -7,7 +7,7 @@ tags: ASR, Dialogue Management, NLU, React Native, TTS, Wake Word
 seoImage: '../../assets/docs/react-native-getting-started.png'
 ---
 
-This is a collection of code snippets and brief descriptions designed to help you be as productive as possible as quickly as possible. Check out the Concepts section for more detailed discussions about the techniques mentioned here.
+This is a collection of code snippets and brief descriptions designed to help you be as productive as possible as quickly as possible. Check out the [Concepts](/docs/concepts) section for more detailed discussions about the techniques mentioned here.
 
 ### Push-to-talk
 
@@ -47,21 +47,43 @@ async onTalkButtonPressed () {
 
 ### Wake Word Activation
 
-To use the demo "Spokestack" wake word, you'll need the demo TensorFlow Lite models: [detect](https://s.spokestack.io/u/hgmYb/detect.tflite) | [encode](https://s.spokestack.io/u/hgmYb/encode.tflite) | [filter](https://s.spokestack.io/u/hgmYb/filter.tflite).
-
 The pipeline will default to the native wake word-activated profile (`TFLITE_WAKEWORD_NATIVE_ASR`) if these configuration properties are specified, so we don't need to set it here.
+
+You can also [use local model files](require-models) if you want to avoid a runtime download. This sample uses the free "Spokestack" wake word. To create a custom wake word, try our [Maker subscription](/pricing#maker).
 
 ```js
 await Spokestack.initialize(clientId, clientSecret, {
   wakeword: {
-    filter: filterModelPath,
-    detect: detectModelPath,
-    encode: encodeModelPath
+    filter: 'https://s.spokestack.io/u/hgmYb/filter.tflite',
+    detect: 'https://s.spokestack.io/u/hgmYb/detect.tflite',
+    encode: 'https://s.spokestack.io/u/hgmYb/encode.tflite'
   }
 })
 
 // Only call start after initialize is called.
 // Begins listening for the configured wake word.
+await Spokestack.start()
+```
+
+### Keyword Recognition
+
+[Keyword recognition](/docs/concepts/keywords) is a type of ASR that responds only to a pre-configured vocabulary. This sample uses a free keyword recognition model that recognizes the English numerals "zero" through "nine". To create a custom model, try our [Maker subscription](/pricing#maker).
+
+The pipeline will default to a profile that uses keyword ASR (`VAD_KEYWORD_ASR`) if these configuration properties are specified, so we don't need to set it here. To use _both_ wake word activation and keyword ASR, simply ensure that both `wakeword` and `keyword` are present in your config and that both have the correct number of models.
+
+You can also [use local model files](require-models) if you want to avoid a runtime download.
+
+```js
+await Spokestack.initialize(clientId, clientSecret, {
+  keyword: {
+    filter: 'https://s.spokestack.io/u/UbMeX/filter.tflite',
+    detect: 'https://s.spokestack.io/u/UbMeX/detect.tflite',
+    encode: 'https://s.spokestack.io/u/UbMeX/encode.tflite'
+  }
+})
+
+// Only call start after initialize is called.
+// Will attempt transcription any time speech audio is detected
 await Spokestack.start()
 ```
 

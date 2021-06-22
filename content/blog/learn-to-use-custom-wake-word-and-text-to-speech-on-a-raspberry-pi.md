@@ -4,7 +4,7 @@ date: '2021-04-28'
 description: Following this guide teaches you how to deploy your Maker models on an embedded device.
 author: will
 tags: Apps, Engineering, Python, Tutorial
-draft: true
+draft: false
 hero: ../assets/blog/wakewords-for-mobile-apps.png
 ---
 

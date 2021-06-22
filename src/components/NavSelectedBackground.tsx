@@ -26,7 +26,6 @@ const styles = {
     top: 0;
     left: 0;
     right: 0;
-    border-radius: 50px 0 0 50px;
     transition: transform 0.2s ${theme.transitionEasing},
       height 0.2s ${theme.transitionEasing};
     z-index: 0;

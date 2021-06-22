@@ -99,9 +99,6 @@ const styles = {
     .title {
       margin-bottom: 50px;
     }
-    a {
-      font-weight: 400;
-    }
   `,
   questions: css`
     display: flex;

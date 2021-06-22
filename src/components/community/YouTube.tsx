@@ -108,7 +108,6 @@ const styles = {
     justify-content: flex-start;
     align-items: center;
     font-size: 14px;
-    font-weight: 400;
     margin-bottom: 10px;
 
     .icon {

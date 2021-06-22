@@ -2,7 +2,7 @@
  * Gets the height of text off-screen
  * using the browser's calculations
  */
-export default function getTextHeight(
+export default function getContentHeight(
   html: string,
   parent: HTMLElement,
   cssText?: string

@@ -27,8 +27,8 @@ function isSection(section: string) {
 
 function optionsFromLinks(links: StickyLink[]) {
   return links.map((link) => (
-    <option key={`option-${link.title}`} value={link.href}>
-      {link.title}
+    <option key={`option-${link.navTitle || link.title}`} value={link.href}>
+      {link.navTitle || link.title}
     </option>
   ))
 }
@@ -44,8 +44,11 @@ export default function StickyNav({
   if (!links.length) {
     return null
   }
+  const rcurrentPath = currentPath(location.pathname)
   const navRef = useRef<HTMLElement>(null)
-  const [selectedLink, setSelectedLink] = useState<StickyLink | null>(null)
+  const [selectedLink, setSelectedLink] = useState<StickyLink | undefined>(
+    links.find((link) => rcurrentPath.test(link.href))
+  )
   const [selectedId, setSelectedId] = useState<string | null>(null)
   const [selectedElemVisible, setSelectedElemVisible] = useState<
     boolean | null
@@ -53,7 +56,6 @@ export default function StickyNav({
   useEffect(() => {
     const locs: { [key: number]: HTMLElement } = {}
     const linksWithHash: StickyLink[] = []
-    const rcurrentPath = currentPath(location.pathname)
     links.forEach((link) => {
       if (link.matchHash) {
         const elem =
@@ -132,11 +134,11 @@ export default function StickyNav({
           selected={
             selectedLink
               ? {
-                  title: selectedLink.title,
+                  title: selectedLink.navTitle || selectedLink.title,
                   value: selectedLink.href
                 }
               : {
-                  title: links[0].title,
+                  title: links[0].navTitle || links[0].title,
                   value: links[0].href
                 }
           }
@@ -195,7 +197,7 @@ const styles = {
       top: 0;
       bottom: 0;
       padding: 30px 0;
-      min-width: 250px;
+      min-width: ${theme.MIN_SIDEBAR_WIDTH};
       max-height: calc(100vh - 60px);
       overflow-y: auto;
     }

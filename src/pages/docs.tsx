@@ -1,35 +1,22 @@
-import { MarkdownRemark, Query } from '../utils/graphql'
+import { Query } from '../utils/graphql'
 import { PageRendererProps, graphql } from 'gatsby'
 
 import DocsPage from '../components/DocsPage'
 import React from 'react'
-import { RelatedLink } from '../types'
 
 type Props = PageRendererProps & {
   data: Query
-  // Created by createPage in gatsby-node.js
-  pageContext: {
-    related: RelatedLink[]
-    slug: string
-    previous: MarkdownRemark
-    next: MarkdownRemark
-  }
 }
 
-export default function Docs({ data, location, pageContext }: Props) {
+export default function Docs({ data, location }: Props) {
   return (
-    <DocsPage
-      selectFirst
-      location={location}
-      post={data.markdownRemark!}
-      related={pageContext.related}
-    />
+    <DocsPage selectFirst location={location} post={data.markdownRemark!} />
   )
 }
 
 export const pageQuery = graphql`
   query docsQuery {
-    markdownRemark(fields: { slug: { eq: "/docs/welcome" } }) {
+    markdownRemark(fields: { slug: { eq: "/docs/overview" } }) {
       id
       html
       fields {

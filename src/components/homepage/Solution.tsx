@@ -100,6 +100,5 @@ const styles = {
   learnMoreLink: css`
     display: block;
     margin-top: 25px;
-    font-weight: 400;
   `
 }

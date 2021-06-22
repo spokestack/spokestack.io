@@ -19,10 +19,14 @@ function getTwitterHTML(url) {
    * For moments, Twitter oembed doesn't work with urls using 'events', they should
    * use 'moments', even though they redirect from 'moments' to 'events' on the browser.
    */
-  const twitterUrl = url.replace('events', 'moments')
-  return fetchOEmbedData(
-    `https://publish.twitter.com/oembed?url=${twitterUrl}&dnt=true&omit_script=true&hide_thread=true`
-  ).then(({ html }) =>
+  const twitterUrl =
+    'https://publish.twitter.com/oembed' +
+    `?url=${url.replace('events', 'moments')}` +
+    '&dnt=true' +
+    '&omit_script=true' +
+    '&hide_thread=true'
+
+  return fetchOEmbedData(twitterUrl).then(({ html }) =>
     [html]
       .map((s) => s.replace(/\?ref_src=twsrc.*?fw/g, ''))
       .map((s) => s.replace(/<br>/g, '<br />'))
@@ -31,16 +35,16 @@ function getTwitterHTML(url) {
   )
 }
 
-async function getRelated({ tags, slug, graphql }) {
+async function getRelated({ graphql, slug, tags }) {
   if (!tags) {
     return
   }
   const result = await graphql(`
     {
-      exact: allMarkdownRemark(
+      docsExact: allMarkdownRemark(
         sort: { fields: [frontmatter___date], order: DESC }
         filter: {
-          fileAbsolutePath: { regex: "/blog/" }
+          fileAbsolutePath: { regex: "/docs/" }
           fields: {
             slug: { ne: "${slug}" }
           }
@@ -60,9 +64,10 @@ async function getRelated({ tags, slug, graphql }) {
           }
         }
       }
-      within: allMarkdownRemark(
+      docsWithin: allMarkdownRemark(
         sort: { fields: [frontmatter___tags], order: ASC }
         filter: {
+          fileAbsolutePath: { regex: "/docs/" }
           fields: {
             slug: { ne: "${slug}" }
             tags: { in: ${JSON.stringify(tags)} }
@@ -83,18 +88,89 @@ async function getRelated({ tags, slug, graphql }) {
           }
         }
       }
+      blogExact: allMarkdownRemark(
+        sort: { fields: [frontmatter___date], order: DESC }
+        filter: {
+          fileAbsolutePath: { regex: "/blog/" }
+          fields: {
+            slug: { ne: "${slug}" }
+          }
+          frontmatter: {
+            tags: { eq: "${tags.join(', ')}" }
+            ${isProd ? 'draft: { ne: true }' : ''}
+          }
+        }
+        limit: 3
+      ) {
+        nodes {
+          frontmatter {
+            title
+            tags
+          }
+          fields {
+            slug
+          }
+        }
+      }
+      blogWithin: allMarkdownRemark(
+        sort: { fields: [frontmatter___tags], order: ASC }
+        filter: {
+          fileAbsolutePath: { regex: "/blog/" }
+          fields: {
+            slug: { ne: "${slug}" }
+            tags: { in: ${JSON.stringify(tags)} }
+          }
+          frontmatter: {
+            tags: { ne: "${tags.join(', ')}" }
+            ${isProd ? 'draft: { ne: true },' : ''}
+          }
+        }
+        limit: 3
+      ) {
+        nodes {
+          frontmatter {
+            title
+            tags
+          }
+          fields {
+            slug
+          }
+        }
+      }
     }
   `)
   if (result.error) {
     throw result.error
   }
-  const related = result.data.exact.nodes
-    .concat(result.data.within.nodes)
+  const relatedDocs = result.data.docsExact.nodes
+    .concat(result.data.docsWithin.nodes)
     .slice(0, 3)
-  return related.map((node) => ({
-    title: node.frontmatter.title,
-    href: node.fields.slug
-  }))
+    .map((node) => ({
+      title: node.frontmatter.title,
+      href: node.fields.slug
+    }))
+  const blogMatches = result.data.blogExact.nodes.concat(
+    result.data.blogWithin.nodes
+  )
+  const relatedBlog = blogMatches
+    .filter((node) => node.frontmatter.tags.indexOf('Tutorial') === -1)
+    .slice(0, 3)
+    .map((node) => ({
+      title: node.frontmatter.title,
+      href: node.fields.slug
+    }))
+  const relatedTutorials = blogMatches
+    .filter((node) => node.frontmatter.tags.indexOf('Tutorial') > -1)
+    .slice(0, 3)
+    .map((node) => ({
+      title: node.frontmatter.title,
+      href: node.fields.slug
+    }))
+  return {
+    docs: relatedDocs,
+    blog: relatedBlog,
+    tutorials: relatedTutorials
+  }
 }
 
 async function createAuthorPages({ author, tags, actions, graphql, reporter }) {
@@ -225,9 +301,9 @@ async function createPages({ actions, graphql, posts, template }) {
 
     // Add related tags
     const related = await getRelated({
-      tags: fields.tags,
+      graphql,
       slug,
-      graphql
+      tags: fields.tags
     })
     if (related) {
       context.related = related

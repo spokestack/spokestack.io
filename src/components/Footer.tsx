@@ -347,7 +347,6 @@ const styles = {
   footerLink: css`
     text-decoration: none;
     font-size: 14px;
-    font-weight: 400;
     margin-bottom: 10px;
 
     &,

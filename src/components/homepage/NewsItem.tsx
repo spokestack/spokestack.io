@@ -98,7 +98,6 @@ const styles = {
     align-items: center;
     width: 100%;
     white-space: nowrap;
-    font-weight: 400;
 
     &,
     &:visited {

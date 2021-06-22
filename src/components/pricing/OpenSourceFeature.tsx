@@ -35,10 +35,6 @@ const styles = {
       background-repeat: no-repeat;
     }
 
-    a {
-      font-weight: 400;
-    }
-
     ${theme.ieBreakpointMinDefault} {
       width: 305px;
     }

@@ -77,8 +77,8 @@ export const DEFAULT_WIDTH = 980
 export const TABLET_WIDTH = 768
 export const MOBILE_WIDTH = 480
 
-export const MIN_SIDEBAR_WIDTH = '300px'
-export const MAX_SIDEBAR_WIDTH = '365px'
+export const MIN_SIDEBAR_WIDTH = '250px'
+export const MAX_SIDEBAR_WIDTH = '280px'
 export const MIN_TEXT_WIDTH = '608px'
 export const MAX_TEXT_WIDTH = '1175px'
 export const MAX_BLOG_TEXT_WIDTH = '850px'

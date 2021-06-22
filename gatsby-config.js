@@ -192,6 +192,11 @@ module.exports = {
         from: '/docs/react-native',
         to: '/docs/react-native/getting-started',
         permanent: false
+      },
+      {
+        from: '/docs/welcome',
+        to: '/docs/overview',
+        permanent: true
       }
     ]
   },

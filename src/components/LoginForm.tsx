@@ -92,7 +92,6 @@ const styles = {
 
     a {
       text-decoration: none;
-      font-weight: 400;
     }
   `
 }

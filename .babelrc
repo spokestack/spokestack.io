@@ -5,7 +5,7 @@
     "inline-import",
     "transform-inline-environment-variables",
     ["prismjs", {
-      "languages": ["javascript", "swift", "java", "kotlin", "python"],
+      "languages": ["javascript", "typescript", "swift", "java", "kotlin", "python"],
       "plugins": ["line-numbers", "show-language"],
       "css": false
     }]

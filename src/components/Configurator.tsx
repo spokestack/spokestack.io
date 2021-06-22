@@ -3,154 +3,106 @@ import React, { useEffect, useState } from 'react'
 import * as theme from '../styles/theme'
 import Prism from 'prismjs'
 import SVGIcon from './SVGIcon'
-import * as ios from '../samples/ios'
-import * as android from '../samples/android'
-import * as rn from '../samples/rn'
-import * as node from '../samples/node'
-import * as python from '../samples/python'
+
+export type Platform = 'ios' | 'android' | 'rn' | 'node' | 'python'
+
+const sdks = {
+  ios: {
+    href: 'https://github.com/spokestack/spokestack-ios',
+    title: 'iOS',
+    language: 'Swift',
+    samples: require('../samples/ios')
+  },
+  android: {
+    href: 'https://github.com/spokestack/spokestack-android',
+    title: 'Android',
+    language: 'Kotlin',
+    samples: require('../samples/android')
+  },
+  rn: {
+    href: 'https://github.com/spokestack/react-native-spokestack',
+    title: 'React Native',
+    language: 'TypeScript',
+    samples: require('../samples/rn')
+  },
+  node: {
+    href: 'https://github.com/spokestack/node-spokestack',
+    title: 'Node',
+    language: 'TypeScript',
+    samples: require('../samples/node')
+  },
+  python: {
+    href: 'https://github.com/spokestack/spokestack-python',
+    title: 'Python',
+    language: 'Python',
+    samples: require('../samples/python')
+  }
+}
 
 export interface ConfiguratorProps {
   codeKey: 'wakeword' | 'keyword' | 'tts'
   extraCss?: SerializedStyles | SerializedStyles[]
+  onPlatformChange?: (platform: Platform) => void
 }
 
-export default function Configurator({ codeKey, extraCss }: ConfiguratorProps) {
-  const [platform, setPlatform] = useState<
-    'ios' | 'android' | 'rn' | 'node' | 'python'
-  >('ios')
+export default function Configurator({
+  codeKey,
+  extraCss,
+  onPlatformChange
+}: ConfiguratorProps) {
+  const [platform, setPlatform] = useState<Platform>('ios')
 
   useEffect(() => {
     Prism.highlightAll()
   }, [codeKey])
 
+  useEffect(() => {
+    if (onPlatformChange) {
+      onPlatformChange(platform)
+    }
+  }, [platform])
+
   return (
     <div css={[styles.configurator].concat(extraCss!)}>
       <div css={styles.selector}>
-        <a
-          className={`btn${platform === 'ios' ? ' selected' : ''}`}
-          css={styles.platformButton}
-          onClick={() => setPlatform('ios')}>
-          iOS
-        </a>
-        <a
-          className={`btn${platform === 'android' ? ' selected' : ''}`}
-          css={styles.platformButton}
-          onClick={() => setPlatform('android')}>
-          Android
-        </a>
-        {!!rn[codeKey] && (
+        {Object.keys(sdks).map((p) => (
           <a
-            className={`btn${platform === 'rn' ? ' selected' : ''}`}
+            key={`platform-selector-${p}`}
+            className={`btn${platform === p ? ' selected' : ''}`}
             css={styles.platformButton}
-            onClick={() => setPlatform('rn')}>
-            React Native
+            onClick={() => setPlatform(p as Platform)}>
+            {sdks[p as Platform].title}
           </a>
-        )}
-        {!!node[codeKey] && (
-          <a
-            className={`btn${platform === 'node' ? ' selected' : ''}`}
-            css={styles.platformButton}
-            onClick={() => setPlatform('node')}>
-            Node
-          </a>
-        )}
-        <a
-          className={`btn${platform === 'python' ? ' selected' : ''}`}
-          css={styles.platformButton}
-          onClick={() => setPlatform('python')}>
-          Python
-        </a>
+        ))}
       </div>
 
-      <pre
-        className="line-numbers show-language"
-        style={{ display: platform === 'ios' ? 'block' : 'none' }}>
-        <code className="language-swift">{ios[codeKey]}</code>
-      </pre>
-      <pre
-        className="line-numbers show-language"
-        style={{ display: platform === 'android' ? 'block' : 'none' }}>
-        <code className="language-kotlin">{android[codeKey]}</code>
-      </pre>
-      {!!rn[codeKey] && (
-        <pre
-          className="line-numbers show-language"
-          style={{ display: platform === 'rn' ? 'block' : 'none' }}>
-          <code className="language-javascript">{rn[codeKey]}</code>
-        </pre>
-      )}
-      {!!node[codeKey] && (
-        <pre
-          className="line-numbers show-language"
-          style={{ display: platform === 'node' ? 'block' : 'none' }}>
-          <code className="language-javascript">{node[codeKey]}</code>
-        </pre>
-      )}
-      <pre
-        className="line-numbers show-language"
-        style={{ display: platform === 'python' ? 'block' : 'none' }}>
-        <code className="language-python">{python[codeKey]}</code>
-      </pre>
+      <div css={styles.code}>
+        {Object.keys(sdks).map((p) => (
+          <pre
+            key={`configurator-code-${p}`}
+            className="line-numbers show-language"
+            style={{ display: platform === p ? 'block' : 'none' }}>
+            <code
+              className={`language-${sdks[
+                p as Platform
+              ].language.toLowerCase()}`}>
+              {sdks[p as Platform].samples[codeKey]}
+            </code>
+          </pre>
+        ))}
+      </div>
 
       <div css={styles.sdk}>
         <h5>Full-Featured Platform SDK</h5>
-        {platform === 'ios' ? (
-          <p>
-            Our{' '}
-            <a
-              className="link-secondary"
-              href="https://github.com/spokestack/spokestack-ios">
-              native iOS library
-            </a>{' '}
-            is written in Swift and includes a top-level class that makes setup
-            a breeze.
-          </p>
-        ) : platform === 'android' ? (
-          <p>
-            Our{' '}
-            <a
-              className="link-secondary"
-              href="https://github.com/spokestack/spokestack-android">
-              native Android library
-            </a>{' '}
-            is written in Java and includes a top-level class that makes setup a
-            breeze.
-          </p>
-        ) : platform === 'rn' ? (
-          <p>
-            Our{' '}
-            <a
-              className="link-secondary"
-              href="https://github.com/spokestack/react-native-spokestack">
-              React Native library
-            </a>{' '}
-            is written in JS and includes an imperative API that makes setup a
-            breeze.
-          </p>
-        ) : platform === 'node' ? (
-          <p>
-            Our{' '}
-            <a
-              className="link-secondary"
-              href="https://github.com/spokestack/node-spokestack">
-              NodeJS library
-            </a>{' '}
-            is written in JS and includes an imperative API that makes setup a
-            breeze.
-          </p>
-        ) : (
-          platform === 'python' && (
-            <p>
-              Our{' '}
-              <a
-                className="link-secondary"
-                href="https://github.com/spokestack/spokestack-python">
-                native Python library
-              </a>{' '}
-              includes a top-level class that makes setup a breeze.
-            </p>
-          )
-        )}
+        <p>
+          Our{' '}
+          <a className="link-secondary" href={sdks[platform].href}>
+            native {sdks[platform].title} library
+          </a>{' '}
+          {platform !== 'python' &&
+            `is written in ${sdks[platform].language} and `}
+          makes setup a breeze.
+        </p>
         <a className="link-secondary link-with-icon" href="/docs">
           Expore the docs{' '}
           <SVGIcon
@@ -184,8 +136,9 @@ const styles = {
   `,
   platformButton: css`
     border: none;
-    font-weight: 300;
+    font-weight: 400;
     display: inline-flex;
+    height: 40px;
 
     &,
     &:visited {
@@ -194,13 +147,19 @@ const styles = {
     }
 
     &:hover:not([disabled]) {
-      background-color: #3d5166;
+      background-color: #17202b;
     }
 
     &.selected {
       background-color: #3d5166 !important;
       color: ${theme.secondary} !important;
     }
+  `,
+  code: css`
+    width: calc(100vw - 100px);
+    max-width: 100%;
+    overflow-x: auto;
+    flex-grow: 1;
   `,
   sdk: css`
     padding: 20px;
@@ -213,13 +172,10 @@ const styles = {
     p {
       color: #abafb2;
     }
-
-    a .icon {
-      margin-left: 5px;
-    }
   `,
   arrowIcon: css`
-    width: 24px;
-    height: 24px;
+    width: 20px;
+    height: 20px;
+    margin-left: 7px;
   `
 }

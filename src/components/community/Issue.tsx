@@ -66,7 +66,6 @@ const styles = {
     border: 1px solid ${theme.mainBorder};
     padding: 20px 25px;
     text-decoration: none;
-    font-weight: 400;
     cursor: pointer;
     width: 100%;
 

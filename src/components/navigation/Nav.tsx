@@ -216,6 +216,7 @@ export default function Nav({ contentCss, extraCss }: Props) {
                     iconCss={css`
                       width: 34px;
                       height: 34px;
+                      stroke: #f29e4c;
                     `}
                     text="We offer multiple support channels that best suit the topic and product. Choose one that would best fits your needs."
                   />

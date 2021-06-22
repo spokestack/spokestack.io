@@ -26,7 +26,6 @@ const styles = {
     border: 1px solid ${theme.mainBorder};
     border-radius: 7px;
     padding: 20px;
-    font-weight: 400;
     margin: 0 auto;
 
     &,

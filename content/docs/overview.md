@@ -1,0 +1,20 @@
+---
+title: Welcome to the Spokestack Way of Voice Integration
+navTitle: Overview
+navId: Overview
+description: Spokestack documentation for mobile and web voice interface development
+draft: false
+---
+
+<div class="columns" style="gap: 25px; margin-bottom: 25px">
+  <h3 class="normal" style="flex-grow:1">Spokestack is a powerful platform of open source libraries and robust services to make your software fully voice-enabled.</h3>
+  <img alt="Spokestack by Platform" src="/docs/diagram.svg" style="flex-shrink:0" />
+</div>
+
+---
+
+## Integrations by Feature and Platform
+
+Get started with open-source libraries that add <strong>speech recognition</strong>, <strong>text-to-speech</strong>, and <strong>language understanding</strong> to your software with one simple cross-platform API. We offer SDKs for different platforms that let you manage voice interactions inside your software.
+
+Select a specific feature and a platform you’d like to integrate with for more details:

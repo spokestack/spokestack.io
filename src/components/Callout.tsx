@@ -72,7 +72,6 @@ const styles = {
     border-radius: 0 0 7px 7px;
     padding: 25px;
     text-decoration: none;
-    font-weight: 400;
 
     &,
     &:visited,

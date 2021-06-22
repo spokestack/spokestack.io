@@ -1,5 +1,10 @@
 import { MarkdownRemark } from './utils/graphql'
 
+export interface Link {
+  title: string
+  href: string
+}
+
 // Added by createPage to templates in gatsby-node.js
 export interface PageContext {
   author: string
@@ -8,18 +13,17 @@ export interface PageContext {
   limit: number
   next: MarkdownRemark
   numPages: number
-  related: RelatedLink[]
+  related: {
+    blog: Link[]
+    docs: Link[]
+    tutorials: Link[]
+  }
   previous: MarkdownRemark
   skip: number
   slug: string
   tag: string
   tags: string[]
   total: number
-}
-
-export interface RelatedLink {
-  title: string
-  href: string
 }
 
 /**

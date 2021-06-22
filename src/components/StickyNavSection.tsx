@@ -1,7 +1,7 @@
 import * as theme from '../styles/theme'
 
 import { Global, css } from '@emotion/react'
-import React, { MutableRefObject, useEffect, useState } from 'react'
+import React, { MutableRefObject, useState } from 'react'
 
 import { Link } from 'gatsby'
 import SVGIcon from './SVGIcon'
@@ -15,6 +15,9 @@ export interface StickyLink {
   href: string
   matchHash?: boolean
   navId?: string
+  // Can be used to set a different title in the nav
+  // than the main header
+  navTitle?: string
   ref?: MutableRefObject<HTMLElement>
   refSelector?: string
   section?: string
@@ -40,27 +43,7 @@ export default function StickyNavSection({
   selectedId,
   startOpen = false
 }: Props) {
-  const storageKey = `sticky-nav-section-${headerText}`
   const [open, setOpen] = useState(startOpen || !headerText)
-  useEffect(() => {
-    const openStorageValue = localStorage.getItem(storageKey)
-    if (
-      (!startOpen &&
-        openStorageValue !== null &&
-        openStorageValue === 'true') ||
-      (!open && startOpen) ||
-      !headerText
-    ) {
-      setOpen(true)
-      requestAnimationFrame(() => onOpenChange(true))
-    }
-  }, [startOpen])
-  useEffect(() => {
-    if (headerText) {
-      localStorage.setItem(storageKey, JSON.stringify(open))
-    }
-  }, [headerText, open])
-
   const rcurrentPath = currentPath(location.pathname)
 
   return (
@@ -128,7 +111,7 @@ export default function StickyNavSection({
               href={'#' + hash}
               title={link.title}
               onClick={() => onSelect(id)}>
-              {link.title}
+              {link.navTitle || link.title}
             </a>
           ) : link.forceSelect ? (
             <a
@@ -138,7 +121,7 @@ export default function StickyNavSection({
               className="sticky-nav-link active"
               href={link.href}
               title={link.title}>
-              {link.title}
+              {link.navTitle || link.title}
             </a>
           ) : (
             <Link
@@ -149,7 +132,7 @@ export default function StickyNavSection({
               activeClassName="active"
               title={link.title}
               to={link.href}>
-              {link.title}
+              {link.navTitle || link.title}
             </Link>
           )
         })}
@@ -162,17 +145,16 @@ const styles = {
   stickyNavSection: css`
     display: flex;
     flex-direction: column;
-    margin-bottom: 10px;
 
     ${theme.DEFAULT_MEDIA_QUERY} {
       display: none;
     }
   `,
   stickyNavHeader: css`
-    padding: 0 20px;
-    margin-bottom: 10px;
-    font-size: 16px;
-    text-transform: uppercase;
+    padding: 12px 20px;
+    margin: 0;
+    font-size: 14px;
+    font-weight: 700;
 
     a {
       display: flex;
@@ -185,9 +167,9 @@ const styles = {
     }
   `,
   headerIcon: css`
-    fill: ${theme.header};
-    width: 13px;
-    height: 13px;
+    fill: ${theme.primary};
+    width: 11px;
+    height: 16px;
 
     &.open {
       transform: rotateZ(-180deg);
@@ -204,11 +186,10 @@ const styles = {
   `,
   stickyNavLink: css`
     line-height: 1.2;
-    padding: 10px 20px;
+    padding: 12px 20px 12px 22px;
     text-decoration: none;
     user-select: none;
-    font-weight: 400;
-    font-size: 16px;
+    font-size: 14px;
 
     &,
     &:visited {
@@ -221,10 +202,6 @@ const styles = {
     &.active-no-bg {
       cursor: default;
       pointer-events: none;
-      font-weight: 700;
-    }
-    &.active {
-      border-radius: 50px 0 0 50px;
     }
   `
 }

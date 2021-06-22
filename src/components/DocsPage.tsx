@@ -1,17 +1,17 @@
 import * as theme from '../styles/theme'
 
-import { Link, PageRendererProps, graphql, useStaticQuery } from 'gatsby'
+import { PageRendererProps, graphql, useStaticQuery } from 'gatsby'
 import { MarkdownRemark, Query } from '../utils/graphql'
 
 import Create from './Create'
 import DarkModeButton from '../components/DarkModeButton'
 import Layout from '../components/Layout'
 import React from 'react'
-import { RelatedLink } from '../types'
+import { PageContext } from '../types'
 import SEO from '../components/SEO'
 import { StickyLink } from '../components/StickyNav'
 import StickyNavLayout from '../components/StickyNavLayout'
-import { css } from '@emotion/react'
+import { css, Global } from '@emotion/react'
 import difference from 'lodash/difference'
 import findImage from '../utils/findImage'
 import { isLoggedIn } from '../utils/auth'
@@ -19,11 +19,13 @@ import order from '../../content/docs/nav.json'
 import removeTrailingSlash from '../utils/removeTrailingSlash'
 import sortBy from 'lodash/sortBy'
 import uniqBy from 'lodash/uniqBy'
+import Related from './Related'
+import hashToId from '../utils/hashToId'
 
 interface Props {
   location: PageRendererProps['location']
   post: MarkdownRemark
-  related: RelatedLink[]
+  related?: PageContext['related']
   selectFirst?: boolean
 }
 
@@ -62,11 +64,15 @@ export default function DocsPage({
   const data = useStaticQuery<Query>(docsPageQuery)
   const posts = data.allMarkdownRemark.edges
   posts.forEach(({ node }) => {
+    const fields = node.fields!
+    const frontmatter = node.frontmatter!
+    const title = frontmatter.title!
     links.push({
-      href: node.fields!.slug!,
-      section: node.fields!.folder!,
-      title: node.frontmatter!.title!,
-      navId: node.frontmatter!.navId!
+      href: fields.slug!,
+      section: fields.folder!,
+      title,
+      navId: frontmatter.navId!,
+      navTitle: frontmatter.navTitle || title
     })
   })
   const orderedLinks = orderLinks(links)
@@ -93,14 +99,42 @@ export default function DocsPage({
             : findImage(post.html!)
         }
       />
-      <StickyNavLayout links={orderedLinks} location={location}>
+      <Global
+        styles={css`
+          .forum-link {
+            .icon {
+              stroke: ${theme.link};
+            }
+            &:hover .icon {
+              stroke: ${theme.linkHover};
+            }
+            &:active .icon {
+              stroke: ${theme.linkActive};
+            }
+          }
+          html.dark-mode {
+            .forum-link {
+              .icon {
+                stroke: ${theme.linkDark};
+              }
+              &:hover .icon {
+                stroke: ${theme.linkDarkHover};
+              }
+              &:active .icon {
+                stroke: ${theme.linkDarkActive};
+              }
+            }
+          }
+        `}
+      />
+      <StickyNavLayout showHeaderNav links={orderedLinks} location={location}>
         <header className="docs-header">
           {selectFirst ? (
-            <h2>
+            <h2 id={hashToId(frontmatter.title!)}>
               <a href={post.fields!.slug!}>{frontmatter.title}</a>
             </h2>
           ) : (
-            <h2>{frontmatter.title}</h2>
+            <h2 id={hashToId(frontmatter.title!)}>{frontmatter.title}</h2>
           )}
           <DarkModeButton />
         </header>
@@ -112,31 +146,11 @@ export default function DocsPage({
           />
         )}
         <div dangerouslySetInnerHTML={{ __html: post.html! }} />
-        <div css={styles.footer}>
-          {!!related?.length && (
-            <div css={styles.footerLeft}>
-              See also
-              <div css={styles.relatedLinks}>
-                {related.map((link, i) => (
-                  <Link key={`related-${i}`} to={link.href}>
-                    {link.title}
-                  </Link>
-                ))}
-              </div>
-            </div>
-          )}
-          <div css={styles.footerRight}>
-            Something missing here?
-            <a
-              href={post.fields!.githubLink!}
-              rel="noopener noreferrer"
-              target="_blank">
-              Edit this doc!
-            </a>
-            Questions?{' '}
-            <a href="https://forum.spokestack.io/">Visit our forum</a>
-          </div>
-        </div>
+        <Related
+          description="Want to dive deeper into the world of Android voice integration? We've got a lot to say on the subject:"
+          githubLink={post.fields!.githubLink!}
+          related={related}
+        />
       </StickyNavLayout>
       {!isLoggedIn() && <Create />}
     </Layout>
@@ -144,35 +158,9 @@ export default function DocsPage({
 }
 
 const styles = {
-  footer: css`
-    display: flex;
-    flex-direction: column;
-    padding: 20px 0;
-    border-top: 1px solid ${theme.mainBorder};
-
-    ${theme.MIN_DEFAULT_MEDIA_QUERY} {
-      flex-direction: row;
-      justify-content: space-between;
-    }
-  `,
-  footerLeft: css`
-    margin-bottom: 15px;
-
-    ${theme.MIN_DEFAULT_MEDIA_QUERY} {
-      margin: 0;
-    }
-  `,
-  footerRight: css`
-    display: flex;
-    flex-direction: column;
-  `,
   hero: css`
     width: 100%;
     border-radius: 7px;
-  `,
-  relatedLinks: css`
-    display: flex;
-    flex-direction: column;
   `
 }
 
@@ -193,6 +181,7 @@ export const docsPageQuery = graphql`
           frontmatter {
             description
             navId
+            navTitle
             title
           }
         }

@@ -30,7 +30,6 @@ const styles = {
     text-decoration: none;
     background-color: ${theme.primaryDark};
     font-size: 14px;
-    font-weight: 400;
     padding: 20px;
     overflow: hidden;
     z-index: 99999;

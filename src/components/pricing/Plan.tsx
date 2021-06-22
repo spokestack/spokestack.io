@@ -131,10 +131,6 @@ const styles = {
     align-items: center;
     font-size: 14px;
     padding: 10px 10px 10px 12px;
-
-    a {
-      font-weight: 400;
-    }
   `,
   checkmarkIcon: css`
     width: 24px;
@@ -168,9 +164,5 @@ const styles = {
     font-style: italic;
     margin-top: 10px;
     width: 100%;
-
-    a {
-      font-weight: 400;
-    }
   `
 }

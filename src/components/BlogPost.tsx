@@ -7,7 +7,7 @@ import Layout from '../components/Layout'
 import { Link } from 'gatsby'
 import { MarkdownRemark } from '../utils/graphql'
 import React from 'react'
-import { RelatedLink } from '../types'
+import { PageContext } from '../types'
 import SEO from '../components/SEO'
 import Tags from './Tags'
 import { css } from '@emotion/react'
@@ -18,7 +18,7 @@ import DraftBadge from './DraftBadge'
 
 interface Props {
   post: MarkdownRemark
-  related?: RelatedLink[]
+  related?: PageContext['related']
 }
 
 export default function BlogPost({ post, related }: Props) {
@@ -55,10 +55,10 @@ export default function BlogPost({ post, related }: Props) {
               tags={post.fields.tags?.filter(Boolean) as string[]}
               header="Related Tags"
             />
-            {!!related?.length && (
+            {!!related?.blog.length && (
               <div css={styles.relatedLinks}>
                 <h6>Related Articles</h6>
-                {related.map((link, i) => (
+                {related.blog.map((link, i) => (
                   <Link
                     key={`related-${i}`}
                     to={link.href}

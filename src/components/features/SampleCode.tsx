@@ -65,10 +65,6 @@ const styles = {
     color: white;
     padding: 20px;
 
-    a {
-      font-weight: 400;
-    }
-
     h2,
     h3,
     h4,

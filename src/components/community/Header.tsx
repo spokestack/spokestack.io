@@ -13,7 +13,7 @@ export default function CommunityHeader({ href, icon, linkText, text }: Props) {
   return (
     <div css={styles.header}>
       <h3>{text}</h3>
-      <a href={href} className="link-with-icon" css={styles.link}>
+      <a href={href} className="link-with-icon">
         {icon}
         <span css={styles.linkText}>{linkText}</span>
       </a>
@@ -42,9 +42,6 @@ const styles = {
         margin: 0;
       }
     }
-  `,
-  link: css`
-    font-weight: 400;
   `,
   linkText: css`
     display: inline-block;

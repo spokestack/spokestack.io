@@ -83,9 +83,12 @@ export default css`
     font-style: italic;
     margin-bottom: 15px;
   }
+  .normal {
+    font-weight: 400;
+  }
   a {
     color: ${theme.link};
-    font-weight: 700;
+    font-weight: 400;
     text-decoration: none;
     text-decoration-color: ${theme.link};
     text-decoration-thickness: 0.1em;
@@ -95,6 +98,9 @@ export default css`
 
     .icon {
       fill: ${theme.link};
+
+      transition: fill 0.1s ${theme.transitionEasing},
+        stroke 0.1s ${theme.transitionEasing};
     }
 
     &:visited {
@@ -166,6 +172,15 @@ export default css`
   form {
     margin: 0;
   }
+  td,
+  th,
+  th:first-of-type,
+  td:first-of-type,
+  th:last-of-type,
+  td:last-of-type {
+    padding-left: 10px;
+    padding-right: 10px;
+  }
   figcaption {
     font-size: 0.9rem;
     font-style: italic;
@@ -211,6 +226,7 @@ export default css`
   h4 a,
   h5 a {
     text-decoration: none;
+    font-weight: 700;
   }
   code[class*='language-'],
   pre[class*='language-'] {
@@ -224,13 +240,14 @@ export default css`
     background-color: ${theme.codeBackground};
     border: 1px solid ${theme.mainBorder};
     border-radius: 7px;
-    font-weight: 600;
+    font-weight: 700;
     padding: 0 5px;
   }
   pre code {
     padding: 0;
   }
   div.code-toolbar > .toolbar {
+    top: -10px;
     right: 20px;
   }
   ul {
@@ -433,8 +450,9 @@ export default css`
     }
   }
   .label {
-    font-size: 0.8rem;
+    font-size: 0.9rem;
     font-weight: 700;
+    flex-shrink: 0;
 
     ${theme.MIN_DEFAULT_MEDIA_QUERY} {
       font-size: 1rem;
@@ -466,6 +484,12 @@ export default css`
     h5,
     h6 {
       margin-top: 15px;
+    }
+    hr {
+      border: none;
+      width: 100%;
+      height: 2px;
+      background: ${theme.pricingBorderHorizontal} top center no-repeat;
     }
   }
   .columns {
@@ -501,7 +525,7 @@ export default css`
     flex-direction: row;
     justify-content: space-between;
     align-items: flex-end;
-    margin-bottom: 15px;
+    margin-bottom: 25px;
 
     h2 {
       margin: 0;
@@ -553,13 +577,25 @@ export default css`
       color: ${theme.linkDark};
       text-decoration-color: ${theme.linkDark};
 
+      .icon {
+        fill: ${theme.linkDark};
+      }
+
       &:hover {
         color: ${theme.linkDarkHover};
         text-decoration-color: ${theme.linkDarkHover};
+
+        .icon {
+          fill: ${theme.linkDarkHover};
+        }
       }
       &:active {
         color: ${theme.linkDarkActive};
         text-decoration-color: ${theme.linkDarkActive};
+
+        .icon {
+          fill: ${theme.linkDarkActive};
+        }
       }
     }
     .btn {
@@ -685,7 +721,8 @@ export default css`
     p,
     h1,
     h2,
-    h3 {
+    h3,
+    h4 {
       width: 100%;
     }
 

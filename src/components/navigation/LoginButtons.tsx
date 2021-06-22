@@ -89,7 +89,6 @@ const styles = {
     }
   `,
   loginLink: css`
-    font-weight: 400;
     margin-right: 20px;
     text-decoration: none;
 

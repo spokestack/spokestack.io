@@ -4,7 +4,7 @@ import React, { useEffect, useRef, useState } from 'react'
 
 import { css } from '@emotion/react'
 import debounce from 'lodash/debounce'
-import getTextHeight from '../utils/getTextHeight'
+import getContentHeight from '../utils/getContentHeight'
 
 interface Props {
   question: React.ReactNode
@@ -12,7 +12,7 @@ interface Props {
   startOpen?: boolean
 }
 
-const PADDING_BOTTOM = 25
+const PADDING_BOTTOM = 15
 
 export default function Question({ question, answer, startOpen }: Props) {
   const [open, setOpen] = useState(true)
@@ -27,10 +27,10 @@ export default function Question({ question, answer, startOpen }: Props) {
         // Add space for bottom padding
         setHeight(
           PADDING_BOTTOM +
-            getTextHeight(
+            getContentHeight(
               answerRef.current.innerHTML!,
               ref.current,
-              `padding:0 65px 0 ${PADDING_BOTTOM}px`
+              `padding: 0 65px 0 ${PADDING_BOTTOM}px`
             )
         )
       }
@@ -44,7 +44,7 @@ export default function Question({ question, answer, startOpen }: Props) {
     return () => {
       window.removeEventListener('resize', debouncedReset)
     }
-  }, [])
+  }, [answer])
 
   if (open) {
     answerStyle.push(styles.open)
@@ -125,7 +125,7 @@ const styles = {
   answer: css`
     position: relative;
     opacity: 0;
-    padding: 0 65px 0 ${PADDING_BOTTOM}px;
+    padding: 0 65px 0 20px;
     transition: height 0.2s ${theme.transitionEasing},
       padding-bottom 0.2s ${theme.transitionEasing},
       opacity 0.2s ${theme.transitionEasing};
@@ -136,8 +136,8 @@ const styles = {
       margin: 0;
     }
 
-    a {
-      font-weight: 400;
+    img {
+      display: block;
     }
   `,
   open: css`

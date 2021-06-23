@@ -317,6 +317,11 @@ module.exports = {
             }
           },
           {
+            // While gatsby-remark-embedder can also
+            // embed youtube videos, it does not have
+            // options to customize width/height so
+            // that gatsby-remark-responsive-iframe
+            // will do its work.
             resolve: 'gatsby-remark-embed-video',
             options: {
               urlOverrides: [
@@ -331,7 +336,7 @@ module.exports = {
           {
             resolve: 'gatsby-remark-responsive-iframe',
             options: {
-              wrapperStyle: 'margin-bottom: 1.0725rem'
+              wrapperStyle: 'margin-bottom: 25px'
             }
           },
           {

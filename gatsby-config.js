@@ -316,7 +316,18 @@ module.exports = {
               }
             }
           },
-          'gatsby-remark-embed-video',
+          {
+            resolve: 'gatsby-remark-embed-video',
+            options: {
+              urlOverrides: [
+                {
+                  id: 'youtube',
+                  embedURL: (videoId) =>
+                    `https://www.youtube-nocookie.com/embed/${videoId}`
+                }
+              ]
+            }
+          },
           {
             resolve: 'gatsby-remark-responsive-iframe',
             options: {

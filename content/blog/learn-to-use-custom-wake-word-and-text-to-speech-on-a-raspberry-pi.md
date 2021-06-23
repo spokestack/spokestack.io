@@ -1,6 +1,6 @@
 ---
 title: Learn to Use Custom Wake Word and Text-to-Speech on a Raspberry Pi
-date: '2021-04-28'
+date: '2021-06-23'
 description: Following this guide teaches you how to deploy your Maker models on an embedded device.
 author: will
 tags: Apps, Engineering, Python, Tutorial

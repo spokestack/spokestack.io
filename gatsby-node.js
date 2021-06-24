@@ -41,7 +41,7 @@ async function getRelated({ graphql, slug, tags }) {
   }
   const result = await graphql(`
     {
-      docsExact: allMarkdownRemark(
+      docsExact: allMdx(
         sort: { fields: [frontmatter___date], order: DESC }
         filter: {
           fileAbsolutePath: { regex: "/docs/" }
@@ -64,7 +64,7 @@ async function getRelated({ graphql, slug, tags }) {
           }
         }
       }
-      docsWithin: allMarkdownRemark(
+      docsWithin: allMdx(
         sort: { fields: [frontmatter___tags], order: ASC }
         filter: {
           fileAbsolutePath: { regex: "/docs/" }
@@ -88,7 +88,7 @@ async function getRelated({ graphql, slug, tags }) {
           }
         }
       }
-      blogExact: allMarkdownRemark(
+      blogExact: allMdx(
         sort: { fields: [frontmatter___date], order: DESC }
         filter: {
           fileAbsolutePath: { regex: "/blog/" }
@@ -112,7 +112,7 @@ async function getRelated({ graphql, slug, tags }) {
           }
         }
       }
-      blogWithin: allMarkdownRemark(
+      blogWithin: allMdx(
         sort: { fields: [frontmatter___tags], order: ASC }
         filter: {
           fileAbsolutePath: { regex: "/blog/" }
@@ -177,7 +177,7 @@ async function createAuthorPages({ author, tags, actions, graphql, reporter }) {
   const { createPage } = actions
   const result = await graphql(`
     {
-      allMarkdownRemark(
+      allMdx(
         sort: { fields: [frontmatter___date], order: DESC },
         filter: {
           fileAbsolutePath: { regex: "/blog/" },
@@ -203,7 +203,7 @@ async function createAuthorPages({ author, tags, actions, graphql, reporter }) {
     reporter.panicOnBuild('Error while running GraphQL query')
     return
   }
-  const posts = result.data.allMarkdownRemark.edges
+  const posts = result.data.allMdx.edges
   const numPages = Math.ceil(posts.length / postsPerPage)
   const url = `/blog/author/${author}`
   Array.from({ length: numPages }).forEach((_, i) => {
@@ -229,7 +229,7 @@ async function createTagPages({ tag, tags, actions, graphql, reporter }) {
   const { createPage } = actions
   const result = await graphql(`
     {
-      allMarkdownRemark(
+      allMdx(
         sort: { fields: [frontmatter___date], order: DESC },
         filter: {
           fileAbsolutePath: { regex: "/blog/" },
@@ -253,7 +253,7 @@ async function createTagPages({ tag, tags, actions, graphql, reporter }) {
     reporter.panicOnBuild('Error while running GraphQL query')
     return
   }
-  const posts = result.data.allMarkdownRemark.edges
+  const posts = result.data.allMdx.edges
   const numPages = Math.ceil(posts.length / postsPerPage)
   const url = tag === 'Tutorial' ? '/tutorials' : `/blog/tag/${toUrl(tag)}`
   Array.from({ length: numPages }).forEach((_, i) => {
@@ -320,7 +320,7 @@ async function createPages({ actions, graphql, posts, template }) {
 async function verifyHeros(graphql, reporter) {
   const result = await graphql(`
     {
-      heros: allMarkdownRemark(
+      heros: allMdx(
         filter: {
           fileAbsolutePath: { regex: "/blog/" }
           frontmatter: { hero: { publicURL: { eq: null } } }
@@ -335,7 +335,7 @@ async function verifyHeros(graphql, reporter) {
           }
         }
       }
-      seos: allMarkdownRemark(
+      seos: allMdx(
         filter: {
           fileAbsolutePath: { regex: "/docs/" }
           frontmatter: { seoImage: { publicURL: { eq: null } } }
@@ -395,7 +395,7 @@ exports.createPages = async ({ graphql, actions, reporter }) => {
           }
         }
       }
-      blog: allMarkdownRemark(
+      blog: allMdx(
         sort: { fields: [frontmatter___date], order: DESC },
         filter: {
           fileAbsolutePath: { regex: "/blog/" }
@@ -413,7 +413,7 @@ exports.createPages = async ({ graphql, actions, reporter }) => {
           }
         }
       }
-      docs: allMarkdownRemark(
+      docs: allMdx(
         filter: {
           fileAbsolutePath: { regex: "/docs/" }
           ${isProd ? ',frontmatter: { draft: { ne: true } }' : ''}
@@ -430,7 +430,7 @@ exports.createPages = async ({ graphql, actions, reporter }) => {
           }
         }
       }
-      tags: allMarkdownRemark(
+      tags: allMdx(
         filter: {
           fileAbsolutePath: { regex: "/blog/" }
           fields: { tags: { ne: null } }
@@ -551,7 +551,7 @@ exports.onCreateNode = async ({ node, actions, getNode }) => {
   }
 
   // Add custom fields for docs and blog contexts
-  if (node.internal.type === 'MarkdownRemark') {
+  if (node.internal.type === 'Mdx') {
     const isDocsPage = rdocs.test(node.fileAbsolutePath)
     const folder = path.basename(path.dirname(node.fileAbsolutePath))
     const filepath = createFilePath({ node, getNode, trailingSlash: false })

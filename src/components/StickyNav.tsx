@@ -47,7 +47,7 @@ export default function StickyNav({
   const rcurrentPath = currentPath(location.pathname)
   const navRef = useRef<HTMLElement>(null)
   const [selectedLink, setSelectedLink] = useState<StickyLink | undefined>(
-    links.find((link) => rcurrentPath.test(link.href))
+    links.find((link) => !link.matchHash && rcurrentPath.test(link.href))
   )
   const [selectedId, setSelectedId] = useState<string | null>(null)
   const [selectedElemVisible, setSelectedElemVisible] = useState<

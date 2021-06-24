@@ -67,3 +67,53 @@ try {
   console.error(error)
 }
 `
+
+export const nlu = `// Server-side: GraphQL API proxy
+const app = express()
+app.post('/graphql', bodyParser.json(), spokestackMiddleware())
+
+// Client-side: query nluInfer using apollo
+const client = new ApolloClient({ uri: '/graphql' })
+try {
+  const response = await this.client.query({
+    fetchPolicy: 'no-cache',
+    query: gql\`
+      query nluInfer($input: String!, $model: String!, $source: NluModelSource = ACCOUNT) {
+        nluInfer(input: $input, model: $model, source: $source) {
+          confidence
+          intent
+          slots {
+            confidence
+            key
+            text
+            value
+          }
+        }
+      }
+    \`,
+    variables: {
+      input: 'How do I make a castle?',
+      model: 'Minecraft',
+      source: 'SHARED'
+    }
+  })
+} catch (error) {
+  console.error(error)
+}
+`
+
+export const asr = `import { startStream } from 'spokestack/client'
+// ...
+let ws: WebSocket
+try {
+  ;[ws] = await startStream({
+    isPlaying: () => this.isPlaying
+  })
+} catch (error) {
+  console.error(error)
+  return
+}
+ws.addEventListener('message', (e) => {
+  console.log('Speech processed: ', e.data)
+})
+`

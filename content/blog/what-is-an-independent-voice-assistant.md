@@ -32,11 +32,11 @@ Building an independent voice assistant offers more control over the customer ex
 
 ## How Are Independent Voice Assistants Used?
 
-<div class="floating-image--left" style="width: 300px;"><img src="../assets/blog/what-is-an-independent-voice-assistant/iva-what-can-i-play-for-you.png" width="300" alt="What can I play for you?" /></div>
+<div className="floating-image--left" style="width: 300px;"><img src="../assets/blog/what-is-an-independent-voice-assistant/iva-what-can-i-play-for-you.png" width="300" alt="What can I play for you?" /></div>
 
 Voice assistants can be integrated with existing mobile apps and/or websites. These can entail something as simple as offering voice search using a touch-to-talk mic button. They can also be more dynamic experiences that involve things like wake words to activate listening and content that is broken out into conversational pieces like step-by-step instructions.
 
-<div class="floating-image--right" style="width: 100px;"><img src="../assets/blog/what-is-an-independent-voice-assistant/iva-add-to-siri.png" width="100" alt="Add to Siri" /></div>
+<div className="floating-image--right" style="width: 100px;"><img src="../assets/blog/what-is-an-independent-voice-assistant/iva-add-to-siri.png" width="100" alt="Add to Siri" /></div>
 
 Independent voice assistants can also co-exist with third party voice platforms (e.g. Siri, Google, Alexa). Currently, iOS and Android prefer using deep links ([Siri Shortcuts](https://support.apple.com/en-us/HT209055) for iOS; [App Actions](https://developers.google.com/assistant/app/overview) for Android) to interface with Siri and Google Assistant. Deep links require developers to link to parts of their application based on what the user says to Siri and Google Assistant. Developers who add voice to their app can have deep links resolve to a listening screen that asks the user “How may I help you?” and take over the conversation.
 

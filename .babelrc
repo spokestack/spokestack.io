@@ -6,7 +6,7 @@
     "transform-inline-environment-variables",
     ["prismjs", {
       "languages": ["javascript", "typescript", "swift", "java", "kotlin", "python"],
-      "plugins": ["line-numbers", "show-language"],
+      "plugins": ["line-numbers"],
       "css": false
     }]
   ],

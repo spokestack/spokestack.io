@@ -9,16 +9,14 @@ type Props = PageRendererProps & {
 }
 
 export default function Docs({ data, location }: Props) {
-  return (
-    <DocsPage selectFirst location={location} post={data.markdownRemark!} />
-  )
+  return <DocsPage selectFirst location={location} post={data.mdx!} />
 }
 
 export const pageQuery = graphql`
   query docsQuery {
-    markdownRemark(fields: { slug: { eq: "/docs/overview" } }) {
+    mdx(fields: { slug: { eq: "/docs/overview" } }) {
+      body
       id
-      html
       fields {
         githubLink
         slug

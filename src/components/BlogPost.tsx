@@ -5,7 +5,7 @@ import Create from './Create'
 import DarkModeButton from './DarkModeButton'
 import Layout from '../components/Layout'
 import { Link } from 'gatsby'
-import { MarkdownRemark } from '../utils/graphql'
+import { Mdx } from '../utils/graphql'
 import React from 'react'
 import { PageContext } from '../types'
 import SEO from '../components/SEO'
@@ -15,9 +15,10 @@ import findImage from '../utils/findImage'
 import { isLoggedIn } from '../utils/auth'
 import removeTrailingSlash from '../utils/removeTrailingSlash'
 import DraftBadge from './DraftBadge'
+import { MDXRenderer } from 'gatsby-plugin-mdx'
 
 interface Props {
-  post: MarkdownRemark
+  post: Mdx
   related?: PageContext['related']
 }
 
@@ -33,7 +34,7 @@ export default function BlogPost({ post, related }: Props) {
             ? `${removeTrailingSlash(process.env.SITE_URL!)}${
                 frontmatter.seoImage.publicURL
               }`
-            : findImage(post.html!)
+            : findImage(post.body!)
         }
       />
       <div className="ie-fix" css={styles.container}>
@@ -46,7 +47,7 @@ export default function BlogPost({ post, related }: Props) {
             <h2>{frontmatter.title}</h2>
             <DarkModeButton />
           </header>
-          <div dangerouslySetInnerHTML={{ __html: post.html! }} />
+          <MDXRenderer>{post.body!}</MDXRenderer>
           <p css={styles.date}>Originally posted {frontmatter.date}</p>
         </section>
         {post.fields && (

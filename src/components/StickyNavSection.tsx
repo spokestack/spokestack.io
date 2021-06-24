@@ -3,12 +3,12 @@ import * as theme from '../styles/theme'
 import { Global, css } from '@emotion/react'
 import React, { MutableRefObject, useState } from 'react'
 
-import { Link } from 'gatsby'
 import SVGIcon from './SVGIcon'
 import { WindowLocation } from '@reach/router'
 import currentPath from '../utils/currentPath'
 import getHash from '../utils/getHash'
 import hashToId from '../utils/hashToId'
+import Color from 'color'
 
 export interface StickyLink {
   forceSelect?: boolean
@@ -64,6 +64,10 @@ export default function StickyNavSection({
           }
 
           html.dark-mode {
+            .sticky-nav-link,
+            .sticky-nav-link:visited {
+              color: ${Color('#ffffff').fade(0.2).toString()};
+            }
             .nav-selected-bg,
             .sticky-nav-link.active {
               background-color: ${theme.mainBackgroundDark};
@@ -113,27 +117,18 @@ export default function StickyNavSection({
               onClick={() => onSelect(id)}>
               {link.navTitle || link.title}
             </a>
-          ) : link.forceSelect ? (
+          ) : (
             <a
               key={`sticky-nav-link-${i}`}
               id={id}
               css={styles.stickyNavLink}
-              className="sticky-nav-link active"
+              className={`sticky-nav-link${
+                rcurrentPath.test(link.href) ? ' active' : ''
+              }`}
               href={link.href}
               title={link.title}>
               {link.navTitle || link.title}
             </a>
-          ) : (
-            <Link
-              key={`sticky-nav-link-${i}`}
-              css={styles.stickyNavLink}
-              className="sticky-nav-link"
-              id={id}
-              activeClassName="active"
-              title={link.title}
-              to={link.href}>
-              {link.navTitle || link.title}
-            </Link>
           )
         })}
       </div>

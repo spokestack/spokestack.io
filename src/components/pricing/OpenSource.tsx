@@ -147,7 +147,7 @@ const styles = {
     ${theme.MIN_DEFAULT_MEDIA_QUERY} {
       h2 {
         position: relative;
-        background-image: ${theme.pricingBorderHorizontal};
+        background-image: ${theme.dashedBorderHorizontal};
         background-position: center;
         background-repeat: no-repeat;
 

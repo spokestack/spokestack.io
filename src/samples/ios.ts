@@ -32,3 +32,19 @@ let input = TextToSpeechInput(
 )
 tts.speak(input)
 `
+
+export const nlu = `let config = SpeechConfiguration()
+config.nluVocabularyPath = Bundle(for: type(of: self)).path(forResource: "vocab", ofType: "txt")
+config.nluModelPath = Bundle(for: type(of: self)).path(forResource: "nlu", ofType: "tflite")
+config.nluModelMetadataPath = Bundle(for: type(of: self)).path(forResource: "nlu", ofType: "json")
+
+let nlu = try! NLUTensorflow(self, configuration: config)
+nlu.classify(utterance: "turn the lights on in the kitchen")
+`
+
+export const asr = `let spokestack = SpokestackBuilder()
+    .addDelegate(self)
+    .usePipelineProfile(.vadTriggerAppleSpeech)
+    .build()
+spokestack.start()
+`

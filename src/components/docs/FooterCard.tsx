@@ -12,12 +12,17 @@ export default function FooterCard({ children, header }: Props) {
     <div className="footer-card" css={styles.container}>
       <Global
         styles={css`
-          html.dark-mode .footer-card {
-            background-color: ${theme.mainBackgroundDark};
+          html.dark-mode {
+            .footer-card {
+              background-color: ${theme.mainBackgroundDark};
+              border-color: ${theme.mainBorderDark};
+            }
           }
         `}
       />
-      <h5 css={styles.header}>{header}</h5>
+      <h5 className="dashed-border-bottom" css={styles.header}>
+        {header}
+      </h5>
       <div css={styles.content}>{children}</div>
     </div>
   )
@@ -41,7 +46,6 @@ const styles = {
     text-transform: uppercase;
     padding: 10px 20px;
     margin: 0 !important;
-    background: ${theme.pricingBorderHorizontal} bottom center no-repeat;
     color: ${theme.headerColor.fade(0.2).toString()};
   `,
   content: css`

@@ -1,6 +1,5 @@
 import { css } from '@emotion/react'
 import React from 'react'
-import * as theme from '../../styles/theme'
 
 interface Props {
   title?: string
@@ -9,7 +8,7 @@ interface Props {
 
 export default function Section({ title, children }: Props) {
   return (
-    <section css={styles.section}>
+    <section className="dashed-border-top" css={styles.section}>
       {!!title && <h2>{title}</h2>}
       {children}
     </section>
@@ -34,8 +33,8 @@ const styles = {
       margin: 0;
     }
 
-    &:not(:first-of-type) {
-      background: ${theme.pricingBorderHorizontal} no-repeat top center;
+    &:first-of-type::before {
+      background: none;
     }
   `
 }

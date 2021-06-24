@@ -1,7 +1,7 @@
 import React from 'react'
 import FeatureCallout from '../../components/features/FeatureCallout'
 import Header from '../../components/features/Header'
-import Info from '../../components/features/Info'
+import Info from '../../components/Info'
 import Section from '../../components/features/Section'
 import Layout from '../../components/Layout'
 import SEO from '../../components/SEO'
@@ -339,7 +339,7 @@ export default function WakewordPage() {
           </div>
         </Section>
       </div>
-      <SampleCode title="How Do I Use a Wake Word Model?" codeKey="wakeword" />
+      <SampleCode feature="wakeword" title="How Do I Use a Wake Word Model?" />
       <Create />
     </Layout>
   )

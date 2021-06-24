@@ -26,7 +26,7 @@ export default function BlogListTemplate({
         currentPage={currentPage}
         homeUrl={slug}
         numPages={numPages}
-        posts={data.allMarkdownRemark.edges}
+        posts={data.allMdx.edges}
         tags={tags}
         title="Blog"
       />
@@ -36,7 +36,7 @@ export default function BlogListTemplate({
 
 export const blogListQuery = graphql`
   query blogListQuery($skip: Int!, $limit: Int!, $dev: Boolean!) {
-    allMarkdownRemark(
+    allMdx(
       filter: {
         fileAbsolutePath: { regex: "/blog/" }
         frontmatter: { draft: { in: [false, $dev] } }

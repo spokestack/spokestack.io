@@ -16,11 +16,11 @@ function SampleCodeCheck({ text }: { text: string }) {
 }
 
 interface Props {
-  codeKey: ConfiguratorProps['codeKey']
+  feature: ConfiguratorProps['feature']
   title: string
 }
 
-export default function SampleCode({ codeKey, title }: Props) {
+export default function SampleCode({ feature, title }: Props) {
   return (
     <section className="ie-fix" css={styles.sampleCode}>
       <div className="ie-fix" css={styles.description}>
@@ -51,7 +51,7 @@ export default function SampleCode({ codeKey, title }: Props) {
           </div>
         </div>
       </div>
-      <Configurator codeKey={codeKey} extraCss={styles.configurator} />
+      <Configurator feature={feature} extraCss={styles.configurator} />
     </section>
   )
 }
@@ -63,7 +63,7 @@ const styles = {
     align-items: flex-start;
     background-color: #232b32;
     color: white;
-    padding: 20px;
+    padding: 20px 20px 0;
 
     h2,
     h3,

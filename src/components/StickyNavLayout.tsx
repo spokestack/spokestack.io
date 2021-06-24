@@ -47,8 +47,13 @@ export default function StickyNavLayout({
     <div id={id} css={styles.container} className="ie-fix">
       <Global
         styles={css`
-          html.dark-mode .sticky-nav-wrap {
-            background-color: ${theme.stickyNavBackgroundDark};
+          html.dark-mode {
+            .sticky-nav-wrap {
+              background-color: ${theme.stickyNavBackgroundDark};
+            }
+            .sticky-header-nav a.selected {
+              color: ${theme.linkDark} !important;
+            }
           }
         `}
       />
@@ -60,8 +65,8 @@ export default function StickyNavLayout({
           {children}
         </div>
       </article>
-      {showHeaderNav && (
-        <div css={styles.headerNav}>
+      {showHeaderNav && headerLinks.length > 1 && (
+        <div className="sticky-header-nav" css={styles.headerNav}>
           <div css={styles.stickyHeaderNav}>
             {headerLinks.map((link, i) => (
               <a
@@ -94,7 +99,7 @@ const styles = {
         1fr;
     }
 
-    ${theme.MIN_LARGER_DISPLAY_MEDIA_QUERY} {
+    ${theme.MIN_LARGE_DISPLAY_MEDIA_QUERY} {
       grid-template-areas: 'sidenav content headernav';
       grid-template-columns:
         minmax(${theme.MIN_SIDEBAR_WIDTH}, ${theme.MAX_SIDEBAR_WIDTH})

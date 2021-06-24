@@ -38,7 +38,7 @@ export default function Related({
     <div css={styles.related}>
       {!!(tutorials.length || blog.length || videos.length) && (
         <div css={styles.blogRelated}>
-          <div css={styles.cards}>
+          <div className="dashed-border-top" css={styles.cards}>
             <h2>Related Resources</h2>
             <p>{description}</p>
             {!!tutorials.length && (
@@ -83,7 +83,7 @@ export default function Related({
           </div>
         </div>
       )}
-      <div css={styles.cards}>
+      <div className="dashed-border-top" css={styles.cards}>
         {!!docs.length && (
           <FooterCard header="Explore Related Docs">
             <div css={styles.relatedLinks}>
@@ -154,7 +154,6 @@ const styles = {
     display: flex;
     flex-direction: column;
     padding: 40px 0;
-    background: ${theme.pricingBorderHorizontal} top center no-repeat;
   `,
   columnCards: css`
     display: flex;

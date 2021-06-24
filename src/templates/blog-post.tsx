@@ -12,15 +12,15 @@ type Props = PageRendererProps & {
 }
 
 export default function BlogPostTemplate({ data, pageContext }: Props) {
-  return <BlogPost post={data.markdownRemark!} related={pageContext.related} />
+  return <BlogPost post={data.mdx!} related={pageContext.related} />
 }
 
 export const pageQuery = graphql`
   query blogPostBySlug($slug: String!) {
-    markdownRemark(fields: { slug: { eq: $slug } }) {
+    mdx(fields: { slug: { eq: $slug } }) {
+      body
       id
       excerpt(pruneLength: 160)
-      html
       fields {
         githubLink
         tags

@@ -43,7 +43,7 @@ export const step = css`
   padding-top: 75px;
 
   &:nth-of-type(n + 2) {
-    background: ${theme.pricingBorderHorizontal} no-repeat top center;
+    background: ${theme.dashedBorderHorizontal} no-repeat top center;
     margin-top: 50px;
   }
 `

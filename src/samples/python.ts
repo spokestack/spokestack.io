@@ -29,3 +29,26 @@ output = PyAudioOutput()
 manager = TextToSpeechManager(client, output)
 manager.synthesize("welcome to spokestack")
 `
+
+export const nlu = `from spokestack.nlu.tflite import TFLiteNLU
+nlu = TFLiteNLU("model_dir")
+
+## ...
+@pipeline.event
+def on_recognize(context):
+    results = nlu(context.transcript)
+`
+
+export const asr = `from spokestack.activation_timeout import ActivationTimeout
+from spokestack.io.pyaudio import PyAudioInput
+from spokestack.asr.spokestack.speech_recognizer import SpeechRecognizer
+from spokestack.pipeline import SpeechPipeline
+
+mic = PyAudioInput()
+vad = VoiceActivityDetector()
+asr = SpeechRecognizer("spokestack_id", "spokestack_secret")
+timeout = ActivationTimeout()
+
+pipeline = SpeechPipeline(mic, [vad, asr, timeout])
+pipeline.run()
+`

@@ -6,7 +6,7 @@ import BlogListItem from '../components/BlogListItem'
 import Create from './Create'
 import DarkModeButton from '../components/DarkModeButton'
 import Layout from '../components/Layout'
-import { MarkdownRemarkEdge } from '../utils/graphql'
+import { MdxEdge } from '../utils/graphql'
 import Paging from './Paging'
 import React from 'react'
 import Tags from '../components/Tags'
@@ -19,7 +19,7 @@ interface Props {
   header?: React.ReactNode
   homeUrl: string
   numPages: number
-  posts: MarkdownRemarkEdge[]
+  posts: MdxEdge[]
   tags: string[]
   title?: string
 }

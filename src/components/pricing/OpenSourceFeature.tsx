@@ -30,7 +30,7 @@ const styles = {
     padding: 25px 0;
 
     &:not(:first-of-type) {
-      background-image: ${theme.pricingBorderHorizontal};
+      background-image: ${theme.dashedBorderHorizontal};
       background-position: top left;
       background-repeat: no-repeat;
     }
@@ -60,7 +60,7 @@ const styles = {
 
       &:first-of-type,
       &:nth-of-type(2) {
-        background-image: ${theme.pricingBorderVertical};
+        background-image: ${theme.dashedBorderVertical};
         background-position: top right;
         background-repeat: no-repeat;
       }
@@ -71,8 +71,8 @@ const styles = {
 
       &:nth-of-type(3n + 1):not(:first-of-type),
       &:nth-of-type(3n + 2):not(:nth-of-type(2)) {
-        background-image: ${theme.pricingBorderHorizontal},
-          ${theme.pricingBorderVertical};
+        background-image: ${theme.dashedBorderHorizontal},
+          ${theme.dashedBorderVertical};
         background-position: top left, top right;
       }
     }

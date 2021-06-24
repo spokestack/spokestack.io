@@ -1,8 +1,8 @@
 import * as theme from '../styles/theme'
 
 import { PageRendererProps, graphql, useStaticQuery } from 'gatsby'
-import { MarkdownRemark, Query } from '../utils/graphql'
-
+import { Mdx, Query } from '../utils/graphql'
+import { MDXRenderer } from 'gatsby-plugin-mdx'
 import Create from './Create'
 import DarkModeButton from '../components/DarkModeButton'
 import Layout from '../components/Layout'
@@ -24,7 +24,7 @@ import hashToId from '../utils/hashToId'
 
 interface Props {
   location: PageRendererProps['location']
-  post: MarkdownRemark
+  post: Mdx
   related?: PageContext['related']
   selectFirst?: boolean
 }
@@ -62,7 +62,7 @@ export default function DocsPage({
 }: Props) {
   const links: StickyLink[] = []
   const data = useStaticQuery<Query>(docsPageQuery)
-  const posts = data.allMarkdownRemark.edges
+  const posts = data.allMdx.edges
   posts.forEach(({ node }) => {
     const fields = node.fields!
     const frontmatter = node.frontmatter!
@@ -96,7 +96,7 @@ export default function DocsPage({
             ? `${removeTrailingSlash(process.env.SITE_URL!)}${
                 frontmatter.seoImage.publicURL
               }`
-            : findImage(post.html!)
+            : findImage(post.body!)
         }
       />
       <Global
@@ -145,12 +145,14 @@ export default function DocsPage({
             src={frontmatter.hero.publicURL}
           />
         )}
-        <div dangerouslySetInnerHTML={{ __html: post.html! }} />
-        <Related
-          description="Want to dive deeper into the world of Android voice integration? We've got a lot to say on the subject:"
-          githubLink={post.fields!.githubLink!}
-          related={related}
-        />
+        <MDXRenderer>{post.body!}</MDXRenderer>
+        {post.fields?.slug !== '/docs/overview' && (
+          <Related
+            description="Want to dive deeper into the world of Android voice integration? We've got a lot to say on the subject:"
+            githubLink={post.fields!.githubLink!}
+            related={related}
+          />
+        )}
       </StickyNavLayout>
       {!isLoggedIn() && <Create />}
     </Layout>
@@ -166,7 +168,7 @@ const styles = {
 
 export const docsPageQuery = graphql`
   query docsPageQuery {
-    allMarkdownRemark(
+    allMdx(
       filter: {
         fileAbsolutePath: { regex: "/docs/" }
         frontmatter: { draft: { ne: true } }

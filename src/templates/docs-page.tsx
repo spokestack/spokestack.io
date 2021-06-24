@@ -19,7 +19,7 @@ export default function DocsPageTemplate({
   return (
     <DocsPage
       location={location}
-      post={data.markdownRemark!}
+      post={data.mdx!}
       related={pageContext.related}
     />
   )
@@ -27,12 +27,13 @@ export default function DocsPageTemplate({
 
 export const pageQuery = graphql`
   query docsPageBySlug($slug: String!) {
-    markdownRemark(fields: { slug: { eq: $slug } }) {
+    mdx(fields: { slug: { eq: $slug } }) {
+      body
       id
       excerpt(pruneLength: 160)
-      html
       fields {
         githubLink
+        slug
         tags
       }
       frontmatter {

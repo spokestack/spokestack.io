@@ -1,13 +1,11 @@
-import * as theme from '../../styles/theme'
+import * as theme from '../styles/theme'
 
-import { GitHub_Repository, Query } from '../../utils/graphql'
+import { GitHub_Repository, Query } from '../utils/graphql'
 import { graphql, useStaticQuery } from 'gatsby'
 
 import GitHubRepo from './GitHubRepo'
 import React from 'react'
-import SVGIcon from '../SVGIcon'
-import { css } from '@emotion/react'
-import CommunityHeader from './Header'
+import { css, SerializedStyles } from '@emotion/react'
 
 interface ReposQuery extends Omit<Query, 'github'> {
   github: {
@@ -17,56 +15,35 @@ interface ReposQuery extends Omit<Query, 'github'> {
   }
 }
 
-export default function GitHubRepos() {
+interface Props {
+  extraCss?: SerializedStyles | SerializedStyles[]
+  repos?: string[]
+}
+
+const defaultRepos = [
+  'python',
+  'android',
+  'ios',
+  'rn',
+  'node',
+  'rntray',
+  'iostray',
+  'androidtray'
+]
+
+export default function GitHubRepos({ extraCss, repos = defaultRepos }: Props) {
   const data = useStaticQuery<ReposQuery>(githubReposQuery)
   return (
-    <div className="ie-fix" css={styles.container}>
-      <CommunityHeader
-        href={data.site!.siteMetadata!.social!.github!}
-        icon={
-          <SVGIcon
-            icon="#github"
-            className="icon"
-            extraCss={styles.githubIcon}
-          />
-        }
-        linkText="See All Repos"
-        text="Expore Open Source Repositories"
-      />
-      <div css={styles.repos}>
-        {[
-          'python',
-          'android',
-          'ios',
-          'rn',
-          'node',
-          'rntray',
-          'iostray',
-          'androidtray'
-        ].map((key) => {
-          const repo = data.github.organization[key]
-          return <GitHubRepo key={repo.id} repo={repo} />
-        })}
-      </div>
+    <div className="ie-fix" css={[styles.repos].concat(extraCss!)}>
+      {repos.map((key) => {
+        const repo = data.github.organization[key]
+        return <GitHubRepo key={repo.id} repo={repo} />
+      })}
     </div>
   )
 }
 
 const styles = {
-  container: css`
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    padding: 50px 30px 100px;
-
-    ${theme.MIN_DEFAULT_MEDIA_QUERY} {
-      padding: 100px;
-    }
-  `,
-  githubIcon: css`
-    width: 17px;
-    height: 16px;
-  `,
   repos: css`
     display: flex;
     flex-direction: column;
@@ -74,10 +51,11 @@ const styles = {
     align-items: center;
     gap: 30px;
     max-width: 1240px;
-    margin: 0 auto;
+    margin: 0 auto 30px;
 
     ${theme.MIN_DEFAULT_MEDIA_QUERY} {
       flex-direction: row;
+      justify-content: flex-start;
       flex-wrap: wrap;
     }
   `
@@ -85,13 +63,6 @@ const styles = {
 
 const githubReposQuery = graphql`
   query githubReposQuery {
-    site {
-      siteMetadata {
-        social {
-          github
-        }
-      }
-    }
     github {
       organization(login: "spokestack") {
         python: repository(name: "spokestack-python") {

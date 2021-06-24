@@ -37,3 +37,23 @@ val request = SynthesisRequest.Builder("hello, world")
     .build()
 spokestack.synthesize(request)
 `
+
+export const nlu = `val nlu = NLUManager.Builder()
+    .setProperty("nlu-model-path", "$cacheDir/nlu.tflite")
+    .setProperty("nlu-metadata-path", "$cacheDir/metadata.json")
+    .setProperty("wordpiece-vocab-path", "$cacheDir/vocab.txt")
+    .addTraceListener(this)
+    .build()
+val asyncResult = nlu?.classify(utterance)
+`
+
+export const asr = `val spokestack = Spokestack.Builder()
+    .withoutWakeword()
+    .withoutNlu()
+    .setProperty("spokestack-id", "your-client-id")
+    .setProperty("spokestack-secret", "your-secret-key")
+    .withAndroidContext(applicationContext)
+    .addListener(listener)
+    .build()
+spokestack.start()
+`

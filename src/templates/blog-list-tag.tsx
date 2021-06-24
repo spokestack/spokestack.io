@@ -22,7 +22,7 @@ export default function BlogListTagTemplate({
   pageContext: { currentPage, numPages, slug, tag, tags, total }
 }: Props) {
   const isTutorial = tag === 'Tutorial'
-  const posts = data.allMarkdownRemark.edges
+  const posts = data.allMdx.edges
   const longTitle = isTutorial
     ? 'Tutorials'
     : `${total} articles tagged with "${tag}"`
@@ -53,7 +53,7 @@ export const blogListQuery = graphql`
     $tag: String!
     $dev: Boolean!
   ) {
-    allMarkdownRemark(
+    allMdx(
       filter: {
         fileAbsolutePath: { regex: "/blog/" }
         fields: { tags: { in: [$tag] } }

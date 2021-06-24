@@ -1,4 +1,4 @@
-import { MarkdownRemark } from './utils/graphql'
+import { Mdx } from './utils/graphql'
 
 export interface Link {
   title: string
@@ -11,14 +11,14 @@ export interface PageContext {
   currentPage: number
   dev: boolean
   limit: number
-  next: MarkdownRemark
+  next: Mdx
   numPages: number
   related: {
     blog: Link[]
     docs: Link[]
     tutorials: Link[]
   }
-  previous: MarkdownRemark
+  previous: Mdx
   skip: number
   slug: string
   tag: string

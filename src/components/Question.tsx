@@ -66,7 +66,7 @@ export default function Question({ question, answer, startOpen }: Props) {
   return (
     <div css={styles.question} ref={ref}>
       <a
-        className="question-link"
+        className="question-link dashed-border-top"
         css={styles.questionLink}
         onClick={() => setOpen(!open)}>
         {question}
@@ -84,12 +84,8 @@ const styles = {
     p {
       margin: 0;
     }
-    &:not(:first-of-type) .question-link {
-      background: white ${theme.pricingBorderHorizontal} top center no-repeat;
-
-      &:active {
-        background-color: ${theme.mainBackground};
-      }
+    &:first-of-type .question-link::before {
+      background: none;
     }
   `,
   questionLink: css`

@@ -246,10 +246,6 @@ export default css`
   pre code {
     padding: 0;
   }
-  div.code-toolbar > .toolbar {
-    top: -10px;
-    right: 20px;
-  }
   ul {
     margin: 0 0 20px;
   }
@@ -458,6 +454,23 @@ export default css`
       font-size: 1rem;
     }
   }
+  .dashed-border-top,
+  .dashed-border-bottom {
+    position: relative;
+
+    &::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      background: ${theme.dashedBorderHorizontal} top center no-repeat;
+    }
+  }
+  .dashed-border-bottom::before {
+    background-position: bottom center;
+  }
   .main-content {
     table {
       margin-bottom: 20px;
@@ -485,11 +498,39 @@ export default css`
     h6 {
       margin-top: 15px;
     }
+    // Styles for autolink headers
+    h1,
+    h2,
+    h3,
+    h4,
+    h5,
+    h6 {
+      position: relative;
+      a[aria-hidden='true'] {
+        position: absolute;
+        top: 0;
+        bottom: 0;
+        left: 0;
+        transform: translateX(-100%);
+        padding: 0 4px 0 0;
+        display: flex;
+        align-items: center;
+
+        svg {
+          visibility: hidden;
+        }
+      }
+
+      &:hover a[aria-hidden='true'] svg,
+      &:focus a[aria-hidden='true'] svg {
+        visibility: visible;
+      }
+    }
     hr {
       border: none;
       width: 100%;
       height: 2px;
-      background: ${theme.pricingBorderHorizontal} top center no-repeat;
+      background: ${theme.dashedBorderHorizontal} top center no-repeat;
     }
   }
   .columns {
@@ -536,6 +577,7 @@ export default css`
   .floating-image--right {
     margin: 20px auto;
   }
+
   html.dark-mode {
     background-color: ${theme.mainBackgroundDark};
 
@@ -648,6 +690,10 @@ export default css`
       background-color: ${theme.stickyNavBackgroundDark};
       color: ${theme.textDarkBg};
     }
+    .dashed-border-top::before,
+    .dashed-border-bottom::before {
+      opacity: 0.5;
+    }
     .main-content {
       td,
       th {
@@ -655,6 +701,9 @@ export default css`
       }
       tr:nth-of-type(2n) {
         background-color: ${theme.navFullColumnDark};
+      }
+      hr {
+        opacity: 0.5;
       }
     }
   }

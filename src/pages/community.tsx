@@ -3,7 +3,7 @@ import * as theme from '../styles/theme'
 import { PageRendererProps, graphql } from 'gatsby'
 
 import BlueCard from '../components/BlueCard'
-import GitHubRepos from '../components/community/GitHubRepos'
+import GitHub from '../components/community/GitHub'
 import IssueList from '../components/community/IssueList'
 import Layout from '../components/Layout'
 import PricingBackground from '../components/pricing/Background'
@@ -54,7 +54,7 @@ export default function Community({ data }: Props) {
           }))}
         />
       </header>
-      <GitHubRepos />
+      <GitHub />
       <YouTube />
       <Twitter />
       <BlueCard

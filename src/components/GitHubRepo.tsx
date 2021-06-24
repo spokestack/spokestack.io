@@ -1,9 +1,9 @@
-import * as theme from '../../styles/theme'
+import * as theme from '../styles/theme'
 
-import { GitHub_Repository } from '../../utils/graphql'
+import { GitHub_Repository } from '../utils/graphql'
 import React from 'react'
-import SVGIcon from '../SVGIcon'
-import { css } from '@emotion/react'
+import SVGIcon from './SVGIcon'
+import { css, Global } from '@emotion/react'
 
 interface Props {
   repo: GitHub_Repository
@@ -11,15 +11,37 @@ interface Props {
 
 export default function GitHubRepo({ repo }: Props) {
   return (
-    <div css={styles.container}>
+    <div className="github-repo" css={styles.container}>
+      <Global
+        styles={css`
+          html.dark-mode .github-repo {
+            background-color: ${theme.stickyNavBackgroundDark};
+            border-color: ${theme.mainBorderDark};
+
+            .github-icon {
+              fill: white;
+            }
+            .language-link {
+              color: white;
+            }
+          }
+        `}
+      />
       <a href={repo.url} css={styles.name}>
-        <SVGIcon icon="#github-repo" extraCss={styles.repoIcon} />
+        <SVGIcon
+          icon="#github-repo"
+          className="github-icon"
+          extraCss={styles.repoIcon}
+        />
         {repo.name}
       </a>
       <p css={styles.description}>{repo.description}</p>
       <div css={styles.details}>
         {repo.languages!.nodes!.map((language) => (
-          <div key={`${repo.id}-${language!.id}`} css={styles.githubLink}>
+          <div
+            key={`${repo.id}-${language!.id}`}
+            className="language-link"
+            css={styles.githubLink}>
             <div
               css={styles.languageColor}
               style={{ backgroundColor: language!.color! }}
@@ -28,11 +50,19 @@ export default function GitHubRepo({ repo }: Props) {
           </div>
         ))}
         <a href={repo.url} css={styles.githubLink}>
-          <SVGIcon icon="#github-star" extraCss={styles.starIcon} />
+          <SVGIcon
+            icon="#github-star"
+            className="github-icon"
+            extraCss={styles.starIcon}
+          />
           {repo.stargazerCount}
         </a>
         <a href={`${repo.url}/fork`} css={styles.githubLink}>
-          <SVGIcon icon="#github-fork" extraCss={styles.forkIcon} />
+          <SVGIcon
+            icon="#github-fork"
+            className="github-icon"
+            extraCss={styles.forkIcon}
+          />
           {repo.forkCount}
         </a>
       </div>
@@ -50,6 +80,10 @@ const styles = {
     width: 100%;
     max-width: 284px;
     border: 1px solid ${theme.mainBorder};
+
+    .github-icon {
+      fill: #586069;
+    }
 
     ${theme.MIN_DEFAULT_MEDIA_QUERY} {
       height: 165px;

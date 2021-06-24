@@ -7,7 +7,7 @@ import { Query } from '../../utils/graphql'
 import React from 'react'
 import { css } from '@emotion/react'
 
-function sortPosts(posts: Query['allMarkdownRemark']['edges']) {
+function sortPosts(posts: Query['allMdx']['edges']) {
   return posts.sort((a, b) => {
     const aDate = +new Date(a.node.frontmatter!.date)
     const bDate = +new Date(b.node.frontmatter!.date)
@@ -16,7 +16,7 @@ function sortPosts(posts: Query['allMarkdownRemark']['edges']) {
 }
 
 type QueryType = Query & {
-  articles: Query['allMarkdownRemark']
+  articles: Query['allMdx']
 }
 
 export default function News() {
@@ -92,7 +92,7 @@ const styles = {
 
 const newsQuery = graphql`
   query newsQuery {
-    articles: allMarkdownRemark(
+    articles: allMdx(
       filter: {
         fileAbsolutePath: { regex: "/blog/" }
         frontmatter: { draft: { ne: true } }

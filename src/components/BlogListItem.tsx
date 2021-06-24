@@ -1,7 +1,7 @@
 import * as theme from '../styles/theme'
 
 import { Global, css } from '@emotion/react'
-import { MarkdownRemark, Query } from '../utils/graphql'
+import { Mdx, Query } from '../utils/graphql'
 import { graphql, useStaticQuery } from 'gatsby'
 
 import Color from 'color'
@@ -11,7 +11,7 @@ import find from 'lodash/find'
 import DraftBadge from './DraftBadge'
 
 interface Props {
-  post: MarkdownRemark
+  post: Mdx
 }
 
 export default function BlogListItem({ post }: Props) {

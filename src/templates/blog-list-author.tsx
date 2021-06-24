@@ -3,7 +3,6 @@ import * as theme from '../styles/theme'
 import { Global, css } from '@emotion/react'
 import { PageRendererProps, graphql } from 'gatsby'
 import React, { Fragment } from 'react'
-
 import BlogList from '../components/BlogList'
 import DarkModeButton from '../components/DarkModeButton'
 import { PageContext } from '../types'
@@ -21,7 +20,7 @@ export default function BlogListAuthorTemplate({
   data,
   pageContext: { author, currentPage, numPages, slug, tags }
 }: Props) {
-  const posts = data.allMarkdownRemark.edges
+  const posts = data.allMdx.edges
   const { name, bio, social, title, image } = find(
     data!.site!.siteMetadata!.team,
     {
@@ -184,7 +183,7 @@ export const blogListQuery = graphql`
         }
       }
     }
-    allMarkdownRemark(
+    allMdx(
       filter: {
         fileAbsolutePath: { regex: "/blog/" }
         frontmatter: { author: { eq: $author }, draft: { in: [false, $dev] } }

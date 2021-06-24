@@ -184,9 +184,15 @@ export default function Footer() {
         </div>
         <div css={styles.column}>
           <h5>Community</h5>
-          <a css={styles.footerLink} href="/support">
+          <Link css={styles.footerLink} to="/community">
+            Community
+          </Link>
+          <Link css={styles.footerLink} to="/support">
             Support
-          </a>
+          </Link>
+          <Link css={styles.footerLink} to="/contribute">
+            Contribute
+          </Link>
           <a css={styles.footerLink} href={social.github!}>
             GitHub
           </a>

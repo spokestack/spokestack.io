@@ -42,3 +42,22 @@ export const tts = `try {
   console.error(e)
 }
 `
+
+export const nlu = `await Spokestack.initialize(clientId, clientSecret, {
+  nlu: {
+    model: 'https://s.spokestack.io/u/7fYxV/nlu.tflite',
+    metadata: 'https://s.spokestack.io/u/7fYxV/metadata.json',
+    vocab: 'https://s.spokestack.io/u/7fYxV/vocab.txt'
+  }
+})
+const result = await Spokestack.classify(transcript)
+`
+
+export const asr = `await Spokestack.initialize(clientId, clientSecret)
+Spokestack.addEventListener(
+  'recognize',
+  ({ transcript }: SpokestackRecognizeEvent) => {
+    console.log(transcript)
+  }
+)
+`

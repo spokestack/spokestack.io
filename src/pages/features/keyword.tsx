@@ -1,7 +1,7 @@
 import React from 'react'
 import FeatureCallout from '../../components/features/FeatureCallout'
 import Header from '../../components/features/Header'
-import Info from '../../components/features/Info'
+import Info from '../../components/Info'
 import Section from '../../components/features/Section'
 import Layout from '../../components/Layout'
 import SEO from '../../components/SEO'
@@ -433,8 +433,8 @@ export default function KeywordPage() {
         </Section>
       </div>
       <SampleCode
+        feature="keyword"
         title="How Do I Use a Keyword Recognition Model?"
-        codeKey="keyword"
       />
       <Create />
     </Layout>

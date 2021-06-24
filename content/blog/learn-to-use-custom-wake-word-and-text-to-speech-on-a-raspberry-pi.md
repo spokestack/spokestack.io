@@ -5,7 +5,7 @@ description: Following this guide teaches you how to deploy your Maker models on
 author: will
 tags: Apps, Engineering, Python, Tutorial
 draft: false
-hero: ../assets/blog/wakewords-for-mobile-apps.png
+hero: ../assets/blog/learn-to-use-custom-wake-word-and-text-to-speech-on-a-raspberry-pi.png
 ---
 
 One of the primary motivations for working on [spokestack-python](https://github.com/spokestack/spokestack-python) was to allow our models to run on embedded devices like [Raspberry Pi](https://www.raspberrypi.org/). We are excited to show you how easy it is to use [Wake Word](/docs/concepts/wakeword) and [TTS](/docs/concepts/tts) models on these devices.

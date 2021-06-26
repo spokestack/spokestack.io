@@ -206,23 +206,25 @@ async function createAuthorPages({ author, tags, actions, graphql, reporter }) {
   const posts = result.data.allMdx.edges
   const numPages = Math.ceil(posts.length / postsPerPage)
   const url = `/blog/author/${author}`
-  Array.from({ length: numPages }).forEach((_, i) => {
-    createPage({
-      path: i === 0 ? url : `${url}/${i + 1}`,
-      component: path.resolve('./src/templates/blog-list-author.tsx'),
-      context: {
-        author,
-        currentPage: i + 1,
-        dev: !isProd,
-        limit: postsPerPage,
-        numPages,
-        skip: i * postsPerPage,
-        slug: url,
-        tags,
-        total: posts.length
-      }
-    })
-  })
+  return Promise.all(
+    Array.from({ length: numPages }).map((_, i) =>
+      createPage({
+        path: i === 0 ? url : `${url}/${i + 1}`,
+        component: path.resolve('./src/templates/blog-list-author.tsx'),
+        context: {
+          author,
+          currentPage: i + 1,
+          dev: !isProd,
+          limit: postsPerPage,
+          numPages,
+          skip: i * postsPerPage,
+          slug: url,
+          tags,
+          total: posts.length
+        }
+      })
+    )
+  )
 }
 
 async function createTagPages({ tag, tags, actions, graphql, reporter }) {
@@ -256,23 +258,25 @@ async function createTagPages({ tag, tags, actions, graphql, reporter }) {
   const posts = result.data.allMdx.edges
   const numPages = Math.ceil(posts.length / postsPerPage)
   const url = tag === 'Tutorial' ? '/tutorials' : `/blog/tag/${toUrl(tag)}`
-  Array.from({ length: numPages }).forEach((_, i) => {
-    createPage({
-      path: i === 0 ? url : `${url}/${i + 1}`,
-      component: path.resolve('./src/templates/blog-list-tag.tsx'),
-      context: {
-        currentPage: i + 1,
-        dev: !isProd,
-        limit: postsPerPage,
-        numPages,
-        skip: i * postsPerPage,
-        slug: url,
-        tag,
-        tags: tag === 'Tutorial' ? [] : tags,
-        total: posts.length
-      }
-    })
-  })
+  return Promise.all(
+    Array.from({ length: numPages }).map((_, i) =>
+      createPage({
+        path: i === 0 ? url : `${url}/${i + 1}`,
+        component: path.resolve('./src/templates/blog-list-tag.tsx'),
+        context: {
+          currentPage: i + 1,
+          dev: !isProd,
+          limit: postsPerPage,
+          numPages,
+          skip: i * postsPerPage,
+          slug: url,
+          tag,
+          tags: tag === 'Tutorial' ? [] : tags,
+          total: posts.length
+        }
+      })
+    )
+  )
 }
 
 async function createPages({ actions, graphql, posts, template }) {
@@ -455,49 +459,56 @@ exports.createPages = async ({ graphql, actions, reporter }) => {
     })
     return acc
   }, [])
-  tags.forEach((tag) => {
-    createTagPages({
-      tag,
-      tags,
-      actions,
-      graphql,
-      reporter
-    })
-  })
+
+  await Promise.all(
+    tags.map((tag) =>
+      createTagPages({
+        tag,
+        tags,
+        actions,
+        graphql,
+        reporter
+      })
+    )
+  )
 
   // Add author pages
   const authors = result.data.site.siteMetadata.team.map((member) => member.key)
-  authors.forEach((author) => {
-    createAuthorPages({
-      author,
-      tags,
-      actions,
-      graphql,
-      reporter
-    })
-  })
+  await Promise.all(
+    authors.map((author) =>
+      createAuthorPages({
+        author,
+        tags,
+        actions,
+        graphql,
+        reporter
+      })
+    )
+  )
 
   // Add blog list pages
   const { createPage } = actions
   const posts = result.data.blog.edges
   const numPages = Math.ceil(posts.length / postsPerPage)
   const url = '/blog'
-  Array.from({ length: numPages }).forEach((_, i) => {
-    createPage({
-      path: i === 0 ? url : `${url}/${i + 1}`,
-      component: path.resolve('./src/templates/blog-list.tsx'),
-      context: {
-        currentPage: i + 1,
-        dev: !isProd,
-        limit: postsPerPage,
-        numPages,
-        skip: i * postsPerPage,
-        slug: url,
-        tags,
-        total: posts.length
-      }
-    })
-  })
+  await Promise.all(
+    Array.from({ length: numPages }).map((_, i) =>
+      createPage({
+        path: i === 0 ? url : `${url}/${i + 1}`,
+        component: path.resolve('./src/templates/blog-list.tsx'),
+        context: {
+          currentPage: i + 1,
+          dev: !isProd,
+          limit: postsPerPage,
+          numPages,
+          skip: i * postsPerPage,
+          slug: url,
+          tags,
+          total: posts.length
+        }
+      })
+    )
+  )
 
   // Add blog post pages
   await createPages({

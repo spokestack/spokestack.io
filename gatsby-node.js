@@ -357,26 +357,19 @@ async function verifyHeros(graphql, reporter) {
     reporter.panicOnBuild('Error while running GraphQL query')
     return
   }
-  let panic = false
   if (result.data.heros.edges.length) {
-    panic = true
     result.data.heros.edges.forEach((edge) => {
-      console.error(
+      console.warn(
         `Blog post with title "${edge.node.frontmatter.title}" at path ${edge.node.fileAbsolutePath} does not have a hero image set in frontmatter`
       )
     })
   }
   if (result.data.seos.edges.length) {
-    // Only warn about SEO images for now
-    // panic = true
     result.data.seos.edges.forEach((edge) => {
       console.warn(
         `Docs page with title "${edge.node.frontmatter.title}" at path ${edge.node.fileAbsolutePath} does not have an seoImage set in frontmatter`
       )
     })
-  }
-  if (panic) {
-    reporter.panicOnBuild('Please add the necessary images')
   }
 }
 

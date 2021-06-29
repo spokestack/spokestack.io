@@ -33,7 +33,6 @@ manager.synthesize("welcome to spokestack")
 export const nlu = `from spokestack.nlu.tflite import TFLiteNLU
 nlu = TFLiteNLU("model_dir")
 
-## ...
 @pipeline.event
 def on_recognize(context):
     results = nlu(context.transcript)

@@ -17,6 +17,7 @@ export const wakeword = `try {
   console.error(e)
 }
 `
+
 export const keyword = `try {
   await startPipeline({
     profile: PipelineProfile.Keyword,
@@ -43,29 +44,20 @@ export const keyword = `try {
 }
 `
 
-export const tts = `// Server-side: GraphQL API proxy
-const app = express()
-app.post('/graphql', bodyParser.json(), spokestackMiddleware())
-
-// Client-side: synthesizing text to speech using apollo
-const client = new ApolloClient({ uri: '/graphql' })
+export const asr = `import { startStream } from 'spokestack/client'
+// ...
+let ws: WebSocket
 try {
-  const response = await client.query({
-    query: gql\`
-      query synthesizeText($text: String!, $voice: String!) {
-        synthesizeText(text: $text, voice: $voice) {
-          url
-        }
-      }
-    \`,
-    variables: {
-      text: 'Hello World',
-      voice: 'demo-male'
-    }
+  ;[ws] = await startStream({
+    isPlaying: () => this.isPlaying
   })
 } catch (error) {
   console.error(error)
+  return
 }
+ws.addEventListener('message', (e) => {
+  console.log('Speech processed: ', e.data)
+})
 `
 
 export const nlu = `// Server-side: GraphQL API proxy
@@ -102,18 +94,27 @@ try {
 }
 `
 
-export const asr = `import { startStream } from 'spokestack/client'
-// ...
-let ws: WebSocket
+export const tts = `// Server-side: GraphQL API proxy
+const app = express()
+app.post('/graphql', bodyParser.json(), spokestackMiddleware())
+
+// Client-side: synthesizing text to speech using apollo
+const client = new ApolloClient({ uri: '/graphql' })
 try {
-  ;[ws] = await startStream({
-    isPlaying: () => this.isPlaying
+  const response = await client.query({
+    query: gql\`
+      query synthesizeText($text: String!, $voice: String!) {
+        synthesizeText(text: $text, voice: $voice) {
+          url
+        }
+      }
+    \`,
+    variables: {
+      text: 'Hello World',
+      voice: 'demo-male'
+    }
   })
 } catch (error) {
   console.error(error)
-  return
 }
-ws.addEventListener('message', (e) => {
-  console.log('Speech processed: ', e.data)
-})
 `

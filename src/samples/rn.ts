@@ -35,12 +35,13 @@ export const keyword = `try {
 }
 `
 
-export const tts = `try {
-  const url = await Spokestack.synthesize('Hello world')
-  play(url)
-} catch (e) {
-  console.error(e)
-}
+export const asr = `await Spokestack.initialize(clientId, clientSecret)
+Spokestack.addEventListener(
+  'recognize',
+  ({ transcript }: SpokestackRecognizeEvent) => {
+    console.log(transcript)
+  }
+)
 `
 
 export const nlu = `await Spokestack.initialize(clientId, clientSecret, {
@@ -53,11 +54,10 @@ export const nlu = `await Spokestack.initialize(clientId, clientSecret, {
 const result = await Spokestack.classify(transcript)
 `
 
-export const asr = `await Spokestack.initialize(clientId, clientSecret)
-Spokestack.addEventListener(
-  'recognize',
-  ({ transcript }: SpokestackRecognizeEvent) => {
-    console.log(transcript)
-  }
-)
+export const tts = `try {
+  const url = await Spokestack.synthesize('Hello world')
+  play(url)
+} catch (e) {
+  console.error(e)
+}
 `

@@ -17,27 +17,6 @@ pipeline = SpokestackKeyword.create(
 pipeline.run()
 `
 
-export const tts = `from spokestack.tts.manager import TextToSpeechManager
-from spokestack.tts.clients.spokestack import TextToSpeechClient
-from spokestack.io.pyaudio import PyAudioOutput
-
-client = TextToSpeechClient(
-  "YOUR_SPOKESTACK_API_ID",
-  "YOUR_SPOKESTACK_API_SECRET"
-)
-output = PyAudioOutput()
-manager = TextToSpeechManager(client, output)
-manager.synthesize("welcome to spokestack")
-`
-
-export const nlu = `from spokestack.nlu.tflite import TFLiteNLU
-nlu = TFLiteNLU("model_dir")
-
-@pipeline.event
-def on_recognize(context):
-    results = nlu(context.transcript)
-`
-
 export const asr = `from spokestack.activation_timeout import ActivationTimeout
 from spokestack.io.pyaudio import PyAudioInput
 from spokestack.asr.spokestack.speech_recognizer import SpeechRecognizer
@@ -50,4 +29,25 @@ timeout = ActivationTimeout()
 
 pipeline = SpeechPipeline(mic, [vad, asr, timeout])
 pipeline.run()
+`
+
+export const nlu = `from spokestack.nlu.tflite import TFLiteNLU
+nlu = TFLiteNLU("model_dir")
+
+@pipeline.event
+def on_recognize(context):
+  results = nlu(context.transcript)
+`
+
+export const tts = `from spokestack.tts.manager import TextToSpeechManager
+from spokestack.tts.clients.spokestack import TextToSpeechClient
+from spokestack.io.pyaudio import PyAudioOutput
+
+client = TextToSpeechClient(
+  "YOUR_SPOKESTACK_API_ID",
+  "YOUR_SPOKESTACK_API_SECRET"
+)
+output = PyAudioOutput()
+manager = TextToSpeechManager(client, output)
+manager.synthesize("welcome to spokestack")
 `

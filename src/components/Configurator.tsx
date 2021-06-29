@@ -15,9 +15,9 @@ type Platform = 'ios' | 'android' | 'rn' | 'node' | 'python'
 const features = {
   wakeword: 'Wake Word',
   keyword: 'Keyword',
-  tts: 'TTS',
+  asr: 'ASR',
   nlu: 'NLU',
-  asr: 'ASR'
+  tts: 'TTS'
 }
 const sdks = {
   ios: {

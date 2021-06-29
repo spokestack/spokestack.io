@@ -9,8 +9,8 @@
 **[Supported browsers](https://browserl.ist/?q=%3E0.35%25%2C+not+op_mini+all)**: (basically IE 11, modern desktop and mobile browsers)
 
 Contributions are always welcome. Before contributing please [search the issue tracker](https://github.com/spokestack/spokestack.io/issues); your issue
-may have already been discussed or fixed in `master`. To contribute,
-[fork](https://help.github.com/articles/fork-a-repo/) Panzoom, commit your changes,
+may have already been discussed or fixed in `develop`. To contribute,
+[fork](https://help.github.com/articles/fork-a-repo/) spokestack.io, commit your changes,
 & [send a pull request](https://help.github.com/articles/using-pull-requests/).
 
 ## Feature Requests

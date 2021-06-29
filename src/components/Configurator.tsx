@@ -9,9 +9,6 @@ import * as rn from '../samples/rn'
 import * as node from '../samples/node'
 import * as python from '../samples/python'
 
-type Feature = 'wakeword' | 'keyword' | 'tts' | 'nlu' | 'asr'
-type Platform = 'ios' | 'android' | 'rn' | 'node' | 'python'
-
 const features = {
   wakeword: 'Wake Word',
   keyword: 'Keyword',
@@ -19,6 +16,7 @@ const features = {
   nlu: 'NLU',
   tts: 'TTS'
 }
+
 const sdks = {
   ios: {
     href: 'https://github.com/spokestack/spokestack-ios',
@@ -51,6 +49,9 @@ const sdks = {
     samples: python
   }
 }
+
+type Feature = keyof typeof features
+type Platform = keyof typeof sdks
 
 export interface ConfiguratorProps {
   feature?: Feature

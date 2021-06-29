@@ -9,7 +9,7 @@ const filename = path.join(__dirname, '../src/utils/graphql.d.ts')
 const contents = fs
   .readFileSync(filename, 'utf8')
   // Don't replace with global so only one is removed
-  .replace(/\s*PluginCreatorId = 'pluginCreatorId',/, '')
+  .replace(/\s*PluginCreatorId = 'pluginCreator___id',/g, '')
   .replace(
     /\s*PluginOptionsBackgroundColor = 'pluginOptions___backgroundColor',/,
     ''

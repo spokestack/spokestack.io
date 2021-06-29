@@ -2,7 +2,7 @@ import * as theme from '../../styles/theme'
 
 import React from 'react'
 import SVGIcon from '../SVGIcon'
-import { SerializedStyles } from '@emotion/utils'
+import { SerializedStyles } from '@emotion/react'
 import { css } from '@emotion/react'
 
 interface CommonProps {

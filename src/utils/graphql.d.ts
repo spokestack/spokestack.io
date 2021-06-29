@@ -1104,50 +1104,10 @@ export enum FileFieldsEnum {
   ChildrenMdxRawBody = 'childrenMdx___rawBody',
   ChildrenMdxFileAbsolutePath = 'childrenMdx___fileAbsolutePath',
   ChildrenMdxFrontmatterTitle = 'childrenMdx___frontmatter___title',
-  ChildrenMdxFrontmatterDate = 'childrenMdx___frontmatter___date',
-  ChildrenMdxFrontmatterDescription = 'childrenMdx___frontmatter___description',
-  ChildrenMdxFrontmatterTags = 'childrenMdx___frontmatter___tags',
-  ChildrenMdxFrontmatterAuthor = 'childrenMdx___frontmatter___author',
-  ChildrenMdxFrontmatterDraft = 'childrenMdx___frontmatter___draft',
-  ChildrenMdxFrontmatterHeroSourceInstanceName = 'childrenMdx___frontmatter___hero___sourceInstanceName',
-  ChildrenMdxFrontmatterHeroAbsolutePath = 'childrenMdx___frontmatter___hero___absolutePath',
-  ChildrenMdxFrontmatterHeroRelativePath = 'childrenMdx___frontmatter___hero___relativePath',
-  ChildrenMdxFrontmatterHeroExtension = 'childrenMdx___frontmatter___hero___extension',
-  ChildrenMdxFrontmatterHeroSize = 'childrenMdx___frontmatter___hero___size',
-  ChildrenMdxFrontmatterHeroPrettySize = 'childrenMdx___frontmatter___hero___prettySize',
-  ChildrenMdxFrontmatterHeroModifiedTime = 'childrenMdx___frontmatter___hero___modifiedTime',
-  ChildrenMdxFrontmatterHeroAccessTime = 'childrenMdx___frontmatter___hero___accessTime',
-  ChildrenMdxFrontmatterHeroChangeTime = 'childrenMdx___frontmatter___hero___changeTime',
-  ChildrenMdxFrontmatterHeroBirthTime = 'childrenMdx___frontmatter___hero___birthTime',
-  ChildrenMdxFrontmatterHeroRoot = 'childrenMdx___frontmatter___hero___root',
-  ChildrenMdxFrontmatterHeroDir = 'childrenMdx___frontmatter___hero___dir',
-  ChildrenMdxFrontmatterHeroBase = 'childrenMdx___frontmatter___hero___base',
-  ChildrenMdxFrontmatterHeroExt = 'childrenMdx___frontmatter___hero___ext',
-  ChildrenMdxFrontmatterHeroName = 'childrenMdx___frontmatter___hero___name',
-  ChildrenMdxFrontmatterHeroRelativeDirectory = 'childrenMdx___frontmatter___hero___relativeDirectory',
-  ChildrenMdxFrontmatterHeroDev = 'childrenMdx___frontmatter___hero___dev',
-  ChildrenMdxFrontmatterHeroMode = 'childrenMdx___frontmatter___hero___mode',
-  ChildrenMdxFrontmatterHeroNlink = 'childrenMdx___frontmatter___hero___nlink',
-  ChildrenMdxFrontmatterHeroUid = 'childrenMdx___frontmatter___hero___uid',
-  ChildrenMdxFrontmatterHeroGid = 'childrenMdx___frontmatter___hero___gid',
-  ChildrenMdxFrontmatterHeroRdev = 'childrenMdx___frontmatter___hero___rdev',
-  ChildrenMdxFrontmatterHeroIno = 'childrenMdx___frontmatter___hero___ino',
-  ChildrenMdxFrontmatterHeroAtimeMs = 'childrenMdx___frontmatter___hero___atimeMs',
-  ChildrenMdxFrontmatterHeroMtimeMs = 'childrenMdx___frontmatter___hero___mtimeMs',
-  ChildrenMdxFrontmatterHeroCtimeMs = 'childrenMdx___frontmatter___hero___ctimeMs',
-  ChildrenMdxFrontmatterHeroAtime = 'childrenMdx___frontmatter___hero___atime',
-  ChildrenMdxFrontmatterHeroMtime = 'childrenMdx___frontmatter___hero___mtime',
-  ChildrenMdxFrontmatterHeroCtime = 'childrenMdx___frontmatter___hero___ctime',
-  ChildrenMdxFrontmatterHeroBirthtime = 'childrenMdx___frontmatter___hero___birthtime',
-  ChildrenMdxFrontmatterHeroBirthtimeMs = 'childrenMdx___frontmatter___hero___birthtimeMs',
-  ChildrenMdxFrontmatterHeroBlksize = 'childrenMdx___frontmatter___hero___blksize',
-  ChildrenMdxFrontmatterHeroBlocks = 'childrenMdx___frontmatter___hero___blocks',
-  ChildrenMdxFrontmatterHeroPublicUrl = 'childrenMdx___frontmatter___hero___publicURL',
-  ChildrenMdxFrontmatterHeroChildrenImageSharp = 'childrenMdx___frontmatter___hero___childrenImageSharp',
-  ChildrenMdxFrontmatterHeroChildrenMdx = 'childrenMdx___frontmatter___hero___childrenMdx',
-  ChildrenMdxFrontmatterHeroId = 'childrenMdx___frontmatter___hero___id',
-  ChildrenMdxFrontmatterHeroChildren = 'childrenMdx___frontmatter___hero___children',
   ChildrenMdxFrontmatterNavId = 'childrenMdx___frontmatter___navId',
+  ChildrenMdxFrontmatterDescription = 'childrenMdx___frontmatter___description',
+  ChildrenMdxFrontmatterDraft = 'childrenMdx___frontmatter___draft',
+  ChildrenMdxFrontmatterTags = 'childrenMdx___frontmatter___tags',
   ChildrenMdxFrontmatterSeoImageSourceInstanceName = 'childrenMdx___frontmatter___seoImage___sourceInstanceName',
   ChildrenMdxFrontmatterSeoImageAbsolutePath = 'childrenMdx___frontmatter___seoImage___absolutePath',
   ChildrenMdxFrontmatterSeoImageRelativePath = 'childrenMdx___frontmatter___seoImage___relativePath',
@@ -1186,6 +1146,46 @@ export enum FileFieldsEnum {
   ChildrenMdxFrontmatterSeoImageChildrenMdx = 'childrenMdx___frontmatter___seoImage___childrenMdx',
   ChildrenMdxFrontmatterSeoImageId = 'childrenMdx___frontmatter___seoImage___id',
   ChildrenMdxFrontmatterSeoImageChildren = 'childrenMdx___frontmatter___seoImage___children',
+  ChildrenMdxFrontmatterDate = 'childrenMdx___frontmatter___date',
+  ChildrenMdxFrontmatterAuthor = 'childrenMdx___frontmatter___author',
+  ChildrenMdxFrontmatterHeroSourceInstanceName = 'childrenMdx___frontmatter___hero___sourceInstanceName',
+  ChildrenMdxFrontmatterHeroAbsolutePath = 'childrenMdx___frontmatter___hero___absolutePath',
+  ChildrenMdxFrontmatterHeroRelativePath = 'childrenMdx___frontmatter___hero___relativePath',
+  ChildrenMdxFrontmatterHeroExtension = 'childrenMdx___frontmatter___hero___extension',
+  ChildrenMdxFrontmatterHeroSize = 'childrenMdx___frontmatter___hero___size',
+  ChildrenMdxFrontmatterHeroPrettySize = 'childrenMdx___frontmatter___hero___prettySize',
+  ChildrenMdxFrontmatterHeroModifiedTime = 'childrenMdx___frontmatter___hero___modifiedTime',
+  ChildrenMdxFrontmatterHeroAccessTime = 'childrenMdx___frontmatter___hero___accessTime',
+  ChildrenMdxFrontmatterHeroChangeTime = 'childrenMdx___frontmatter___hero___changeTime',
+  ChildrenMdxFrontmatterHeroBirthTime = 'childrenMdx___frontmatter___hero___birthTime',
+  ChildrenMdxFrontmatterHeroRoot = 'childrenMdx___frontmatter___hero___root',
+  ChildrenMdxFrontmatterHeroDir = 'childrenMdx___frontmatter___hero___dir',
+  ChildrenMdxFrontmatterHeroBase = 'childrenMdx___frontmatter___hero___base',
+  ChildrenMdxFrontmatterHeroExt = 'childrenMdx___frontmatter___hero___ext',
+  ChildrenMdxFrontmatterHeroName = 'childrenMdx___frontmatter___hero___name',
+  ChildrenMdxFrontmatterHeroRelativeDirectory = 'childrenMdx___frontmatter___hero___relativeDirectory',
+  ChildrenMdxFrontmatterHeroDev = 'childrenMdx___frontmatter___hero___dev',
+  ChildrenMdxFrontmatterHeroMode = 'childrenMdx___frontmatter___hero___mode',
+  ChildrenMdxFrontmatterHeroNlink = 'childrenMdx___frontmatter___hero___nlink',
+  ChildrenMdxFrontmatterHeroUid = 'childrenMdx___frontmatter___hero___uid',
+  ChildrenMdxFrontmatterHeroGid = 'childrenMdx___frontmatter___hero___gid',
+  ChildrenMdxFrontmatterHeroRdev = 'childrenMdx___frontmatter___hero___rdev',
+  ChildrenMdxFrontmatterHeroIno = 'childrenMdx___frontmatter___hero___ino',
+  ChildrenMdxFrontmatterHeroAtimeMs = 'childrenMdx___frontmatter___hero___atimeMs',
+  ChildrenMdxFrontmatterHeroMtimeMs = 'childrenMdx___frontmatter___hero___mtimeMs',
+  ChildrenMdxFrontmatterHeroCtimeMs = 'childrenMdx___frontmatter___hero___ctimeMs',
+  ChildrenMdxFrontmatterHeroAtime = 'childrenMdx___frontmatter___hero___atime',
+  ChildrenMdxFrontmatterHeroMtime = 'childrenMdx___frontmatter___hero___mtime',
+  ChildrenMdxFrontmatterHeroCtime = 'childrenMdx___frontmatter___hero___ctime',
+  ChildrenMdxFrontmatterHeroBirthtime = 'childrenMdx___frontmatter___hero___birthtime',
+  ChildrenMdxFrontmatterHeroBirthtimeMs = 'childrenMdx___frontmatter___hero___birthtimeMs',
+  ChildrenMdxFrontmatterHeroBlksize = 'childrenMdx___frontmatter___hero___blksize',
+  ChildrenMdxFrontmatterHeroBlocks = 'childrenMdx___frontmatter___hero___blocks',
+  ChildrenMdxFrontmatterHeroPublicUrl = 'childrenMdx___frontmatter___hero___publicURL',
+  ChildrenMdxFrontmatterHeroChildrenImageSharp = 'childrenMdx___frontmatter___hero___childrenImageSharp',
+  ChildrenMdxFrontmatterHeroChildrenMdx = 'childrenMdx___frontmatter___hero___childrenMdx',
+  ChildrenMdxFrontmatterHeroId = 'childrenMdx___frontmatter___hero___id',
+  ChildrenMdxFrontmatterHeroChildren = 'childrenMdx___frontmatter___hero___children',
   ChildrenMdxFrontmatterNavTitle = 'childrenMdx___frontmatter___navTitle',
   ChildrenMdxSlug = 'childrenMdx___slug',
   ChildrenMdxBody = 'childrenMdx___body',
@@ -1246,50 +1246,10 @@ export enum FileFieldsEnum {
   ChildMdxRawBody = 'childMdx___rawBody',
   ChildMdxFileAbsolutePath = 'childMdx___fileAbsolutePath',
   ChildMdxFrontmatterTitle = 'childMdx___frontmatter___title',
-  ChildMdxFrontmatterDate = 'childMdx___frontmatter___date',
-  ChildMdxFrontmatterDescription = 'childMdx___frontmatter___description',
-  ChildMdxFrontmatterTags = 'childMdx___frontmatter___tags',
-  ChildMdxFrontmatterAuthor = 'childMdx___frontmatter___author',
-  ChildMdxFrontmatterDraft = 'childMdx___frontmatter___draft',
-  ChildMdxFrontmatterHeroSourceInstanceName = 'childMdx___frontmatter___hero___sourceInstanceName',
-  ChildMdxFrontmatterHeroAbsolutePath = 'childMdx___frontmatter___hero___absolutePath',
-  ChildMdxFrontmatterHeroRelativePath = 'childMdx___frontmatter___hero___relativePath',
-  ChildMdxFrontmatterHeroExtension = 'childMdx___frontmatter___hero___extension',
-  ChildMdxFrontmatterHeroSize = 'childMdx___frontmatter___hero___size',
-  ChildMdxFrontmatterHeroPrettySize = 'childMdx___frontmatter___hero___prettySize',
-  ChildMdxFrontmatterHeroModifiedTime = 'childMdx___frontmatter___hero___modifiedTime',
-  ChildMdxFrontmatterHeroAccessTime = 'childMdx___frontmatter___hero___accessTime',
-  ChildMdxFrontmatterHeroChangeTime = 'childMdx___frontmatter___hero___changeTime',
-  ChildMdxFrontmatterHeroBirthTime = 'childMdx___frontmatter___hero___birthTime',
-  ChildMdxFrontmatterHeroRoot = 'childMdx___frontmatter___hero___root',
-  ChildMdxFrontmatterHeroDir = 'childMdx___frontmatter___hero___dir',
-  ChildMdxFrontmatterHeroBase = 'childMdx___frontmatter___hero___base',
-  ChildMdxFrontmatterHeroExt = 'childMdx___frontmatter___hero___ext',
-  ChildMdxFrontmatterHeroName = 'childMdx___frontmatter___hero___name',
-  ChildMdxFrontmatterHeroRelativeDirectory = 'childMdx___frontmatter___hero___relativeDirectory',
-  ChildMdxFrontmatterHeroDev = 'childMdx___frontmatter___hero___dev',
-  ChildMdxFrontmatterHeroMode = 'childMdx___frontmatter___hero___mode',
-  ChildMdxFrontmatterHeroNlink = 'childMdx___frontmatter___hero___nlink',
-  ChildMdxFrontmatterHeroUid = 'childMdx___frontmatter___hero___uid',
-  ChildMdxFrontmatterHeroGid = 'childMdx___frontmatter___hero___gid',
-  ChildMdxFrontmatterHeroRdev = 'childMdx___frontmatter___hero___rdev',
-  ChildMdxFrontmatterHeroIno = 'childMdx___frontmatter___hero___ino',
-  ChildMdxFrontmatterHeroAtimeMs = 'childMdx___frontmatter___hero___atimeMs',
-  ChildMdxFrontmatterHeroMtimeMs = 'childMdx___frontmatter___hero___mtimeMs',
-  ChildMdxFrontmatterHeroCtimeMs = 'childMdx___frontmatter___hero___ctimeMs',
-  ChildMdxFrontmatterHeroAtime = 'childMdx___frontmatter___hero___atime',
-  ChildMdxFrontmatterHeroMtime = 'childMdx___frontmatter___hero___mtime',
-  ChildMdxFrontmatterHeroCtime = 'childMdx___frontmatter___hero___ctime',
-  ChildMdxFrontmatterHeroBirthtime = 'childMdx___frontmatter___hero___birthtime',
-  ChildMdxFrontmatterHeroBirthtimeMs = 'childMdx___frontmatter___hero___birthtimeMs',
-  ChildMdxFrontmatterHeroBlksize = 'childMdx___frontmatter___hero___blksize',
-  ChildMdxFrontmatterHeroBlocks = 'childMdx___frontmatter___hero___blocks',
-  ChildMdxFrontmatterHeroPublicUrl = 'childMdx___frontmatter___hero___publicURL',
-  ChildMdxFrontmatterHeroChildrenImageSharp = 'childMdx___frontmatter___hero___childrenImageSharp',
-  ChildMdxFrontmatterHeroChildrenMdx = 'childMdx___frontmatter___hero___childrenMdx',
-  ChildMdxFrontmatterHeroId = 'childMdx___frontmatter___hero___id',
-  ChildMdxFrontmatterHeroChildren = 'childMdx___frontmatter___hero___children',
   ChildMdxFrontmatterNavId = 'childMdx___frontmatter___navId',
+  ChildMdxFrontmatterDescription = 'childMdx___frontmatter___description',
+  ChildMdxFrontmatterDraft = 'childMdx___frontmatter___draft',
+  ChildMdxFrontmatterTags = 'childMdx___frontmatter___tags',
   ChildMdxFrontmatterSeoImageSourceInstanceName = 'childMdx___frontmatter___seoImage___sourceInstanceName',
   ChildMdxFrontmatterSeoImageAbsolutePath = 'childMdx___frontmatter___seoImage___absolutePath',
   ChildMdxFrontmatterSeoImageRelativePath = 'childMdx___frontmatter___seoImage___relativePath',
@@ -1328,6 +1288,46 @@ export enum FileFieldsEnum {
   ChildMdxFrontmatterSeoImageChildrenMdx = 'childMdx___frontmatter___seoImage___childrenMdx',
   ChildMdxFrontmatterSeoImageId = 'childMdx___frontmatter___seoImage___id',
   ChildMdxFrontmatterSeoImageChildren = 'childMdx___frontmatter___seoImage___children',
+  ChildMdxFrontmatterDate = 'childMdx___frontmatter___date',
+  ChildMdxFrontmatterAuthor = 'childMdx___frontmatter___author',
+  ChildMdxFrontmatterHeroSourceInstanceName = 'childMdx___frontmatter___hero___sourceInstanceName',
+  ChildMdxFrontmatterHeroAbsolutePath = 'childMdx___frontmatter___hero___absolutePath',
+  ChildMdxFrontmatterHeroRelativePath = 'childMdx___frontmatter___hero___relativePath',
+  ChildMdxFrontmatterHeroExtension = 'childMdx___frontmatter___hero___extension',
+  ChildMdxFrontmatterHeroSize = 'childMdx___frontmatter___hero___size',
+  ChildMdxFrontmatterHeroPrettySize = 'childMdx___frontmatter___hero___prettySize',
+  ChildMdxFrontmatterHeroModifiedTime = 'childMdx___frontmatter___hero___modifiedTime',
+  ChildMdxFrontmatterHeroAccessTime = 'childMdx___frontmatter___hero___accessTime',
+  ChildMdxFrontmatterHeroChangeTime = 'childMdx___frontmatter___hero___changeTime',
+  ChildMdxFrontmatterHeroBirthTime = 'childMdx___frontmatter___hero___birthTime',
+  ChildMdxFrontmatterHeroRoot = 'childMdx___frontmatter___hero___root',
+  ChildMdxFrontmatterHeroDir = 'childMdx___frontmatter___hero___dir',
+  ChildMdxFrontmatterHeroBase = 'childMdx___frontmatter___hero___base',
+  ChildMdxFrontmatterHeroExt = 'childMdx___frontmatter___hero___ext',
+  ChildMdxFrontmatterHeroName = 'childMdx___frontmatter___hero___name',
+  ChildMdxFrontmatterHeroRelativeDirectory = 'childMdx___frontmatter___hero___relativeDirectory',
+  ChildMdxFrontmatterHeroDev = 'childMdx___frontmatter___hero___dev',
+  ChildMdxFrontmatterHeroMode = 'childMdx___frontmatter___hero___mode',
+  ChildMdxFrontmatterHeroNlink = 'childMdx___frontmatter___hero___nlink',
+  ChildMdxFrontmatterHeroUid = 'childMdx___frontmatter___hero___uid',
+  ChildMdxFrontmatterHeroGid = 'childMdx___frontmatter___hero___gid',
+  ChildMdxFrontmatterHeroRdev = 'childMdx___frontmatter___hero___rdev',
+  ChildMdxFrontmatterHeroIno = 'childMdx___frontmatter___hero___ino',
+  ChildMdxFrontmatterHeroAtimeMs = 'childMdx___frontmatter___hero___atimeMs',
+  ChildMdxFrontmatterHeroMtimeMs = 'childMdx___frontmatter___hero___mtimeMs',
+  ChildMdxFrontmatterHeroCtimeMs = 'childMdx___frontmatter___hero___ctimeMs',
+  ChildMdxFrontmatterHeroAtime = 'childMdx___frontmatter___hero___atime',
+  ChildMdxFrontmatterHeroMtime = 'childMdx___frontmatter___hero___mtime',
+  ChildMdxFrontmatterHeroCtime = 'childMdx___frontmatter___hero___ctime',
+  ChildMdxFrontmatterHeroBirthtime = 'childMdx___frontmatter___hero___birthtime',
+  ChildMdxFrontmatterHeroBirthtimeMs = 'childMdx___frontmatter___hero___birthtimeMs',
+  ChildMdxFrontmatterHeroBlksize = 'childMdx___frontmatter___hero___blksize',
+  ChildMdxFrontmatterHeroBlocks = 'childMdx___frontmatter___hero___blocks',
+  ChildMdxFrontmatterHeroPublicUrl = 'childMdx___frontmatter___hero___publicURL',
+  ChildMdxFrontmatterHeroChildrenImageSharp = 'childMdx___frontmatter___hero___childrenImageSharp',
+  ChildMdxFrontmatterHeroChildrenMdx = 'childMdx___frontmatter___hero___childrenMdx',
+  ChildMdxFrontmatterHeroId = 'childMdx___frontmatter___hero___id',
+  ChildMdxFrontmatterHeroChildren = 'childMdx___frontmatter___hero___children',
   ChildMdxFrontmatterNavTitle = 'childMdx___frontmatter___navTitle',
   ChildMdxSlug = 'childMdx___slug',
   ChildMdxBody = 'childMdx___body',
@@ -17716,7 +17716,9 @@ export enum GitHub_SecurityAdvisoryEcosystem {
   /** PHP packages hosted at packagist.org */
   Composer = 'COMPOSER',
   /** Go modules */
-  Go = 'GO'
+  Go = 'GO',
+  /** Applications, runtimes, operating systems and other kinds of software */
+  Other = 'OTHER'
 }
 
 /** An edge in a connection. */
@@ -22450,92 +22452,10 @@ export enum MdxFieldsEnum {
   RawBody = 'rawBody',
   FileAbsolutePath = 'fileAbsolutePath',
   FrontmatterTitle = 'frontmatter___title',
-  FrontmatterDate = 'frontmatter___date',
-  FrontmatterDescription = 'frontmatter___description',
-  FrontmatterTags = 'frontmatter___tags',
-  FrontmatterAuthor = 'frontmatter___author',
-  FrontmatterDraft = 'frontmatter___draft',
-  FrontmatterHeroSourceInstanceName = 'frontmatter___hero___sourceInstanceName',
-  FrontmatterHeroAbsolutePath = 'frontmatter___hero___absolutePath',
-  FrontmatterHeroRelativePath = 'frontmatter___hero___relativePath',
-  FrontmatterHeroExtension = 'frontmatter___hero___extension',
-  FrontmatterHeroSize = 'frontmatter___hero___size',
-  FrontmatterHeroPrettySize = 'frontmatter___hero___prettySize',
-  FrontmatterHeroModifiedTime = 'frontmatter___hero___modifiedTime',
-  FrontmatterHeroAccessTime = 'frontmatter___hero___accessTime',
-  FrontmatterHeroChangeTime = 'frontmatter___hero___changeTime',
-  FrontmatterHeroBirthTime = 'frontmatter___hero___birthTime',
-  FrontmatterHeroRoot = 'frontmatter___hero___root',
-  FrontmatterHeroDir = 'frontmatter___hero___dir',
-  FrontmatterHeroBase = 'frontmatter___hero___base',
-  FrontmatterHeroExt = 'frontmatter___hero___ext',
-  FrontmatterHeroName = 'frontmatter___hero___name',
-  FrontmatterHeroRelativeDirectory = 'frontmatter___hero___relativeDirectory',
-  FrontmatterHeroDev = 'frontmatter___hero___dev',
-  FrontmatterHeroMode = 'frontmatter___hero___mode',
-  FrontmatterHeroNlink = 'frontmatter___hero___nlink',
-  FrontmatterHeroUid = 'frontmatter___hero___uid',
-  FrontmatterHeroGid = 'frontmatter___hero___gid',
-  FrontmatterHeroRdev = 'frontmatter___hero___rdev',
-  FrontmatterHeroIno = 'frontmatter___hero___ino',
-  FrontmatterHeroAtimeMs = 'frontmatter___hero___atimeMs',
-  FrontmatterHeroMtimeMs = 'frontmatter___hero___mtimeMs',
-  FrontmatterHeroCtimeMs = 'frontmatter___hero___ctimeMs',
-  FrontmatterHeroAtime = 'frontmatter___hero___atime',
-  FrontmatterHeroMtime = 'frontmatter___hero___mtime',
-  FrontmatterHeroCtime = 'frontmatter___hero___ctime',
-  FrontmatterHeroBirthtime = 'frontmatter___hero___birthtime',
-  FrontmatterHeroBirthtimeMs = 'frontmatter___hero___birthtimeMs',
-  FrontmatterHeroBlksize = 'frontmatter___hero___blksize',
-  FrontmatterHeroBlocks = 'frontmatter___hero___blocks',
-  FrontmatterHeroPublicUrl = 'frontmatter___hero___publicURL',
-  FrontmatterHeroChildrenImageSharp = 'frontmatter___hero___childrenImageSharp',
-  FrontmatterHeroChildrenImageSharpGatsbyImageData = 'frontmatter___hero___childrenImageSharp___gatsbyImageData',
-  FrontmatterHeroChildrenImageSharpId = 'frontmatter___hero___childrenImageSharp___id',
-  FrontmatterHeroChildrenImageSharpChildren = 'frontmatter___hero___childrenImageSharp___children',
-  FrontmatterHeroChildImageSharpGatsbyImageData = 'frontmatter___hero___childImageSharp___gatsbyImageData',
-  FrontmatterHeroChildImageSharpId = 'frontmatter___hero___childImageSharp___id',
-  FrontmatterHeroChildImageSharpChildren = 'frontmatter___hero___childImageSharp___children',
-  FrontmatterHeroChildrenMdx = 'frontmatter___hero___childrenMdx',
-  FrontmatterHeroChildrenMdxRawBody = 'frontmatter___hero___childrenMdx___rawBody',
-  FrontmatterHeroChildrenMdxFileAbsolutePath = 'frontmatter___hero___childrenMdx___fileAbsolutePath',
-  FrontmatterHeroChildrenMdxSlug = 'frontmatter___hero___childrenMdx___slug',
-  FrontmatterHeroChildrenMdxBody = 'frontmatter___hero___childrenMdx___body',
-  FrontmatterHeroChildrenMdxExcerpt = 'frontmatter___hero___childrenMdx___excerpt',
-  FrontmatterHeroChildrenMdxHeadings = 'frontmatter___hero___childrenMdx___headings',
-  FrontmatterHeroChildrenMdxHtml = 'frontmatter___hero___childrenMdx___html',
-  FrontmatterHeroChildrenMdxMdxAst = 'frontmatter___hero___childrenMdx___mdxAST',
-  FrontmatterHeroChildrenMdxTableOfContents = 'frontmatter___hero___childrenMdx___tableOfContents',
-  FrontmatterHeroChildrenMdxTimeToRead = 'frontmatter___hero___childrenMdx___timeToRead',
-  FrontmatterHeroChildrenMdxId = 'frontmatter___hero___childrenMdx___id',
-  FrontmatterHeroChildrenMdxChildren = 'frontmatter___hero___childrenMdx___children',
-  FrontmatterHeroChildMdxRawBody = 'frontmatter___hero___childMdx___rawBody',
-  FrontmatterHeroChildMdxFileAbsolutePath = 'frontmatter___hero___childMdx___fileAbsolutePath',
-  FrontmatterHeroChildMdxSlug = 'frontmatter___hero___childMdx___slug',
-  FrontmatterHeroChildMdxBody = 'frontmatter___hero___childMdx___body',
-  FrontmatterHeroChildMdxExcerpt = 'frontmatter___hero___childMdx___excerpt',
-  FrontmatterHeroChildMdxHeadings = 'frontmatter___hero___childMdx___headings',
-  FrontmatterHeroChildMdxHtml = 'frontmatter___hero___childMdx___html',
-  FrontmatterHeroChildMdxMdxAst = 'frontmatter___hero___childMdx___mdxAST',
-  FrontmatterHeroChildMdxTableOfContents = 'frontmatter___hero___childMdx___tableOfContents',
-  FrontmatterHeroChildMdxTimeToRead = 'frontmatter___hero___childMdx___timeToRead',
-  FrontmatterHeroChildMdxId = 'frontmatter___hero___childMdx___id',
-  FrontmatterHeroChildMdxChildren = 'frontmatter___hero___childMdx___children',
-  FrontmatterHeroId = 'frontmatter___hero___id',
-  FrontmatterHeroParentId = 'frontmatter___hero___parent___id',
-  FrontmatterHeroParentChildren = 'frontmatter___hero___parent___children',
-  FrontmatterHeroChildren = 'frontmatter___hero___children',
-  FrontmatterHeroChildrenId = 'frontmatter___hero___children___id',
-  FrontmatterHeroChildrenChildren = 'frontmatter___hero___children___children',
-  FrontmatterHeroInternalContent = 'frontmatter___hero___internal___content',
-  FrontmatterHeroInternalContentDigest = 'frontmatter___hero___internal___contentDigest',
-  FrontmatterHeroInternalDescription = 'frontmatter___hero___internal___description',
-  FrontmatterHeroInternalFieldOwners = 'frontmatter___hero___internal___fieldOwners',
-  FrontmatterHeroInternalIgnoreType = 'frontmatter___hero___internal___ignoreType',
-  FrontmatterHeroInternalMediaType = 'frontmatter___hero___internal___mediaType',
-  FrontmatterHeroInternalOwner = 'frontmatter___hero___internal___owner',
-  FrontmatterHeroInternalType = 'frontmatter___hero___internal___type',
   FrontmatterNavId = 'frontmatter___navId',
+  FrontmatterDescription = 'frontmatter___description',
+  FrontmatterDraft = 'frontmatter___draft',
+  FrontmatterTags = 'frontmatter___tags',
   FrontmatterSeoImageSourceInstanceName = 'frontmatter___seoImage___sourceInstanceName',
   FrontmatterSeoImageAbsolutePath = 'frontmatter___seoImage___absolutePath',
   FrontmatterSeoImageRelativePath = 'frontmatter___seoImage___relativePath',
@@ -22616,6 +22536,88 @@ export enum MdxFieldsEnum {
   FrontmatterSeoImageInternalMediaType = 'frontmatter___seoImage___internal___mediaType',
   FrontmatterSeoImageInternalOwner = 'frontmatter___seoImage___internal___owner',
   FrontmatterSeoImageInternalType = 'frontmatter___seoImage___internal___type',
+  FrontmatterDate = 'frontmatter___date',
+  FrontmatterAuthor = 'frontmatter___author',
+  FrontmatterHeroSourceInstanceName = 'frontmatter___hero___sourceInstanceName',
+  FrontmatterHeroAbsolutePath = 'frontmatter___hero___absolutePath',
+  FrontmatterHeroRelativePath = 'frontmatter___hero___relativePath',
+  FrontmatterHeroExtension = 'frontmatter___hero___extension',
+  FrontmatterHeroSize = 'frontmatter___hero___size',
+  FrontmatterHeroPrettySize = 'frontmatter___hero___prettySize',
+  FrontmatterHeroModifiedTime = 'frontmatter___hero___modifiedTime',
+  FrontmatterHeroAccessTime = 'frontmatter___hero___accessTime',
+  FrontmatterHeroChangeTime = 'frontmatter___hero___changeTime',
+  FrontmatterHeroBirthTime = 'frontmatter___hero___birthTime',
+  FrontmatterHeroRoot = 'frontmatter___hero___root',
+  FrontmatterHeroDir = 'frontmatter___hero___dir',
+  FrontmatterHeroBase = 'frontmatter___hero___base',
+  FrontmatterHeroExt = 'frontmatter___hero___ext',
+  FrontmatterHeroName = 'frontmatter___hero___name',
+  FrontmatterHeroRelativeDirectory = 'frontmatter___hero___relativeDirectory',
+  FrontmatterHeroDev = 'frontmatter___hero___dev',
+  FrontmatterHeroMode = 'frontmatter___hero___mode',
+  FrontmatterHeroNlink = 'frontmatter___hero___nlink',
+  FrontmatterHeroUid = 'frontmatter___hero___uid',
+  FrontmatterHeroGid = 'frontmatter___hero___gid',
+  FrontmatterHeroRdev = 'frontmatter___hero___rdev',
+  FrontmatterHeroIno = 'frontmatter___hero___ino',
+  FrontmatterHeroAtimeMs = 'frontmatter___hero___atimeMs',
+  FrontmatterHeroMtimeMs = 'frontmatter___hero___mtimeMs',
+  FrontmatterHeroCtimeMs = 'frontmatter___hero___ctimeMs',
+  FrontmatterHeroAtime = 'frontmatter___hero___atime',
+  FrontmatterHeroMtime = 'frontmatter___hero___mtime',
+  FrontmatterHeroCtime = 'frontmatter___hero___ctime',
+  FrontmatterHeroBirthtime = 'frontmatter___hero___birthtime',
+  FrontmatterHeroBirthtimeMs = 'frontmatter___hero___birthtimeMs',
+  FrontmatterHeroBlksize = 'frontmatter___hero___blksize',
+  FrontmatterHeroBlocks = 'frontmatter___hero___blocks',
+  FrontmatterHeroPublicUrl = 'frontmatter___hero___publicURL',
+  FrontmatterHeroChildrenImageSharp = 'frontmatter___hero___childrenImageSharp',
+  FrontmatterHeroChildrenImageSharpGatsbyImageData = 'frontmatter___hero___childrenImageSharp___gatsbyImageData',
+  FrontmatterHeroChildrenImageSharpId = 'frontmatter___hero___childrenImageSharp___id',
+  FrontmatterHeroChildrenImageSharpChildren = 'frontmatter___hero___childrenImageSharp___children',
+  FrontmatterHeroChildImageSharpGatsbyImageData = 'frontmatter___hero___childImageSharp___gatsbyImageData',
+  FrontmatterHeroChildImageSharpId = 'frontmatter___hero___childImageSharp___id',
+  FrontmatterHeroChildImageSharpChildren = 'frontmatter___hero___childImageSharp___children',
+  FrontmatterHeroChildrenMdx = 'frontmatter___hero___childrenMdx',
+  FrontmatterHeroChildrenMdxRawBody = 'frontmatter___hero___childrenMdx___rawBody',
+  FrontmatterHeroChildrenMdxFileAbsolutePath = 'frontmatter___hero___childrenMdx___fileAbsolutePath',
+  FrontmatterHeroChildrenMdxSlug = 'frontmatter___hero___childrenMdx___slug',
+  FrontmatterHeroChildrenMdxBody = 'frontmatter___hero___childrenMdx___body',
+  FrontmatterHeroChildrenMdxExcerpt = 'frontmatter___hero___childrenMdx___excerpt',
+  FrontmatterHeroChildrenMdxHeadings = 'frontmatter___hero___childrenMdx___headings',
+  FrontmatterHeroChildrenMdxHtml = 'frontmatter___hero___childrenMdx___html',
+  FrontmatterHeroChildrenMdxMdxAst = 'frontmatter___hero___childrenMdx___mdxAST',
+  FrontmatterHeroChildrenMdxTableOfContents = 'frontmatter___hero___childrenMdx___tableOfContents',
+  FrontmatterHeroChildrenMdxTimeToRead = 'frontmatter___hero___childrenMdx___timeToRead',
+  FrontmatterHeroChildrenMdxId = 'frontmatter___hero___childrenMdx___id',
+  FrontmatterHeroChildrenMdxChildren = 'frontmatter___hero___childrenMdx___children',
+  FrontmatterHeroChildMdxRawBody = 'frontmatter___hero___childMdx___rawBody',
+  FrontmatterHeroChildMdxFileAbsolutePath = 'frontmatter___hero___childMdx___fileAbsolutePath',
+  FrontmatterHeroChildMdxSlug = 'frontmatter___hero___childMdx___slug',
+  FrontmatterHeroChildMdxBody = 'frontmatter___hero___childMdx___body',
+  FrontmatterHeroChildMdxExcerpt = 'frontmatter___hero___childMdx___excerpt',
+  FrontmatterHeroChildMdxHeadings = 'frontmatter___hero___childMdx___headings',
+  FrontmatterHeroChildMdxHtml = 'frontmatter___hero___childMdx___html',
+  FrontmatterHeroChildMdxMdxAst = 'frontmatter___hero___childMdx___mdxAST',
+  FrontmatterHeroChildMdxTableOfContents = 'frontmatter___hero___childMdx___tableOfContents',
+  FrontmatterHeroChildMdxTimeToRead = 'frontmatter___hero___childMdx___timeToRead',
+  FrontmatterHeroChildMdxId = 'frontmatter___hero___childMdx___id',
+  FrontmatterHeroChildMdxChildren = 'frontmatter___hero___childMdx___children',
+  FrontmatterHeroId = 'frontmatter___hero___id',
+  FrontmatterHeroParentId = 'frontmatter___hero___parent___id',
+  FrontmatterHeroParentChildren = 'frontmatter___hero___parent___children',
+  FrontmatterHeroChildren = 'frontmatter___hero___children',
+  FrontmatterHeroChildrenId = 'frontmatter___hero___children___id',
+  FrontmatterHeroChildrenChildren = 'frontmatter___hero___children___children',
+  FrontmatterHeroInternalContent = 'frontmatter___hero___internal___content',
+  FrontmatterHeroInternalContentDigest = 'frontmatter___hero___internal___contentDigest',
+  FrontmatterHeroInternalDescription = 'frontmatter___hero___internal___description',
+  FrontmatterHeroInternalFieldOwners = 'frontmatter___hero___internal___fieldOwners',
+  FrontmatterHeroInternalIgnoreType = 'frontmatter___hero___internal___ignoreType',
+  FrontmatterHeroInternalMediaType = 'frontmatter___hero___internal___mediaType',
+  FrontmatterHeroInternalOwner = 'frontmatter___hero___internal___owner',
+  FrontmatterHeroInternalType = 'frontmatter___hero___internal___type',
   FrontmatterNavTitle = 'frontmatter___navTitle',
   Slug = 'slug',
   Body = 'body',
@@ -22758,14 +22760,14 @@ export type MdxFilterListInput = {
 export type MdxFrontmatter = {
   __typename?: 'MdxFrontmatter'
   title: Scalars['String']
-  date?: Maybe<Scalars['Date']>
-  description?: Maybe<Scalars['String']>
-  tags?: Maybe<Scalars['String']>
-  author?: Maybe<Scalars['String']>
-  draft?: Maybe<Scalars['Boolean']>
-  hero?: Maybe<File>
   navId?: Maybe<Scalars['String']>
+  description?: Maybe<Scalars['String']>
+  draft?: Maybe<Scalars['Boolean']>
+  tags?: Maybe<Scalars['String']>
   seoImage?: Maybe<File>
+  date?: Maybe<Scalars['Date']>
+  author?: Maybe<Scalars['String']>
+  hero?: Maybe<File>
   navTitle?: Maybe<Scalars['String']>
 }
 
@@ -22778,14 +22780,14 @@ export type MdxFrontmatterDateArgs = {
 
 export type MdxFrontmatterFilterInput = {
   title?: Maybe<StringQueryOperatorInput>
-  date?: Maybe<DateQueryOperatorInput>
-  description?: Maybe<StringQueryOperatorInput>
-  tags?: Maybe<StringQueryOperatorInput>
-  author?: Maybe<StringQueryOperatorInput>
-  draft?: Maybe<BooleanQueryOperatorInput>
-  hero?: Maybe<FileFilterInput>
   navId?: Maybe<StringQueryOperatorInput>
+  description?: Maybe<StringQueryOperatorInput>
+  draft?: Maybe<BooleanQueryOperatorInput>
+  tags?: Maybe<StringQueryOperatorInput>
   seoImage?: Maybe<FileFilterInput>
+  date?: Maybe<DateQueryOperatorInput>
+  author?: Maybe<StringQueryOperatorInput>
+  hero?: Maybe<FileFilterInput>
   navTitle?: Maybe<StringQueryOperatorInput>
 }
 
@@ -23608,6 +23610,8 @@ export enum SiteFieldsEnum {
   Port = 'port',
   Host = 'host',
   FlagsFastDev = 'flags___FAST_DEV',
+  FlagsLmdbStore = 'flags___LMDB_STORE',
+  FlagsParallelSourcing = 'flags___PARALLEL_SOURCING',
   Polyfill = 'polyfill',
   PathPrefix = 'pathPrefix',
   Id = 'id',
@@ -23715,10 +23719,14 @@ export type SiteFilterInput = {
 export type SiteFlags = {
   __typename?: 'SiteFlags'
   FAST_DEV?: Maybe<Scalars['Boolean']>
+  LMDB_STORE?: Maybe<Scalars['Boolean']>
+  PARALLEL_SOURCING?: Maybe<Scalars['Boolean']>
 }
 
 export type SiteFlagsFilterInput = {
   FAST_DEV?: Maybe<BooleanQueryOperatorInput>
+  LMDB_STORE?: Maybe<BooleanQueryOperatorInput>
+  PARALLEL_SOURCING?: Maybe<BooleanQueryOperatorInput>
 }
 
 export type SiteFunction = Node & {
@@ -23976,10 +23984,10 @@ export type SitePageContext = {
   tags?: Maybe<Array<Maybe<Scalars['String']>>>
   total?: Maybe<Scalars['Int']>
   tag?: Maybe<Scalars['String']>
-  author?: Maybe<Scalars['String']>
   next?: Maybe<SitePageContextNext>
   previous?: Maybe<SitePageContextPrevious>
   related?: Maybe<SitePageContextRelated>
+  author?: Maybe<Scalars['String']>
 }
 
 export type SitePageContextFilterInput = {
@@ -23992,10 +24000,10 @@ export type SitePageContextFilterInput = {
   tags?: Maybe<StringQueryOperatorInput>
   total?: Maybe<IntQueryOperatorInput>
   tag?: Maybe<StringQueryOperatorInput>
-  author?: Maybe<StringQueryOperatorInput>
   next?: Maybe<SitePageContextNextFilterInput>
   previous?: Maybe<SitePageContextPreviousFilterInput>
   related?: Maybe<SitePageContextRelatedFilterInput>
+  author?: Maybe<StringQueryOperatorInput>
 }
 
 export type SitePageContextNext = {
@@ -24114,7 +24122,6 @@ export enum SitePageFieldsEnum {
   ComponentChunkName = 'componentChunkName',
   MatchPath = 'matchPath',
   IsCreatedByStatefulCreatePages = 'isCreatedByStatefulCreatePages',
-  PluginCreatorId = 'pluginCreator___id',
   PluginCreatorParentId = 'pluginCreator___parent___id',
   PluginCreatorParentParentId = 'pluginCreator___parent___parent___id',
   PluginCreatorParentParentChildren = 'pluginCreator___parent___parent___children',
@@ -24156,50 +24163,26 @@ export enum SitePageFieldsEnum {
   PluginCreatorName = 'pluginCreator___name',
   PluginCreatorVersion = 'pluginCreator___version',
   PluginCreatorPluginOptionsPath = 'pluginCreator___pluginOptions___path',
-  PluginCreatorPluginOptionsName = 'pluginCreator___pluginOptions___name',
-  PluginCreatorPluginOptionsUrl = 'pluginCreator___pluginOptions___url',
-  PluginCreatorPluginOptionsTypeName = 'pluginCreator___pluginOptions___typeName',
-  PluginCreatorPluginOptionsFieldName = 'pluginCreator___pluginOptions___fieldName',
-  PluginCreatorPluginOptionsHeadersAuthorization = 'pluginCreator___pluginOptions___headers___Authorization',
-  PluginCreatorPluginOptionsChannelId = 'pluginCreator___pluginOptions___channelId',
-  PluginCreatorPluginOptionsApiKey = 'pluginCreator___pluginOptions___apiKey',
-  PluginCreatorPluginOptionsMaxVideos = 'pluginCreator___pluginOptions___maxVideos',
-  PluginCreatorPluginOptionsCredentialsConsumerKey = 'pluginCreator___pluginOptions___credentials___consumer_key',
-  PluginCreatorPluginOptionsCredentialsConsumerSecret = 'pluginCreator___pluginOptions___credentials___consumer_secret',
-  PluginCreatorPluginOptionsCredentialsBearerToken = 'pluginCreator___pluginOptions___credentials___bearer_token',
+  PluginCreatorPluginOptionsPathCheck = 'pluginCreator___pluginOptions___pathCheck',
   PluginCreatorPluginOptionsGoogleFamilies = 'pluginCreator___pluginOptions___google___families',
-  PluginCreatorPluginOptionsIsTsx = 'pluginCreator___pluginOptions___isTSX',
-  PluginCreatorPluginOptionsJsxPragma = 'pluginCreator___pluginOptions___jsxPragma',
-  PluginCreatorPluginOptionsAllExtensions = 'pluginCreator___pluginOptions___allExtensions',
   PluginCreatorPluginOptionsSourceMap = 'pluginCreator___pluginOptions___sourceMap',
   PluginCreatorPluginOptionsAutoLabel = 'pluginCreator___pluginOptions___autoLabel',
   PluginCreatorPluginOptionsLabelFormat = 'pluginCreator___pluginOptions___labelFormat',
   PluginCreatorPluginOptionsCssPropOptimization = 'pluginCreator___pluginOptions___cssPropOptimization',
-  PluginCreatorPluginOptionsDefaultsPlaceholder = 'pluginCreator___pluginOptions___defaults___placeholder',
-  PluginCreatorPluginOptionsDefaultsQuality = 'pluginCreator___pluginOptions___defaults___quality',
-  PluginCreatorPluginOptionsBase64Width = 'pluginCreator___pluginOptions___base64Width',
-  PluginCreatorPluginOptionsStripMetadata = 'pluginCreator___pluginOptions___stripMetadata',
-  PluginCreatorPluginOptionsDefaultQuality = 'pluginCreator___pluginOptions___defaultQuality',
-  PluginCreatorPluginOptionsFailOnError = 'pluginCreator___pluginOptions___failOnError',
-  PluginCreatorPluginOptionsExtensions = 'pluginCreator___pluginOptions___extensions',
-  PluginCreatorPluginOptionsLessBabel = 'pluginCreator___pluginOptions___lessBabel',
-  PluginCreatorPluginOptionsRemarkPlugins = 'pluginCreator___pluginOptions___remarkPlugins',
-  PluginCreatorPluginOptionsRemarkPluginsOnlyRunWithMarker = 'pluginCreator___pluginOptions___remarkPlugins___onlyRunWithMarker',
-  PluginCreatorPluginOptionsRemarkPluginsPattyName = 'pluginCreator___pluginOptions___remarkPlugins___pattyName',
-  PluginCreatorPluginOptionsMediaTypes = 'pluginCreator___pluginOptions___mediaTypes',
-  PluginCreatorPluginOptionsRoot = 'pluginCreator___pluginOptions___root',
-  PluginCreatorPluginOptionsQuery = 'pluginCreator___pluginOptions___query',
-  PluginCreatorPluginOptionsFeeds = 'pluginCreator___pluginOptions___feeds',
-  PluginCreatorPluginOptionsFeedsQuery = 'pluginCreator___pluginOptions___feeds___query',
-  PluginCreatorPluginOptionsFeedsOutput = 'pluginCreator___pluginOptions___feeds___output',
-  PluginCreatorPluginOptionsFeedsTitle = 'pluginCreator___pluginOptions___feeds___title',
-  PluginCreatorPluginOptionsId = 'pluginCreator___pluginOptions___id',
-  PluginCreatorPluginOptionsIncludeInDevelopment = 'pluginCreator___pluginOptions___includeInDevelopment',
-  PluginCreatorPluginOptionsDefaultDataLayerType = 'pluginCreator___pluginOptions___defaultDataLayer___type',
-  PluginCreatorPluginOptionsRouteChangeEventName = 'pluginCreator___pluginOptions___routeChangeEventName',
-  PluginCreatorPluginOptionsEnableWebVitalsTracking = 'pluginCreator___pluginOptions___enableWebVitalsTracking',
-  PluginCreatorPluginOptionsPrefixes = 'pluginCreator___pluginOptions___prefixes',
   PluginCreatorPluginOptionsSiteUrl = 'pluginCreator___pluginOptions___siteUrl',
+  PluginCreatorPluginOptionsUrl = 'pluginCreator___pluginOptions___url',
+  PluginCreatorPluginOptionsName = 'pluginCreator___pluginOptions___name',
+  PluginCreatorPluginOptionsExcludes = 'pluginCreator___pluginOptions___excludes',
+  PluginCreatorPluginOptionsOutput = 'pluginCreator___pluginOptions___output',
+  PluginCreatorPluginOptionsCreateLinkInHead = 'pluginCreator___pluginOptions___createLinkInHead',
+  PluginCreatorPluginOptionsEntryLimit = 'pluginCreator___pluginOptions___entryLimit',
+  PluginCreatorPluginOptionsQuery = 'pluginCreator___pluginOptions___query',
+  PluginCreatorPluginOptionsChannelId = 'pluginCreator___pluginOptions___channelId',
+  PluginCreatorPluginOptionsApiKey = 'pluginCreator___pluginOptions___apiKey',
+  PluginCreatorPluginOptionsMaxVideos = 'pluginCreator___pluginOptions___maxVideos',
+  PluginCreatorPluginOptionsTypeName = 'pluginCreator___pluginOptions___typeName',
+  PluginCreatorPluginOptionsFieldName = 'pluginCreator___pluginOptions___fieldName',
+  PluginCreatorPluginOptionsHeadersAuthorization = 'pluginCreator___pluginOptions___headers___Authorization',
   PluginCreatorPluginOptionsStartUrl = 'pluginCreator___pluginOptions___start_url',
   PluginCreatorPluginOptionsThemeColor = 'pluginCreator___pluginOptions___theme_color',
   PluginCreatorPluginOptionsDisplay = 'pluginCreator___pluginOptions___display',
@@ -24210,16 +24193,38 @@ export enum SitePageFieldsEnum {
   PluginCreatorPluginOptionsCrossOrigin = 'pluginCreator___pluginOptions___crossOrigin',
   PluginCreatorPluginOptionsIncludeFavicon = 'pluginCreator___pluginOptions___include_favicon',
   PluginCreatorPluginOptionsCacheDigest = 'pluginCreator___pluginOptions___cacheDigest',
-  PluginCreatorPluginOptionsWorkboxConfigRuntimeCaching = 'pluginCreator___pluginOptions___workboxConfig___runtimeCaching',
-  PluginCreatorPluginOptionsExcludes = 'pluginCreator___pluginOptions___excludes',
-  PluginCreatorPluginOptionsOutput = 'pluginCreator___pluginOptions___output',
-  PluginCreatorPluginOptionsCreateLinkInHead = 'pluginCreator___pluginOptions___createLinkInHead',
-  PluginCreatorPluginOptionsEntryLimit = 'pluginCreator___pluginOptions___entryLimit',
   PluginCreatorPluginOptionsBucketName = 'pluginCreator___pluginOptions___bucketName',
   PluginCreatorPluginOptionsProtocol = 'pluginCreator___pluginOptions___protocol',
   PluginCreatorPluginOptionsHostname = 'pluginCreator___pluginOptions___hostname',
   PluginCreatorPluginOptionsGenerateMatchPathRewrites = 'pluginCreator___pluginOptions___generateMatchPathRewrites',
-  PluginCreatorPluginOptionsPathCheck = 'pluginCreator___pluginOptions___pathCheck',
+  PluginCreatorPluginOptionsDefaultsPlaceholder = 'pluginCreator___pluginOptions___defaults___placeholder',
+  PluginCreatorPluginOptionsDefaultsQuality = 'pluginCreator___pluginOptions___defaults___quality',
+  PluginCreatorPluginOptionsBase64Width = 'pluginCreator___pluginOptions___base64Width',
+  PluginCreatorPluginOptionsStripMetadata = 'pluginCreator___pluginOptions___stripMetadata',
+  PluginCreatorPluginOptionsDefaultQuality = 'pluginCreator___pluginOptions___defaultQuality',
+  PluginCreatorPluginOptionsFailOnError = 'pluginCreator___pluginOptions___failOnError',
+  PluginCreatorPluginOptionsId = 'pluginCreator___pluginOptions___id',
+  PluginCreatorPluginOptionsIncludeInDevelopment = 'pluginCreator___pluginOptions___includeInDevelopment',
+  PluginCreatorPluginOptionsDefaultDataLayerType = 'pluginCreator___pluginOptions___defaultDataLayer___type',
+  PluginCreatorPluginOptionsRouteChangeEventName = 'pluginCreator___pluginOptions___routeChangeEventName',
+  PluginCreatorPluginOptionsEnableWebVitalsTracking = 'pluginCreator___pluginOptions___enableWebVitalsTracking',
+  PluginCreatorPluginOptionsWorkboxConfigRuntimeCaching = 'pluginCreator___pluginOptions___workboxConfig___runtimeCaching',
+  PluginCreatorPluginOptionsFeeds = 'pluginCreator___pluginOptions___feeds',
+  PluginCreatorPluginOptionsFeedsQuery = 'pluginCreator___pluginOptions___feeds___query',
+  PluginCreatorPluginOptionsFeedsOutput = 'pluginCreator___pluginOptions___feeds___output',
+  PluginCreatorPluginOptionsFeedsTitle = 'pluginCreator___pluginOptions___feeds___title',
+  PluginCreatorPluginOptionsPrefixes = 'pluginCreator___pluginOptions___prefixes',
+  PluginCreatorPluginOptionsExtensions = 'pluginCreator___pluginOptions___extensions',
+  PluginCreatorPluginOptionsRemarkPlugins = 'pluginCreator___pluginOptions___remarkPlugins',
+  PluginCreatorPluginOptionsLessBabel = 'pluginCreator___pluginOptions___lessBabel',
+  PluginCreatorPluginOptionsMediaTypes = 'pluginCreator___pluginOptions___mediaTypes',
+  PluginCreatorPluginOptionsRoot = 'pluginCreator___pluginOptions___root',
+  PluginCreatorPluginOptionsCredentialsConsumerKey = 'pluginCreator___pluginOptions___credentials___consumer_key',
+  PluginCreatorPluginOptionsCredentialsConsumerSecret = 'pluginCreator___pluginOptions___credentials___consumer_secret',
+  PluginCreatorPluginOptionsCredentialsBearerToken = 'pluginCreator___pluginOptions___credentials___bearer_token',
+  PluginCreatorPluginOptionsIsTsx = 'pluginCreator___pluginOptions___isTSX',
+  PluginCreatorPluginOptionsJsxPragma = 'pluginCreator___pluginOptions___jsxPragma',
+  PluginCreatorPluginOptionsAllExtensions = 'pluginCreator___pluginOptions___allExtensions',
   PluginCreatorNodeApIs = 'pluginCreator___nodeAPIs',
   PluginCreatorBrowserApIs = 'pluginCreator___browserAPIs',
   PluginCreatorSsrApIs = 'pluginCreator___ssrAPIs',
@@ -24228,6 +24233,8 @@ export enum SitePageFieldsEnum {
   PluginCreatorPackageJsonDescription = 'pluginCreator___packageJson___description',
   PluginCreatorPackageJsonVersion = 'pluginCreator___packageJson___version',
   PluginCreatorPackageJsonMain = 'pluginCreator___packageJson___main',
+  PluginCreatorPackageJsonKeywords = 'pluginCreator___packageJson___keywords',
+  PluginCreatorPackageJsonAuthor = 'pluginCreator___packageJson___author',
   PluginCreatorPackageJsonLicense = 'pluginCreator___packageJson___license',
   PluginCreatorPackageJsonDependencies = 'pluginCreator___packageJson___dependencies',
   PluginCreatorPackageJsonDependenciesName = 'pluginCreator___packageJson___dependencies___name',
@@ -24238,7 +24245,7 @@ export enum SitePageFieldsEnum {
   PluginCreatorPackageJsonPeerDependencies = 'pluginCreator___packageJson___peerDependencies',
   PluginCreatorPackageJsonPeerDependenciesName = 'pluginCreator___packageJson___peerDependencies___name',
   PluginCreatorPackageJsonPeerDependenciesVersion = 'pluginCreator___packageJson___peerDependencies___version',
-  PluginCreatorPackageJsonKeywords = 'pluginCreator___packageJson___keywords',
+  PluginCreatorId = 'pluginCreatorId',
   Id = 'id',
   ParentId = 'parent___id',
   ParentParentId = 'parent___parent___id',
@@ -24334,7 +24341,6 @@ export enum SitePageFieldsEnum {
   ContextTags = 'context___tags',
   ContextTotal = 'context___total',
   ContextTag = 'context___tag',
-  ContextAuthor = 'context___author',
   ContextNextFieldsSlug = 'context___next___fields___slug',
   ContextNextFieldsOldSlug = 'context___next___fields___oldSlug',
   ContextNextFieldsTags = 'context___next___fields___tags',
@@ -24349,7 +24355,8 @@ export enum SitePageFieldsEnum {
   ContextRelatedBlogHref = 'context___related___blog___href',
   ContextRelatedTutorials = 'context___related___tutorials',
   ContextRelatedTutorialsTitle = 'context___related___tutorials___title',
-  ContextRelatedTutorialsHref = 'context___related___tutorials___href'
+  ContextRelatedTutorialsHref = 'context___related___tutorials___href',
+  ContextAuthor = 'context___author'
 }
 
 export type SitePageFilterInput = {
@@ -24533,52 +24540,26 @@ export enum SitePluginFieldsEnum {
   Name = 'name',
   Version = 'version',
   PluginOptionsPath = 'pluginOptions___path',
-  PluginOptionsName = 'pluginOptions___name',
-  PluginOptionsUrl = 'pluginOptions___url',
-  PluginOptionsTypeName = 'pluginOptions___typeName',
-  PluginOptionsFieldName = 'pluginOptions___fieldName',
-  PluginOptionsHeadersAuthorization = 'pluginOptions___headers___Authorization',
-  PluginOptionsChannelId = 'pluginOptions___channelId',
-  PluginOptionsApiKey = 'pluginOptions___apiKey',
-  PluginOptionsMaxVideos = 'pluginOptions___maxVideos',
-  PluginOptionsCredentialsConsumerKey = 'pluginOptions___credentials___consumer_key',
-  PluginOptionsCredentialsConsumerSecret = 'pluginOptions___credentials___consumer_secret',
-  PluginOptionsCredentialsBearerToken = 'pluginOptions___credentials___bearer_token',
-  PluginOptionsQueriesSpokestackEndpoint = 'pluginOptions___queries___spokestack___endpoint',
+  PluginOptionsPathCheck = 'pluginOptions___pathCheck',
   PluginOptionsGoogleFamilies = 'pluginOptions___google___families',
-  PluginOptionsIsTsx = 'pluginOptions___isTSX',
-  PluginOptionsJsxPragma = 'pluginOptions___jsxPragma',
-  PluginOptionsAllExtensions = 'pluginOptions___allExtensions',
   PluginOptionsSourceMap = 'pluginOptions___sourceMap',
   PluginOptionsAutoLabel = 'pluginOptions___autoLabel',
   PluginOptionsLabelFormat = 'pluginOptions___labelFormat',
   PluginOptionsCssPropOptimization = 'pluginOptions___cssPropOptimization',
-  PluginOptionsDefaultsPlaceholder = 'pluginOptions___defaults___placeholder',
-  PluginOptionsDefaultsQuality = 'pluginOptions___defaults___quality',
-  PluginOptionsBase64Width = 'pluginOptions___base64Width',
-  PluginOptionsStripMetadata = 'pluginOptions___stripMetadata',
-  PluginOptionsDefaultQuality = 'pluginOptions___defaultQuality',
-  PluginOptionsFailOnError = 'pluginOptions___failOnError',
-  PluginOptionsExtensions = 'pluginOptions___extensions',
-  PluginOptionsLessBabel = 'pluginOptions___lessBabel',
-  PluginOptionsRemarkPlugins = 'pluginOptions___remarkPlugins',
-  PluginOptionsRemarkPluginsOnlyRunWithMarker = 'pluginOptions___remarkPlugins___onlyRunWithMarker',
-  PluginOptionsRemarkPluginsPattyName = 'pluginOptions___remarkPlugins___pattyName',
-  PluginOptionsMediaTypes = 'pluginOptions___mediaTypes',
-  PluginOptionsRoot = 'pluginOptions___root',
-  PluginOptionsQuery = 'pluginOptions___query',
-  PluginOptionsFeeds = 'pluginOptions___feeds',
-  PluginOptionsFeedsQuery = 'pluginOptions___feeds___query',
-  PluginOptionsFeedsOutput = 'pluginOptions___feeds___output',
-  PluginOptionsFeedsTitle = 'pluginOptions___feeds___title',
-  PluginOptionsId = 'pluginOptions___id',
-  PluginOptionsIncludeInDevelopment = 'pluginOptions___includeInDevelopment',
-  PluginOptionsDefaultDataLayerType = 'pluginOptions___defaultDataLayer___type',
-  PluginOptionsDefaultDataLayerValuePlatform = 'pluginOptions___defaultDataLayer___value___platform',
-  PluginOptionsRouteChangeEventName = 'pluginOptions___routeChangeEventName',
-  PluginOptionsEnableWebVitalsTracking = 'pluginOptions___enableWebVitalsTracking',
-  PluginOptionsPrefixes = 'pluginOptions___prefixes',
   PluginOptionsSiteUrl = 'pluginOptions___siteUrl',
+  PluginOptionsUrl = 'pluginOptions___url',
+  PluginOptionsName = 'pluginOptions___name',
+  PluginOptionsExcludes = 'pluginOptions___excludes',
+  PluginOptionsOutput = 'pluginOptions___output',
+  PluginOptionsCreateLinkInHead = 'pluginOptions___createLinkInHead',
+  PluginOptionsEntryLimit = 'pluginOptions___entryLimit',
+  PluginOptionsQuery = 'pluginOptions___query',
+  PluginOptionsChannelId = 'pluginOptions___channelId',
+  PluginOptionsApiKey = 'pluginOptions___apiKey',
+  PluginOptionsMaxVideos = 'pluginOptions___maxVideos',
+  PluginOptionsTypeName = 'pluginOptions___typeName',
+  PluginOptionsFieldName = 'pluginOptions___fieldName',
+  PluginOptionsHeadersAuthorization = 'pluginOptions___headers___Authorization',
   PluginOptionsStartUrl = 'pluginOptions___start_url',
   PluginOptionsBackgroundColor = 'pluginOptions___background_color',
   PluginOptionsThemeColor = 'pluginOptions___theme_color',
@@ -24590,17 +24571,44 @@ export enum SitePluginFieldsEnum {
   PluginOptionsCrossOrigin = 'pluginOptions___crossOrigin',
   PluginOptionsIncludeFavicon = 'pluginOptions___include_favicon',
   PluginOptionsCacheDigest = 'pluginOptions___cacheDigest',
-  PluginOptionsWorkboxConfigRuntimeCaching = 'pluginOptions___workboxConfig___runtimeCaching',
-  PluginOptionsWorkboxConfigRuntimeCachingHandler = 'pluginOptions___workboxConfig___runtimeCaching___handler',
-  PluginOptionsExcludes = 'pluginOptions___excludes',
-  PluginOptionsOutput = 'pluginOptions___output',
-  PluginOptionsCreateLinkInHead = 'pluginOptions___createLinkInHead',
-  PluginOptionsEntryLimit = 'pluginOptions___entryLimit',
   PluginOptionsBucketName = 'pluginOptions___bucketName',
   PluginOptionsProtocol = 'pluginOptions___protocol',
   PluginOptionsHostname = 'pluginOptions___hostname',
   PluginOptionsGenerateMatchPathRewrites = 'pluginOptions___generateMatchPathRewrites',
-  PluginOptionsPathCheck = 'pluginOptions___pathCheck',
+  PluginOptionsDefaultsPlaceholder = 'pluginOptions___defaults___placeholder',
+  PluginOptionsDefaultsQuality = 'pluginOptions___defaults___quality',
+  PluginOptionsBase64Width = 'pluginOptions___base64Width',
+  PluginOptionsStripMetadata = 'pluginOptions___stripMetadata',
+  PluginOptionsDefaultQuality = 'pluginOptions___defaultQuality',
+  PluginOptionsFailOnError = 'pluginOptions___failOnError',
+  PluginOptionsId = 'pluginOptions___id',
+  PluginOptionsIncludeInDevelopment = 'pluginOptions___includeInDevelopment',
+  PluginOptionsDefaultDataLayerType = 'pluginOptions___defaultDataLayer___type',
+  PluginOptionsDefaultDataLayerValuePlatform = 'pluginOptions___defaultDataLayer___value___platform',
+  PluginOptionsRouteChangeEventName = 'pluginOptions___routeChangeEventName',
+  PluginOptionsEnableWebVitalsTracking = 'pluginOptions___enableWebVitalsTracking',
+  PluginOptionsWorkboxConfigRuntimeCaching = 'pluginOptions___workboxConfig___runtimeCaching',
+  PluginOptionsWorkboxConfigRuntimeCachingHandler = 'pluginOptions___workboxConfig___runtimeCaching___handler',
+  PluginOptionsFeeds = 'pluginOptions___feeds',
+  PluginOptionsFeedsQuery = 'pluginOptions___feeds___query',
+  PluginOptionsFeedsOutput = 'pluginOptions___feeds___output',
+  PluginOptionsFeedsTitle = 'pluginOptions___feeds___title',
+  PluginOptionsPrefixes = 'pluginOptions___prefixes',
+  PluginOptionsExtensions = 'pluginOptions___extensions',
+  PluginOptionsRemarkPlugins = 'pluginOptions___remarkPlugins',
+  PluginOptionsRemarkPluginsContentType = 'pluginOptions___remarkPlugins___content___type',
+  PluginOptionsRemarkPluginsContentTagName = 'pluginOptions___remarkPlugins___content___tagName',
+  PluginOptionsRemarkPluginsContentChildren = 'pluginOptions___remarkPlugins___content___children',
+  PluginOptionsLessBabel = 'pluginOptions___lessBabel',
+  PluginOptionsMediaTypes = 'pluginOptions___mediaTypes',
+  PluginOptionsRoot = 'pluginOptions___root',
+  PluginOptionsCredentialsConsumerKey = 'pluginOptions___credentials___consumer_key',
+  PluginOptionsCredentialsConsumerSecret = 'pluginOptions___credentials___consumer_secret',
+  PluginOptionsCredentialsBearerToken = 'pluginOptions___credentials___bearer_token',
+  PluginOptionsQueriesSpokestackEndpoint = 'pluginOptions___queries___spokestack___endpoint',
+  PluginOptionsIsTsx = 'pluginOptions___isTSX',
+  PluginOptionsJsxPragma = 'pluginOptions___jsxPragma',
+  PluginOptionsAllExtensions = 'pluginOptions___allExtensions',
   NodeApIs = 'nodeAPIs',
   BrowserApIs = 'browserAPIs',
   SsrApIs = 'ssrAPIs',
@@ -24609,6 +24617,8 @@ export enum SitePluginFieldsEnum {
   PackageJsonDescription = 'packageJson___description',
   PackageJsonVersion = 'packageJson___version',
   PackageJsonMain = 'packageJson___main',
+  PackageJsonKeywords = 'packageJson___keywords',
+  PackageJsonAuthor = 'packageJson___author',
   PackageJsonLicense = 'packageJson___license',
   PackageJsonDependencies = 'packageJson___dependencies',
   PackageJsonDependenciesName = 'packageJson___dependencies___name',
@@ -24618,8 +24628,7 @@ export enum SitePluginFieldsEnum {
   PackageJsonDevDependenciesVersion = 'packageJson___devDependencies___version',
   PackageJsonPeerDependencies = 'packageJson___peerDependencies',
   PackageJsonPeerDependenciesName = 'packageJson___peerDependencies___name',
-  PackageJsonPeerDependenciesVersion = 'packageJson___peerDependencies___version',
-  PackageJsonKeywords = 'packageJson___keywords'
+  PackageJsonPeerDependenciesVersion = 'packageJson___peerDependencies___version'
 }
 
 export type SitePluginFilterInput = {
@@ -24654,11 +24663,12 @@ export type SitePluginPackageJson = {
   description?: Maybe<Scalars['String']>
   version?: Maybe<Scalars['String']>
   main?: Maybe<Scalars['String']>
+  keywords?: Maybe<Array<Maybe<Scalars['String']>>>
+  author?: Maybe<Scalars['String']>
   license?: Maybe<Scalars['String']>
   dependencies?: Maybe<Array<Maybe<SitePluginPackageJsonDependencies>>>
   devDependencies?: Maybe<Array<Maybe<SitePluginPackageJsonDevDependencies>>>
   peerDependencies?: Maybe<Array<Maybe<SitePluginPackageJsonPeerDependencies>>>
-  keywords?: Maybe<Array<Maybe<Scalars['String']>>>
 }
 
 export type SitePluginPackageJsonDependencies = {
@@ -24696,11 +24706,12 @@ export type SitePluginPackageJsonFilterInput = {
   description?: Maybe<StringQueryOperatorInput>
   version?: Maybe<StringQueryOperatorInput>
   main?: Maybe<StringQueryOperatorInput>
+  keywords?: Maybe<StringQueryOperatorInput>
+  author?: Maybe<StringQueryOperatorInput>
   license?: Maybe<StringQueryOperatorInput>
   dependencies?: Maybe<SitePluginPackageJsonDependenciesFilterListInput>
   devDependencies?: Maybe<SitePluginPackageJsonDevDependenciesFilterListInput>
   peerDependencies?: Maybe<SitePluginPackageJsonPeerDependenciesFilterListInput>
-  keywords?: Maybe<StringQueryOperatorInput>
 }
 
 export type SitePluginPackageJsonPeerDependencies = {
@@ -24721,45 +24732,26 @@ export type SitePluginPackageJsonPeerDependenciesFilterListInput = {
 export type SitePluginPluginOptions = {
   __typename?: 'SitePluginPluginOptions'
   path?: Maybe<Scalars['String']>
-  name?: Maybe<Scalars['String']>
-  url?: Maybe<Scalars['String']>
-  typeName?: Maybe<Scalars['String']>
-  fieldName?: Maybe<Scalars['String']>
-  headers?: Maybe<SitePluginPluginOptionsHeaders>
-  channelId?: Maybe<Array<Maybe<Scalars['String']>>>
-  apiKey?: Maybe<Scalars['String']>
-  maxVideos?: Maybe<Scalars['Int']>
-  credentials?: Maybe<SitePluginPluginOptionsCredentials>
-  queries?: Maybe<SitePluginPluginOptionsQueries>
+  pathCheck?: Maybe<Scalars['Boolean']>
   google?: Maybe<SitePluginPluginOptionsGoogle>
-  isTSX?: Maybe<Scalars['Boolean']>
-  jsxPragma?: Maybe<Scalars['String']>
-  allExtensions?: Maybe<Scalars['Boolean']>
   sourceMap?: Maybe<Scalars['Boolean']>
   autoLabel?: Maybe<Scalars['String']>
   labelFormat?: Maybe<Scalars['String']>
   cssPropOptimization?: Maybe<Scalars['Boolean']>
-  defaults?: Maybe<SitePluginPluginOptionsDefaults>
-  base64Width?: Maybe<Scalars['Int']>
-  stripMetadata?: Maybe<Scalars['Boolean']>
-  defaultQuality?: Maybe<Scalars['Int']>
-  failOnError?: Maybe<Scalars['Boolean']>
-  extensions?: Maybe<Array<Maybe<Scalars['String']>>>
-  lessBabel?: Maybe<Scalars['Boolean']>
-  remarkPlugins?: Maybe<
-    Array<Maybe<Array<Maybe<SitePluginPluginOptionsRemarkPlugins>>>>
-  >
-  mediaTypes?: Maybe<Array<Maybe<Scalars['String']>>>
-  root?: Maybe<Scalars['String']>
-  query?: Maybe<Scalars['String']>
-  feeds?: Maybe<Array<Maybe<SitePluginPluginOptionsFeeds>>>
-  id?: Maybe<Scalars['String']>
-  includeInDevelopment?: Maybe<Scalars['Boolean']>
-  defaultDataLayer?: Maybe<SitePluginPluginOptionsDefaultDataLayer>
-  routeChangeEventName?: Maybe<Scalars['String']>
-  enableWebVitalsTracking?: Maybe<Scalars['Boolean']>
-  prefixes?: Maybe<Array<Maybe<Scalars['String']>>>
   siteUrl?: Maybe<Scalars['String']>
+  url?: Maybe<Scalars['String']>
+  name?: Maybe<Scalars['String']>
+  excludes?: Maybe<Array<Maybe<Scalars['String']>>>
+  output?: Maybe<Scalars['String']>
+  createLinkInHead?: Maybe<Scalars['Boolean']>
+  entryLimit?: Maybe<Scalars['Int']>
+  query?: Maybe<Scalars['String']>
+  channelId?: Maybe<Array<Maybe<Scalars['String']>>>
+  apiKey?: Maybe<Scalars['String']>
+  maxVideos?: Maybe<Scalars['Int']>
+  typeName?: Maybe<Scalars['String']>
+  fieldName?: Maybe<Scalars['String']>
+  headers?: Maybe<SitePluginPluginOptionsHeaders>
   start_url?: Maybe<Scalars['String']>
   background_color?: Maybe<Scalars['String']>
   theme_color?: Maybe<Scalars['String']>
@@ -24771,16 +24763,35 @@ export type SitePluginPluginOptions = {
   crossOrigin?: Maybe<Scalars['String']>
   include_favicon?: Maybe<Scalars['Boolean']>
   cacheDigest?: Maybe<Scalars['String']>
-  workboxConfig?: Maybe<SitePluginPluginOptionsWorkboxConfig>
-  excludes?: Maybe<Array<Maybe<Scalars['String']>>>
-  output?: Maybe<Scalars['String']>
-  createLinkInHead?: Maybe<Scalars['Boolean']>
-  entryLimit?: Maybe<Scalars['Int']>
   bucketName?: Maybe<Scalars['String']>
   protocol?: Maybe<Scalars['String']>
   hostname?: Maybe<Scalars['String']>
   generateMatchPathRewrites?: Maybe<Scalars['Boolean']>
-  pathCheck?: Maybe<Scalars['Boolean']>
+  defaults?: Maybe<SitePluginPluginOptionsDefaults>
+  base64Width?: Maybe<Scalars['Int']>
+  stripMetadata?: Maybe<Scalars['Boolean']>
+  defaultQuality?: Maybe<Scalars['Int']>
+  failOnError?: Maybe<Scalars['Boolean']>
+  id?: Maybe<Scalars['String']>
+  includeInDevelopment?: Maybe<Scalars['Boolean']>
+  defaultDataLayer?: Maybe<SitePluginPluginOptionsDefaultDataLayer>
+  routeChangeEventName?: Maybe<Scalars['String']>
+  enableWebVitalsTracking?: Maybe<Scalars['Boolean']>
+  workboxConfig?: Maybe<SitePluginPluginOptionsWorkboxConfig>
+  feeds?: Maybe<Array<Maybe<SitePluginPluginOptionsFeeds>>>
+  prefixes?: Maybe<Array<Maybe<Scalars['String']>>>
+  extensions?: Maybe<Array<Maybe<Scalars['String']>>>
+  remarkPlugins?: Maybe<
+    Array<Maybe<Array<Maybe<SitePluginPluginOptionsRemarkPlugins>>>>
+  >
+  lessBabel?: Maybe<Scalars['Boolean']>
+  mediaTypes?: Maybe<Array<Maybe<Scalars['String']>>>
+  root?: Maybe<Scalars['String']>
+  credentials?: Maybe<SitePluginPluginOptionsCredentials>
+  queries?: Maybe<SitePluginPluginOptionsQueries>
+  isTSX?: Maybe<Scalars['Boolean']>
+  jsxPragma?: Maybe<Scalars['String']>
+  allExtensions?: Maybe<Scalars['Boolean']>
 }
 
 export type SitePluginPluginOptionsCredentials = {
@@ -24846,43 +24857,26 @@ export type SitePluginPluginOptionsFeedsFilterListInput = {
 
 export type SitePluginPluginOptionsFilterInput = {
   path?: Maybe<StringQueryOperatorInput>
-  name?: Maybe<StringQueryOperatorInput>
-  url?: Maybe<StringQueryOperatorInput>
-  typeName?: Maybe<StringQueryOperatorInput>
-  fieldName?: Maybe<StringQueryOperatorInput>
-  headers?: Maybe<SitePluginPluginOptionsHeadersFilterInput>
-  channelId?: Maybe<StringQueryOperatorInput>
-  apiKey?: Maybe<StringQueryOperatorInput>
-  maxVideos?: Maybe<IntQueryOperatorInput>
-  credentials?: Maybe<SitePluginPluginOptionsCredentialsFilterInput>
-  queries?: Maybe<SitePluginPluginOptionsQueriesFilterInput>
+  pathCheck?: Maybe<BooleanQueryOperatorInput>
   google?: Maybe<SitePluginPluginOptionsGoogleFilterInput>
-  isTSX?: Maybe<BooleanQueryOperatorInput>
-  jsxPragma?: Maybe<StringQueryOperatorInput>
-  allExtensions?: Maybe<BooleanQueryOperatorInput>
   sourceMap?: Maybe<BooleanQueryOperatorInput>
   autoLabel?: Maybe<StringQueryOperatorInput>
   labelFormat?: Maybe<StringQueryOperatorInput>
   cssPropOptimization?: Maybe<BooleanQueryOperatorInput>
-  defaults?: Maybe<SitePluginPluginOptionsDefaultsFilterInput>
-  base64Width?: Maybe<IntQueryOperatorInput>
-  stripMetadata?: Maybe<BooleanQueryOperatorInput>
-  defaultQuality?: Maybe<IntQueryOperatorInput>
-  failOnError?: Maybe<BooleanQueryOperatorInput>
-  extensions?: Maybe<StringQueryOperatorInput>
-  lessBabel?: Maybe<BooleanQueryOperatorInput>
-  remarkPlugins?: Maybe<SitePluginPluginOptionsRemarkPluginsFilterListInput>
-  mediaTypes?: Maybe<StringQueryOperatorInput>
-  root?: Maybe<StringQueryOperatorInput>
-  query?: Maybe<StringQueryOperatorInput>
-  feeds?: Maybe<SitePluginPluginOptionsFeedsFilterListInput>
-  id?: Maybe<StringQueryOperatorInput>
-  includeInDevelopment?: Maybe<BooleanQueryOperatorInput>
-  defaultDataLayer?: Maybe<SitePluginPluginOptionsDefaultDataLayerFilterInput>
-  routeChangeEventName?: Maybe<StringQueryOperatorInput>
-  enableWebVitalsTracking?: Maybe<BooleanQueryOperatorInput>
-  prefixes?: Maybe<StringQueryOperatorInput>
   siteUrl?: Maybe<StringQueryOperatorInput>
+  url?: Maybe<StringQueryOperatorInput>
+  name?: Maybe<StringQueryOperatorInput>
+  excludes?: Maybe<StringQueryOperatorInput>
+  output?: Maybe<StringQueryOperatorInput>
+  createLinkInHead?: Maybe<BooleanQueryOperatorInput>
+  entryLimit?: Maybe<IntQueryOperatorInput>
+  query?: Maybe<StringQueryOperatorInput>
+  channelId?: Maybe<StringQueryOperatorInput>
+  apiKey?: Maybe<StringQueryOperatorInput>
+  maxVideos?: Maybe<IntQueryOperatorInput>
+  typeName?: Maybe<StringQueryOperatorInput>
+  fieldName?: Maybe<StringQueryOperatorInput>
+  headers?: Maybe<SitePluginPluginOptionsHeadersFilterInput>
   start_url?: Maybe<StringQueryOperatorInput>
   background_color?: Maybe<StringQueryOperatorInput>
   theme_color?: Maybe<StringQueryOperatorInput>
@@ -24894,16 +24888,33 @@ export type SitePluginPluginOptionsFilterInput = {
   crossOrigin?: Maybe<StringQueryOperatorInput>
   include_favicon?: Maybe<BooleanQueryOperatorInput>
   cacheDigest?: Maybe<StringQueryOperatorInput>
-  workboxConfig?: Maybe<SitePluginPluginOptionsWorkboxConfigFilterInput>
-  excludes?: Maybe<StringQueryOperatorInput>
-  output?: Maybe<StringQueryOperatorInput>
-  createLinkInHead?: Maybe<BooleanQueryOperatorInput>
-  entryLimit?: Maybe<IntQueryOperatorInput>
   bucketName?: Maybe<StringQueryOperatorInput>
   protocol?: Maybe<StringQueryOperatorInput>
   hostname?: Maybe<StringQueryOperatorInput>
   generateMatchPathRewrites?: Maybe<BooleanQueryOperatorInput>
-  pathCheck?: Maybe<BooleanQueryOperatorInput>
+  defaults?: Maybe<SitePluginPluginOptionsDefaultsFilterInput>
+  base64Width?: Maybe<IntQueryOperatorInput>
+  stripMetadata?: Maybe<BooleanQueryOperatorInput>
+  defaultQuality?: Maybe<IntQueryOperatorInput>
+  failOnError?: Maybe<BooleanQueryOperatorInput>
+  id?: Maybe<StringQueryOperatorInput>
+  includeInDevelopment?: Maybe<BooleanQueryOperatorInput>
+  defaultDataLayer?: Maybe<SitePluginPluginOptionsDefaultDataLayerFilterInput>
+  routeChangeEventName?: Maybe<StringQueryOperatorInput>
+  enableWebVitalsTracking?: Maybe<BooleanQueryOperatorInput>
+  workboxConfig?: Maybe<SitePluginPluginOptionsWorkboxConfigFilterInput>
+  feeds?: Maybe<SitePluginPluginOptionsFeedsFilterListInput>
+  prefixes?: Maybe<StringQueryOperatorInput>
+  extensions?: Maybe<StringQueryOperatorInput>
+  remarkPlugins?: Maybe<SitePluginPluginOptionsRemarkPluginsFilterListInput>
+  lessBabel?: Maybe<BooleanQueryOperatorInput>
+  mediaTypes?: Maybe<StringQueryOperatorInput>
+  root?: Maybe<StringQueryOperatorInput>
+  credentials?: Maybe<SitePluginPluginOptionsCredentialsFilterInput>
+  queries?: Maybe<SitePluginPluginOptionsQueriesFilterInput>
+  isTSX?: Maybe<BooleanQueryOperatorInput>
+  jsxPragma?: Maybe<StringQueryOperatorInput>
+  allExtensions?: Maybe<BooleanQueryOperatorInput>
 }
 
 export type SitePluginPluginOptionsGoogle = {
@@ -24959,13 +24970,75 @@ export type SitePluginPluginOptionsQueriesSpokestackParamsFilterInput = {
 
 export type SitePluginPluginOptionsRemarkPlugins = {
   __typename?: 'SitePluginPluginOptionsRemarkPlugins'
-  onlyRunWithMarker?: Maybe<Scalars['Boolean']>
-  pattyName?: Maybe<Scalars['String']>
+  content?: Maybe<SitePluginPluginOptionsRemarkPluginsContent>
+}
+
+export type SitePluginPluginOptionsRemarkPluginsContent = {
+  __typename?: 'SitePluginPluginOptionsRemarkPluginsContent'
+  type?: Maybe<Scalars['String']>
+  tagName?: Maybe<Scalars['String']>
+  properties?: Maybe<SitePluginPluginOptionsRemarkPluginsContentProperties>
+  children?: Maybe<
+    Array<Maybe<SitePluginPluginOptionsRemarkPluginsContentChildren>>
+  >
+}
+
+export type SitePluginPluginOptionsRemarkPluginsContentChildren = {
+  __typename?: 'SitePluginPluginOptionsRemarkPluginsContentChildren'
+  type?: Maybe<Scalars['String']>
+  tagName?: Maybe<Scalars['String']>
+  properties?: Maybe<SitePluginPluginOptionsRemarkPluginsContentChildrenProperties>
+}
+
+export type SitePluginPluginOptionsRemarkPluginsContentChildrenFilterInput = {
+  type?: Maybe<StringQueryOperatorInput>
+  tagName?: Maybe<StringQueryOperatorInput>
+  properties?: Maybe<SitePluginPluginOptionsRemarkPluginsContentChildrenPropertiesFilterInput>
+}
+
+export type SitePluginPluginOptionsRemarkPluginsContentChildrenFilterListInput =
+  {
+    elemMatch?: Maybe<SitePluginPluginOptionsRemarkPluginsContentChildrenFilterInput>
+  }
+
+export type SitePluginPluginOptionsRemarkPluginsContentChildrenProperties = {
+  __typename?: 'SitePluginPluginOptionsRemarkPluginsContentChildrenProperties'
+  fillRule?: Maybe<Scalars['String']>
+  d?: Maybe<Scalars['String']>
+}
+
+export type SitePluginPluginOptionsRemarkPluginsContentChildrenPropertiesFilterInput =
+  {
+    fillRule?: Maybe<StringQueryOperatorInput>
+    d?: Maybe<StringQueryOperatorInput>
+  }
+
+export type SitePluginPluginOptionsRemarkPluginsContentFilterInput = {
+  type?: Maybe<StringQueryOperatorInput>
+  tagName?: Maybe<StringQueryOperatorInput>
+  properties?: Maybe<SitePluginPluginOptionsRemarkPluginsContentPropertiesFilterInput>
+  children?: Maybe<SitePluginPluginOptionsRemarkPluginsContentChildrenFilterListInput>
+}
+
+export type SitePluginPluginOptionsRemarkPluginsContentProperties = {
+  __typename?: 'SitePluginPluginOptionsRemarkPluginsContentProperties'
+  ariaHidden?: Maybe<Scalars['Boolean']>
+  focusable?: Maybe<Scalars['Boolean']>
+  width?: Maybe<Scalars['Int']>
+  height?: Maybe<Scalars['Int']>
+  viewBox?: Maybe<Scalars['String']>
+}
+
+export type SitePluginPluginOptionsRemarkPluginsContentPropertiesFilterInput = {
+  ariaHidden?: Maybe<BooleanQueryOperatorInput>
+  focusable?: Maybe<BooleanQueryOperatorInput>
+  width?: Maybe<IntQueryOperatorInput>
+  height?: Maybe<IntQueryOperatorInput>
+  viewBox?: Maybe<StringQueryOperatorInput>
 }
 
 export type SitePluginPluginOptionsRemarkPluginsFilterInput = {
-  onlyRunWithMarker?: Maybe<BooleanQueryOperatorInput>
-  pattyName?: Maybe<StringQueryOperatorInput>
+  content?: Maybe<SitePluginPluginOptionsRemarkPluginsContentFilterInput>
 }
 
 export type SitePluginPluginOptionsRemarkPluginsFilterListInput = {
@@ -25784,12 +25857,12 @@ export enum YoutubeVideoFieldsEnum {
   LocalThumbnailChildrenMdxRawBody = 'localThumbnail___childrenMdx___rawBody',
   LocalThumbnailChildrenMdxFileAbsolutePath = 'localThumbnail___childrenMdx___fileAbsolutePath',
   LocalThumbnailChildrenMdxFrontmatterTitle = 'localThumbnail___childrenMdx___frontmatter___title',
-  LocalThumbnailChildrenMdxFrontmatterDate = 'localThumbnail___childrenMdx___frontmatter___date',
-  LocalThumbnailChildrenMdxFrontmatterDescription = 'localThumbnail___childrenMdx___frontmatter___description',
-  LocalThumbnailChildrenMdxFrontmatterTags = 'localThumbnail___childrenMdx___frontmatter___tags',
-  LocalThumbnailChildrenMdxFrontmatterAuthor = 'localThumbnail___childrenMdx___frontmatter___author',
-  LocalThumbnailChildrenMdxFrontmatterDraft = 'localThumbnail___childrenMdx___frontmatter___draft',
   LocalThumbnailChildrenMdxFrontmatterNavId = 'localThumbnail___childrenMdx___frontmatter___navId',
+  LocalThumbnailChildrenMdxFrontmatterDescription = 'localThumbnail___childrenMdx___frontmatter___description',
+  LocalThumbnailChildrenMdxFrontmatterDraft = 'localThumbnail___childrenMdx___frontmatter___draft',
+  LocalThumbnailChildrenMdxFrontmatterTags = 'localThumbnail___childrenMdx___frontmatter___tags',
+  LocalThumbnailChildrenMdxFrontmatterDate = 'localThumbnail___childrenMdx___frontmatter___date',
+  LocalThumbnailChildrenMdxFrontmatterAuthor = 'localThumbnail___childrenMdx___frontmatter___author',
   LocalThumbnailChildrenMdxFrontmatterNavTitle = 'localThumbnail___childrenMdx___frontmatter___navTitle',
   LocalThumbnailChildrenMdxSlug = 'localThumbnail___childrenMdx___slug',
   LocalThumbnailChildrenMdxBody = 'localThumbnail___childrenMdx___body',
@@ -25826,12 +25899,12 @@ export enum YoutubeVideoFieldsEnum {
   LocalThumbnailChildMdxRawBody = 'localThumbnail___childMdx___rawBody',
   LocalThumbnailChildMdxFileAbsolutePath = 'localThumbnail___childMdx___fileAbsolutePath',
   LocalThumbnailChildMdxFrontmatterTitle = 'localThumbnail___childMdx___frontmatter___title',
-  LocalThumbnailChildMdxFrontmatterDate = 'localThumbnail___childMdx___frontmatter___date',
-  LocalThumbnailChildMdxFrontmatterDescription = 'localThumbnail___childMdx___frontmatter___description',
-  LocalThumbnailChildMdxFrontmatterTags = 'localThumbnail___childMdx___frontmatter___tags',
-  LocalThumbnailChildMdxFrontmatterAuthor = 'localThumbnail___childMdx___frontmatter___author',
-  LocalThumbnailChildMdxFrontmatterDraft = 'localThumbnail___childMdx___frontmatter___draft',
   LocalThumbnailChildMdxFrontmatterNavId = 'localThumbnail___childMdx___frontmatter___navId',
+  LocalThumbnailChildMdxFrontmatterDescription = 'localThumbnail___childMdx___frontmatter___description',
+  LocalThumbnailChildMdxFrontmatterDraft = 'localThumbnail___childMdx___frontmatter___draft',
+  LocalThumbnailChildMdxFrontmatterTags = 'localThumbnail___childMdx___frontmatter___tags',
+  LocalThumbnailChildMdxFrontmatterDate = 'localThumbnail___childMdx___frontmatter___date',
+  LocalThumbnailChildMdxFrontmatterAuthor = 'localThumbnail___childMdx___frontmatter___author',
   LocalThumbnailChildMdxFrontmatterNavTitle = 'localThumbnail___childMdx___frontmatter___navTitle',
   LocalThumbnailChildMdxSlug = 'localThumbnail___childMdx___slug',
   LocalThumbnailChildMdxBody = 'localThumbnail___childMdx___body',
@@ -26072,7 +26145,7 @@ export type TwitterStatusesUserTimelineSpokestackEntitiesUser_Mentions = {
   __typename?: 'twitterStatusesUserTimelineSpokestackEntitiesUser_mentions'
   screen_name?: Maybe<Scalars['String']>
   name?: Maybe<Scalars['String']>
-  id?: Maybe<Scalars['Int']>
+  id?: Maybe<Scalars['Float']>
   id_str?: Maybe<Scalars['String']>
   indices?: Maybe<Array<Maybe<Scalars['Int']>>>
 }
@@ -26081,7 +26154,7 @@ export type TwitterStatusesUserTimelineSpokestackEntitiesUser_MentionsFilterInpu
   {
     screen_name?: Maybe<StringQueryOperatorInput>
     name?: Maybe<StringQueryOperatorInput>
-    id?: Maybe<IntQueryOperatorInput>
+    id?: Maybe<FloatQueryOperatorInput>
     id_str?: Maybe<StringQueryOperatorInput>
     indices?: Maybe<IntQueryOperatorInput>
   }

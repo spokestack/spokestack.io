@@ -1,7 +1,7 @@
 import Layout from './Layout'
 import React from 'react'
 import StickyNavLayout from './StickyNavLayout'
-import { WindowLocation } from '@reach/router'
+import type { WindowLocation } from '@reach/router'
 
 const links = [
   {

@@ -51,8 +51,11 @@ export default function StickyNavLayout({
             .sticky-nav-wrap {
               background-color: ${theme.stickyNavBackgroundDark};
             }
-            .sticky-header-nav a.selected {
-              color: ${theme.linkDark} !important;
+            .sticky-header-nav {
+              border-left-color: ${theme.mainBorderDark};
+              a.selected {
+                color: ${theme.linkDark} !important;
+              }
             }
           }
         `}

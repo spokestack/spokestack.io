@@ -123,7 +123,9 @@ export default function StickyNavSection({
               id={id}
               css={styles.stickyNavLink}
               className={`sticky-nav-link${
-                rcurrentPath.test(link.href) ? ' active' : ''
+                link.forceSelect || rcurrentPath.test(link.href)
+                  ? ' active'
+                  : ''
               }`}
               href={link.href}
               title={link.title}>

@@ -5,7 +5,6 @@ executors:
     docker:
       - image: circleci/node:14
     working_directory: ~/spokestack.io
-    resource_class: large
 
 references:
   # To generate the required env var, run:
@@ -21,24 +20,10 @@ references:
       name: Create .env file for beta environment
       command: echo $ENV_BETA | base64 -d > .env
 
-  restore_npm_cache: &restore_npm_cache
-    restore_cache:
-      keys:
-        # when lock file changes, use increasingly general patterns to restore cache
-        - npm-packages-v{{ .Environment.CACHE_VERSION }}-{{ .Branch }}-{{ checksum "package-lock.json" }}
-        - npm-packages-v{{ .Environment.CACHE_VERSION }}-{{ .Branch }}-
-        - npm-packages-v{{ .Environment.CACHE_VERSION }}-
-
-  save_npm_cache: &save_npm_cache
-    save_cache:
-      paths:
-        - node_modules/
-      key: npm-packages-v{{ .Environment.CACHE_VERSION }}-{{ .Branch }}-{{ checksum "package-lock.json" }}
-
   restore_gatsby_cache: &restore_gatsby_cache
     restore_cache:
       keys:
-        - gatsby-cache-v{{ .Environment.CACHE_VERSION }}-{{ .Branch }}-{{ checksum "package-lock.json" }}
+        - gatsby-cache-v{{ .Environment.CACHE_VERSION }}-{{ .Branch }}-{{ checksum "yarn.lock" }}
         - gatsby-cache-v{{ .Environment.CACHE_VERSION }}-{{ .Branch }}-
         - gatsby-cache-v{{ .Environment.CACHE_VERSION }}-
 
@@ -47,7 +32,7 @@ references:
       paths:
         - .cache/
         - public/
-      key: gatsby-cache-v{{ .Environment.CACHE_VERSION }}-{{ .Branch }}-{{ checksum "package-lock.json" }}
+      key: gatsby-cache-v{{ .Environment.CACHE_VERSION }}-{{ .Branch }}-{{ checksum "yarn.lock" }}
 
 jobs:
   build:
@@ -55,40 +40,36 @@ jobs:
     steps:
       - checkout
       - *create_env_beta
-      - *restore_npm_cache
-      - run: npm install --no-save
-      - *save_npm_cache
+      - run: yarn install --immutable --immutable-cache
 
       - run:
           name: Run tests
-          command: npm test
+          command: yarn test
 
       # build the site
-      - *restore_gatsby_cache
+      # - *restore_gatsby_cache
       - run:
           name: Run build
-          command: npm run build
-      - *save_gatsby_cache
+          command: yarn build
+      # - *save_gatsby_cache
 
   deploy_integration:
     executor: node
     steps:
       - checkout
       - *create_env_beta
-      - *restore_npm_cache
-      - run: npm install --no-save
-      - *save_npm_cache
+      - run: yarn install --immutable --immutable-cache
 
       - run:
           name: Run tests
-          command: npm test
+          command: yarn test
 
       # build the site with beta.spokestack.io
-      - *restore_gatsby_cache
+      # - *restore_gatsby_cache
       - run:
           name: Run build
-          command: npm run build
-      - *save_gatsby_cache
+          command: yarn build
+      # - *save_gatsby_cache
 
       # upload to S3
       - run:
@@ -96,7 +77,7 @@ jobs:
           command: sudo apt-get -y -qq install awscli
       - run:
           name: Build and push static site
-          command: npm run deploy
+          command: yarn deploy
       - run:
           name: Enable cloudfront cli
           command: aws configure set preview.cloudfront true
@@ -109,20 +90,18 @@ jobs:
     steps:
       - checkout
       - *create_env
-      - *restore_npm_cache
-      - run: npm install --no-save
-      - *save_npm_cache
+      - run: yarn install --immutable --immutable-cache
 
       - run:
           name: Run tests
-          command: npm test
+          command: yarn test
 
       # build the site with www.spokestack.io
-      - *restore_gatsby_cache
+      # - *restore_gatsby_cache
       - run:
           name: Run build
-          command: npm run build
-      - *save_gatsby_cache
+          command: yarn build
+      # - *save_gatsby_cache
 
       # upload to S3
       - run:
@@ -130,7 +109,7 @@ jobs:
           command: sudo apt-get -y -qq install awscli
       - run:
           name: Build and push static site
-          command: npm run deploy
+          command: yarn deploy
       - run:
           name: Enable cloudfront cli
           command: aws configure set preview.cloudfront true

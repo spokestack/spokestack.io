@@ -5,7 +5,7 @@ import StickyNavSection, { StickyLink } from './StickyNavSection'
 
 import NavSelectedBackground from './NavSelectedBackground'
 import Select from './Select'
-import { WindowLocation } from '@reach/router'
+import type { WindowLocation } from '@reach/router'
 import { css } from '@emotion/react'
 import currentPath from '../utils/currentPath'
 import groupBy from 'lodash/groupBy'

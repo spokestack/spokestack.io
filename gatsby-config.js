@@ -4,7 +4,10 @@ const siteUrl = new URL(process.env.SITE_URL)
 console.log(`Site URL in Gatsby config: ${siteUrl.href}`)
 
 module.exports = {
-  flags: { FAST_DEV: true },
+  flags: {
+    FAST_DEV: true,
+    PARALLEL_SOURCING: true
+  },
   siteMetadata: {
     title: 'Spokestack - Machine Learning for Voice Made Easy',
     author: 'Spokestack',

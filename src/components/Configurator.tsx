@@ -85,6 +85,9 @@ export default function Configurator({
     }
   }, [featureChoice, platformChoice])
 
+  const language = sdks[platformChoice].language
+  const languageClass = `language-${language.toLowerCase()}`
+
   return (
     <div css={[styles.configurator].concat(extraCss!)}>
       {!feature && (
@@ -122,17 +125,13 @@ export default function Configurator({
       )}
 
       <div css={styles.code}>
-        <pre className="line-numbers">
-          <code
-            ref={codeRef}
-            className={`language-${sdks[
-              platformChoice
-            ].language.toLowerCase()}`}>
+        <pre className={`line-numbers ${languageClass}`} tabIndex={0}>
+          <code ref={codeRef} className={languageClass}>
             {sdks[platformChoice].samples[featureChoice]}
           </code>
         </pre>
         <div className="prism-language" css={styles.language}>
-          {sdks[platformChoice].language}
+          {language}
         </div>
       </div>
 
@@ -146,8 +145,7 @@ export default function Configurator({
               <a className="link-secondary" href={sdks[platformChoice].href}>
                 native {sdks[platformChoice].title} library
               </a>{' '}
-              {platformChoice !== 'python' &&
-                `is written in ${sdks[platformChoice].language} and `}
+              {platformChoice !== 'python' && `is written in ${language} and `}
               makes setup a breeze.
             </p>
             <a className="link-secondary link-with-icon" href="/docs">

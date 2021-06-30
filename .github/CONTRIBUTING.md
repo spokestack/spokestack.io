@@ -2,9 +2,9 @@
 
 ### tldr;
 
-- Run the site with `npm start`
-- Run tests with `npm test`
-- Prettier enforces the style guide and will format on commit.
+- Install yarn with `npm i -g yarn`. See https://yarnpkg.com/getting-started/install.
+- Run the site with `yarn start`
+- Run tests with `yarn test`
 
 **[Supported browsers](https://browserl.ist/?q=%3E0.35%25%2C+not+op_mini+all)**: (basically IE 11, modern desktop and mobile browsers)
 
@@ -38,23 +38,23 @@ Edit the markdown files in the `docs/` folder. If you don't see your changes rig
 
 [Fork the repo](https://help.github.com/en/github/getting-started-with-github/fork-a-repo), and [clone](https://help.github.com/en/github/creating-cloning-and-archiving-repositories/cloning-a-repository) to a directory of your choosing.
 
-Then run `npm install` to install dependencies.
+Make sure [yarn is installed](https://yarnpkg.com/getting-started/install). Running `yarn install` is not necessary. Dependencies are included in the repo.
 
 ## Testing
 
 Tests are written with [mocha](https://mochajs.org/) and [Node's official assert module](https://nodejs.org/api/assert.html#assert_assert).
 
-Here are the npm scripts that run tests:
+Here are the scripts that run tests:
 
 ```bash
-$ npm test # Lints and runs the unit tests
-$ npm run test:unit # Runs the unit tests
-$ npm run test:watch # Watches files and runs the unit tests on file save
+$ yarn test # Lints and runs the unit tests
+$ yarn test:unit # Runs the unit tests
+$ yarn test:watch # Watches files and runs the unit tests on file save
 ```
 
 ## Running the site
 
-To run the site, first make sure dependencies are installed (`npm i`) and run the following:
+To run the site, first make sure all required environment variables are set.
 
 ```bash
 $ cp .env.example .env
@@ -63,7 +63,7 @@ $ cp .env.example .env
 Then run:
 
 ```bash
-$ npm start
+$ yarn start
 ```
 
 This spins up a local server at http://localhost:8000.
@@ -71,21 +71,21 @@ This spins up a local server at http://localhost:8000.
 To test in production mode, run the following:
 
 ```bash
-$ npm run build
-$ npm run serve
+$ yarn build
+$ yarn serve
 ```
 
 If you run into any problems with the build, first try cleaning the cache:
 
 ```bash
-$ npm run clean
+$ yarn clean
 ```
 
 ## Testing the Spokestack API
 
 This site is equipped with a [GraphiQL IDE](https://github.com/graphql/graphiql) for the Spokestack API. This is only available in **development** mode.
 
-1. Start the site with `npm start`.
+1. Start the site with `yarn start`.
 1. Log into the site as normal, then navigate to http://localhost:8000/account/graphql.
 
 ## Coding Guidelines
@@ -116,13 +116,13 @@ established in the code.
 Guidelines are enforced using [ESLint](https://eslint.org/) and [Prettier](https://prettier.io/):
 
 ```bash
-$ npm run lint
+$ yarn lint
 ```
 
 Some things are fixable automatically.
 
 ```bash
-$ npm run lint:fix
+$ yarn format
 ```
 
 This script is run on commit, which means that the commit may need amending if any changes were made as a result of the commit.
@@ -139,7 +139,7 @@ This is also enforced on commit using a commit message hook.
 
 The TypeScript types are generated from the schema using [GraphQL Code Generator](https://github.com/dotansimha/graphql-code-generator#readme).
 
-To update, run `npm run schema`.
+To update, run `yarn schema`.
 
 ## Adding a new documentation page
 
@@ -156,6 +156,8 @@ title: Visible title
 navId: Invisible title used for navigation (must be unique)
 description: A description for the docs page for SEO
 draft: false # If true, will only show in development
+tags:
+seoImage: path/to/image.png
 ```
 
 ## Add a new blog post
@@ -172,6 +174,14 @@ The following frontmatter is required:
 title: Blog post title
 date: '2019-11-01' # Can be any valid date string for creating a JS Date
 description: A description for the blog post for SEO
+tags:
 author: noel # This should match a key in the "team" object. See /gatsby-config.js.
+hero: path/to/hero/image.png
 draft: false # If true, will only show in development
+```
+
+New blog posts can also be added programmatically with `yarn post`.
+
+```sh
+$ yarn post timmy "Blog Post Title" "This is a blog post description."
 ```

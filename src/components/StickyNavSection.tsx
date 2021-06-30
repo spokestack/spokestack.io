@@ -4,7 +4,7 @@ import { Global, css } from '@emotion/react'
 import React, { MutableRefObject, useState } from 'react'
 
 import SVGIcon from './SVGIcon'
-import { WindowLocation } from '@reach/router'
+import type { WindowLocation } from '@reach/router'
 import currentPath from '../utils/currentPath'
 import getHash from '../utils/getHash'
 import hashToId from '../utils/hashToId'

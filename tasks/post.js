@@ -66,11 +66,11 @@ function post(author, title, description) {
   )
 }
 
-if (args.length) {
+if (args.length === 3) {
   post(...args)
 } else {
   console.log(
-    'Usage: npm run post "Blog Post Title" "This is a blog post description."'
+    'Usage: yarn post timmy "Blog Post Title" "This is a blog post description."'
   )
   throw new Error('Missing arguments')
 }

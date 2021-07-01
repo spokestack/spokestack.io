@@ -39,15 +39,18 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
           "packageDependencies": [
             ["@apollo/client", "virtual:25fc3e48019459b1d7771797e61c99b37e2e903e9b68f60b686e25a50e9692f15bba0936db75d69bcbcb39e9eb7e41f9e1cc9199eb6565ab56dc3cafb9e2f4ec#npm:3.3.20"],
             ["@apollo/react-hooks", "npm:4.0.0"],
+            ["@babel/core", "npm:7.14.6"],
             ["@commitlint/cli", "npm:12.1.4"],
             ["@commitlint/config-conventional", "npm:12.1.4"],
             ["@emotion/react", "virtual:25fc3e48019459b1d7771797e61c99b37e2e903e9b68f60b686e25a50e9692f15bba0936db75d69bcbcb39e9eb7e41f9e1cc9199eb6565ab56dc3cafb9e2f4ec#npm:11.4.0"],
             ["@emotion/styled", "virtual:25fc3e48019459b1d7771797e61c99b37e2e903e9b68f60b686e25a50e9692f15bba0936db75d69bcbcb39e9eb7e41f9e1cc9199eb6565ab56dc3cafb9e2f4ec#npm:11.3.0"],
+            ["@gatsbyjs/reach-router", "virtual:25fc3e48019459b1d7771797e61c99b37e2e903e9b68f60b686e25a50e9692f15bba0936db75d69bcbcb39e9eb7e41f9e1cc9199eb6565ab56dc3cafb9e2f4ec#npm:1.3.6"],
             ["@graphql-codegen/cli", "virtual:25fc3e48019459b1d7771797e61c99b37e2e903e9b68f60b686e25a50e9692f15bba0936db75d69bcbcb39e9eb7e41f9e1cc9199eb6565ab56dc3cafb9e2f4ec#npm:1.21.5"],
             ["@graphql-codegen/typescript", "virtual:25fc3e48019459b1d7771797e61c99b37e2e903e9b68f60b686e25a50e9692f15bba0936db75d69bcbcb39e9eb7e41f9e1cc9199eb6565ab56dc3cafb9e2f4ec#npm:1.22.3"],
             ["@mdx-js/mdx", "npm:1.6.22"],
             ["@mdx-js/react", "virtual:25fc3e48019459b1d7771797e61c99b37e2e903e9b68f60b686e25a50e9692f15bba0936db75d69bcbcb39e9eb7e41f9e1cc9199eb6565ab56dc3cafb9e2f4ec#npm:1.6.22"],
             ["@release-it/conventional-changelog", "virtual:25fc3e48019459b1d7771797e61c99b37e2e903e9b68f60b686e25a50e9692f15bba0936db75d69bcbcb39e9eb7e41f9e1cc9199eb6565ab56dc3cafb9e2f4ec#npm:3.0.1"],
+            ["@types/babel__core", "npm:7.1.14"],
             ["@types/color", "npm:3.0.1"],
             ["@types/cookie", "npm:0.4.0"],
             ["@types/loadable__component", "npm:5.13.3"],
@@ -81,6 +84,7 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
             ["color", "npm:3.1.3"],
             ["concurrently", "npm:6.2.0"],
             ["cookie", "npm:0.4.1"],
+            ["core-js", "npm:3.15.2"],
             ["cross-env", "npm:7.0.3"],
             ["dotenv", "npm:10.0.0"],
             ["eslint", "npm:7.29.0"],
@@ -431,9 +435,9 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
           "packageDependencies": [
             ["@babel/helper-compilation-targets", "virtual:6e250b71989735fcdef2fd485569811600e8e1e564bf314531c2bb41a2b316f97476afdca95c5db00fa40ef5affe33b5a98019c49b341ffabffbf231193c41d1#npm:7.14.5"],
             ["@babel/compat-data", "npm:7.14.7"],
-            ["@babel/core", null],
+            ["@babel/core", "npm:7.14.6"],
             ["@babel/helper-validator-option", "npm:7.14.5"],
-            ["@types/babel__core", null],
+            ["@types/babel__core", "npm:7.1.14"],
             ["browserslist", "npm:4.16.6"],
             ["semver", "npm:6.3.0"]
           ],
@@ -473,14 +477,14 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
           "packageLocation": "./.yarn/$$virtual/@babel-helper-create-class-features-plugin-virtual-6a2f0a6a9b/0/cache/@babel-helper-create-class-features-plugin-npm-7.14.6-93268c0dc2-833222da49.zip/node_modules/@babel/helper-create-class-features-plugin/",
           "packageDependencies": [
             ["@babel/helper-create-class-features-plugin", "virtual:9a5216c6bee18708402aee1ff16b8921fa8c54cf00fd92e2e85604d13634d27a539eb036a2aa8a3a8839389890e3b5ac472e3ce3f7ba80a868d3ffeaaffdd474#npm:7.14.6"],
-            ["@babel/core", null],
+            ["@babel/core", "npm:7.14.6"],
             ["@babel/helper-annotate-as-pure", "npm:7.14.5"],
             ["@babel/helper-function-name", "npm:7.14.5"],
             ["@babel/helper-member-expression-to-functions", "npm:7.14.7"],
             ["@babel/helper-optimise-call-expression", "npm:7.14.5"],
             ["@babel/helper-replace-supers", "npm:7.14.5"],
             ["@babel/helper-split-export-declaration", "npm:7.14.5"],
-            ["@types/babel__core", null]
+            ["@types/babel__core", "npm:7.1.14"]
           ],
           "packagePeers": [
             "@babel/core",
@@ -520,9 +524,9 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
           "packageLocation": "./.yarn/$$virtual/@babel-helper-create-regexp-features-plugin-virtual-cae58e49ed/0/cache/@babel-helper-create-regexp-features-plugin-npm-7.14.5-0e774b7831-1a336feed2.zip/node_modules/@babel/helper-create-regexp-features-plugin/",
           "packageDependencies": [
             ["@babel/helper-create-regexp-features-plugin", "virtual:5f2fb85df7f98b79e4e3327d9719291debf8821b7f0e5a0f6f4d955d0ee2152042af9bdd20b703c605e0bffd4e409b73bacf425ee77ee2d0582304faa4478592#npm:7.14.5"],
-            ["@babel/core", null],
+            ["@babel/core", "npm:7.14.6"],
             ["@babel/helper-annotate-as-pure", "npm:7.14.5"],
-            ["@types/babel__core", null],
+            ["@types/babel__core", "npm:7.1.14"],
             ["regexpu-core", "npm:4.7.1"]
           ],
           "packagePeers": [
@@ -580,12 +584,12 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
           "packageLocation": "./.yarn/$$virtual/@babel-helper-define-polyfill-provider-virtual-6e250b7198/0/cache/@babel-helper-define-polyfill-provider-npm-0.2.3-dad7dec528-e29bfc58e7.zip/node_modules/@babel/helper-define-polyfill-provider/",
           "packageDependencies": [
             ["@babel/helper-define-polyfill-provider", "virtual:2c1b9cbfda87375f0a4d1479516319472f26e9bc3c4c1cbce5e2125ad825f602a7dfd714566955824b71407bc9e38ca3eff2eb2af642fe2fdb0a5378d129f7e4#npm:0.2.3"],
-            ["@babel/core", null],
+            ["@babel/core", "npm:7.14.6"],
             ["@babel/helper-compilation-targets", "virtual:6e250b71989735fcdef2fd485569811600e8e1e564bf314531c2bb41a2b316f97476afdca95c5db00fa40ef5affe33b5a98019c49b341ffabffbf231193c41d1#npm:7.14.5"],
             ["@babel/helper-module-imports", "npm:7.14.5"],
             ["@babel/helper-plugin-utils", "npm:7.14.5"],
             ["@babel/traverse", "npm:7.14.7"],
-            ["@types/babel__core", null],
+            ["@types/babel__core", "npm:7.1.14"],
             ["debug", "virtual:13aadb10a74575dd0e034d0bdf0858c9ee9289ee1d11e075867d4fb084b6d145f8eb8e7d6b5456728203936824e1774e1e7d8fecfc1717f3da48ad14bb82922d#npm:4.3.2"],
             ["lodash.debounce", "npm:4.0.8"],
             ["resolve", "patch:resolve@npm%3A1.20.0#builtin<compat/resolve>::version=1.20.0&hash=3388aa"],
@@ -859,11 +863,11 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
           "packageLocation": "./.yarn/$$virtual/@babel-plugin-bugfix-v8-spread-parameters-in-optional-chaining-virtual-105f73d621/0/cache/@babel-plugin-bugfix-v8-spread-parameters-in-optional-chaining-npm-7.14.5-99fd4de6ae-0e6fbe33e2.zip/node_modules/@babel/plugin-bugfix-v8-spread-parameters-in-optional-chaining/",
           "packageDependencies": [
             ["@babel/plugin-bugfix-v8-spread-parameters-in-optional-chaining", "virtual:b195e919cda2404d7afddb7b733f471ccbf8859f97a31eeeefa0d2b00ff5e93b6530fb9825f7c01a330baa6ece5511ebe695a63f183a88176de378b6c179977a#npm:7.14.5"],
-            ["@babel/core", null],
+            ["@babel/core", "npm:7.14.6"],
             ["@babel/helper-plugin-utils", "npm:7.14.5"],
             ["@babel/helper-skip-transparent-expression-wrappers", "npm:7.14.5"],
             ["@babel/plugin-proposal-optional-chaining", "virtual:4e520d6e3738f7ec125f1d9a2e267b89c366a38b504df79bdb8a3f3b5d7f6476081fb1485a7c3aea67c395e2dd7e8be31a11815e96f4f5ca964fe54afb317880#npm:7.14.5"],
-            ["@types/babel__core", null]
+            ["@types/babel__core", "npm:7.1.14"]
           ],
           "packagePeers": [
             "@babel/core",
@@ -900,11 +904,11 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
           "packageLocation": "./.yarn/$$virtual/@babel-plugin-proposal-async-generator-functions-virtual-41b46ce3ec/0/cache/@babel-plugin-proposal-async-generator-functions-npm-7.14.7-d44ac789fb-fea5bd2fc8.zip/node_modules/@babel/plugin-proposal-async-generator-functions/",
           "packageDependencies": [
             ["@babel/plugin-proposal-async-generator-functions", "virtual:b195e919cda2404d7afddb7b733f471ccbf8859f97a31eeeefa0d2b00ff5e93b6530fb9825f7c01a330baa6ece5511ebe695a63f183a88176de378b6c179977a#npm:7.14.7"],
-            ["@babel/core", null],
+            ["@babel/core", "npm:7.14.6"],
             ["@babel/helper-plugin-utils", "npm:7.14.5"],
             ["@babel/helper-remap-async-to-generator", "npm:7.14.5"],
             ["@babel/plugin-syntax-async-generators", "virtual:b195e919cda2404d7afddb7b733f471ccbf8859f97a31eeeefa0d2b00ff5e93b6530fb9825f7c01a330baa6ece5511ebe695a63f183a88176de378b6c179977a#npm:7.8.4"],
-            ["@types/babel__core", null]
+            ["@types/babel__core", "npm:7.1.14"]
           ],
           "packagePeers": [
             "@babel/core",
@@ -940,10 +944,10 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
           "packageLocation": "./.yarn/$$virtual/@babel-plugin-proposal-class-properties-virtual-9a5216c6be/0/cache/@babel-plugin-proposal-class-properties-npm-7.14.5-c4f378db3a-c2f7bdfaad.zip/node_modules/@babel/plugin-proposal-class-properties/",
           "packageDependencies": [
             ["@babel/plugin-proposal-class-properties", "virtual:4e520d6e3738f7ec125f1d9a2e267b89c366a38b504df79bdb8a3f3b5d7f6476081fb1485a7c3aea67c395e2dd7e8be31a11815e96f4f5ca964fe54afb317880#npm:7.14.5"],
-            ["@babel/core", null],
+            ["@babel/core", "npm:7.14.6"],
             ["@babel/helper-create-class-features-plugin", "virtual:9a5216c6bee18708402aee1ff16b8921fa8c54cf00fd92e2e85604d13634d27a539eb036a2aa8a3a8839389890e3b5ac472e3ce3f7ba80a868d3ffeaaffdd474#npm:7.14.6"],
             ["@babel/helper-plugin-utils", "npm:7.14.5"],
-            ["@types/babel__core", null]
+            ["@types/babel__core", "npm:7.1.14"]
           ],
           "packagePeers": [
             "@babel/core",
@@ -980,11 +984,11 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
           "packageLocation": "./.yarn/$$virtual/@babel-plugin-proposal-class-static-block-virtual-e2c73fdc13/0/cache/@babel-plugin-proposal-class-static-block-npm-7.14.5-bcc54756fb-1a104e33a4.zip/node_modules/@babel/plugin-proposal-class-static-block/",
           "packageDependencies": [
             ["@babel/plugin-proposal-class-static-block", "virtual:b195e919cda2404d7afddb7b733f471ccbf8859f97a31eeeefa0d2b00ff5e93b6530fb9825f7c01a330baa6ece5511ebe695a63f183a88176de378b6c179977a#npm:7.14.5"],
-            ["@babel/core", null],
+            ["@babel/core", "npm:7.14.6"],
             ["@babel/helper-create-class-features-plugin", "virtual:9a5216c6bee18708402aee1ff16b8921fa8c54cf00fd92e2e85604d13634d27a539eb036a2aa8a3a8839389890e3b5ac472e3ce3f7ba80a868d3ffeaaffdd474#npm:7.14.6"],
             ["@babel/helper-plugin-utils", "npm:7.14.5"],
             ["@babel/plugin-syntax-class-static-block", "virtual:b195e919cda2404d7afddb7b733f471ccbf8859f97a31eeeefa0d2b00ff5e93b6530fb9825f7c01a330baa6ece5511ebe695a63f183a88176de378b6c179977a#npm:7.14.5"],
-            ["@types/babel__core", null]
+            ["@types/babel__core", "npm:7.1.14"]
           ],
           "packagePeers": [
             "@babel/core",
@@ -1020,10 +1024,10 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
           "packageLocation": "./.yarn/$$virtual/@babel-plugin-proposal-dynamic-import-virtual-0ee87ccf69/0/cache/@babel-plugin-proposal-dynamic-import-npm-7.14.5-94d0dd1d6f-31e5b2fbfb.zip/node_modules/@babel/plugin-proposal-dynamic-import/",
           "packageDependencies": [
             ["@babel/plugin-proposal-dynamic-import", "virtual:b195e919cda2404d7afddb7b733f471ccbf8859f97a31eeeefa0d2b00ff5e93b6530fb9825f7c01a330baa6ece5511ebe695a63f183a88176de378b6c179977a#npm:7.14.5"],
-            ["@babel/core", null],
+            ["@babel/core", "npm:7.14.6"],
             ["@babel/helper-plugin-utils", "npm:7.14.5"],
             ["@babel/plugin-syntax-dynamic-import", "virtual:4e520d6e3738f7ec125f1d9a2e267b89c366a38b504df79bdb8a3f3b5d7f6476081fb1485a7c3aea67c395e2dd7e8be31a11815e96f4f5ca964fe54afb317880#npm:7.8.3"],
-            ["@types/babel__core", null]
+            ["@types/babel__core", "npm:7.1.14"]
           ],
           "packagePeers": [
             "@babel/core",
@@ -1059,10 +1063,10 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
           "packageLocation": "./.yarn/$$virtual/@babel-plugin-proposal-export-namespace-from-virtual-bb65faea29/0/cache/@babel-plugin-proposal-export-namespace-from-npm-7.14.5-1539317bc6-500e36b13e.zip/node_modules/@babel/plugin-proposal-export-namespace-from/",
           "packageDependencies": [
             ["@babel/plugin-proposal-export-namespace-from", "virtual:b195e919cda2404d7afddb7b733f471ccbf8859f97a31eeeefa0d2b00ff5e93b6530fb9825f7c01a330baa6ece5511ebe695a63f183a88176de378b6c179977a#npm:7.14.5"],
-            ["@babel/core", null],
+            ["@babel/core", "npm:7.14.6"],
             ["@babel/helper-plugin-utils", "npm:7.14.5"],
             ["@babel/plugin-syntax-export-namespace-from", "virtual:b195e919cda2404d7afddb7b733f471ccbf8859f97a31eeeefa0d2b00ff5e93b6530fb9825f7c01a330baa6ece5511ebe695a63f183a88176de378b6c179977a#npm:7.8.3"],
-            ["@types/babel__core", null]
+            ["@types/babel__core", "npm:7.1.14"]
           ],
           "packagePeers": [
             "@babel/core",
@@ -1098,10 +1102,10 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
           "packageLocation": "./.yarn/$$virtual/@babel-plugin-proposal-json-strings-virtual-b1361f5256/0/cache/@babel-plugin-proposal-json-strings-npm-7.14.5-07f111ee28-679711cf99.zip/node_modules/@babel/plugin-proposal-json-strings/",
           "packageDependencies": [
             ["@babel/plugin-proposal-json-strings", "virtual:b195e919cda2404d7afddb7b733f471ccbf8859f97a31eeeefa0d2b00ff5e93b6530fb9825f7c01a330baa6ece5511ebe695a63f183a88176de378b6c179977a#npm:7.14.5"],
-            ["@babel/core", null],
+            ["@babel/core", "npm:7.14.6"],
             ["@babel/helper-plugin-utils", "npm:7.14.5"],
             ["@babel/plugin-syntax-json-strings", "virtual:b195e919cda2404d7afddb7b733f471ccbf8859f97a31eeeefa0d2b00ff5e93b6530fb9825f7c01a330baa6ece5511ebe695a63f183a88176de378b6c179977a#npm:7.8.3"],
-            ["@types/babel__core", null]
+            ["@types/babel__core", "npm:7.1.14"]
           ],
           "packagePeers": [
             "@babel/core",
@@ -1137,10 +1141,10 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
           "packageLocation": "./.yarn/$$virtual/@babel-plugin-proposal-logical-assignment-operators-virtual-8157e2b370/0/cache/@babel-plugin-proposal-logical-assignment-operators-npm-7.14.5-fac491fe8d-4245773009.zip/node_modules/@babel/plugin-proposal-logical-assignment-operators/",
           "packageDependencies": [
             ["@babel/plugin-proposal-logical-assignment-operators", "virtual:b195e919cda2404d7afddb7b733f471ccbf8859f97a31eeeefa0d2b00ff5e93b6530fb9825f7c01a330baa6ece5511ebe695a63f183a88176de378b6c179977a#npm:7.14.5"],
-            ["@babel/core", null],
+            ["@babel/core", "npm:7.14.6"],
             ["@babel/helper-plugin-utils", "npm:7.14.5"],
             ["@babel/plugin-syntax-logical-assignment-operators", "virtual:b195e919cda2404d7afddb7b733f471ccbf8859f97a31eeeefa0d2b00ff5e93b6530fb9825f7c01a330baa6ece5511ebe695a63f183a88176de378b6c179977a#npm:7.10.4"],
-            ["@types/babel__core", null]
+            ["@types/babel__core", "npm:7.1.14"]
           ],
           "packagePeers": [
             "@babel/core",
@@ -1176,10 +1180,10 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
           "packageLocation": "./.yarn/$$virtual/@babel-plugin-proposal-nullish-coalescing-operator-virtual-8ffe43b083/0/cache/@babel-plugin-proposal-nullish-coalescing-operator-npm-7.14.5-f47974419f-2f81d7a9ab.zip/node_modules/@babel/plugin-proposal-nullish-coalescing-operator/",
           "packageDependencies": [
             ["@babel/plugin-proposal-nullish-coalescing-operator", "virtual:4e520d6e3738f7ec125f1d9a2e267b89c366a38b504df79bdb8a3f3b5d7f6476081fb1485a7c3aea67c395e2dd7e8be31a11815e96f4f5ca964fe54afb317880#npm:7.14.5"],
-            ["@babel/core", null],
+            ["@babel/core", "npm:7.14.6"],
             ["@babel/helper-plugin-utils", "npm:7.14.5"],
             ["@babel/plugin-syntax-nullish-coalescing-operator", "virtual:8ffe43b0834a87b4ce7f4a656404f09adc742ddd5f731cbb3524d6dfc5ed976d08c8de9d356b4fdcf3ebcdf3a0dab5259af3c0f9f1c59564c0118540c2fd7546#npm:7.8.3"],
-            ["@types/babel__core", null]
+            ["@types/babel__core", "npm:7.1.14"]
           ],
           "packagePeers": [
             "@babel/core",
@@ -1215,10 +1219,10 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
           "packageLocation": "./.yarn/$$virtual/@babel-plugin-proposal-numeric-separator-virtual-834f1c1373/0/cache/@babel-plugin-proposal-numeric-separator-npm-7.14.5-5dbb482582-8ff9281e6b.zip/node_modules/@babel/plugin-proposal-numeric-separator/",
           "packageDependencies": [
             ["@babel/plugin-proposal-numeric-separator", "virtual:b195e919cda2404d7afddb7b733f471ccbf8859f97a31eeeefa0d2b00ff5e93b6530fb9825f7c01a330baa6ece5511ebe695a63f183a88176de378b6c179977a#npm:7.14.5"],
-            ["@babel/core", null],
+            ["@babel/core", "npm:7.14.6"],
             ["@babel/helper-plugin-utils", "npm:7.14.5"],
             ["@babel/plugin-syntax-numeric-separator", "virtual:b195e919cda2404d7afddb7b733f471ccbf8859f97a31eeeefa0d2b00ff5e93b6530fb9825f7c01a330baa6ece5511ebe695a63f183a88176de378b6c179977a#npm:7.10.4"],
-            ["@types/babel__core", null]
+            ["@types/babel__core", "npm:7.1.14"]
           ],
           "packagePeers": [
             "@babel/core",
@@ -1304,12 +1308,12 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
           "packageDependencies": [
             ["@babel/plugin-proposal-object-rest-spread", "virtual:b195e919cda2404d7afddb7b733f471ccbf8859f97a31eeeefa0d2b00ff5e93b6530fb9825f7c01a330baa6ece5511ebe695a63f183a88176de378b6c179977a#npm:7.14.7"],
             ["@babel/compat-data", "npm:7.14.7"],
-            ["@babel/core", null],
+            ["@babel/core", "npm:7.14.6"],
             ["@babel/helper-compilation-targets", "virtual:6e250b71989735fcdef2fd485569811600e8e1e564bf314531c2bb41a2b316f97476afdca95c5db00fa40ef5affe33b5a98019c49b341ffabffbf231193c41d1#npm:7.14.5"],
             ["@babel/helper-plugin-utils", "npm:7.14.5"],
             ["@babel/plugin-syntax-object-rest-spread", "virtual:b195e919cda2404d7afddb7b733f471ccbf8859f97a31eeeefa0d2b00ff5e93b6530fb9825f7c01a330baa6ece5511ebe695a63f183a88176de378b6c179977a#npm:7.8.3"],
             ["@babel/plugin-transform-parameters", "virtual:b195e919cda2404d7afddb7b733f471ccbf8859f97a31eeeefa0d2b00ff5e93b6530fb9825f7c01a330baa6ece5511ebe695a63f183a88176de378b6c179977a#npm:7.14.5"],
-            ["@types/babel__core", null]
+            ["@types/babel__core", "npm:7.1.14"]
           ],
           "packagePeers": [
             "@babel/core",
@@ -1345,10 +1349,10 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
           "packageLocation": "./.yarn/$$virtual/@babel-plugin-proposal-optional-catch-binding-virtual-27433143aa/0/cache/@babel-plugin-proposal-optional-catch-binding-npm-7.14.5-6e93b6f5f4-8f239b0552.zip/node_modules/@babel/plugin-proposal-optional-catch-binding/",
           "packageDependencies": [
             ["@babel/plugin-proposal-optional-catch-binding", "virtual:b195e919cda2404d7afddb7b733f471ccbf8859f97a31eeeefa0d2b00ff5e93b6530fb9825f7c01a330baa6ece5511ebe695a63f183a88176de378b6c179977a#npm:7.14.5"],
-            ["@babel/core", null],
+            ["@babel/core", "npm:7.14.6"],
             ["@babel/helper-plugin-utils", "npm:7.14.5"],
             ["@babel/plugin-syntax-optional-catch-binding", "virtual:b195e919cda2404d7afddb7b733f471ccbf8859f97a31eeeefa0d2b00ff5e93b6530fb9825f7c01a330baa6ece5511ebe695a63f183a88176de378b6c179977a#npm:7.8.3"],
-            ["@types/babel__core", null]
+            ["@types/babel__core", "npm:7.1.14"]
           ],
           "packagePeers": [
             "@babel/core",
@@ -1385,11 +1389,11 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
           "packageLocation": "./.yarn/$$virtual/@babel-plugin-proposal-optional-chaining-virtual-9a21e69eb6/0/cache/@babel-plugin-proposal-optional-chaining-npm-7.14.5-0a1af66b08-c5e74f83ed.zip/node_modules/@babel/plugin-proposal-optional-chaining/",
           "packageDependencies": [
             ["@babel/plugin-proposal-optional-chaining", "virtual:4e520d6e3738f7ec125f1d9a2e267b89c366a38b504df79bdb8a3f3b5d7f6476081fb1485a7c3aea67c395e2dd7e8be31a11815e96f4f5ca964fe54afb317880#npm:7.14.5"],
-            ["@babel/core", null],
+            ["@babel/core", "npm:7.14.6"],
             ["@babel/helper-plugin-utils", "npm:7.14.5"],
             ["@babel/helper-skip-transparent-expression-wrappers", "npm:7.14.5"],
             ["@babel/plugin-syntax-optional-chaining", "virtual:9a21e69eb65ed0319eccdaad40c68b2964970914cabf8234796b9859880d97c3b29ac8b95aa805125539b6f88e0e1d5f737744ac46a2d935db63f3525994391a#npm:7.8.3"],
-            ["@types/babel__core", null]
+            ["@types/babel__core", "npm:7.1.14"]
           ],
           "packagePeers": [
             "@babel/core",
@@ -1425,10 +1429,10 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
           "packageLocation": "./.yarn/$$virtual/@babel-plugin-proposal-private-methods-virtual-45e83a6151/0/cache/@babel-plugin-proposal-private-methods-npm-7.14.5-160df10ab9-e3e665d1c8.zip/node_modules/@babel/plugin-proposal-private-methods/",
           "packageDependencies": [
             ["@babel/plugin-proposal-private-methods", "virtual:b195e919cda2404d7afddb7b733f471ccbf8859f97a31eeeefa0d2b00ff5e93b6530fb9825f7c01a330baa6ece5511ebe695a63f183a88176de378b6c179977a#npm:7.14.5"],
-            ["@babel/core", null],
+            ["@babel/core", "npm:7.14.6"],
             ["@babel/helper-create-class-features-plugin", "virtual:9a5216c6bee18708402aee1ff16b8921fa8c54cf00fd92e2e85604d13634d27a539eb036a2aa8a3a8839389890e3b5ac472e3ce3f7ba80a868d3ffeaaffdd474#npm:7.14.6"],
             ["@babel/helper-plugin-utils", "npm:7.14.5"],
-            ["@types/babel__core", null]
+            ["@types/babel__core", "npm:7.1.14"]
           ],
           "packagePeers": [
             "@babel/core",
@@ -1466,12 +1470,12 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
           "packageLocation": "./.yarn/$$virtual/@babel-plugin-proposal-private-property-in-object-virtual-990a9dda36/0/cache/@babel-plugin-proposal-private-property-in-object-npm-7.14.5-27ac7f31a4-4aa86a5a8a.zip/node_modules/@babel/plugin-proposal-private-property-in-object/",
           "packageDependencies": [
             ["@babel/plugin-proposal-private-property-in-object", "virtual:b195e919cda2404d7afddb7b733f471ccbf8859f97a31eeeefa0d2b00ff5e93b6530fb9825f7c01a330baa6ece5511ebe695a63f183a88176de378b6c179977a#npm:7.14.5"],
-            ["@babel/core", null],
+            ["@babel/core", "npm:7.14.6"],
             ["@babel/helper-annotate-as-pure", "npm:7.14.5"],
             ["@babel/helper-create-class-features-plugin", "virtual:9a5216c6bee18708402aee1ff16b8921fa8c54cf00fd92e2e85604d13634d27a539eb036a2aa8a3a8839389890e3b5ac472e3ce3f7ba80a868d3ffeaaffdd474#npm:7.14.6"],
             ["@babel/helper-plugin-utils", "npm:7.14.5"],
             ["@babel/plugin-syntax-private-property-in-object", "virtual:b195e919cda2404d7afddb7b733f471ccbf8859f97a31eeeefa0d2b00ff5e93b6530fb9825f7c01a330baa6ece5511ebe695a63f183a88176de378b6c179977a#npm:7.14.5"],
-            ["@types/babel__core", null]
+            ["@types/babel__core", "npm:7.1.14"]
           ],
           "packagePeers": [
             "@babel/core",
@@ -1507,10 +1511,10 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
           "packageLocation": "./.yarn/$$virtual/@babel-plugin-proposal-unicode-property-regex-virtual-5f2fb85df7/0/cache/@babel-plugin-proposal-unicode-property-regex-npm-7.14.5-d36f372112-50471fd3d4.zip/node_modules/@babel/plugin-proposal-unicode-property-regex/",
           "packageDependencies": [
             ["@babel/plugin-proposal-unicode-property-regex", "virtual:b195e919cda2404d7afddb7b733f471ccbf8859f97a31eeeefa0d2b00ff5e93b6530fb9825f7c01a330baa6ece5511ebe695a63f183a88176de378b6c179977a#npm:7.14.5"],
-            ["@babel/core", null],
+            ["@babel/core", "npm:7.14.6"],
             ["@babel/helper-create-regexp-features-plugin", "virtual:5f2fb85df7f98b79e4e3327d9719291debf8821b7f0e5a0f6f4d955d0ee2152042af9bdd20b703c605e0bffd4e409b73bacf425ee77ee2d0582304faa4478592#npm:7.14.5"],
             ["@babel/helper-plugin-utils", "npm:7.14.5"],
-            ["@types/babel__core", null]
+            ["@types/babel__core", "npm:7.1.14"]
           ],
           "packagePeers": [
             "@babel/core",
@@ -1545,9 +1549,9 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
           "packageLocation": "./.yarn/$$virtual/@babel-plugin-syntax-async-generators-virtual-997861a025/0/cache/@babel-plugin-syntax-async-generators-npm-7.8.4-d10cf993c9-39685944ff.zip/node_modules/@babel/plugin-syntax-async-generators/",
           "packageDependencies": [
             ["@babel/plugin-syntax-async-generators", "virtual:b195e919cda2404d7afddb7b733f471ccbf8859f97a31eeeefa0d2b00ff5e93b6530fb9825f7c01a330baa6ece5511ebe695a63f183a88176de378b6c179977a#npm:7.8.4"],
-            ["@babel/core", null],
+            ["@babel/core", "npm:7.14.6"],
             ["@babel/helper-plugin-utils", "npm:7.14.5"],
-            ["@types/babel__core", null]
+            ["@types/babel__core", "npm:7.1.14"]
           ],
           "packagePeers": [
             "@babel/core",
@@ -1582,9 +1586,9 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
           "packageLocation": "./.yarn/$$virtual/@babel-plugin-syntax-class-properties-virtual-5f1342f9ec/0/cache/@babel-plugin-syntax-class-properties-npm-7.12.13-002ee9d930-3023dec8ac.zip/node_modules/@babel/plugin-syntax-class-properties/",
           "packageDependencies": [
             ["@babel/plugin-syntax-class-properties", "virtual:b195e919cda2404d7afddb7b733f471ccbf8859f97a31eeeefa0d2b00ff5e93b6530fb9825f7c01a330baa6ece5511ebe695a63f183a88176de378b6c179977a#npm:7.12.13"],
-            ["@babel/core", null],
+            ["@babel/core", "npm:7.14.6"],
             ["@babel/helper-plugin-utils", "npm:7.14.5"],
-            ["@types/babel__core", null]
+            ["@types/babel__core", "npm:7.1.14"]
           ],
           "packagePeers": [
             "@babel/core",
@@ -1619,9 +1623,9 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
           "packageLocation": "./.yarn/$$virtual/@babel-plugin-syntax-class-static-block-virtual-6c338ebfe6/0/cache/@babel-plugin-syntax-class-static-block-npm-7.14.5-7bdd0ff1b3-43bef611dd.zip/node_modules/@babel/plugin-syntax-class-static-block/",
           "packageDependencies": [
             ["@babel/plugin-syntax-class-static-block", "virtual:b195e919cda2404d7afddb7b733f471ccbf8859f97a31eeeefa0d2b00ff5e93b6530fb9825f7c01a330baa6ece5511ebe695a63f183a88176de378b6c179977a#npm:7.14.5"],
-            ["@babel/core", null],
+            ["@babel/core", "npm:7.14.6"],
             ["@babel/helper-plugin-utils", "npm:7.14.5"],
-            ["@types/babel__core", null]
+            ["@types/babel__core", "npm:7.1.14"]
           ],
           "packagePeers": [
             "@babel/core",
@@ -1656,9 +1660,9 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
           "packageLocation": "./.yarn/$$virtual/@babel-plugin-syntax-dynamic-import-virtual-1eb76f2f98/0/cache/@babel-plugin-syntax-dynamic-import-npm-7.8.3-fb9ff5634a-134a6f37fe.zip/node_modules/@babel/plugin-syntax-dynamic-import/",
           "packageDependencies": [
             ["@babel/plugin-syntax-dynamic-import", "virtual:4e520d6e3738f7ec125f1d9a2e267b89c366a38b504df79bdb8a3f3b5d7f6476081fb1485a7c3aea67c395e2dd7e8be31a11815e96f4f5ca964fe54afb317880#npm:7.8.3"],
-            ["@babel/core", null],
+            ["@babel/core", "npm:7.14.6"],
             ["@babel/helper-plugin-utils", "npm:7.14.5"],
-            ["@types/babel__core", null]
+            ["@types/babel__core", "npm:7.1.14"]
           ],
           "packagePeers": [
             "@babel/core",
@@ -1693,9 +1697,9 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
           "packageLocation": "./.yarn/$$virtual/@babel-plugin-syntax-export-namespace-from-virtual-e558de1bc5/0/cache/@babel-plugin-syntax-export-namespace-from-npm-7.8.3-1747201aa9-832e007319.zip/node_modules/@babel/plugin-syntax-export-namespace-from/",
           "packageDependencies": [
             ["@babel/plugin-syntax-export-namespace-from", "virtual:b195e919cda2404d7afddb7b733f471ccbf8859f97a31eeeefa0d2b00ff5e93b6530fb9825f7c01a330baa6ece5511ebe695a63f183a88176de378b6c179977a#npm:7.8.3"],
-            ["@babel/core", null],
+            ["@babel/core", "npm:7.14.6"],
             ["@babel/helper-plugin-utils", "npm:7.14.5"],
-            ["@types/babel__core", null]
+            ["@types/babel__core", "npm:7.1.14"]
           ],
           "packagePeers": [
             "@babel/core",
@@ -1753,9 +1757,9 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
           "packageLocation": "./.yarn/$$virtual/@babel-plugin-syntax-json-strings-virtual-f9239ba430/0/cache/@babel-plugin-syntax-json-strings-npm-7.8.3-6dc7848179-1a7dabf0a4.zip/node_modules/@babel/plugin-syntax-json-strings/",
           "packageDependencies": [
             ["@babel/plugin-syntax-json-strings", "virtual:b195e919cda2404d7afddb7b733f471ccbf8859f97a31eeeefa0d2b00ff5e93b6530fb9825f7c01a330baa6ece5511ebe695a63f183a88176de378b6c179977a#npm:7.8.3"],
-            ["@babel/core", null],
+            ["@babel/core", "npm:7.14.6"],
             ["@babel/helper-plugin-utils", "npm:7.14.5"],
-            ["@types/babel__core", null]
+            ["@types/babel__core", "npm:7.1.14"]
           ],
           "packagePeers": [
             "@babel/core",
@@ -1832,9 +1836,9 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
           "packageLocation": "./.yarn/$$virtual/@babel-plugin-syntax-jsx-virtual-c1c796a3d1/0/cache/@babel-plugin-syntax-jsx-npm-7.14.5-14192e29dd-d6f998d4c8.zip/node_modules/@babel/plugin-syntax-jsx/",
           "packageDependencies": [
             ["@babel/plugin-syntax-jsx", "virtual:873029aeb29f5fac86c7f0e39a9f6c89758a1963d7c7b9a60e707bf5db4e638eb9f8ea4762b014bf008eae39b1dcb8caa4eb1b655da273e4e397a3bb433ba279#npm:7.14.5"],
-            ["@babel/core", null],
+            ["@babel/core", "npm:7.14.6"],
             ["@babel/helper-plugin-utils", "npm:7.14.5"],
-            ["@types/babel__core", null]
+            ["@types/babel__core", "npm:7.1.14"]
           ],
           "packagePeers": [
             "@babel/core",
@@ -1869,9 +1873,9 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
           "packageLocation": "./.yarn/$$virtual/@babel-plugin-syntax-logical-assignment-operators-virtual-ed11d97665/0/cache/@babel-plugin-syntax-logical-assignment-operators-npm-7.10.4-72ae00fdf6-5b82f71770.zip/node_modules/@babel/plugin-syntax-logical-assignment-operators/",
           "packageDependencies": [
             ["@babel/plugin-syntax-logical-assignment-operators", "virtual:b195e919cda2404d7afddb7b733f471ccbf8859f97a31eeeefa0d2b00ff5e93b6530fb9825f7c01a330baa6ece5511ebe695a63f183a88176de378b6c179977a#npm:7.10.4"],
-            ["@babel/core", null],
+            ["@babel/core", "npm:7.14.6"],
             ["@babel/helper-plugin-utils", "npm:7.14.5"],
-            ["@types/babel__core", null]
+            ["@types/babel__core", "npm:7.1.14"]
           ],
           "packagePeers": [
             "@babel/core",
@@ -1906,9 +1910,9 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
           "packageLocation": "./.yarn/$$virtual/@babel-plugin-syntax-nullish-coalescing-operator-virtual-aeb402b573/0/cache/@babel-plugin-syntax-nullish-coalescing-operator-npm-7.8.3-8a723173b5-4ba0375375.zip/node_modules/@babel/plugin-syntax-nullish-coalescing-operator/",
           "packageDependencies": [
             ["@babel/plugin-syntax-nullish-coalescing-operator", "virtual:8ffe43b0834a87b4ce7f4a656404f09adc742ddd5f731cbb3524d6dfc5ed976d08c8de9d356b4fdcf3ebcdf3a0dab5259af3c0f9f1c59564c0118540c2fd7546#npm:7.8.3"],
-            ["@babel/core", null],
+            ["@babel/core", "npm:7.14.6"],
             ["@babel/helper-plugin-utils", "npm:7.14.5"],
-            ["@types/babel__core", null]
+            ["@types/babel__core", "npm:7.1.14"]
           ],
           "packagePeers": [
             "@babel/core",
@@ -1943,9 +1947,9 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
           "packageLocation": "./.yarn/$$virtual/@babel-plugin-syntax-numeric-separator-virtual-492a25963f/0/cache/@babel-plugin-syntax-numeric-separator-npm-7.10.4-81444be605-47ae878293.zip/node_modules/@babel/plugin-syntax-numeric-separator/",
           "packageDependencies": [
             ["@babel/plugin-syntax-numeric-separator", "virtual:b195e919cda2404d7afddb7b733f471ccbf8859f97a31eeeefa0d2b00ff5e93b6530fb9825f7c01a330baa6ece5511ebe695a63f183a88176de378b6c179977a#npm:7.10.4"],
-            ["@babel/core", null],
+            ["@babel/core", "npm:7.14.6"],
             ["@babel/helper-plugin-utils", "npm:7.14.5"],
-            ["@types/babel__core", null]
+            ["@types/babel__core", "npm:7.1.14"]
           ],
           "packagePeers": [
             "@babel/core",
@@ -1994,9 +1998,9 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
           "packageLocation": "./.yarn/$$virtual/@babel-plugin-syntax-object-rest-spread-virtual-5ad4992bca/0/cache/@babel-plugin-syntax-object-rest-spread-npm-7.8.3-60bd05b6ae-db5dfb39fa.zip/node_modules/@babel/plugin-syntax-object-rest-spread/",
           "packageDependencies": [
             ["@babel/plugin-syntax-object-rest-spread", "virtual:b195e919cda2404d7afddb7b733f471ccbf8859f97a31eeeefa0d2b00ff5e93b6530fb9825f7c01a330baa6ece5511ebe695a63f183a88176de378b6c179977a#npm:7.8.3"],
-            ["@babel/core", null],
+            ["@babel/core", "npm:7.14.6"],
             ["@babel/helper-plugin-utils", "npm:7.14.5"],
-            ["@types/babel__core", null]
+            ["@types/babel__core", "npm:7.1.14"]
           ],
           "packagePeers": [
             "@babel/core",
@@ -2045,9 +2049,9 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
           "packageLocation": "./.yarn/$$virtual/@babel-plugin-syntax-optional-catch-binding-virtual-9c429c2ad1/0/cache/@babel-plugin-syntax-optional-catch-binding-npm-7.8.3-ce337427d8-f03d075266.zip/node_modules/@babel/plugin-syntax-optional-catch-binding/",
           "packageDependencies": [
             ["@babel/plugin-syntax-optional-catch-binding", "virtual:b195e919cda2404d7afddb7b733f471ccbf8859f97a31eeeefa0d2b00ff5e93b6530fb9825f7c01a330baa6ece5511ebe695a63f183a88176de378b6c179977a#npm:7.8.3"],
-            ["@babel/core", null],
+            ["@babel/core", "npm:7.14.6"],
             ["@babel/helper-plugin-utils", "npm:7.14.5"],
-            ["@types/babel__core", null]
+            ["@types/babel__core", "npm:7.1.14"]
           ],
           "packagePeers": [
             "@babel/core",
@@ -2082,9 +2086,9 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
           "packageLocation": "./.yarn/$$virtual/@babel-plugin-syntax-optional-chaining-virtual-9790e1051b/0/cache/@babel-plugin-syntax-optional-chaining-npm-7.8.3-f3f3c79579-2a50685d02.zip/node_modules/@babel/plugin-syntax-optional-chaining/",
           "packageDependencies": [
             ["@babel/plugin-syntax-optional-chaining", "virtual:9a21e69eb65ed0319eccdaad40c68b2964970914cabf8234796b9859880d97c3b29ac8b95aa805125539b6f88e0e1d5f737744ac46a2d935db63f3525994391a#npm:7.8.3"],
-            ["@babel/core", null],
+            ["@babel/core", "npm:7.14.6"],
             ["@babel/helper-plugin-utils", "npm:7.14.5"],
-            ["@types/babel__core", null]
+            ["@types/babel__core", "npm:7.1.14"]
           ],
           "packagePeers": [
             "@babel/core",
@@ -2119,9 +2123,9 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
           "packageLocation": "./.yarn/$$virtual/@babel-plugin-syntax-private-property-in-object-virtual-70f82deeaf/0/cache/@babel-plugin-syntax-private-property-in-object-npm-7.14.5-ee837fdbb2-1f987725a8.zip/node_modules/@babel/plugin-syntax-private-property-in-object/",
           "packageDependencies": [
             ["@babel/plugin-syntax-private-property-in-object", "virtual:b195e919cda2404d7afddb7b733f471ccbf8859f97a31eeeefa0d2b00ff5e93b6530fb9825f7c01a330baa6ece5511ebe695a63f183a88176de378b6c179977a#npm:7.14.5"],
-            ["@babel/core", null],
+            ["@babel/core", "npm:7.14.6"],
             ["@babel/helper-plugin-utils", "npm:7.14.5"],
-            ["@types/babel__core", null]
+            ["@types/babel__core", "npm:7.1.14"]
           ],
           "packagePeers": [
             "@babel/core",
@@ -2156,9 +2160,9 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
           "packageLocation": "./.yarn/$$virtual/@babel-plugin-syntax-top-level-await-virtual-29468c25ca/0/cache/@babel-plugin-syntax-top-level-await-npm-7.14.5-60a0a2e83b-642baff7c2.zip/node_modules/@babel/plugin-syntax-top-level-await/",
           "packageDependencies": [
             ["@babel/plugin-syntax-top-level-await", "virtual:b195e919cda2404d7afddb7b733f471ccbf8859f97a31eeeefa0d2b00ff5e93b6530fb9825f7c01a330baa6ece5511ebe695a63f183a88176de378b6c179977a#npm:7.14.5"],
-            ["@babel/core", null],
+            ["@babel/core", "npm:7.14.6"],
             ["@babel/helper-plugin-utils", "npm:7.14.5"],
-            ["@types/babel__core", null]
+            ["@types/babel__core", "npm:7.1.14"]
           ],
           "packagePeers": [
             "@babel/core",
@@ -2216,9 +2220,9 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
           "packageLocation": "./.yarn/$$virtual/@babel-plugin-transform-arrow-functions-virtual-a351d84723/0/cache/@babel-plugin-transform-arrow-functions-npm-7.14.5-e2aa975bf4-9f62f77105.zip/node_modules/@babel/plugin-transform-arrow-functions/",
           "packageDependencies": [
             ["@babel/plugin-transform-arrow-functions", "virtual:b195e919cda2404d7afddb7b733f471ccbf8859f97a31eeeefa0d2b00ff5e93b6530fb9825f7c01a330baa6ece5511ebe695a63f183a88176de378b6c179977a#npm:7.14.5"],
-            ["@babel/core", null],
+            ["@babel/core", "npm:7.14.6"],
             ["@babel/helper-plugin-utils", "npm:7.14.5"],
-            ["@types/babel__core", null]
+            ["@types/babel__core", "npm:7.1.14"]
           ],
           "packagePeers": [
             "@babel/core",
@@ -2255,11 +2259,11 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
           "packageLocation": "./.yarn/$$virtual/@babel-plugin-transform-async-to-generator-virtual-fc92e01c1d/0/cache/@babel-plugin-transform-async-to-generator-npm-7.14.5-e1f5d64141-955b62db7c.zip/node_modules/@babel/plugin-transform-async-to-generator/",
           "packageDependencies": [
             ["@babel/plugin-transform-async-to-generator", "virtual:b195e919cda2404d7afddb7b733f471ccbf8859f97a31eeeefa0d2b00ff5e93b6530fb9825f7c01a330baa6ece5511ebe695a63f183a88176de378b6c179977a#npm:7.14.5"],
-            ["@babel/core", null],
+            ["@babel/core", "npm:7.14.6"],
             ["@babel/helper-module-imports", "npm:7.14.5"],
             ["@babel/helper-plugin-utils", "npm:7.14.5"],
             ["@babel/helper-remap-async-to-generator", "npm:7.14.5"],
-            ["@types/babel__core", null]
+            ["@types/babel__core", "npm:7.1.14"]
           ],
           "packagePeers": [
             "@babel/core",
@@ -2294,9 +2298,9 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
           "packageLocation": "./.yarn/$$virtual/@babel-plugin-transform-block-scoped-functions-virtual-ef5d2f8975/0/cache/@babel-plugin-transform-block-scoped-functions-npm-7.14.5-00185d1841-389a1286da.zip/node_modules/@babel/plugin-transform-block-scoped-functions/",
           "packageDependencies": [
             ["@babel/plugin-transform-block-scoped-functions", "virtual:b195e919cda2404d7afddb7b733f471ccbf8859f97a31eeeefa0d2b00ff5e93b6530fb9825f7c01a330baa6ece5511ebe695a63f183a88176de378b6c179977a#npm:7.14.5"],
-            ["@babel/core", null],
+            ["@babel/core", "npm:7.14.6"],
             ["@babel/helper-plugin-utils", "npm:7.14.5"],
-            ["@types/babel__core", null]
+            ["@types/babel__core", "npm:7.1.14"]
           ],
           "packagePeers": [
             "@babel/core",
@@ -2331,9 +2335,9 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
           "packageLocation": "./.yarn/$$virtual/@babel-plugin-transform-block-scoping-virtual-5d9a4bf14b/0/cache/@babel-plugin-transform-block-scoping-npm-7.14.5-83d58d4763-f514565a5e.zip/node_modules/@babel/plugin-transform-block-scoping/",
           "packageDependencies": [
             ["@babel/plugin-transform-block-scoping", "virtual:b195e919cda2404d7afddb7b733f471ccbf8859f97a31eeeefa0d2b00ff5e93b6530fb9825f7c01a330baa6ece5511ebe695a63f183a88176de378b6c179977a#npm:7.14.5"],
-            ["@babel/core", null],
+            ["@babel/core", "npm:7.14.6"],
             ["@babel/helper-plugin-utils", "npm:7.14.5"],
-            ["@types/babel__core", null]
+            ["@types/babel__core", "npm:7.1.14"]
           ],
           "packagePeers": [
             "@babel/core",
@@ -2374,14 +2378,14 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
           "packageLocation": "./.yarn/$$virtual/@babel-plugin-transform-classes-virtual-76a449514e/0/cache/@babel-plugin-transform-classes-npm-7.14.5-b16351b6c1-fccd44e38a.zip/node_modules/@babel/plugin-transform-classes/",
           "packageDependencies": [
             ["@babel/plugin-transform-classes", "virtual:4e520d6e3738f7ec125f1d9a2e267b89c366a38b504df79bdb8a3f3b5d7f6476081fb1485a7c3aea67c395e2dd7e8be31a11815e96f4f5ca964fe54afb317880#npm:7.14.5"],
-            ["@babel/core", null],
+            ["@babel/core", "npm:7.14.6"],
             ["@babel/helper-annotate-as-pure", "npm:7.14.5"],
             ["@babel/helper-function-name", "npm:7.14.5"],
             ["@babel/helper-optimise-call-expression", "npm:7.14.5"],
             ["@babel/helper-plugin-utils", "npm:7.14.5"],
             ["@babel/helper-replace-supers", "npm:7.14.5"],
             ["@babel/helper-split-export-declaration", "npm:7.14.5"],
-            ["@types/babel__core", null],
+            ["@types/babel__core", "npm:7.1.14"],
             ["globals", "npm:11.12.0"]
           ],
           "packagePeers": [
@@ -2417,9 +2421,9 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
           "packageLocation": "./.yarn/$$virtual/@babel-plugin-transform-computed-properties-virtual-743ac80d66/0/cache/@babel-plugin-transform-computed-properties-npm-7.14.5-8751978a79-080dcf2c59.zip/node_modules/@babel/plugin-transform-computed-properties/",
           "packageDependencies": [
             ["@babel/plugin-transform-computed-properties", "virtual:b195e919cda2404d7afddb7b733f471ccbf8859f97a31eeeefa0d2b00ff5e93b6530fb9825f7c01a330baa6ece5511ebe695a63f183a88176de378b6c179977a#npm:7.14.5"],
-            ["@babel/core", null],
+            ["@babel/core", "npm:7.14.6"],
             ["@babel/helper-plugin-utils", "npm:7.14.5"],
-            ["@types/babel__core", null]
+            ["@types/babel__core", "npm:7.1.14"]
           ],
           "packagePeers": [
             "@babel/core",
@@ -2454,9 +2458,9 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
           "packageLocation": "./.yarn/$$virtual/@babel-plugin-transform-destructuring-virtual-439c993287/0/cache/@babel-plugin-transform-destructuring-npm-7.14.7-2db3ea1351-85f1755589.zip/node_modules/@babel/plugin-transform-destructuring/",
           "packageDependencies": [
             ["@babel/plugin-transform-destructuring", "virtual:b195e919cda2404d7afddb7b733f471ccbf8859f97a31eeeefa0d2b00ff5e93b6530fb9825f7c01a330baa6ece5511ebe695a63f183a88176de378b6c179977a#npm:7.14.7"],
-            ["@babel/core", null],
+            ["@babel/core", "npm:7.14.6"],
             ["@babel/helper-plugin-utils", "npm:7.14.5"],
-            ["@types/babel__core", null]
+            ["@types/babel__core", "npm:7.1.14"]
           ],
           "packagePeers": [
             "@babel/core",
@@ -2492,10 +2496,10 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
           "packageLocation": "./.yarn/$$virtual/@babel-plugin-transform-dotall-regex-virtual-b06af602c8/0/cache/@babel-plugin-transform-dotall-regex-npm-7.14.5-c2010d2608-1e4564243a.zip/node_modules/@babel/plugin-transform-dotall-regex/",
           "packageDependencies": [
             ["@babel/plugin-transform-dotall-regex", "virtual:b195e919cda2404d7afddb7b733f471ccbf8859f97a31eeeefa0d2b00ff5e93b6530fb9825f7c01a330baa6ece5511ebe695a63f183a88176de378b6c179977a#npm:7.14.5"],
-            ["@babel/core", null],
+            ["@babel/core", "npm:7.14.6"],
             ["@babel/helper-create-regexp-features-plugin", "virtual:5f2fb85df7f98b79e4e3327d9719291debf8821b7f0e5a0f6f4d955d0ee2152042af9bdd20b703c605e0bffd4e409b73bacf425ee77ee2d0582304faa4478592#npm:7.14.5"],
             ["@babel/helper-plugin-utils", "npm:7.14.5"],
-            ["@types/babel__core", null]
+            ["@types/babel__core", "npm:7.1.14"]
           ],
           "packagePeers": [
             "@babel/core",
@@ -2530,9 +2534,9 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
           "packageLocation": "./.yarn/$$virtual/@babel-plugin-transform-duplicate-keys-virtual-5385bf7096/0/cache/@babel-plugin-transform-duplicate-keys-npm-7.14.5-6f8a6586c0-592409a294.zip/node_modules/@babel/plugin-transform-duplicate-keys/",
           "packageDependencies": [
             ["@babel/plugin-transform-duplicate-keys", "virtual:b195e919cda2404d7afddb7b733f471ccbf8859f97a31eeeefa0d2b00ff5e93b6530fb9825f7c01a330baa6ece5511ebe695a63f183a88176de378b6c179977a#npm:7.14.5"],
-            ["@babel/core", null],
+            ["@babel/core", "npm:7.14.6"],
             ["@babel/helper-plugin-utils", "npm:7.14.5"],
-            ["@types/babel__core", null]
+            ["@types/babel__core", "npm:7.1.14"]
           ],
           "packagePeers": [
             "@babel/core",
@@ -2568,10 +2572,10 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
           "packageLocation": "./.yarn/$$virtual/@babel-plugin-transform-exponentiation-operator-virtual-ff50bd85e0/0/cache/@babel-plugin-transform-exponentiation-operator-npm-7.14.5-441700f070-d3e3b34c61.zip/node_modules/@babel/plugin-transform-exponentiation-operator/",
           "packageDependencies": [
             ["@babel/plugin-transform-exponentiation-operator", "virtual:b195e919cda2404d7afddb7b733f471ccbf8859f97a31eeeefa0d2b00ff5e93b6530fb9825f7c01a330baa6ece5511ebe695a63f183a88176de378b6c179977a#npm:7.14.5"],
-            ["@babel/core", null],
+            ["@babel/core", "npm:7.14.6"],
             ["@babel/helper-builder-binary-assignment-operator-visitor", "npm:7.14.5"],
             ["@babel/helper-plugin-utils", "npm:7.14.5"],
-            ["@types/babel__core", null]
+            ["@types/babel__core", "npm:7.1.14"]
           ],
           "packagePeers": [
             "@babel/core",
@@ -2630,9 +2634,9 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
           "packageLocation": "./.yarn/$$virtual/@babel-plugin-transform-for-of-virtual-92140030f2/0/cache/@babel-plugin-transform-for-of-npm-7.14.5-730068169c-253cb0532a.zip/node_modules/@babel/plugin-transform-for-of/",
           "packageDependencies": [
             ["@babel/plugin-transform-for-of", "virtual:b195e919cda2404d7afddb7b733f471ccbf8859f97a31eeeefa0d2b00ff5e93b6530fb9825f7c01a330baa6ece5511ebe695a63f183a88176de378b6c179977a#npm:7.14.5"],
-            ["@babel/core", null],
+            ["@babel/core", "npm:7.14.6"],
             ["@babel/helper-plugin-utils", "npm:7.14.5"],
-            ["@types/babel__core", null]
+            ["@types/babel__core", "npm:7.1.14"]
           ],
           "packagePeers": [
             "@babel/core",
@@ -2668,10 +2672,10 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
           "packageLocation": "./.yarn/$$virtual/@babel-plugin-transform-function-name-virtual-da2ae14a30/0/cache/@babel-plugin-transform-function-name-npm-7.14.5-e944ad9635-ffd94b893e.zip/node_modules/@babel/plugin-transform-function-name/",
           "packageDependencies": [
             ["@babel/plugin-transform-function-name", "virtual:b195e919cda2404d7afddb7b733f471ccbf8859f97a31eeeefa0d2b00ff5e93b6530fb9825f7c01a330baa6ece5511ebe695a63f183a88176de378b6c179977a#npm:7.14.5"],
-            ["@babel/core", null],
+            ["@babel/core", "npm:7.14.6"],
             ["@babel/helper-function-name", "npm:7.14.5"],
             ["@babel/helper-plugin-utils", "npm:7.14.5"],
-            ["@types/babel__core", null]
+            ["@types/babel__core", "npm:7.1.14"]
           ],
           "packagePeers": [
             "@babel/core",
@@ -2706,9 +2710,9 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
           "packageLocation": "./.yarn/$$virtual/@babel-plugin-transform-literals-virtual-038ef7af9c/0/cache/@babel-plugin-transform-literals-npm-7.14.5-bec88dbb09-6ae919e2a4.zip/node_modules/@babel/plugin-transform-literals/",
           "packageDependencies": [
             ["@babel/plugin-transform-literals", "virtual:b195e919cda2404d7afddb7b733f471ccbf8859f97a31eeeefa0d2b00ff5e93b6530fb9825f7c01a330baa6ece5511ebe695a63f183a88176de378b6c179977a#npm:7.14.5"],
-            ["@babel/core", null],
+            ["@babel/core", "npm:7.14.6"],
             ["@babel/helper-plugin-utils", "npm:7.14.5"],
-            ["@types/babel__core", null]
+            ["@types/babel__core", "npm:7.1.14"]
           ],
           "packagePeers": [
             "@babel/core",
@@ -2743,9 +2747,9 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
           "packageLocation": "./.yarn/$$virtual/@babel-plugin-transform-member-expression-literals-virtual-02f6eaaf82/0/cache/@babel-plugin-transform-member-expression-literals-npm-7.14.5-a447eb232a-293e2b1d62.zip/node_modules/@babel/plugin-transform-member-expression-literals/",
           "packageDependencies": [
             ["@babel/plugin-transform-member-expression-literals", "virtual:b195e919cda2404d7afddb7b733f471ccbf8859f97a31eeeefa0d2b00ff5e93b6530fb9825f7c01a330baa6ece5511ebe695a63f183a88176de378b6c179977a#npm:7.14.5"],
-            ["@babel/core", null],
+            ["@babel/core", "npm:7.14.6"],
             ["@babel/helper-plugin-utils", "npm:7.14.5"],
-            ["@types/babel__core", null]
+            ["@types/babel__core", "npm:7.1.14"]
           ],
           "packagePeers": [
             "@babel/core",
@@ -2782,10 +2786,10 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
           "packageLocation": "./.yarn/$$virtual/@babel-plugin-transform-modules-amd-virtual-bf581d60b6/0/cache/@babel-plugin-transform-modules-amd-npm-7.14.5-79fbb0e386-0d766c6424.zip/node_modules/@babel/plugin-transform-modules-amd/",
           "packageDependencies": [
             ["@babel/plugin-transform-modules-amd", "virtual:b195e919cda2404d7afddb7b733f471ccbf8859f97a31eeeefa0d2b00ff5e93b6530fb9825f7c01a330baa6ece5511ebe695a63f183a88176de378b6c179977a#npm:7.14.5"],
-            ["@babel/core", null],
+            ["@babel/core", "npm:7.14.6"],
             ["@babel/helper-module-transforms", "npm:7.14.5"],
             ["@babel/helper-plugin-utils", "npm:7.14.5"],
-            ["@types/babel__core", null],
+            ["@types/babel__core", "npm:7.1.14"],
             ["babel-plugin-dynamic-import-node", "npm:2.3.3"]
           ],
           "packagePeers": [
@@ -2824,11 +2828,11 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
           "packageLocation": "./.yarn/$$virtual/@babel-plugin-transform-modules-commonjs-virtual-0eb4c33101/0/cache/@babel-plugin-transform-modules-commonjs-npm-7.14.5-fd6360f2d1-569e82c8de.zip/node_modules/@babel/plugin-transform-modules-commonjs/",
           "packageDependencies": [
             ["@babel/plugin-transform-modules-commonjs", "virtual:b195e919cda2404d7afddb7b733f471ccbf8859f97a31eeeefa0d2b00ff5e93b6530fb9825f7c01a330baa6ece5511ebe695a63f183a88176de378b6c179977a#npm:7.14.5"],
-            ["@babel/core", null],
+            ["@babel/core", "npm:7.14.6"],
             ["@babel/helper-module-transforms", "npm:7.14.5"],
             ["@babel/helper-plugin-utils", "npm:7.14.5"],
             ["@babel/helper-simple-access", "npm:7.14.5"],
-            ["@types/babel__core", null],
+            ["@types/babel__core", "npm:7.1.14"],
             ["babel-plugin-dynamic-import-node", "npm:2.3.3"]
           ],
           "packagePeers": [
@@ -2868,12 +2872,12 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
           "packageLocation": "./.yarn/$$virtual/@babel-plugin-transform-modules-systemjs-virtual-56f3899bca/0/cache/@babel-plugin-transform-modules-systemjs-npm-7.14.5-77c919481e-39f24ab207.zip/node_modules/@babel/plugin-transform-modules-systemjs/",
           "packageDependencies": [
             ["@babel/plugin-transform-modules-systemjs", "virtual:b195e919cda2404d7afddb7b733f471ccbf8859f97a31eeeefa0d2b00ff5e93b6530fb9825f7c01a330baa6ece5511ebe695a63f183a88176de378b6c179977a#npm:7.14.5"],
-            ["@babel/core", null],
+            ["@babel/core", "npm:7.14.6"],
             ["@babel/helper-hoist-variables", "npm:7.14.5"],
             ["@babel/helper-module-transforms", "npm:7.14.5"],
             ["@babel/helper-plugin-utils", "npm:7.14.5"],
             ["@babel/helper-validator-identifier", "npm:7.14.5"],
-            ["@types/babel__core", null],
+            ["@types/babel__core", "npm:7.1.14"],
             ["babel-plugin-dynamic-import-node", "npm:2.3.3"]
           ],
           "packagePeers": [
@@ -2910,10 +2914,10 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
           "packageLocation": "./.yarn/$$virtual/@babel-plugin-transform-modules-umd-virtual-0d18572d19/0/cache/@babel-plugin-transform-modules-umd-npm-7.14.5-8a2b4e7c42-6f6713a515.zip/node_modules/@babel/plugin-transform-modules-umd/",
           "packageDependencies": [
             ["@babel/plugin-transform-modules-umd", "virtual:b195e919cda2404d7afddb7b733f471ccbf8859f97a31eeeefa0d2b00ff5e93b6530fb9825f7c01a330baa6ece5511ebe695a63f183a88176de378b6c179977a#npm:7.14.5"],
-            ["@babel/core", null],
+            ["@babel/core", "npm:7.14.6"],
             ["@babel/helper-module-transforms", "npm:7.14.5"],
             ["@babel/helper-plugin-utils", "npm:7.14.5"],
-            ["@types/babel__core", null]
+            ["@types/babel__core", "npm:7.1.14"]
           ],
           "packagePeers": [
             "@babel/core",
@@ -2948,9 +2952,9 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
           "packageLocation": "./.yarn/$$virtual/@babel-plugin-transform-named-capturing-groups-regex-virtual-1b75fc04b6/0/cache/@babel-plugin-transform-named-capturing-groups-regex-npm-7.14.7-b07b39547c-f035d73a38.zip/node_modules/@babel/plugin-transform-named-capturing-groups-regex/",
           "packageDependencies": [
             ["@babel/plugin-transform-named-capturing-groups-regex", "virtual:b195e919cda2404d7afddb7b733f471ccbf8859f97a31eeeefa0d2b00ff5e93b6530fb9825f7c01a330baa6ece5511ebe695a63f183a88176de378b6c179977a#npm:7.14.7"],
-            ["@babel/core", null],
+            ["@babel/core", "npm:7.14.6"],
             ["@babel/helper-create-regexp-features-plugin", "virtual:5f2fb85df7f98b79e4e3327d9719291debf8821b7f0e5a0f6f4d955d0ee2152042af9bdd20b703c605e0bffd4e409b73bacf425ee77ee2d0582304faa4478592#npm:7.14.5"],
-            ["@types/babel__core", null]
+            ["@types/babel__core", "npm:7.1.14"]
           ],
           "packagePeers": [
             "@babel/core",
@@ -2985,9 +2989,9 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
           "packageLocation": "./.yarn/$$virtual/@babel-plugin-transform-new-target-virtual-a3024187cf/0/cache/@babel-plugin-transform-new-target-npm-7.14.5-33db65f40f-c5a66830cc.zip/node_modules/@babel/plugin-transform-new-target/",
           "packageDependencies": [
             ["@babel/plugin-transform-new-target", "virtual:b195e919cda2404d7afddb7b733f471ccbf8859f97a31eeeefa0d2b00ff5e93b6530fb9825f7c01a330baa6ece5511ebe695a63f183a88176de378b6c179977a#npm:7.14.5"],
-            ["@babel/core", null],
+            ["@babel/core", "npm:7.14.6"],
             ["@babel/helper-plugin-utils", "npm:7.14.5"],
-            ["@types/babel__core", null]
+            ["@types/babel__core", "npm:7.1.14"]
           ],
           "packagePeers": [
             "@babel/core",
@@ -3023,10 +3027,10 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
           "packageLocation": "./.yarn/$$virtual/@babel-plugin-transform-object-super-virtual-726487c004/0/cache/@babel-plugin-transform-object-super-npm-7.14.5-241a5c2dac-808e37be73.zip/node_modules/@babel/plugin-transform-object-super/",
           "packageDependencies": [
             ["@babel/plugin-transform-object-super", "virtual:b195e919cda2404d7afddb7b733f471ccbf8859f97a31eeeefa0d2b00ff5e93b6530fb9825f7c01a330baa6ece5511ebe695a63f183a88176de378b6c179977a#npm:7.14.5"],
-            ["@babel/core", null],
+            ["@babel/core", "npm:7.14.6"],
             ["@babel/helper-plugin-utils", "npm:7.14.5"],
             ["@babel/helper-replace-supers", "npm:7.14.5"],
-            ["@types/babel__core", null]
+            ["@types/babel__core", "npm:7.1.14"]
           ],
           "packagePeers": [
             "@babel/core",
@@ -3075,9 +3079,9 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
           "packageLocation": "./.yarn/$$virtual/@babel-plugin-transform-parameters-virtual-8f0cdd1e4b/0/cache/@babel-plugin-transform-parameters-npm-7.14.5-ad568f72d3-42419b3db8.zip/node_modules/@babel/plugin-transform-parameters/",
           "packageDependencies": [
             ["@babel/plugin-transform-parameters", "virtual:b195e919cda2404d7afddb7b733f471ccbf8859f97a31eeeefa0d2b00ff5e93b6530fb9825f7c01a330baa6ece5511ebe695a63f183a88176de378b6c179977a#npm:7.14.5"],
-            ["@babel/core", null],
+            ["@babel/core", "npm:7.14.6"],
             ["@babel/helper-plugin-utils", "npm:7.14.5"],
-            ["@types/babel__core", null]
+            ["@types/babel__core", "npm:7.1.14"]
           ],
           "packagePeers": [
             "@babel/core",
@@ -3126,9 +3130,9 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
           "packageLocation": "./.yarn/$$virtual/@babel-plugin-transform-property-literals-virtual-938c6cd2a7/0/cache/@babel-plugin-transform-property-literals-npm-7.14.5-515b03362a-0bd00959b7.zip/node_modules/@babel/plugin-transform-property-literals/",
           "packageDependencies": [
             ["@babel/plugin-transform-property-literals", "virtual:b195e919cda2404d7afddb7b733f471ccbf8859f97a31eeeefa0d2b00ff5e93b6530fb9825f7c01a330baa6ece5511ebe695a63f183a88176de378b6c179977a#npm:7.14.5"],
-            ["@babel/core", null],
+            ["@babel/core", "npm:7.14.6"],
             ["@babel/helper-plugin-utils", "npm:7.14.5"],
-            ["@types/babel__core", null]
+            ["@types/babel__core", "npm:7.1.14"]
           ],
           "packagePeers": [
             "@babel/core",
@@ -3163,9 +3167,9 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
           "packageLocation": "./.yarn/$$virtual/@babel-plugin-transform-react-display-name-virtual-8aa9545b60/0/cache/@babel-plugin-transform-react-display-name-npm-7.14.5-50b1edadc5-2fc76afb1d.zip/node_modules/@babel/plugin-transform-react-display-name/",
           "packageDependencies": [
             ["@babel/plugin-transform-react-display-name", "virtual:92a10c232f9e40e1241ef424ea43ec348ef7e13a57ce937f979f668be81c38255504c538708b9297515e35a48bfad814612dfe3a1855605561944d442b95506b#npm:7.14.5"],
-            ["@babel/core", null],
+            ["@babel/core", "npm:7.14.6"],
             ["@babel/helper-plugin-utils", "npm:7.14.5"],
-            ["@types/babel__core", null]
+            ["@types/babel__core", "npm:7.1.14"]
           ],
           "packagePeers": [
             "@babel/core",
@@ -3204,13 +3208,13 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
           "packageLocation": "./.yarn/$$virtual/@babel-plugin-transform-react-jsx-virtual-7faa990839/0/cache/@babel-plugin-transform-react-jsx-npm-7.14.5-54c59a38f9-8724040b7c.zip/node_modules/@babel/plugin-transform-react-jsx/",
           "packageDependencies": [
             ["@babel/plugin-transform-react-jsx", "virtual:92a10c232f9e40e1241ef424ea43ec348ef7e13a57ce937f979f668be81c38255504c538708b9297515e35a48bfad814612dfe3a1855605561944d442b95506b#npm:7.14.5"],
-            ["@babel/core", null],
+            ["@babel/core", "npm:7.14.6"],
             ["@babel/helper-annotate-as-pure", "npm:7.14.5"],
             ["@babel/helper-module-imports", "npm:7.14.5"],
             ["@babel/helper-plugin-utils", "npm:7.14.5"],
             ["@babel/plugin-syntax-jsx", "virtual:873029aeb29f5fac86c7f0e39a9f6c89758a1963d7c7b9a60e707bf5db4e638eb9f8ea4762b014bf008eae39b1dcb8caa4eb1b655da273e4e397a3bb433ba279#npm:7.14.5"],
             ["@babel/types", "npm:7.14.5"],
-            ["@types/babel__core", null]
+            ["@types/babel__core", "npm:7.1.14"]
           ],
           "packagePeers": [
             "@babel/core",
@@ -3245,9 +3249,9 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
           "packageLocation": "./.yarn/$$virtual/@babel-plugin-transform-react-jsx-development-virtual-cba84152bc/0/cache/@babel-plugin-transform-react-jsx-development-npm-7.14.5-ec55736608-87d5d8fa61.zip/node_modules/@babel/plugin-transform-react-jsx-development/",
           "packageDependencies": [
             ["@babel/plugin-transform-react-jsx-development", "virtual:92a10c232f9e40e1241ef424ea43ec348ef7e13a57ce937f979f668be81c38255504c538708b9297515e35a48bfad814612dfe3a1855605561944d442b95506b#npm:7.14.5"],
-            ["@babel/core", null],
+            ["@babel/core", "npm:7.14.6"],
             ["@babel/plugin-transform-react-jsx", "virtual:92a10c232f9e40e1241ef424ea43ec348ef7e13a57ce937f979f668be81c38255504c538708b9297515e35a48bfad814612dfe3a1855605561944d442b95506b#npm:7.14.5"],
-            ["@types/babel__core", null]
+            ["@types/babel__core", "npm:7.1.14"]
           ],
           "packagePeers": [
             "@babel/core",
@@ -3283,10 +3287,10 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
           "packageLocation": "./.yarn/$$virtual/@babel-plugin-transform-react-pure-annotations-virtual-9a0311a1ca/0/cache/@babel-plugin-transform-react-pure-annotations-npm-7.14.5-0f88cc95c7-78e57809f9.zip/node_modules/@babel/plugin-transform-react-pure-annotations/",
           "packageDependencies": [
             ["@babel/plugin-transform-react-pure-annotations", "virtual:92a10c232f9e40e1241ef424ea43ec348ef7e13a57ce937f979f668be81c38255504c538708b9297515e35a48bfad814612dfe3a1855605561944d442b95506b#npm:7.14.5"],
-            ["@babel/core", null],
+            ["@babel/core", "npm:7.14.6"],
             ["@babel/helper-annotate-as-pure", "npm:7.14.5"],
             ["@babel/helper-plugin-utils", "npm:7.14.5"],
-            ["@types/babel__core", null]
+            ["@types/babel__core", "npm:7.1.14"]
           ],
           "packagePeers": [
             "@babel/core",
@@ -3321,8 +3325,8 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
           "packageLocation": "./.yarn/$$virtual/@babel-plugin-transform-regenerator-virtual-a4fe54d2a4/0/cache/@babel-plugin-transform-regenerator-npm-7.14.5-f1465f30a4-f1cb201e8d.zip/node_modules/@babel/plugin-transform-regenerator/",
           "packageDependencies": [
             ["@babel/plugin-transform-regenerator", "virtual:b195e919cda2404d7afddb7b733f471ccbf8859f97a31eeeefa0d2b00ff5e93b6530fb9825f7c01a330baa6ece5511ebe695a63f183a88176de378b6c179977a#npm:7.14.5"],
-            ["@babel/core", null],
-            ["@types/babel__core", null],
+            ["@babel/core", "npm:7.14.6"],
+            ["@types/babel__core", "npm:7.1.14"],
             ["regenerator-transform", "npm:0.14.5"]
           ],
           "packagePeers": [
@@ -3358,9 +3362,9 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
           "packageLocation": "./.yarn/$$virtual/@babel-plugin-transform-reserved-words-virtual-9f06711317/0/cache/@babel-plugin-transform-reserved-words-npm-7.14.5-2e9c4ba505-34e3440985.zip/node_modules/@babel/plugin-transform-reserved-words/",
           "packageDependencies": [
             ["@babel/plugin-transform-reserved-words", "virtual:b195e919cda2404d7afddb7b733f471ccbf8859f97a31eeeefa0d2b00ff5e93b6530fb9825f7c01a330baa6ece5511ebe695a63f183a88176de378b6c179977a#npm:7.14.5"],
-            ["@babel/core", null],
+            ["@babel/core", "npm:7.14.6"],
             ["@babel/helper-plugin-utils", "npm:7.14.5"],
-            ["@types/babel__core", null]
+            ["@types/babel__core", "npm:7.1.14"]
           ],
           "packagePeers": [
             "@babel/core",
@@ -3381,10 +3385,10 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
           "packageLocation": "./.yarn/$$virtual/@babel-plugin-transform-runtime-virtual-314f7a8078/0/cache/@babel-plugin-transform-runtime-npm-7.14.5-f9bdf6082a-5d5683e096.zip/node_modules/@babel/plugin-transform-runtime/",
           "packageDependencies": [
             ["@babel/plugin-transform-runtime", "virtual:4e520d6e3738f7ec125f1d9a2e267b89c366a38b504df79bdb8a3f3b5d7f6476081fb1485a7c3aea67c395e2dd7e8be31a11815e96f4f5ca964fe54afb317880#npm:7.14.5"],
-            ["@babel/core", null],
+            ["@babel/core", "npm:7.14.6"],
             ["@babel/helper-module-imports", "npm:7.14.5"],
             ["@babel/helper-plugin-utils", "npm:7.14.5"],
-            ["@types/babel__core", null],
+            ["@types/babel__core", "npm:7.1.14"],
             ["babel-plugin-polyfill-corejs2", "virtual:314f7a80785f3baf913cde6ad014ff46e0a178c270f78d81ff479c125a36ba603f11d60689d720a58ae447e24ed4c5f543f6f4f53b7e3f475e0ebc19d0350162#npm:0.2.2"],
             ["babel-plugin-polyfill-corejs3", "virtual:314f7a80785f3baf913cde6ad014ff46e0a178c270f78d81ff479c125a36ba603f11d60689d720a58ae447e24ed4c5f543f6f4f53b7e3f475e0ebc19d0350162#npm:0.2.3"],
             ["babel-plugin-polyfill-regenerator", "virtual:314f7a80785f3baf913cde6ad014ff46e0a178c270f78d81ff479c125a36ba603f11d60689d720a58ae447e24ed4c5f543f6f4f53b7e3f475e0ebc19d0350162#npm:0.2.2"],
@@ -3442,9 +3446,9 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
           "packageLocation": "./.yarn/$$virtual/@babel-plugin-transform-shorthand-properties-virtual-b341e3125d/0/cache/@babel-plugin-transform-shorthand-properties-npm-7.14.5-493cceea15-1d1b10668a.zip/node_modules/@babel/plugin-transform-shorthand-properties/",
           "packageDependencies": [
             ["@babel/plugin-transform-shorthand-properties", "virtual:b195e919cda2404d7afddb7b733f471ccbf8859f97a31eeeefa0d2b00ff5e93b6530fb9825f7c01a330baa6ece5511ebe695a63f183a88176de378b6c179977a#npm:7.14.5"],
-            ["@babel/core", null],
+            ["@babel/core", "npm:7.14.6"],
             ["@babel/helper-plugin-utils", "npm:7.14.5"],
-            ["@types/babel__core", null]
+            ["@types/babel__core", "npm:7.1.14"]
           ],
           "packagePeers": [
             "@babel/core",
@@ -3480,10 +3484,10 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
           "packageLocation": "./.yarn/$$virtual/@babel-plugin-transform-spread-virtual-b4ccb02ffd/0/cache/@babel-plugin-transform-spread-npm-7.14.6-d2aa597ea1-9511fd90a5.zip/node_modules/@babel/plugin-transform-spread/",
           "packageDependencies": [
             ["@babel/plugin-transform-spread", "virtual:4e520d6e3738f7ec125f1d9a2e267b89c366a38b504df79bdb8a3f3b5d7f6476081fb1485a7c3aea67c395e2dd7e8be31a11815e96f4f5ca964fe54afb317880#npm:7.14.6"],
-            ["@babel/core", null],
+            ["@babel/core", "npm:7.14.6"],
             ["@babel/helper-plugin-utils", "npm:7.14.5"],
             ["@babel/helper-skip-transparent-expression-wrappers", "npm:7.14.5"],
-            ["@types/babel__core", null]
+            ["@types/babel__core", "npm:7.1.14"]
           ],
           "packagePeers": [
             "@babel/core",
@@ -3518,9 +3522,9 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
           "packageLocation": "./.yarn/$$virtual/@babel-plugin-transform-sticky-regex-virtual-e4d837012e/0/cache/@babel-plugin-transform-sticky-regex-npm-7.14.5-0185c22ec2-d67c2a7cfc.zip/node_modules/@babel/plugin-transform-sticky-regex/",
           "packageDependencies": [
             ["@babel/plugin-transform-sticky-regex", "virtual:b195e919cda2404d7afddb7b733f471ccbf8859f97a31eeeefa0d2b00ff5e93b6530fb9825f7c01a330baa6ece5511ebe695a63f183a88176de378b6c179977a#npm:7.14.5"],
-            ["@babel/core", null],
+            ["@babel/core", "npm:7.14.6"],
             ["@babel/helper-plugin-utils", "npm:7.14.5"],
-            ["@types/babel__core", null]
+            ["@types/babel__core", "npm:7.1.14"]
           ],
           "packagePeers": [
             "@babel/core",
@@ -3555,9 +3559,9 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
           "packageLocation": "./.yarn/$$virtual/@babel-plugin-transform-template-literals-virtual-d7faf26f65/0/cache/@babel-plugin-transform-template-literals-npm-7.14.5-60338f8fa2-ef9eb36a9c.zip/node_modules/@babel/plugin-transform-template-literals/",
           "packageDependencies": [
             ["@babel/plugin-transform-template-literals", "virtual:b195e919cda2404d7afddb7b733f471ccbf8859f97a31eeeefa0d2b00ff5e93b6530fb9825f7c01a330baa6ece5511ebe695a63f183a88176de378b6c179977a#npm:7.14.5"],
-            ["@babel/core", null],
+            ["@babel/core", "npm:7.14.6"],
             ["@babel/helper-plugin-utils", "npm:7.14.5"],
-            ["@types/babel__core", null]
+            ["@types/babel__core", "npm:7.1.14"]
           ],
           "packagePeers": [
             "@babel/core",
@@ -3592,9 +3596,9 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
           "packageLocation": "./.yarn/$$virtual/@babel-plugin-transform-typeof-symbol-virtual-a3d0b07481/0/cache/@babel-plugin-transform-typeof-symbol-npm-7.14.5-eca10e5acb-8f636abee9.zip/node_modules/@babel/plugin-transform-typeof-symbol/",
           "packageDependencies": [
             ["@babel/plugin-transform-typeof-symbol", "virtual:b195e919cda2404d7afddb7b733f471ccbf8859f97a31eeeefa0d2b00ff5e93b6530fb9825f7c01a330baa6ece5511ebe695a63f183a88176de378b6c179977a#npm:7.14.5"],
-            ["@babel/core", null],
+            ["@babel/core", "npm:7.14.6"],
             ["@babel/helper-plugin-utils", "npm:7.14.5"],
-            ["@types/babel__core", null]
+            ["@types/babel__core", "npm:7.1.14"]
           ],
           "packagePeers": [
             "@babel/core",
@@ -3654,9 +3658,9 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
           "packageLocation": "./.yarn/$$virtual/@babel-plugin-transform-unicode-escapes-virtual-77ab216f56/0/cache/@babel-plugin-transform-unicode-escapes-npm-7.14.5-9bd1cfd4db-985a743fd2.zip/node_modules/@babel/plugin-transform-unicode-escapes/",
           "packageDependencies": [
             ["@babel/plugin-transform-unicode-escapes", "virtual:b195e919cda2404d7afddb7b733f471ccbf8859f97a31eeeefa0d2b00ff5e93b6530fb9825f7c01a330baa6ece5511ebe695a63f183a88176de378b6c179977a#npm:7.14.5"],
-            ["@babel/core", null],
+            ["@babel/core", "npm:7.14.6"],
             ["@babel/helper-plugin-utils", "npm:7.14.5"],
-            ["@types/babel__core", null]
+            ["@types/babel__core", "npm:7.1.14"]
           ],
           "packagePeers": [
             "@babel/core",
@@ -3692,10 +3696,10 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
           "packageLocation": "./.yarn/$$virtual/@babel-plugin-transform-unicode-regex-virtual-7dd605d6e2/0/cache/@babel-plugin-transform-unicode-regex-npm-7.14.5-2581bdf2c9-3ea3fc8085.zip/node_modules/@babel/plugin-transform-unicode-regex/",
           "packageDependencies": [
             ["@babel/plugin-transform-unicode-regex", "virtual:b195e919cda2404d7afddb7b733f471ccbf8859f97a31eeeefa0d2b00ff5e93b6530fb9825f7c01a330baa6ece5511ebe695a63f183a88176de378b6c179977a#npm:7.14.5"],
-            ["@babel/core", null],
+            ["@babel/core", "npm:7.14.6"],
             ["@babel/helper-create-regexp-features-plugin", "virtual:5f2fb85df7f98b79e4e3327d9719291debf8821b7f0e5a0f6f4d955d0ee2152042af9bdd20b703c605e0bffd4e409b73bacf425ee77ee2d0582304faa4478592#npm:7.14.5"],
             ["@babel/helper-plugin-utils", "npm:7.14.5"],
-            ["@types/babel__core", null]
+            ["@types/babel__core", "npm:7.1.14"]
           ],
           "packagePeers": [
             "@babel/core",
@@ -3728,7 +3732,7 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
           "packageDependencies": [
             ["@babel/preset-env", "virtual:4e520d6e3738f7ec125f1d9a2e267b89c366a38b504df79bdb8a3f3b5d7f6476081fb1485a7c3aea67c395e2dd7e8be31a11815e96f4f5ca964fe54afb317880#npm:7.14.7"],
             ["@babel/compat-data", "npm:7.14.7"],
-            ["@babel/core", null],
+            ["@babel/core", "npm:7.14.6"],
             ["@babel/helper-compilation-targets", "virtual:6e250b71989735fcdef2fd485569811600e8e1e564bf314531c2bb41a2b316f97476afdca95c5db00fa40ef5affe33b5a98019c49b341ffabffbf231193c41d1#npm:7.14.5"],
             ["@babel/helper-plugin-utils", "npm:7.14.5"],
             ["@babel/helper-validator-option", "npm:7.14.5"],
@@ -3796,7 +3800,7 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
             ["@babel/plugin-transform-unicode-regex", "virtual:b195e919cda2404d7afddb7b733f471ccbf8859f97a31eeeefa0d2b00ff5e93b6530fb9825f7c01a330baa6ece5511ebe695a63f183a88176de378b6c179977a#npm:7.14.5"],
             ["@babel/preset-modules", "virtual:b195e919cda2404d7afddb7b733f471ccbf8859f97a31eeeefa0d2b00ff5e93b6530fb9825f7c01a330baa6ece5511ebe695a63f183a88176de378b6c179977a#npm:0.1.4"],
             ["@babel/types", "npm:7.14.5"],
-            ["@types/babel__core", null],
+            ["@types/babel__core", "npm:7.1.14"],
             ["babel-plugin-polyfill-corejs2", "virtual:314f7a80785f3baf913cde6ad014ff46e0a178c270f78d81ff479c125a36ba603f11d60689d720a58ae447e24ed4c5f543f6f4f53b7e3f475e0ebc19d0350162#npm:0.2.2"],
             ["babel-plugin-polyfill-corejs3", "virtual:314f7a80785f3baf913cde6ad014ff46e0a178c270f78d81ff479c125a36ba603f11d60689d720a58ae447e24ed4c5f543f6f4f53b7e3f475e0ebc19d0350162#npm:0.2.3"],
             ["babel-plugin-polyfill-regenerator", "virtual:314f7a80785f3baf913cde6ad014ff46e0a178c270f78d81ff479c125a36ba603f11d60689d720a58ae447e24ed4c5f543f6f4f53b7e3f475e0ebc19d0350162#npm:0.2.2"],
@@ -3926,12 +3930,12 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
           "packageLocation": "./.yarn/$$virtual/@babel-preset-modules-virtual-264755c771/0/cache/@babel-preset-modules-npm-0.1.4-db073de4ec-8a463709fd.zip/node_modules/@babel/preset-modules/",
           "packageDependencies": [
             ["@babel/preset-modules", "virtual:b195e919cda2404d7afddb7b733f471ccbf8859f97a31eeeefa0d2b00ff5e93b6530fb9825f7c01a330baa6ece5511ebe695a63f183a88176de378b6c179977a#npm:0.1.4"],
-            ["@babel/core", null],
+            ["@babel/core", "npm:7.14.6"],
             ["@babel/helper-plugin-utils", "npm:7.14.5"],
             ["@babel/plugin-proposal-unicode-property-regex", "virtual:b195e919cda2404d7afddb7b733f471ccbf8859f97a31eeeefa0d2b00ff5e93b6530fb9825f7c01a330baa6ece5511ebe695a63f183a88176de378b6c179977a#npm:7.14.5"],
             ["@babel/plugin-transform-dotall-regex", "virtual:b195e919cda2404d7afddb7b733f471ccbf8859f97a31eeeefa0d2b00ff5e93b6530fb9825f7c01a330baa6ece5511ebe695a63f183a88176de378b6c179977a#npm:7.14.5"],
             ["@babel/types", "npm:7.14.5"],
-            ["@types/babel__core", null],
+            ["@types/babel__core", "npm:7.1.14"],
             ["esutils", "npm:2.0.3"]
           ],
           "packagePeers": [
@@ -3953,14 +3957,14 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
           "packageLocation": "./.yarn/$$virtual/@babel-preset-react-virtual-92a10c232f/0/cache/@babel-preset-react-npm-7.14.5-0d65339ed0-58a96aef0a.zip/node_modules/@babel/preset-react/",
           "packageDependencies": [
             ["@babel/preset-react", "virtual:4e520d6e3738f7ec125f1d9a2e267b89c366a38b504df79bdb8a3f3b5d7f6476081fb1485a7c3aea67c395e2dd7e8be31a11815e96f4f5ca964fe54afb317880#npm:7.14.5"],
-            ["@babel/core", null],
+            ["@babel/core", "npm:7.14.6"],
             ["@babel/helper-plugin-utils", "npm:7.14.5"],
             ["@babel/helper-validator-option", "npm:7.14.5"],
             ["@babel/plugin-transform-react-display-name", "virtual:92a10c232f9e40e1241ef424ea43ec348ef7e13a57ce937f979f668be81c38255504c538708b9297515e35a48bfad814612dfe3a1855605561944d442b95506b#npm:7.14.5"],
             ["@babel/plugin-transform-react-jsx", "virtual:92a10c232f9e40e1241ef424ea43ec348ef7e13a57ce937f979f668be81c38255504c538708b9297515e35a48bfad814612dfe3a1855605561944d442b95506b#npm:7.14.5"],
             ["@babel/plugin-transform-react-jsx-development", "virtual:92a10c232f9e40e1241ef424ea43ec348ef7e13a57ce937f979f668be81c38255504c538708b9297515e35a48bfad814612dfe3a1855605561944d442b95506b#npm:7.14.5"],
             ["@babel/plugin-transform-react-pure-annotations", "virtual:92a10c232f9e40e1241ef424ea43ec348ef7e13a57ce937f979f668be81c38255504c538708b9297515e35a48bfad814612dfe3a1855605561944d442b95506b#npm:7.14.5"],
-            ["@types/babel__core", null]
+            ["@types/babel__core", "npm:7.1.14"]
           ],
           "packagePeers": [
             "@babel/core",
@@ -4310,14 +4314,14 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
           "packageLocation": "./.yarn/$$virtual/@emotion-babel-plugin-virtual-873029aeb2/0/cache/@emotion-babel-plugin-npm-11.3.0-1584a07dcd-4c238862d0.zip/node_modules/@emotion/babel-plugin/",
           "packageDependencies": [
             ["@emotion/babel-plugin", "virtual:a0c9a0bd7c7a87da1cbca4fbbfccb0a0c5d02130601da78d74bdc7897a9dfc81278929413ac1b38990a4e7c612aa8e526eebd901ebfe1e215be778c07a720ffd#npm:11.3.0"],
-            ["@babel/core", null],
+            ["@babel/core", "npm:7.14.6"],
             ["@babel/helper-module-imports", "npm:7.14.5"],
             ["@babel/plugin-syntax-jsx", "virtual:873029aeb29f5fac86c7f0e39a9f6c89758a1963d7c7b9a60e707bf5db4e638eb9f8ea4762b014bf008eae39b1dcb8caa4eb1b655da273e4e397a3bb433ba279#npm:7.14.5"],
             ["@babel/runtime", "npm:7.14.6"],
             ["@emotion/hash", "npm:0.8.0"],
             ["@emotion/memoize", "npm:0.7.5"],
             ["@emotion/serialize", "npm:1.0.2"],
-            ["@types/babel__core", null],
+            ["@types/babel__core", "npm:7.1.14"],
             ["babel-plugin-macros", "npm:2.8.0"],
             ["convert-source-map", "npm:1.8.0"],
             ["escape-string-regexp", "npm:4.0.0"],
@@ -4344,9 +4348,9 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
           "packageLocation": "./.yarn/$$virtual/@emotion-babel-plugin-jsx-pragmatic-virtual-29dd514ceb/0/cache/@emotion-babel-plugin-jsx-pragmatic-npm-0.1.5-515e3ee1a1-3957a41cac.zip/node_modules/@emotion/babel-plugin-jsx-pragmatic/",
           "packageDependencies": [
             ["@emotion/babel-plugin-jsx-pragmatic", "virtual:ff2d94cdb5692f8aeba995b19b260d231d5a17540b31768a0514d4c3b140ea0aed073000da21b29d425e02227b60c02f8c1f779f4a69451b18c14e49b279d5c4#npm:0.1.5"],
-            ["@babel/core", null],
+            ["@babel/core", "npm:7.14.6"],
             ["@babel/plugin-syntax-jsx", "virtual:873029aeb29f5fac86c7f0e39a9f6c89758a1963d7c7b9a60e707bf5db4e638eb9f8ea4762b014bf008eae39b1dcb8caa4eb1b655da273e4e397a3bb433ba279#npm:7.14.5"],
-            ["@types/babel__core", null]
+            ["@types/babel__core", "npm:7.1.14"]
           ],
           "packagePeers": [
             "@babel/core",
@@ -4367,12 +4371,12 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
           "packageLocation": "./.yarn/$$virtual/@emotion-babel-preset-css-prop-virtual-ff2d94cdb5/0/cache/@emotion-babel-preset-css-prop-npm-11.2.0-7228ae1598-b4ead1377d.zip/node_modules/@emotion/babel-preset-css-prop/",
           "packageDependencies": [
             ["@emotion/babel-preset-css-prop", "virtual:6357d5499500e5bd94aa282b02107d951ae832682a600eb8f5b9c3f616cde70f17bbdfbe7e024e2d76d6ba4c1282dea7ee5b2fb99ce76d9d67ef71620e85cb66#npm:11.2.0"],
-            ["@babel/core", null],
+            ["@babel/core", "npm:7.14.6"],
             ["@babel/plugin-transform-react-jsx", "virtual:92a10c232f9e40e1241ef424ea43ec348ef7e13a57ce937f979f668be81c38255504c538708b9297515e35a48bfad814612dfe3a1855605561944d442b95506b#npm:7.14.5"],
             ["@babel/runtime", "npm:7.14.6"],
             ["@emotion/babel-plugin", "virtual:a0c9a0bd7c7a87da1cbca4fbbfccb0a0c5d02130601da78d74bdc7897a9dfc81278929413ac1b38990a4e7c612aa8e526eebd901ebfe1e215be778c07a720ffd#npm:11.3.0"],
             ["@emotion/babel-plugin-jsx-pragmatic", "virtual:ff2d94cdb5692f8aeba995b19b260d231d5a17540b31768a0514d4c3b140ea0aed073000da21b29d425e02227b60c02f8c1f779f4a69451b18c14e49b279d5c4#npm:0.1.5"],
-            ["@types/babel__core", null]
+            ["@types/babel__core", "npm:7.1.14"]
           ],
           "packagePeers": [
             "@babel/core",
@@ -4435,14 +4439,14 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
           "packageLocation": "./.yarn/$$virtual/@emotion-react-virtual-04cb6b3103/0/cache/@emotion-react-npm-11.4.0-174d777529-4058dc4de5.zip/node_modules/@emotion/react/",
           "packageDependencies": [
             ["@emotion/react", "virtual:25fc3e48019459b1d7771797e61c99b37e2e903e9b68f60b686e25a50e9692f15bba0936db75d69bcbcb39e9eb7e41f9e1cc9199eb6565ab56dc3cafb9e2f4ec#npm:11.4.0"],
-            ["@babel/core", null],
+            ["@babel/core", "npm:7.14.6"],
             ["@babel/runtime", "npm:7.14.6"],
             ["@emotion/cache", "npm:11.4.0"],
             ["@emotion/serialize", "npm:1.0.2"],
             ["@emotion/sheet", "npm:1.0.1"],
             ["@emotion/utils", "npm:1.0.0"],
             ["@emotion/weak-memoize", "npm:0.2.5"],
-            ["@types/babel__core", null],
+            ["@types/babel__core", "npm:7.1.14"],
             ["@types/react", "npm:17.0.11"],
             ["hoist-non-react-statics", "npm:3.3.2"],
             ["react", "npm:17.0.2"]
@@ -4491,14 +4495,14 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
           "packageLocation": "./.yarn/$$virtual/@emotion-styled-virtual-a0c9a0bd7c/0/cache/@emotion-styled-npm-11.3.0-a31c55914d-3eb9b591d0.zip/node_modules/@emotion/styled/",
           "packageDependencies": [
             ["@emotion/styled", "virtual:25fc3e48019459b1d7771797e61c99b37e2e903e9b68f60b686e25a50e9692f15bba0936db75d69bcbcb39e9eb7e41f9e1cc9199eb6565ab56dc3cafb9e2f4ec#npm:11.3.0"],
-            ["@babel/core", null],
+            ["@babel/core", "npm:7.14.6"],
             ["@babel/runtime", "npm:7.14.6"],
             ["@emotion/babel-plugin", "virtual:a0c9a0bd7c7a87da1cbca4fbbfccb0a0c5d02130601da78d74bdc7897a9dfc81278929413ac1b38990a4e7c612aa8e526eebd901ebfe1e215be778c07a720ffd#npm:11.3.0"],
             ["@emotion/is-prop-valid", "npm:1.1.0"],
             ["@emotion/react", "virtual:25fc3e48019459b1d7771797e61c99b37e2e903e9b68f60b686e25a50e9692f15bba0936db75d69bcbcb39e9eb7e41f9e1cc9199eb6565ab56dc3cafb9e2f4ec#npm:11.4.0"],
             ["@emotion/serialize", "npm:1.0.2"],
             ["@emotion/utils", "npm:1.0.0"],
-            ["@types/babel__core", null],
+            ["@types/babel__core", "npm:7.1.14"],
             ["@types/emotion__react", null],
             ["@types/react", "npm:17.0.11"],
             ["react", "npm:17.0.2"]
@@ -4593,10 +4597,10 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
           ],
           "linkType": "SOFT",
         }],
-        ["virtual:6146d96c88bdbdd59b87da7b44b73678eced9b7e52ea35fbdf6b48c7873be0e288a34637e5a99bffdb746d3b58619fa203f3b7ecf632a70b5de3f6ee0a999ff7#npm:1.3.6", {
-          "packageLocation": "./.yarn/$$virtual/@gatsbyjs-reach-router-virtual-c7fb930ee9/0/cache/@gatsbyjs-reach-router-npm-1.3.6-85044649ca-be2d5b3eba.zip/node_modules/@gatsbyjs/reach-router/",
+        ["virtual:25fc3e48019459b1d7771797e61c99b37e2e903e9b68f60b686e25a50e9692f15bba0936db75d69bcbcb39e9eb7e41f9e1cc9199eb6565ab56dc3cafb9e2f4ec#npm:1.3.6", {
+          "packageLocation": "./.yarn/$$virtual/@gatsbyjs-reach-router-virtual-bb7b1b1d5e/0/cache/@gatsbyjs-reach-router-npm-1.3.6-85044649ca-be2d5b3eba.zip/node_modules/@gatsbyjs/reach-router/",
           "packageDependencies": [
-            ["@gatsbyjs/reach-router", "virtual:6146d96c88bdbdd59b87da7b44b73678eced9b7e52ea35fbdf6b48c7873be0e288a34637e5a99bffdb746d3b58619fa203f3b7ecf632a70b5de3f6ee0a999ff7#npm:1.3.6"],
+            ["@gatsbyjs/reach-router", "virtual:25fc3e48019459b1d7771797e61c99b37e2e903e9b68f60b686e25a50e9692f15bba0936db75d69bcbcb39e9eb7e41f9e1cc9199eb6565ab56dc3cafb9e2f4ec#npm:1.3.6"],
             ["@types/react", "npm:17.0.11"],
             ["@types/react-dom", "npm:17.0.8"],
             ["invariant", "npm:2.2.4"],
@@ -6931,6 +6935,51 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
           "packageLocation": "./.yarn/cache/@types-async-npm-2.4.2-cac7fe33a1-383b447a33.zip/node_modules/@types/async/",
           "packageDependencies": [
             ["@types/async", "npm:2.4.2"]
+          ],
+          "linkType": "HARD",
+        }]
+      ]],
+      ["@types/babel__core", [
+        ["npm:7.1.14", {
+          "packageLocation": "./.yarn/cache/@types-babel__core-npm-7.1.14-a93ee22530-e0212770e1.zip/node_modules/@types/babel__core/",
+          "packageDependencies": [
+            ["@types/babel__core", "npm:7.1.14"],
+            ["@babel/parser", "npm:7.14.7"],
+            ["@babel/types", "npm:7.14.5"],
+            ["@types/babel__generator", "npm:7.6.2"],
+            ["@types/babel__template", "npm:7.4.0"],
+            ["@types/babel__traverse", "npm:7.14.0"]
+          ],
+          "linkType": "HARD",
+        }]
+      ]],
+      ["@types/babel__generator", [
+        ["npm:7.6.2", {
+          "packageLocation": "./.yarn/cache/@types-babel__generator-npm-7.6.2-13c77730f7-58fc195a3d.zip/node_modules/@types/babel__generator/",
+          "packageDependencies": [
+            ["@types/babel__generator", "npm:7.6.2"],
+            ["@babel/types", "npm:7.14.5"]
+          ],
+          "linkType": "HARD",
+        }]
+      ]],
+      ["@types/babel__template", [
+        ["npm:7.4.0", {
+          "packageLocation": "./.yarn/cache/@types-babel__template-npm-7.4.0-e906ff43dc-7a81a59f85.zip/node_modules/@types/babel__template/",
+          "packageDependencies": [
+            ["@types/babel__template", "npm:7.4.0"],
+            ["@babel/parser", "npm:7.14.7"],
+            ["@babel/types", "npm:7.14.5"]
+          ],
+          "linkType": "HARD",
+        }]
+      ]],
+      ["@types/babel__traverse", [
+        ["npm:7.14.0", {
+          "packageLocation": "./.yarn/cache/@types-babel__traverse-npm-7.14.0-e42d970872-74c54233db.zip/node_modules/@types/babel__traverse/",
+          "packageDependencies": [
+            ["@types/babel__traverse", "npm:7.14.0"],
+            ["@babel/types", "npm:7.14.5"]
           ],
           "linkType": "HARD",
         }]
@@ -9453,11 +9502,11 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
           "packageLocation": "./.yarn/$$virtual/babel-literal-to-ast-virtual-dfdfc7f853/0/cache/babel-literal-to-ast-npm-2.1.0-89f09750a3-12953a226c.zip/node_modules/babel-literal-to-ast/",
           "packageDependencies": [
             ["babel-literal-to-ast", "virtual:78d43c9bd3441b242123ebf7dcd23a40540268f8e714dcfa2ef3c632642a026cfdaf319fb6135a5cd098b6fcc9cba618b240e9989c89576835578794f96c2cbe#npm:2.1.0"],
-            ["@babel/core", null],
+            ["@babel/core", "npm:7.14.6"],
             ["@babel/parser", "npm:7.14.7"],
             ["@babel/traverse", "npm:7.14.7"],
             ["@babel/types", "npm:7.14.5"],
-            ["@types/babel__core", null]
+            ["@types/babel__core", "npm:7.1.14"]
           ],
           "packagePeers": [
             "@babel/core",
@@ -9571,10 +9620,10 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
           "packageLocation": "./.yarn/$$virtual/babel-plugin-graphql-tag-virtual-78d43c9bd3/0/cache/babel-plugin-graphql-tag-npm-3.3.0-cdcc08869d-224780abbf.zip/node_modules/babel-plugin-graphql-tag/",
           "packageDependencies": [
             ["babel-plugin-graphql-tag", "virtual:25fc3e48019459b1d7771797e61c99b37e2e903e9b68f60b686e25a50e9692f15bba0936db75d69bcbcb39e9eb7e41f9e1cc9199eb6565ab56dc3cafb9e2f4ec#npm:3.3.0"],
-            ["@babel/core", null],
+            ["@babel/core", "npm:7.14.6"],
             ["@babel/helper-plugin-utils", "npm:7.14.5"],
             ["@babel/parser", "npm:7.14.7"],
-            ["@types/babel__core", null],
+            ["@types/babel__core", "npm:7.1.14"],
             ["@types/graphql-tag", null],
             ["babel-literal-to-ast", "virtual:78d43c9bd3441b242123ebf7dcd23a40540268f8e714dcfa2ef3c632642a026cfdaf319fb6135a5cd098b6fcc9cba618b240e9989c89576835578794f96c2cbe#npm:2.1.0"],
             ["debug", "virtual:13aadb10a74575dd0e034d0bdf0858c9ee9289ee1d11e075867d4fb084b6d145f8eb8e7d6b5456728203936824e1774e1e7d8fecfc1717f3da48ad14bb82922d#npm:4.3.2"],
@@ -9638,9 +9687,9 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
           "packageDependencies": [
             ["babel-plugin-polyfill-corejs2", "virtual:314f7a80785f3baf913cde6ad014ff46e0a178c270f78d81ff479c125a36ba603f11d60689d720a58ae447e24ed4c5f543f6f4f53b7e3f475e0ebc19d0350162#npm:0.2.2"],
             ["@babel/compat-data", "npm:7.14.7"],
-            ["@babel/core", null],
+            ["@babel/core", "npm:7.14.6"],
             ["@babel/helper-define-polyfill-provider", "virtual:2c1b9cbfda87375f0a4d1479516319472f26e9bc3c4c1cbce5e2125ad825f602a7dfd714566955824b71407bc9e38ca3eff2eb2af642fe2fdb0a5378d129f7e4#npm:0.2.3"],
-            ["@types/babel__core", null],
+            ["@types/babel__core", "npm:7.1.14"],
             ["semver", "npm:6.3.0"]
           ],
           "packagePeers": [
@@ -9678,9 +9727,9 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
           "packageLocation": "./.yarn/$$virtual/babel-plugin-polyfill-corejs3-virtual-196f2fde4c/0/cache/babel-plugin-polyfill-corejs3-npm-0.2.3-4c2ae9d671-787cc989ce.zip/node_modules/babel-plugin-polyfill-corejs3/",
           "packageDependencies": [
             ["babel-plugin-polyfill-corejs3", "virtual:314f7a80785f3baf913cde6ad014ff46e0a178c270f78d81ff479c125a36ba603f11d60689d720a58ae447e24ed4c5f543f6f4f53b7e3f475e0ebc19d0350162#npm:0.2.3"],
-            ["@babel/core", null],
+            ["@babel/core", "npm:7.14.6"],
             ["@babel/helper-define-polyfill-provider", "virtual:2c1b9cbfda87375f0a4d1479516319472f26e9bc3c4c1cbce5e2125ad825f602a7dfd714566955824b71407bc9e38ca3eff2eb2af642fe2fdb0a5378d129f7e4#npm:0.2.3"],
-            ["@types/babel__core", null],
+            ["@types/babel__core", "npm:7.1.14"],
             ["core-js-compat", "npm:3.15.2"]
           ],
           "packagePeers": [
@@ -9717,9 +9766,9 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
           "packageLocation": "./.yarn/$$virtual/babel-plugin-polyfill-regenerator-virtual-fa174c302e/0/cache/babel-plugin-polyfill-regenerator-npm-0.2.2-94b5595016-4e06cb72a5.zip/node_modules/babel-plugin-polyfill-regenerator/",
           "packageDependencies": [
             ["babel-plugin-polyfill-regenerator", "virtual:314f7a80785f3baf913cde6ad014ff46e0a178c270f78d81ff479c125a36ba603f11d60689d720a58ae447e24ed4c5f543f6f4f53b7e3f475e0ebc19d0350162#npm:0.2.2"],
-            ["@babel/core", null],
+            ["@babel/core", "npm:7.14.6"],
             ["@babel/helper-define-polyfill-provider", "virtual:2c1b9cbfda87375f0a4d1479516319472f26e9bc3c4c1cbce5e2125ad825f602a7dfd714566955824b71407bc9e38ca3eff2eb2af642fe2fdb0a5378d129f7e4#npm:0.2.3"],
-            ["@types/babel__core", null]
+            ["@types/babel__core", "npm:7.1.14"]
           ],
           "packagePeers": [
             "@babel/core",
@@ -9776,8 +9825,8 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
           "packageLocation": "./.yarn/$$virtual/babel-plugin-remove-graphql-queries-virtual-5ebded310c/0/cache/babel-plugin-remove-graphql-queries-npm-3.8.0-6718bd4149-de2142746e.zip/node_modules/babel-plugin-remove-graphql-queries/",
           "packageDependencies": [
             ["babel-plugin-remove-graphql-queries", "virtual:945c7d9356052a8810240008e7a000cdf41a8c87e2dd820350fc46dcd027fcc8825afc1fa5053239a42966f384c08e0e76805cb7746bd8e8bc3cac47360dcbe6#npm:3.8.0"],
-            ["@babel/core", null],
-            ["@types/babel__core", null],
+            ["@babel/core", "npm:7.14.6"],
+            ["@types/babel__core", "npm:7.1.14"],
             ["@types/gatsby", null],
             ["gatsby", "virtual:25fc3e48019459b1d7771797e61c99b37e2e903e9b68f60b686e25a50e9692f15bba0936db75d69bcbcb39e9eb7e41f9e1cc9199eb6565ab56dc3cafb9e2f4ec#npm:3.8.1"]
           ],
@@ -9936,7 +9985,7 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
           "packageLocation": "./.yarn/$$virtual/babel-preset-gatsby-virtual-4e520d6e37/0/cache/babel-preset-gatsby-npm-1.8.0-e7b187f27d-a896e4e151.zip/node_modules/babel-preset-gatsby/",
           "packageDependencies": [
             ["babel-preset-gatsby", "virtual:25fc3e48019459b1d7771797e61c99b37e2e903e9b68f60b686e25a50e9692f15bba0936db75d69bcbcb39e9eb7e41f9e1cc9199eb6565ab56dc3cafb9e2f4ec#npm:1.8.0"],
-            ["@babel/core", null],
+            ["@babel/core", "npm:7.14.6"],
             ["@babel/plugin-proposal-class-properties", "virtual:4e520d6e3738f7ec125f1d9a2e267b89c366a38b504df79bdb8a3f3b5d7f6476081fb1485a7c3aea67c395e2dd7e8be31a11815e96f4f5ca964fe54afb317880#npm:7.14.5"],
             ["@babel/plugin-proposal-nullish-coalescing-operator", "virtual:4e520d6e3738f7ec125f1d9a2e267b89c366a38b504df79bdb8a3f3b5d7f6476081fb1485a7c3aea67c395e2dd7e8be31a11815e96f4f5ca964fe54afb317880#npm:7.14.5"],
             ["@babel/plugin-proposal-optional-chaining", "virtual:4e520d6e3738f7ec125f1d9a2e267b89c366a38b504df79bdb8a3f3b5d7f6476081fb1485a7c3aea67c395e2dd7e8be31a11815e96f4f5ca964fe54afb317880#npm:7.14.5"],
@@ -9947,12 +9996,12 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
             ["@babel/preset-env", "virtual:4e520d6e3738f7ec125f1d9a2e267b89c366a38b504df79bdb8a3f3b5d7f6476081fb1485a7c3aea67c395e2dd7e8be31a11815e96f4f5ca964fe54afb317880#npm:7.14.7"],
             ["@babel/preset-react", "virtual:4e520d6e3738f7ec125f1d9a2e267b89c366a38b504df79bdb8a3f3b5d7f6476081fb1485a7c3aea67c395e2dd7e8be31a11815e96f4f5ca964fe54afb317880#npm:7.14.5"],
             ["@babel/runtime", "npm:7.14.6"],
-            ["@types/babel__core", null],
+            ["@types/babel__core", "npm:7.1.14"],
             ["@types/core-js", null],
             ["babel-plugin-dynamic-import-node", "npm:2.3.3"],
             ["babel-plugin-macros", "npm:2.8.0"],
             ["babel-plugin-transform-react-remove-prop-types", "npm:0.4.24"],
-            ["core-js", null],
+            ["core-js", "npm:3.15.2"],
             ["gatsby-core-utils", "npm:2.8.0"],
             ["gatsby-legacy-polyfills", "npm:1.8.0"]
           ],
@@ -15946,7 +15995,7 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
             ["@babel/runtime", "npm:7.14.6"],
             ["@babel/traverse", "npm:7.14.7"],
             ["@babel/types", "npm:7.14.5"],
-            ["@gatsbyjs/reach-router", "virtual:6146d96c88bdbdd59b87da7b44b73678eced9b7e52ea35fbdf6b48c7873be0e288a34637e5a99bffdb746d3b58619fa203f3b7ecf632a70b5de3f6ee0a999ff7#npm:1.3.6"],
+            ["@gatsbyjs/reach-router", "virtual:25fc3e48019459b1d7771797e61c99b37e2e903e9b68f60b686e25a50e9692f15bba0936db75d69bcbcb39e9eb7e41f9e1cc9199eb6565ab56dc3cafb9e2f4ec#npm:1.3.6"],
             ["@gatsbyjs/webpack-hot-middleware", "npm:2.25.2"],
             ["@nodelib/fs.walk", "npm:1.2.7"],
             ["@pmmmwh/react-refresh-webpack-plugin", "virtual:6146d96c88bdbdd59b87da7b44b73678eced9b7e52ea35fbdf6b48c7873be0e288a34637e5a99bffdb746d3b58619fa203f3b7ecf632a70b5de3f6ee0a999ff7#npm:0.4.3"],
@@ -16010,11 +16059,11 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
             ["gatsby-core-utils", "npm:2.8.0"],
             ["gatsby-graphiql-explorer", "npm:1.8.0"],
             ["gatsby-legacy-polyfills", "npm:1.8.0"],
-            ["gatsby-link", "virtual:6146d96c88bdbdd59b87da7b44b73678eced9b7e52ea35fbdf6b48c7873be0e288a34637e5a99bffdb746d3b58619fa203f3b7ecf632a70b5de3f6ee0a999ff7#npm:3.8.0"],
+            ["gatsby-link", "virtual:25fc3e48019459b1d7771797e61c99b37e2e903e9b68f60b686e25a50e9692f15bba0936db75d69bcbcb39e9eb7e41f9e1cc9199eb6565ab56dc3cafb9e2f4ec#npm:3.8.0"],
             ["gatsby-plugin-page-creator", "virtual:6146d96c88bdbdd59b87da7b44b73678eced9b7e52ea35fbdf6b48c7873be0e288a34637e5a99bffdb746d3b58619fa203f3b7ecf632a70b5de3f6ee0a999ff7#npm:3.8.0"],
             ["gatsby-plugin-typescript", "virtual:25fc3e48019459b1d7771797e61c99b37e2e903e9b68f60b686e25a50e9692f15bba0936db75d69bcbcb39e9eb7e41f9e1cc9199eb6565ab56dc3cafb9e2f4ec#npm:3.8.0"],
             ["gatsby-plugin-utils", "virtual:7f5af2cc0eb225b8874dd0502297b6573d86ae1714f3ddcc6250200ae4bc5180a91b57568f42f4753994e3e69e1288df874adfa15528bedf09c1e687ce330154#npm:1.8.0"],
-            ["gatsby-react-router-scroll", "virtual:6146d96c88bdbdd59b87da7b44b73678eced9b7e52ea35fbdf6b48c7873be0e288a34637e5a99bffdb746d3b58619fa203f3b7ecf632a70b5de3f6ee0a999ff7#npm:4.8.0"],
+            ["gatsby-react-router-scroll", "virtual:25fc3e48019459b1d7771797e61c99b37e2e903e9b68f60b686e25a50e9692f15bba0936db75d69bcbcb39e9eb7e41f9e1cc9199eb6565ab56dc3cafb9e2f4ec#npm:4.8.0"],
             ["gatsby-telemetry", "npm:2.8.0"],
             ["glob", "npm:7.1.7"],
             ["got", "npm:8.3.2"],
@@ -16202,31 +16251,7 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
           "packageDependencies": [
             ["gatsby-link", "virtual:25fc3e48019459b1d7771797e61c99b37e2e903e9b68f60b686e25a50e9692f15bba0936db75d69bcbcb39e9eb7e41f9e1cc9199eb6565ab56dc3cafb9e2f4ec#npm:3.8.0"],
             ["@babel/runtime", "npm:7.14.6"],
-            ["@gatsbyjs/reach-router", null],
-            ["@types/gatsbyjs__reach-router", null],
-            ["@types/reach__router", "npm:1.3.8"],
-            ["@types/react", "npm:17.0.11"],
-            ["@types/react-dom", "npm:17.0.8"],
-            ["prop-types", "npm:15.7.2"],
-            ["react", "npm:17.0.2"],
-            ["react-dom", "virtual:25fc3e48019459b1d7771797e61c99b37e2e903e9b68f60b686e25a50e9692f15bba0936db75d69bcbcb39e9eb7e41f9e1cc9199eb6565ab56dc3cafb9e2f4ec#npm:17.0.2"]
-          ],
-          "packagePeers": [
-            "@gatsbyjs/reach-router",
-            "@types/gatsbyjs__reach-router",
-            "@types/react-dom",
-            "@types/react",
-            "react-dom",
-            "react"
-          ],
-          "linkType": "HARD",
-        }],
-        ["virtual:6146d96c88bdbdd59b87da7b44b73678eced9b7e52ea35fbdf6b48c7873be0e288a34637e5a99bffdb746d3b58619fa203f3b7ecf632a70b5de3f6ee0a999ff7#npm:3.8.0", {
-          "packageLocation": "./.yarn/$$virtual/gatsby-link-virtual-1000784167/0/cache/gatsby-link-npm-3.8.0-a915b7ad4a-cff3d0202f.zip/node_modules/gatsby-link/",
-          "packageDependencies": [
-            ["gatsby-link", "virtual:6146d96c88bdbdd59b87da7b44b73678eced9b7e52ea35fbdf6b48c7873be0e288a34637e5a99bffdb746d3b58619fa203f3b7ecf632a70b5de3f6ee0a999ff7#npm:3.8.0"],
-            ["@babel/runtime", "npm:7.14.6"],
-            ["@gatsbyjs/reach-router", "virtual:6146d96c88bdbdd59b87da7b44b73678eced9b7e52ea35fbdf6b48c7873be0e288a34637e5a99bffdb746d3b58619fa203f3b7ecf632a70b5de3f6ee0a999ff7#npm:1.3.6"],
+            ["@gatsbyjs/reach-router", "virtual:25fc3e48019459b1d7771797e61c99b37e2e903e9b68f60b686e25a50e9692f15bba0936db75d69bcbcb39e9eb7e41f9e1cc9199eb6565ab56dc3cafb9e2f4ec#npm:1.3.6"],
             ["@types/gatsbyjs__reach-router", null],
             ["@types/reach__router", "npm:1.3.8"],
             ["@types/react", "npm:17.0.11"],
@@ -16321,11 +16346,11 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
           "packageLocation": "./.yarn/$$virtual/gatsby-plugin-emotion-virtual-6357d54995/0/cache/gatsby-plugin-emotion-npm-6.8.0-2811211edb-ca738ed897.zip/node_modules/gatsby-plugin-emotion/",
           "packageDependencies": [
             ["gatsby-plugin-emotion", "virtual:25fc3e48019459b1d7771797e61c99b37e2e903e9b68f60b686e25a50e9692f15bba0936db75d69bcbcb39e9eb7e41f9e1cc9199eb6565ab56dc3cafb9e2f4ec#npm:6.8.0"],
-            ["@babel/core", null],
+            ["@babel/core", "npm:7.14.6"],
             ["@babel/runtime", "npm:7.14.6"],
             ["@emotion/babel-preset-css-prop", "virtual:6357d5499500e5bd94aa282b02107d951ae832682a600eb8f5b9c3f616cde70f17bbdfbe7e024e2d76d6ba4c1282dea7ee5b2fb99ce76d9d67ef71620e85cb66#npm:11.2.0"],
             ["@emotion/react", "virtual:25fc3e48019459b1d7771797e61c99b37e2e903e9b68f60b686e25a50e9692f15bba0936db75d69bcbcb39e9eb7e41f9e1cc9199eb6565ab56dc3cafb9e2f4ec#npm:11.4.0"],
-            ["@types/babel__core", null],
+            ["@types/babel__core", "npm:7.1.14"],
             ["@types/emotion__react", null],
             ["@types/gatsby", null],
             ["gatsby", "virtual:25fc3e48019459b1d7771797e61c99b37e2e903e9b68f60b686e25a50e9692f15bba0936db75d69bcbcb39e9eb7e41f9e1cc9199eb6565ab56dc3cafb9e2f4ec#npm:3.8.1"]
@@ -16456,10 +16481,10 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
           "packageDependencies": [
             ["gatsby-plugin-image", "virtual:25fc3e48019459b1d7771797e61c99b37e2e903e9b68f60b686e25a50e9692f15bba0936db75d69bcbcb39e9eb7e41f9e1cc9199eb6565ab56dc3cafb9e2f4ec#npm:1.8.0"],
             ["@babel/code-frame", "npm:7.14.5"],
-            ["@babel/core", null],
+            ["@babel/core", "npm:7.14.6"],
             ["@babel/parser", "npm:7.14.7"],
             ["@babel/traverse", "npm:7.14.7"],
-            ["@types/babel__core", null],
+            ["@types/babel__core", "npm:7.1.14"],
             ["@types/gatsby", null],
             ["@types/gatsby-plugin-sharp", null],
             ["@types/gatsby-source-filesystem", null],
@@ -16963,29 +16988,7 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
           "packageDependencies": [
             ["gatsby-react-router-scroll", "virtual:25fc3e48019459b1d7771797e61c99b37e2e903e9b68f60b686e25a50e9692f15bba0936db75d69bcbcb39e9eb7e41f9e1cc9199eb6565ab56dc3cafb9e2f4ec#npm:4.8.0"],
             ["@babel/runtime", "npm:7.14.6"],
-            ["@gatsbyjs/reach-router", null],
-            ["@types/gatsbyjs__reach-router", null],
-            ["@types/react", "npm:17.0.11"],
-            ["@types/react-dom", "npm:17.0.8"],
-            ["react", "npm:17.0.2"],
-            ["react-dom", "virtual:25fc3e48019459b1d7771797e61c99b37e2e903e9b68f60b686e25a50e9692f15bba0936db75d69bcbcb39e9eb7e41f9e1cc9199eb6565ab56dc3cafb9e2f4ec#npm:17.0.2"]
-          ],
-          "packagePeers": [
-            "@gatsbyjs/reach-router",
-            "@types/gatsbyjs__reach-router",
-            "@types/react-dom",
-            "@types/react",
-            "react-dom",
-            "react"
-          ],
-          "linkType": "HARD",
-        }],
-        ["virtual:6146d96c88bdbdd59b87da7b44b73678eced9b7e52ea35fbdf6b48c7873be0e288a34637e5a99bffdb746d3b58619fa203f3b7ecf632a70b5de3f6ee0a999ff7#npm:4.8.0", {
-          "packageLocation": "./.yarn/$$virtual/gatsby-react-router-scroll-virtual-7fbd56eb15/0/cache/gatsby-react-router-scroll-npm-4.8.0-0fbe4e1433-0a271d0258.zip/node_modules/gatsby-react-router-scroll/",
-          "packageDependencies": [
-            ["gatsby-react-router-scroll", "virtual:6146d96c88bdbdd59b87da7b44b73678eced9b7e52ea35fbdf6b48c7873be0e288a34637e5a99bffdb746d3b58619fa203f3b7ecf632a70b5de3f6ee0a999ff7#npm:4.8.0"],
-            ["@babel/runtime", "npm:7.14.6"],
-            ["@gatsbyjs/reach-router", "virtual:6146d96c88bdbdd59b87da7b44b73678eced9b7e52ea35fbdf6b48c7873be0e288a34637e5a99bffdb746d3b58619fa203f3b7ecf632a70b5de3f6ee0a999ff7#npm:1.3.6"],
+            ["@gatsbyjs/reach-router", "virtual:25fc3e48019459b1d7771797e61c99b37e2e903e9b68f60b686e25a50e9692f15bba0936db75d69bcbcb39e9eb7e41f9e1cc9199eb6565ab56dc3cafb9e2f4ec#npm:1.3.6"],
             ["@types/gatsbyjs__reach-router", null],
             ["@types/react", "npm:17.0.11"],
             ["@types/react-dom", "npm:17.0.8"],
@@ -28772,15 +28775,18 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
             ["spokestack.io", "workspace:."],
             ["@apollo/client", "virtual:25fc3e48019459b1d7771797e61c99b37e2e903e9b68f60b686e25a50e9692f15bba0936db75d69bcbcb39e9eb7e41f9e1cc9199eb6565ab56dc3cafb9e2f4ec#npm:3.3.20"],
             ["@apollo/react-hooks", "npm:4.0.0"],
+            ["@babel/core", "npm:7.14.6"],
             ["@commitlint/cli", "npm:12.1.4"],
             ["@commitlint/config-conventional", "npm:12.1.4"],
             ["@emotion/react", "virtual:25fc3e48019459b1d7771797e61c99b37e2e903e9b68f60b686e25a50e9692f15bba0936db75d69bcbcb39e9eb7e41f9e1cc9199eb6565ab56dc3cafb9e2f4ec#npm:11.4.0"],
             ["@emotion/styled", "virtual:25fc3e48019459b1d7771797e61c99b37e2e903e9b68f60b686e25a50e9692f15bba0936db75d69bcbcb39e9eb7e41f9e1cc9199eb6565ab56dc3cafb9e2f4ec#npm:11.3.0"],
+            ["@gatsbyjs/reach-router", "virtual:25fc3e48019459b1d7771797e61c99b37e2e903e9b68f60b686e25a50e9692f15bba0936db75d69bcbcb39e9eb7e41f9e1cc9199eb6565ab56dc3cafb9e2f4ec#npm:1.3.6"],
             ["@graphql-codegen/cli", "virtual:25fc3e48019459b1d7771797e61c99b37e2e903e9b68f60b686e25a50e9692f15bba0936db75d69bcbcb39e9eb7e41f9e1cc9199eb6565ab56dc3cafb9e2f4ec#npm:1.21.5"],
             ["@graphql-codegen/typescript", "virtual:25fc3e48019459b1d7771797e61c99b37e2e903e9b68f60b686e25a50e9692f15bba0936db75d69bcbcb39e9eb7e41f9e1cc9199eb6565ab56dc3cafb9e2f4ec#npm:1.22.3"],
             ["@mdx-js/mdx", "npm:1.6.22"],
             ["@mdx-js/react", "virtual:25fc3e48019459b1d7771797e61c99b37e2e903e9b68f60b686e25a50e9692f15bba0936db75d69bcbcb39e9eb7e41f9e1cc9199eb6565ab56dc3cafb9e2f4ec#npm:1.6.22"],
             ["@release-it/conventional-changelog", "virtual:25fc3e48019459b1d7771797e61c99b37e2e903e9b68f60b686e25a50e9692f15bba0936db75d69bcbcb39e9eb7e41f9e1cc9199eb6565ab56dc3cafb9e2f4ec#npm:3.0.1"],
+            ["@types/babel__core", "npm:7.1.14"],
             ["@types/color", "npm:3.0.1"],
             ["@types/cookie", "npm:0.4.0"],
             ["@types/loadable__component", "npm:5.13.3"],
@@ -28814,6 +28820,7 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
             ["color", "npm:3.1.3"],
             ["concurrently", "npm:6.2.0"],
             ["cookie", "npm:0.4.1"],
+            ["core-js", "npm:3.15.2"],
             ["cross-env", "npm:7.0.3"],
             ["dotenv", "npm:10.0.0"],
             ["eslint", "npm:7.29.0"],

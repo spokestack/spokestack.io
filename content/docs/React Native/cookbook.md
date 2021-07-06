@@ -138,7 +138,7 @@ switch (intent) {
 
 ### Synthesize speech formatted with [SpeechMarkdown](https://www.speechmarkdown.org/)
 
-When creating a synthesis request, the request takes a dictionary with specific keys. The `id` field is for your convenience, and `voice` may be changed by creating a [Spokestack account](/account). The `input` is where the SpeechMarkdown-formatted text will be placed.
+When creating a synthesis request, the request takes a dictionary with specific keys. The `id` field is for your convenience, and `voice` may be changed if you have created a custom voice using a [Spokestack Maker account](/pricing#maker) (use the string from your voice's "name" field). The `input` is where the SpeechMarkdown-formatted text will be placed.
 
 ```js
 const url = await Spokestack.synthesize(

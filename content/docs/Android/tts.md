@@ -47,6 +47,8 @@ fun speak(text: String, mode: SynthesisRequest.Mode) {
 
 The `mode` parameter is included here as a reminder that Spokestack supports a subset of the [SSML](https://www.w3.org/TR/speech-synthesis11) spec for specifying pronunciation and specific pause times. See [the TTS concept guide](/docs/concepts/tts) for more information on providing SSML input. If you don't need this level of control, simply omit `mode`; the default mode of `SynthesisRequest`is plain text.
 
+There's also a `withVoice()` method on the builder; using a [Spokestack Maker account](/pricing#maker), you can create a completely custom TTS voice, and using it in your app is as simple as passing its name to this method!
+
 ## Playing It
 
 Spokestack lets you choose how you manage the audio for your app's voice, and the right option for you will likely depend on your app's category and feature set. There are two main categories of interest here:

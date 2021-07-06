@@ -3,6 +3,7 @@
 ### tldr;
 
 - Install yarn with `npm i -g yarn`. See https://yarnpkg.com/getting-started/install.
+- Run `yarn install` to build binaries.
 - Run the site with `yarn start`
 - Run tests with `yarn test`
 
@@ -38,7 +39,13 @@ Edit the markdown files in the `docs/` folder. If you don't see your changes rig
 
 [Fork the repo](https://help.github.com/en/github/getting-started-with-github/fork-a-repo), and [clone](https://help.github.com/en/github/creating-cloning-and-archiving-repositories/cloning-a-repository) to a directory of your choosing.
 
-Make sure [yarn is installed](https://yarnpkg.com/getting-started/install). Running `yarn install` is not necessary. Dependencies are included in the repo.
+Make sure [yarn is installed](https://yarnpkg.com/getting-started/install).
+
+While most dependencies are tracked by git, we do not commit binaries. Build binaries specific to your system:
+
+```bash
+$ yarn install # Dependencies that don't need to be built are already installed.
+```
 
 ## Testing
 

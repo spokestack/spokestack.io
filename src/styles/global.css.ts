@@ -464,11 +464,13 @@ export default css`
       top: 0;
       left: 0;
       right: 0;
-      bottom: 0;
+      height: 2px;
       background: ${theme.dashedBorderHorizontal} top center no-repeat;
     }
   }
   .dashed-border-bottom::before {
+    top: auto;
+    bottom: 0;
     background-position: bottom center;
   }
   .main-content {

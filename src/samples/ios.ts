@@ -2,9 +2,9 @@ export const wakeword = `let pipeline = SpeechPipelineBuilder()
     .addListener(self)
     .useProfile(.tfliteWakewordAppleSpeech)
     .setProperty("tracing", Trace.Level.PERF)
-    .setProperty("detectModelPath", detectPath)
-    .setProperty("encodeModelPath", encodePath)
-    .setProperty("filterModelPath", filterPath)
+    .setProperty("detectModelPath", "detect.tflite")
+    .setProperty("encodeModelPath", "encode.tflite")
+    .setProperty("filterModelPath", "filter.tflite")
     .build()
 pipeline.start()
 `
@@ -13,10 +13,9 @@ export const keyword = `let pipeline = SpeechPipelineBuilder()
     .addListener(self)
     .useProfile(.vadTriggerKeyword)
     .setProperty("tracing", Trace.Level.PERF)
-    .setProperty("keywordDetectModelPath", detectPath)
-    .setProperty("keywordEncodeModelPath", encodePath)
-    .setProperty("keywordFilterModelPath", filterPath)
-    .setProperty("keywords", "list,of,keywords")
+    .setProperty("keywordDetectModelPath", "detect.tflite")
+    .setProperty("keywordEncodeModelPath", "encode.tflite")
+    .setProperty("keywordFilterModelPath", "filter.tflite")
     .build()
 pipeline.start()
 `
@@ -29,9 +28,9 @@ spokestack.start()
 `
 
 export const nlu = `let config = SpeechConfiguration()
-config.nluVocabularyPath = Bundle(for: type(of: self)).path(forResource: "vocab", ofType: "txt")
-config.nluModelPath = Bundle(for: type(of: self)).path(forResource: "nlu", ofType: "tflite")
-config.nluModelMetadataPath = Bundle(for: type(of: self)).path(forResource: "nlu", ofType: "json")
+config.nluVocabularyPath = "vocab.txt"
+config.nluModelPath = "nlu.tflite"
+config.nluModelMetadataPath = "metadata.json"
 
 let nlu = try! NLUTensorflow(self, configuration: config)
 nlu.classify(utterance: "turn the lights on in the kitchen")

@@ -111,26 +111,26 @@ Note that the value for an implicit slot defined by an intent can be overridden 
 
 _This feature is currently only supported at runtime on the Android platform._
 
-| field   | type   | description               | default |
-| ------- | ------ | ------------------------- | ------- |
-| `type`  | string | the slot's type           | N/A     |
-| `value` | string | the slot's implicit value | N/A     |
+| field   | type   | description               | default      |
+| ------- | ------ | ------------------------- | ------------ |
+| `type`  | string | the slot's type           | _(required)_ |
+| `value` | string | the slot's implicit value | _(required)_ |
 
 #### Slots
 
 Slots represent key portions of an utterance that are important to completing the user's request and thus must be captured explicitly at prediction time. The type of a slot determines both how it is expressed in an intent configuration and how it is interpreted by clients of the NLU model. For more information on each type and additional fields it supports, see its description below.
 
-| field  | type   | description                    | default |
-| ------ | ------ | ------------------------------ | ------- |
-| `type` | string | the slot's [type](#slot-types) | N/A     |
+| field  | type   | description                    | default      |
+| ------ | ------ | ------------------------------ | ------------ |
+| `type` | string | the slot's [type](#slot-types) | _(required)_ |
 
 #### Generators
 
 Generators are placeholders that exist merely to reduce duplication in utterance templates, e.g., to substitute verb or preposition synonyms in a given template. These values are not captured at prediction time. For more information on each type and additional fields it supports, see its description below.
 
-| field  | type   | description                              | default |
-| ------ | ------ | ---------------------------------------- | ------- |
-| `type` | string | the generator's [type](#generator-types) | N/A     |
+| field  | type   | description                              | default      |
+| ------ | ------ | ---------------------------------------- | ------------ |
+| `type` | string | the generator's [type](#generator-types) | _(required)_ |
 
 #### Utterances
 
@@ -142,11 +142,11 @@ The `utterances` map only supports one key — `values` — which is a list cont
 
 A `digits` slot is similar to an [`integer`](#integer) slot, but not identical. `digits` slots capture numbers that are spoken in a series, such as a birthday or phone number: "one eight zero zero" (or "one eight hundred") instead of "one thousand eight hundred" or "eighteen hundred". Pronunciation conventions for these sorts of numbers create an ambiguity — "one eight hundred thirty-six" could mean 1836 or 180036. Given the common pronunciation of phone numbers, a `digits` slot will generate the latter format, and words like "hundred" will result in trailing zeros when the slot value is parsed by a Spokestack client library. The first format would only be produced by parsing an ASR result that doesn't contain "hundred", for example, "eighteen thirty-six" or "one eight three six".
 
-| field    | type    | description                                                                                  | default |
-| -------- | ------- | -------------------------------------------------------------------------------------------- | ------- |
-| `count`  | integer | the number of consecutive integers to generate, including trailing zeros in numbers like 100 | N/A     |
-| `canon`  | boolean | only generate canonical number words (no homophones)                                         | false   |
-| `digits` | boolean | generate numerical sequences as well as number words                                         | true    |
+| field    | type    | description                                                                                  | default      |
+| -------- | ------- | -------------------------------------------------------------------------------------------- | ------------ |
+| `count`  | integer | the number of consecutive integers to generate, including trailing zeros in numbers like 100 | _(required)_ |
+| `canon`  | boolean | only generate canonical number words (no homophones)                                         | false        |
+| `digits` | boolean | generate numerical sequences as well as number words                                         | true         |
 
 #### Example
 
@@ -169,20 +169,20 @@ won too ate tin
 
 Numbers are often important parts of a user utterance — the number of seconds for a timer, selecting an item from a list, etc. The `integer` slot expands to a mix of English number words ("one", "ten", "three thousand") and Arabic numerals (1, 10, 3000) to accommodate potential differences in ASR results. Negative numbers are supported.
 
-| field          | type    | description                                                                                                                                   | default |
-| -------------- | ------- | --------------------------------------------------------------------------------------------------------------------------------------------- | ------- |
-| `range`        | list    | a list of two integers representing the start (inclusive) and end (exclusive) of the numbers that will be sampled for inclusion in utterances | N/A     |
-| `canon`        | boolean | only generate canonical number words (no homophones)                                                                                          | false   |
-| `digits`       | boolean | generate numerical sequences as well as number words                                                                                          | true    |
-| `ordinals`     | boolean | generate ordinal words (first, second, etc.)                                                                                                  | true    |
-| `only_numbers` | boolean | only generate numerals (no words)                                                                                                             | false   |
-| `only_words`   | boolean | only generate number words (no numerals)                                                                                                      | false   |
+| field          | type    | description                                                                                                                                   | default      |
+| -------------- | ------- | --------------------------------------------------------------------------------------------------------------------------------------------- | ------------ |
+| `range`        | list    | a list of two integers representing the start (inclusive) and end (exclusive) of the numbers that will be sampled for inclusion in utterances | _(required)_ |
+| `canon`        | boolean | only generate canonical number words (no homophones)                                                                                          | false        |
+| `digits`       | boolean | generate numerical sequences as well as number words                                                                                          | true         |
+| `ordinals`     | boolean | generate ordinal words (first, second, etc.)                                                                                                  | true         |
+| `only_numbers` | boolean | only generate numerals (no words)                                                                                                             | false        |
+| `only_words`   | boolean | only generate number words (no numerals)                                                                                                      | false        |
 
 #### Example
 
 ```toml
-[slots.phone_number]
-type = "digits"
+[slots.number]
+type = "integer"
 range = [1, 10]
 ```
 
@@ -202,9 +202,9 @@ An `entity` slot captures names of objects important to the domain. To include e
 
 For entities with a large number of values, it can be more convenient to list them in a separate file. To do that, group all your intents in a directory named `intents` and files containing entity data in a directory named `entities`. Leave out the `values` field; data will automatically be loaded from a file named `entities/<slot_name>.txt`. When [importing](/account/services/nlu) your data, include both `intents` and `entities` directories in your `.zip` file.
 
-| field    | type | description             | default |
-| -------- | ---- | ----------------------- | ------- |
-| `values` | list | a list of entity values | N/A     |
+| field    | type | description             | default      |
+| -------- | ---- | ----------------------- | ------------ |
+| `values` | list | a list of entity values | _(required)_ |
 
 #### Example
 
@@ -238,9 +238,9 @@ A `selset` slot represents an entity that has common paraphrases or synonyms tha
 
 #### Fields for each `selections` key
 
-| field     | type | description                    | default |
-| --------- | ---- | ------------------------------ | ------- |
-| `aliases` | list | a list of synonyms for the key | N/A     |
+| field     | type | description                    | default      |
+| --------- | ---- | ------------------------------ | ------------ |
+| `aliases` | list | a list of synonyms for the key | _(required)_ |
 
 #### Example
 
@@ -259,9 +259,9 @@ This is a sample configuration for the camera app described above. Possible capt
 
 A `list` generator relies on an inline list of values to generate expansions for the placeholder.
 
-| field    | type | description                                              |
-| -------- | ---- | -------------------------------------------------------- |
-| `values` | list | list of strings to use as expansions for the placeholder |
+| field    | type | description                                              | default      |
+| -------- | ---- | -------------------------------------------------------- | ------------ |
+| `values` | list | list of strings to use as expansions for the placeholder | _(required)_ |
 
 #### Example
 

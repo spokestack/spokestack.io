@@ -12,8 +12,8 @@ hero: ../../assets/blog/integrating-spokestack-google-app-actions/google-app-act
 
 _This tutorial is part of a series:_
 
-- [Part 1](/blog/integrating-spokestack-google-app-actions-1): Working with Google App Actions
-- [Part 2](/blog/integrating-spokestack-google-app-actions-2): Adding your own voice experience with Spokestack
+- [Part 1](/blog/integrating-spokestack-google-app-actions/part-1): Working with Google App Actions
+- [Part 2](/blog/integrating-spokestack-google-app-actions/part-2): Adding your own voice experience with Spokestack
 - **Part 3** (_You are here!_): Using Spokestack Tray to add a voice UI
 
 ---
@@ -51,7 +51,7 @@ Note also the `clipChildren` attribute on the parent layout. Depending on how yo
 
 ## On to the fun stuff!
 
-That takes care of the setup, so let's move on to the code from [part 2](/blog/integrating-spokestack-google-app-actions-2) that we'll need to change. Spoiler alert: Thanks to delegating management duties to Spokestack Tray, we'll be deleting more than we add, resulting in a much simpler developer experience!
+That takes care of the setup, so let's move on to the code from [part 2](/blog/integrating-spokestack-google-app-actions/part-2) that we'll need to change. Spoiler alert: Thanks to delegating management duties to Spokestack Tray, we'll be deleting more than we add, resulting in a much simpler developer experience!
 
 First, the `Voice` class goes away entirely — all `Spokestack` interaction goes through Spokestack Tray.
 

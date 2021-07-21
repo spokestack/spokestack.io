@@ -7,7 +7,7 @@ tags: Android, ASR, Dialogue Management, NLU, TTS, Wake Word
 seoImage: '../../assets/docs/android-getting-started.png'
 ---
 
-This is a collection of code snippets and brief descriptions designed to help you be as productive as possible as quickly as possible. Check out the Concepts section for more detailed discussions about the techniques mentioned here, in particular the [configuration guide](/docs/concepts/pipeline-configuration) for descriptions of properties used for the various configurations.
+This is a collection of code snippets and brief descriptions designed to help you be as productive as possible as quickly as possible. Check out the Concepts section for more detailed discussions about the techniques mentioned here, in particular the [configuration guide](/docs/machine-learning/pipeline-configuration) for descriptions of properties used for the various configurations.
 
 Most configuration tuning is done at build time, so the majority of these examples simply demonstrate a different build process. For simplicity, these examples assume that the class containing the pipeline has a reference to a subclass of `SpokestackAdapter` (which we've creatively named `adapter`); adjust as necessary for your project.
 

@@ -3,14 +3,16 @@ import * as theme from '../styles/theme'
 import { Global, css } from '@emotion/react'
 import React, { MutableRefObject, useState } from 'react'
 
+import Color from 'color'
 import SVGIcon from './SVGIcon'
 import type { WindowLocation } from '@reach/router'
 import currentPath from '../utils/currentPath'
 import getHash from '../utils/getHash'
 import hashToId from '../utils/hashToId'
-import Color from 'color'
 
 export interface StickyLink {
+  // Specifies an external link
+  external?: boolean
   forceSelect?: boolean
   href: string
   matchHash?: boolean
@@ -65,8 +67,12 @@ export default function StickyNavSection({
 
           html.dark-mode {
             .sticky-nav-link,
-            .sticky-nav-link:visited {
+            .sticky-nav-link:visited:not(:hover) {
               color: ${Color('#ffffff').fade(0.2).toString()};
+
+              .icon {
+                fill: ${Color('#ffffff').fade(0.2).toString()};
+              }
             }
             .nav-selected-bg,
             .sticky-nav-link.active {
@@ -130,6 +136,13 @@ export default function StickyNavSection({
               href={link.href}
               title={link.title}>
               {link.navTitle || link.title}
+              {link.external && (
+                <SVGIcon
+                  icon="#external"
+                  className="icon"
+                  extraCss={styles.externalIcon}
+                />
+              )}
             </a>
           )
         })}
@@ -182,6 +195,10 @@ const styles = {
     }
   `,
   stickyNavLink: css`
+    display: flex;
+    flex-direction: row;
+    justify-content: flex-start;
+    align-items: center;
     line-height: 1.2;
     padding: 12px 20px 12px 22px;
     text-decoration: none;
@@ -189,16 +206,29 @@ const styles = {
     font-size: 14px;
 
     &,
-    &:visited {
+    &:visited:not(:hover) {
       color: ${theme.headerColor.fade(0.25).toString()};
+
+      .icon {
+        fill: ${theme.headerColor.fade(0.25).toString()};
+      }
     }
     &:hover {
       color: ${theme.linkHover};
+
+      .icon {
+        fill: ${theme.linkHover};
+      }
     }
     &.active,
     &.active-no-bg {
       cursor: default;
       pointer-events: none;
     }
+  `,
+  externalIcon: css`
+    width: 10px;
+    height: 10px;
+    margin-left: 7px;
   `
 }

@@ -111,52 +111,50 @@ The `self` in this example means that `MyViewController` also implements `Spokes
 Now that we have an instance of `Spokestack`, we'll use the [delegate pattern](https://en.wikipedia.org/wiki/Delegation_pattern) so that the ASR, NLU, and TTS features can send events to you. We'll do that in the same class we used in the previous step. All `SpokestackDelegate` functions are optional except for `failure(error:)`, so you will opt in to each one explictly, but for now we just need to use two of them. First, `failure(error:)`:
 
 ```swift
-
-    func failure(error: Error) {
-        print("failure \(String(describing: error))")
-    }
+func failure(error: Error) {
+    print("failure \(String(describing: error))")
+}
 
 ```
 
 This will allow Spokestack modules to communicate back to us if something goes wrong. You may also want to listen for `onInit`, which will tell you when Spokestack is ready to start:
 
 ```swift
-    func onInit() {
-        // ready! time to start listening
-        spokestack.pipeline.start()
-    }
+func onInit() {
+    // ready! time to start listening
+    spokestack.pipeline.start()
+}
 ```
 
 Next, you may not have noticed, but when we built `Spokestack`, we took advantage of a neat feature where Spokestack will automatically classify what the ASR hears. Classifying what your user says into an action in your app is the job of an NLU, or natural language understanding, module. Earlier we configured Spokestack to classify what your user says in terms of guessing a number. Let's wire that up so that we can see what it comes up with!
 
 ```swift
-    func classification(result: NLUResult) {
-        let intent = result.intent
-        let slots = result.slots
-        switch result.intent {
-        // your app picks a number. the user guess a number.
-        case "NumberGuessIntent":
-            let guess = result.slots!["number"]!.value as! Int
-            // if the guess is higher, lower, or equal to the pick, respond accordingly
-            return
-        case "AMAZON.HelpIntent":
-            // if the user asks for help, respond with the rules of the game
-            return
-        case "AMAZON.StopIntent":
-            // If the user wants to stop playing, then pick another number
-            return
-        case default:
-            // what your user said doesn't make sense in terms of a high/low guessing game, so give them a nudge along the right direction
-            return
-        }
+func classification(result: NLUResult) {
+    let intent = result.intent
+    let slots = result.slots
+    switch result.intent {
+    // your app picks a number. the user guess a number.
+    case "NumberGuessIntent":
+        let guess = result.slots!["number"]!.value as! Int
+        // if the guess is higher, lower, or equal to the pick, respond accordingly
+        return
+    case "AMAZON.HelpIntent":
+        // if the user asks for help, respond with the rules of the game
+        return
+    case "AMAZON.StopIntent":
+        // If the user wants to stop playing, then pick another number
+        return
+    case default:
+        // what your user said doesn't make sense in terms of a high/low guessing game, so give them a nudge along the right direction
+        return
     }
+}
 
-    // ...other delegate functions...
+// ...other delegate functions...
 
-    func didTrace(_ trace: String) {
-        // Get Spokestack module tracing messages that provide additional debugging information. Note that tracing verbosity of each is determined by the SpeechConfiguration.tracing setting!
-    }
-
+func didTrace(_ trace: String) {
+    // Get Spokestack module tracing messages that provide additional debugging information. Note that tracing verbosity of each is determined by the SpeechConfiguration.tracing setting!
+}
 ```
 
 You'll note that the intents are just a single string. A intent-based classifier will regularize all sorts of related langague into a single canonical intent, eg "let's go" or "please cease" get classified as `start` and `stop`, respectively.
@@ -170,7 +168,7 @@ If you want full hands-free and eyes-free interaction, you'll want to deliver re
 ```swift
 import AVFoundation
 
-...
+// ...
 
 class MyViewController: UIViewController, SpokestackDelegate {
 
@@ -195,7 +193,7 @@ To play the voice response represented by your input with the default audio syst
 // uses default SpeechConfiguration values for api access.
 let tts = TextToSpeech(self, configuration: SpeechConfiguration())
 
-...
+// ...
 
 func speak(_ text: String) {
     let input = TextToSpeechInput(text)

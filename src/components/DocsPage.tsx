@@ -1,26 +1,23 @@
 import * as theme from '../styles/theme'
 
-import { PageRendererProps, graphql, useStaticQuery } from 'gatsby'
+import { Global, css } from '@emotion/react'
 import { Mdx, Query } from '../utils/graphql'
-import { MDXRenderer } from 'gatsby-plugin-mdx'
+import { PageRendererProps, graphql, useStaticQuery } from 'gatsby'
+import orderDocsLinks, { DocsLinks } from '../utils/orderDocsLinks'
+
 import Create from './Create'
 import DarkModeButton from '../components/DarkModeButton'
 import Layout from '../components/Layout'
-import React from 'react'
+import { MDXRenderer } from 'gatsby-plugin-mdx'
 import { PageContext } from '../types'
-import SEO from '../components/SEO'
-import { StickyLink } from '../components/StickyNav'
-import StickyNavLayout from '../components/StickyNavLayout'
-import { css, Global } from '@emotion/react'
-import difference from 'lodash/difference'
-import findImage from '../utils/findImage'
-import { isLoggedIn } from '../utils/auth'
-import order from '../../content/docs/nav.json'
-import removeTrailingSlash from '../utils/removeTrailingSlash'
-import sortBy from 'lodash/sortBy'
-import uniqBy from 'lodash/uniqBy'
+import React from 'react'
 import Related from './Related'
+import SEO from '../components/SEO'
+import StickyNavLayout from '../components/StickyNavLayout'
+import findImage from '../utils/findImage'
 import hashToId from '../utils/hashToId'
+import { isLoggedIn } from '../utils/auth'
+import removeTrailingSlash from '../utils/removeTrailingSlash'
 
 interface Props {
   location: PageRendererProps['location']
@@ -29,53 +26,34 @@ interface Props {
   selectFirst?: boolean
 }
 
-function checkDups(links: StickyLink[]) {
-  const unique = uniqBy(links, (link) => link.navId)
-  if (unique.length !== links.length) {
-    const diff = difference(links, unique)
-    throw new Error(
-      `The following navIds are not unique: ${diff
-        .map((link) => link.navId)
-        .join(', ')}.`
-    )
-  }
-}
-
-function orderLinks(links: StickyLink[]) {
-  checkDups(links)
-  return sortBy(links, (link) => {
-    const index = order.indexOf(link.navId)
-    if (index === -1) {
-      throw new Error(
-        `Docs page with title ${link.title} has navId ${link.navId}, which does not exist in nav.json.`
-      )
-    }
-    return index
-  })
-}
-
 export default function DocsPage({
   location,
   post,
   related,
   selectFirst
 }: Props) {
-  const links: StickyLink[] = []
+  const links: DocsLinks = {}
   const data = useStaticQuery<Query>(docsPageQuery)
   const posts = data.allMdx.edges
   posts.forEach(({ node }) => {
     const fields = node.fields!
     const frontmatter = node.frontmatter!
     const title = frontmatter.title!
-    links.push({
+    const navId = frontmatter.navId!
+    if (links[navId] != null) {
+      throw new Error(
+        `The navId "${navId}" is not unique. Ensure only one doc has this navId.`
+      )
+    }
+    links[navId] = {
       href: fields.slug!,
       section: fields.folder!,
       title,
-      navId: frontmatter.navId!,
+      navId,
       navTitle: frontmatter.navTitle || title
-    })
+    }
   })
-  const orderedLinks = orderLinks(links)
+  const orderedLinks = orderDocsLinks(links)
   if (selectFirst) {
     orderedLinks[0].forceSelect = true
   }

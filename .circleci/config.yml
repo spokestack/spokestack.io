@@ -64,6 +64,10 @@ jobs:
           name: Run tests
           command: yarn test
 
+      - run:
+          name: Generate robots.txt
+          command: cp tasks/robots/development.txt static/robots.txt
+
       # build the site with beta.spokestack.io
       # - *restore_gatsby_cache
       - run:
@@ -95,6 +99,10 @@ jobs:
       - run:
           name: Run tests
           command: yarn test
+
+      - run:
+          name: Generate robots.txt
+          command: cp tasks/robots/production.txt static/robots.txt
 
       # build the site with www.spokestack.io
       # - *restore_gatsby_cache

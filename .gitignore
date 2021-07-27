@@ -71,3 +71,6 @@ public
 !.yarn/releases
 !.yarn/sdks
 !.yarn/versions
+
+# robots.txt is generated for each site
+static/robots.txt

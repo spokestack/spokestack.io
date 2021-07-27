@@ -287,21 +287,10 @@ async function createPages({ actions, graphql, posts, template }) {
     const next = index === 0 ? null : posts[index - 1].node
     const fields = post.node.fields
     const slug = fields.slug
-    const oldSlug = fields.oldSlug
     const context = {
       next,
       previous,
       slug
-    }
-    // If the old slug does not equal the new,
-    // add a static page to redirect to the new slug
-    if (oldSlug !== slug && !/localhost/.test(process.env.SITE_URL)) {
-      console.log(`Creating redirect from ${oldSlug} to ${slug}`)
-      await createPage({
-        path: oldSlug,
-        component: path.resolve('./src/templates/redirect-only.tsx'),
-        context
-      })
     }
 
     // Add related tags

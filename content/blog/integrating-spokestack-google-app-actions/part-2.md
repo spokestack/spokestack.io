@@ -12,13 +12,13 @@ hero: ../../assets/blog/integrating-spokestack-google-app-actions/google-app-act
 
 _This tutorial is part of a series:_
 
-- [Part 1](/blog/integrating-spokestack-google-app-actions-1): Working with Google App Actions
+- [Part 1](/blog/integrating-spokestack-google-app-actions/part-1): Working with Google App Actions
 - **Part 2** (_You are here!_): Adding your own voice experience with Spokestack
-- [Part 3](/blog/integrating-spokestack-google-app-actions-3): Using Spokestack Tray to add a voice UI
+- [Part 3](/blog/integrating-spokestack-google-app-actions/part-3): Using Spokestack Tray to add a voice UI
 
 ---
 
-In [the first part](/blog/integrating-spokestack-google-app-actions-1) of our tutorial, we talked about how to make an [Android app's](https://github.com/spokestack/app-actions-example) features available via Google App Actions. In this part, we'll take it to the next level and show how to continue the user interaction via voice once Google Assistant has dropped the user off inside the app.
+In [the first part](/blog/integrating-spokestack-google-app-actions/part-1) of our tutorial, we talked about how to make an [Android app's](https://github.com/spokestack/app-actions-example) features available via Google App Actions. In this part, we'll take it to the next level and show how to continue the user interaction via voice once Google Assistant has dropped the user off inside the app.
 
 ## From actions to intents
 
@@ -142,4 +142,4 @@ That brings us to one last point: in its current state, voice integration in the
 
 Congratulations; you have an app that not only makes its features accessible via Google Assistant, but continues that voice interaction via its very own voice layer! We've only scratched the surface of making a fully immersive voice experience here, but check out our other [tutorials](/tutorials) and [documentation](/docs) to learn more.
 
-On that note, if you were frustrated by our final caveat—that we don't have any UI feedback for our voice interactions—then [part 3](/blog/integrating-spokestack-google-app-actions-3) of the series is for you. We'll take what we've developed here and drop in [Spokestack Tray](https://github.com/spokestack/spokestack-tray-android) so that our users can see what they're saying and interact with Spokestack more naturally.
+On that note, if you were frustrated by our final caveat—that we don't have any UI feedback for our voice interactions—then [part 3](/blog/integrating-spokestack-google-app-actions/part-3) of the series is for you. We'll take what we've developed here and drop in [Spokestack Tray](https://github.com/spokestack/spokestack-tray-android) so that our users can see what they're saying and interact with Spokestack more naturally.

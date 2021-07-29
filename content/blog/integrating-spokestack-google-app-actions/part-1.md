@@ -13,8 +13,8 @@ hero: ../../assets/blog/integrating-spokestack-google-app-actions/google-app-act
 _This tutorial is part of a series:_
 
 - **Part 1** (_You are here!_): Working with Google App Actions
-- [Part 2](/blog/integrating-spokestack-google-app-actions-2): Adding your own voice experience with Spokestack
-- [Part 3](/blog/integrating-spokestack-google-app-actions-3): Using Spokestack Tray to add a voice UI
+- [Part 2](/blog/integrating-spokestack-google-app-actions/part-2): Adding your own voice experience with Spokestack
+- [Part 3](/blog/integrating-spokestack-google-app-actions/part-3): Using Spokestack Tray to add a voice UI
 
 ---
 
@@ -115,4 +115,4 @@ You can send test actions either directly from the test tool or by invoking Goog
 
 ## But wait...there's more
 
-That does it for the first part of the interaction — getting from Google Assistant into a specific part of your app. That's a step toward a better user experience already, but check out the [next part](/blog/integrating-spokestack-google-app-actions-2) of our tutorial to learn how to continue the voice interface the user just tried to open. See you then!
+That does it for the first part of the interaction — getting from Google Assistant into a specific part of your app. That's a step toward a better user experience already, but check out the [next part](/blog/integrating-spokestack-google-app-actions/part-2) of our tutorial to learn how to continue the voice interface the user just tried to open. See you then!

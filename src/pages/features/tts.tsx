@@ -16,7 +16,7 @@ export default function TTSPage() {
   return (
     <Layout>
       <SEO
-        title="Text to Speed (TTS) - Spokestack Maker"
+        title="Text to Speech (TTS) - Spokestack Maker"
         description="Create a custom AI voice clone with Spokestack Maker. It's your voice, not a deep fake. Learn more about TTS and start building free."
         image={`${removeTrailingSlash(process.env.SITE_URL!)}/seo/tts.png`}
       />

@@ -1,4 +1,11 @@
+// await import is a way to get around not
+// being able to use esm in node 14
+// esm is required for the latest remark-* plugins
+const remarkImages = require('remark-images')
+const remarkSlug = require('remark-slug')
+const remarkAutolinkHeadings = require('remark-autolink-headings')
 require('dotenv').config()
+
 const siteUrl = new URL(process.env.SITE_URL)
 
 console.log(`Site URL in Gatsby config: ${siteUrl.href}`)
@@ -309,9 +316,9 @@ module.exports = {
       options: {
         extensions: ['.md', '.mdx'],
         remarkPlugins: [
-          require('remark-slug'),
+          remarkSlug,
           [
-            require('remark-autolink-headings'),
+            remarkAutolinkHeadings,
             {
               content: {
                 type: 'element',
@@ -336,7 +343,7 @@ module.exports = {
               }
             }
           ],
-          require('remark-images')
+          remarkImages
         ],
         gatsbyRemarkPlugins: [
           'gatsby-remark-check-links',

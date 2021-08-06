@@ -303,6 +303,7 @@ async function createPages({ actions, graphql, posts, template }) {
       context.related = related
     }
 
+    console.log(`Creating page at slug "${slug}"`)
     await createPage({
       path: slug,
       component: template,

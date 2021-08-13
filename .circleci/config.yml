@@ -8,7 +8,7 @@ executors:
 
 references:
   # To generate the required env var, run:
-  # cat .env | base64 | pbcopy
+  # yarn env .env
   # and then paste that to Circle CI
   create_env: &create_env
     run:

@@ -600,7 +600,7 @@ export default css`
     .main-content h1 a {
       color: ${theme.textDarkBg};
     }
-    a {
+    a:not(.link-secondary) {
       .icon {
         fill: ${theme.textDarkBg};
       }

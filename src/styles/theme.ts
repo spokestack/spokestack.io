@@ -21,6 +21,7 @@ export const primaryLighter = primaryLighterColor.hex()
 export const primaryLightest = '#ebf4ff'
 export const secondary = secondaryColor.hex()
 export const grayLight = '#abafb2'
+export const grayLighter = '#e6e9e9'
 export const grayDark = '#c9c9c9'
 export const yellow = '#facc5f'
 export const green = '#daffcc'

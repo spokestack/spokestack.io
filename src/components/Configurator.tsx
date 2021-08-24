@@ -5,9 +5,11 @@ import * as python from '../samples/python'
 import * as rn from '../samples/rn'
 import * as theme from '../styles/theme'
 
+import { DigitsKeyword, SpokestackWakeword } from '../utils/StaticCommandModels'
 import React, { Fragment, useEffect, useRef, useState } from 'react'
 import { SerializedStyles, css } from '@emotion/react'
 
+import CommandModelSpotlight from './CommandModelSpotlight'
 import Prism from 'prismjs'
 import SVGIcon from './SVGIcon'
 import TTSSpotlight from './TTSSpotlight'
@@ -142,7 +144,17 @@ export default function Configurator({
         </div>
       </div>
 
-      {featureChoice === 'tts' ? (
+      {featureChoice === 'wakeword' ? (
+        <Fragment>
+          <hr />
+          <CommandModelSpotlight model={SpokestackWakeword} />
+        </Fragment>
+      ) : featureChoice === 'keyword' ? (
+        <Fragment>
+          <hr />
+          <CommandModelSpotlight model={DigitsKeyword} />
+        </Fragment>
+      ) : featureChoice === 'tts' ? (
         <Fragment>
           <hr />
           <TTSSpotlight />
@@ -163,7 +175,7 @@ export default function Configurator({
               makes setup a breeze.
             </p>
             <a className="link-secondary link-with-icon" href="/docs">
-              Expore the docs{' '}
+              Explore the docs{' '}
               <SVGIcon
                 icon="#arrow-forward"
                 className="icon"
@@ -270,8 +282,8 @@ const styles = {
     }
   `,
   arrowIcon: css`
-    width: 20px;
-    height: 20px;
+    width: 24px;
+    height: 24px;
     margin-left: 7px;
   `
 }

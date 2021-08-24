@@ -223,6 +223,14 @@ export default function TTSSpotlight() {
           setText(value)
         }}
       />
+      <a className="link-secondary" css={styles.createLink} href="/account/tts">
+        Create TTS Voice
+        <SVGIcon
+          icon="#arrow-forward"
+          className="icon"
+          extraCss={styles.arrowIcon}
+        />
+      </a>
     </div>
   )
 }
@@ -241,19 +249,6 @@ const styles = {
   `,
   description: css`
     color: ${theme.grayLight};
-  `,
-  textarea: css`
-    textarea {
-      border-left: none;
-      border-right: none;
-      border-radius: 0;
-    }
-    label {
-      border: none;
-    }
-  `,
-  labelError: css`
-    color: ${theme.textError};
   `,
   controls: css`
     display: flex;
@@ -307,5 +302,34 @@ const styles = {
     width: 24px;
     height: 24px;
     padding: 1px 1px 0 0;
+  `,
+  textarea: css`
+    textarea {
+      border-left: none;
+      border-right: none;
+      border-radius: 0;
+      background-color: transparent;
+      color: white;
+      border: 1px solid ${theme.mainBorderDark};
+      border-radius: 0 0 7px 7px;
+      -webkit-appearance: none;
+    }
+    label {
+      border: none;
+    }
+  `,
+  labelError: css`
+    color: ${theme.textError};
+  `,
+  createLink: css`
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    margin-top: 30px;
+  `,
+  arrowIcon: css`
+    width: 24px;
+    height: 24px;
+    margin-left: 7px;
   `
 }

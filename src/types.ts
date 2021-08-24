@@ -57,6 +57,36 @@ export interface ApiKeySummary {
   type: KeyType
 }
 
+export interface CommandClass {
+  displayName: string
+  id: string
+  utterances?: Utterance[]
+}
+
+export interface CommandModel {
+  classes?: CommandClass[]
+  description?: string
+  displayName: string
+  id: string
+  insertedAt: string | null
+  type: CommandModelType
+  updatedAt: string | null
+  urls: CommandModelUrls
+}
+
+export enum CommandModelType {
+  Keyword = 'KEYWORD',
+  Wakeword = 'WAKEWORD'
+}
+
+export type CommandModelUrls = {
+  compressed: string
+  detect: string
+  encode: string
+  filter: string
+  metadata: string
+}
+
 export enum KeyType {
   PRODUCTION = 'PRODUCTION',
   TEST = 'TEST'
@@ -97,6 +127,11 @@ export interface NluSlot {
 
 export interface SynthesisResult {
   url: string
+}
+
+export interface Utterance {
+  id: string
+  text: string
 }
 
 export interface Voice {

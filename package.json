@@ -5,8 +5,9 @@
   "version": "2.13.0",
   "author": "Timmy Willison <4timmywil@gmail.com>",
   "scripts": {
-    "build": "gatsby build",
+    "build": "yarn copy:spokestack && gatsby build",
     "clean": "gatsby clean",
+    "copy:spokestack": "cp .yarn/unplugged/spokestack*/node_modules/spokestack/dist/spokestack-web-worker.min.js static/spokestack-web-worker.js && echo \"Copied Spokestack Web Worker\"",
     "deploy": "gatsby-plugin-s3 deploy --yes",
     "env": "yarn node tasks/env.js",
     "format": "eslint . --fix && prettier --write \"**/*.tsx\" \"**/*.ts\" \"**/*.js\" \"**/*.json\" \"**/*.md\"",
@@ -17,7 +18,7 @@
     "release": "release-it",
     "schema": "graphql-codegen --config codegen.yml && prettier --write \"**/graphql.d.ts\" && yarn node tasks/clean_graphql.js",
     "serve": "serve -l 8000 public/",
-    "start": "gatsby develop --host=0.0.0.0",
+    "start": "yarn copy:spokestack && gatsby develop --host=0.0.0.0",
     "test": "yarn lint",
     "typescript": "tsc -p tsconfig.json --noEmit"
   },
@@ -97,12 +98,18 @@
     "remark-autolink-headings": "6.1.0",
     "remark-images": "2.0.0",
     "remark-slug": "6.1.0",
+    "spokestack": "^4.0.0",
     "svg-react-loader": "^0.4.6",
     "title-case": "^3.0.3",
     "typescript": "^4.3.5",
     "utf-8-validate": "^5.0.5",
     "uuid": "^8.3.2",
     "wav-encoder": "^1.3.0"
+  },
+  "dependenciesMeta": {
+    "spokestack": {
+      "unplugged": true
+    }
   },
   "devDependencies": {
     "@commitlint/cli": "^13.1.0",
@@ -230,7 +237,8 @@
     ".cache/",
     "public/",
     "src/utils/graphql.d.ts",
-    "types/"
+    "types/",
+    "static/spokestack-web-worker.js"
   ],
   "commitlint": {
     "extends": [

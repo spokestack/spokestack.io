@@ -74,3 +74,6 @@ public
 
 # robots.txt is generated for each site
 static/robots.txt
+
+# Copied from Spokestack
+static/spokestack-web-worker.js

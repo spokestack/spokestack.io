@@ -53,9 +53,7 @@ export default function Plan({
         <h5>{description}</h5>
         <a
           href={slug}
-          className={`btn btn-full btn-small${
-            highlight ? '' : ' btn-transparent'
-          }`}
+          className={`btn btn-full${highlight ? '' : ' btn-transparent'}`}
           tabIndex={0}
           title={cta}>
           {cta}

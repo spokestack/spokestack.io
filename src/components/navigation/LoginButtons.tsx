@@ -3,8 +3,8 @@ import * as theme from '../../styles/theme'
 import React, { useEffect, useState } from 'react'
 import { SerializedStyles, css } from '@emotion/react'
 
-import NavDropdown from './NavDropdown'
 import LoginForm from '../LoginForm'
+import NavDropdown from './NavDropdown'
 import { isLoggedIn } from '../../utils/auth'
 
 interface Props {
@@ -47,7 +47,9 @@ export default function LoginButtons({
             Sign in
           </a>
         )}
-        <a className={`btn ${btnClassName || ''}`} href="/account/create">
+        <a
+          className={`btn btn-large ${btnClassName || ''}`}
+          href="/account/create">
           Sign up free
         </a>
       </div>
@@ -55,7 +57,9 @@ export default function LoginButtons({
         <a href="/account" css={styles.loginLink}>
           Account
         </a>
-        <a className={`btn ${btnClassName || ''}`} href="/api/auth/logout">
+        <a
+          className={`btn btn-large ${btnClassName || ''}`}
+          href="/api/auth/logout">
           Log out
         </a>
       </div>

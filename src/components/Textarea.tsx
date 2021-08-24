@@ -8,7 +8,7 @@ import LoadingIcon from './LoadingIcon'
 interface Props
   extends Omit<TextareaHTMLAttributes<HTMLTextAreaElement>, 'onChange'> {
   id: string
-  label: string
+  label?: string
   extraCss?: SerializedStyles
   labelCss?: SerializedStyles
   onChange: (value: string) => void
@@ -21,7 +21,7 @@ export default React.forwardRef<HTMLTextAreaElement, Props>(function Textarea(
   ref
 ) {
   return (
-    <div css={[styles.container, extraCss]}>
+    <div css={[styles.textareaContainer, extraCss]}>
       <div css={styles.textareaWrap}>
         <textarea
           ref={ref}
@@ -32,17 +32,25 @@ export default React.forwardRef<HTMLTextAreaElement, Props>(function Textarea(
         />
         {loading && <LoadingIcon extraCss={styles.loading} />}
       </div>
-      <label htmlFor={id} css={[styles.label, labelCss]}>
-        {label}
-      </label>
+      {!!label && (
+        <label htmlFor={id} css={[styles.label, labelCss]}>
+          {label}
+        </label>
+      )}
     </div>
   )
 })
 
 const styles = {
-  container: css`
+  textareaContainer: css`
     display: flex;
     flex-direction: column;
+    display: grid;
+    grid-template-rows: 1fr min-content;
+
+    ${theme.MIN_DEFAULT_MEDIA_QUERY} {
+      height: 100%;
+    }
   `,
   textareaWrap: css`
     position: relative;
@@ -51,16 +59,14 @@ const styles = {
   `,
   textarea: css`
     width: 100%;
+    height: 100%;
     min-height: 200px;
     line-height: 1.4;
     border: 1px solid ${theme.mainBorder};
     padding: 15px 20px;
     border-radius: 7px 7px 0 0;
     resize: vertical;
-
-    ${theme.MIN_TABLET_MEDIA_QUERY} {
-      min-height: 120px;
-    }
+    -webkit-appearance: none;
   `,
   label: css`
     width: 100%;

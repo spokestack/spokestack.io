@@ -10,7 +10,7 @@ interface Props {
 }
 
 export default function AppStoreButton({ extraCss, slug, transparent }: Props) {
-  const classes = ['btn']
+  const classes = ['btn', 'btn-large']
   if (transparent) {
     classes.push('btn-transparent')
   }
@@ -42,7 +42,7 @@ const styles = {
     display: flex;
     flex-direction: column;
     font-size: 18px;
-    font-weight: 700;
+    font-weight: 600;
   `,
   downloadText: css`
     font-size: 10px;

@@ -258,19 +258,26 @@ export default css`
   tr:nth-of-type(2n) {
     background-color: ${theme.codeBackground};
   }
+  .text-center {
+    text-align: center;
+  }
   .btn {
     position: relative;
-    height: 44px;
+    height: 34px;
+    font-size: 14px;
+    font-weight: 400;
+    padding: 1px 20px 0;
+
     display: flex;
     flex-direction: row;
     justify-content: center;
     align-items: center;
     text-align: center;
+    flex-shrink: 0;
+
     background-color: ${theme.buttonBackground};
     border: 1px solid ${theme.buttonBackground};
     border-radius: 24px;
-    padding: 0 20px;
-    font-weight: 400;
     white-space: nowrap;
     cursor: pointer;
     text-decoration: none;
@@ -372,12 +379,9 @@ export default css`
       }
     }
     &.btn-large {
-      height: 49px;
-    }
-    &.btn-small {
-      font-size: 14px;
-      height: 37px;
-      padding-top: 1px;
+      height: 44px;
+      font-size: 1em;
+      padding-top: 0;
     }
     &.btn-wide {
       ${theme.MIN_DEFAULT_MEDIA_QUERY} {
@@ -590,8 +594,8 @@ export default css`
     h4,
     h5,
     h6,
-    a,
-    a:visited,
+    a:not(.link-secondary),
+    a:not(.link-secondary):visited,
     h1 a,
     .main-content h1 a {
       color: ${theme.textDarkBg};
@@ -615,7 +619,7 @@ export default css`
         }
       }
     }
-    .main-content a:not(.btn),
+    .main-content a:not(.btn):not(.link-secondary),
     a.content-link,
     .privacy-text a {
       color: ${theme.linkDark};
@@ -642,7 +646,7 @@ export default css`
         }
       }
     }
-    .btn {
+    .btn:not(.btn-secondary) {
       background-color: ${theme.buttonBackgroundDark};
       border-color: ${theme.buttonBackgroundDark};
 

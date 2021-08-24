@@ -1,13 +1,16 @@
-import { css, SerializedStyles } from '@emotion/react'
-import React, { Fragment, useEffect, useRef, useState } from 'react'
-import * as theme from '../styles/theme'
-import Prism from 'prismjs'
-import SVGIcon from './SVGIcon'
-import * as ios from '../samples/ios'
 import * as android from '../samples/android'
-import * as rn from '../samples/rn'
+import * as ios from '../samples/ios'
 import * as node from '../samples/node'
 import * as python from '../samples/python'
+import * as rn from '../samples/rn'
+import * as theme from '../styles/theme'
+
+import React, { Fragment, useEffect, useRef, useState } from 'react'
+import { SerializedStyles, css } from '@emotion/react'
+
+import Prism from 'prismjs'
+import SVGIcon from './SVGIcon'
+import TTSSpotlight from './TTSSpotlight'
 
 const features = {
   wakeword: 'Wake Word',
@@ -97,7 +100,9 @@ export default function Configurator({
             {Object.keys(features).map((f) => (
               <a
                 key={`feature-selector-${f}`}
-                className={`btn${featureChoice === f ? ' selected' : ''}`}
+                className={`btn btn-large${
+                  featureChoice === f ? ' selected' : ''
+                }`}
                 css={styles.selectorButton}
                 onClick={() => setFeatureChoice(f as Feature)}>
                 {features[f as Feature]}
@@ -114,7 +119,9 @@ export default function Configurator({
             {Object.keys(sdks).map((p) => (
               <a
                 key={`platform-selector-${p}`}
-                className={`btn${platformChoice === p ? ' selected' : ''}`}
+                className={`btn btn-large${
+                  platformChoice === p ? ' selected' : ''
+                }`}
                 css={styles.selectorButton}
                 onClick={() => setPlatformChoice(p as Platform)}>
                 {sdks[p as Platform].title}
@@ -134,6 +141,13 @@ export default function Configurator({
           {language}
         </div>
       </div>
+
+      {featureChoice === 'tts' ? (
+        <Fragment>
+          <hr />
+          <TTSSpotlight />
+        </Fragment>
+      ) : null}
 
       {!hideLinks && (
         <Fragment>
@@ -243,7 +257,7 @@ const styles = {
     transition: opacity 0.1s ${theme.transitionEasing};
   `,
   sdk: css`
-    padding: 20px;
+    padding: 40px;
 
     h5 {
       color: white;
@@ -251,7 +265,7 @@ const styles = {
     }
 
     p {
-      color: #abafb2;
+      color: ${theme.grayLight};
       margin-bottom: 20px;
     }
   `,

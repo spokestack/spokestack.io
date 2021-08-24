@@ -34,7 +34,7 @@ export default function Tags({ header, allUrl, tags }: Props) {
           <Link
             to={allUrl}
             activeClassName="tag-active"
-            className="btn btn-transparent btn-small">
+            className="btn btn-transparent">
             All
           </Link>
         )}
@@ -44,7 +44,7 @@ export default function Tags({ header, allUrl, tags }: Props) {
             partiallyActive
             to={`/blog/tag/${toUrl(tag)}`}
             activeClassName="tag-active"
-            className="btn btn-transparent btn-small">
+            className="btn btn-transparent">
             {tag}
           </Link>
         ))}

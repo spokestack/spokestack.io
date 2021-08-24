@@ -16,7 +16,7 @@ export default function Header({ title, subtitle, image }: Props) {
       <div className="ie-fix" css={styles.headerContent}>
         <h1 css={styles.headerText}>{title}</h1>
         {!!subtitle && <p className="title spokestack-speakable">{subtitle}</p>}
-        <a href="/account/create" className="btn btn-secondary">
+        <a href="/account/create" className="btn btn-large btn-secondary">
           Get started free
           <SVGIcon icon="#arrow-forward" extraCss={styles.createAccountIcon} />
         </a>

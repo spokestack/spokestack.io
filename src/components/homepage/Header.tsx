@@ -13,7 +13,7 @@ export default function Header() {
           AutoML tools and open source libraries for mobile, web, &amp; embedded
           software
         </p>
-        <a href="/account/create" className="btn btn-secondary">
+        <a href="/account/create" className="btn btn-large btn-secondary">
           Get started free
         </a>
       </div>

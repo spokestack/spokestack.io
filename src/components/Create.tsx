@@ -23,7 +23,7 @@ export default function Create({ hidePricing, ...props }: Props) {
       text="Access our hosted services for model import, natural language processing, text-to-speech, and wakeword."
       {...props}>
       <div css={styles.buttons}>
-        <a href="/account/create" className="btn">
+        <a href="/account/create" className="btn btn-large">
           Sign up free
           <SVGIcon
             icon="#arrow-forward"
@@ -32,7 +32,7 @@ export default function Create({ hidePricing, ...props }: Props) {
           />
         </a>
         {!hidePricing && (
-          <a href="/pricing" className="btn btn-transparent">
+          <a href="/pricing" className="btn btn-large btn-transparent">
             See pricing
             <SVGIcon
               icon="#arrow-forward"

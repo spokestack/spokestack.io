@@ -57,14 +57,9 @@ export default function Newsletter() {
     <form ref={formRef} onSubmit={submit} css={styles.form}>
       <Global
         styles={css`
-          html.dark-mode {
-            .input {
-              border-color: ${theme.primaryLight};
-              color: white;
-            }
-            .privacy-text {
-              color: ${theme.textDarkBg};
-            }
+          html.dark-mode .input {
+            border-color: ${theme.primaryLight};
+            color: white;
           }
         `}
       />
@@ -81,6 +76,7 @@ export default function Newsletter() {
         />
         <Button
           type="submit"
+          large
           transparent
           submitting={submitting}
           extraCss={success ? [styles.button, styles.success] : styles.button}>
@@ -98,7 +94,7 @@ export default function Newsletter() {
           )}
         </Button>
       </div>
-      <p className="privacy-text" css={styles.privacy}>
+      <p css={styles.privacy}>
         You can unsubscribe at any time. Read our{' '}
         <a href="/privacy">privacy policy</a>.
       </p>
@@ -114,6 +110,7 @@ const styles = {
     align-items: center;
     text-align: center;
     padding: 50px 0;
+    border-top: 1px solid ${theme.mainBorder};
     border-bottom: 1px solid ${theme.mainBorder};
   `,
   inputWrap: css`
@@ -161,11 +158,6 @@ const styles = {
   privacy: css`
     max-width: 290px;
     color: ${theme.textColor.fade(0.25).toString()};
-    margin: 0;
-
-    a {
-      font-weight: 400;
-    }
 
     ${theme.MIN_DEFAULT_MEDIA_QUERY} {
       max-width: none;

@@ -5,13 +5,12 @@ import { SerializedStyles, css } from '@emotion/react'
 
 import LoadingIcon from './LoadingIcon'
 
-interface Props extends ButtonHTMLAttributes<HTMLButtonElement> {
+export interface ButtonProps extends ButtonHTMLAttributes<HTMLButtonElement> {
   extraCss?: SerializedStyles | SerializedStyles[]
   loadingCss?: SerializedStyles | SerializedStyles[]
   large?: boolean
   link?: boolean
   loadingColor?: string
-  small?: boolean
   full?: boolean
   wide?: boolean
   secondary?: boolean
@@ -27,20 +26,16 @@ export default function Button({
   large,
   link,
   loadingColor = theme.secondary,
-  small,
   full,
   wide,
   secondary,
   submitting,
   transparent,
   ...props
-}: Props) {
-  const classNames = ['btn']
+}: ButtonProps) {
+  const classNames = [className, 'btn'].filter(Boolean)
   if (large) {
     classNames.push('btn-large')
-  }
-  if (small) {
-    classNames.push('btn-small')
   }
   if (full) {
     classNames.push('btn-full')
@@ -61,10 +56,7 @@ export default function Button({
     classNames.push('btn-link')
   }
   return (
-    <button
-      css={extraCss}
-      className={`${className} ${classNames.join(' ')}`}
-      {...props}>
+    <button css={extraCss} className={classNames.join(' ')} {...props}>
       {submitting ? (
         <Fragment>
           <div style={{ visibility: 'hidden' }}>{children}</div>

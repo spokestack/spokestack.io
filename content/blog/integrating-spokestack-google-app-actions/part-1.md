@@ -41,10 +41,10 @@ Google has some [prerequisites](https://developers.google.com/assistant/app/get-
 OK, with that out of the way, let's get our dependencies sorted. Check the `app/build.gradle` file in the sample project — these are the important bits:
 
 ```groovy
-implementation 'io.spokestack:spokestack-android:11.0.0'
-implementation 'org.tensorflow:tensorflow-lite:2.3.0'
-implementation 'androidx.media:media:1.2.0'
-implementation 'com.google.android.exoplayer:exoplayer-core:2.11.7'
+implementation 'io.spokestack:spokestack-android:%ANDROID_VERSION'
+implementation 'org.tensorflow:tensorflow-lite:2.6.0'
+implementation 'androidx.media:media:1.3.1'
+implementation 'com.google.android.exoplayer:exoplayer-core:2.14.0'
 ```
 
 There are several non-Spokestack dependencies here because Spokestack takes a "use only what you need" approach and doesn't include many transitive dependencies by default. The sample app will use everything, though, so we'll need to pull in some libraries to support wake word, NLU, and TTS that we wouldn't need if we didn't want that functionality.

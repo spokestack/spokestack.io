@@ -279,7 +279,7 @@ async function createTagPages({ tag, tags, actions, graphql, reporter }) {
   )
 }
 
-async function createPages({ actions, graphql, posts, template }) {
+async function createPages({ actions, graphql, posts, reporter, template }) {
   const { createPage } = actions
   for (let index = 0; index < posts.length; index++) {
     const post = posts[index]
@@ -303,7 +303,7 @@ async function createPages({ actions, graphql, posts, template }) {
       context.related = related
     }
 
-    console.log(`Creating page at slug "${slug}"`)
+    reporter.info(`Creating page at slug "${slug}"`)
     await createPage({
       path: slug,
       component: template,
@@ -506,6 +506,7 @@ exports.createPages = async ({ graphql, actions, reporter }) => {
     actions,
     graphql,
     posts: result.data.blog.edges,
+    reporter,
     template: path.resolve('./src/templates/blog-post.tsx')
   })
   // Add docs pages
@@ -513,6 +514,7 @@ exports.createPages = async ({ graphql, actions, reporter }) => {
     actions,
     graphql,
     posts: result.data.docs.edges,
+    reporter,
     template: path.resolve('./src/templates/docs-page.tsx')
   })
 

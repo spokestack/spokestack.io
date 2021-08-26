@@ -77,6 +77,9 @@ jobs:
 
       # upload to S3
       - run:
+          name: Update apt-get registry
+          command: sudo apt-get update
+      - run:
           name: Install Tools
           command: sudo apt-get -y -qq install awscli
       - run:
@@ -112,6 +115,9 @@ jobs:
       # - *save_gatsby_cache
 
       # upload to S3
+      - run:
+          name: Update apt-get registry
+          command: sudo apt-get update
       - run:
           name: Install Tools
           command: sudo apt-get -y -qq install awscli

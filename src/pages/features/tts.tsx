@@ -1,23 +1,24 @@
-import React from 'react'
+import * as styles from '../../styles/features.css'
+
+import Create from '../../components/Create'
 import FeatureCallout from '../../components/features/FeatureCallout'
 import Header from '../../components/features/Header'
 import Info from '../../components/Info'
-import Section from '../../components/features/Section'
 import Layout from '../../components/Layout'
+import React from 'react'
 import SEO from '../../components/SEO'
-import YouTubeLink from '../../components/YouTubeLink'
-import * as styles from '../../styles/features.css'
-import { StaticImage } from 'gatsby-plugin-image'
-import Create from '../../components/Create'
 import SampleCode from '../../components/features/SampleCode'
+import Section from '../../components/features/Section'
+import { StaticImage } from 'gatsby-plugin-image'
+import YouTubeLink from '../../components/YouTubeLink'
 import removeTrailingSlash from '../../utils/removeTrailingSlash'
 
 export default function TTSPage() {
   return (
     <Layout>
       <SEO
-        title="Text to Speech (TTS) - Spokestack Maker"
-        description="Create a custom AI voice clone with Spokestack Maker. It's your voice, not a deep fake. Learn more about TTS and start building free."
+        title="Text to Speech (TTS)"
+        description="Create a custom AI voice clone with Spokestack Maker or Spokestack Pro. It's your voice, not a deep fake. Learn more about TTS and start building free."
         image={`${removeTrailingSlash(process.env.SITE_URL!)}/seo/tts.png`}
       />
       <Header
@@ -152,8 +153,8 @@ export default function TTSPage() {
         <Section>
           <p>
             Creating a personal text-to-speech model is straightforward using{' '}
-            <a href="/account/tts">Spokestack Maker</a>, a microphone, and a
-            quiet room.
+            <a href="/account/tts">Spokestack Maker or Spokestack Pro</a>, a
+            microphone, and a quiet room.
           </p>
           <Info>
             Spokestack&apos;s <strong>personal text-to-speech</strong> uses

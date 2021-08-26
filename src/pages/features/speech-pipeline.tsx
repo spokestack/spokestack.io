@@ -1,18 +1,19 @@
-import React from 'react'
-import Header from '../../components/features/Header'
-import Section from '../../components/features/Section'
-import Layout from '../../components/Layout'
-import SEO from '../../components/SEO'
 import * as styles from '../../styles/features.css'
-import { StaticImage } from 'gatsby-plugin-image'
+
 import Create from '../../components/Create'
+import Header from '../../components/features/Header'
+import Layout from '../../components/Layout'
+import React from 'react'
+import SEO from '../../components/SEO'
+import Section from '../../components/features/Section'
+import { StaticImage } from 'gatsby-plugin-image'
 import removeTrailingSlash from '../../utils/removeTrailingSlash'
 
 export default function SpeechPipelinePage() {
   return (
     <Layout>
       <SEO
-        title="Spokestack Speech Pipeline - Spokestack Maker"
+        title="Spokestack Speech Pipeline"
         description="The speech pipeline is how you interact with Spokestack's VAD, wake word, and speech recognition. Learn more about how the speech pipeline works and start building."
         image={`${removeTrailingSlash(
           process.env.SITE_URL!

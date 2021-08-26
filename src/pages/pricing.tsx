@@ -29,7 +29,7 @@ export default function Pricing({ data }: Props) {
     <Layout>
       <SEO
         title="Pricing | Spokestack"
-        description="Choose the right plan for you: Free, Maker, or Enterprise. All plans feature pre-trained models for Wake Word activation, Keyword recognition, Natural Language Understanding, and Text to Speech, as well as free API access to our Automatic Speech Recognition and Text to Speech streaming services."
+        description="Choose the right plan for you: Free, Maker, Pro, or Enterprise. All plans feature pre-trained models for Wake Word activation, Keyword recognition, Natural Language Understanding, and Text to Speech, as well as free API access to our Automatic Speech Recognition and Text to Speech streaming services."
       />
       <Background height="450px" />
       <header css={styles.header}>

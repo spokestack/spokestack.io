@@ -1,23 +1,24 @@
-import React from 'react'
+import * as styles from '../../styles/features.css'
+
+import Create from '../../components/Create'
 import FeatureCallout from '../../components/features/FeatureCallout'
 import Header from '../../components/features/Header'
 import Info from '../../components/Info'
-import Section from '../../components/features/Section'
 import Layout from '../../components/Layout'
+import React from 'react'
 import SEO from '../../components/SEO'
-import YouTubeLink from '../../components/YouTubeLink'
-import * as styles from '../../styles/features.css'
-import { StaticImage } from 'gatsby-plugin-image'
-import Create from '../../components/Create'
 import SampleCode from '../../components/features/SampleCode'
+import Section from '../../components/features/Section'
+import { StaticImage } from 'gatsby-plugin-image'
+import YouTubeLink from '../../components/YouTubeLink'
 import removeTrailingSlash from '../../utils/removeTrailingSlash'
 
 export default function KeywordPage() {
   return (
     <Layout>
       <SEO
-        title="Keyword Recognition - Spokestack Maker"
-        description="Local on-device keyword spotting — recognize any sound whether or not its part of a language. Create a custom keyword model with Spokestack Maker."
+        title="Keyword Recognition"
+        description="Local on-device keyword spotting — recognize any sound whether or not its part of a language. Create a custom keyword model with Spokestack Maker or Spokestack Pro."
         image={`${removeTrailingSlash(process.env.SITE_URL!)}/seo/keyword.png`}
       />
       <Header
@@ -193,8 +194,8 @@ export default function KeywordPage() {
           <p>
             A <strong>keyword detector</strong> is trained using machine
             learning models (like what you create with no code using Spokestack
-            Maker) to constantly analyze input from a microphone for specific
-            sounds. These models work in tandem with a{' '}
+            Maker or Spokestack Pro) to constantly analyze input from a
+            microphone for specific sounds. These models work in tandem with a{' '}
             <a href="/features/vad">voice activity detector</a> to:
           </p>
           <StaticImage
@@ -265,8 +266,8 @@ export default function KeywordPage() {
         <Section>
           <p>
             Creating a personal keyword model is straightforward using{' '}
-            <a href="/account/keyword">Spokestack Maker</a>, a microphone, and a
-            quiet room.
+            <a href="/account/keyword">Spokestack Maker or Spokestack Pro</a>, a
+            microphone, and a quiet room.
           </p>
           <Info>
             Spokestack&apos;s <strong>personal keywords</strong> use few-shot

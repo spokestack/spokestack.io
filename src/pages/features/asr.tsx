@@ -1,18 +1,19 @@
-import React from 'react'
-import Header from '../../components/features/Header'
-import Section from '../../components/features/Section'
-import Layout from '../../components/Layout'
-import SEO from '../../components/SEO'
 import * as styles from '../../styles/features.css'
-import { StaticImage } from 'gatsby-plugin-image'
+
 import Create from '../../components/Create'
+import Header from '../../components/features/Header'
+import Layout from '../../components/Layout'
+import React from 'react'
+import SEO from '../../components/SEO'
+import Section from '../../components/features/Section'
+import { StaticImage } from 'gatsby-plugin-image'
 import removeTrailingSlash from '../../utils/removeTrailingSlash'
 
 export default function ASRPage() {
   return (
     <Layout>
       <SEO
-        title="Automatic Speech Recognition (ASR)- Spokestack Maker"
+        title="Automatic Speech Recognition (ASR)"
         description="Analyze and transcribe your software's audio to perform a function or simply record. Create a free account to access our ASR tools."
         image={`${removeTrailingSlash(process.env.SITE_URL!)}/seo/asr.png`}
       />

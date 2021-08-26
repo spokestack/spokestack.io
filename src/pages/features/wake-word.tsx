@@ -1,22 +1,23 @@
-import React from 'react'
+import * as styles from '../../styles/features.css'
+
+import Create from '../../components/Create'
 import FeatureCallout from '../../components/features/FeatureCallout'
 import Header from '../../components/features/Header'
 import Info from '../../components/Info'
-import Section from '../../components/features/Section'
 import Layout from '../../components/Layout'
+import React from 'react'
 import SEO from '../../components/SEO'
-import YouTubeLink from '../../components/YouTubeLink'
-import * as styles from '../../styles/features.css'
-import { StaticImage } from 'gatsby-plugin-image'
-import Create from '../../components/Create'
 import SampleCode from '../../components/features/SampleCode'
+import Section from '../../components/features/Section'
+import { StaticImage } from 'gatsby-plugin-image'
+import YouTubeLink from '../../components/YouTubeLink'
 import removeTrailingSlash from '../../utils/removeTrailingSlash'
 
 export default function WakewordPage() {
   return (
     <Layout>
       <SEO
-        title="Wake Words for Activating Software - Spokestack Maker"
+        title="Wake Words for Activating Software"
         description="Multilingual on-device wake words recognize one or multiple commands to activate listening in your software. Create a custom wake word for free."
         image={`${removeTrailingSlash(
           process.env.SITE_URL!
@@ -132,7 +133,8 @@ export default function WakewordPage() {
             Wake words utilize a wake word detector, which in Spokestack employs
             machine learning models trained to constantly analyze input from a
             microphone for specific sounds (like what you can train and build
-            with no code using <a href="/account">Spokestack Maker</a>). These
+            with no code using{' '}
+            <a href="/account">Spokestack Maker or Spokestack Pro</a>). These
             models work in tandem with a{' '}
             <a href="/features/vad">Voice Activity Detector</a> to:{' '}
           </p>
@@ -201,10 +203,13 @@ export default function WakewordPage() {
                 my name?&rdquo; over and over again.
               </p>
               <p>
-                With <a href="/account/wake-word">Spokestack Maker</a>, you can
-                create wake word models that can be trained to recognize a
-                number of different phrases, or utterances, so your app can
-                activate from different invocations without directly
+                With{' '}
+                <a href="/account/wake-word">
+                  Spokestack Maker or Spokestack Pro
+                </a>
+                , you can create wake word models that can be trained to
+                recognize a number of different phrases, or utterances, so your
+                app can activate from different invocations without directly
                 transcribing which one the user spoke. This contrasts with a{' '}
                 <a href="/docs/concepts/keywords">keyword recognizer</a>, which
                 will give you a transcript of the user&apos;s speech.
@@ -227,8 +232,8 @@ export default function WakewordPage() {
         <Section>
           <p>
             Creating a personal wake word model is straightforward using{' '}
-            <a href="/account/wake-word">Spokestack Maker</a>, a microphone, and
-            a quiet room.
+            <a href="/account/wake-word">Spokestack Maker or Spokestack Pro</a>,
+            a microphone, and a quiet room.
           </p>
           <Info>
             Spokestack&apos;s <strong>personal wake words</strong> use few-shot

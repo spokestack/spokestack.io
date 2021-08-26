@@ -103,10 +103,10 @@ const styles = {
   price: css`
     display: flex;
     flex-direction: column;
-    justify-content: center;
+    justify-content: flex-start;
     align-items: center;
     text-align: center;
-    height: 180px;
+    height: 230px;
     background: linear-gradient(${theme.pricingBorder}, transparent);
 
     h2 {

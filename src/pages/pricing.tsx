@@ -2,7 +2,7 @@ import * as features from '../utils/pricingFeatures'
 import * as theme from '../styles/theme'
 
 import { PageRendererProps, graphql } from 'gatsby'
-import React, { useRef, useState } from 'react'
+import React, { Fragment, useRef, useState } from 'react'
 
 import Background from '../components/pricing/Background'
 import Create from '../components/Create'
@@ -38,7 +38,6 @@ export default function Pricing({ data }: Props) {
           Plans for everything, from &ldquo;checking it out&rdquo; to
           &ldquo;build it for me&rdquo;
         </p>
-        <Switch yearly={yearly} onChange={(y) => setYearly(y)} />
       </header>
       <div className="ie-fix" css={styles.plans} ref={pricingElem}>
         <Plan
@@ -56,14 +55,19 @@ export default function Pricing({ data }: Props) {
           cta="Start 5-day free trial"
           imageUrl="/pricing/plan-maker.svg"
           price={
-            yearly ? (
+            <Fragment>
               <h3 css={styles.save}>
-                <SaveBadge percent={16} />
-                $99.99/yr
+                {yearly ? (
+                  <Fragment>
+                    <SaveBadge percent={16} />
+                    $99.99/yr
+                  </Fragment>
+                ) : (
+                  '$9.99/mo'
+                )}
               </h3>
-            ) : (
-              '$9.99/mo'
-            )
+              <Switch yearly={yearly} onChange={(y) => setYearly(y)} />
+            </Fragment>
           }
           slug="/account/upgrade"
           description="Entry-level pricing for makers, startups, &amp; personal projects"
@@ -80,12 +84,16 @@ export default function Pricing({ data }: Props) {
         />
         <Plan
           name="Pro"
-          cta="Sign up for waitlist"
+          cta="Sign up"
           imageUrl="/pricing/plan-pro.svg"
-          price="TBA"
-          slug={`mailto:${contact.email}?subject=Join Pro Waitlist`}
+          price="$2388/yr"
+          slug="/account/upgrade"
+          subtext={
+            <div>
+              Only available as yearly due to the cost of sample collection.
+            </div>
+          }
           description="Competitive pricing for production-quality projects"
-          subtext="Coming soon!"
           background="#c2dfff"
           features={features.pro}
         />
@@ -120,6 +128,10 @@ const styles = {
     h2,
     .title {
       color: ${theme.textDarkBg};
+      margin: 0;
+    }
+
+    h2 {
       margin-bottom: 25px;
     }
   `,
@@ -149,6 +161,8 @@ const styles = {
     flex-direction: row;
     align-items: center;
     font-size: 30px;
+    height: 60px;
+    margin: 0 0 20px;
 
     ${theme.MIN_LARGE_DISPLAY_MEDIA_QUERY} {
       font-size: 32px;

@@ -144,7 +144,8 @@ export default function StickyNav({
           }
           onChange={(value) => {
             window.location.href = value
-          }}>
+          }}
+        >
           {sections.map((section) =>
             isSection(section) ? (
               <optgroup label={section} key={`optgroup-${section}`}>

@@ -17,22 +17,26 @@ export default function OpenSource() {
       <div css={styles.features}>
         <OpenSourceFeature
           title="Pre-Trained Universal Models"
-          description="Allow you to interface with more than one user.">
+          description="Allow you to interface with more than one user."
+        >
           <Tags tags={['Wake Word', 'Keyword', 'NLU', 'TTS']} />
         </OpenSourceFeature>
         <OpenSourceFeature
           title="Beyond-Real-Time Local Inference"
-          description="Keep your data local.">
+          description="Keep your data local."
+        >
           <Tags tags={['Wake Word', 'Keyword', 'NLU']} />
         </OpenSourceFeature>
         <OpenSourceFeature
           title="Secure Cloud Inference"
-          description="Cloud data stays private. Plans start at 25k requests/mo for ASR, NLU, and streaming TTS cloud APIs.">
+          description="Cloud data stays private. Plans start at 25k requests/mo for ASR, NLU, and streaming TTS cloud APIs."
+        >
           <Tags tags={['ASR', 'NLU', 'TTS']} />
         </OpenSourceFeature>
         <OpenSourceFeature
           title="SDK Access"
-          description="Native SDKs bundle all voice capabilities on platforms including:">
+          description="Native SDKs bundle all voice capabilities on platforms including:"
+        >
           <ul>
             <li>
               <a href="https://github.com/spokestack/react-native-spokestack">
@@ -59,7 +63,8 @@ export default function OpenSource() {
         </OpenSourceFeature>
         <OpenSourceFeature
           title="Demo Playground"
-          description="Test your voice experience before going live on the following platforms:">
+          description="Test your voice experience before going live on the following platforms:"
+        >
           <ul>
             <li>React Native</li>
             <li>iOS</li>
@@ -75,7 +80,8 @@ export default function OpenSource() {
               Get a head start on your projects with{' '}
               <a href="/docs/concepts/tray">Spokestack Tray</a>, available for:
             </p>
-          }>
+          }
+        >
           <ul>
             <li>
               <a href="https://github.com/spokestack/react-native-spokestack-tray">
@@ -96,7 +102,8 @@ export default function OpenSource() {
         </OpenSourceFeature>
         <OpenSourceFeature
           title="3rd-Party Provider Support for ASR"
-          description="Use Spokestack ASR or choose from one of the following providers*:">
+          description="Use Spokestack ASR or choose from one of the following providers*:"
+        >
           <ul>
             <li>Apple (on-device)</li>
             <li>Google (on-device)</li>
@@ -107,7 +114,8 @@ export default function OpenSource() {
         </OpenSourceFeature>
         <OpenSourceFeature
           title="Run NLU Models from 3rd-Party Providers"
-          description="Use Jovo NLU models or import NLU models from:">
+          description="Use Jovo NLU models or import NLU models from:"
+        >
           <ul>
             <li>Alexa</li>
             <li>Dialogflow</li>
@@ -116,7 +124,8 @@ export default function OpenSource() {
         </OpenSourceFeature>
         <OpenSourceFeature
           title="Flexibility to Choose TTS AI Voices"
-          description="Use the default AI voice provided by default or use an AI voice from one of the following providers*:">
+          description="Use the default AI voice provided by default or use an AI voice from one of the following providers*:"
+        >
           <ul>
             <li>Apple</li>
             <li>Google</li>

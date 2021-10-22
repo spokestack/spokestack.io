@@ -12,7 +12,8 @@ export default function ContactUs(
       id="request"
       title="Need Help Choosing a Plan?"
       text="Let us show you around before you decide."
-      {...props}>
+      {...props}
+    >
       <a href="mailto:hello@spokestack.io" className="btn">
         Request demo
         <SVGIcon

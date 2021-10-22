@@ -38,7 +38,8 @@ export default function BenefitsListItem({
     <div css={[styles.listItem].concat(extraCss!)}>
       <div
         css={[styles.image].concat(imageCss!)}
-        style={{ backgroundColor: bgColor }}>
+        style={{ backgroundColor: bgColor }}
+      >
         {iconUrl ? (
           <img alt={text} src={iconUrl} css={iconCss} />
         ) : (

@@ -21,7 +21,8 @@ export default function Paging({ page, maxPages, onSelect }: Props) {
       {hasPrevious ? (
         <a
           onClick={() => onSelect(page - 1)}
-          css={[styles.pageLink, styles.prevNextLink]}>
+          css={[styles.pageLink, styles.prevNextLink]}
+        >
           <SVGIcon
             className="icon"
             icon="#arrow-forward"
@@ -41,7 +42,8 @@ export default function Paging({ page, maxPages, onSelect }: Props) {
             key={`page-${i}`}
             onClick={() => onSelect(i + 1)}
             css={styles.pageLink}
-            style={{ fontWeight: page === i + 1 ? 700 : 400 }}>
+            style={{ fontWeight: page === i + 1 ? 700 : 400 }}
+          >
             {i + 1}
           </a>
         ))}
@@ -49,7 +51,8 @@ export default function Paging({ page, maxPages, onSelect }: Props) {
       {hasNext ? (
         <a
           onClick={() => onSelect(page + 1)}
-          css={[styles.pageLink, styles.prevNextLink, styles.nextLink]}>
+          css={[styles.pageLink, styles.prevNextLink, styles.nextLink]}
+        >
           Next
           <SVGIcon
             className="icon"

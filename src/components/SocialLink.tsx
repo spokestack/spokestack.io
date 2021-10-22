@@ -27,7 +27,8 @@ export default function SocialLink({
       className={`social-link${transparent ? ' social-link-transparent' : ''}`}
       css={[styles.socialLink].concat(extraCss!)}
       href={href}
-      title={title}>
+      title={title}
+    >
       <Global
         styles={css`
           html:not(.dark-mode) .social-link.social-link-transparent {

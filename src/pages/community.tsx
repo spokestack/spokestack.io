@@ -39,7 +39,8 @@ export default function Community({ data }: Props) {
             </a>
             <a
               href="https://forum.spokestack.io"
-              className="btn btn-wide btn-secondary btn-transparent">
+              className="btn btn-wide btn-secondary btn-transparent"
+            >
               Join the Forum
             </a>
           </div>
@@ -59,7 +60,8 @@ export default function Community({ data }: Props) {
       <Twitter />
       <BlueCard
         title="Contribute to Spokestack"
-        text="Spokestack is an open source project which thrives from community contributions. There are many different ways to get involved and grow as a contributor in our community.">
+        text="Spokestack is an open source project which thrives from community contributions. There are many different ways to get involved and grow as a contributor in our community."
+      >
         <a href="/contribute" className="btn">
           Become a Contributor
         </a>

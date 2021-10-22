@@ -125,7 +125,8 @@ export default function TTSSpotlight() {
         Synthesize any text using our free Spokestack voice below. We support{' '}
         <a
           className="link-secondary"
-          href="https://en.wikipedia.org/wiki/International_Phonetic_Alphabet">
+          href="https://en.wikipedia.org/wiki/International_Phonetic_Alphabet"
+        >
           IPA
         </a>{' '}
         input enclosed in {`{{ double braces }}`}, or a subset of{' '}
@@ -135,25 +136,29 @@ export default function TTSSpotlight() {
         including{' '}
         <a
           className="link-secondary"
-          href="https://www.speechmarkdown.org/syntax/break/">
+          href="https://www.speechmarkdown.org/syntax/break/"
+        >
           breaks
         </a>
         ,{' '}
         <a
           className="link-secondary"
-          href="https://www.speechmarkdown.org/syntax/characters/">
+          href="https://www.speechmarkdown.org/syntax/characters/"
+        >
           characters
         </a>
         ,{' '}
         <a
           className="link-secondary"
-          href="https://www.speechmarkdown.org/syntax/ipa/">
+          href="https://www.speechmarkdown.org/syntax/ipa/"
+        >
           IPA
         </a>
         , and{' '}
         <a
           className="link-secondary"
-          href="https://www.speechmarkdown.org/syntax/number/">
+          href="https://www.speechmarkdown.org/syntax/number/"
+        >
           numbers
         </a>
         .
@@ -194,7 +199,8 @@ export default function TTSSpotlight() {
                 audio.currentTime = 0
                 audio.play()
               }
-            }}>
+            }}
+          >
             {playing ? (
               <SVGIcon
                 className="icon"

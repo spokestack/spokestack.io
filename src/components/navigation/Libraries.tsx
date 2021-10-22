@@ -8,19 +8,22 @@ export default function Libraries() {
       <div css={styles.libraryColumn}>
         <a
           css={styles.libraryLink}
-          href="https://github.com/spokestack/spokestack-ios">
+          href="https://github.com/spokestack/spokestack-ios"
+        >
           <SVGIcon icon="#ios" className="icon" />
           iOS
         </a>
         <a
           css={styles.libraryLink}
-          href="https://github.com/spokestack/spokestack-android">
+          href="https://github.com/spokestack/spokestack-android"
+        >
           <SVGIcon icon="#android" className="icon" />
           Android
         </a>
         <a
           css={styles.libraryLink}
-          href="https://github.com/spokestack/spokestack-python">
+          href="https://github.com/spokestack/spokestack-python"
+        >
           <SVGIcon icon="#python" className="icon" />
           Python
         </a>
@@ -28,13 +31,15 @@ export default function Libraries() {
       <div css={styles.libraryColumn}>
         <a
           css={styles.libraryLink}
-          href="https://github.com/spokestack/react-native-spokestack">
+          href="https://github.com/spokestack/react-native-spokestack"
+        >
           <SVGIcon icon="#react-native" className="icon" />
           React Native
         </a>
         <a
           css={styles.libraryLink}
-          href="https://github.com/spokestack/node-spokestack">
+          href="https://github.com/spokestack/node-spokestack"
+        >
           <SVGIcon icon="#node" className="icon" />
           Node
         </a>

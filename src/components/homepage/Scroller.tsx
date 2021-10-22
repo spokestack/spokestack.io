@@ -22,7 +22,8 @@ export default function Scroller({ section }: Props) {
           css={styles.svg}
           className={section || ''}
           viewBox="0 0 636 636"
-          xmlns="http://www.w3.org/2000/svg">
+          xmlns="http://www.w3.org/2000/svg"
+        >
           <path
             className="cloud-background"
             fillRule="evenodd"
@@ -856,7 +857,8 @@ export default function Scroller({ section }: Props) {
               y1="297.546"
               x2="465.414"
               y2="297.546"
-              gradientUnits="userSpaceOnUse">
+              gradientUnits="userSpaceOnUse"
+            >
               <stop stopColor="#61FAE9" />
               <stop offset="1" stopColor="#2F5BEA" />
             </linearGradient>
@@ -866,7 +868,8 @@ export default function Scroller({ section }: Props) {
               y1="317.546"
               x2="428"
               y2="317.546"
-              gradientUnits="userSpaceOnUse">
+              gradientUnits="userSpaceOnUse"
+            >
               <stop stopColor="#61FAE9" />
               <stop offset="1" stopColor="#2F5BEA" />
             </linearGradient>
@@ -876,7 +879,8 @@ export default function Scroller({ section }: Props) {
               y1="397.102"
               x2="254.422"
               y2="406.439"
-              gradientUnits="userSpaceOnUse">
+              gradientUnits="userSpaceOnUse"
+            >
               <stop stopColor="#5A9FD4" />
               <stop offset="1" stopColor="#306998" />
             </linearGradient>
@@ -886,7 +890,8 @@ export default function Scroller({ section }: Props) {
               y1="414.064"
               x2="252.172"
               y2="408.599"
-              gradientUnits="userSpaceOnUse">
+              gradientUnits="userSpaceOnUse"
+            >
               <stop stopColor="#FFD43B" />
               <stop offset="1" stopColor="#FFE873" />
             </linearGradient>
@@ -896,7 +901,8 @@ export default function Scroller({ section }: Props) {
               y1="406.99"
               x2="284.34"
               y2="406.99"
-              gradientUnits="userSpaceOnUse">
+              gradientUnits="userSpaceOnUse"
+            >
               <stop stopColor="#61FAE9" />
               <stop offset="1" stopColor="#2F5BEA" />
             </linearGradient>
@@ -906,7 +912,8 @@ export default function Scroller({ section }: Props) {
               y1="293.336"
               x2="214.792"
               y2="275.876"
-              gradientUnits="userSpaceOnUse">
+              gradientUnits="userSpaceOnUse"
+            >
               <stop offset="0.57" stopColor="#3E863D" />
               <stop offset="0.72" stopColor="#619857" />
               <stop offset="1" stopColor="#76AC64" />
@@ -917,7 +924,8 @@ export default function Scroller({ section }: Props) {
               y1="284.51"
               x2="242.38"
               y2="284.51"
-              gradientUnits="userSpaceOnUse">
+              gradientUnits="userSpaceOnUse"
+            >
               <stop stopColor="#61FAE9" />
               <stop offset="1" stopColor="#2F5BEA" />
             </linearGradient>
@@ -927,7 +935,8 @@ export default function Scroller({ section }: Props) {
               y1="207.546"
               x2="348"
               y2="207.546"
-              gradientUnits="userSpaceOnUse">
+              gradientUnits="userSpaceOnUse"
+            >
               <stop stopColor="#61FAE9" />
               <stop offset="1" stopColor="#2F5BEA" />
             </linearGradient>
@@ -937,7 +946,8 @@ export default function Scroller({ section }: Props) {
               y1="284.01"
               x2="452.62"
               y2="284.01"
-              gradientUnits="userSpaceOnUse">
+              gradientUnits="userSpaceOnUse"
+            >
               <stop stopColor="#61FAE9" />
               <stop offset="1" stopColor="#2F5BEA" />
             </linearGradient>
@@ -947,7 +957,8 @@ export default function Scroller({ section }: Props) {
               y1="406.99"
               x2="413.66"
               y2="406.99"
-              gradientUnits="userSpaceOnUse">
+              gradientUnits="userSpaceOnUse"
+            >
               <stop stopColor="#61FAE9" />
               <stop offset="1" stopColor="#2F5BEA" />
             </linearGradient>

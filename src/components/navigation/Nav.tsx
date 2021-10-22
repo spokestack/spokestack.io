@@ -206,7 +206,8 @@ export default function Nav({ contentCss, extraCss }: Props) {
                       width: 36px;
                       height: 37px;
                     `}
-                    text="Open source libraries for integrating Spokestack into your apps">
+                    text="Open source libraries for integrating Spokestack into your apps"
+                  >
                     <Libraries />
                   </NavDropdownLink>
                   <NavDropdownLink
@@ -231,7 +232,8 @@ export default function Nav({ contentCss, extraCss }: Props) {
           </li>
           <li
             css={[styles.listItem, styles.mobileAndLarge]}
-            aria-label="Community Navigation">
+            aria-label="Community Navigation"
+          >
             <NavLink to="/community" title="Spokestack Community">
               Community
             </NavLink>

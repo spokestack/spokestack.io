@@ -21,7 +21,8 @@ export default function Create({ hidePricing, ...props }: Props) {
         </h2>
       }
       text="Access our hosted services for model import, natural language processing, text-to-speech, and wakeword."
-      {...props}>
+      {...props}
+    >
       <div css={styles.buttons}>
         <a href="/account/create" className="btn btn-large">
           Sign up free

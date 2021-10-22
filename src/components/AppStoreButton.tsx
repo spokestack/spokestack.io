@@ -18,7 +18,8 @@ export default function AppStoreButton({ extraCss, slug, transparent }: Props) {
     <a
       href={slug}
       className={classes.join(' ')}
-      css={[styles.button].concat(extraCss!)}>
+      css={[styles.button].concat(extraCss!)}
+    >
       <SVGIcon icon="#apple" className="icon" extraCss={styles.icon} />
       <div css={styles.text}>
         <div css={styles.downloadText}>Download on the</div>

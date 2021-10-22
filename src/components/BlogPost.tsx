@@ -63,7 +63,8 @@ export default function BlogPost({ post, related }: Props) {
                   <Link
                     key={`related-${i}`}
                     to={link.href}
-                    className="content-link">
+                    className="content-link"
+                  >
                     {link.title}
                   </Link>
                 ))}

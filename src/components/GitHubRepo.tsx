@@ -41,7 +41,8 @@ export default function GitHubRepo({ repo }: Props) {
           <div
             key={`${repo.id}-${language!.id}`}
             className="language-link"
-            css={styles.githubLink}>
+            css={styles.githubLink}
+          >
             <div
               css={styles.languageColor}
               style={{ backgroundColor: language!.color! }}

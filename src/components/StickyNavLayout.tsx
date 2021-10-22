@@ -76,7 +76,8 @@ export default function StickyNavLayout({
                 key={`header-link-${link.href}`}
                 css={styles.headerLink}
                 className={link.selected ? 'selected' : ''}
-                href={link.href}>
+                href={link.href}
+              >
                 {i === 0 ? 'Introduction' : link.title}
               </a>
             ))}

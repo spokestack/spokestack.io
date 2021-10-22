@@ -33,7 +33,8 @@ export default function Plan({
     <div
       css={styles.plan}
       id={name.toLowerCase()}
-      style={{ backgroundColor: background || 'white' }}>
+      style={{ backgroundColor: background || 'white' }}
+    >
       <h5 css={[styles.header].concat(highlight ? styles.highlight : [])}>
         {name}
       </h5>
@@ -55,7 +56,8 @@ export default function Plan({
           href={slug}
           className={`btn btn-full${highlight ? '' : ' btn-transparent'}`}
           tabIndex={0}
-          title={cta}>
+          title={cta}
+        >
           {cta}
         </a>
         <div css={styles.subtext}>{subtext}</div>

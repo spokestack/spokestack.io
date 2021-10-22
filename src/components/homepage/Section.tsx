@@ -38,7 +38,8 @@ export default function Section({
             flex-direction: ${imageLeft ? 'row-reverse' : 'row'};
           }
         `
-      ].concat(extraCss!)}>
+      ].concat(extraCss!)}
+    >
       <div css={styles.content} className="ie-fix">
         <h4 className="blue">{subHeader}</h4>
         <h3>{header}</h3>

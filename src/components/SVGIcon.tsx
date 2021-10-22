@@ -18,7 +18,8 @@ export default function SVGIcon({ icon, extraCss, ...props }: Props) {
       css={[styles.icon].concat(extraCss!)}
       aria-hidden="true"
       role="presentation"
-      {...props}>
+      {...props}
+    >
       <use xlinkHref={icon} />
     </svg>
   )

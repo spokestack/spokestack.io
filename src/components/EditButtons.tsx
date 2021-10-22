@@ -79,7 +79,8 @@ export function DeleteButton({ onPress, title }: DeleteProps) {
         e.preventDefault()
         onPress()
       }}
-      css={styles.editButton}>
+      css={styles.editButton}
+    >
       <SVGIcon icon="#delete" extraCss={styles.icon} />
     </a>
   )

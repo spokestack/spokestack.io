@@ -51,7 +51,8 @@ export default function NavDropdown({
           e.preventDefault()
           setOpen(!open)
         }}
-        extraCss={styles.dropdownLink}>
+        extraCss={styles.dropdownLink}
+      >
         {title}
         <SVGIcon
           className="dropdown-icon"
@@ -62,7 +63,8 @@ export default function NavDropdown({
       <div
         className="dropdown-menu"
         css={menuStyles.concat(menuCss!)}
-        style={{ maxWidth: `${maxMenuWidth}px` }}>
+        style={{ maxWidth: `${maxMenuWidth}px` }}
+      >
         <div className="dropdown-content" css={styles.dropdownContent}>
           <NavLink
             mobileOnly
@@ -71,7 +73,8 @@ export default function NavDropdown({
               e.preventDefault()
               setOpen(false)
             }}
-            extraCss={styles.dropdownBack}>
+            extraCss={styles.dropdownBack}
+          >
             <SVGIcon
               className="dropdown-icon"
               icon="#arrow-down"

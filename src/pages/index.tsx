@@ -30,7 +30,8 @@ export default function Index({ data }: Props) {
         </Banner>
       }
       extraCss={styles.container}
-      navStyle={styles.nav}>
+      navStyle={styles.nav}
+    >
       <SEO title={siteTitle} />
       <Header />
       <Problems />

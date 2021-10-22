@@ -129,7 +129,8 @@ export default class Switch extends PureComponent<Props, State> {
             e.preventDefault()
             this.updateYearly(!yearly)
           }
-        }}>
+        }}
+      >
         <div css={styles.track}>
           <div className="switch-text" css={styles.text}>
             Yearly
@@ -150,13 +151,15 @@ export default class Switch extends PureComponent<Props, State> {
               : yearly
               ? 'none'
               : `translateX(${KNOB_WIDTH}px)`
-          }}>
+          }}
+        >
           <div
             className="switch-text"
             css={styles.text}
             style={{
               opacity: moving ? (halfWidth - x) / halfWidth : yearly ? 1 : 0
-            }}>
+            }}
+          >
             Yearly
           </div>
           <div
@@ -164,7 +167,8 @@ export default class Switch extends PureComponent<Props, State> {
             css={styles.text}
             style={{
               opacity: moving ? (x - halfWidth) / halfWidth : yearly ? 0 : 1
-            }}>
+            }}
+          >
             Monthly
           </div>
         </div>

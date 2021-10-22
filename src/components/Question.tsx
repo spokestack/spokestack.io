@@ -68,7 +68,8 @@ export default function Question({ question, answer, startOpen }: Props) {
       <a
         className="question-link dashed-border-top"
         css={styles.questionLink}
-        onClick={() => setOpen(!open)}>
+        onClick={() => setOpen(!open)}
+      >
         {question}
         <span css={styles.icon}>{open ? '\u2013' : '+'}</span>
       </a>

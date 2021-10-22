@@ -79,7 +79,8 @@ export default function Newsletter() {
           large
           transparent
           submitting={submitting}
-          extraCss={success ? [styles.button, styles.success] : styles.button}>
+          extraCss={success ? [styles.button, styles.success] : styles.button}
+        >
           {success ? (
             <Fragment>
               Subscribed

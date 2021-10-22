@@ -16,7 +16,8 @@ export default function Hamburger({ extraCss, open, onClick }: Props) {
       title="Toggle Mobile Navigation Menu"
       css={[styles.hamburger, extraCss]}
       className={open ? 'open' : ''}
-      onClick={onClick}>
+      onClick={onClick}
+    >
       <div className="lines" css={styles.lines}>
         <span css={styles.line} style={{ top: 0 }} />
         <span css={styles.line} style={{ top: 7 }} />

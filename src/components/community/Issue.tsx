@@ -46,7 +46,8 @@ export default function Issue({
             css={styles.tag}
             style={{
               backgroundColor: getColorForTag(tag)
-            }}>
+            }}
+          >
             {tag}
           </div>
         ))}

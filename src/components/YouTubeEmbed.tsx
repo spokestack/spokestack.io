@@ -14,7 +14,8 @@ export default function YouTubeEmbed({ title, videoId }: Props) {
         // Set 16:9 ratio
         paddingBottom: `${(9 / 16) * 100}%`,
         height: 0
-      }}>
+      }}
+    >
       <iframe
         style={{
           position: 'absolute',

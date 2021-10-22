@@ -39,7 +39,8 @@ export default function YouTube() {
             <a
               key={video.videoId}
               css={styles.videoLink}
-              href={`https://www.youtube.com/watch?v=${video.videoId}`}>
+              href={`https://www.youtube.com/watch?v=${video.videoId}`}
+            >
               <SVGIcon
                 icon="#youtube"
                 className="icon"

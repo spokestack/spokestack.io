@@ -251,7 +251,8 @@ export default class Carousel extends PureComponent<Props, State> {
                   } else {
                     this.next()
                   }
-                }}>
+                }}
+              >
                 {key}
               </Button>
             ))}
@@ -270,7 +271,8 @@ export default class Carousel extends PureComponent<Props, State> {
                   ? `translateX(${x}px)`
                   : `translateX(-${index * (100 / numSlides)}%)`,
                 width: `${numSlides * 100}%`
-              }}>
+              }}
+            >
               {children}
             </div>
           </div>
@@ -281,7 +283,8 @@ export default class Carousel extends PureComponent<Props, State> {
               this.prev()
             }}
             className="prev-button"
-            extraCss={buttonStyle}>
+            extraCss={buttonStyle}
+          >
             <SVGIcon
               icon="#arrow-forward"
               extraCss={arrowStyle.concat(styles.backArrow)}
@@ -294,7 +297,8 @@ export default class Carousel extends PureComponent<Props, State> {
               this.next()
             }}
             className="next-button"
-            extraCss={buttonStyle}>
+            extraCss={buttonStyle}
+          >
             <SVGIcon icon="#arrow-forward" extraCss={arrowStyle} />
           </Button>
         </div>

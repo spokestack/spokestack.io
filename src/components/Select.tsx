@@ -49,14 +49,16 @@ export default function Select({
   return (
     <div
       css={[styles.container, extraCss]}
-      className={`${open ? 'select-open' : ''}${disabled ? ' disabled' : ''}`}>
+      className={`${open ? 'select-open' : ''}${disabled ? ' disabled' : ''}`}
+    >
       <label
         htmlFor={id}
         className="select-label"
         css={labelStyle.concat(labelCss!)}
         onClick={() => {
           setOpen(!disabled && !open)
-        }}>
+        }}
+      >
         <p>{selected.title}</p>
         <div css={styles.iconWrap}>
           <SVGIcon className="icon" icon="#arrow-down" extraCss={styles.icon} />
@@ -70,7 +72,8 @@ export default function Select({
         onChange={(event) => {
           onChange(event.target.value)
         }}
-        {...props}>
+        {...props}
+      >
         {options
           ? options.map((option) => (
               <option key={option.value} value={option.value}>
@@ -92,7 +95,8 @@ export default function Select({
               onClick={() => {
                 onChange(option.value!)
                 setOpen(false)
-              }}>
+              }}
+            >
               {option.title}
             </div>
           ))}

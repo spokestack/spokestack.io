@@ -32,7 +32,8 @@ export default function BlogListItem({ post }: Props) {
         }
       }}
       css={styles.container}
-      className="blog-list-item">
+      className="blog-list-item"
+    >
       <Global
         styles={css`
           html.dark-mode .blog-list-item {

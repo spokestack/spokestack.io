@@ -22,7 +22,8 @@ export default function Events() {
             <a
               className="btn btn-large"
               href={event!.url!}
-              css={styles.registerButton}>
+              css={styles.registerButton}
+            >
               Register
             </a>
           </div>

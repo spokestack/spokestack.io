@@ -37,7 +37,8 @@ export default function Solution() {
         numSlides={4}
         onSlideChange={(index) => {
           setIndex(index)
-        }}>
+        }}
+      >
         <StaticImage
           width={1240}
           quality={100}

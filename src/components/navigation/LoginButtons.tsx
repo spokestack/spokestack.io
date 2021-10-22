@@ -49,7 +49,8 @@ export default function LoginButtons({
         )}
         <a
           className={`btn btn-large ${btnClassName || ''}`}
-          href="/account/create">
+          href="/account/create"
+        >
           Sign up free
         </a>
       </div>
@@ -59,7 +60,8 @@ export default function LoginButtons({
         </a>
         <a
           className={`btn btn-large ${btnClassName || ''}`}
-          href="/api/auth/logout">
+          href="/api/auth/logout"
+        >
           Log out
         </a>
       </div>

@@ -33,7 +33,8 @@ export default function NavLink({
       activeClassName="nav-link-active"
       to={to}
       partiallyActive={partiallyActive}
-      {...props}>
+      {...props}
+    >
       {children}
     </Link>
   ) : href ? (

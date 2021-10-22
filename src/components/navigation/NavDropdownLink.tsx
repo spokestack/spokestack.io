@@ -34,7 +34,8 @@ export default function NavDropdownLink({
       className="nav-link-dropdown"
       extraCss={[styles.dropdownLink].concat(extraCss!)}
       to={href}
-      title={title}>
+      title={title}
+    >
       <Global
         styles={css`
           html.dark-mode .nav-link-dropdown {

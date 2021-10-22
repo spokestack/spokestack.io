@@ -95,7 +95,8 @@ export default function StickyNavSection({
           onClick={() => {
             setOpen(!open)
             requestAnimationFrame(() => onOpenChange(!open))
-          }}>
+          }}
+        >
           <a>
             {headerText}
             <SVGIcon
@@ -120,7 +121,8 @@ export default function StickyNavSection({
               id={id}
               href={'#' + hash}
               title={link.title}
-              onClick={() => onSelect(id)}>
+              onClick={() => onSelect(id)}
+            >
               {link.navTitle || link.title}
             </a>
           ) : (
@@ -134,7 +136,8 @@ export default function StickyNavSection({
                   : ''
               }`}
               href={link.href}
-              title={link.title}>
+              title={link.title}
+            >
               {link.navTitle || link.title}
               {link.external && (
                 <SVGIcon

@@ -106,7 +106,8 @@ export default function Configurator({
                   featureChoice === f ? ' selected' : ''
                 }`}
                 css={styles.selectorButton}
-                onClick={() => setFeatureChoice(f as Feature)}>
+                onClick={() => setFeatureChoice(f as Feature)}
+              >
                 {features[f as Feature]}
               </a>
             ))}
@@ -125,7 +126,8 @@ export default function Configurator({
                   platformChoice === p ? ' selected' : ''
                 }`}
                 css={styles.selectorButton}
-                onClick={() => setPlatformChoice(p as Platform)}>
+                onClick={() => setPlatformChoice(p as Platform)}
+              >
                 {sdks[p as Platform].title}
               </a>
             ))}

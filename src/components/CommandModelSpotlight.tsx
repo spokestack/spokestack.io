@@ -131,7 +131,8 @@ export default function CommandModelSpotlight({ model }: Props) {
       <div css={styles.upperContent}>
         <p
           css={styles.success}
-          style={{ visibility: recognized ? 'visible' : 'hidden' }}>
+          style={{ visibility: recognized ? 'visible' : 'hidden' }}
+        >
           {isWakeword
             ? `Activated! Confidence: ${confidence}`
             : `Recognized: \u201c${recognized}\u201d Confidence: ${confidence}`}
@@ -162,16 +163,18 @@ export default function CommandModelSpotlight({ model }: Props) {
                 Note: command model testing uses advanced browser features
                 currently only available in Blink browsers such as
                 Chrome, Edge, Opera, Vivaldi, and Brave.
-                ${error.message ? `Details: ${error.message}` : ''}`
+                ${(error as Error)?.message || ''}`
                 )
               }
             }
-          }}>
+          }}
+        >
           <span
             css={styles.buttonContent}
             style={{
               visibility: recording ? 'hidden' : 'visible'
-            }}>
+            }}
+          >
             <SVGIcon icon="#mic" className="icon" extraCss={styles.micIcon} />
             {starting ? 'Starting...' : 'Start test'}
           </span>
@@ -215,7 +218,8 @@ export default function CommandModelSpotlight({ model }: Props) {
       <a
         className="link-secondary"
         css={styles.createLink}
-        href={`/account/${isWakeword ? 'wake-word' : 'keyword'}`}>
+        href={`/account/${isWakeword ? 'wake-word' : 'keyword'}`}
+      >
         Create {isWakeword ? 'Wake Word' : 'Keyword'}
         <SVGIcon
           icon="#arrow-forward"

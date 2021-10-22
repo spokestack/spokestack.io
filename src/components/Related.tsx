@@ -47,7 +47,8 @@ export default function Related({
                   <Link
                     css={styles.relatedLink}
                     key={`related-tutorials-${i}`}
-                    to={link.href}>
+                    to={link.href}
+                  >
                     <LightIcon />
                     {link.title}
                   </Link>
@@ -60,7 +61,8 @@ export default function Related({
                   <Link
                     css={styles.relatedLink}
                     key={`related-blog-${i}`}
-                    to={link.href}>
+                    to={link.href}
+                  >
                     <LightIcon />
                     {link.title}
                   </Link>
@@ -73,7 +75,8 @@ export default function Related({
                   <Link
                     css={styles.relatedLink}
                     key={`related-videos-${i}`}
-                    to={link.href}>
+                    to={link.href}
+                  >
                     <LightIcon />
                     {link.title}
                   </Link>
@@ -91,7 +94,8 @@ export default function Related({
                 <Link
                   css={styles.relatedLink}
                   key={`related-docs-${i}`}
-                  to={link.href}>
+                  to={link.href}
+                >
                   <SVGIcon
                     icon="#file"
                     className="icon"

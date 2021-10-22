@@ -118,27 +118,32 @@ export default function Footer() {
           <h5>Native Platform SDKs</h5>
           <a
             css={styles.footerLink}
-            href="https://github.com/spokestack/spokestack-ios">
+            href="https://github.com/spokestack/spokestack-ios"
+          >
             iOS (Swift, Obj-C)
           </a>
           <a
             css={styles.footerLink}
-            href="https://github.com/spokestack/spokestack-android">
+            href="https://github.com/spokestack/spokestack-android"
+          >
             Android (Java, Kotlin)
           </a>
           <a
             css={styles.footerLink}
-            href="https://github.com/spokestack/spokestack-python">
+            href="https://github.com/spokestack/spokestack-python"
+          >
             Python
           </a>
           <a
             css={styles.footerLink}
-            href="https://github.com/spokestack/react-native-spokestack">
+            href="https://github.com/spokestack/react-native-spokestack"
+          >
             React Native
           </a>
           <a
             css={styles.footerLink}
-            href="https://github.com/spokestack/node-spokestack">
+            href="https://github.com/spokestack/node-spokestack"
+          >
             Node
           </a>
         </div>

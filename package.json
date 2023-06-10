@@ -48,7 +48,7 @@
     "cookie": "^0.4.1",
     "core-js": "^3.18.3",
     "esm": "^3.2.25",
-    "gatsby": "^3.14.4",
+    "gatsby": "^4.25.7",
     "gatsby-link": "^3.14.0",
     "gatsby-plugin-canonical-urls": "^3.14.0",
     "gatsby-plugin-create-client-paths": "^3.14.0",
